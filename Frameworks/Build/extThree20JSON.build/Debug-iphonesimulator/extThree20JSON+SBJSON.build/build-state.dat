@@ -1,0 +1,859 @@
+TextThree20JSON+SBJSON
+v5
+r1
+cCheck dependencies
+cCpHeader Vendors/JSON/SBJsonWriter.h ../../Build/Products/Debug-iphonesimulator/../three20/extThree20JSON/SBJsonWriter.h
+cCpHeader Vendors/JSON/SBJsonParser.h ../../Build/Products/Debug-iphonesimulator/../three20/extThree20JSON/SBJsonParser.h
+cCpHeader Headers/TTErrorCodes.h ../../Build/Products/Debug-iphonesimulator/../three20/extThree20JSON/TTErrorCodes.h
+cCpHeader Headers/TTURLJSONResponse.h ../../Build/Products/Debug-iphonesimulator/../three20/extThree20JSON/TTURLJSONResponse.h
+cCpHeader Vendors/JSON/NSObject+SBJSON.h ../../Build/Products/Debug-iphonesimulator/../three20/extThree20JSON/NSObject+SBJSON.h
+cCpHeader Vendors/JSON/SBJsonStreamParser.h ../../Build/Products/Debug-iphonesimulator/../three20/extThree20JSON/SBJsonStreamParser.h
+cCpHeader Vendors/JSON/SBJson.h ../../Build/Products/Debug-iphonesimulator/../three20/extThree20JSON/SBJson.h
+cCpHeader Vendors/JSON/SBJsonStreamWriter.h ../../Build/Products/Debug-iphonesimulator/../three20/extThree20JSON/SBJsonStreamWriter.h
+cCpHeader Vendors/JSON/SBJsonStreamParserAdapter.h ../../Build/Products/Debug-iphonesimulator/../three20/extThree20JSON/SBJsonStreamParserAdapter.h
+cCpHeader Vendors/JSON/NSString+SBJSON.h ../../Build/Products/Debug-iphonesimulator/../three20/extThree20JSON/NSString+SBJSON.h
+cCpHeader Headers/TTExtensionLoader.h ../../Build/Products/Debug-iphonesimulator/../three20/extThree20JSON/TTExtensionLoader.h
+cCpHeader Headers/extThree20JSON.h ../../Build/Products/Debug-iphonesimulator/../three20/extThree20JSON/extThree20JSON.h
+cCpHeader Vendors/JSON/SBJsonTokeniser.h ../../Build/Products/Debug-iphonesimulator/../three20/extThree20JSON/SBJsonTokeniser.h
+cCpHeader Vendors/JSON/SBJsonStreamWriterState.h ../../Build/Products/Debug-iphonesimulator/../three20/extThree20JSON/SBJsonStreamWriterState.h
+cCpHeader Vendors/JSON/SBJsonStreamParserAccumulator.h ../../Build/Products/Debug-iphonesimulator/../three20/extThree20JSON/SBJsonStreamParserAccumulator.h
+cCpHeader Vendors/JSON/SBJsonStreamParserState.h ../../Build/Products/Debug-iphonesimulator/../three20/extThree20JSON/SBJsonStreamParserState.h
+cCpHeader Vendors/JSON/SBJsonStreamWriterAccumulator.h ../../Build/Products/Debug-iphonesimulator/../three20/extThree20JSON/SBJsonStreamWriterAccumulator.h
+cCpHeader Vendors/JSON/SBJsonUTF8Stream.h ../../Build/Products/Debug-iphonesimulator/../three20/extThree20JSON/SBJsonUTF8Stream.h
+cPhaseScriptExecution "Protect Copied Headers" /Users/Leo/Projects/xcode/Hand/Frameworks/Three20/extThree20JSON/../../Build/extThree20JSON.build/Debug-iphonesimulator/extThree20JSON+SBJSON.build/Script-6E3C34C3118807EF0079637E.sh
+cProcessPCH /var/folders/ry/l3zgfjx90jl5cbvr9qr3mbpm0000gn/C/com.apple.Xcode.501/SharedPrecompiledHeaders/extThree20JSON+SBJSON_Prefix-evrsnywfsndieldlachkxpfexmjl/extThree20JSON+SBJSON_Prefix.pch.pth Headers/extThree20JSON+SBJSON_Prefix.pch normal i386 objective-c com.apple.compilers.llvm.clang.1_0.compiler
+cCompileC ../../Build/extThree20JSON.build/Debug-iphonesimulator/extThree20JSON+SBJSON.build/Objects-normal/i386/TTURLJSONResponse.o /Users/Leo/Projects/xcode/Hand/Frameworks/Three20/extThree20JSON/Source/TTURLJSONResponse.m normal i386 objective-c com.apple.compilers.llvm.clang.1_0.compiler
+cCompileC ../../Build/extThree20JSON.build/Debug-iphonesimulator/extThree20JSON+SBJSON.build/Objects-normal/i386/NSObject+SBJSON.o /Users/Leo/Projects/xcode/Hand/Frameworks/Three20/extThree20JSON/Vendors/JSON/NSObject+SBJSON.m normal i386 objective-c com.apple.compilers.llvm.clang.1_0.compiler
+cCompileC ../../Build/extThree20JSON.build/Debug-iphonesimulator/extThree20JSON+SBJSON.build/Objects-normal/i386/SBJsonParser.o /Users/Leo/Projects/xcode/Hand/Frameworks/Three20/extThree20JSON/Vendors/JSON/SBJsonParser.m normal i386 objective-c com.apple.compilers.llvm.clang.1_0.compiler
+cCompileC ../../Build/extThree20JSON.build/Debug-iphonesimulator/extThree20JSON+SBJSON.build/Objects-normal/i386/SBJsonWriter.o /Users/Leo/Projects/xcode/Hand/Frameworks/Three20/extThree20JSON/Vendors/JSON/SBJsonWriter.m normal i386 objective-c com.apple.compilers.llvm.clang.1_0.compiler
+cCompileC ../../Build/extThree20JSON.build/Debug-iphonesimulator/extThree20JSON+SBJSON.build/Objects-normal/i386/TTErrorCodes.o /Users/Leo/Projects/xcode/Hand/Frameworks/Three20/extThree20JSON/Source/TTErrorCodes.m normal i386 objective-c com.apple.compilers.llvm.clang.1_0.compiler
+cCompileC ../../Build/extThree20JSON.build/Debug-iphonesimulator/extThree20JSON+SBJSON.build/Objects-normal/i386/TTExtensionLoader.o /Users/Leo/Projects/xcode/Hand/Frameworks/Three20/extThree20JSON/Source/TTExtensionLoader.m normal i386 objective-c com.apple.compilers.llvm.clang.1_0.compiler
+cCompileC ../../Build/extThree20JSON.build/Debug-iphonesimulator/extThree20JSON+SBJSON.build/Objects-normal/i386/SBJsonTokeniser.o /Users/Leo/Projects/xcode/Hand/Frameworks/Three20/extThree20JSON/Vendors/JSON/SBJsonTokeniser.m normal i386 objective-c com.apple.compilers.llvm.clang.1_0.compiler
+cCompileC ../../Build/extThree20JSON.build/Debug-iphonesimulator/extThree20JSON+SBJSON.build/Objects-normal/i386/SBJsonStreamWriterState.o /Users/Leo/Projects/xcode/Hand/Frameworks/Three20/extThree20JSON/Vendors/JSON/SBJsonStreamWriterState.m normal i386 objective-c com.apple.compilers.llvm.clang.1_0.compiler
+cCompileC ../../Build/extThree20JSON.build/Debug-iphonesimulator/extThree20JSON+SBJSON.build/Objects-normal/i386/SBJsonStreamWriter.o /Users/Leo/Projects/xcode/Hand/Frameworks/Three20/extThree20JSON/Vendors/JSON/SBJsonStreamWriter.m normal i386 objective-c com.apple.compilers.llvm.clang.1_0.compiler
+cCompileC ../../Build/extThree20JSON.build/Debug-iphonesimulator/extThree20JSON+SBJSON.build/Objects-normal/i386/SBJsonStreamParserState.o /Users/Leo/Projects/xcode/Hand/Frameworks/Three20/extThree20JSON/Vendors/JSON/SBJsonStreamParserState.m normal i386 objective-c com.apple.compilers.llvm.clang.1_0.compiler
+cCompileC ../../Build/extThree20JSON.build/Debug-iphonesimulator/extThree20JSON+SBJSON.build/Objects-normal/i386/SBJsonStreamParserAdapter.o /Users/Leo/Projects/xcode/Hand/Frameworks/Three20/extThree20JSON/Vendors/JSON/SBJsonStreamParserAdapter.m normal i386 objective-c com.apple.compilers.llvm.clang.1_0.compiler
+cCompileC ../../Build/extThree20JSON.build/Debug-iphonesimulator/extThree20JSON+SBJSON.build/Objects-normal/i386/SBJsonStreamParser.o /Users/Leo/Projects/xcode/Hand/Frameworks/Three20/extThree20JSON/Vendors/JSON/SBJsonStreamParser.m normal i386 objective-c com.apple.compilers.llvm.clang.1_0.compiler
+cCompileC ../../Build/extThree20JSON.build/Debug-iphonesimulator/extThree20JSON+SBJSON.build/Objects-normal/i386/NSString+SBJSON.o /Users/Leo/Projects/xcode/Hand/Frameworks/Three20/extThree20JSON/Vendors/JSON/NSString+SBJSON.m normal i386 objective-c com.apple.compilers.llvm.clang.1_0.compiler
+cCompileC ../../Build/extThree20JSON.build/Debug-iphonesimulator/extThree20JSON+SBJSON.build/Objects-normal/i386/SBJsonStreamParserAccumulator.o /Users/Leo/Projects/xcode/Hand/Frameworks/Three20/extThree20JSON/Vendors/JSON/SBJsonStreamParserAccumulator.m normal i386 objective-c com.apple.compilers.llvm.clang.1_0.compiler
+cCompileC ../../Build/extThree20JSON.build/Debug-iphonesimulator/extThree20JSON+SBJSON.build/Objects-normal/i386/SBJsonStreamWriterAccumulator.o /Users/Leo/Projects/xcode/Hand/Frameworks/Three20/extThree20JSON/Vendors/JSON/SBJsonStreamWriterAccumulator.m normal i386 objective-c com.apple.compilers.llvm.clang.1_0.compiler
+cCompileC ../../Build/extThree20JSON.build/Debug-iphonesimulator/extThree20JSON+SBJSON.build/Objects-normal/i386/SBJsonUTF8Stream.o /Users/Leo/Projects/xcode/Hand/Frameworks/Three20/extThree20JSON/Vendors/JSON/SBJsonUTF8Stream.m normal i386 objective-c com.apple.compilers.llvm.clang.1_0.compiler
+cLibtool /Users/Leo/Projects/xcode/Hand/Frameworks/Three20/extThree20JSON/../../Build/Products/Debug-iphonesimulator/libextThree20JSON+SBJSON.a normal i386
+
+N/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator5.0.sdk
+c000000004F161A590000000000000110
+t1326848601
+s272
+
+N/Users/Leo/Projects/xcode/Hand/Frameworks/Three20/extThree20JSON/../../Build/Products/Debug-iphonesimulator/../three20/Three20Core/TTCorePreprocessorMacros.h
+c000000004F55FE3200000000000009FA
+t1331035698
+s2554
+
+N/Users/Leo/Projects/xcode/Hand/Frameworks/Three20/extThree20JSON/../../Build/Products/Debug-iphonesimulator/../three20/Three20Core/TTDebug.h
+c000000004F55FE320000000000000EC0
+t1331035698
+s3776
+
+N/Users/Leo/Projects/xcode/Hand/Frameworks/Three20/extThree20JSON/../../Build/Products/Debug-iphonesimulator/../three20/Three20Core/TTExtensionAuthor.h
+c000000004F55FE320000000000000555
+t1331035698
+s1365
+
+N/Users/Leo/Projects/xcode/Hand/Frameworks/Three20/extThree20JSON/../../Build/Products/Debug-iphonesimulator/../three20/Three20Core/TTExtensionInfo.h
+c000000004F55FE3200000000000004F6
+t1331035698
+s1270
+
+N/Users/Leo/Projects/xcode/Hand/Frameworks/Three20/extThree20JSON/../../Build/Products/Debug-iphonesimulator/../three20/Three20Core/TTExtensionLoader.h
+c000000004F55FE320000000000000A53
+t1331035698
+s2643
+
+N/Users/Leo/Projects/xcode/Hand/Frameworks/Three20/extThree20JSON/../../Build/Products/Debug-iphonesimulator/../three20/Three20Network/TTURLResponse.h
+c000000004F55FE360000000000000845
+t1331035702
+s2117
+
+N/Users/Leo/Projects/xcode/Hand/Frameworks/Three20/extThree20JSON/../../Build/Products/Debug-iphonesimulator/../three20/extThree20JSON/NSObject+SBJSON.h
+t1331035888
+s2231
+
+N/Users/Leo/Projects/xcode/Hand/Frameworks/Three20/extThree20JSON/../../Build/Products/Debug-iphonesimulator/../three20/extThree20JSON/NSString+SBJSON.h
+t1331035888
+s2032
+
+N/Users/Leo/Projects/xcode/Hand/Frameworks/Three20/extThree20JSON/../../Build/Products/Debug-iphonesimulator/../three20/extThree20JSON/SBJson.h
+t1331035888
+s3580
+
+N/Users/Leo/Projects/xcode/Hand/Frameworks/Three20/extThree20JSON/../../Build/Products/Debug-iphonesimulator/../three20/extThree20JSON/SBJsonParser.h
+t1331035888
+s3595
+
+N/Users/Leo/Projects/xcode/Hand/Frameworks/Three20/extThree20JSON/../../Build/Products/Debug-iphonesimulator/../three20/extThree20JSON/SBJsonStreamParser.h
+t1331035888
+s5649
+
+N/Users/Leo/Projects/xcode/Hand/Frameworks/Three20/extThree20JSON/../../Build/Products/Debug-iphonesimulator/../three20/extThree20JSON/SBJsonStreamParserAccumulator.h
+t1331035888
+s1751
+
+N/Users/Leo/Projects/xcode/Hand/Frameworks/Three20/extThree20JSON/../../Build/Products/Debug-iphonesimulator/../three20/extThree20JSON/SBJsonStreamParserAdapter.h
+t1331035888
+s5223
+
+N/Users/Leo/Projects/xcode/Hand/Frameworks/Three20/extThree20JSON/../../Build/Products/Debug-iphonesimulator/../three20/extThree20JSON/SBJsonStreamParserState.h
+t1331035888
+s2832
+
+N/Users/Leo/Projects/xcode/Hand/Frameworks/Three20/extThree20JSON/../../Build/Products/Debug-iphonesimulator/../three20/extThree20JSON/SBJsonStreamWriter.h
+t1331035888
+s5839
+
+N/Users/Leo/Projects/xcode/Hand/Frameworks/Three20/extThree20JSON/../../Build/Products/Debug-iphonesimulator/../three20/extThree20JSON/SBJsonStreamWriterAccumulator.h
+t1331035888
+s1714
+
+N/Users/Leo/Projects/xcode/Hand/Frameworks/Three20/extThree20JSON/../../Build/Products/Debug-iphonesimulator/../three20/extThree20JSON/SBJsonStreamWriterState.h
+t1331035888
+s2540
+
+N/Users/Leo/Projects/xcode/Hand/Frameworks/Three20/extThree20JSON/../../Build/Products/Debug-iphonesimulator/../three20/extThree20JSON/SBJsonTokeniser.h
+t1331035888
+s2204
+
+N/Users/Leo/Projects/xcode/Hand/Frameworks/Three20/extThree20JSON/../../Build/Products/Debug-iphonesimulator/../three20/extThree20JSON/SBJsonUTF8Stream.h
+t1331035888
+s2091
+
+N/Users/Leo/Projects/xcode/Hand/Frameworks/Three20/extThree20JSON/../../Build/Products/Debug-iphonesimulator/../three20/extThree20JSON/SBJsonWriter.h
+t1331035888
+s4278
+
+N/Users/Leo/Projects/xcode/Hand/Frameworks/Three20/extThree20JSON/../../Build/Products/Debug-iphonesimulator/../three20/extThree20JSON/TTErrorCodes.h
+t1331035888
+s698
+
+N/Users/Leo/Projects/xcode/Hand/Frameworks/Three20/extThree20JSON/../../Build/Products/Debug-iphonesimulator/../three20/extThree20JSON/TTExtensionLoader.h
+t1331035888
+s692
+
+N/Users/Leo/Projects/xcode/Hand/Frameworks/Three20/extThree20JSON/../../Build/Products/Debug-iphonesimulator/../three20/extThree20JSON/TTURLJSONResponse.h
+t1331035888
+s894
+
+N/Users/Leo/Projects/xcode/Hand/Frameworks/Three20/extThree20JSON/../../Build/Products/Debug-iphonesimulator/../three20/extThree20JSON/extThree20JSON.h
+t1331035888
+s681
+
+N/Users/Leo/Projects/xcode/Hand/Frameworks/Three20/extThree20JSON/../../Build/Products/Debug-iphonesimulator/libextThree20JSON+SBJSON.a
+t1331035890
+s307536
+
+N/Users/Leo/Projects/xcode/Hand/Frameworks/Three20/extThree20JSON/../../Build/extThree20JSON.build/Debug-iphonesimulator/extThree20JSON+SBJSON.build/Objects-normal/i386/NSObject+SBJSON.o
+t1331035889
+s7360
+
+N/Users/Leo/Projects/xcode/Hand/Frameworks/Three20/extThree20JSON/../../Build/extThree20JSON.build/Debug-iphonesimulator/extThree20JSON+SBJSON.build/Objects-normal/i386/NSString+SBJSON.o
+t1331035890
+s6340
+
+N/Users/Leo/Projects/xcode/Hand/Frameworks/Three20/extThree20JSON/../../Build/extThree20JSON.build/Debug-iphonesimulator/extThree20JSON+SBJSON.build/Objects-normal/i386/SBJsonParser.o
+t1331035889
+s15876
+
+N/Users/Leo/Projects/xcode/Hand/Frameworks/Three20/extThree20JSON/../../Build/extThree20JSON.build/Debug-iphonesimulator/extThree20JSON+SBJSON.build/Objects-normal/i386/SBJsonStreamParser.o
+t1331035890
+s25784
+
+N/Users/Leo/Projects/xcode/Hand/Frameworks/Three20/extThree20JSON/../../Build/extThree20JSON.build/Debug-iphonesimulator/extThree20JSON+SBJSON.build/Objects-normal/i386/SBJsonStreamParserAccumulator.o
+t1331035890
+s9436
+
+N/Users/Leo/Projects/xcode/Hand/Frameworks/Three20/extThree20JSON/../../Build/extThree20JSON.build/Debug-iphonesimulator/extThree20JSON+SBJSON.build/Objects-normal/i386/SBJsonStreamParserAdapter.o
+t1331035890
+s23716
+
+N/Users/Leo/Projects/xcode/Hand/Frameworks/Three20/extThree20JSON/../../Build/extThree20JSON.build/Debug-iphonesimulator/extThree20JSON+SBJSON.build/Objects-normal/i386/SBJsonStreamParserState.o
+t1331035890
+s45372
+
+N/Users/Leo/Projects/xcode/Hand/Frameworks/Three20/extThree20JSON/../../Build/extThree20JSON.build/Debug-iphonesimulator/extThree20JSON+SBJSON.build/Objects-normal/i386/SBJsonStreamWriter.o
+t1331035890
+s43456
+
+N/Users/Leo/Projects/xcode/Hand/Frameworks/Three20/extThree20JSON/../../Build/extThree20JSON.build/Debug-iphonesimulator/extThree20JSON+SBJSON.build/Objects-normal/i386/SBJsonStreamWriterAccumulator.o
+t1331035890
+s9736
+
+N/Users/Leo/Projects/xcode/Hand/Frameworks/Three20/extThree20JSON/../../Build/extThree20JSON.build/Debug-iphonesimulator/extThree20JSON+SBJSON.build/Objects-normal/i386/SBJsonStreamWriterState.o
+t1331035889
+s27456
+
+N/Users/Leo/Projects/xcode/Hand/Frameworks/Three20/extThree20JSON/../../Build/extThree20JSON.build/Debug-iphonesimulator/extThree20JSON+SBJSON.build/Objects-normal/i386/SBJsonTokeniser.o
+t1331035889
+s25876
+
+N/Users/Leo/Projects/xcode/Hand/Frameworks/Three20/extThree20JSON/../../Build/extThree20JSON.build/Debug-iphonesimulator/extThree20JSON+SBJSON.build/Objects-normal/i386/SBJsonUTF8Stream.o
+t1331035890
+s16688
+
+N/Users/Leo/Projects/xcode/Hand/Frameworks/Three20/extThree20JSON/../../Build/extThree20JSON.build/Debug-iphonesimulator/extThree20JSON+SBJSON.build/Objects-normal/i386/SBJsonWriter.o
+t1331035889
+s18184
+
+N/Users/Leo/Projects/xcode/Hand/Frameworks/Three20/extThree20JSON/../../Build/extThree20JSON.build/Debug-iphonesimulator/extThree20JSON+SBJSON.build/Objects-normal/i386/TTErrorCodes.o
+t1331035889
+s3336
+
+N/Users/Leo/Projects/xcode/Hand/Frameworks/Three20/extThree20JSON/../../Build/extThree20JSON.build/Debug-iphonesimulator/extThree20JSON+SBJSON.build/Objects-normal/i386/TTExtensionLoader.o
+t1331035889
+s8232
+
+N/Users/Leo/Projects/xcode/Hand/Frameworks/Three20/extThree20JSON/../../Build/extThree20JSON.build/Debug-iphonesimulator/extThree20JSON+SBJSON.build/Objects-normal/i386/TTURLJSONResponse.o
+t1331035889
+s13288
+
+N/Users/Leo/Projects/xcode/Hand/Frameworks/Three20/extThree20JSON/../../Build/extThree20JSON.build/Debug-iphonesimulator/extThree20JSON+SBJSON.build/Objects-normal/i386/extThree20JSON+SBJSON.LinkFileList
+c000000004F55FEF00000000000000BD8
+t1331035888
+s3032
+
+N/Users/Leo/Projects/xcode/Hand/Frameworks/Three20/extThree20JSON/../../Build/extThree20JSON.build/Debug-iphonesimulator/extThree20JSON+SBJSON.build/Script-6E3C34C3118807EF0079637E.sh
+c000000004F55FEF00000000000000026
+t1331035888
+s38
+
+N/Users/Leo/Projects/xcode/Hand/Frameworks/Three20/extThree20JSON/Headers/TTErrorCodes.h
+c000000004F55C94200000000000002BA
+t1331022146
+s698
+
+N/Users/Leo/Projects/xcode/Hand/Frameworks/Three20/extThree20JSON/Headers/TTExtensionLoader.h
+c000000004F55C94200000000000002B4
+t1331022146
+s692
+
+N/Users/Leo/Projects/xcode/Hand/Frameworks/Three20/extThree20JSON/Headers/TTURLJSONResponse.h
+c000000004F55C942000000000000037E
+t1331022146
+s894
+
+N/Users/Leo/Projects/xcode/Hand/Frameworks/Three20/extThree20JSON/Headers/extThree20JSON+SBJSON_Prefix.pch
+c000000004F55C94200000000000000AE
+t1331022146
+s174
+
+N/Users/Leo/Projects/xcode/Hand/Frameworks/Three20/extThree20JSON/Headers/extThree20JSON.h
+c000000004F55C94200000000000002A9
+t1331022146
+s681
+
+N/Users/Leo/Projects/xcode/Hand/Frameworks/Three20/extThree20JSON/Source/TTErrorCodes.m
+c000000004F55C94200000000000002C8
+t1331022146
+s712
+
+N/Users/Leo/Projects/xcode/Hand/Frameworks/Three20/extThree20JSON/Source/TTExtensionLoader.m
+c000000004F55C9420000000000000952
+t1331022146
+s2386
+
+N/Users/Leo/Projects/xcode/Hand/Frameworks/Three20/extThree20JSON/Source/TTURLJSONResponse.m
+c000000004F55C9420000000000000C8E
+t1331022146
+s3214
+
+N/Users/Leo/Projects/xcode/Hand/Frameworks/Three20/extThree20JSON/Vendors/JSON/NSObject+SBJSON.h
+c000000004F55C94200000000000008B7
+t1331022146
+s2231
+
+N/Users/Leo/Projects/xcode/Hand/Frameworks/Three20/extThree20JSON/Vendors/JSON/NSObject+SBJSON.m
+c000000004F55C94200000000000008A6
+t1331022146
+s2214
+
+N/Users/Leo/Projects/xcode/Hand/Frameworks/Three20/extThree20JSON/Vendors/JSON/NSObject+SBJson.h
+c000000004F55C94200000000000008B7
+t1331022146
+s2231
+
+N/Users/Leo/Projects/xcode/Hand/Frameworks/Three20/extThree20JSON/Vendors/JSON/NSString+SBJSON.h
+c000000004F55C94200000000000007F0
+t1331022146
+s2032
+
+N/Users/Leo/Projects/xcode/Hand/Frameworks/Three20/extThree20JSON/Vendors/JSON/NSString+SBJSON.m
+c000000004F55C94200000000000007AF
+t1331022146
+s1967
+
+N/Users/Leo/Projects/xcode/Hand/Frameworks/Three20/extThree20JSON/Vendors/JSON/SBJson.h
+c000000004F55C9420000000000000DFC
+t1331022146
+s3580
+
+N/Users/Leo/Projects/xcode/Hand/Frameworks/Three20/extThree20JSON/Vendors/JSON/SBJsonParser.h
+c000000004F55C9420000000000000E0B
+t1331022146
+s3595
+
+N/Users/Leo/Projects/xcode/Hand/Frameworks/Three20/extThree20JSON/Vendors/JSON/SBJsonParser.m
+c000000004F55C9420000000000000CC0
+t1331022146
+s3264
+
+N/Users/Leo/Projects/xcode/Hand/Frameworks/Three20/extThree20JSON/Vendors/JSON/SBJsonStreamParser.h
+c000000004F55C9420000000000001611
+t1331022146
+s5649
+
+N/Users/Leo/Projects/xcode/Hand/Frameworks/Three20/extThree20JSON/Vendors/JSON/SBJsonStreamParser.m
+c000000004F55C9420000000000001A21
+t1331022146
+s6689
+
+N/Users/Leo/Projects/xcode/Hand/Frameworks/Three20/extThree20JSON/Vendors/JSON/SBJsonStreamParserAccumulator.h
+c000000004F55C94200000000000006D7
+t1331022146
+s1751
+
+N/Users/Leo/Projects/xcode/Hand/Frameworks/Three20/extThree20JSON/Vendors/JSON/SBJsonStreamParserAccumulator.m
+c000000004F55C942000000000000079B
+t1331022146
+s1947
+
+N/Users/Leo/Projects/xcode/Hand/Frameworks/Three20/extThree20JSON/Vendors/JSON/SBJsonStreamParserAdapter.h
+c000000004F55C9420000000000001467
+t1331022146
+s5223
+
+N/Users/Leo/Projects/xcode/Hand/Frameworks/Three20/extThree20JSON/Vendors/JSON/SBJsonStreamParserAdapter.m
+c000000004F55C94200000000000011C9
+t1331022146
+s4553
+
+N/Users/Leo/Projects/xcode/Hand/Frameworks/Three20/extThree20JSON/Vendors/JSON/SBJsonStreamParserState.h
+c000000004F55C9420000000000000B10
+t1331022146
+s2832
+
+N/Users/Leo/Projects/xcode/Hand/Frameworks/Three20/extThree20JSON/Vendors/JSON/SBJsonStreamParserState.m
+c000000004F55C9420000000000001F6D
+t1331022146
+s8045
+
+N/Users/Leo/Projects/xcode/Hand/Frameworks/Three20/extThree20JSON/Vendors/JSON/SBJsonStreamWriter.h
+c000000004F55C94200000000000016CF
+t1331022146
+s5839
+
+N/Users/Leo/Projects/xcode/Hand/Frameworks/Three20/extThree20JSON/Vendors/JSON/SBJsonStreamWriter.m
+c000000004F55C94200000000000029A2
+t1331022146
+s10658
+
+N/Users/Leo/Projects/xcode/Hand/Frameworks/Three20/extThree20JSON/Vendors/JSON/SBJsonStreamWriterAccumulator.h
+c000000004F55C94200000000000006B2
+t1331022146
+s1714
+
+N/Users/Leo/Projects/xcode/Hand/Frameworks/Three20/extThree20JSON/Vendors/JSON/SBJsonStreamWriterAccumulator.m
+c000000004F55C94200000000000007EB
+t1331022146
+s2027
+
+N/Users/Leo/Projects/xcode/Hand/Frameworks/Three20/extThree20JSON/Vendors/JSON/SBJsonStreamWriterState.h
+c000000004F55C94200000000000009EC
+t1331022146
+s2540
+
+N/Users/Leo/Projects/xcode/Hand/Frameworks/Three20/extThree20JSON/Vendors/JSON/SBJsonStreamWriterState.m
+c000000004F55C9420000000000000F61
+t1331022146
+s3937
+
+N/Users/Leo/Projects/xcode/Hand/Frameworks/Three20/extThree20JSON/Vendors/JSON/SBJsonTokeniser.h
+c000000004F55C942000000000000089C
+t1331022146
+s2204
+
+N/Users/Leo/Projects/xcode/Hand/Frameworks/Three20/extThree20JSON/Vendors/JSON/SBJsonTokeniser.m
+c000000004F55C9420000000000003285
+t1331022146
+s12933
+
+N/Users/Leo/Projects/xcode/Hand/Frameworks/Three20/extThree20JSON/Vendors/JSON/SBJsonUTF8Stream.h
+c000000004F55C942000000000000082B
+t1331022146
+s2091
+
+N/Users/Leo/Projects/xcode/Hand/Frameworks/Three20/extThree20JSON/Vendors/JSON/SBJsonUTF8Stream.m
+c000000004F55C9420000000000000F25
+t1331022146
+s3877
+
+N/Users/Leo/Projects/xcode/Hand/Frameworks/Three20/extThree20JSON/Vendors/JSON/SBJsonWriter.h
+c000000004F55C94200000000000010B6
+t1331022146
+s4278
+
+N/Users/Leo/Projects/xcode/Hand/Frameworks/Three20/extThree20JSON/Vendors/JSON/SBJsonWriter.m
+c000000004F55C9420000000000000DBF
+t1331022146
+s3519
+
+N/var/folders/ry/l3zgfjx90jl5cbvr9qr3mbpm0000gn/C/com.apple.Xcode.501/SharedPrecompiledHeaders/extThree20JSON+SBJSON_Prefix-evrsnywfsndieldlachkxpfexmjl/extThree20JSON+SBJSON_Prefix.pch.pth
+t1331030448
+s2535832
+
+CBuild AST from /Users/Leo/Projects/xcode/Hand/Frameworks/Three20/extThree20JSON/Source/TTErrorCodes.m
+r0
+
+CBuild AST from /Users/Leo/Projects/xcode/Hand/Frameworks/Three20/extThree20JSON/Source/TTExtensionLoader.m
+r0
+
+CBuild AST from /Users/Leo/Projects/xcode/Hand/Frameworks/Three20/extThree20JSON/Source/TTURLJSONResponse.m
+r0
+
+CBuild AST from /Users/Leo/Projects/xcode/Hand/Frameworks/Three20/extThree20JSON/Vendors/JSON/NSObject+SBJSON.m
+r0
+
+CBuild AST from /Users/Leo/Projects/xcode/Hand/Frameworks/Three20/extThree20JSON/Vendors/JSON/NSString+SBJSON.m
+r0
+
+CBuild AST from /Users/Leo/Projects/xcode/Hand/Frameworks/Three20/extThree20JSON/Vendors/JSON/SBJsonParser.m
+r0
+
+CBuild AST from /Users/Leo/Projects/xcode/Hand/Frameworks/Three20/extThree20JSON/Vendors/JSON/SBJsonStreamParser.m
+r0
+
+CBuild AST from /Users/Leo/Projects/xcode/Hand/Frameworks/Three20/extThree20JSON/Vendors/JSON/SBJsonStreamParserAccumulator.m
+r0
+
+CBuild AST from /Users/Leo/Projects/xcode/Hand/Frameworks/Three20/extThree20JSON/Vendors/JSON/SBJsonStreamParserAdapter.m
+r0
+
+CBuild AST from /Users/Leo/Projects/xcode/Hand/Frameworks/Three20/extThree20JSON/Vendors/JSON/SBJsonStreamParserState.m
+r0
+
+CBuild AST from /Users/Leo/Projects/xcode/Hand/Frameworks/Three20/extThree20JSON/Vendors/JSON/SBJsonStreamWriter.m
+r0
+
+CBuild AST from /Users/Leo/Projects/xcode/Hand/Frameworks/Three20/extThree20JSON/Vendors/JSON/SBJsonStreamWriterAccumulator.m
+r0
+
+CBuild AST from /Users/Leo/Projects/xcode/Hand/Frameworks/Three20/extThree20JSON/Vendors/JSON/SBJsonStreamWriterState.m
+r0
+
+CBuild AST from /Users/Leo/Projects/xcode/Hand/Frameworks/Three20/extThree20JSON/Vendors/JSON/SBJsonTokeniser.m
+r0
+
+CBuild AST from /Users/Leo/Projects/xcode/Hand/Frameworks/Three20/extThree20JSON/Vendors/JSON/SBJsonUTF8Stream.m
+r0
+
+CBuild AST from /Users/Leo/Projects/xcode/Hand/Frameworks/Three20/extThree20JSON/Vendors/JSON/SBJsonWriter.m
+r0
+
+CCheck dependencies
+r0
+lSLF05#21%IDEActivityLogSection1@2#32"com.apple.dt.IDE.BuildLogSection18"Check dependencies60226ac44106b541^747a6ac44106b541^---0#1#0#--18"Check dependencies36"7E5BC771-3288-4A23-AF17-E565002F558F-
+
+CCompileC ../../Build/extThree20JSON.build/Debug-iphonesimulator/extThree20JSON+SBJSON.build/Objects-normal/i386/NSObject+SBJSON.o /Users/Leo/Projects/xcode/Hand/Frameworks/Three20/extThree20JSON/Vendors/JSON/NSObject+SBJSON.m normal i386 objective-c com.apple.compilers.llvm.clang.1_0.compiler
+s352728689.578878
+e352728689.616884
+r1
+xCompileC
+x../../Build/extThree20JSON.build/Debug-iphonesimulator/extThree20JSON+SBJSON.build/Objects-normal/i386/NSObject+SBJSON.o
+x/Users/Leo/Projects/xcode/Hand/Frameworks/Three20/extThree20JSON/Vendors/JSON/NSObject+SBJSON.m
+xnormal
+xi386
+xobjective-c
+xcom.apple.compilers.llvm.clang.1_0.compiler
+lSLF05#21%IDEActivityLogSection1@2#32"com.apple.dt.IDE.BuildLogSection103"Compile /Users/Leo/Projects/xcode/Hand/Frameworks/Three20/extThree20JSON/Vendors/JSON/NSObject+SBJSON.mf75694713606b541^7a1aa0713606b541^---0#0#0#-19%DVTDocumentLocation2@111"file://localhost/Users/Leo/Projects/xcode/Hand/Frameworks/Three20/extThree20JSON/Vendors/JSON/NSObject+SBJSON.m0000000000000000^4633"CompileC ../../Build/extThree20JSON.build/Debug-iphonesimulator/extThree20JSON+SBJSON.build/Objects-normal/i386/NSObject+SBJSON.o Vendors/JSON/NSObject+SBJSON.m normal i386 objective-c com.apple.compilers.llvm.clang.1_0.compiler    cd /Users/Leo/Projects/xcode/Hand/Frameworks/Three20/extThree20JSON    setenv LANG en_US.US-ASCII    setenv PATH "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Applications/Xcode.app/Contents/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang -x objective-c -arch i386 -fmessage-length=0 -std=c99 -Wno-trigraphs -fpascal-strings -O0 -Wno-missing-field-initializers -Wno-missing-prototypes -Wreturn-type -Wno-implicit-atomic-properties -Wformat -Wno-missing-braces -Wparentheses -Wno-switch -Wunused-function -Wunused-label -Wno-unused-parameter -Wunused-variable -Wunused-value -Wno-uninitialized -Wno-unknown-pragmas -Wshadow -Wno-four-char-constants -Wno-sign-compare -Wno-shorten-64-to-32 -Wpointer-sign -Wnewline-eof -Wno-selector -Wno-strict-selector-match -Wno-undeclared-selector -Wno-deprecated-implementations -DEXTJSON_SBJSON -DDEBUG -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator5.0.sdk -fexceptions -fasm-blocks -Wprotocol -Wdeprecated-declarations -mmacosx-version-min=10.6 -g -Wno-conversion -Wno-sign-conversion -fobjc-abi-version=2 -fobjc-legacy-dispatch "-DIBOutlet=__attribute__((iboutlet))" "-DIBOutletCollection(ClassName)=__attribute__((iboutletcollection(ClassName)))" "-DIBAction=void)__attribute__((ibaction)" -D__IPHONE_OS_VERSION_MIN_REQUIRED=30000 -iquote /Users/Leo/Projects/xcode/Hand/Frameworks/Three20/extThree20JSON/../../Build/extThree20JSON.build/Debug-iphonesimulator/extThree20JSON+SBJSON.build/extThree20JSON+SBJSON-generated-files.hmap -I/Users/Leo/Projects/xcode/Hand/Frameworks/Three20/extThree20JSON/../../Build/extThree20JSON.build/Debug-iphonesimulator/extThree20JSON+SBJSON.build/extThree20JSON+SBJSON-own-target-headers.hmap -I/Users/Leo/Projects/xcode/Hand/Frameworks/Three20/extThree20JSON/../../Build/extThree20JSON.build/Debug-iphonesimulator/extThree20JSON+SBJSON.build/extThree20JSON+SBJSON-all-target-headers.hmap -iquote /Users/Leo/Projects/xcode/Hand/Frameworks/Three20/extThree20JSON/../../Build/extThree20JSON.build/Debug-iphonesimulator/extThree20JSON+SBJSON.build/extThree20JSON+SBJSON-project-headers.hmap -I/Users/Leo/Projects/xcode/Hand/Frameworks/Three20/extThree20JSON/../../Build/Products/Debug-iphonesimulator/include -I/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator5.0.sdk/usr/include -I/Users/Leo/Projects/xcode/Hand/Frameworks/Three20/extThree20JSON/../../Build/Products/Debug-iphonesimulator/../three20 -I/Users/Leo/Projects/xcode/Hand/Frameworks/Three20/extThree20JSON/../../Build/Products/Debug-iphonesimulator/../../three20 -I/Users/Leo/Projects/xcode/Hand/Frameworks/Three20/extThree20JSON/../../Build/Products/Debug-iphonesimulator/../../three20 -I/Users/Leo/Projects/xcode/Hand/Frameworks/Three20/extThree20JSON/../../Build/extThree20JSON.build/Debug-iphonesimulator/extThree20JSON+SBJSON.build/DerivedSources/i386 -I/Users/Leo/Projects/xcode/Hand/Frameworks/Three20/extThree20JSON/../../Build/extThree20JSON.build/Debug-iphonesimulator/extThree20JSON+SBJSON.build/DerivedSources -F/Users/Leo/Projects/xcode/Hand/Frameworks/Three20/extThree20JSON/../../Build/Products/Debug-iphonesimulator -F/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator5.0.sdk/Developer/Library/Frameworks -include /var/folders/ry/l3zgfjx90jl5cbvr9qr3mbpm0000gn/C/com.apple.Xcode.501/SharedPrecompiledHeaders/extThree20JSON+SBJSON_Prefix-evrsnywfsndieldlachkxpfexmjl/extThree20JSON+SBJSON_Prefix.pch -MMD -MT dependencies -MF /Users/Leo/Projects/xcode/Hand/Frameworks/Three20/extThree20JSON/../../Build/extThree20JSON.build/Debug-iphonesimulator/extThree20JSON+SBJSON.build/Objects-normal/i386/NSObject+SBJSON.d --serialize-diagnostics /Users/Leo/Projects/xcode/Hand/Frameworks/Three20/extThree20JSON/../../Build/extThree20JSON.build/Debug-iphonesimulator/extThree20JSON+SBJSON.build/Objects-normal/i386/NSObject+SBJSON.dia -c /Users/Leo/Projects/xcode/Hand/Frameworks/Three20/extThree20JSON/Vendors/JSON/NSObject+SBJSON.m -o /Users/Leo/Projects/xcode/Hand/Frameworks/Three20/extThree20JSON/../../Build/extThree20JSON.build/Debug-iphonesimulator/extThree20JSON+SBJSON.build/Objects-normal/i386/NSObject+SBJSON.o36"8D7E607B-35CE-41B6-91D9-9A627363BC16-
+
+CCompileC ../../Build/extThree20JSON.build/Debug-iphonesimulator/extThree20JSON+SBJSON.build/Objects-normal/i386/NSString+SBJSON.o /Users/Leo/Projects/xcode/Hand/Frameworks/Three20/extThree20JSON/Vendors/JSON/NSString+SBJSON.m normal i386 objective-c com.apple.compilers.llvm.clang.1_0.compiler
+s352728690.185124
+e352728690.234846
+r1
+xCompileC
+x../../Build/extThree20JSON.build/Debug-iphonesimulator/extThree20JSON+SBJSON.build/Objects-normal/i386/NSString+SBJSON.o
+x/Users/Leo/Projects/xcode/Hand/Frameworks/Three20/extThree20JSON/Vendors/JSON/NSString+SBJSON.m
+xnormal
+xi386
+xobjective-c
+xcom.apple.compilers.llvm.clang.1_0.compiler
+lSLF05#21%IDEActivityLogSection1@2#32"com.apple.dt.IDE.BuildLogSection103"Compile /Users/Leo/Projects/xcode/Hand/Frameworks/Three20/extThree20JSON/Vendors/JSON/NSString+SBJSON.me78d2f723606b541^302f3c723606b541^---0#0#0#-19%DVTDocumentLocation2@111"file://localhost/Users/Leo/Projects/xcode/Hand/Frameworks/Three20/extThree20JSON/Vendors/JSON/NSString+SBJSON.m0000000000000000^4633"CompileC ../../Build/extThree20JSON.build/Debug-iphonesimulator/extThree20JSON+SBJSON.build/Objects-normal/i386/NSString+SBJSON.o Vendors/JSON/NSString+SBJSON.m normal i386 objective-c com.apple.compilers.llvm.clang.1_0.compiler    cd /Users/Leo/Projects/xcode/Hand/Frameworks/Three20/extThree20JSON    setenv LANG en_US.US-ASCII    setenv PATH "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Applications/Xcode.app/Contents/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang -x objective-c -arch i386 -fmessage-length=0 -std=c99 -Wno-trigraphs -fpascal-strings -O0 -Wno-missing-field-initializers -Wno-missing-prototypes -Wreturn-type -Wno-implicit-atomic-properties -Wformat -Wno-missing-braces -Wparentheses -Wno-switch -Wunused-function -Wunused-label -Wno-unused-parameter -Wunused-variable -Wunused-value -Wno-uninitialized -Wno-unknown-pragmas -Wshadow -Wno-four-char-constants -Wno-sign-compare -Wno-shorten-64-to-32 -Wpointer-sign -Wnewline-eof -Wno-selector -Wno-strict-selector-match -Wno-undeclared-selector -Wno-deprecated-implementations -DEXTJSON_SBJSON -DDEBUG -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator5.0.sdk -fexceptions -fasm-blocks -Wprotocol -Wdeprecated-declarations -mmacosx-version-min=10.6 -g -Wno-conversion -Wno-sign-conversion -fobjc-abi-version=2 -fobjc-legacy-dispatch "-DIBOutlet=__attribute__((iboutlet))" "-DIBOutletCollection(ClassName)=__attribute__((iboutletcollection(ClassName)))" "-DIBAction=void)__attribute__((ibaction)" -D__IPHONE_OS_VERSION_MIN_REQUIRED=30000 -iquote /Users/Leo/Projects/xcode/Hand/Frameworks/Three20/extThree20JSON/../../Build/extThree20JSON.build/Debug-iphonesimulator/extThree20JSON+SBJSON.build/extThree20JSON+SBJSON-generated-files.hmap -I/Users/Leo/Projects/xcode/Hand/Frameworks/Three20/extThree20JSON/../../Build/extThree20JSON.build/Debug-iphonesimulator/extThree20JSON+SBJSON.build/extThree20JSON+SBJSON-own-target-headers.hmap -I/Users/Leo/Projects/xcode/Hand/Frameworks/Three20/extThree20JSON/../../Build/extThree20JSON.build/Debug-iphonesimulator/extThree20JSON+SBJSON.build/extThree20JSON+SBJSON-all-target-headers.hmap -iquote /Users/Leo/Projects/xcode/Hand/Frameworks/Three20/extThree20JSON/../../Build/extThree20JSON.build/Debug-iphonesimulator/extThree20JSON+SBJSON.build/extThree20JSON+SBJSON-project-headers.hmap -I/Users/Leo/Projects/xcode/Hand/Frameworks/Three20/extThree20JSON/../../Build/Products/Debug-iphonesimulator/include -I/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator5.0.sdk/usr/include -I/Users/Leo/Projects/xcode/Hand/Frameworks/Three20/extThree20JSON/../../Build/Products/Debug-iphonesimulator/../three20 -I/Users/Leo/Projects/xcode/Hand/Frameworks/Three20/extThree20JSON/../../Build/Products/Debug-iphonesimulator/../../three20 -I/Users/Leo/Projects/xcode/Hand/Frameworks/Three20/extThree20JSON/../../Build/Products/Debug-iphonesimulator/../../three20 -I/Users/Leo/Projects/xcode/Hand/Frameworks/Three20/extThree20JSON/../../Build/extThree20JSON.build/Debug-iphonesimulator/extThree20JSON+SBJSON.build/DerivedSources/i386 -I/Users/Leo/Projects/xcode/Hand/Frameworks/Three20/extThree20JSON/../../Build/extThree20JSON.build/Debug-iphonesimulator/extThree20JSON+SBJSON.build/DerivedSources -F/Users/Leo/Projects/xcode/Hand/Frameworks/Three20/extThree20JSON/../../Build/Products/Debug-iphonesimulator -F/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator5.0.sdk/Developer/Library/Frameworks -include /var/folders/ry/l3zgfjx90jl5cbvr9qr3mbpm0000gn/C/com.apple.Xcode.501/SharedPrecompiledHeaders/extThree20JSON+SBJSON_Prefix-evrsnywfsndieldlachkxpfexmjl/extThree20JSON+SBJSON_Prefix.pch -MMD -MT dependencies -MF /Users/Leo/Projects/xcode/Hand/Frameworks/Three20/extThree20JSON/../../Build/extThree20JSON.build/Debug-iphonesimulator/extThree20JSON+SBJSON.build/Objects-normal/i386/NSString+SBJSON.d --serialize-diagnostics /Users/Leo/Projects/xcode/Hand/Frameworks/Three20/extThree20JSON/../../Build/extThree20JSON.build/Debug-iphonesimulator/extThree20JSON+SBJSON.build/Objects-normal/i386/NSString+SBJSON.dia -c /Users/Leo/Projects/xcode/Hand/Frameworks/Three20/extThree20JSON/Vendors/JSON/NSString+SBJSON.m -o /Users/Leo/Projects/xcode/Hand/Frameworks/Three20/extThree20JSON/../../Build/extThree20JSON.build/Debug-iphonesimulator/extThree20JSON+SBJSON.build/Objects-normal/i386/NSString+SBJSON.o36"B3339868-F6AE-4E16-9621-EE6C05B78DB2-
+
+CCompileC ../../Build/extThree20JSON.build/Debug-iphonesimulator/extThree20JSON+SBJSON.build/Objects-normal/i386/SBJsonParser.o /Users/Leo/Projects/xcode/Hand/Frameworks/Three20/extThree20JSON/Vendors/JSON/SBJsonParser.m normal i386 objective-c com.apple.compilers.llvm.clang.1_0.compiler
+s352728689.626361
+e352728689.678680
+r1
+xCompileC
+x../../Build/extThree20JSON.build/Debug-iphonesimulator/extThree20JSON+SBJSON.build/Objects-normal/i386/SBJsonParser.o
+x/Users/Leo/Projects/xcode/Hand/Frameworks/Three20/extThree20JSON/Vendors/JSON/SBJsonParser.m
+xnormal
+xi386
+xobjective-c
+xcom.apple.compilers.llvm.clang.1_0.compiler
+lSLF05#21%IDEActivityLogSection1@2#32"com.apple.dt.IDE.BuildLogSection100"Compile /Users/Leo/Projects/xcode/Hand/Frameworks/Three20/extThree20JSON/Vendors/JSON/SBJsonParser.m5a82a0713606b541^dcbcad713606b541^---0#0#0#-19%DVTDocumentLocation2@108"file://localhost/Users/Leo/Projects/xcode/Hand/Frameworks/Three20/extThree20JSON/Vendors/JSON/SBJsonParser.m0000000000000000^4615"CompileC ../../Build/extThree20JSON.build/Debug-iphonesimulator/extThree20JSON+SBJSON.build/Objects-normal/i386/SBJsonParser.o Vendors/JSON/SBJsonParser.m normal i386 objective-c com.apple.compilers.llvm.clang.1_0.compiler    cd /Users/Leo/Projects/xcode/Hand/Frameworks/Three20/extThree20JSON    setenv LANG en_US.US-ASCII    setenv PATH "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Applications/Xcode.app/Contents/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang -x objective-c -arch i386 -fmessage-length=0 -std=c99 -Wno-trigraphs -fpascal-strings -O0 -Wno-missing-field-initializers -Wno-missing-prototypes -Wreturn-type -Wno-implicit-atomic-properties -Wformat -Wno-missing-braces -Wparentheses -Wno-switch -Wunused-function -Wunused-label -Wno-unused-parameter -Wunused-variable -Wunused-value -Wno-uninitialized -Wno-unknown-pragmas -Wshadow -Wno-four-char-constants -Wno-sign-compare -Wno-shorten-64-to-32 -Wpointer-sign -Wnewline-eof -Wno-selector -Wno-strict-selector-match -Wno-undeclared-selector -Wno-deprecated-implementations -DEXTJSON_SBJSON -DDEBUG -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator5.0.sdk -fexceptions -fasm-blocks -Wprotocol -Wdeprecated-declarations -mmacosx-version-min=10.6 -g -Wno-conversion -Wno-sign-conversion -fobjc-abi-version=2 -fobjc-legacy-dispatch "-DIBOutlet=__attribute__((iboutlet))" "-DIBOutletCollection(ClassName)=__attribute__((iboutletcollection(ClassName)))" "-DIBAction=void)__attribute__((ibaction)" -D__IPHONE_OS_VERSION_MIN_REQUIRED=30000 -iquote /Users/Leo/Projects/xcode/Hand/Frameworks/Three20/extThree20JSON/../../Build/extThree20JSON.build/Debug-iphonesimulator/extThree20JSON+SBJSON.build/extThree20JSON+SBJSON-generated-files.hmap -I/Users/Leo/Projects/xcode/Hand/Frameworks/Three20/extThree20JSON/../../Build/extThree20JSON.build/Debug-iphonesimulator/extThree20JSON+SBJSON.build/extThree20JSON+SBJSON-own-target-headers.hmap -I/Users/Leo/Projects/xcode/Hand/Frameworks/Three20/extThree20JSON/../../Build/extThree20JSON.build/Debug-iphonesimulator/extThree20JSON+SBJSON.build/extThree20JSON+SBJSON-all-target-headers.hmap -iquote /Users/Leo/Projects/xcode/Hand/Frameworks/Three20/extThree20JSON/../../Build/extThree20JSON.build/Debug-iphonesimulator/extThree20JSON+SBJSON.build/extThree20JSON+SBJSON-project-headers.hmap -I/Users/Leo/Projects/xcode/Hand/Frameworks/Three20/extThree20JSON/../../Build/Products/Debug-iphonesimulator/include -I/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator5.0.sdk/usr/include -I/Users/Leo/Projects/xcode/Hand/Frameworks/Three20/extThree20JSON/../../Build/Products/Debug-iphonesimulator/../three20 -I/Users/Leo/Projects/xcode/Hand/Frameworks/Three20/extThree20JSON/../../Build/Products/Debug-iphonesimulator/../../three20 -I/Users/Leo/Projects/xcode/Hand/Frameworks/Three20/extThree20JSON/../../Build/Products/Debug-iphonesimulator/../../three20 -I/Users/Leo/Projects/xcode/Hand/Frameworks/Three20/extThree20JSON/../../Build/extThree20JSON.build/Debug-iphonesimulator/extThree20JSON+SBJSON.build/DerivedSources/i386 -I/Users/Leo/Projects/xcode/Hand/Frameworks/Three20/extThree20JSON/../../Build/extThree20JSON.build/Debug-iphonesimulator/extThree20JSON+SBJSON.build/DerivedSources -F/Users/Leo/Projects/xcode/Hand/Frameworks/Three20/extThree20JSON/../../Build/Products/Debug-iphonesimulator -F/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator5.0.sdk/Developer/Library/Frameworks -include /var/folders/ry/l3zgfjx90jl5cbvr9qr3mbpm0000gn/C/com.apple.Xcode.501/SharedPrecompiledHeaders/extThree20JSON+SBJSON_Prefix-evrsnywfsndieldlachkxpfexmjl/extThree20JSON+SBJSON_Prefix.pch -MMD -MT dependencies -MF /Users/Leo/Projects/xcode/Hand/Frameworks/Three20/extThree20JSON/../../Build/extThree20JSON.build/Debug-iphonesimulator/extThree20JSON+SBJSON.build/Objects-normal/i386/SBJsonParser.d --serialize-diagnostics /Users/Leo/Projects/xcode/Hand/Frameworks/Three20/extThree20JSON/../../Build/extThree20JSON.build/Debug-iphonesimulator/extThree20JSON+SBJSON.build/Objects-normal/i386/SBJsonParser.dia -c /Users/Leo/Projects/xcode/Hand/Frameworks/Three20/extThree20JSON/Vendors/JSON/SBJsonParser.m -o /Users/Leo/Projects/xcode/Hand/Frameworks/Three20/extThree20JSON/../../Build/extThree20JSON.build/Debug-iphonesimulator/extThree20JSON+SBJSON.build/Objects-normal/i386/SBJsonParser.o36"2D5025B6-62CA-4767-B894-A979B0112FDF-
+
+CCompileC ../../Build/extThree20JSON.build/Debug-iphonesimulator/extThree20JSON+SBJSON.build/Objects-normal/i386/SBJsonStreamParser.o /Users/Leo/Projects/xcode/Hand/Frameworks/Three20/extThree20JSON/Vendors/JSON/SBJsonStreamParser.m normal i386 objective-c com.apple.compilers.llvm.clang.1_0.compiler
+s352728690.098359
+e352728690.204454
+r1
+xCompileC
+x../../Build/extThree20JSON.build/Debug-iphonesimulator/extThree20JSON+SBJSON.build/Objects-normal/i386/SBJsonStreamParser.o
+x/Users/Leo/Projects/xcode/Hand/Frameworks/Three20/extThree20JSON/Vendors/JSON/SBJsonStreamParser.m
+xnormal
+xi386
+xobjective-c
+xcom.apple.compilers.llvm.clang.1_0.compiler
+lSLF05#21%IDEActivityLogSection1@2#32"com.apple.dt.IDE.BuildLogSection106"Compile /Users/Leo/Projects/xcode/Hand/Frameworks/Three20/extThree20JSON/Vendors/JSON/SBJsonStreamParser.m14ec1b723606b541^066334723606b541^---0#0#0#-19%DVTDocumentLocation2@114"file://localhost/Users/Leo/Projects/xcode/Hand/Frameworks/Three20/extThree20JSON/Vendors/JSON/SBJsonStreamParser.m0000000000000000^4651"CompileC ../../Build/extThree20JSON.build/Debug-iphonesimulator/extThree20JSON+SBJSON.build/Objects-normal/i386/SBJsonStreamParser.o Vendors/JSON/SBJsonStreamParser.m normal i386 objective-c com.apple.compilers.llvm.clang.1_0.compiler    cd /Users/Leo/Projects/xcode/Hand/Frameworks/Three20/extThree20JSON    setenv LANG en_US.US-ASCII    setenv PATH "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Applications/Xcode.app/Contents/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang -x objective-c -arch i386 -fmessage-length=0 -std=c99 -Wno-trigraphs -fpascal-strings -O0 -Wno-missing-field-initializers -Wno-missing-prototypes -Wreturn-type -Wno-implicit-atomic-properties -Wformat -Wno-missing-braces -Wparentheses -Wno-switch -Wunused-function -Wunused-label -Wno-unused-parameter -Wunused-variable -Wunused-value -Wno-uninitialized -Wno-unknown-pragmas -Wshadow -Wno-four-char-constants -Wno-sign-compare -Wno-shorten-64-to-32 -Wpointer-sign -Wnewline-eof -Wno-selector -Wno-strict-selector-match -Wno-undeclared-selector -Wno-deprecated-implementations -DEXTJSON_SBJSON -DDEBUG -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator5.0.sdk -fexceptions -fasm-blocks -Wprotocol -Wdeprecated-declarations -mmacosx-version-min=10.6 -g -Wno-conversion -Wno-sign-conversion -fobjc-abi-version=2 -fobjc-legacy-dispatch "-DIBOutlet=__attribute__((iboutlet))" "-DIBOutletCollection(ClassName)=__attribute__((iboutletcollection(ClassName)))" "-DIBAction=void)__attribute__((ibaction)" -D__IPHONE_OS_VERSION_MIN_REQUIRED=30000 -iquote /Users/Leo/Projects/xcode/Hand/Frameworks/Three20/extThree20JSON/../../Build/extThree20JSON.build/Debug-iphonesimulator/extThree20JSON+SBJSON.build/extThree20JSON+SBJSON-generated-files.hmap -I/Users/Leo/Projects/xcode/Hand/Frameworks/Three20/extThree20JSON/../../Build/extThree20JSON.build/Debug-iphonesimulator/extThree20JSON+SBJSON.build/extThree20JSON+SBJSON-own-target-headers.hmap -I/Users/Leo/Projects/xcode/Hand/Frameworks/Three20/extThree20JSON/../../Build/extThree20JSON.build/Debug-iphonesimulator/extThree20JSON+SBJSON.build/extThree20JSON+SBJSON-all-target-headers.hmap -iquote /Users/Leo/Projects/xcode/Hand/Frameworks/Three20/extThree20JSON/../../Build/extThree20JSON.build/Debug-iphonesimulator/extThree20JSON+SBJSON.build/extThree20JSON+SBJSON-project-headers.hmap -I/Users/Leo/Projects/xcode/Hand/Frameworks/Three20/extThree20JSON/../../Build/Products/Debug-iphonesimulator/include -I/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator5.0.sdk/usr/include -I/Users/Leo/Projects/xcode/Hand/Frameworks/Three20/extThree20JSON/../../Build/Products/Debug-iphonesimulator/../three20 -I/Users/Leo/Projects/xcode/Hand/Frameworks/Three20/extThree20JSON/../../Build/Products/Debug-iphonesimulator/../../three20 -I/Users/Leo/Projects/xcode/Hand/Frameworks/Three20/extThree20JSON/../../Build/Products/Debug-iphonesimulator/../../three20 -I/Users/Leo/Projects/xcode/Hand/Frameworks/Three20/extThree20JSON/../../Build/extThree20JSON.build/Debug-iphonesimulator/extThree20JSON+SBJSON.build/DerivedSources/i386 -I/Users/Leo/Projects/xcode/Hand/Frameworks/Three20/extThree20JSON/../../Build/extThree20JSON.build/Debug-iphonesimulator/extThree20JSON+SBJSON.build/DerivedSources -F/Users/Leo/Projects/xcode/Hand/Frameworks/Three20/extThree20JSON/../../Build/Products/Debug-iphonesimulator -F/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator5.0.sdk/Developer/Library/Frameworks -include /var/folders/ry/l3zgfjx90jl5cbvr9qr3mbpm0000gn/C/com.apple.Xcode.501/SharedPrecompiledHeaders/extThree20JSON+SBJSON_Prefix-evrsnywfsndieldlachkxpfexmjl/extThree20JSON+SBJSON_Prefix.pch -MMD -MT dependencies -MF /Users/Leo/Projects/xcode/Hand/Frameworks/Three20/extThree20JSON/../../Build/extThree20JSON.build/Debug-iphonesimulator/extThree20JSON+SBJSON.build/Objects-normal/i386/SBJsonStreamParser.d --serialize-diagnostics /Users/Leo/Projects/xcode/Hand/Frameworks/Three20/extThree20JSON/../../Build/extThree20JSON.build/Debug-iphonesimulator/extThree20JSON+SBJSON.build/Objects-normal/i386/SBJsonStreamParser.dia -c /Users/Leo/Projects/xcode/Hand/Frameworks/Three20/extThree20JSON/Vendors/JSON/SBJsonStreamParser.m -o /Users/Leo/Projects/xcode/Hand/Frameworks/Three20/extThree20JSON/../../Build/extThree20JSON.build/Debug-iphonesimulator/extThree20JSON+SBJSON.build/Objects-normal/i386/SBJsonStreamParser.o36"205EE030-71C5-4240-9F6C-FEEE9BB3F7FC-
+
+CCompileC ../../Build/extThree20JSON.build/Debug-iphonesimulator/extThree20JSON+SBJSON.build/Objects-normal/i386/SBJsonStreamParserAccumulator.o /Users/Leo/Projects/xcode/Hand/Frameworks/Three20/extThree20JSON/Vendors/JSON/SBJsonStreamParserAccumulator.m normal i386 objective-c com.apple.compilers.llvm.clang.1_0.compiler
+s352728690.205755
+e352728690.274288
+r1
+xCompileC
+x../../Build/extThree20JSON.build/Debug-iphonesimulator/extThree20JSON+SBJSON.build/Objects-normal/i386/SBJsonStreamParserAccumulator.o
+x/Users/Leo/Projects/xcode/Hand/Frameworks/Three20/extThree20JSON/Vendors/JSON/SBJsonStreamParserAccumulator.m
+xnormal
+xi386
+xobjective-c
+xcom.apple.compilers.llvm.clang.1_0.compiler
+lSLF05#21%IDEActivityLogSection1@2#32"com.apple.dt.IDE.BuildLogSection117"Compile /Users/Leo/Projects/xcode/Hand/Frameworks/Three20/extThree20JSON/Vendors/JSON/SBJsonStreamParserAccumulator.m45d434723606b541^a24546723606b541^---0#0#0#-19%DVTDocumentLocation2@125"file://localhost/Users/Leo/Projects/xcode/Hand/Frameworks/Three20/extThree20JSON/Vendors/JSON/SBJsonStreamParserAccumulator.m0000000000000000^4717"CompileC ../../Build/extThree20JSON.build/Debug-iphonesimulator/extThree20JSON+SBJSON.build/Objects-normal/i386/SBJsonStreamParserAccumulator.o Vendors/JSON/SBJsonStreamParserAccumulator.m normal i386 objective-c com.apple.compilers.llvm.clang.1_0.compiler    cd /Users/Leo/Projects/xcode/Hand/Frameworks/Three20/extThree20JSON    setenv LANG en_US.US-ASCII    setenv PATH "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Applications/Xcode.app/Contents/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang -x objective-c -arch i386 -fmessage-length=0 -std=c99 -Wno-trigraphs -fpascal-strings -O0 -Wno-missing-field-initializers -Wno-missing-prototypes -Wreturn-type -Wno-implicit-atomic-properties -Wformat -Wno-missing-braces -Wparentheses -Wno-switch -Wunused-function -Wunused-label -Wno-unused-parameter -Wunused-variable -Wunused-value -Wno-uninitialized -Wno-unknown-pragmas -Wshadow -Wno-four-char-constants -Wno-sign-compare -Wno-shorten-64-to-32 -Wpointer-sign -Wnewline-eof -Wno-selector -Wno-strict-selector-match -Wno-undeclared-selector -Wno-deprecated-implementations -DEXTJSON_SBJSON -DDEBUG -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator5.0.sdk -fexceptions -fasm-blocks -Wprotocol -Wdeprecated-declarations -mmacosx-version-min=10.6 -g -Wno-conversion -Wno-sign-conversion -fobjc-abi-version=2 -fobjc-legacy-dispatch "-DIBOutlet=__attribute__((iboutlet))" "-DIBOutletCollection(ClassName)=__attribute__((iboutletcollection(ClassName)))" "-DIBAction=void)__attribute__((ibaction)" -D__IPHONE_OS_VERSION_MIN_REQUIRED=30000 -iquote /Users/Leo/Projects/xcode/Hand/Frameworks/Three20/extThree20JSON/../../Build/extThree20JSON.build/Debug-iphonesimulator/extThree20JSON+SBJSON.build/extThree20JSON+SBJSON-generated-files.hmap -I/Users/Leo/Projects/xcode/Hand/Frameworks/Three20/extThree20JSON/../../Build/extThree20JSON.build/Debug-iphonesimulator/extThree20JSON+SBJSON.build/extThree20JSON+SBJSON-own-target-headers.hmap -I/Users/Leo/Projects/xcode/Hand/Frameworks/Three20/extThree20JSON/../../Build/extThree20JSON.build/Debug-iphonesimulator/extThree20JSON+SBJSON.build/extThree20JSON+SBJSON-all-target-headers.hmap -iquote /Users/Leo/Projects/xcode/Hand/Frameworks/Three20/extThree20JSON/../../Build/extThree20JSON.build/Debug-iphonesimulator/extThree20JSON+SBJSON.build/extThree20JSON+SBJSON-project-headers.hmap -I/Users/Leo/Projects/xcode/Hand/Frameworks/Three20/extThree20JSON/../../Build/Products/Debug-iphonesimulator/include -I/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator5.0.sdk/usr/include -I/Users/Leo/Projects/xcode/Hand/Frameworks/Three20/extThree20JSON/../../Build/Products/Debug-iphonesimulator/../three20 -I/Users/Leo/Projects/xcode/Hand/Frameworks/Three20/extThree20JSON/../../Build/Products/Debug-iphonesimulator/../../three20 -I/Users/Leo/Projects/xcode/Hand/Frameworks/Three20/extThree20JSON/../../Build/Products/Debug-iphonesimulator/../../three20 -I/Users/Leo/Projects/xcode/Hand/Frameworks/Three20/extThree20JSON/../../Build/extThree20JSON.build/Debug-iphonesimulator/extThree20JSON+SBJSON.build/DerivedSources/i386 -I/Users/Leo/Projects/xcode/Hand/Frameworks/Three20/extThree20JSON/../../Build/extThree20JSON.build/Debug-iphonesimulator/extThree20JSON+SBJSON.build/DerivedSources -F/Users/Leo/Projects/xcode/Hand/Frameworks/Three20/extThree20JSON/../../Build/Products/Debug-iphonesimulator -F/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator5.0.sdk/Developer/Library/Frameworks -include /var/folders/ry/l3zgfjx90jl5cbvr9qr3mbpm0000gn/C/com.apple.Xcode.501/SharedPrecompiledHeaders/extThree20JSON+SBJSON_Prefix-evrsnywfsndieldlachkxpfexmjl/extThree20JSON+SBJSON_Prefix.pch -MMD -MT dependencies -MF /Users/Leo/Projects/xcode/Hand/Frameworks/Three20/extThree20JSON/../../Build/extThree20JSON.build/Debug-iphonesimulator/extThree20JSON+SBJSON.build/Objects-normal/i386/SBJsonStreamParserAccumulator.d --serialize-diagnostics /Users/Leo/Projects/xcode/Hand/Frameworks/Three20/extThree20JSON/../../Build/extThree20JSON.build/Debug-iphonesimulator/extThree20JSON+SBJSON.build/Objects-normal/i386/SBJsonStreamParserAccumulator.dia -c /Users/Leo/Projects/xcode/Hand/Frameworks/Three20/extThree20JSON/Vendors/JSON/SBJsonStreamParserAccumulator.m -o /Users/Leo/Projects/xcode/Hand/Frameworks/Three20/extThree20JSON/../../Build/extThree20JSON.build/Debug-iphonesimulator/extThree20JSON+SBJSON.build/Objects-normal/i386/SBJsonStreamParserAccumulator.o36"7B5A0644-32FE-4C16-872E-6A93A1CD5221-
+
+CCompileC ../../Build/extThree20JSON.build/Debug-iphonesimulator/extThree20JSON+SBJSON.build/Objects-normal/i386/SBJsonStreamParserAdapter.o /Users/Leo/Projects/xcode/Hand/Frameworks/Three20/extThree20JSON/Vendors/JSON/SBJsonStreamParserAdapter.m normal i386 objective-c com.apple.compilers.llvm.clang.1_0.compiler
+s352728690.083987
+e352728690.183829
+r1
+xCompileC
+x../../Build/extThree20JSON.build/Debug-iphonesimulator/extThree20JSON+SBJSON.build/Objects-normal/i386/SBJsonStreamParserAdapter.o
+x/Users/Leo/Projects/xcode/Hand/Frameworks/Three20/extThree20JSON/Vendors/JSON/SBJsonStreamParserAdapter.m
+xnormal
+xi386
+xobjective-c
+xcom.apple.compilers.llvm.clang.1_0.compiler
+lSLF05#21%IDEActivityLogSection1@2#32"com.apple.dt.IDE.BuildLogSection113"Compile /Users/Leo/Projects/xcode/Hand/Frameworks/Three20/extThree20JSON/Vendors/JSON/SBJsonStreamParserAdapter.m27f915723606b541^651c2f723606b541^---0#0#0#-19%DVTDocumentLocation2@121"file://localhost/Users/Leo/Projects/xcode/Hand/Frameworks/Three20/extThree20JSON/Vendors/JSON/SBJsonStreamParserAdapter.m0000000000000000^4693"CompileC ../../Build/extThree20JSON.build/Debug-iphonesimulator/extThree20JSON+SBJSON.build/Objects-normal/i386/SBJsonStreamParserAdapter.o Vendors/JSON/SBJsonStreamParserAdapter.m normal i386 objective-c com.apple.compilers.llvm.clang.1_0.compiler    cd /Users/Leo/Projects/xcode/Hand/Frameworks/Three20/extThree20JSON    setenv LANG en_US.US-ASCII    setenv PATH "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Applications/Xcode.app/Contents/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang -x objective-c -arch i386 -fmessage-length=0 -std=c99 -Wno-trigraphs -fpascal-strings -O0 -Wno-missing-field-initializers -Wno-missing-prototypes -Wreturn-type -Wno-implicit-atomic-properties -Wformat -Wno-missing-braces -Wparentheses -Wno-switch -Wunused-function -Wunused-label -Wno-unused-parameter -Wunused-variable -Wunused-value -Wno-uninitialized -Wno-unknown-pragmas -Wshadow -Wno-four-char-constants -Wno-sign-compare -Wno-shorten-64-to-32 -Wpointer-sign -Wnewline-eof -Wno-selector -Wno-strict-selector-match -Wno-undeclared-selector -Wno-deprecated-implementations -DEXTJSON_SBJSON -DDEBUG -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator5.0.sdk -fexceptions -fasm-blocks -Wprotocol -Wdeprecated-declarations -mmacosx-version-min=10.6 -g -Wno-conversion -Wno-sign-conversion -fobjc-abi-version=2 -fobjc-legacy-dispatch "-DIBOutlet=__attribute__((iboutlet))" "-DIBOutletCollection(ClassName)=__attribute__((iboutletcollection(ClassName)))" "-DIBAction=void)__attribute__((ibaction)" -D__IPHONE_OS_VERSION_MIN_REQUIRED=30000 -iquote /Users/Leo/Projects/xcode/Hand/Frameworks/Three20/extThree20JSON/../../Build/extThree20JSON.build/Debug-iphonesimulator/extThree20JSON+SBJSON.build/extThree20JSON+SBJSON-generated-files.hmap -I/Users/Leo/Projects/xcode/Hand/Frameworks/Three20/extThree20JSON/../../Build/extThree20JSON.build/Debug-iphonesimulator/extThree20JSON+SBJSON.build/extThree20JSON+SBJSON-own-target-headers.hmap -I/Users/Leo/Projects/xcode/Hand/Frameworks/Three20/extThree20JSON/../../Build/extThree20JSON.build/Debug-iphonesimulator/extThree20JSON+SBJSON.build/extThree20JSON+SBJSON-all-target-headers.hmap -iquote /Users/Leo/Projects/xcode/Hand/Frameworks/Three20/extThree20JSON/../../Build/extThree20JSON.build/Debug-iphonesimulator/extThree20JSON+SBJSON.build/extThree20JSON+SBJSON-project-headers.hmap -I/Users/Leo/Projects/xcode/Hand/Frameworks/Three20/extThree20JSON/../../Build/Products/Debug-iphonesimulator/include -I/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator5.0.sdk/usr/include -I/Users/Leo/Projects/xcode/Hand/Frameworks/Three20/extThree20JSON/../../Build/Products/Debug-iphonesimulator/../three20 -I/Users/Leo/Projects/xcode/Hand/Frameworks/Three20/extThree20JSON/../../Build/Products/Debug-iphonesimulator/../../three20 -I/Users/Leo/Projects/xcode/Hand/Frameworks/Three20/extThree20JSON/../../Build/Products/Debug-iphonesimulator/../../three20 -I/Users/Leo/Projects/xcode/Hand/Frameworks/Three20/extThree20JSON/../../Build/extThree20JSON.build/Debug-iphonesimulator/extThree20JSON+SBJSON.build/DerivedSources/i386 -I/Users/Leo/Projects/xcode/Hand/Frameworks/Three20/extThree20JSON/../../Build/extThree20JSON.build/Debug-iphonesimulator/extThree20JSON+SBJSON.build/DerivedSources -F/Users/Leo/Projects/xcode/Hand/Frameworks/Three20/extThree20JSON/../../Build/Products/Debug-iphonesimulator -F/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator5.0.sdk/Developer/Library/Frameworks -include /var/folders/ry/l3zgfjx90jl5cbvr9qr3mbpm0000gn/C/com.apple.Xcode.501/SharedPrecompiledHeaders/extThree20JSON+SBJSON_Prefix-evrsnywfsndieldlachkxpfexmjl/extThree20JSON+SBJSON_Prefix.pch -MMD -MT dependencies -MF /Users/Leo/Projects/xcode/Hand/Frameworks/Three20/extThree20JSON/../../Build/extThree20JSON.build/Debug-iphonesimulator/extThree20JSON+SBJSON.build/Objects-normal/i386/SBJsonStreamParserAdapter.d --serialize-diagnostics /Users/Leo/Projects/xcode/Hand/Frameworks/Three20/extThree20JSON/../../Build/extThree20JSON.build/Debug-iphonesimulator/extThree20JSON+SBJSON.build/Objects-normal/i386/SBJsonStreamParserAdapter.dia -c /Users/Leo/Projects/xcode/Hand/Frameworks/Three20/extThree20JSON/Vendors/JSON/SBJsonStreamParserAdapter.m -o /Users/Leo/Projects/xcode/Hand/Frameworks/Three20/extThree20JSON/../../Build/extThree20JSON.build/Debug-iphonesimulator/extThree20JSON+SBJSON.build/Objects-normal/i386/SBJsonStreamParserAdapter.o36"2102FBE8-28EA-418E-94CF-06046DCBD61D-
+
+CCompileC ../../Build/extThree20JSON.build/Debug-iphonesimulator/extThree20JSON+SBJSON.build/Objects-normal/i386/SBJsonStreamParserState.o /Users/Leo/Projects/xcode/Hand/Frameworks/Three20/extThree20JSON/Vendors/JSON/SBJsonStreamParserState.m normal i386 objective-c com.apple.compilers.llvm.clang.1_0.compiler
+s352728689.895446
+e352728690.079440
+r1
+xCompileC
+x../../Build/extThree20JSON.build/Debug-iphonesimulator/extThree20JSON+SBJSON.build/Objects-normal/i386/SBJsonStreamParserState.o
+x/Users/Leo/Projects/xcode/Hand/Frameworks/Three20/extThree20JSON/Vendors/JSON/SBJsonStreamParserState.m
+xnormal
+xi386
+xobjective-c
+xcom.apple.compilers.llvm.clang.1_0.compiler
+lSLF05#21%IDEActivityLogSection1@2#32"com.apple.dt.IDE.BuildLogSection111"Compile /Users/Leo/Projects/xcode/Hand/Frameworks/Three20/extThree20JSON/Vendors/JSON/SBJsonStreamParserState.ma664e5713606b541^786014723606b541^---0#0#0#-19%DVTDocumentLocation2@119"file://localhost/Users/Leo/Projects/xcode/Hand/Frameworks/Three20/extThree20JSON/Vendors/JSON/SBJsonStreamParserState.m0000000000000000^4681"CompileC ../../Build/extThree20JSON.build/Debug-iphonesimulator/extThree20JSON+SBJSON.build/Objects-normal/i386/SBJsonStreamParserState.o Vendors/JSON/SBJsonStreamParserState.m normal i386 objective-c com.apple.compilers.llvm.clang.1_0.compiler    cd /Users/Leo/Projects/xcode/Hand/Frameworks/Three20/extThree20JSON    setenv LANG en_US.US-ASCII    setenv PATH "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Applications/Xcode.app/Contents/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang -x objective-c -arch i386 -fmessage-length=0 -std=c99 -Wno-trigraphs -fpascal-strings -O0 -Wno-missing-field-initializers -Wno-missing-prototypes -Wreturn-type -Wno-implicit-atomic-properties -Wformat -Wno-missing-braces -Wparentheses -Wno-switch -Wunused-function -Wunused-label -Wno-unused-parameter -Wunused-variable -Wunused-value -Wno-uninitialized -Wno-unknown-pragmas -Wshadow -Wno-four-char-constants -Wno-sign-compare -Wno-shorten-64-to-32 -Wpointer-sign -Wnewline-eof -Wno-selector -Wno-strict-selector-match -Wno-undeclared-selector -Wno-deprecated-implementations -DEXTJSON_SBJSON -DDEBUG -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator5.0.sdk -fexceptions -fasm-blocks -Wprotocol -Wdeprecated-declarations -mmacosx-version-min=10.6 -g -Wno-conversion -Wno-sign-conversion -fobjc-abi-version=2 -fobjc-legacy-dispatch "-DIBOutlet=__attribute__((iboutlet))" "-DIBOutletCollection(ClassName)=__attribute__((iboutletcollection(ClassName)))" "-DIBAction=void)__attribute__((ibaction)" -D__IPHONE_OS_VERSION_MIN_REQUIRED=30000 -iquote /Users/Leo/Projects/xcode/Hand/Frameworks/Three20/extThree20JSON/../../Build/extThree20JSON.build/Debug-iphonesimulator/extThree20JSON+SBJSON.build/extThree20JSON+SBJSON-generated-files.hmap -I/Users/Leo/Projects/xcode/Hand/Frameworks/Three20/extThree20JSON/../../Build/extThree20JSON.build/Debug-iphonesimulator/extThree20JSON+SBJSON.build/extThree20JSON+SBJSON-own-target-headers.hmap -I/Users/Leo/Projects/xcode/Hand/Frameworks/Three20/extThree20JSON/../../Build/extThree20JSON.build/Debug-iphonesimulator/extThree20JSON+SBJSON.build/extThree20JSON+SBJSON-all-target-headers.hmap -iquote /Users/Leo/Projects/xcode/Hand/Frameworks/Three20/extThree20JSON/../../Build/extThree20JSON.build/Debug-iphonesimulator/extThree20JSON+SBJSON.build/extThree20JSON+SBJSON-project-headers.hmap -I/Users/Leo/Projects/xcode/Hand/Frameworks/Three20/extThree20JSON/../../Build/Products/Debug-iphonesimulator/include -I/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator5.0.sdk/usr/include -I/Users/Leo/Projects/xcode/Hand/Frameworks/Three20/extThree20JSON/../../Build/Products/Debug-iphonesimulator/../three20 -I/Users/Leo/Projects/xcode/Hand/Frameworks/Three20/extThree20JSON/../../Build/Products/Debug-iphonesimulator/../../three20 -I/Users/Leo/Projects/xcode/Hand/Frameworks/Three20/extThree20JSON/../../Build/Products/Debug-iphonesimulator/../../three20 -I/Users/Leo/Projects/xcode/Hand/Frameworks/Three20/extThree20JSON/../../Build/extThree20JSON.build/Debug-iphonesimulator/extThree20JSON+SBJSON.build/DerivedSources/i386 -I/Users/Leo/Projects/xcode/Hand/Frameworks/Three20/extThree20JSON/../../Build/extThree20JSON.build/Debug-iphonesimulator/extThree20JSON+SBJSON.build/DerivedSources -F/Users/Leo/Projects/xcode/Hand/Frameworks/Three20/extThree20JSON/../../Build/Products/Debug-iphonesimulator -F/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator5.0.sdk/Developer/Library/Frameworks -include /var/folders/ry/l3zgfjx90jl5cbvr9qr3mbpm0000gn/C/com.apple.Xcode.501/SharedPrecompiledHeaders/extThree20JSON+SBJSON_Prefix-evrsnywfsndieldlachkxpfexmjl/extThree20JSON+SBJSON_Prefix.pch -MMD -MT dependencies -MF /Users/Leo/Projects/xcode/Hand/Frameworks/Three20/extThree20JSON/../../Build/extThree20JSON.build/Debug-iphonesimulator/extThree20JSON+SBJSON.build/Objects-normal/i386/SBJsonStreamParserState.d --serialize-diagnostics /Users/Leo/Projects/xcode/Hand/Frameworks/Three20/extThree20JSON/../../Build/extThree20JSON.build/Debug-iphonesimulator/extThree20JSON+SBJSON.build/Objects-normal/i386/SBJsonStreamParserState.dia -c /Users/Leo/Projects/xcode/Hand/Frameworks/Three20/extThree20JSON/Vendors/JSON/SBJsonStreamParserState.m -o /Users/Leo/Projects/xcode/Hand/Frameworks/Three20/extThree20JSON/../../Build/extThree20JSON.build/Debug-iphonesimulator/extThree20JSON+SBJSON.build/Objects-normal/i386/SBJsonStreamParserState.o36"F5638BFD-9CE4-415B-9F1E-683D91D73717-
+
+CCompileC ../../Build/extThree20JSON.build/Debug-iphonesimulator/extThree20JSON+SBJSON.build/Objects-normal/i386/SBJsonStreamWriter.o /Users/Leo/Projects/xcode/Hand/Frameworks/Three20/extThree20JSON/Vendors/JSON/SBJsonStreamWriter.m normal i386 objective-c com.apple.compilers.llvm.clang.1_0.compiler
+s352728689.880405
+e352728690.083824
+r1
+xCompileC
+x../../Build/extThree20JSON.build/Debug-iphonesimulator/extThree20JSON+SBJSON.build/Objects-normal/i386/SBJsonStreamWriter.o
+x/Users/Leo/Projects/xcode/Hand/Frameworks/Three20/extThree20JSON/Vendors/JSON/SBJsonStreamWriter.m
+xnormal
+xi386
+xobjective-c
+xcom.apple.compilers.llvm.clang.1_0.compiler
+lSLF05#21%IDEActivityLogSection1@2#32"com.apple.dt.IDE.BuildLogSection106"Compile /Users/Leo/Projects/xcode/Hand/Frameworks/Three20/extThree20JSON/Vendors/JSON/SBJsonStreamWriter.mf089e1713606b541^810716723606b541^---0#0#0#-19%DVTDocumentLocation2@114"file://localhost/Users/Leo/Projects/xcode/Hand/Frameworks/Three20/extThree20JSON/Vendors/JSON/SBJsonStreamWriter.m0000000000000000^4651"CompileC ../../Build/extThree20JSON.build/Debug-iphonesimulator/extThree20JSON+SBJSON.build/Objects-normal/i386/SBJsonStreamWriter.o Vendors/JSON/SBJsonStreamWriter.m normal i386 objective-c com.apple.compilers.llvm.clang.1_0.compiler    cd /Users/Leo/Projects/xcode/Hand/Frameworks/Three20/extThree20JSON    setenv LANG en_US.US-ASCII    setenv PATH "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Applications/Xcode.app/Contents/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang -x objective-c -arch i386 -fmessage-length=0 -std=c99 -Wno-trigraphs -fpascal-strings -O0 -Wno-missing-field-initializers -Wno-missing-prototypes -Wreturn-type -Wno-implicit-atomic-properties -Wformat -Wno-missing-braces -Wparentheses -Wno-switch -Wunused-function -Wunused-label -Wno-unused-parameter -Wunused-variable -Wunused-value -Wno-uninitialized -Wno-unknown-pragmas -Wshadow -Wno-four-char-constants -Wno-sign-compare -Wno-shorten-64-to-32 -Wpointer-sign -Wnewline-eof -Wno-selector -Wno-strict-selector-match -Wno-undeclared-selector -Wno-deprecated-implementations -DEXTJSON_SBJSON -DDEBUG -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator5.0.sdk -fexceptions -fasm-blocks -Wprotocol -Wdeprecated-declarations -mmacosx-version-min=10.6 -g -Wno-conversion -Wno-sign-conversion -fobjc-abi-version=2 -fobjc-legacy-dispatch "-DIBOutlet=__attribute__((iboutlet))" "-DIBOutletCollection(ClassName)=__attribute__((iboutletcollection(ClassName)))" "-DIBAction=void)__attribute__((ibaction)" -D__IPHONE_OS_VERSION_MIN_REQUIRED=30000 -iquote /Users/Leo/Projects/xcode/Hand/Frameworks/Three20/extThree20JSON/../../Build/extThree20JSON.build/Debug-iphonesimulator/extThree20JSON+SBJSON.build/extThree20JSON+SBJSON-generated-files.hmap -I/Users/Leo/Projects/xcode/Hand/Frameworks/Three20/extThree20JSON/../../Build/extThree20JSON.build/Debug-iphonesimulator/extThree20JSON+SBJSON.build/extThree20JSON+SBJSON-own-target-headers.hmap -I/Users/Leo/Projects/xcode/Hand/Frameworks/Three20/extThree20JSON/../../Build/extThree20JSON.build/Debug-iphonesimulator/extThree20JSON+SBJSON.build/extThree20JSON+SBJSON-all-target-headers.hmap -iquote /Users/Leo/Projects/xcode/Hand/Frameworks/Three20/extThree20JSON/../../Build/extThree20JSON.build/Debug-iphonesimulator/extThree20JSON+SBJSON.build/extThree20JSON+SBJSON-project-headers.hmap -I/Users/Leo/Projects/xcode/Hand/Frameworks/Three20/extThree20JSON/../../Build/Products/Debug-iphonesimulator/include -I/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator5.0.sdk/usr/include -I/Users/Leo/Projects/xcode/Hand/Frameworks/Three20/extThree20JSON/../../Build/Products/Debug-iphonesimulator/../three20 -I/Users/Leo/Projects/xcode/Hand/Frameworks/Three20/extThree20JSON/../../Build/Products/Debug-iphonesimulator/../../three20 -I/Users/Leo/Projects/xcode/Hand/Frameworks/Three20/extThree20JSON/../../Build/Products/Debug-iphonesimulator/../../three20 -I/Users/Leo/Projects/xcode/Hand/Frameworks/Three20/extThree20JSON/../../Build/extThree20JSON.build/Debug-iphonesimulator/extThree20JSON+SBJSON.build/DerivedSources/i386 -I/Users/Leo/Projects/xcode/Hand/Frameworks/Three20/extThree20JSON/../../Build/extThree20JSON.build/Debug-iphonesimulator/extThree20JSON+SBJSON.build/DerivedSources -F/Users/Leo/Projects/xcode/Hand/Frameworks/Three20/extThree20JSON/../../Build/Products/Debug-iphonesimulator -F/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator5.0.sdk/Developer/Library/Frameworks -include /var/folders/ry/l3zgfjx90jl5cbvr9qr3mbpm0000gn/C/com.apple.Xcode.501/SharedPrecompiledHeaders/extThree20JSON+SBJSON_Prefix-evrsnywfsndieldlachkxpfexmjl/extThree20JSON+SBJSON_Prefix.pch -MMD -MT dependencies -MF /Users/Leo/Projects/xcode/Hand/Frameworks/Three20/extThree20JSON/../../Build/extThree20JSON.build/Debug-iphonesimulator/extThree20JSON+SBJSON.build/Objects-normal/i386/SBJsonStreamWriter.d --serialize-diagnostics /Users/Leo/Projects/xcode/Hand/Frameworks/Three20/extThree20JSON/../../Build/extThree20JSON.build/Debug-iphonesimulator/extThree20JSON+SBJSON.build/Objects-normal/i386/SBJsonStreamWriter.dia -c /Users/Leo/Projects/xcode/Hand/Frameworks/Three20/extThree20JSON/Vendors/JSON/SBJsonStreamWriter.m -o /Users/Leo/Projects/xcode/Hand/Frameworks/Three20/extThree20JSON/../../Build/extThree20JSON.build/Debug-iphonesimulator/extThree20JSON+SBJSON.build/Objects-normal/i386/SBJsonStreamWriter.o36"BA274420-FB24-41C0-A132-BD86B1CD79F9-
+
+CCompileC ../../Build/extThree20JSON.build/Debug-iphonesimulator/extThree20JSON+SBJSON.build/Objects-normal/i386/SBJsonStreamWriterAccumulator.o /Users/Leo/Projects/xcode/Hand/Frameworks/Three20/extThree20JSON/Vendors/JSON/SBJsonStreamWriterAccumulator.m normal i386 objective-c com.apple.compilers.llvm.clang.1_0.compiler
+s352728690.236138
+e352728690.281349
+r1
+xCompileC
+x../../Build/extThree20JSON.build/Debug-iphonesimulator/extThree20JSON+SBJSON.build/Objects-normal/i386/SBJsonStreamWriterAccumulator.o
+x/Users/Leo/Projects/xcode/Hand/Frameworks/Three20/extThree20JSON/Vendors/JSON/SBJsonStreamWriterAccumulator.m
+xnormal
+xi386
+xobjective-c
+xcom.apple.compilers.llvm.clang.1_0.compiler
+lSLF05#21%IDEActivityLogSection1@2#32"com.apple.dt.IDE.BuildLogSection117"Compile /Users/Leo/Projects/xcode/Hand/Frameworks/Three20/extThree20JSON/Vendors/JSON/SBJsonStreamWriterAccumulator.me99b3c723606b541^3bc748723606b541^---0#0#0#-19%DVTDocumentLocation2@125"file://localhost/Users/Leo/Projects/xcode/Hand/Frameworks/Three20/extThree20JSON/Vendors/JSON/SBJsonStreamWriterAccumulator.m0000000000000000^4717"CompileC ../../Build/extThree20JSON.build/Debug-iphonesimulator/extThree20JSON+SBJSON.build/Objects-normal/i386/SBJsonStreamWriterAccumulator.o Vendors/JSON/SBJsonStreamWriterAccumulator.m normal i386 objective-c com.apple.compilers.llvm.clang.1_0.compiler    cd /Users/Leo/Projects/xcode/Hand/Frameworks/Three20/extThree20JSON    setenv LANG en_US.US-ASCII    setenv PATH "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Applications/Xcode.app/Contents/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang -x objective-c -arch i386 -fmessage-length=0 -std=c99 -Wno-trigraphs -fpascal-strings -O0 -Wno-missing-field-initializers -Wno-missing-prototypes -Wreturn-type -Wno-implicit-atomic-properties -Wformat -Wno-missing-braces -Wparentheses -Wno-switch -Wunused-function -Wunused-label -Wno-unused-parameter -Wunused-variable -Wunused-value -Wno-uninitialized -Wno-unknown-pragmas -Wshadow -Wno-four-char-constants -Wno-sign-compare -Wno-shorten-64-to-32 -Wpointer-sign -Wnewline-eof -Wno-selector -Wno-strict-selector-match -Wno-undeclared-selector -Wno-deprecated-implementations -DEXTJSON_SBJSON -DDEBUG -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator5.0.sdk -fexceptions -fasm-blocks -Wprotocol -Wdeprecated-declarations -mmacosx-version-min=10.6 -g -Wno-conversion -Wno-sign-conversion -fobjc-abi-version=2 -fobjc-legacy-dispatch "-DIBOutlet=__attribute__((iboutlet))" "-DIBOutletCollection(ClassName)=__attribute__((iboutletcollection(ClassName)))" "-DIBAction=void)__attribute__((ibaction)" -D__IPHONE_OS_VERSION_MIN_REQUIRED=30000 -iquote /Users/Leo/Projects/xcode/Hand/Frameworks/Three20/extThree20JSON/../../Build/extThree20JSON.build/Debug-iphonesimulator/extThree20JSON+SBJSON.build/extThree20JSON+SBJSON-generated-files.hmap -I/Users/Leo/Projects/xcode/Hand/Frameworks/Three20/extThree20JSON/../../Build/extThree20JSON.build/Debug-iphonesimulator/extThree20JSON+SBJSON.build/extThree20JSON+SBJSON-own-target-headers.hmap -I/Users/Leo/Projects/xcode/Hand/Frameworks/Three20/extThree20JSON/../../Build/extThree20JSON.build/Debug-iphonesimulator/extThree20JSON+SBJSON.build/extThree20JSON+SBJSON-all-target-headers.hmap -iquote /Users/Leo/Projects/xcode/Hand/Frameworks/Three20/extThree20JSON/../../Build/extThree20JSON.build/Debug-iphonesimulator/extThree20JSON+SBJSON.build/extThree20JSON+SBJSON-project-headers.hmap -I/Users/Leo/Projects/xcode/Hand/Frameworks/Three20/extThree20JSON/../../Build/Products/Debug-iphonesimulator/include -I/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator5.0.sdk/usr/include -I/Users/Leo/Projects/xcode/Hand/Frameworks/Three20/extThree20JSON/../../Build/Products/Debug-iphonesimulator/../three20 -I/Users/Leo/Projects/xcode/Hand/Frameworks/Three20/extThree20JSON/../../Build/Products/Debug-iphonesimulator/../../three20 -I/Users/Leo/Projects/xcode/Hand/Frameworks/Three20/extThree20JSON/../../Build/Products/Debug-iphonesimulator/../../three20 -I/Users/Leo/Projects/xcode/Hand/Frameworks/Three20/extThree20JSON/../../Build/extThree20JSON.build/Debug-iphonesimulator/extThree20JSON+SBJSON.build/DerivedSources/i386 -I/Users/Leo/Projects/xcode/Hand/Frameworks/Three20/extThree20JSON/../../Build/extThree20JSON.build/Debug-iphonesimulator/extThree20JSON+SBJSON.build/DerivedSources -F/Users/Leo/Projects/xcode/Hand/Frameworks/Three20/extThree20JSON/../../Build/Products/Debug-iphonesimulator -F/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator5.0.sdk/Developer/Library/Frameworks -include /var/folders/ry/l3zgfjx90jl5cbvr9qr3mbpm0000gn/C/com.apple.Xcode.501/SharedPrecompiledHeaders/extThree20JSON+SBJSON_Prefix-evrsnywfsndieldlachkxpfexmjl/extThree20JSON+SBJSON_Prefix.pch -MMD -MT dependencies -MF /Users/Leo/Projects/xcode/Hand/Frameworks/Three20/extThree20JSON/../../Build/extThree20JSON.build/Debug-iphonesimulator/extThree20JSON+SBJSON.build/Objects-normal/i386/SBJsonStreamWriterAccumulator.d --serialize-diagnostics /Users/Leo/Projects/xcode/Hand/Frameworks/Three20/extThree20JSON/../../Build/extThree20JSON.build/Debug-iphonesimulator/extThree20JSON+SBJSON.build/Objects-normal/i386/SBJsonStreamWriterAccumulator.dia -c /Users/Leo/Projects/xcode/Hand/Frameworks/Three20/extThree20JSON/Vendors/JSON/SBJsonStreamWriterAccumulator.m -o /Users/Leo/Projects/xcode/Hand/Frameworks/Three20/extThree20JSON/../../Build/extThree20JSON.build/Debug-iphonesimulator/extThree20JSON+SBJSON.build/Objects-normal/i386/SBJsonStreamWriterAccumulator.o36"2B7FC6E7-E780-427E-A548-69CB58B726E3-
+
+CCompileC ../../Build/extThree20JSON.build/Debug-iphonesimulator/extThree20JSON+SBJSON.build/Objects-normal/i386/SBJsonStreamWriterState.o /Users/Leo/Projects/xcode/Hand/Frameworks/Three20/extThree20JSON/Vendors/JSON/SBJsonStreamWriterState.m normal i386 objective-c com.apple.compilers.llvm.clang.1_0.compiler
+s352728689.785236
+e352728689.832758
+r1
+xCompileC
+x../../Build/extThree20JSON.build/Debug-iphonesimulator/extThree20JSON+SBJSON.build/Objects-normal/i386/SBJsonStreamWriterState.o
+x/Users/Leo/Projects/xcode/Hand/Frameworks/Three20/extThree20JSON/Vendors/JSON/SBJsonStreamWriterState.m
+xnormal
+xi386
+xobjective-c
+xcom.apple.compilers.llvm.clang.1_0.compiler
+lSLF05#21%IDEActivityLogSection1@2#32"com.apple.dt.IDE.BuildLogSection111"Compile /Users/Leo/Projects/xcode/Hand/Frameworks/Three20/extThree20JSON/Vendors/JSON/SBJsonStreamWriterState.m452dc9713606b541^fa09d7713606b541^---0#0#0#-19%DVTDocumentLocation2@119"file://localhost/Users/Leo/Projects/xcode/Hand/Frameworks/Three20/extThree20JSON/Vendors/JSON/SBJsonStreamWriterState.m0000000000000000^4681"CompileC ../../Build/extThree20JSON.build/Debug-iphonesimulator/extThree20JSON+SBJSON.build/Objects-normal/i386/SBJsonStreamWriterState.o Vendors/JSON/SBJsonStreamWriterState.m normal i386 objective-c com.apple.compilers.llvm.clang.1_0.compiler    cd /Users/Leo/Projects/xcode/Hand/Frameworks/Three20/extThree20JSON    setenv LANG en_US.US-ASCII    setenv PATH "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Applications/Xcode.app/Contents/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang -x objective-c -arch i386 -fmessage-length=0 -std=c99 -Wno-trigraphs -fpascal-strings -O0 -Wno-missing-field-initializers -Wno-missing-prototypes -Wreturn-type -Wno-implicit-atomic-properties -Wformat -Wno-missing-braces -Wparentheses -Wno-switch -Wunused-function -Wunused-label -Wno-unused-parameter -Wunused-variable -Wunused-value -Wno-uninitialized -Wno-unknown-pragmas -Wshadow -Wno-four-char-constants -Wno-sign-compare -Wno-shorten-64-to-32 -Wpointer-sign -Wnewline-eof -Wno-selector -Wno-strict-selector-match -Wno-undeclared-selector -Wno-deprecated-implementations -DEXTJSON_SBJSON -DDEBUG -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator5.0.sdk -fexceptions -fasm-blocks -Wprotocol -Wdeprecated-declarations -mmacosx-version-min=10.6 -g -Wno-conversion -Wno-sign-conversion -fobjc-abi-version=2 -fobjc-legacy-dispatch "-DIBOutlet=__attribute__((iboutlet))" "-DIBOutletCollection(ClassName)=__attribute__((iboutletcollection(ClassName)))" "-DIBAction=void)__attribute__((ibaction)" -D__IPHONE_OS_VERSION_MIN_REQUIRED=30000 -iquote /Users/Leo/Projects/xcode/Hand/Frameworks/Three20/extThree20JSON/../../Build/extThree20JSON.build/Debug-iphonesimulator/extThree20JSON+SBJSON.build/extThree20JSON+SBJSON-generated-files.hmap -I/Users/Leo/Projects/xcode/Hand/Frameworks/Three20/extThree20JSON/../../Build/extThree20JSON.build/Debug-iphonesimulator/extThree20JSON+SBJSON.build/extThree20JSON+SBJSON-own-target-headers.hmap -I/Users/Leo/Projects/xcode/Hand/Frameworks/Three20/extThree20JSON/../../Build/extThree20JSON.build/Debug-iphonesimulator/extThree20JSON+SBJSON.build/extThree20JSON+SBJSON-all-target-headers.hmap -iquote /Users/Leo/Projects/xcode/Hand/Frameworks/Three20/extThree20JSON/../../Build/extThree20JSON.build/Debug-iphonesimulator/extThree20JSON+SBJSON.build/extThree20JSON+SBJSON-project-headers.hmap -I/Users/Leo/Projects/xcode/Hand/Frameworks/Three20/extThree20JSON/../../Build/Products/Debug-iphonesimulator/include -I/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator5.0.sdk/usr/include -I/Users/Leo/Projects/xcode/Hand/Frameworks/Three20/extThree20JSON/../../Build/Products/Debug-iphonesimulator/../three20 -I/Users/Leo/Projects/xcode/Hand/Frameworks/Three20/extThree20JSON/../../Build/Products/Debug-iphonesimulator/../../three20 -I/Users/Leo/Projects/xcode/Hand/Frameworks/Three20/extThree20JSON/../../Build/Products/Debug-iphonesimulator/../../three20 -I/Users/Leo/Projects/xcode/Hand/Frameworks/Three20/extThree20JSON/../../Build/extThree20JSON.build/Debug-iphonesimulator/extThree20JSON+SBJSON.build/DerivedSources/i386 -I/Users/Leo/Projects/xcode/Hand/Frameworks/Three20/extThree20JSON/../../Build/extThree20JSON.build/Debug-iphonesimulator/extThree20JSON+SBJSON.build/DerivedSources -F/Users/Leo/Projects/xcode/Hand/Frameworks/Three20/extThree20JSON/../../Build/Products/Debug-iphonesimulator -F/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator5.0.sdk/Developer/Library/Frameworks -include /var/folders/ry/l3zgfjx90jl5cbvr9qr3mbpm0000gn/C/com.apple.Xcode.501/SharedPrecompiledHeaders/extThree20JSON+SBJSON_Prefix-evrsnywfsndieldlachkxpfexmjl/extThree20JSON+SBJSON_Prefix.pch -MMD -MT dependencies -MF /Users/Leo/Projects/xcode/Hand/Frameworks/Three20/extThree20JSON/../../Build/extThree20JSON.build/Debug-iphonesimulator/extThree20JSON+SBJSON.build/Objects-normal/i386/SBJsonStreamWriterState.d --serialize-diagnostics /Users/Leo/Projects/xcode/Hand/Frameworks/Three20/extThree20JSON/../../Build/extThree20JSON.build/Debug-iphonesimulator/extThree20JSON+SBJSON.build/Objects-normal/i386/SBJsonStreamWriterState.dia -c /Users/Leo/Projects/xcode/Hand/Frameworks/Three20/extThree20JSON/Vendors/JSON/SBJsonStreamWriterState.m -o /Users/Leo/Projects/xcode/Hand/Frameworks/Three20/extThree20JSON/../../Build/extThree20JSON.build/Debug-iphonesimulator/extThree20JSON+SBJSON.build/Objects-normal/i386/SBJsonStreamWriterState.o36"6D9B841C-41A3-4AD6-B468-ED3C7985C3E5-
+
+CCompileC ../../Build/extThree20JSON.build/Debug-iphonesimulator/extThree20JSON+SBJSON.build/Objects-normal/i386/SBJsonTokeniser.o /Users/Leo/Projects/xcode/Hand/Frameworks/Three20/extThree20JSON/Vendors/JSON/SBJsonTokeniser.m normal i386 objective-c com.apple.compilers.llvm.clang.1_0.compiler
+s352728689.725400
+e352728689.783976
+r1
+xCompileC
+x../../Build/extThree20JSON.build/Debug-iphonesimulator/extThree20JSON+SBJSON.build/Objects-normal/i386/SBJsonTokeniser.o
+x/Users/Leo/Projects/xcode/Hand/Frameworks/Three20/extThree20JSON/Vendors/JSON/SBJsonTokeniser.m
+xnormal
+xi386
+xobjective-c
+xcom.apple.compilers.llvm.clang.1_0.compiler
+lSLF05#21%IDEActivityLogSection1@2#32"com.apple.dt.IDE.BuildLogSection103"Compile /Users/Leo/Projects/xcode/Hand/Frameworks/Three20/extThree20JSON/Vendors/JSON/SBJsonTokeniser.ma9dbb9713606b541^a0c3c8713606b541^---0#0#0#-19%DVTDocumentLocation2@111"file://localhost/Users/Leo/Projects/xcode/Hand/Frameworks/Three20/extThree20JSON/Vendors/JSON/SBJsonTokeniser.m0000000000000000^4633"CompileC ../../Build/extThree20JSON.build/Debug-iphonesimulator/extThree20JSON+SBJSON.build/Objects-normal/i386/SBJsonTokeniser.o Vendors/JSON/SBJsonTokeniser.m normal i386 objective-c com.apple.compilers.llvm.clang.1_0.compiler    cd /Users/Leo/Projects/xcode/Hand/Frameworks/Three20/extThree20JSON    setenv LANG en_US.US-ASCII    setenv PATH "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Applications/Xcode.app/Contents/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang -x objective-c -arch i386 -fmessage-length=0 -std=c99 -Wno-trigraphs -fpascal-strings -O0 -Wno-missing-field-initializers -Wno-missing-prototypes -Wreturn-type -Wno-implicit-atomic-properties -Wformat -Wno-missing-braces -Wparentheses -Wno-switch -Wunused-function -Wunused-label -Wno-unused-parameter -Wunused-variable -Wunused-value -Wno-uninitialized -Wno-unknown-pragmas -Wshadow -Wno-four-char-constants -Wno-sign-compare -Wno-shorten-64-to-32 -Wpointer-sign -Wnewline-eof -Wno-selector -Wno-strict-selector-match -Wno-undeclared-selector -Wno-deprecated-implementations -DEXTJSON_SBJSON -DDEBUG -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator5.0.sdk -fexceptions -fasm-blocks -Wprotocol -Wdeprecated-declarations -mmacosx-version-min=10.6 -g -Wno-conversion -Wno-sign-conversion -fobjc-abi-version=2 -fobjc-legacy-dispatch "-DIBOutlet=__attribute__((iboutlet))" "-DIBOutletCollection(ClassName)=__attribute__((iboutletcollection(ClassName)))" "-DIBAction=void)__attribute__((ibaction)" -D__IPHONE_OS_VERSION_MIN_REQUIRED=30000 -iquote /Users/Leo/Projects/xcode/Hand/Frameworks/Three20/extThree20JSON/../../Build/extThree20JSON.build/Debug-iphonesimulator/extThree20JSON+SBJSON.build/extThree20JSON+SBJSON-generated-files.hmap -I/Users/Leo/Projects/xcode/Hand/Frameworks/Three20/extThree20JSON/../../Build/extThree20JSON.build/Debug-iphonesimulator/extThree20JSON+SBJSON.build/extThree20JSON+SBJSON-own-target-headers.hmap -I/Users/Leo/Projects/xcode/Hand/Frameworks/Three20/extThree20JSON/../../Build/extThree20JSON.build/Debug-iphonesimulator/extThree20JSON+SBJSON.build/extThree20JSON+SBJSON-all-target-headers.hmap -iquote /Users/Leo/Projects/xcode/Hand/Frameworks/Three20/extThree20JSON/../../Build/extThree20JSON.build/Debug-iphonesimulator/extThree20JSON+SBJSON.build/extThree20JSON+SBJSON-project-headers.hmap -I/Users/Leo/Projects/xcode/Hand/Frameworks/Three20/extThree20JSON/../../Build/Products/Debug-iphonesimulator/include -I/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator5.0.sdk/usr/include -I/Users/Leo/Projects/xcode/Hand/Frameworks/Three20/extThree20JSON/../../Build/Products/Debug-iphonesimulator/../three20 -I/Users/Leo/Projects/xcode/Hand/Frameworks/Three20/extThree20JSON/../../Build/Products/Debug-iphonesimulator/../../three20 -I/Users/Leo/Projects/xcode/Hand/Frameworks/Three20/extThree20JSON/../../Build/Products/Debug-iphonesimulator/../../three20 -I/Users/Leo/Projects/xcode/Hand/Frameworks/Three20/extThree20JSON/../../Build/extThree20JSON.build/Debug-iphonesimulator/extThree20JSON+SBJSON.build/DerivedSources/i386 -I/Users/Leo/Projects/xcode/Hand/Frameworks/Three20/extThree20JSON/../../Build/extThree20JSON.build/Debug-iphonesimulator/extThree20JSON+SBJSON.build/DerivedSources -F/Users/Leo/Projects/xcode/Hand/Frameworks/Three20/extThree20JSON/../../Build/Products/Debug-iphonesimulator -F/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator5.0.sdk/Developer/Library/Frameworks -include /var/folders/ry/l3zgfjx90jl5cbvr9qr3mbpm0000gn/C/com.apple.Xcode.501/SharedPrecompiledHeaders/extThree20JSON+SBJSON_Prefix-evrsnywfsndieldlachkxpfexmjl/extThree20JSON+SBJSON_Prefix.pch -MMD -MT dependencies -MF /Users/Leo/Projects/xcode/Hand/Frameworks/Three20/extThree20JSON/../../Build/extThree20JSON.build/Debug-iphonesimulator/extThree20JSON+SBJSON.build/Objects-normal/i386/SBJsonTokeniser.d --serialize-diagnostics /Users/Leo/Projects/xcode/Hand/Frameworks/Three20/extThree20JSON/../../Build/extThree20JSON.build/Debug-iphonesimulator/extThree20JSON+SBJSON.build/Objects-normal/i386/SBJsonTokeniser.dia -c /Users/Leo/Projects/xcode/Hand/Frameworks/Three20/extThree20JSON/Vendors/JSON/SBJsonTokeniser.m -o /Users/Leo/Projects/xcode/Hand/Frameworks/Three20/extThree20JSON/../../Build/extThree20JSON.build/Debug-iphonesimulator/extThree20JSON+SBJSON.build/Objects-normal/i386/SBJsonTokeniser.o36"0BAEB3E3-5D40-4717-8290-A4F28093891F-
+
+CCompileC ../../Build/extThree20JSON.build/Debug-iphonesimulator/extThree20JSON+SBJSON.build/Objects-normal/i386/SBJsonUTF8Stream.o /Users/Leo/Projects/xcode/Hand/Frameworks/Three20/extThree20JSON/Vendors/JSON/SBJsonUTF8Stream.m normal i386 objective-c com.apple.compilers.llvm.clang.1_0.compiler
+s352728690.295699
+e352728690.356856
+r1
+xCompileC
+x../../Build/extThree20JSON.build/Debug-iphonesimulator/extThree20JSON+SBJSON.build/Objects-normal/i386/SBJsonUTF8Stream.o
+x/Users/Leo/Projects/xcode/Hand/Frameworks/Three20/extThree20JSON/Vendors/JSON/SBJsonUTF8Stream.m
+xnormal
+xi386
+xobjective-c
+xcom.apple.compilers.llvm.clang.1_0.compiler
+lSLF05#21%IDEActivityLogSection1@2#32"com.apple.dt.IDE.BuildLogSection104"Compile /Users/Leo/Projects/xcode/Hand/Frameworks/Three20/extThree20JSON/Vendors/JSON/SBJsonUTF8Stream.mb1df4b723606b541^29b15b723606b541^---0#0#0#-19%DVTDocumentLocation2@112"file://localhost/Users/Leo/Projects/xcode/Hand/Frameworks/Three20/extThree20JSON/Vendors/JSON/SBJsonUTF8Stream.m0000000000000000^4639"CompileC ../../Build/extThree20JSON.build/Debug-iphonesimulator/extThree20JSON+SBJSON.build/Objects-normal/i386/SBJsonUTF8Stream.o Vendors/JSON/SBJsonUTF8Stream.m normal i386 objective-c com.apple.compilers.llvm.clang.1_0.compiler    cd /Users/Leo/Projects/xcode/Hand/Frameworks/Three20/extThree20JSON    setenv LANG en_US.US-ASCII    setenv PATH "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Applications/Xcode.app/Contents/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang -x objective-c -arch i386 -fmessage-length=0 -std=c99 -Wno-trigraphs -fpascal-strings -O0 -Wno-missing-field-initializers -Wno-missing-prototypes -Wreturn-type -Wno-implicit-atomic-properties -Wformat -Wno-missing-braces -Wparentheses -Wno-switch -Wunused-function -Wunused-label -Wno-unused-parameter -Wunused-variable -Wunused-value -Wno-uninitialized -Wno-unknown-pragmas -Wshadow -Wno-four-char-constants -Wno-sign-compare -Wno-shorten-64-to-32 -Wpointer-sign -Wnewline-eof -Wno-selector -Wno-strict-selector-match -Wno-undeclared-selector -Wno-deprecated-implementations -DEXTJSON_SBJSON -DDEBUG -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator5.0.sdk -fexceptions -fasm-blocks -Wprotocol -Wdeprecated-declarations -mmacosx-version-min=10.6 -g -Wno-conversion -Wno-sign-conversion -fobjc-abi-version=2 -fobjc-legacy-dispatch "-DIBOutlet=__attribute__((iboutlet))" "-DIBOutletCollection(ClassName)=__attribute__((iboutletcollection(ClassName)))" "-DIBAction=void)__attribute__((ibaction)" -D__IPHONE_OS_VERSION_MIN_REQUIRED=30000 -iquote /Users/Leo/Projects/xcode/Hand/Frameworks/Three20/extThree20JSON/../../Build/extThree20JSON.build/Debug-iphonesimulator/extThree20JSON+SBJSON.build/extThree20JSON+SBJSON-generated-files.hmap -I/Users/Leo/Projects/xcode/Hand/Frameworks/Three20/extThree20JSON/../../Build/extThree20JSON.build/Debug-iphonesimulator/extThree20JSON+SBJSON.build/extThree20JSON+SBJSON-own-target-headers.hmap -I/Users/Leo/Projects/xcode/Hand/Frameworks/Three20/extThree20JSON/../../Build/extThree20JSON.build/Debug-iphonesimulator/extThree20JSON+SBJSON.build/extThree20JSON+SBJSON-all-target-headers.hmap -iquote /Users/Leo/Projects/xcode/Hand/Frameworks/Three20/extThree20JSON/../../Build/extThree20JSON.build/Debug-iphonesimulator/extThree20JSON+SBJSON.build/extThree20JSON+SBJSON-project-headers.hmap -I/Users/Leo/Projects/xcode/Hand/Frameworks/Three20/extThree20JSON/../../Build/Products/Debug-iphonesimulator/include -I/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator5.0.sdk/usr/include -I/Users/Leo/Projects/xcode/Hand/Frameworks/Three20/extThree20JSON/../../Build/Products/Debug-iphonesimulator/../three20 -I/Users/Leo/Projects/xcode/Hand/Frameworks/Three20/extThree20JSON/../../Build/Products/Debug-iphonesimulator/../../three20 -I/Users/Leo/Projects/xcode/Hand/Frameworks/Three20/extThree20JSON/../../Build/Products/Debug-iphonesimulator/../../three20 -I/Users/Leo/Projects/xcode/Hand/Frameworks/Three20/extThree20JSON/../../Build/extThree20JSON.build/Debug-iphonesimulator/extThree20JSON+SBJSON.build/DerivedSources/i386 -I/Users/Leo/Projects/xcode/Hand/Frameworks/Three20/extThree20JSON/../../Build/extThree20JSON.build/Debug-iphonesimulator/extThree20JSON+SBJSON.build/DerivedSources -F/Users/Leo/Projects/xcode/Hand/Frameworks/Three20/extThree20JSON/../../Build/Products/Debug-iphonesimulator -F/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator5.0.sdk/Developer/Library/Frameworks -include /var/folders/ry/l3zgfjx90jl5cbvr9qr3mbpm0000gn/C/com.apple.Xcode.501/SharedPrecompiledHeaders/extThree20JSON+SBJSON_Prefix-evrsnywfsndieldlachkxpfexmjl/extThree20JSON+SBJSON_Prefix.pch -MMD -MT dependencies -MF /Users/Leo/Projects/xcode/Hand/Frameworks/Three20/extThree20JSON/../../Build/extThree20JSON.build/Debug-iphonesimulator/extThree20JSON+SBJSON.build/Objects-normal/i386/SBJsonUTF8Stream.d --serialize-diagnostics /Users/Leo/Projects/xcode/Hand/Frameworks/Three20/extThree20JSON/../../Build/extThree20JSON.build/Debug-iphonesimulator/extThree20JSON+SBJSON.build/Objects-normal/i386/SBJsonUTF8Stream.dia -c /Users/Leo/Projects/xcode/Hand/Frameworks/Three20/extThree20JSON/Vendors/JSON/SBJsonUTF8Stream.m -o /Users/Leo/Projects/xcode/Hand/Frameworks/Three20/extThree20JSON/../../Build/extThree20JSON.build/Debug-iphonesimulator/extThree20JSON+SBJSON.build/Objects-normal/i386/SBJsonUTF8Stream.o36"6671B2C7-3495-43C5-87C5-2B88B2B986CB-
+
+CCompileC ../../Build/extThree20JSON.build/Debug-iphonesimulator/extThree20JSON+SBJSON.build/Objects-normal/i386/SBJsonWriter.o /Users/Leo/Projects/xcode/Hand/Frameworks/Three20/extThree20JSON/Vendors/JSON/SBJsonWriter.m normal i386 objective-c com.apple.compilers.llvm.clang.1_0.compiler
+s352728689.653099
+e352728689.720771
+r1
+xCompileC
+x../../Build/extThree20JSON.build/Debug-iphonesimulator/extThree20JSON+SBJSON.build/Objects-normal/i386/SBJsonWriter.o
+x/Users/Leo/Projects/xcode/Hand/Frameworks/Three20/extThree20JSON/Vendors/JSON/SBJsonWriter.m
+xnormal
+xi386
+xobjective-c
+xcom.apple.compilers.llvm.clang.1_0.compiler
+lSLF05#21%IDEActivityLogSection1@2#32"com.apple.dt.IDE.BuildLogSection100"Compile /Users/Leo/Projects/xcode/Hand/Frameworks/Three20/extThree20JSON/Vendors/JSON/SBJsonWriter.m755aa7713606b541^4084b8713606b541^---0#0#0#-19%DVTDocumentLocation2@108"file://localhost/Users/Leo/Projects/xcode/Hand/Frameworks/Three20/extThree20JSON/Vendors/JSON/SBJsonWriter.m0000000000000000^4615"CompileC ../../Build/extThree20JSON.build/Debug-iphonesimulator/extThree20JSON+SBJSON.build/Objects-normal/i386/SBJsonWriter.o Vendors/JSON/SBJsonWriter.m normal i386 objective-c com.apple.compilers.llvm.clang.1_0.compiler    cd /Users/Leo/Projects/xcode/Hand/Frameworks/Three20/extThree20JSON    setenv LANG en_US.US-ASCII    setenv PATH "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Applications/Xcode.app/Contents/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang -x objective-c -arch i386 -fmessage-length=0 -std=c99 -Wno-trigraphs -fpascal-strings -O0 -Wno-missing-field-initializers -Wno-missing-prototypes -Wreturn-type -Wno-implicit-atomic-properties -Wformat -Wno-missing-braces -Wparentheses -Wno-switch -Wunused-function -Wunused-label -Wno-unused-parameter -Wunused-variable -Wunused-value -Wno-uninitialized -Wno-unknown-pragmas -Wshadow -Wno-four-char-constants -Wno-sign-compare -Wno-shorten-64-to-32 -Wpointer-sign -Wnewline-eof -Wno-selector -Wno-strict-selector-match -Wno-undeclared-selector -Wno-deprecated-implementations -DEXTJSON_SBJSON -DDEBUG -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator5.0.sdk -fexceptions -fasm-blocks -Wprotocol -Wdeprecated-declarations -mmacosx-version-min=10.6 -g -Wno-conversion -Wno-sign-conversion -fobjc-abi-version=2 -fobjc-legacy-dispatch "-DIBOutlet=__attribute__((iboutlet))" "-DIBOutletCollection(ClassName)=__attribute__((iboutletcollection(ClassName)))" "-DIBAction=void)__attribute__((ibaction)" -D__IPHONE_OS_VERSION_MIN_REQUIRED=30000 -iquote /Users/Leo/Projects/xcode/Hand/Frameworks/Three20/extThree20JSON/../../Build/extThree20JSON.build/Debug-iphonesimulator/extThree20JSON+SBJSON.build/extThree20JSON+SBJSON-generated-files.hmap -I/Users/Leo/Projects/xcode/Hand/Frameworks/Three20/extThree20JSON/../../Build/extThree20JSON.build/Debug-iphonesimulator/extThree20JSON+SBJSON.build/extThree20JSON+SBJSON-own-target-headers.hmap -I/Users/Leo/Projects/xcode/Hand/Frameworks/Three20/extThree20JSON/../../Build/extThree20JSON.build/Debug-iphonesimulator/extThree20JSON+SBJSON.build/extThree20JSON+SBJSON-all-target-headers.hmap -iquote /Users/Leo/Projects/xcode/Hand/Frameworks/Three20/extThree20JSON/../../Build/extThree20JSON.build/Debug-iphonesimulator/extThree20JSON+SBJSON.build/extThree20JSON+SBJSON-project-headers.hmap -I/Users/Leo/Projects/xcode/Hand/Frameworks/Three20/extThree20JSON/../../Build/Products/Debug-iphonesimulator/include -I/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator5.0.sdk/usr/include -I/Users/Leo/Projects/xcode/Hand/Frameworks/Three20/extThree20JSON/../../Build/Products/Debug-iphonesimulator/../three20 -I/Users/Leo/Projects/xcode/Hand/Frameworks/Three20/extThree20JSON/../../Build/Products/Debug-iphonesimulator/../../three20 -I/Users/Leo/Projects/xcode/Hand/Frameworks/Three20/extThree20JSON/../../Build/Products/Debug-iphonesimulator/../../three20 -I/Users/Leo/Projects/xcode/Hand/Frameworks/Three20/extThree20JSON/../../Build/extThree20JSON.build/Debug-iphonesimulator/extThree20JSON+SBJSON.build/DerivedSources/i386 -I/Users/Leo/Projects/xcode/Hand/Frameworks/Three20/extThree20JSON/../../Build/extThree20JSON.build/Debug-iphonesimulator/extThree20JSON+SBJSON.build/DerivedSources -F/Users/Leo/Projects/xcode/Hand/Frameworks/Three20/extThree20JSON/../../Build/Products/Debug-iphonesimulator -F/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator5.0.sdk/Developer/Library/Frameworks -include /var/folders/ry/l3zgfjx90jl5cbvr9qr3mbpm0000gn/C/com.apple.Xcode.501/SharedPrecompiledHeaders/extThree20JSON+SBJSON_Prefix-evrsnywfsndieldlachkxpfexmjl/extThree20JSON+SBJSON_Prefix.pch -MMD -MT dependencies -MF /Users/Leo/Projects/xcode/Hand/Frameworks/Three20/extThree20JSON/../../Build/extThree20JSON.build/Debug-iphonesimulator/extThree20JSON+SBJSON.build/Objects-normal/i386/SBJsonWriter.d --serialize-diagnostics /Users/Leo/Projects/xcode/Hand/Frameworks/Three20/extThree20JSON/../../Build/extThree20JSON.build/Debug-iphonesimulator/extThree20JSON+SBJSON.build/Objects-normal/i386/SBJsonWriter.dia -c /Users/Leo/Projects/xcode/Hand/Frameworks/Three20/extThree20JSON/Vendors/JSON/SBJsonWriter.m -o /Users/Leo/Projects/xcode/Hand/Frameworks/Three20/extThree20JSON/../../Build/extThree20JSON.build/Debug-iphonesimulator/extThree20JSON+SBJSON.build/Objects-normal/i386/SBJsonWriter.o36"C9D00C29-E488-445E-A406-21311640D5E8-
+
+CCompileC ../../Build/extThree20JSON.build/Debug-iphonesimulator/extThree20JSON+SBJSON.build/Objects-normal/i386/TTErrorCodes.o /Users/Leo/Projects/xcode/Hand/Frameworks/Three20/extThree20JSON/Source/TTErrorCodes.m normal i386 objective-c com.apple.compilers.llvm.clang.1_0.compiler
+s352728689.681429
+e352728689.724097
+r1
+xCompileC
+x../../Build/extThree20JSON.build/Debug-iphonesimulator/extThree20JSON+SBJSON.build/Objects-normal/i386/TTErrorCodes.o
+x/Users/Leo/Projects/xcode/Hand/Frameworks/Three20/extThree20JSON/Source/TTErrorCodes.m
+xnormal
+xi386
+xobjective-c
+xcom.apple.compilers.llvm.clang.1_0.compiler
+lSLF05#21%IDEActivityLogSection1@2#32"com.apple.dt.IDE.BuildLogSection94"Compile /Users/Leo/Projects/xcode/Hand/Frameworks/Three20/extThree20JSON/Source/TTErrorCodes.mcdabae713606b541^8d5eb9713606b541^---0#0#0#-19%DVTDocumentLocation2@102"file://localhost/Users/Leo/Projects/xcode/Hand/Frameworks/Three20/extThree20JSON/Source/TTErrorCodes.m0000000000000000^4603"CompileC ../../Build/extThree20JSON.build/Debug-iphonesimulator/extThree20JSON+SBJSON.build/Objects-normal/i386/TTErrorCodes.o Source/TTErrorCodes.m normal i386 objective-c com.apple.compilers.llvm.clang.1_0.compiler    cd /Users/Leo/Projects/xcode/Hand/Frameworks/Three20/extThree20JSON    setenv LANG en_US.US-ASCII    setenv PATH "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Applications/Xcode.app/Contents/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang -x objective-c -arch i386 -fmessage-length=0 -std=c99 -Wno-trigraphs -fpascal-strings -O0 -Wno-missing-field-initializers -Wno-missing-prototypes -Wreturn-type -Wno-implicit-atomic-properties -Wformat -Wno-missing-braces -Wparentheses -Wno-switch -Wunused-function -Wunused-label -Wno-unused-parameter -Wunused-variable -Wunused-value -Wno-uninitialized -Wno-unknown-pragmas -Wshadow -Wno-four-char-constants -Wno-sign-compare -Wno-shorten-64-to-32 -Wpointer-sign -Wnewline-eof -Wno-selector -Wno-strict-selector-match -Wno-undeclared-selector -Wno-deprecated-implementations -DEXTJSON_SBJSON -DDEBUG -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator5.0.sdk -fexceptions -fasm-blocks -Wprotocol -Wdeprecated-declarations -mmacosx-version-min=10.6 -g -Wno-conversion -Wno-sign-conversion -fobjc-abi-version=2 -fobjc-legacy-dispatch "-DIBOutlet=__attribute__((iboutlet))" "-DIBOutletCollection(ClassName)=__attribute__((iboutletcollection(ClassName)))" "-DIBAction=void)__attribute__((ibaction)" -D__IPHONE_OS_VERSION_MIN_REQUIRED=30000 -iquote /Users/Leo/Projects/xcode/Hand/Frameworks/Three20/extThree20JSON/../../Build/extThree20JSON.build/Debug-iphonesimulator/extThree20JSON+SBJSON.build/extThree20JSON+SBJSON-generated-files.hmap -I/Users/Leo/Projects/xcode/Hand/Frameworks/Three20/extThree20JSON/../../Build/extThree20JSON.build/Debug-iphonesimulator/extThree20JSON+SBJSON.build/extThree20JSON+SBJSON-own-target-headers.hmap -I/Users/Leo/Projects/xcode/Hand/Frameworks/Three20/extThree20JSON/../../Build/extThree20JSON.build/Debug-iphonesimulator/extThree20JSON+SBJSON.build/extThree20JSON+SBJSON-all-target-headers.hmap -iquote /Users/Leo/Projects/xcode/Hand/Frameworks/Three20/extThree20JSON/../../Build/extThree20JSON.build/Debug-iphonesimulator/extThree20JSON+SBJSON.build/extThree20JSON+SBJSON-project-headers.hmap -I/Users/Leo/Projects/xcode/Hand/Frameworks/Three20/extThree20JSON/../../Build/Products/Debug-iphonesimulator/include -I/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator5.0.sdk/usr/include -I/Users/Leo/Projects/xcode/Hand/Frameworks/Three20/extThree20JSON/../../Build/Products/Debug-iphonesimulator/../three20 -I/Users/Leo/Projects/xcode/Hand/Frameworks/Three20/extThree20JSON/../../Build/Products/Debug-iphonesimulator/../../three20 -I/Users/Leo/Projects/xcode/Hand/Frameworks/Three20/extThree20JSON/../../Build/Products/Debug-iphonesimulator/../../three20 -I/Users/Leo/Projects/xcode/Hand/Frameworks/Three20/extThree20JSON/../../Build/extThree20JSON.build/Debug-iphonesimulator/extThree20JSON+SBJSON.build/DerivedSources/i386 -I/Users/Leo/Projects/xcode/Hand/Frameworks/Three20/extThree20JSON/../../Build/extThree20JSON.build/Debug-iphonesimulator/extThree20JSON+SBJSON.build/DerivedSources -F/Users/Leo/Projects/xcode/Hand/Frameworks/Three20/extThree20JSON/../../Build/Products/Debug-iphonesimulator -F/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator5.0.sdk/Developer/Library/Frameworks -include /var/folders/ry/l3zgfjx90jl5cbvr9qr3mbpm0000gn/C/com.apple.Xcode.501/SharedPrecompiledHeaders/extThree20JSON+SBJSON_Prefix-evrsnywfsndieldlachkxpfexmjl/extThree20JSON+SBJSON_Prefix.pch -MMD -MT dependencies -MF /Users/Leo/Projects/xcode/Hand/Frameworks/Three20/extThree20JSON/../../Build/extThree20JSON.build/Debug-iphonesimulator/extThree20JSON+SBJSON.build/Objects-normal/i386/TTErrorCodes.d --serialize-diagnostics /Users/Leo/Projects/xcode/Hand/Frameworks/Three20/extThree20JSON/../../Build/extThree20JSON.build/Debug-iphonesimulator/extThree20JSON+SBJSON.build/Objects-normal/i386/TTErrorCodes.dia -c /Users/Leo/Projects/xcode/Hand/Frameworks/Three20/extThree20JSON/Source/TTErrorCodes.m -o /Users/Leo/Projects/xcode/Hand/Frameworks/Three20/extThree20JSON/../../Build/extThree20JSON.build/Debug-iphonesimulator/extThree20JSON+SBJSON.build/Objects-normal/i386/TTErrorCodes.o36"19F044B2-B52A-4AE4-98A4-D0D3761293EB-
+
+CCompileC ../../Build/extThree20JSON.build/Debug-iphonesimulator/extThree20JSON+SBJSON.build/Objects-normal/i386/TTExtensionLoader.o /Users/Leo/Projects/xcode/Hand/Frameworks/Three20/extThree20JSON/Source/TTExtensionLoader.m normal i386 objective-c com.apple.compilers.llvm.clang.1_0.compiler
+s352728689.722126
+e352728689.880236
+r1
+xCompileC
+x../../Build/extThree20JSON.build/Debug-iphonesimulator/extThree20JSON+SBJSON.build/Objects-normal/i386/TTExtensionLoader.o
+x/Users/Leo/Projects/xcode/Hand/Frameworks/Three20/extThree20JSON/Source/TTExtensionLoader.m
+xnormal
+xi386
+xobjective-c
+xcom.apple.compilers.llvm.clang.1_0.compiler
+lSLF05#21%IDEActivityLogSection1@2#32"com.apple.dt.IDE.BuildLogSection99"Compile /Users/Leo/Projects/xcode/Hand/Frameworks/Three20/extThree20JSON/Source/TTExtensionLoader.mf90fb9713606b541^d597e1713606b541^---0#0#0#-19%DVTDocumentLocation2@107"file://localhost/Users/Leo/Projects/xcode/Hand/Frameworks/Three20/extThree20JSON/Source/TTExtensionLoader.m0000000000000000^4633"CompileC ../../Build/extThree20JSON.build/Debug-iphonesimulator/extThree20JSON+SBJSON.build/Objects-normal/i386/TTExtensionLoader.o Source/TTExtensionLoader.m normal i386 objective-c com.apple.compilers.llvm.clang.1_0.compiler    cd /Users/Leo/Projects/xcode/Hand/Frameworks/Three20/extThree20JSON    setenv LANG en_US.US-ASCII    setenv PATH "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Applications/Xcode.app/Contents/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang -x objective-c -arch i386 -fmessage-length=0 -std=c99 -Wno-trigraphs -fpascal-strings -O0 -Wno-missing-field-initializers -Wno-missing-prototypes -Wreturn-type -Wno-implicit-atomic-properties -Wformat -Wno-missing-braces -Wparentheses -Wno-switch -Wunused-function -Wunused-label -Wno-unused-parameter -Wunused-variable -Wunused-value -Wno-uninitialized -Wno-unknown-pragmas -Wshadow -Wno-four-char-constants -Wno-sign-compare -Wno-shorten-64-to-32 -Wpointer-sign -Wnewline-eof -Wno-selector -Wno-strict-selector-match -Wno-undeclared-selector -Wno-deprecated-implementations -DEXTJSON_SBJSON -DDEBUG -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator5.0.sdk -fexceptions -fasm-blocks -Wprotocol -Wdeprecated-declarations -mmacosx-version-min=10.6 -g -Wno-conversion -Wno-sign-conversion -fobjc-abi-version=2 -fobjc-legacy-dispatch "-DIBOutlet=__attribute__((iboutlet))" "-DIBOutletCollection(ClassName)=__attribute__((iboutletcollection(ClassName)))" "-DIBAction=void)__attribute__((ibaction)" -D__IPHONE_OS_VERSION_MIN_REQUIRED=30000 -iquote /Users/Leo/Projects/xcode/Hand/Frameworks/Three20/extThree20JSON/../../Build/extThree20JSON.build/Debug-iphonesimulator/extThree20JSON+SBJSON.build/extThree20JSON+SBJSON-generated-files.hmap -I/Users/Leo/Projects/xcode/Hand/Frameworks/Three20/extThree20JSON/../../Build/extThree20JSON.build/Debug-iphonesimulator/extThree20JSON+SBJSON.build/extThree20JSON+SBJSON-own-target-headers.hmap -I/Users/Leo/Projects/xcode/Hand/Frameworks/Three20/extThree20JSON/../../Build/extThree20JSON.build/Debug-iphonesimulator/extThree20JSON+SBJSON.build/extThree20JSON+SBJSON-all-target-headers.hmap -iquote /Users/Leo/Projects/xcode/Hand/Frameworks/Three20/extThree20JSON/../../Build/extThree20JSON.build/Debug-iphonesimulator/extThree20JSON+SBJSON.build/extThree20JSON+SBJSON-project-headers.hmap -I/Users/Leo/Projects/xcode/Hand/Frameworks/Three20/extThree20JSON/../../Build/Products/Debug-iphonesimulator/include -I/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator5.0.sdk/usr/include -I/Users/Leo/Projects/xcode/Hand/Frameworks/Three20/extThree20JSON/../../Build/Products/Debug-iphonesimulator/../three20 -I/Users/Leo/Projects/xcode/Hand/Frameworks/Three20/extThree20JSON/../../Build/Products/Debug-iphonesimulator/../../three20 -I/Users/Leo/Projects/xcode/Hand/Frameworks/Three20/extThree20JSON/../../Build/Products/Debug-iphonesimulator/../../three20 -I/Users/Leo/Projects/xcode/Hand/Frameworks/Three20/extThree20JSON/../../Build/extThree20JSON.build/Debug-iphonesimulator/extThree20JSON+SBJSON.build/DerivedSources/i386 -I/Users/Leo/Projects/xcode/Hand/Frameworks/Three20/extThree20JSON/../../Build/extThree20JSON.build/Debug-iphonesimulator/extThree20JSON+SBJSON.build/DerivedSources -F/Users/Leo/Projects/xcode/Hand/Frameworks/Three20/extThree20JSON/../../Build/Products/Debug-iphonesimulator -F/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator5.0.sdk/Developer/Library/Frameworks -include /var/folders/ry/l3zgfjx90jl5cbvr9qr3mbpm0000gn/C/com.apple.Xcode.501/SharedPrecompiledHeaders/extThree20JSON+SBJSON_Prefix-evrsnywfsndieldlachkxpfexmjl/extThree20JSON+SBJSON_Prefix.pch -MMD -MT dependencies -MF /Users/Leo/Projects/xcode/Hand/Frameworks/Three20/extThree20JSON/../../Build/extThree20JSON.build/Debug-iphonesimulator/extThree20JSON+SBJSON.build/Objects-normal/i386/TTExtensionLoader.d --serialize-diagnostics /Users/Leo/Projects/xcode/Hand/Frameworks/Three20/extThree20JSON/../../Build/extThree20JSON.build/Debug-iphonesimulator/extThree20JSON+SBJSON.build/Objects-normal/i386/TTExtensionLoader.dia -c /Users/Leo/Projects/xcode/Hand/Frameworks/Three20/extThree20JSON/Source/TTExtensionLoader.m -o /Users/Leo/Projects/xcode/Hand/Frameworks/Three20/extThree20JSON/../../Build/extThree20JSON.build/Debug-iphonesimulator/extThree20JSON+SBJSON.build/Objects-normal/i386/TTExtensionLoader.o36"7A2DE182-D1A9-4560-A245-0EF0C16396BB-
+
+CCompileC ../../Build/extThree20JSON.build/Debug-iphonesimulator/extThree20JSON+SBJSON.build/Objects-normal/i386/TTURLJSONResponse.o /Users/Leo/Projects/xcode/Hand/Frameworks/Three20/extThree20JSON/Source/TTURLJSONResponse.m normal i386 objective-c com.apple.compilers.llvm.clang.1_0.compiler
+s352728689.076990
+e352728689.577579
+r1
+xCompileC
+x../../Build/extThree20JSON.build/Debug-iphonesimulator/extThree20JSON+SBJSON.build/Objects-normal/i386/TTURLJSONResponse.o
+x/Users/Leo/Projects/xcode/Hand/Frameworks/Three20/extThree20JSON/Source/TTURLJSONResponse.m
+xnormal
+xi386
+xobjective-c
+xcom.apple.compilers.llvm.clang.1_0.compiler
+lSLF05#21%IDEActivityLogSection1@2#32"com.apple.dt.IDE.BuildLogSection99"Compile /Users/Leo/Projects/xcode/Hand/Frameworks/Three20/extThree20JSON/Source/TTURLJSONResponse.mcee013713606b541^38dc93713606b541^---0#0#0#-19%DVTDocumentLocation2@107"file://localhost/Users/Leo/Projects/xcode/Hand/Frameworks/Three20/extThree20JSON/Source/TTURLJSONResponse.m0000000000000000^4633"CompileC ../../Build/extThree20JSON.build/Debug-iphonesimulator/extThree20JSON+SBJSON.build/Objects-normal/i386/TTURLJSONResponse.o Source/TTURLJSONResponse.m normal i386 objective-c com.apple.compilers.llvm.clang.1_0.compiler    cd /Users/Leo/Projects/xcode/Hand/Frameworks/Three20/extThree20JSON    setenv LANG en_US.US-ASCII    setenv PATH "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Applications/Xcode.app/Contents/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang -x objective-c -arch i386 -fmessage-length=0 -std=c99 -Wno-trigraphs -fpascal-strings -O0 -Wno-missing-field-initializers -Wno-missing-prototypes -Wreturn-type -Wno-implicit-atomic-properties -Wformat -Wno-missing-braces -Wparentheses -Wno-switch -Wunused-function -Wunused-label -Wno-unused-parameter -Wunused-variable -Wunused-value -Wno-uninitialized -Wno-unknown-pragmas -Wshadow -Wno-four-char-constants -Wno-sign-compare -Wno-shorten-64-to-32 -Wpointer-sign -Wnewline-eof -Wno-selector -Wno-strict-selector-match -Wno-undeclared-selector -Wno-deprecated-implementations -DEXTJSON_SBJSON -DDEBUG -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator5.0.sdk -fexceptions -fasm-blocks -Wprotocol -Wdeprecated-declarations -mmacosx-version-min=10.6 -g -Wno-conversion -Wno-sign-conversion -fobjc-abi-version=2 -fobjc-legacy-dispatch "-DIBOutlet=__attribute__((iboutlet))" "-DIBOutletCollection(ClassName)=__attribute__((iboutletcollection(ClassName)))" "-DIBAction=void)__attribute__((ibaction)" -D__IPHONE_OS_VERSION_MIN_REQUIRED=30000 -iquote /Users/Leo/Projects/xcode/Hand/Frameworks/Three20/extThree20JSON/../../Build/extThree20JSON.build/Debug-iphonesimulator/extThree20JSON+SBJSON.build/extThree20JSON+SBJSON-generated-files.hmap -I/Users/Leo/Projects/xcode/Hand/Frameworks/Three20/extThree20JSON/../../Build/extThree20JSON.build/Debug-iphonesimulator/extThree20JSON+SBJSON.build/extThree20JSON+SBJSON-own-target-headers.hmap -I/Users/Leo/Projects/xcode/Hand/Frameworks/Three20/extThree20JSON/../../Build/extThree20JSON.build/Debug-iphonesimulator/extThree20JSON+SBJSON.build/extThree20JSON+SBJSON-all-target-headers.hmap -iquote /Users/Leo/Projects/xcode/Hand/Frameworks/Three20/extThree20JSON/../../Build/extThree20JSON.build/Debug-iphonesimulator/extThree20JSON+SBJSON.build/extThree20JSON+SBJSON-project-headers.hmap -I/Users/Leo/Projects/xcode/Hand/Frameworks/Three20/extThree20JSON/../../Build/Products/Debug-iphonesimulator/include -I/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator5.0.sdk/usr/include -I/Users/Leo/Projects/xcode/Hand/Frameworks/Three20/extThree20JSON/../../Build/Products/Debug-iphonesimulator/../three20 -I/Users/Leo/Projects/xcode/Hand/Frameworks/Three20/extThree20JSON/../../Build/Products/Debug-iphonesimulator/../../three20 -I/Users/Leo/Projects/xcode/Hand/Frameworks/Three20/extThree20JSON/../../Build/Products/Debug-iphonesimulator/../../three20 -I/Users/Leo/Projects/xcode/Hand/Frameworks/Three20/extThree20JSON/../../Build/extThree20JSON.build/Debug-iphonesimulator/extThree20JSON+SBJSON.build/DerivedSources/i386 -I/Users/Leo/Projects/xcode/Hand/Frameworks/Three20/extThree20JSON/../../Build/extThree20JSON.build/Debug-iphonesimulator/extThree20JSON+SBJSON.build/DerivedSources -F/Users/Leo/Projects/xcode/Hand/Frameworks/Three20/extThree20JSON/../../Build/Products/Debug-iphonesimulator -F/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator5.0.sdk/Developer/Library/Frameworks -include /var/folders/ry/l3zgfjx90jl5cbvr9qr3mbpm0000gn/C/com.apple.Xcode.501/SharedPrecompiledHeaders/extThree20JSON+SBJSON_Prefix-evrsnywfsndieldlachkxpfexmjl/extThree20JSON+SBJSON_Prefix.pch -MMD -MT dependencies -MF /Users/Leo/Projects/xcode/Hand/Frameworks/Three20/extThree20JSON/../../Build/extThree20JSON.build/Debug-iphonesimulator/extThree20JSON+SBJSON.build/Objects-normal/i386/TTURLJSONResponse.d --serialize-diagnostics /Users/Leo/Projects/xcode/Hand/Frameworks/Three20/extThree20JSON/../../Build/extThree20JSON.build/Debug-iphonesimulator/extThree20JSON+SBJSON.build/Objects-normal/i386/TTURLJSONResponse.dia -c /Users/Leo/Projects/xcode/Hand/Frameworks/Three20/extThree20JSON/Source/TTURLJSONResponse.m -o /Users/Leo/Projects/xcode/Hand/Frameworks/Three20/extThree20JSON/../../Build/extThree20JSON.build/Debug-iphonesimulator/extThree20JSON+SBJSON.build/Objects-normal/i386/TTURLJSONResponse.o36"3B688A7C-27C3-4331-9B5E-3850A457E6F5-
+
+CCpHeader Headers/TTErrorCodes.h ../../Build/Products/Debug-iphonesimulator/../three20/extThree20JSON/TTErrorCodes.h
+s352728688.778010
+e352728688.781464
+r1
+xCpHeader
+xHeaders/TTErrorCodes.h
+x../../Build/Products/Debug-iphonesimulator/../three20/extThree20JSON/TTErrorCodes.h
+lSLF05#21%IDEActivityLogSection1@2#32"com.apple.dt.IDE.BuildLogSection88"Copy ../../Build/Products/Debug-iphonesimulator/../three20/extThree20JSON/TTErrorCodes.hf149c7703606b541^0612c8703606b541^---0#0#0#-19%DVTDocumentLocation2@164"file://localhost/Users/Leo/Projects/xcode/Hand/Frameworks/Three20/extThree20JSON/../../Build/Products/Debug-iphonesimulator/../three20/extThree20JSON/TTErrorCodes.h000000000080d041^822"CpHeader Headers/TTErrorCodes.h ../../Build/Products/Debug-iphonesimulator/../three20/extThree20JSON/TTErrorCodes.h    cd /Users/Leo/Projects/xcode/Hand/Frameworks/Three20/extThree20JSON    setenv PATH "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Applications/Xcode.app/Contents/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    builtin-copy -exclude .DS_Store -exclude CVS -exclude .svn -exclude .git -exclude .hg -resolve-src-symlinks -strip-tool /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/strip /Users/Leo/Projects/xcode/Hand/Frameworks/Three20/extThree20JSON/Headers/TTErrorCodes.h /Users/Leo/Projects/xcode/Hand/Frameworks/Three20/extThree20JSON/../../Build/Products/Debug-iphonesimulator/../three20/extThree20JSON36"DA3DADDB-E232-48F8-9953-B9749E336DD0-
+
+CCpHeader Headers/TTExtensionLoader.h ../../Build/Products/Debug-iphonesimulator/../three20/extThree20JSON/TTExtensionLoader.h
+s352728688.779884
+e352728688.782899
+r1
+xCpHeader
+xHeaders/TTExtensionLoader.h
+x../../Build/Products/Debug-iphonesimulator/../three20/extThree20JSON/TTExtensionLoader.h
+lSLF05#21%IDEActivityLogSection1@2#32"com.apple.dt.IDE.BuildLogSection93"Copy ../../Build/Products/Debug-iphonesimulator/../three20/extThree20JSON/TTExtensionLoader.ha2b8c7703606b541^de8ec8703606b541^---0#0#0#-19%DVTDocumentLocation2@169"file://localhost/Users/Leo/Projects/xcode/Hand/Frameworks/Three20/extThree20JSON/../../Build/Products/Debug-iphonesimulator/../three20/extThree20JSON/TTExtensionLoader.h000000000080d041^837"CpHeader Headers/TTExtensionLoader.h ../../Build/Products/Debug-iphonesimulator/../three20/extThree20JSON/TTExtensionLoader.h    cd /Users/Leo/Projects/xcode/Hand/Frameworks/Three20/extThree20JSON    setenv PATH "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Applications/Xcode.app/Contents/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    builtin-copy -exclude .DS_Store -exclude CVS -exclude .svn -exclude .git -exclude .hg -resolve-src-symlinks -strip-tool /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/strip /Users/Leo/Projects/xcode/Hand/Frameworks/Three20/extThree20JSON/Headers/TTExtensionLoader.h /Users/Leo/Projects/xcode/Hand/Frameworks/Three20/extThree20JSON/../../Build/Products/Debug-iphonesimulator/../three20/extThree20JSON36"DD0B292A-69C5-4046-B126-39B3904FC886-
+
+CCpHeader Headers/TTURLJSONResponse.h ../../Build/Products/Debug-iphonesimulator/../three20/extThree20JSON/TTURLJSONResponse.h
+s352728688.685009
+e352728688.727001
+r1
+xCpHeader
+xHeaders/TTURLJSONResponse.h
+x../../Build/Products/Debug-iphonesimulator/../three20/extThree20JSON/TTURLJSONResponse.h
+lSLF05#21%IDEActivityLogSection1@2#32"com.apple.dt.IDE.BuildLogSection93"Copy ../../Build/Products/Debug-iphonesimulator/../three20/extThree20JSON/TTURLJSONResponse.h1973af703606b541^1040ba703606b541^---0#0#0#-19%DVTDocumentLocation2@169"file://localhost/Users/Leo/Projects/xcode/Hand/Frameworks/Three20/extThree20JSON/../../Build/Products/Debug-iphonesimulator/../three20/extThree20JSON/TTURLJSONResponse.h000000000080d041^837"CpHeader Headers/TTURLJSONResponse.h ../../Build/Products/Debug-iphonesimulator/../three20/extThree20JSON/TTURLJSONResponse.h    cd /Users/Leo/Projects/xcode/Hand/Frameworks/Three20/extThree20JSON    setenv PATH "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Applications/Xcode.app/Contents/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    builtin-copy -exclude .DS_Store -exclude CVS -exclude .svn -exclude .git -exclude .hg -resolve-src-symlinks -strip-tool /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/strip /Users/Leo/Projects/xcode/Hand/Frameworks/Three20/extThree20JSON/Headers/TTURLJSONResponse.h /Users/Leo/Projects/xcode/Hand/Frameworks/Three20/extThree20JSON/../../Build/Products/Debug-iphonesimulator/../three20/extThree20JSON36"206B4A1C-716A-4A14-B2C5-A693C38F6770-
+
+CCpHeader Headers/extThree20JSON.h ../../Build/Products/Debug-iphonesimulator/../three20/extThree20JSON/extThree20JSON.h
+s352728688.765280
+e352728688.778675
+r1
+xCpHeader
+xHeaders/extThree20JSON.h
+x../../Build/Products/Debug-iphonesimulator/../three20/extThree20JSON/extThree20JSON.h
+lSLF05#21%IDEActivityLogSection1@2#32"com.apple.dt.IDE.BuildLogSection90"Copy ../../Build/Products/Debug-iphonesimulator/../three20/extThree20JSON/extThree20JSON.h4b02c4703606b541^cc5dc7703606b541^---0#0#0#-19%DVTDocumentLocation2@166"file://localhost/Users/Leo/Projects/xcode/Hand/Frameworks/Three20/extThree20JSON/../../Build/Products/Debug-iphonesimulator/../three20/extThree20JSON/extThree20JSON.h000000000080d041^828"CpHeader Headers/extThree20JSON.h ../../Build/Products/Debug-iphonesimulator/../three20/extThree20JSON/extThree20JSON.h    cd /Users/Leo/Projects/xcode/Hand/Frameworks/Three20/extThree20JSON    setenv PATH "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Applications/Xcode.app/Contents/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    builtin-copy -exclude .DS_Store -exclude CVS -exclude .svn -exclude .git -exclude .hg -resolve-src-symlinks -strip-tool /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/strip /Users/Leo/Projects/xcode/Hand/Frameworks/Three20/extThree20JSON/Headers/extThree20JSON.h /Users/Leo/Projects/xcode/Hand/Frameworks/Three20/extThree20JSON/../../Build/Products/Debug-iphonesimulator/../three20/extThree20JSON36"6887F654-100F-4662-AD67-503DA6DB9D8F-
+
+CCpHeader Vendors/JSON/NSObject+SBJSON.h ../../Build/Products/Debug-iphonesimulator/../three20/extThree20JSON/NSObject+SBJSON.h
+s352728688.687138
+e352728688.726742
+r1
+xCpHeader
+xVendors/JSON/NSObject+SBJSON.h
+x../../Build/Products/Debug-iphonesimulator/../three20/extThree20JSON/NSObject+SBJSON.h
+lSLF05#21%IDEActivityLogSection1@2#32"com.apple.dt.IDE.BuildLogSection91"Copy ../../Build/Products/Debug-iphonesimulator/../three20/extThree20JSON/NSObject+SBJSON.heb00b0703606b541^2e39ba703606b541^---0#0#0#-19%DVTDocumentLocation2@167"file://localhost/Users/Leo/Projects/xcode/Hand/Frameworks/Three20/extThree20JSON/../../Build/Products/Debug-iphonesimulator/../three20/extThree20JSON/NSObject+SBJSON.h000000000080d041^841"CpHeader Vendors/JSON/NSObject+SBJSON.h ../../Build/Products/Debug-iphonesimulator/../three20/extThree20JSON/NSObject+SBJSON.h    cd /Users/Leo/Projects/xcode/Hand/Frameworks/Three20/extThree20JSON    setenv PATH "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Applications/Xcode.app/Contents/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    builtin-copy -exclude .DS_Store -exclude CVS -exclude .svn -exclude .git -exclude .hg -resolve-src-symlinks -strip-tool /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/strip /Users/Leo/Projects/xcode/Hand/Frameworks/Three20/extThree20JSON/Vendors/JSON/NSObject+SBJSON.h /Users/Leo/Projects/xcode/Hand/Frameworks/Three20/extThree20JSON/../../Build/Products/Debug-iphonesimulator/../three20/extThree20JSON36"FFA41E81-7101-4D3A-A68B-12219ACFBF71-
+
+CCpHeader Vendors/JSON/NSString+SBJSON.h ../../Build/Products/Debug-iphonesimulator/../three20/extThree20JSON/NSString+SBJSON.h
+s352728688.930369
+e352728688.933282
+r1
+xCpHeader
+xVendors/JSON/NSString+SBJSON.h
+x../../Build/Products/Debug-iphonesimulator/../three20/extThree20JSON/NSString+SBJSON.h
+lSLF05#21%IDEActivityLogSection1@2#32"com.apple.dt.IDE.BuildLogSection91"Copy ../../Build/Products/Debug-iphonesimulator/../three20/extThree20JSON/NSString+SBJSON.h0b41ee703606b541^e6e7ee703606b541^---0#0#0#-19%DVTDocumentLocation2@167"file://localhost/Users/Leo/Projects/xcode/Hand/Frameworks/Three20/extThree20JSON/../../Build/Products/Debug-iphonesimulator/../three20/extThree20JSON/NSString+SBJSON.h000000000080d041^841"CpHeader Vendors/JSON/NSString+SBJSON.h ../../Build/Products/Debug-iphonesimulator/../three20/extThree20JSON/NSString+SBJSON.h    cd /Users/Leo/Projects/xcode/Hand/Frameworks/Three20/extThree20JSON    setenv PATH "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Applications/Xcode.app/Contents/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    builtin-copy -exclude .DS_Store -exclude CVS -exclude .svn -exclude .git -exclude .hg -resolve-src-symlinks -strip-tool /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/strip /Users/Leo/Projects/xcode/Hand/Frameworks/Three20/extThree20JSON/Vendors/JSON/NSString+SBJSON.h /Users/Leo/Projects/xcode/Hand/Frameworks/Three20/extThree20JSON/../../Build/Products/Debug-iphonesimulator/../three20/extThree20JSON36"173E0F86-6698-404E-A76A-3BF4C13A191A-
+
+CCpHeader Vendors/JSON/SBJson.h ../../Build/Products/Debug-iphonesimulator/../three20/extThree20JSON/SBJson.h
+s352728688.930544
+e352728688.935028
+r1
+xCpHeader
+xVendors/JSON/SBJson.h
+x../../Build/Products/Debug-iphonesimulator/../three20/extThree20JSON/SBJson.h
+lSLF05#21%IDEActivityLogSection1@2#32"com.apple.dt.IDE.BuildLogSection82"Copy ../../Build/Products/Debug-iphonesimulator/../three20/extThree20JSON/SBJson.h5647ee703606b541^bf2aef703606b541^---0#0#0#-19%DVTDocumentLocation2@158"file://localhost/Users/Leo/Projects/xcode/Hand/Frameworks/Three20/extThree20JSON/../../Build/Products/Debug-iphonesimulator/../three20/extThree20JSON/SBJson.h000000000080d041^814"CpHeader Vendors/JSON/SBJson.h ../../Build/Products/Debug-iphonesimulator/../three20/extThree20JSON/SBJson.h    cd /Users/Leo/Projects/xcode/Hand/Frameworks/Three20/extThree20JSON    setenv PATH "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Applications/Xcode.app/Contents/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    builtin-copy -exclude .DS_Store -exclude CVS -exclude .svn -exclude .git -exclude .hg -resolve-src-symlinks -strip-tool /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/strip /Users/Leo/Projects/xcode/Hand/Frameworks/Three20/extThree20JSON/Vendors/JSON/SBJson.h /Users/Leo/Projects/xcode/Hand/Frameworks/Three20/extThree20JSON/../../Build/Products/Debug-iphonesimulator/../three20/extThree20JSON36"A26C2009-4487-47A2-91DC-20BA73AB989D-
+
+CCpHeader Vendors/JSON/SBJsonParser.h ../../Build/Products/Debug-iphonesimulator/../three20/extThree20JSON/SBJsonParser.h
+s352728688.730844
+e352728688.735316
+r1
+xCpHeader
+xVendors/JSON/SBJsonParser.h
+x../../Build/Products/Debug-iphonesimulator/../three20/extThree20JSON/SBJsonParser.h
+lSLF05#21%IDEActivityLogSection1@2#32"com.apple.dt.IDE.BuildLogSection88"Copy ../../Build/Products/Debug-iphonesimulator/../three20/extThree20JSON/SBJsonParser.h522cbb703606b541^76a6bc703606b541^---0#0#0#-19%DVTDocumentLocation2@164"file://localhost/Users/Leo/Projects/xcode/Hand/Frameworks/Three20/extThree20JSON/../../Build/Products/Debug-iphonesimulator/../three20/extThree20JSON/SBJsonParser.h000000000080d041^832"CpHeader Vendors/JSON/SBJsonParser.h ../../Build/Products/Debug-iphonesimulator/../three20/extThree20JSON/SBJsonParser.h    cd /Users/Leo/Projects/xcode/Hand/Frameworks/Three20/extThree20JSON    setenv PATH "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Applications/Xcode.app/Contents/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    builtin-copy -exclude .DS_Store -exclude CVS -exclude .svn -exclude .git -exclude .hg -resolve-src-symlinks -strip-tool /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/strip /Users/Leo/Projects/xcode/Hand/Frameworks/Three20/extThree20JSON/Vendors/JSON/SBJsonParser.h /Users/Leo/Projects/xcode/Hand/Frameworks/Three20/extThree20JSON/../../Build/Products/Debug-iphonesimulator/../three20/extThree20JSON36"B53CBC4A-3BED-4F60-A66E-B885153705DD-
+
+CCpHeader Vendors/JSON/SBJsonStreamParser.h ../../Build/Products/Debug-iphonesimulator/../three20/extThree20JSON/SBJsonStreamParser.h
+s352728688.882883
+e352728688.929256
+r1
+xCpHeader
+xVendors/JSON/SBJsonStreamParser.h
+x../../Build/Products/Debug-iphonesimulator/../three20/extThree20JSON/SBJsonStreamParser.h
+lSLF05#21%IDEActivityLogSection1@2#32"com.apple.dt.IDE.BuildLogSection94"Copy ../../Build/Products/Debug-iphonesimulator/../three20/extThree20JSON/SBJsonStreamParser.h7b14e2703606b541^4be9ed703606b541^---0#0#0#-19%DVTDocumentLocation2@170"file://localhost/Users/Leo/Projects/xcode/Hand/Frameworks/Three20/extThree20JSON/../../Build/Products/Debug-iphonesimulator/../three20/extThree20JSON/SBJsonStreamParser.h000000000080d041^850"CpHeader Vendors/JSON/SBJsonStreamParser.h ../../Build/Products/Debug-iphonesimulator/../three20/extThree20JSON/SBJsonStreamParser.h    cd /Users/Leo/Projects/xcode/Hand/Frameworks/Three20/extThree20JSON    setenv PATH "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Applications/Xcode.app/Contents/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    builtin-copy -exclude .DS_Store -exclude CVS -exclude .svn -exclude .git -exclude .hg -resolve-src-symlinks -strip-tool /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/strip /Users/Leo/Projects/xcode/Hand/Frameworks/Three20/extThree20JSON/Vendors/JSON/SBJsonStreamParser.h /Users/Leo/Projects/xcode/Hand/Frameworks/Three20/extThree20JSON/../../Build/Products/Debug-iphonesimulator/../three20/extThree20JSON36"8903A21E-B1F5-41AE-9C90-3C6AA8060FA6-
+
+CCpHeader Vendors/JSON/SBJsonStreamParserAccumulator.h ../../Build/Products/Debug-iphonesimulator/../three20/extThree20JSON/SBJsonStreamParserAccumulator.h
+s352728688.934546
+e352728688.940172
+r1
+xCpHeader
+xVendors/JSON/SBJsonStreamParserAccumulator.h
+x../../Build/Products/Debug-iphonesimulator/../three20/extThree20JSON/SBJsonStreamParserAccumulator.h
+lSLF05#21%IDEActivityLogSection1@2#32"com.apple.dt.IDE.BuildLogSection105"Copy ../../Build/Products/Debug-iphonesimulator/../three20/extThree20JSON/SBJsonStreamParserAccumulator.ha852ef703606b541^57b5f0703606b541^---0#0#0#-19%DVTDocumentLocation2@181"file://localhost/Users/Leo/Projects/xcode/Hand/Frameworks/Three20/extThree20JSON/../../Build/Products/Debug-iphonesimulator/../three20/extThree20JSON/SBJsonStreamParserAccumulator.h000000000080d041^883"CpHeader Vendors/JSON/SBJsonStreamParserAccumulator.h ../../Build/Products/Debug-iphonesimulator/../three20/extThree20JSON/SBJsonStreamParserAccumulator.h    cd /Users/Leo/Projects/xcode/Hand/Frameworks/Three20/extThree20JSON    setenv PATH "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Applications/Xcode.app/Contents/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    builtin-copy -exclude .DS_Store -exclude CVS -exclude .svn -exclude .git -exclude .hg -resolve-src-symlinks -strip-tool /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/strip /Users/Leo/Projects/xcode/Hand/Frameworks/Three20/extThree20JSON/Vendors/JSON/SBJsonStreamParserAccumulator.h /Users/Leo/Projects/xcode/Hand/Frameworks/Three20/extThree20JSON/../../Build/Products/Debug-iphonesimulator/../three20/extThree20JSON36"B18B20FA-3BC1-48EC-99B3-B5C9BB3E60EE-
+
+CCpHeader Vendors/JSON/SBJsonStreamParserAdapter.h ../../Build/Products/Debug-iphonesimulator/../three20/extThree20JSON/SBJsonStreamParserAdapter.h
+s352728688.881889
+e352728688.929103
+r1
+xCpHeader
+xVendors/JSON/SBJsonStreamParserAdapter.h
+x../../Build/Products/Debug-iphonesimulator/../three20/extThree20JSON/SBJsonStreamParserAdapter.h
+lSLF05#21%IDEActivityLogSection1@2#32"com.apple.dt.IDE.BuildLogSection101"Copy ../../Build/Products/Debug-iphonesimulator/../three20/extThree20JSON/SBJsonStreamParserAdapter.h88d7e1703606b541^65a5ed703606b541^---0#0#0#-19%DVTDocumentLocation2@177"file://localhost/Users/Leo/Projects/xcode/Hand/Frameworks/Three20/extThree20JSON/../../Build/Products/Debug-iphonesimulator/../three20/extThree20JSON/SBJsonStreamParserAdapter.h000000000080d041^871"CpHeader Vendors/JSON/SBJsonStreamParserAdapter.h ../../Build/Products/Debug-iphonesimulator/../three20/extThree20JSON/SBJsonStreamParserAdapter.h    cd /Users/Leo/Projects/xcode/Hand/Frameworks/Three20/extThree20JSON    setenv PATH "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Applications/Xcode.app/Contents/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    builtin-copy -exclude .DS_Store -exclude CVS -exclude .svn -exclude .git -exclude .hg -resolve-src-symlinks -strip-tool /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/strip /Users/Leo/Projects/xcode/Hand/Frameworks/Three20/extThree20JSON/Vendors/JSON/SBJsonStreamParserAdapter.h /Users/Leo/Projects/xcode/Hand/Frameworks/Three20/extThree20JSON/../../Build/Products/Debug-iphonesimulator/../three20/extThree20JSON36"26E209D6-EA4B-47A6-AB7B-BCC21CC71A26-
+
+CCpHeader Vendors/JSON/SBJsonStreamParserState.h ../../Build/Products/Debug-iphonesimulator/../three20/extThree20JSON/SBJsonStreamParserState.h
+s352728688.866725
+e352728688.881216
+r1
+xCpHeader
+xVendors/JSON/SBJsonStreamParserState.h
+x../../Build/Products/Debug-iphonesimulator/../three20/extThree20JSON/SBJsonStreamParserState.h
+lSLF05#21%IDEActivityLogSection1@2#32"com.apple.dt.IDE.BuildLogSection99"Copy ../../Build/Products/Debug-iphonesimulator/../three20/extThree20JSON/SBJsonStreamParserState.he4f8dd703606b541^b1a3e1703606b541^---0#0#0#-19%DVTDocumentLocation2@175"file://localhost/Users/Leo/Projects/xcode/Hand/Frameworks/Three20/extThree20JSON/../../Build/Products/Debug-iphonesimulator/../three20/extThree20JSON/SBJsonStreamParserState.h000000000080d041^865"CpHeader Vendors/JSON/SBJsonStreamParserState.h ../../Build/Products/Debug-iphonesimulator/../three20/extThree20JSON/SBJsonStreamParserState.h    cd /Users/Leo/Projects/xcode/Hand/Frameworks/Three20/extThree20JSON    setenv PATH "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Applications/Xcode.app/Contents/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    builtin-copy -exclude .DS_Store -exclude CVS -exclude .svn -exclude .git -exclude .hg -resolve-src-symlinks -strip-tool /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/strip /Users/Leo/Projects/xcode/Hand/Frameworks/Three20/extThree20JSON/Vendors/JSON/SBJsonStreamParserState.h /Users/Leo/Projects/xcode/Hand/Frameworks/Three20/extThree20JSON/../../Build/Products/Debug-iphonesimulator/../three20/extThree20JSON36"B893846B-F7FC-498C-BFA5-90F78E3964B0-
+
+CCpHeader Vendors/JSON/SBJsonStreamWriter.h ../../Build/Products/Debug-iphonesimulator/../three20/extThree20JSON/SBJsonStreamWriter.h
+s352728688.857215
+e352728688.880716
+r1
+xCpHeader
+xVendors/JSON/SBJsonStreamWriter.h
+x../../Build/Products/Debug-iphonesimulator/../three20/extThree20JSON/SBJsonStreamWriter.h
+lSLF05#21%IDEActivityLogSection1@2#32"com.apple.dt.IDE.BuildLogSection94"Copy ../../Build/Products/Debug-iphonesimulator/../three20/extThree20JSON/SBJsonStreamWriter.h7e8adb703606b541^2979e1703606b541^---0#0#0#-19%DVTDocumentLocation2@170"file://localhost/Users/Leo/Projects/xcode/Hand/Frameworks/Three20/extThree20JSON/../../Build/Products/Debug-iphonesimulator/../three20/extThree20JSON/SBJsonStreamWriter.h000000000080d041^850"CpHeader Vendors/JSON/SBJsonStreamWriter.h ../../Build/Products/Debug-iphonesimulator/../three20/extThree20JSON/SBJsonStreamWriter.h    cd /Users/Leo/Projects/xcode/Hand/Frameworks/Three20/extThree20JSON    setenv PATH "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Applications/Xcode.app/Contents/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    builtin-copy -exclude .DS_Store -exclude CVS -exclude .svn -exclude .git -exclude .hg -resolve-src-symlinks -strip-tool /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/strip /Users/Leo/Projects/xcode/Hand/Frameworks/Three20/extThree20JSON/Vendors/JSON/SBJsonStreamWriter.h /Users/Leo/Projects/xcode/Hand/Frameworks/Three20/extThree20JSON/../../Build/Products/Debug-iphonesimulator/../three20/extThree20JSON36"3A5CD2FA-FD98-435F-9110-6C4C5E5AEEC8-
+
+CCpHeader Vendors/JSON/SBJsonStreamWriterAccumulator.h ../../Build/Products/Debug-iphonesimulator/../three20/extThree20JSON/SBJsonStreamWriterAccumulator.h
+s352728688.936263
+e352728688.939785
+r1
+xCpHeader
+xVendors/JSON/SBJsonStreamWriterAccumulator.h
+x../../Build/Products/Debug-iphonesimulator/../three20/extThree20JSON/SBJsonStreamWriterAccumulator.h
+lSLF05#21%IDEActivityLogSection1@2#32"com.apple.dt.IDE.BuildLogSection105"Copy ../../Build/Products/Debug-iphonesimulator/../three20/extThree20JSON/SBJsonStreamWriterAccumulator.h15c5ef703606b541^959ff0703606b541^---0#0#0#-19%DVTDocumentLocation2@181"file://localhost/Users/Leo/Projects/xcode/Hand/Frameworks/Three20/extThree20JSON/../../Build/Products/Debug-iphonesimulator/../three20/extThree20JSON/SBJsonStreamWriterAccumulator.h000000000080d041^883"CpHeader Vendors/JSON/SBJsonStreamWriterAccumulator.h ../../Build/Products/Debug-iphonesimulator/../three20/extThree20JSON/SBJsonStreamWriterAccumulator.h    cd /Users/Leo/Projects/xcode/Hand/Frameworks/Three20/extThree20JSON    setenv PATH "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Applications/Xcode.app/Contents/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    builtin-copy -exclude .DS_Store -exclude CVS -exclude .svn -exclude .git -exclude .hg -resolve-src-symlinks -strip-tool /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/strip /Users/Leo/Projects/xcode/Hand/Frameworks/Three20/extThree20JSON/Vendors/JSON/SBJsonStreamWriterAccumulator.h /Users/Leo/Projects/xcode/Hand/Frameworks/Three20/extThree20JSON/../../Build/Products/Debug-iphonesimulator/../three20/extThree20JSON36"135B4BF5-A37B-4213-86DF-0E13A3BC2487-
+
+CCpHeader Vendors/JSON/SBJsonStreamWriterState.h ../../Build/Products/Debug-iphonesimulator/../three20/extThree20JSON/SBJsonStreamWriterState.h
+s352728688.784617
+e352728688.837144
+r1
+xCpHeader
+xVendors/JSON/SBJsonStreamWriterState.h
+x../../Build/Products/Debug-iphonesimulator/../three20/extThree20JSON/SBJsonStreamWriterState.h
+lSLF05#21%IDEActivityLogSection1@2#32"com.apple.dt.IDE.BuildLogSection99"Copy ../../Build/Products/Debug-iphonesimulator/../three20/extThree20JSON/SBJsonStreamWriterState.h6cedc9703606b541^1d73d6703606b541^---0#0#0#-19%DVTDocumentLocation2@175"file://localhost/Users/Leo/Projects/xcode/Hand/Frameworks/Three20/extThree20JSON/../../Build/Products/Debug-iphonesimulator/../three20/extThree20JSON/SBJsonStreamWriterState.h000000000080d041^865"CpHeader Vendors/JSON/SBJsonStreamWriterState.h ../../Build/Products/Debug-iphonesimulator/../three20/extThree20JSON/SBJsonStreamWriterState.h    cd /Users/Leo/Projects/xcode/Hand/Frameworks/Three20/extThree20JSON    setenv PATH "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Applications/Xcode.app/Contents/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    builtin-copy -exclude .DS_Store -exclude CVS -exclude .svn -exclude .git -exclude .hg -resolve-src-symlinks -strip-tool /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/strip /Users/Leo/Projects/xcode/Hand/Frameworks/Three20/extThree20JSON/Vendors/JSON/SBJsonStreamWriterState.h /Users/Leo/Projects/xcode/Hand/Frameworks/Three20/extThree20JSON/../../Build/Products/Debug-iphonesimulator/../three20/extThree20JSON36"3D253FC1-464F-460A-A902-7084D60BD012-
+
+CCpHeader Vendors/JSON/SBJsonTokeniser.h ../../Build/Products/Debug-iphonesimulator/../three20/extThree20JSON/SBJsonTokeniser.h
+s352728688.782983
+e352728688.836674
+r1
+xCpHeader
+xVendors/JSON/SBJsonTokeniser.h
+x../../Build/Products/Debug-iphonesimulator/../three20/extThree20JSON/SBJsonTokeniser.h
+lSLF05#21%IDEActivityLogSection1@2#32"com.apple.dt.IDE.BuildLogSection91"Copy ../../Build/Products/Debug-iphonesimulator/../three20/extThree20JSON/SBJsonTokeniser.h1f84c8703606b541^863cd6703606b541^---0#0#0#-19%DVTDocumentLocation2@167"file://localhost/Users/Leo/Projects/xcode/Hand/Frameworks/Three20/extThree20JSON/../../Build/Products/Debug-iphonesimulator/../three20/extThree20JSON/SBJsonTokeniser.h000000000080d041^841"CpHeader Vendors/JSON/SBJsonTokeniser.h ../../Build/Products/Debug-iphonesimulator/../three20/extThree20JSON/SBJsonTokeniser.h    cd /Users/Leo/Projects/xcode/Hand/Frameworks/Three20/extThree20JSON    setenv PATH "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Applications/Xcode.app/Contents/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    builtin-copy -exclude .DS_Store -exclude CVS -exclude .svn -exclude .git -exclude .hg -resolve-src-symlinks -strip-tool /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/strip /Users/Leo/Projects/xcode/Hand/Frameworks/Three20/extThree20JSON/Vendors/JSON/SBJsonTokeniser.h /Users/Leo/Projects/xcode/Hand/Frameworks/Three20/extThree20JSON/../../Build/Products/Debug-iphonesimulator/../three20/extThree20JSON36"A5036D39-1BA8-47A8-9D44-26323AD99064-
+
+CCpHeader Vendors/JSON/SBJsonUTF8Stream.h ../../Build/Products/Debug-iphonesimulator/../three20/extThree20JSON/SBJsonUTF8Stream.h
+s352728688.940988
+e352728688.946112
+r1
+xCpHeader
+xVendors/JSON/SBJsonUTF8Stream.h
+x../../Build/Products/Debug-iphonesimulator/../three20/extThree20JSON/SBJsonUTF8Stream.h
+lSLF05#21%IDEActivityLogSection1@2#32"com.apple.dt.IDE.BuildLogSection92"Copy ../../Build/Products/Debug-iphonesimulator/../three20/extThree20JSON/SBJsonUTF8Stream.h94f8f0703606b541^6937f2703606b541^---0#0#0#-19%DVTDocumentLocation2@168"file://localhost/Users/Leo/Projects/xcode/Hand/Frameworks/Three20/extThree20JSON/../../Build/Products/Debug-iphonesimulator/../three20/extThree20JSON/SBJsonUTF8Stream.h000000000080d041^844"CpHeader Vendors/JSON/SBJsonUTF8Stream.h ../../Build/Products/Debug-iphonesimulator/../three20/extThree20JSON/SBJsonUTF8Stream.h    cd /Users/Leo/Projects/xcode/Hand/Frameworks/Three20/extThree20JSON    setenv PATH "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Applications/Xcode.app/Contents/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    builtin-copy -exclude .DS_Store -exclude CVS -exclude .svn -exclude .git -exclude .hg -resolve-src-symlinks -strip-tool /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/strip /Users/Leo/Projects/xcode/Hand/Frameworks/Three20/extThree20JSON/Vendors/JSON/SBJsonUTF8Stream.h /Users/Leo/Projects/xcode/Hand/Frameworks/Three20/extThree20JSON/../../Build/Products/Debug-iphonesimulator/../three20/extThree20JSON36"7756AB38-A50B-48B9-A016-866AEA0B5E70-
+
+CCpHeader Vendors/JSON/SBJsonWriter.h ../../Build/Products/Debug-iphonesimulator/../three20/extThree20JSON/SBJsonWriter.h
+s352728688.731937
+e352728688.766050
+r1
+xCpHeader
+xVendors/JSON/SBJsonWriter.h
+x../../Build/Products/Debug-iphonesimulator/../three20/extThree20JSON/SBJsonWriter.h
+lSLF05#21%IDEActivityLogSection1@2#32"com.apple.dt.IDE.BuildLogSection88"Copy ../../Build/Products/Debug-iphonesimulator/../three20/extThree20JSON/SBJsonWriter.h2271bb703606b541^e620c4703606b541^---0#0#0#-19%DVTDocumentLocation2@164"file://localhost/Users/Leo/Projects/xcode/Hand/Frameworks/Three20/extThree20JSON/../../Build/Products/Debug-iphonesimulator/../three20/extThree20JSON/SBJsonWriter.h000000000080d041^832"CpHeader Vendors/JSON/SBJsonWriter.h ../../Build/Products/Debug-iphonesimulator/../three20/extThree20JSON/SBJsonWriter.h    cd /Users/Leo/Projects/xcode/Hand/Frameworks/Three20/extThree20JSON    setenv PATH "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Applications/Xcode.app/Contents/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    builtin-copy -exclude .DS_Store -exclude CVS -exclude .svn -exclude .git -exclude .hg -resolve-src-symlinks -strip-tool /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/strip /Users/Leo/Projects/xcode/Hand/Frameworks/Three20/extThree20JSON/Vendors/JSON/SBJsonWriter.h /Users/Leo/Projects/xcode/Hand/Frameworks/Three20/extThree20JSON/../../Build/Products/Debug-iphonesimulator/../three20/extThree20JSON36"E65C17DF-A8DE-420D-9B57-5A9A853C2CD6-
+
+CLibtool /Users/Leo/Projects/xcode/Hand/Frameworks/Three20/extThree20JSON/../../Build/Products/Debug-iphonesimulator/libextThree20JSON+SBJSON.a normal i386
+s352728690.396451
+e352728690.439434
+r1
+xLibtool
+x/Users/Leo/Projects/xcode/Hand/Frameworks/Three20/extThree20JSON/../../Build/Products/Debug-iphonesimulator/libextThree20JSON+SBJSON.a
+xnormal
+xi386
+o/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/libtool: -dynamic not specified the following flags are invalid: -ObjC 
+lSLF05#21%IDEActivityLogSection1@2#32"com.apple.dt.IDE.BuildLogSection89"Libtool ../../Build/Products/Debug-iphonesimulator/libextThree20JSON+SBJSON.a normal i3860ea265723606b541^fb9370723606b541^---0#0#0#--1242"Libtool ../../Build/Products/Debug-iphonesimulator/libextThree20JSON+SBJSON.a normal i386    cd /Users/Leo/Projects/xcode/Hand/Frameworks/Three20/extThree20JSON    setenv MACOSX_DEPLOYMENT_TARGET 10.6    setenv PATH "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Applications/Xcode.app/Contents/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/libtool -static -arch_only i386 -syslibroot /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator5.0.sdk -L/Users/Leo/Projects/xcode/Hand/Frameworks/Three20/extThree20JSON/../../Build/Products/Debug-iphonesimulator -L/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator5.0.sdk/usr/lib -filelist /Users/Leo/Projects/xcode/Hand/Frameworks/Three20/extThree20JSON/../../Build/extThree20JSON.build/Debug-iphonesimulator/extThree20JSON+SBJSON.build/Objects-normal/i386/extThree20JSON+SBJSON.LinkFileList -ObjC -o /Users/Leo/Projects/xcode/Hand/Frameworks/Three20/extThree20JSON/../../Build/Products/Debug-iphonesimulator/libextThree20JSON+SBJSON.a36"394AAE89-E8EE-4F7E-9DBA-60E1B920F347-
+
+CPhaseScriptExecution "Protect Copied Headers" /Users/Leo/Projects/xcode/Hand/Frameworks/Three20/extThree20JSON/../../Build/extThree20JSON.build/Debug-iphonesimulator/extThree20JSON+SBJSON.build/Script-6E3C34C3118807EF0079637E.sh
+s352731588.533956
+e352731588.559700
+r1
+xPhaseScriptExecution
+xProtect Copied Headers
+x/Users/Leo/Projects/xcode/Hand/Frameworks/Three20/extThree20JSON/../../Build/extThree20JSON.build/Debug-iphonesimulator/extThree20JSON+SBJSON.build/Script-6E3C34C3118807EF0079637E.sh
+lSLF05#21%IDEActivityLogSection1@2#32"com.apple.dt.IDE.BuildLogSection48"Run custom shell script 'Protect Copied Headers'21cc89c44106b541^c5538fc44106b541^---0#0#0#--22528"PhaseScriptExecution "Protect Copied Headers" ../../Build/extThree20JSON.build/Debug-iphonesimulator/extThree20JSON+SBJSON.build/Script-6E3C34C3118807EF0079637E.sh    cd /Users/Leo/Projects/xcode/Hand/Frameworks/Three20/extThree20JSON    setenv ACTION build    setenv ADDRESSBOOKUI_FX "-framework AddressBookUI"    setenv ADDRESSBOOK_FX "-framework AddressBook"    setenv ALTERNATE_GROUP staff    setenv ALTERNATE_MODE u+w,go-w,a+rX    setenv ALTERNATE_OWNER Leo    setenv ALWAYS_SEARCH_USER_PATHS NO    setenv APPLE_INTERNAL_DEVELOPER_DIR /AppleInternal/Developer    setenv APPLE_INTERNAL_DIR /AppleInternal    setenv APPLE_INTERNAL_DOCUMENTATION_DIR /AppleInternal/Documentation    setenv APPLE_INTERNAL_LIBRARY_DIR /AppleInternal/Library    setenv APPLE_INTERNAL_TOOLS /AppleInternal/Developer/Tools    setenv APPLY_RULES_IN_COPY_FILES NO    setenv ARCHS i386    setenv ARCHS_STANDARD_32_BIT i386    setenv ARCHS_UNIVERSAL_IPHONE_OS i386    setenv AVAILABLE_PLATFORMS "iphonesimulator macosx iphoneos"    setenv AVFOUNDATION_FX "-framework AVFoundation"    setenv BASE_PRODUCT_NAME extThree20JSON    setenv BUILD_COMPONENTS "headers build"    setenv BUILD_DIR /Users/Leo/Projects/xcode/Hand/Frameworks/Three20/extThree20JSON/../../Build/Products    setenv BUILD_LIBRARY_VERSION 1.0    setenv BUILD_ROOT /Users/Leo/Projects/xcode/Hand/Frameworks/Three20/extThree20JSON/../../Build/Products    setenv BUILD_STYLE     setenv BUILD_VARIANTS normal    setenv BUILT_PRODUCTS_DIR /Users/Leo/Projects/xcode/Hand/Frameworks/Three20/extThree20JSON/../../Build/Products/Debug-iphonesimulator    setenv CACHE_ROOT /var/folders/ry/l3zgfjx90jl5cbvr9qr3mbpm0000gn/C/com.apple.Xcode.501    setenv CCHROOT /var/folders/ry/l3zgfjx90jl5cbvr9qr3mbpm0000gn/C/com.apple.Xcode.501    setenv CFNETWORK_FX "-framework CFNetwork"    setenv CHMOD /bin/chmod    setenv CHOWN /usr/sbin/chown    setenv CLASS_FILE_DIR /Users/Leo/Projects/xcode/Hand/Frameworks/Three20/extThree20JSON/../../Build/extThree20JSON.build/Debug-iphonesimulator/extThree20JSON+SBJSON.build/JavaClasses    setenv CLEAN_PRECOMPS YES    setenv CLONE_HEADERS NO    setenv CODESIGNING_FOLDER_PATH /Users/Leo/Projects/xcode/Hand/Frameworks/Three20/extThree20JSON/../../Build/Products/Debug-iphonesimulator/libextThree20JSON+SBJSON.a    setenv COMMAND_MODE legacy    setenv COMPOSITE_SDK_DIRS /var/folders/ry/l3zgfjx90jl5cbvr9qr3mbpm0000gn/C/com.apple.Xcode.501/CompositeSDKs    setenv COMPRESS_PNG_FILES YES    setenv CONFIGURATION Debug    setenv CONFIGURATION_BUILD_DIR /Users/Leo/Projects/xcode/Hand/Frameworks/Three20/extThree20JSON/../../Build/Products/Debug-iphonesimulator    setenv CONFIGURATION_TEMP_DIR /Users/Leo/Projects/xcode/Hand/Frameworks/Three20/extThree20JSON/../../Build/extThree20JSON.build/Debug-iphonesimulator    setenv COPYING_PRESERVES_HFS_DATA NO    setenv COPY_PHASE_STRIP NO    setenv COPY_RESOURCES_FROM_STATIC_FRAMEWORKS YES    setenv COREDATA_FX "-framework CoreData"    setenv COREFOUNDATION_FX "-framework CoreFoundation"    setenv COREGRAPHICS_FX "-framework CoreGraphics"    setenv CORELOCATION_FX "-framework CoreLocation"    setenv CP /bin/cp    setenv CURRENT_ARCH i386    setenv CURRENT_VARIANT normal    setenv DEAD_CODE_STRIPPING NO    setenv DEBUGGING_SYMBOLS YES    setenv DEBUG_INFORMATION_FORMAT dwarf-with-dsym    setenv DEFAULT_COMPILER com.apple.compilers.llvm.clang.1_0    setenv DEPLOYMENT_LOCATION NO    setenv DEPLOYMENT_POSTPROCESSING NO    setenv DERIVED_FILES_DIR /Users/Leo/Projects/xcode/Hand/Frameworks/Three20/extThree20JSON/../../Build/extThree20JSON.build/Debug-iphonesimulator/extThree20JSON+SBJSON.build/DerivedSources    setenv DERIVED_FILE_DIR /Users/Leo/Projects/xcode/Hand/Frameworks/Three20/extThree20JSON/../../Build/extThree20JSON.build/Debug-iphonesimulator/extThree20JSON+SBJSON.build/DerivedSources    setenv DERIVED_SOURCES_DIR /Users/Leo/Projects/xcode/Hand/Frameworks/Three20/extThree20JSON/../../Build/extThree20JSON.build/Debug-iphonesimulator/extThree20JSON+SBJSON.build/DerivedSources    setenv DEVELOPER_APPLICATIONS_DIR /Applications/Xcode.app/Contents/Developer/Applications    setenv DEVELOPER_BIN_DIR /Applications/Xcode.app/Contents/Developer/usr/bin    setenv DEVELOPER_DIR /Applications/Xcode.app/Contents/Developer    setenv DEVELOPER_FRAMEWORKS_DIR /Applications/Xcode.app/Contents/Developer/Library/Frameworks    setenv DEVELOPER_FRAMEWORKS_DIR_QUOTED "\"/Applications/Xcode.app/Contents/Developer/Library/Frameworks\""    setenv DEVELOPER_LIBRARY_DIR /Applications/Xcode.app/Contents/Developer/Library    setenv DEVELOPER_SDK_DIR /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs    setenv DEVELOPER_TOOLS_DIR /Applications/Xcode.app/Contents/Developer/Tools    setenv DEVELOPER_USR_DIR /Applications/Xcode.app/Contents/Developer/usr    setenv DEVELOPMENT_LANGUAGE English    setenv DO_HEADER_SCANNING_IN_JAM NO    setenv DSTROOT /tmp/extThree20JSON.dst    setenv DT_TOOLCHAIN_DIR /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain    setenv DWARF_DSYM_FILE_NAME libextThree20JSON+SBJSON.a.dSYM    setenv DWARF_DSYM_FILE_SHOULD_ACCOMPANY_PRODUCT NO    setenv DWARF_DSYM_FOLDER_PATH /Users/Leo/Projects/xcode/Hand/Frameworks/Three20/extThree20JSON/../../Build/Products/Debug-iphonesimulator    setenv EFFECTIVE_PLATFORM_NAME -iphonesimulator    setenv ENABLE_HEADER_DEPENDENCIES YES    setenv EXCLUDED_INSTALLSRC_SUBDIRECTORY_PATTERNS ".DS_Store .svn .git .hg CVS"    setenv EXCLUDED_RECURSIVE_SEARCH_PATH_SUBDIRECTORIES "*.nib *.lproj *.framework *.gch (*) .DS_Store CVS .svn .git .hg *.xcodeproj *.xcode *.pbproj *.pbxproj"    setenv EXECUTABLE_EXTENSION a    setenv EXECUTABLE_NAME libextThree20JSON+SBJSON.a    setenv EXECUTABLE_PATH libextThree20JSON+SBJSON.a    setenv EXECUTABLE_PREFIX lib    setenv EXECUTABLE_SUFFIX .a    setenv FILE_LIST /Users/Leo/Projects/xcode/Hand/Frameworks/Three20/extThree20JSON/../../Build/extThree20JSON.build/Debug-iphonesimulator/extThree20JSON+SBJSON.build/Objects/LinkFileList    setenv FIXED_FILES_DIR /Users/Leo/Projects/xcode/Hand/Frameworks/Three20/extThree20JSON/../../Build/extThree20JSON.build/Debug-iphonesimulator/extThree20JSON+SBJSON.build/FixedFiles    setenv FOUNDATION_FX "-framework Foundation"    setenv FRAMEWORK_FLAG_PREFIX -framework    setenv FRAMEWORK_SEARCH_PATHS "\"/Users/Leo/Projects/xcode/Hand/Frameworks/Three20/extThree20JSON/../../Build/Products/Debug-iphonesimulator\" \"/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator5.0.sdk/Developer/Library/Frameworks\""    setenv FRAMEWORK_VERSION A    setenv FULL_PRODUCT_NAME libextThree20JSON+SBJSON.a    setenv GAMEKIT_FX "-framework GameKit"    setenv GCC3_VERSION 3.3    setenv GCC_C_LANGUAGE_STANDARD c99    setenv GCC_DYNAMIC_NO_PIC NO    setenv GCC_ENABLE_SYMBOL_SEPARATION NO    setenv GCC_OBJC_LEGACY_DISPATCH YES    setenv GCC_OPTIMIZATION_LEVEL 0    setenv GCC_PFE_FILE_C_DIALECTS "c objective-c c++ objective-c++"    setenv GCC_PRECOMPILE_PREFIX_HEADER YES    setenv GCC_PREFIX_HEADER /Users/Leo/Projects/xcode/Hand/Frameworks/Three20/extThree20JSON/Headers/extThree20JSON+SBJSON_Prefix.pch    setenv GCC_PREPROCESSOR_DEFINITIONS "EXTJSON_SBJSON DEBUG"    setenv GCC_TREAT_WARNINGS_AS_ERRORS NO    setenv GCC_VERSION com.apple.compilers.llvm.clang.1_0    setenv GCC_VERSION_IDENTIFIER com_apple_compilers_llvm_clang_1_0    setenv GCC_WARN_ABOUT_MISSING_NEWLINE YES    setenv GCC_WARN_ABOUT_RETURN_TYPE YES    setenv GCC_WARN_CHECK_SWITCH_STATEMENTS NO    setenv GCC_WARN_EFFECTIVE_CPLUSPLUS_VIOLATIONS YES    setenv GCC_WARN_SHADOW YES    setenv GCC_WARN_UNUSED_FUNCTION YES    setenv GCC_WARN_UNUSED_LABEL YES    setenv GCC_WARN_UNUSED_VARIABLE YES    setenv GENERATE_MASTER_OBJECT_FILE NO    setenv GENERATE_PKGINFO_FILE NO    setenv GENERATE_PROFILING_CODE NO    setenv GID 20    setenv GROUP staff    setenv HEADERMAP_INCLUDES_FLAT_ENTRIES_FOR_TARGET_BEING_BUILT YES    setenv HEADERMAP_INCLUDES_FRAMEWORK_ENTRIES_FOR_ALL_PRODUCT_TYPES YES    setenv HEADERMAP_INCLUDES_NONPUBLIC_NONPRIVATE_HEADERS YES    setenv HEADERMAP_INCLUDES_PROJECT_HEADERS YES    setenv HEADERS_FOLDER_PATH /../three20/    setenv HEADER_SEARCH_PATHS "/Users/Leo/Projects/xcode/Hand/Frameworks/Three20/extThree20JSON/../../Build/Products/Debug-iphonesimulator/include /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator5.0.sdk/usr/include /Users/Leo/Projects/xcode/Hand/Frameworks/Three20/extThree20JSON/../../Build/Products/Debug-iphonesimulator/../three20 /Users/Leo/Projects/xcode/Hand/Frameworks/Three20/extThree20JSON/../../Build/Products/Debug-iphonesimulator/../../three20 /Users/Leo/Projects/xcode/Hand/Frameworks/Three20/extThree20JSON/../../Build/Products/Debug-iphonesimulator/../../three20"    setenv ICONV /usr/bin/iconv    setenv INFOPLIST_EXPAND_BUILD_SETTINGS YES    setenv INFOPLIST_OUTPUT_FORMAT binary    setenv INFOPLIST_PREPROCESS NO    setenv INSTALL_DIR /tmp/extThree20JSON.dst/usr/local/lib    setenv INSTALL_GROUP staff    setenv INSTALL_MODE_FLAG u+w,go-w,a+rX    setenv INSTALL_OWNER Leo    setenv INSTALL_PATH /usr/local/lib    setenv INSTALL_ROOT /tmp/extThree20JSON.dst    setenv IPHONEOS_DEPLOYMENT_TARGET 3.0    setenv JAVAC_DEFAULT_FLAGS "-J-Xms64m -J-XX:NewSize=4M -J-Dfile.encoding=UTF8"    setenv JAVA_APP_STUB /System/Library/Frameworks/JavaVM.framework/Resources/MacOS/JavaApplicationStub    setenv JAVA_ARCHIVE_CLASSES YES    setenv JAVA_ARCHIVE_TYPE JAR    setenv JAVA_COMPILER /usr/bin/javac    setenv JAVA_FRAMEWORK_RESOURCES_DIRS Resources    setenv JAVA_JAR_FLAGS cv    setenv JAVA_SOURCE_SUBDIR .    setenv JAVA_USE_DEPENDENCIES YES    setenv JAVA_ZIP_FLAGS -urg    setenv JIKES_DEFAULT_FLAGS "+E +OLDCSO"    setenv KEEP_PRIVATE_EXTERNS NO    setenv LD_GENERATE_MAP_FILE NO    setenv LD_MAP_FILE_PATH /Users/Leo/Projects/xcode/Hand/Frameworks/Three20/extThree20JSON/../../Build/extThree20JSON.build/Debug-iphonesimulator/extThree20JSON+SBJSON.build/extThree20JSON+SBJSON-LinkMap-normal-i386.txt    setenv LD_NO_PIE NO    setenv LEGACY_DEVELOPER_DIR /Applications/Xcode.app/Contents/PlugIns/Xcode3Core.ideplugin/Contents/SharedSupport/Developer    setenv LEX lex    setenv LIBRARY_FLAG_NOSPACE YES    setenv LIBRARY_FLAG_PREFIX -l    setenv LIBRARY_SEARCH_PATHS "/Users/Leo/Projects/xcode/Hand/Frameworks/Three20/extThree20JSON/../../Build/Products/Debug-iphonesimulator /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator5.0.sdk/usr/lib"    setenv LINKER_DISPLAYS_MANGLED_NAMES NO    setenv LINK_FILE_LIST_normal_i386 /Users/Leo/Projects/xcode/Hand/Frameworks/Three20/extThree20JSON/../../Build/extThree20JSON.build/Debug-iphonesimulator/extThree20JSON+SBJSON.build/Objects-normal/i386/extThree20JSON+SBJSON.LinkFileList    setenv LINK_WITH_STANDARD_LIBRARIES YES    setenv LOCAL_ADMIN_APPS_DIR /Applications/Utilities    setenv LOCAL_APPS_DIR /Applications    setenv LOCAL_DEVELOPER_DIR /Library/Developer    setenv LOCAL_LIBRARY_DIR /Library    setenv MACH_O_TYPE staticlib    setenv MACOSX_DEPLOYMENT_TARGET 10.6    setenv MAC_OS_X_PRODUCT_BUILD_VERSION 11D50    setenv MAC_OS_X_VERSION_ACTUAL 1073    setenv MAC_OS_X_VERSION_MAJOR 1070    setenv MAC_OS_X_VERSION_MINOR 0703    setenv MAPKIT_FX "-framework MapKit"    setenv MEDIAPLAYER_FX "-framework MediaPlayer"    setenv MESSAGEUI_FX "-framework MessageUI"    setenv MOBILECORESERVICES_FX "-framework MobileCoreServices"    setenv NATIVE_ARCH i386    setenv NATIVE_ARCH_32_BIT i386    setenv NATIVE_ARCH_64_BIT x86_64    setenv NATIVE_ARCH_ACTUAL x86_64    setenv NO_COMMON YES    setenv OBJC_ABI_VERSION 2    setenv OBJC_LIB -lobjc    setenv OBJC_LIBRARY -ObjC    setenv OBJECT_FILE_DIR /Users/Leo/Projects/xcode/Hand/Frameworks/Three20/extThree20JSON/../../Build/extThree20JSON.build/Debug-iphonesimulator/extThree20JSON+SBJSON.build/Objects    setenv OBJECT_FILE_DIR_normal /Users/Leo/Projects/xcode/Hand/Frameworks/Three20/extThree20JSON/../../Build/extThree20JSON.build/Debug-iphonesimulator/extThree20JSON+SBJSON.build/Objects-normal    setenv OBJROOT /Users/Leo/Projects/xcode/Hand/Frameworks/Three20/extThree20JSON/../../Build    setenv ONLY_ACTIVE_ARCH NO    setenv OPENGLES_FX "-framework OpenGLES"    setenv OPTIMIZATION_LEVEL 0    setenv OS MACOS    setenv OSAC /usr/bin/osacompile    setenv OTHER_LDFLAGS -ObjC    setenv PACKAGE_TYPE com.apple.package-type.static-library    setenv PASCAL_STRINGS YES    setenv PATH "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Applications/Xcode.app/Contents/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    setenv PATH_PREFIXES_EXCLUDED_FROM_HEADER_DEPENDENCIES "/usr/include /usr/local/include /System/Library/Frameworks /System/Library/PrivateFrameworks /Applications/Xcode.app/Contents/Developer/Headers /Applications/Xcode.app/Contents/Developer/SDKs /Applications/Xcode.app/Contents/Developer/Platforms"    setenv PFE_FILE_C_DIALECTS objective-c    setenv PKGINFO_FILE_PATH /Users/Leo/Projects/xcode/Hand/Frameworks/Three20/extThree20JSON/../../Build/extThree20JSON.build/Debug-iphonesimulator/extThree20JSON+SBJSON.build/PkgInfo    setenv PLATFORM_DEVELOPER_APPLICATIONS_DIR /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/Applications    setenv PLATFORM_DEVELOPER_BIN_DIR /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin    setenv PLATFORM_DEVELOPER_LIBRARY_DIR /Applications/Xcode.app/Contents/PlugIns/Xcode3Core.ideplugin/Contents/SharedSupport/Developer/Library    setenv PLATFORM_DEVELOPER_SDK_DIR /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs    setenv PLATFORM_DEVELOPER_TOOLS_DIR /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/Tools    setenv PLATFORM_DEVELOPER_USR_DIR /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/usr    setenv PLATFORM_DIR /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform    setenv PLATFORM_NAME iphonesimulator    setenv PLATFORM_PREFERRED_ARCH i386    setenv PLATFORM_PRODUCT_BUILD_VERSION 9A334    setenv PLATFORM_VERSION_AVAILABILITY_H_FORMAT 50000    setenv PLIST_FILE_OUTPUT_FORMAT binary    setenv PRECOMPS_INCLUDE_HEADERS_FROM_BUILT_PRODUCTS_DIR YES    setenv PRECOMP_DESTINATION_DIR /Users/Leo/Projects/xcode/Hand/Frameworks/Three20/extThree20JSON/../../Build/extThree20JSON.build/Debug-iphonesimulator/extThree20JSON+SBJSON.build/PrefixHeaders    setenv PRESERVE_DEAD_CODE_INITS_AND_TERMS NO    setenv PRIVATE_HEADERS_FOLDER_PATH /../three20/extThree20JSON/private    setenv PRODUCT_NAME extThree20JSON+SBJSON    setenv PRODUCT_SETTINGS_PATH     setenv PRODUCT_TYPE com.apple.product-type.library.static    setenv PROFILING_CODE NO    setenv PROJECT extThree20JSON    setenv PROJECT_DERIVED_FILE_DIR /Users/Leo/Projects/xcode/Hand/Frameworks/Three20/extThree20JSON/../../Build/extThree20JSON.build/DerivedSources    setenv PROJECT_DIR /Users/Leo/Projects/xcode/Hand/Frameworks/Three20/extThree20JSON    setenv PROJECT_FILE_PATH /Users/Leo/Projects/xcode/Hand/Frameworks/Three20/extThree20JSON/extThree20JSON.xcodeproj    setenv PROJECT_NAME extThree20JSON    setenv PROJECT_TEMP_DIR /Users/Leo/Projects/xcode/Hand/Frameworks/Three20/extThree20JSON/../../Build/extThree20JSON.build    setenv PUBLIC_HEADERS_FOLDER_PATH /../three20/extThree20JSON    setenv QUARTZCORE_FX "-framework QuartzCore"    setenv RECURSIVE_SEARCH_PATHS_FOLLOW_SYMLINKS YES    setenv REMOVE_CVS_FROM_RESOURCES YES    setenv REMOVE_GIT_FROM_RESOURCES YES    setenv REMOVE_HG_FROM_RESOURCES YES    setenv REMOVE_SVN_FROM_RESOURCES YES    setenv REPO_ROOT_PATH /Users/Leo/Projects/xcode/Hand/Frameworks/Three20/extThree20JSON/../..    setenv REZ_COLLECTOR_DIR /Users/Leo/Projects/xcode/Hand/Frameworks/Three20/extThree20JSON/../../Build/extThree20JSON.build/Debug-iphonesimulator/extThree20JSON+SBJSON.build/ResourceManagerResources    setenv REZ_EXECUTABLE YES    setenv REZ_OBJECTS_DIR /Users/Leo/Projects/xcode/Hand/Frameworks/Three20/extThree20JSON/../../Build/extThree20JSON.build/Debug-iphonesimulator/extThree20JSON+SBJSON.build/ResourceManagerResources/Objects    setenv REZ_SEARCH_PATHS "\"/Users/Leo/Projects/xcode/Hand/Frameworks/Three20/extThree20JSON/../../Build/Products/Debug-iphonesimulator\" "    setenv ROOT_SOURCE_PATH /Users/Leo/Projects/xcode/Hand/Frameworks/Three20/extThree20JSON/../../src    setenv RUN_CLANG_STATIC_ANALYZER NO    setenv SCAN_ALL_SOURCE_FILES_FOR_INCLUDES NO    setenv SCRIPT_INPUT_FILE_COUNT 0    setenv SCRIPT_OUTPUT_FILE_COUNT 0    setenv SDKROOT /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator5.0.sdk    setenv SDK_DIR /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator5.0.sdk    setenv SDK_NAME iphonesimulator5.0    setenv SDK_PRODUCT_BUILD_VERSION 9A334    setenv SECURITY_FX "-framework Security"    setenv SED /usr/bin/sed    setenv SENTESTINGKIT_FX "-framework SenTestingKit"    setenv SEPARATE_STRIP YES    setenv SEPARATE_SYMBOL_EDIT NO    setenv SET_DIR_MODE_OWNER_GROUP YES    setenv SET_FILE_MODE_OWNER_GROUP NO    setenv SHARED_DERIVED_FILE_DIR /Users/Leo/Projects/xcode/Hand/Frameworks/Three20/extThree20JSON/../../Build/Products/Debug-iphonesimulator/DerivedSources    setenv SHARED_PRECOMPS_DIR /var/folders/ry/l3zgfjx90jl5cbvr9qr3mbpm0000gn/C/com.apple.Xcode.501/SharedPrecompiledHeaders    setenv SKIP_INSTALL YES    setenv SOURCE_ROOT /Users/Leo/Projects/xcode/Hand/Frameworks/Three20/extThree20JSON    setenv SRCROOT /Users/Leo/Projects/xcode/Hand/Frameworks/Three20/extThree20JSON    setenv STDLIB_HEADERS /usr/include    setenv STDLIB_LIBRARY /usr/lib    setenv STOREKIT_FX "-framework StoreKit"    setenv STRINGS_FILE_OUTPUT_ENCODING binary    setenv STRIP_INSTALLED_PRODUCT YES    setenv STRIP_STYLE debugging    setenv SUPPORTED_DEVICE_FAMILIES "1 2"    setenv SUPPORTED_PLATFORMS "iphonesimulator iphoneos"    setenv SYMROOT /Users/Leo/Projects/xcode/Hand/Frameworks/Three20/extThree20JSON/../../Build/Products    setenv SYSTEMCONFIGURATION_FX "-framework SystemConfiguration"    setenv SYSTEM_ADMIN_APPS_DIR /Applications/Utilities    setenv SYSTEM_APPS_DIR /Applications    setenv SYSTEM_CORE_SERVICES_DIR /System/Library/CoreServices    setenv SYSTEM_DEMOS_DIR /Applications/Extras    setenv SYSTEM_DEVELOPER_APPS_DIR /Applications/Xcode.app/Contents/Developer/Applications    setenv SYSTEM_DEVELOPER_BIN_DIR /Applications/Xcode.app/Contents/Developer/usr/bin    setenv SYSTEM_DEVELOPER_DEMOS_DIR "/Applications/Xcode.app/Contents/Developer/Applications/Utilities/Built Examples"    setenv SYSTEM_DEVELOPER_DIR /Applications/Xcode.app/Contents/Developer    setenv SYSTEM_DEVELOPER_DOC_DIR "/Applications/Xcode.app/Contents/Developer/ADC Reference Library"    setenv SYSTEM_DEVELOPER_GRAPHICS_TOOLS_DIR "/Applications/Xcode.app/Contents/Developer/Applications/Graphics Tools"    setenv SYSTEM_DEVELOPER_JAVA_TOOLS_DIR "/Applications/Xcode.app/Contents/Developer/Applications/Java Tools"    setenv SYSTEM_DEVELOPER_PERFORMANCE_TOOLS_DIR "/Applications/Xcode.app/Contents/Developer/Applications/Performance Tools"    setenv SYSTEM_DEVELOPER_RELEASENOTES_DIR "/Applications/Xcode.app/Contents/Developer/ADC Reference Library/releasenotes"    setenv SYSTEM_DEVELOPER_TOOLS /Applications/Xcode.app/Contents/Developer/Tools    setenv SYSTEM_DEVELOPER_TOOLS_DOC_DIR "/Applications/Xcode.app/Contents/Developer/ADC Reference Library/documentation/DeveloperTools"    setenv SYSTEM_DEVELOPER_TOOLS_RELEASENOTES_DIR "/Applications/Xcode.app/Contents/Developer/ADC Reference Library/releasenotes/DeveloperTools"    setenv SYSTEM_DEVELOPER_USR_DIR /Applications/Xcode.app/Contents/Developer/usr    setenv SYSTEM_DEVELOPER_UTILITIES_DIR /Applications/Xcode.app/Contents/Developer/Applications/Utilities    setenv SYSTEM_DOCUMENTATION_DIR /Library/Documentation    setenv SYSTEM_LIBRARY_DIR /System/Library    setenv TARGETED_DEVICE_FAMILY 1    setenv TARGETNAME extThree20JSON+SBJSON    setenv TARGET_BUILD_DIR /Users/Leo/Projects/xcode/Hand/Frameworks/Three20/extThree20JSON/../../Build/Products/Debug-iphonesimulator    setenv TARGET_NAME extThree20JSON+SBJSON    setenv TARGET_TEMP_DIR /Users/Leo/Projects/xcode/Hand/Frameworks/Three20/extThree20JSON/../../Build/extThree20JSON.build/Debug-iphonesimulator/extThree20JSON+SBJSON.build    setenv TEMP_DIR /Users/Leo/Projects/xcode/Hand/Frameworks/Three20/extThree20JSON/../../Build/extThree20JSON.build/Debug-iphonesimulator/extThree20JSON+SBJSON.build    setenv TEMP_FILES_DIR /Users/Leo/Projects/xcode/Hand/Frameworks/Three20/extThree20JSON/../../Build/extThree20JSON.build/Debug-iphonesimulator/extThree20JSON+SBJSON.build    setenv TEMP_FILE_DIR /Users/Leo/Projects/xcode/Hand/Frameworks/Three20/extThree20JSON/../../Build/extThree20JSON.build/Debug-iphonesimulator/extThree20JSON+SBJSON.build    setenv TEMP_ROOT /Users/Leo/Projects/xcode/Hand/Frameworks/Three20/extThree20JSON/../../Build    setenv TEST_AFTER_BUILD NO    setenv UID 501    setenv UIKIT_FX "-framework UIKit"    setenv UNSTRIPPED_PRODUCT NO    setenv USER Leo    setenv USER_APPS_DIR /Users/Leo/Applications    setenv USER_LIBRARY_DIR /Users/Leo/Library    setenv USE_DYNAMIC_NO_PIC YES    setenv USE_HEADERMAP YES    setenv USE_HEADER_SYMLINKS NO    setenv VALIDATE_PRODUCT NO    setenv VALID_ARCHS i386    setenv VERBOSE_PBXCP NO    setenv VERSION_INFO_BUILDER Leo    setenv VERSION_INFO_FILE extThree20JSON+SBJSON_vers.c    setenv VERSION_INFO_STRING "\"@(#)PROGRAM:extThree20JSON+SBJSON  PROJECT:extThree20JSON-\""    setenv XCODE_APP_SUPPORT_DIR /Applications/Xcode.app/Contents/Developer/Library/Xcode    setenv XCODE_PRODUCT_BUILD_VERSION 4E109    setenv XCODE_VERSION_ACTUAL 0430    setenv XCODE_VERSION_MAJOR 0400    setenv XCODE_VERSION_MINOR 0430    setenv YACC yacc    /bin/sh -c /Users/Leo/Projects/xcode/Hand/Frameworks/Three20/extThree20JSON/../../Build/extThree20JSON.build/Debug-iphonesimulator/extThree20JSON+SBJSON.build/Script-6E3C34C3118807EF0079637E.sh36"324E9F4A-552F-4C80-8309-C74F8ACF5420-
+
+CProcessPCH /Users/Leo/Library/Developer/Xcode/DerivedData/HAND_MAS-glhdzakjybgsimgweamqbpkybldh/Index/PrecompiledHeaders/extThree20JSON+SBJSON_Prefix-fratlyyotypuriegohyaptalurdq_ast/extThree20JSON+SBJSON_Prefix.pch.pth Headers/extThree20JSON+SBJSON_Prefix.pch normal i386 objective-c com.apple.compilers.llvm.clang.1_0.astbuilder
+r0
+
+CProcessPCH /var/folders/ry/l3zgfjx90jl5cbvr9qr3mbpm0000gn/C/com.apple.Xcode.501/SharedPrecompiledHeaders/extThree20JSON+SBJSON_Prefix-evrsnywfsndieldlachkxpfexmjl/extThree20JSON+SBJSON_Prefix.pch.pth Headers/extThree20JSON+SBJSON_Prefix.pch normal i386 objective-c com.apple.compilers.llvm.clang.1_0.compiler
+r0
+
