@@ -1,0 +1,263 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		B3B1F7131507A1FD00A3FF84 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B3B1F7121507A1FD00A3FF84 /* UIKit.framework */; };
+		B3B1F7151507A1FD00A3FF84 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B3B1F7141507A1FD00A3FF84 /* Foundation.framework */; };
+		B3B1F7171507A1FD00A3FF84 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B3B1F7161507A1FD00A3FF84 /* CoreGraphics.framework */; };
+		B3B1F71D1507A1FD00A3FF84 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = B3B1F71B1507A1FD00A3FF84 /* InfoPlist.strings */; };
+		B3B1F71F1507A1FD00A3FF84 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = B3B1F71E1507A1FD00A3FF84 /* main.m */; };
+		B3B1F7231507A1FD00A3FF84 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = B3B1F7221507A1FD00A3FF84 /* AppDelegate.m */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		B3B1F70E1507A1FD00A3FF84 /* PadLoginDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PadLoginDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		B3B1F7121507A1FD00A3FF84 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		B3B1F7141507A1FD00A3FF84 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		B3B1F7161507A1FD00A3FF84 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		B3B1F71A1507A1FD00A3FF84 /* PadLoginDemo-Info.plist */ = {isa = PBXFileReference; path = "PadLoginDemo-Info.plist"; sourceTree = "<group>"; };
+		B3B1F71C1507A1FD00A3FF84 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		B3B1F71E1507A1FD00A3FF84 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		B3B1F7201507A1FD00A3FF84 /* PadLoginDemo-Prefix.pch */ = {isa = PBXFileReference; path = "PadLoginDemo-Prefix.pch"; sourceTree = "<group>"; };
+		B3B1F7211507A1FD00A3FF84 /* AppDelegate.h */ = {isa = PBXFileReference; path = AppDelegate.h; sourceTree = "<group>"; };
+		B3B1F7221507A1FD00A3FF84 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		B3B1F70B1507A1FD00A3FF84 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B3B1F7131507A1FD00A3FF84 /* UIKit.framework in Frameworks */,
+				B3B1F7151507A1FD00A3FF84 /* Foundation.framework in Frameworks */,
+				B3B1F7171507A1FD00A3FF84 /* CoreGraphics.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		B3B1F7031507A1FC00A3FF84 = {
+			isa = PBXGroup;
+			children = (
+				B3B1F7181507A1FD00A3FF84 /* PadLoginDemo */,
+				B3B1F7111507A1FD00A3FF84 /* Frameworks */,
+				B3B1F70F1507A1FD00A3FF84 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		B3B1F70F1507A1FD00A3FF84 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				B3B1F70E1507A1FD00A3FF84 /* PadLoginDemo.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		B3B1F7111507A1FD00A3FF84 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				B3B1F7121507A1FD00A3FF84 /* UIKit.framework */,
+				B3B1F7141507A1FD00A3FF84 /* Foundation.framework */,
+				B3B1F7161507A1FD00A3FF84 /* CoreGraphics.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		B3B1F7181507A1FD00A3FF84 /* PadLoginDemo */ = {
+			isa = PBXGroup;
+			children = (
+				B3B1F7211507A1FD00A3FF84 /* AppDelegate.h */,
+				B3B1F7221507A1FD00A3FF84 /* AppDelegate.m */,
+				B3B1F7191507A1FD00A3FF84 /* Supporting Files */,
+			);
+			path = PadLoginDemo;
+			sourceTree = "<group>";
+		};
+		B3B1F7191507A1FD00A3FF84 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				B3B1F71A1507A1FD00A3FF84 /* PadLoginDemo-Info.plist */,
+				B3B1F71B1507A1FD00A3FF84 /* InfoPlist.strings */,
+				B3B1F71E1507A1FD00A3FF84 /* main.m */,
+				B3B1F7201507A1FD00A3FF84 /* PadLoginDemo-Prefix.pch */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		B3B1F70D1507A1FD00A3FF84 /* PadLoginDemo */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = B3B1F7261507A1FD00A3FF84 /* Build configuration list for PBXNativeTarget "PadLoginDemo" */;
+			buildPhases = (
+				B3B1F70A1507A1FD00A3FF84 /* Sources */,
+				B3B1F70B1507A1FD00A3FF84 /* Frameworks */,
+				B3B1F70C1507A1FD00A3FF84 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = PadLoginDemo;
+			productName = PadLoginDemo;
+			productReference = B3B1F70E1507A1FD00A3FF84 /* PadLoginDemo.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		B3B1F7051507A1FC00A3FF84 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0430;
+			};
+			buildConfigurationList = B3B1F7081507A1FC00A3FF84 /* Build configuration list for PBXProject "PadLoginDemo" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = B3B1F7031507A1FC00A3FF84;
+			productRefGroup = B3B1F70F1507A1FD00A3FF84 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				B3B1F70D1507A1FD00A3FF84 /* PadLoginDemo */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		B3B1F70C1507A1FD00A3FF84 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B3B1F71D1507A1FD00A3FF84 /* InfoPlist.strings in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		B3B1F70A1507A1FD00A3FF84 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B3B1F71F1507A1FD00A3FF84 /* main.m in Sources */,
+				B3B1F7231507A1FD00A3FF84 /* AppDelegate.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		B3B1F71B1507A1FD00A3FF84 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				B3B1F71C1507A1FD00A3FF84 /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		B3B1F7241507A1FD00A3FF84 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = 2;
+			};
+			name = Debug;
+		};
+		B3B1F7251507A1FD00A3FF84 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
+				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = 2;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		B3B1F7271507A1FD00A3FF84 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "PadLoginDemo/PadLoginDemo-Prefix.pch";
+				INFOPLIST_FILE = "PadLoginDemo/PadLoginDemo-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Debug;
+		};
+		B3B1F7281507A1FD00A3FF84 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "PadLoginDemo/PadLoginDemo-Prefix.pch";
+				INFOPLIST_FILE = "PadLoginDemo/PadLoginDemo-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		B3B1F7081507A1FC00A3FF84 /* Build configuration list for PBXProject "PadLoginDemo" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				B3B1F7241507A1FD00A3FF84 /* Debug */,
+				B3B1F7251507A1FD00A3FF84 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		B3B1F7261507A1FD00A3FF84 /* Build configuration list for PBXNativeTarget "PadLoginDemo" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				B3B1F7271507A1FD00A3FF84 /* Debug */,
+				B3B1F7281507A1FD00A3FF84 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = B3B1F7051507A1FC00A3FF84 /* Project object */;
+}
