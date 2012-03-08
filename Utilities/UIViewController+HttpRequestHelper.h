@@ -12,8 +12,8 @@
 
 @interface UIViewController (HttpRequestHelper)
 
--(void)formRequest:(NSURL*)url 
-          withData:(NSDictionary *) dic 
+-(void)formRequest:(NSString *)url 
+          withData:(id) dic 
    successSelector:(SEL) successSelector 
     failedSelector:(SEL) failedSelector
      errorSelector:(SEL) errorSelector;

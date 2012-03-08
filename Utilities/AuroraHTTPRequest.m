@@ -69,7 +69,7 @@
     //返回状态为成功
     if (successFlg) {
         //把json包装成dataSet
-        NSArray * dataSet;
+        NSMutableArray * dataSet;
         id datas = [[jsonData valueForKey:@"result"]objectForKey:@"record"];        
         if (datas ==nil) {
             datas = [jsonData valueForKey:@"result"];
@@ -83,7 +83,8 @@
         }
     }else{
         //返回状态为error
-        id  errorObj = [jsonData valueForKey:@"error"];
+        id  errorObj = nil;
+        errorObj = [jsonData valueForKey:@"error"];
         if (errorObj != nil) {
             NSString * errorMessage = [errorObj valueForKey:@"message"];
             if (auroraDelegate && [auroraDelegate respondsToSelector:errorSelector]) {
@@ -93,7 +94,8 @@
             }
         }
         //返回状态为failed
-        id failedObj = [jsonData valueForKey:@"failed"];
+        id failedObj= nil;
+        failedObj = [jsonData valueForKey:@"failed"];
         if (failedObj !=nil) {
             NSString * failedMessage = [failedObj valueForKey:@"message"];
             if (auroraDelegate && [auroraDelegate respondsToSelector:faildSelector]) {

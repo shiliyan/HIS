@@ -9,6 +9,10 @@
 #endif
 
 #ifdef __OBJC__
-    #import <UIKit/UIKit.h>
-    #import <Foundation/Foundation.h>
+#import <UIKit/UIKit.h>
+#import <Foundation/Foundation.h>
+#import <Three20/Three20.h>
+#import "extThree20JSON/extThree20JSON.h"
+#import "extThree20JSON/SBJSON.h"
+#import "Three20UI/Three20UI+Additions.h" 
 #endif
