@@ -9,26 +9,17 @@
 #import "ApproveListDetailController.h"
 
 @implementation ApproveListDetailController
-@synthesize label;
-@synthesize data;
 
-
-- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
-{
-    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
-    if (self) {
-        // Custom initialization
-        self.hidesBottomBarWhenPushed=YES;
-    }
-    return self;
-}
 
 -(void)viewWillAppear:(BOOL)animated{
-    self.label.text = data.applicant;
+    [super viewWillAppear:animated];
 }
 
+-(BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation{
+    return YES;
+}
 -(void)dealloc{
     [super dealloc];
-    data = nil;
+
 }
 @end

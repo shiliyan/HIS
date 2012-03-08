@@ -28,7 +28,7 @@
     [super dealloc];
 }
 
--(Approve *)initWithWorkflowId:(int)wid workflowName:(NSString *)wName currentStatus:(NSString *)cStatus applicant:(NSString *)a deadLine:(NSString *)dLine commitDate:(NSString *)cDate todoType:(NSString *)tType{
+-(Approve *)initWithWorkflowId:(NSInteger)wid workflowName:(NSString *)wName currentStatus:(NSString *)cStatus applicant:(NSString *)a deadLine:(NSString *)dLine commitDate:(NSString *)cDate todoType:(NSString *)tType{
     
     if (self = [super init]){
         self.workflowId = wid;

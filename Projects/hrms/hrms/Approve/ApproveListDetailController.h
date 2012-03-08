@@ -11,10 +11,9 @@
 
 @interface ApproveListDetailController : UIViewController{
     UILabel *label;
-    Approve *data;
+
 }
 
-@property (retain, nonatomic) IBOutlet UILabel *label;
-@property (retain, nonatomic) Approve *data;
+
 
 @end

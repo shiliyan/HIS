@@ -13,7 +13,7 @@ static  NSString *TODO_TYPE_NORMAL = @"NORMAL";
 static const int TODO_TYPE = 2;
 
 @interface Approve : NSObject{
-    int workflowId;
+    NSInteger workflowId;
     NSString *workflowName;//工作流名称
     NSString *currentStatus;//当前节点
     NSString *applicant;//申请人
@@ -22,7 +22,7 @@ static const int TODO_TYPE = 2;
     NSString *type;//催办还是代办
 }
 
-@property(nonatomic) int workflowId;
+@property(nonatomic) NSInteger workflowId;
 @property(copy, nonatomic) NSString *workflowName;
 @property(copy, nonatomic) NSString *currentStatus;
 @property(copy, nonatomic) NSString *applicant;
@@ -31,5 +31,5 @@ static const int TODO_TYPE = 2;
 @property(copy, nonatomic) NSString *type;
 
 
--(Approve *)initWithWorkflowId:(int)wid workflowName:(NSString *)wName currentStatus:(NSString *)currentStatus applicant:(NSString *)applicant deadLine:(NSString *)deadLine commitDate:(NSString *)commitDate todoType:(NSString *)tType;
+-(Approve *)initWithWorkflowId:(NSInteger)wid workflowName:(NSString *)wName currentStatus:(NSString *)currentStatus applicant:(NSString *)applicant deadLine:(NSString *)deadLine commitDate:(NSString *)commitDate todoType:(NSString *)tType;
 @end
