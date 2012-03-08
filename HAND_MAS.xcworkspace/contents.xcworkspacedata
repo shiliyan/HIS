@@ -11,8 +11,5 @@
    <Group
       location = "container:"
       name = "Demos">
-      <FileRef
-         location = "group:Demos/LoginDemo/LoginDemo.xcodeproj">
-      </FileRef>
    </Group>
 </Workspace>
