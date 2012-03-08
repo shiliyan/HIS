@@ -10,13 +10,13 @@
 
 @implementation UIViewController (HttpRequestHelper)
 
--(void)formRequest:(NSURL*)url 
+-(void)formRequest:(NSString *)url 
           withData:(id) datas 
    successSelector:(SEL) successSelector 
     failedSelector:(SEL) failedSelector
      errorSelector:(SEL) errorSelector{
     //TODO:
-    AuroraHTTPRequest * request = [AuroraHTTPRequest requestWithURL:url];
+    AuroraHTTPRequest * request = [AuroraHTTPRequest requestWithURL:[NSURL URLWithString:url]];
     [request setUseCookiePersistence:YES];
     [request setRequestCookies:[NSMutableArray arrayWithArray:[[NSHTTPCookieStorage sharedHTTPCookieStorage] cookies]]];
     

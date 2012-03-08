@@ -41,7 +41,7 @@ static  NSString* kLoginURLPath  = @"http://172.20.0.72:8080/hrmsdev_new/login.s
     loginEntity.username = [username text];
     loginEntity.password = [password text];
             
-    [self formRequest:[NSURL URLWithString:kLoginURLPath]  
+    [self formRequest:kLoginURLPath  
              withData:[loginEntity toDataSet] 
       successSelector:@selector(loginSecretFetchComplete:)  
        failedSelector:nil 
@@ -49,7 +49,7 @@ static  NSString* kLoginURLPath  = @"http://172.20.0.72:8080/hrmsdev_new/login.s
     [loginEntity release];
 }
 
-- (void)loginSecretFetchComplete:(NSArray *)dataSet
+- (void)loginSecretFetchComplete:(id)dataSet
 {
 //    NSLog(@"%@",[[dataSet objectAtIndex:0]valueForKey:@"user_name"]);
     [username resignFirstResponder];

@@ -14,7 +14,7 @@
 @protocol AuroraHTTPRequestDelegate <NSObject>
 
 @optional
-- (void)successSelector:(NSArray *)dataSet;
+- (void)successSelector:(id)dataSet;
 
 - (void)faildSelector:(NSString *)failedMessage;
 

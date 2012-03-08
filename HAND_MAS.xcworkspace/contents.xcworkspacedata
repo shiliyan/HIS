@@ -11,5 +11,11 @@
    <Group
       location = "container:"
       name = "Demos">
+<<<<<<< HEAD
+=======
+      <FileRef
+         location = "group:Demos/PadLoginDemo/PadLoginDemo.xcodeproj">
+      </FileRef>
+>>>>>>> 2d1704ce1ab63667b7e9548e696e2f35094bad6b
    </Group>
 </Workspace>
