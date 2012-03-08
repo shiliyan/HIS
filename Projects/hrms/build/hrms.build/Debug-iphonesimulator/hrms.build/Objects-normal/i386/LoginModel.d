@@ -1,3 +1,3 @@
 dependencies: \
-  /Users/Leo/Projects/xcode/Hand/Projects/hrms/hrms/Login/LoginModel.m \
-  /Users/Leo/Projects/xcode/Hand/Projects/hrms/hrms/Login/LoginModel.h
+  /Users/Leo/Projects/xcode/HIS/Projects/hrms/hrms/Login/LoginModel.m \
+  /Users/Leo/Projects/xcode/HIS/Projects/hrms/hrms/Login/LoginModel.h

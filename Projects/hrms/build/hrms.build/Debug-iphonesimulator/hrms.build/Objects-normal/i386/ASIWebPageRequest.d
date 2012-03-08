@@ -1,7 +1,7 @@
 dependencies: \
-  /Users/Leo/Projects/xcode/Hand/Projects/hrms/../../Frameworks/ASIHttpRequest/ASIWebPageRequest/ASIWebPageRequest.m \
-  /Users/Leo/Projects/xcode/Hand/Projects/hrms/../../Frameworks/ASIHttpRequest/ASIWebPageRequest/ASIWebPageRequest.h \
-  /Users/Leo/Projects/xcode/Hand/Projects/hrms/../../Frameworks/ASIHttpRequest/ASIWebPageRequest/ASINetworkQueue.h \
+  /Users/Leo/Projects/xcode/HIS/Projects/hrms/../../Frameworks/ASIHttpRequest/ASIWebPageRequest/ASIWebPageRequest.m \
+  /Users/Leo/Projects/xcode/HIS/Projects/hrms/../../Frameworks/ASIHttpRequest/ASIWebPageRequest/ASIWebPageRequest.h \
+  /Users/Leo/Projects/xcode/HIS/Projects/hrms/../../Frameworks/ASIHttpRequest/ASIWebPageRequest/ASINetworkQueue.h \
   /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator5.0.sdk/usr/include/libxml2/libxml/HTMLparser.h \
   /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator5.0.sdk/usr/include/libxml2/libxml/xmlversion.h \
   /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator5.0.sdk/usr/include/libxml2/libxml/xmlexports.h \

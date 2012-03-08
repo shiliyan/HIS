@@ -1,3 +1,3 @@
 dependencies: \
-  /Users/Leo/Projects/xcode/Hand/Projects/hrms/../../Frameworks/ASIHttpRequest/ASIWebPageRequest/ASIDownloadCache.m \
-  /Users/Leo/Projects/xcode/Hand/Projects/hrms/../../Frameworks/ASIHttpRequest/ASIWebPageRequest/ASIDownloadCache.h
+  /Users/Leo/Projects/xcode/HIS/Projects/hrms/../../Frameworks/ASIHttpRequest/ASIWebPageRequest/ASIDownloadCache.m \
+  /Users/Leo/Projects/xcode/HIS/Projects/hrms/../../Frameworks/ASIHttpRequest/ASIWebPageRequest/ASIDownloadCache.h

@@ -1,4 +1,4 @@
 dependencies: \
-  /Users/Leo/Projects/xcode/Hand/Projects/hrms/../../Frameworks/ASIHttpRequest/S3/ASIS3ObjectRequest.m \
-  /Users/Leo/Projects/xcode/Hand/Projects/hrms/../../Frameworks/ASIHttpRequest/S3/ASIS3ObjectRequest.h \
-  /Users/Leo/Projects/xcode/Hand/Projects/hrms/../../Frameworks/ASIHttpRequest/S3/ASIS3Request.h
+  /Users/Leo/Projects/xcode/HIS/Projects/hrms/../../Frameworks/ASIHttpRequest/S3/ASIS3ObjectRequest.m \
+  /Users/Leo/Projects/xcode/HIS/Projects/hrms/../../Frameworks/ASIHttpRequest/S3/ASIS3ObjectRequest.h \
+  /Users/Leo/Projects/xcode/HIS/Projects/hrms/../../Frameworks/ASIHttpRequest/S3/ASIS3Request.h

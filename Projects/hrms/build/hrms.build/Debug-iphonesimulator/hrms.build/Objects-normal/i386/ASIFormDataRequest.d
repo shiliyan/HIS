@@ -1,2 +1,2 @@
 dependencies: \
-  /Users/Leo/Projects/xcode/Hand/Projects/hrms/../../Frameworks/ASIHttpRequest/ASIWebPageRequest/ASIFormDataRequest.m
+  /Users/Leo/Projects/xcode/HIS/Projects/hrms/../../Frameworks/ASIHttpRequest/ASIWebPageRequest/ASIFormDataRequest.m

@@ -2,8 +2,8 @@ TThree20
 v5
 r1
 cCheck dependencies
-cCpHeader Headers/Three20+Additions.h ../../Build/Products/Debug-iphonesimulator/../three20/Three20/Three20+Additions.h
 cCpHeader Headers/Three20.h ../../Build/Products/Debug-iphonesimulator/../three20/Three20/Three20.h
+cCpHeader Headers/Three20+Additions.h ../../Build/Products/Debug-iphonesimulator/../three20/Three20/Three20+Additions.h
 cPhaseScriptExecution "Protect Copied Headers" /Users/Leo/Projects/xcode/HIS/Frameworks/Three20/Three20/../../Build/Three20.build/Debug-iphonesimulator/Three20.build/Script-6E645F461187B01F00F08CB1.sh
 cProcessPCH /var/folders/ry/l3zgfjx90jl5cbvr9qr3mbpm0000gn/C/com.apple.Xcode.501/SharedPrecompiledHeaders/Three20_Prefix-bnmlztskjyzrrwepzcpkoscwfxbf/Three20_Prefix.pch.pth Headers/Three20_Prefix.pch normal i386 objective-c com.apple.compilers.llvm.clang.1_0.compiler
 cCompileC ../../Build/Three20.build/Debug-iphonesimulator/Three20.build/Objects-normal/i386/Three20.o /Users/Leo/Projects/xcode/HIS/Frameworks/Three20/Three20/Source/Three20.m normal i386 objective-c com.apple.compilers.llvm.clang.1_0.compiler
@@ -26,1191 +26,1191 @@ t1330907691
 s3019
 
 N/Users/Leo/Projects/xcode/HIS/Frameworks/Three20/Three20/../../Build/Products/Debug-iphonesimulator/../three20/Three20/Three20+Additions.h
-t1331129753
+t1331203198
 s1099
 
 N/Users/Leo/Projects/xcode/HIS/Frameworks/Three20/Three20/../../Build/Products/Debug-iphonesimulator/../three20/Three20/Three20.h
-t1331129753
+t1331203198
 s904
 
 N/Users/Leo/Projects/xcode/HIS/Frameworks/Three20/Three20/../../Build/Products/Debug-iphonesimulator/../three20/Three20Core/TTAvailability.h
-c000000004F576D740000000000000A6A
-t1331129716
+c000000004F588C650000000000000A6A
+t1331203173
 s2666
 
 N/Users/Leo/Projects/xcode/HIS/Frameworks/Three20/Three20/../../Build/Products/Debug-iphonesimulator/../three20/Three20Core/TTCorePreprocessorMacros.h
-c000000004F576D7400000000000009FA
-t1331129716
+c000000004F588C6500000000000009FA
+t1331203173
 s2554
 
 N/Users/Leo/Projects/xcode/HIS/Frameworks/Three20/Three20/../../Build/Products/Debug-iphonesimulator/../three20/Three20Core/TTDebug.h
-c000000004F576D740000000000000EC0
-t1331129716
+c000000004F588C650000000000000EC0
+t1331203173
 s3776
 
 N/Users/Leo/Projects/xcode/HIS/Frameworks/Three20/Three20/../../Build/Products/Debug-iphonesimulator/../three20/Three20Core/TTEntityTables.h
-c000000004F576D7400000000000004E0
-t1331129716
+c000000004F588C6500000000000004E0
+t1331203173
 s1248
 
 N/Users/Leo/Projects/xcode/HIS/Frameworks/Three20/Three20/../../Build/Products/Debug-iphonesimulator/../three20/Three20Core/TTExtensionAuthor.h
-c000000004F576D740000000000000555
-t1331129716
+c000000004F588C650000000000000555
+t1331203173
 s1365
 
 N/Users/Leo/Projects/xcode/HIS/Frameworks/Three20/Three20/../../Build/Products/Debug-iphonesimulator/../three20/Three20Core/TTExtensionInfo.h
-c000000004F576D7400000000000004F6
-t1331129716
+c000000004F588C6500000000000004F6
+t1331203173
 s1270
 
 N/Users/Leo/Projects/xcode/HIS/Frameworks/Three20/Three20/../../Build/Products/Debug-iphonesimulator/../three20/Three20Core/TTExtensionLoader.h
-c000000004F576D740000000000000A53
-t1331129716
+c000000004F588C650000000000000A53
+t1331203173
 s2643
 
 N/Users/Leo/Projects/xcode/HIS/Frameworks/Three20/Three20/../../Build/Products/Debug-iphonesimulator/../three20/Three20Core/TTGlobalCore.h
-c000000004F576D7400000000000005E6
-t1331129716
+c000000004F588C6500000000000005E6
+t1331203173
 s1510
 
 N/Users/Leo/Projects/xcode/HIS/Frameworks/Three20/Three20/../../Build/Products/Debug-iphonesimulator/../three20/Three20Core/TTGlobalCoreLocale.h
-c000000004F576D74000000000000056D
-t1331129716
+c000000004F588C65000000000000056D
+t1331203173
 s1389
 
 N/Users/Leo/Projects/xcode/HIS/Frameworks/Three20/Three20/../../Build/Products/Debug-iphonesimulator/../three20/Three20Core/TTGlobalCorePaths.h
-c000000004F576D7400000000000005D7
-t1331129716
+c000000004F588C6500000000000005D7
+t1331203173
 s1495
 
 N/Users/Leo/Projects/xcode/HIS/Frameworks/Three20/Three20/../../Build/Products/Debug-iphonesimulator/../three20/Three20Core/TTGlobalCoreRects.h
-c000000004F576D740000000000000520
-t1331129716
+c000000004F588C650000000000000520
+t1331203173
 s1312
 
 N/Users/Leo/Projects/xcode/HIS/Frameworks/Three20/Three20/../../Build/Products/Debug-iphonesimulator/../three20/Three20Core/TTMarkupStripper.h
-c000000004F576D7400000000000003CB
-t1331129716
+c000000004F588C6500000000000003CB
+t1331203173
 s971
 
 N/Users/Leo/Projects/xcode/HIS/Frameworks/Three20/Three20/../../Build/Products/Debug-iphonesimulator/../three20/Three20Core/Three20.h
-c000000004F576D7400000000000007AC
-t1331129716
+c000000004F588C6500000000000007AC
+t1331203173
 s1964
 
 N/Users/Leo/Projects/xcode/HIS/Frameworks/Three20/Three20/../../Build/Products/Debug-iphonesimulator/../three20/Three20Core/Three20Core.h
-c000000004F576D7400000000000004D8
-t1331129716
+c000000004F588C6500000000000004D8
+t1331203173
 s1240
 
 N/Users/Leo/Projects/xcode/HIS/Frameworks/Three20/Three20/../../Build/Products/Debug-iphonesimulator/../three20/Three20Core/Three20Version.h
-c000000004F576D740000000000000461
-t1331129716
+c000000004F588C650000000000000461
+t1331203173
 s1121
 
 N/Users/Leo/Projects/xcode/HIS/Frameworks/Three20/Three20/../../Build/Products/Debug-iphonesimulator/../three20/Three20Network/TTErrorCodes.h
-c000000004F576BE6000000000000030D
-t1331129318
+c000000004F588C67000000000000030D
+t1331203175
 s781
 
 N/Users/Leo/Projects/xcode/HIS/Frameworks/Three20/Three20/../../Build/Products/Debug-iphonesimulator/../three20/Three20Network/TTGlobalNetwork.h
-c000000004F576BE6000000000000057D
-t1331129318
+c000000004F588C67000000000000057D
+t1331203175
 s1405
 
 N/Users/Leo/Projects/xcode/HIS/Frameworks/Three20/Three20/../../Build/Products/Debug-iphonesimulator/../three20/Three20Network/TTModel.h
-c000000004F576BE60000000000000CEB
-t1331129318
+c000000004F588C670000000000000CEB
+t1331203175
 s3307
 
 N/Users/Leo/Projects/xcode/HIS/Frameworks/Three20/Three20/../../Build/Products/Debug-iphonesimulator/../three20/Three20Network/TTModelDelegate.h
-c000000004F576BE600000000000008A8
-t1331129318
+c000000004F588C6700000000000008A8
+t1331203175
 s2216
 
 N/Users/Leo/Projects/xcode/HIS/Frameworks/Three20/Three20/../../Build/Products/Debug-iphonesimulator/../three20/Three20Network/TTURLCache.h
-c000000004F576BE600000000000018EA
-t1331129318
+c000000004F588C6700000000000018EA
+t1331203175
 s6378
 
 N/Users/Leo/Projects/xcode/HIS/Frameworks/Three20/Three20/../../Build/Products/Debug-iphonesimulator/../three20/Three20Network/TTURLDataResponse.h
-c000000004F576BE60000000000000363
-t1331129318
+c000000004F588C670000000000000363
+t1331203175
 s867
 
 N/Users/Leo/Projects/xcode/HIS/Frameworks/Three20/Three20/../../Build/Products/Debug-iphonesimulator/../three20/Three20Network/TTURLImageResponse.h
-c000000004F576BE60000000000000434
-t1331129318
+c000000004F588C670000000000000434
+t1331203175
 s1076
 
 N/Users/Leo/Projects/xcode/HIS/Frameworks/Three20/Three20/../../Build/Products/Debug-iphonesimulator/../three20/Three20Network/TTURLRequest.h
-c000000004F576BE60000000000002261
-t1331129318
+c000000004F588C670000000000002261
+t1331203175
 s8801
 
 N/Users/Leo/Projects/xcode/HIS/Frameworks/Three20/Three20/../../Build/Products/Debug-iphonesimulator/../three20/Three20Network/TTURLRequestCachePolicy.h
-c000000004F576BE600000000000004CF
-t1331129318
+c000000004F588C6700000000000004CF
+t1331203175
 s1231
 
 N/Users/Leo/Projects/xcode/HIS/Frameworks/Three20/Three20/../../Build/Products/Debug-iphonesimulator/../three20/Three20Network/TTURLRequestDelegate.h
-c000000004F576BE600000000000006C3
-t1331129318
+c000000004F588C6700000000000006C3
+t1331203175
 s1731
 
 N/Users/Leo/Projects/xcode/HIS/Frameworks/Three20/Three20/../../Build/Products/Debug-iphonesimulator/../three20/Three20Network/TTURLRequestModel.h
-c000000004F576BE6000000000000070C
-t1331129318
+c000000004F588C67000000000000070C
+t1331203175
 s1804
 
 N/Users/Leo/Projects/xcode/HIS/Frameworks/Three20/Three20/../../Build/Products/Debug-iphonesimulator/../three20/Three20Network/TTURLRequestQueue.h
-c000000004F576BE60000000000000F0A
-t1331129318
+c000000004F588C670000000000000F0A
+t1331203175
 s3850
 
 N/Users/Leo/Projects/xcode/HIS/Frameworks/Three20/Three20/../../Build/Products/Debug-iphonesimulator/../three20/Three20Network/TTURLResponse.h
-c000000004F576BE60000000000000845
-t1331129318
+c000000004F588C670000000000000845
+t1331203175
 s2117
 
 N/Users/Leo/Projects/xcode/HIS/Frameworks/Three20/Three20/../../Build/Products/Debug-iphonesimulator/../three20/Three20Network/TTUserInfo.h
-c000000004F576BE60000000000000673
-t1331129318
+c000000004F588C670000000000000673
+t1331203175
 s1651
 
 N/Users/Leo/Projects/xcode/HIS/Frameworks/Three20/Three20/../../Build/Products/Debug-iphonesimulator/../three20/Three20Network/Three20Network.h
-c000000004F576BE6000000000000058B
-t1331129318
+c000000004F588C67000000000000058B
+t1331203175
 s1419
 
 N/Users/Leo/Projects/xcode/HIS/Frameworks/Three20/Three20/../../Build/Products/Debug-iphonesimulator/../three20/Three20Style/TTBevelBorderStyle.h
-c000000004F576BE70000000000000563
-t1331129319
+c000000004F588C6A0000000000000563
+t1331203178
 s1379
 
 N/Users/Leo/Projects/xcode/HIS/Frameworks/Three20/Three20/../../Build/Products/Debug-iphonesimulator/../three20/Three20Style/TTBlendStyle.h
-c000000004F576BE70000000000000340
-t1331129319
+c000000004F588C6A0000000000000340
+t1331203178
 s832
 
 N/Users/Leo/Projects/xcode/HIS/Frameworks/Three20/Three20/../../Build/Products/Debug-iphonesimulator/../three20/Three20Style/TTBoxStyle.h
-c000000004F576BE700000000000005FD
-t1331129319
+c000000004F588C6A00000000000005FD
+t1331203178
 s1533
 
 N/Users/Leo/Projects/xcode/HIS/Frameworks/Three20/Three20/../../Build/Products/Debug-iphonesimulator/../three20/Three20Style/TTContentStyle.h
-c000000004F576BE700000000000002DB
-t1331129319
+c000000004F588C6A00000000000002DB
+t1331203178
 s731
 
 N/Users/Leo/Projects/xcode/HIS/Frameworks/Three20/Three20/../../Build/Products/Debug-iphonesimulator/../three20/Three20Style/TTDefaultStyleSheet+DragRefreshHeader.h
-c000000004F576BE800000000000004C3
-t1331129320
+c000000004F588C6A00000000000004C3
+t1331203178
 s1219
 
 N/Users/Leo/Projects/xcode/HIS/Frameworks/Three20/Three20/../../Build/Products/Debug-iphonesimulator/../three20/Three20Style/TTDefaultStyleSheet.h
-c000000004F576BE70000000000001162
-t1331129319
+c000000004F588C6A0000000000001162
+t1331203178
 s4450
 
 N/Users/Leo/Projects/xcode/HIS/Frameworks/Three20/Three20/../../Build/Products/Debug-iphonesimulator/../three20/Three20Style/TTFlowLayout.h
-c000000004F576BE70000000000000324
-t1331129319
+c000000004F588C6A0000000000000324
+t1331203178
 s804
 
 N/Users/Leo/Projects/xcode/HIS/Frameworks/Three20/Three20/../../Build/Products/Debug-iphonesimulator/../three20/Three20Style/TTFourBorderStyle.h
-c000000004F576BE70000000000000630
-t1331129319
+c000000004F588C6A0000000000000630
+t1331203178
 s1584
 
 N/Users/Leo/Projects/xcode/HIS/Frameworks/Three20/Three20/../../Build/Products/Debug-iphonesimulator/../three20/Three20Style/TTGlobalStyle.h
-c000000004F576BE7000000000000077D
-t1331129319
+c000000004F588C6A000000000000077D
+t1331203178
 s1917
 
 N/Users/Leo/Projects/xcode/HIS/Frameworks/Three20/Three20/../../Build/Products/Debug-iphonesimulator/../three20/Three20Style/TTGridLayout.h
-c000000004F576BE70000000000000373
-t1331129319
+c000000004F588C6A0000000000000373
+t1331203178
 s883
 
 N/Users/Leo/Projects/xcode/HIS/Frameworks/Three20/Three20/../../Build/Products/Debug-iphonesimulator/../three20/Three20Style/TTHighlightBorderStyle.h
-c000000004F576BE70000000000000442
-t1331129319
+c000000004F588C6A0000000000000442
+t1331203178
 s1090
 
 N/Users/Leo/Projects/xcode/HIS/Frameworks/Three20/Three20/../../Build/Products/Debug-iphonesimulator/../three20/Three20Style/TTImageStyle.h
-c000000004F576BE700000000000007A7
-t1331129319
+c000000004F588C6A00000000000007A7
+t1331203178
 s1959
 
 N/Users/Leo/Projects/xcode/HIS/Frameworks/Three20/Three20/../../Build/Products/Debug-iphonesimulator/../three20/Three20Style/TTInnerShadowStyle.h
-c000000004F576BE700000000000002B8
-t1331129319
+c000000004F588C6A00000000000002B8
+t1331203178
 s696
 
 N/Users/Leo/Projects/xcode/HIS/Frameworks/Three20/Three20/../../Build/Products/Debug-iphonesimulator/../three20/Three20Style/TTInsetStyle.h
-c000000004F576BE70000000000000337
-t1331129319
+c000000004F588C6A0000000000000337
+t1331203178
 s823
 
 N/Users/Leo/Projects/xcode/HIS/Frameworks/Three20/Three20/../../Build/Products/Debug-iphonesimulator/../three20/Three20Style/TTLayout.h
-c000000004F576BE700000000000002F8
-t1331129319
+c000000004F588C6A00000000000002F8
+t1331203178
 s760
 
 N/Users/Leo/Projects/xcode/HIS/Frameworks/Three20/Three20/../../Build/Products/Debug-iphonesimulator/../three20/Three20Style/TTLinearGradientBorderStyle.h
-c000000004F576BE700000000000005DC
-t1331129319
+c000000004F588C6A00000000000005DC
+t1331203178
 s1500
 
 N/Users/Leo/Projects/xcode/HIS/Frameworks/Three20/Three20/../../Build/Products/Debug-iphonesimulator/../three20/Three20Style/TTLinearGradientFillStyle.h
-c000000004F576BE700000000000003D5
-t1331129319
+c000000004F588C6A00000000000003D5
+t1331203178
 s981
 
 N/Users/Leo/Projects/xcode/HIS/Frameworks/Three20/Three20/../../Build/Products/Debug-iphonesimulator/../three20/Three20Style/TTMaskStyle.h
-c000000004F576BE7000000000000032D
-t1331129319
+c000000004F588C6A000000000000032D
+t1331203178
 s813
 
 N/Users/Leo/Projects/xcode/HIS/Frameworks/Three20/Three20/../../Build/Products/Debug-iphonesimulator/../three20/Three20Style/TTPartStyle.h
-c000000004F576BE700000000000003CD
-t1331129319
+c000000004F588C6A00000000000003CD
+t1331203178
 s973
 
 N/Users/Leo/Projects/xcode/HIS/Frameworks/Three20/Three20/../../Build/Products/Debug-iphonesimulator/../three20/Three20Style/TTPosition.h
-c000000004F576BE700000000000002CA
-t1331129319
+c000000004F588C6A00000000000002CA
+t1331203178
 s714
 
 N/Users/Leo/Projects/xcode/HIS/Frameworks/Three20/Three20/../../Build/Products/Debug-iphonesimulator/../three20/Three20Style/TTRectangleShape.h
-c000000004F576BE700000000000002C8
-t1331129319
+c000000004F588C6A00000000000002C8
+t1331203178
 s712
 
 N/Users/Leo/Projects/xcode/HIS/Frameworks/Three20/Three20/../../Build/Products/Debug-iphonesimulator/../three20/Three20Style/TTReflectiveFillStyle.h
-c000000004F576BE70000000000000435
-t1331129319
+c000000004F588C6A0000000000000435
+t1331203178
 s1077
 
 N/Users/Leo/Projects/xcode/HIS/Frameworks/Three20/Three20/../../Build/Products/Debug-iphonesimulator/../three20/Three20Style/TTRoundedLeftArrowShape.h
-c000000004F576BE7000000000000032E
-t1331129319
+c000000004F588C6A000000000000032E
+t1331203178
 s814
 
 N/Users/Leo/Projects/xcode/HIS/Frameworks/Three20/Three20/../../Build/Products/Debug-iphonesimulator/../three20/Three20Style/TTRoundedRectangleShape.h
-c000000004F576BE700000000000004DD
-t1331129319
+c000000004F588C6A00000000000004DD
+t1331203178
 s1245
 
 N/Users/Leo/Projects/xcode/HIS/Frameworks/Three20/Three20/../../Build/Products/Debug-iphonesimulator/../three20/Three20Style/TTRoundedRightArrowShape.h
-c000000004F576BE70000000000000330
-t1331129319
+c000000004F588C6A0000000000000330
+t1331203178
 s816
 
 N/Users/Leo/Projects/xcode/HIS/Frameworks/Three20/Three20/../../Build/Products/Debug-iphonesimulator/../three20/Three20Style/TTShadowStyle.h
-c000000004F576BE70000000000000402
-t1331129319
+c000000004F588C6A0000000000000402
+t1331203178
 s1026
 
 N/Users/Leo/Projects/xcode/HIS/Frameworks/Three20/Three20/../../Build/Products/Debug-iphonesimulator/../three20/Three20Style/TTShape.h
-c000000004F576BE700000000000004D8
-t1331129319
+c000000004F588C6A00000000000004D8
+t1331203178
 s1240
 
 N/Users/Leo/Projects/xcode/HIS/Frameworks/Three20/Three20/../../Build/Products/Debug-iphonesimulator/../three20/Three20Style/TTShapeStyle.h
-c000000004F576BE7000000000000038A
-t1331129319
+c000000004F588C6A000000000000038A
+t1331203178
 s906
 
 N/Users/Leo/Projects/xcode/HIS/Frameworks/Three20/Three20/../../Build/Products/Debug-iphonesimulator/../three20/Three20Style/TTSolidBorderStyle.h
-c000000004F576BE70000000000000399
-t1331129319
+c000000004F588C6A0000000000000399
+t1331203178
 s921
 
 N/Users/Leo/Projects/xcode/HIS/Frameworks/Three20/Three20/../../Build/Products/Debug-iphonesimulator/../three20/Three20Style/TTSolidFillStyle.h
-c000000004F576BE7000000000000033B
-t1331129319
+c000000004F588C6A000000000000033B
+t1331203178
 s827
 
 N/Users/Leo/Projects/xcode/HIS/Frameworks/Three20/Three20/../../Build/Products/Debug-iphonesimulator/../three20/Three20Style/TTSpeechBubbleShape.h
-c000000004F576BE700000000000007EA
-t1331129319
+c000000004F588C6A00000000000007EA
+t1331203178
 s2026
 
 N/Users/Leo/Projects/xcode/HIS/Frameworks/Three20/Three20/../../Build/Products/Debug-iphonesimulator/../three20/Three20Style/TTStyle.h
-c000000004F576BE70000000000000474
-t1331129319
+c000000004F588C6A0000000000000474
+t1331203178
 s1140
 
 N/Users/Leo/Projects/xcode/HIS/Frameworks/Three20/Three20/../../Build/Products/Debug-iphonesimulator/../three20/Three20Style/TTStyleContext.h
-c000000004F576BE700000000000004BA
-t1331129319
+c000000004F588C6A00000000000004BA
+t1331203178
 s1210
 
 N/Users/Leo/Projects/xcode/HIS/Frameworks/Three20/Three20/../../Build/Products/Debug-iphonesimulator/../three20/Three20Style/TTStyleDelegate.h
-c000000004F576BE7000000000000039D
-t1331129319
+c000000004F588C6A000000000000039D
+t1331203178
 s925
 
 N/Users/Leo/Projects/xcode/HIS/Frameworks/Three20/Three20/../../Build/Products/Debug-iphonesimulator/../three20/Three20Style/TTStyleSheet.h
-c000000004F576BE700000000000003E3
-t1331129319
+c000000004F588C6A00000000000003E3
+t1331203178
 s995
 
 N/Users/Leo/Projects/xcode/HIS/Frameworks/Three20/Three20/../../Build/Products/Debug-iphonesimulator/../three20/Three20Style/TTStyledBlock.h
-c000000004F576BE700000000000002B7
-t1331129319
+c000000004F588C6A00000000000002B7
+t1331203178
 s695
 
 N/Users/Leo/Projects/xcode/HIS/Frameworks/Three20/Three20/../../Build/Products/Debug-iphonesimulator/../three20/Three20Style/TTStyledBoldNode.h
-c000000004F576BE700000000000002B8
-t1331129319
+c000000004F588C6A00000000000002B8
+t1331203178
 s696
 
 N/Users/Leo/Projects/xcode/HIS/Frameworks/Three20/Three20/../../Build/Products/Debug-iphonesimulator/../three20/Three20Style/TTStyledBoxFrame.h
-c000000004F576BE70000000000000437
-t1331129319
+c000000004F588C6A0000000000000437
+t1331203178
 s1079
 
 N/Users/Leo/Projects/xcode/HIS/Frameworks/Three20/Three20/../../Build/Products/Debug-iphonesimulator/../three20/Three20Style/TTStyledButtonNode.h
-c000000004F576BE8000000000000042B
-t1331129320
+c000000004F588C6A000000000000042B
+t1331203178
 s1067
 
 N/Users/Leo/Projects/xcode/HIS/Frameworks/Three20/Three20/../../Build/Products/Debug-iphonesimulator/../three20/Three20Style/TTStyledElement.h
-c000000004F576BE70000000000000515
-t1331129319
+c000000004F588C6A0000000000000515
+t1331203178
 s1301
 
 N/Users/Leo/Projects/xcode/HIS/Frameworks/Three20/Three20/../../Build/Products/Debug-iphonesimulator/../three20/Three20Style/TTStyledFrame.h
-c000000004F576BE700000000000005E0
-t1331129319
+c000000004F588C6A00000000000005E0
+t1331203178
 s1504
 
 N/Users/Leo/Projects/xcode/HIS/Frameworks/Three20/Three20/../../Build/Products/Debug-iphonesimulator/../three20/Three20Style/TTStyledImageFrame.h
-c000000004F576BE7000000000000046E
-t1331129319
+c000000004F588C6A000000000000046E
+t1331203178
 s1134
 
 N/Users/Leo/Projects/xcode/HIS/Frameworks/Three20/Three20/../../Build/Products/Debug-iphonesimulator/../three20/Three20Style/TTStyledImageNode.h
-c000000004F576BE7000000000000043F
-t1331129319
+c000000004F588C6A000000000000043F
+t1331203178
 s1087
 
 N/Users/Leo/Projects/xcode/HIS/Frameworks/Three20/Three20/../../Build/Products/Debug-iphonesimulator/../three20/Three20Style/TTStyledInline.h
-c000000004F576BE700000000000002B8
-t1331129319
+c000000004F588C6A00000000000002B8
+t1331203178
 s696
 
 N/Users/Leo/Projects/xcode/HIS/Frameworks/Three20/Three20/../../Build/Products/Debug-iphonesimulator/../three20/Three20Style/TTStyledInlineBlock.h
-c000000004F576BE700000000000002BD
-t1331129319
+c000000004F588C6A00000000000002BD
+t1331203178
 s701
 
 N/Users/Leo/Projects/xcode/HIS/Frameworks/Three20/Three20/../../Build/Products/Debug-iphonesimulator/../three20/Three20Style/TTStyledInlineFrame.h
-c000000004F576BE700000000000003F3
-t1331129319
+c000000004F588C6A00000000000003F3
+t1331203178
 s1011
 
 N/Users/Leo/Projects/xcode/HIS/Frameworks/Three20/Three20/../../Build/Products/Debug-iphonesimulator/../three20/Three20Style/TTStyledItalicNode.h
-c000000004F576BE700000000000002BA
-t1331129319
+c000000004F588C6A00000000000002BA
+t1331203178
 s698
 
 N/Users/Leo/Projects/xcode/HIS/Frameworks/Three20/Three20/../../Build/Products/Debug-iphonesimulator/../three20/Three20Style/TTStyledLineBreakNode.h
-c000000004F576BE700000000000002BB
-t1331129319
+c000000004F588C6A00000000000002BB
+t1331203178
 s699
 
 N/Users/Leo/Projects/xcode/HIS/Frameworks/Three20/Three20/../../Build/Products/Debug-iphonesimulator/../three20/Three20Style/TTStyledLinkNode.h
-c000000004F576BE8000000000000041F
-t1331129320
+c000000004F588C6A000000000000041F
+t1331203178
 s1055
 
 N/Users/Leo/Projects/xcode/HIS/Frameworks/Three20/Three20/../../Build/Products/Debug-iphonesimulator/../three20/Three20Style/TTStyledNode.h
-c000000004F576BE7000000000000047B
-t1331129319
+c000000004F588C6A000000000000047B
+t1331203178
 s1147
 
 N/Users/Leo/Projects/xcode/HIS/Frameworks/Three20/Three20/../../Build/Products/Debug-iphonesimulator/../three20/Three20Style/TTStyledText.h
-c000000004F576BE70000000000000F84
-t1331129319
+c000000004F588C6A0000000000000F84
+t1331203178
 s3972
 
 N/Users/Leo/Projects/xcode/HIS/Frameworks/Three20/Three20/../../Build/Products/Debug-iphonesimulator/../three20/Three20Style/TTStyledTextDelegate.h
-c000000004F576BE70000000000000314
-t1331129319
+c000000004F588C6A0000000000000314
+t1331203178
 s788
 
 N/Users/Leo/Projects/xcode/HIS/Frameworks/Three20/Three20/../../Build/Products/Debug-iphonesimulator/../three20/Three20Style/TTStyledTextFrame.h
-c000000004F576BE700000000000004D5
-t1331129319
+c000000004F588C6A00000000000004D5
+t1331203178
 s1237
 
 N/Users/Leo/Projects/xcode/HIS/Frameworks/Three20/Three20/../../Build/Products/Debug-iphonesimulator/../three20/Three20Style/TTStyledTextNode.h
-c000000004F576BE7000000000000037D
-t1331129319
+c000000004F588C6A000000000000037D
+t1331203178
 s893
 
 N/Users/Leo/Projects/xcode/HIS/Frameworks/Three20/Three20/../../Build/Products/Debug-iphonesimulator/../three20/Three20Style/TTStyledTextParser.h
-c000000004F576BE7000000000000055F
-t1331129319
+c000000004F588C6A000000000000055F
+t1331203178
 s1375
 
 N/Users/Leo/Projects/xcode/HIS/Frameworks/Three20/Three20/../../Build/Products/Debug-iphonesimulator/../three20/Three20Style/TTTextStyle.h
-c000000004F576BE70000000000000B13
-t1331129319
+c000000004F588C6A0000000000000B13
+t1331203178
 s2835
 
 N/Users/Leo/Projects/xcode/HIS/Frameworks/Three20/Three20/../../Build/Products/Debug-iphonesimulator/../three20/Three20Style/Three20Style.h
-c000000004F576BE80000000000000C09
-t1331129320
+c000000004F588C6A0000000000000C09
+t1331203178
 s3081
 
 N/Users/Leo/Projects/xcode/HIS/Frameworks/Three20/Three20/../../Build/Products/Debug-iphonesimulator/../three20/Three20UI/TTActionSheetController.h
-c000000004F576D8D0000000000000C84
-t1331129741
+c000000004F588C750000000000000C84
+t1331203189
 s3204
 
 N/Users/Leo/Projects/xcode/HIS/Frameworks/Three20/Three20/../../Build/Products/Debug-iphonesimulator/../three20/Three20UI/TTActionSheetControllerDelegate.h
-c000000004F576D8D0000000000000704
-t1331129741
+c000000004F588C750000000000000704
+t1331203189
 s1796
 
 N/Users/Leo/Projects/xcode/HIS/Frameworks/Three20/Three20/../../Build/Products/Debug-iphonesimulator/../three20/Three20UI/TTActivityLabel.h
-c000000004F576D8D0000000000000749
-t1331129741
+c000000004F588C750000000000000749
+t1331203189
 s1865
 
 N/Users/Leo/Projects/xcode/HIS/Frameworks/Three20/Three20/../../Build/Products/Debug-iphonesimulator/../three20/Three20UI/TTAlertViewController.h
-c000000004F576D8D0000000000000663
-t1331129741
+c000000004F588C750000000000000663
+t1331203189
 s1635
 
 N/Users/Leo/Projects/xcode/HIS/Frameworks/Three20/Three20/../../Build/Products/Debug-iphonesimulator/../three20/Three20UI/TTAlertViewControllerDelegate.h
-c000000004F576D8D0000000000000394
-t1331129741
+c000000004F588C750000000000000394
+t1331203189
 s916
 
 N/Users/Leo/Projects/xcode/HIS/Frameworks/Three20/Three20/../../Build/Products/Debug-iphonesimulator/../three20/Three20UI/TTButton.h
-c000000004F576D8D0000000000000799
-t1331129741
+c000000004F588C750000000000000799
+t1331203189
 s1945
 
 N/Users/Leo/Projects/xcode/HIS/Frameworks/Three20/Three20/../../Build/Products/Debug-iphonesimulator/../three20/Three20UI/TTButtonBar.h
-c000000004F576D8D00000000000003E1
-t1331129741
+c000000004F588C7500000000000003E1
+t1331203189
 s993
 
 N/Users/Leo/Projects/xcode/HIS/Frameworks/Three20/Three20/../../Build/Products/Debug-iphonesimulator/../three20/Three20UI/TTErrorView.h
-c000000004F576D8D00000000000004AB
-t1331129741
+c000000004F588C7500000000000004AB
+t1331203189
 s1195
 
 N/Users/Leo/Projects/xcode/HIS/Frameworks/Three20/Three20/../../Build/Products/Debug-iphonesimulator/../three20/Three20UI/TTExtensionsController.h
-c000000004F576D8E000000000000068E
-t1331129742
+c000000004F588C75000000000000068E
+t1331203189
 s1678
 
 N/Users/Leo/Projects/xcode/HIS/Frameworks/Three20/Three20/../../Build/Products/Debug-iphonesimulator/../three20/Three20UI/TTImageView.h
-c000000004F576D8D0000000000000BD3
-t1331129741
+c000000004F588C750000000000000BD3
+t1331203189
 s3027
 
 N/Users/Leo/Projects/xcode/HIS/Frameworks/Three20/Three20/../../Build/Products/Debug-iphonesimulator/../three20/Three20UI/TTImageViewDelegate.h
-c000000004F576D8D00000000000005B7
-t1331129741
+c000000004F588C7500000000000005B7
+t1331203189
 s1463
 
 N/Users/Leo/Projects/xcode/HIS/Frameworks/Three20/Three20/../../Build/Products/Debug-iphonesimulator/../three20/Three20UI/TTLabel.h
-c000000004F576D8D0000000000000346
-t1331129741
+c000000004F588C750000000000000346
+t1331203189
 s838
 
 N/Users/Leo/Projects/xcode/HIS/Frameworks/Three20/Three20/../../Build/Products/Debug-iphonesimulator/../three20/Three20UI/TTLauncherItem.h
-c000000004F576D8D0000000000000673
-t1331129741
+c000000004F588C750000000000000673
+t1331203189
 s1651
 
 N/Users/Leo/Projects/xcode/HIS/Frameworks/Three20/Three20/../../Build/Products/Debug-iphonesimulator/../three20/Three20UI/TTLauncherPersistenceMode.h
-c000000004F576D8E00000000000002F9
-t1331129742
+c000000004F588C7500000000000002F9
+t1331203189
 s761
 
 N/Users/Leo/Projects/xcode/HIS/Frameworks/Three20/Three20/../../Build/Products/Debug-iphonesimulator/../three20/Three20UI/TTLauncherView.h
-c000000004F576D8D0000000000000E73
-t1331129741
+c000000004F588C750000000000000E73
+t1331203189
 s3699
 
 N/Users/Leo/Projects/xcode/HIS/Frameworks/Three20/Three20/../../Build/Products/Debug-iphonesimulator/../three20/Three20UI/TTLauncherViewDelegate.h
-c000000004F576D8D00000000000004F0
-t1331129741
+c000000004F588C7500000000000004F0
+t1331203189
 s1264
 
 N/Users/Leo/Projects/xcode/HIS/Frameworks/Three20/Three20/../../Build/Products/Debug-iphonesimulator/../three20/Three20UI/TTLink.h
-c000000004F576D8D0000000000000460
-t1331129741
+c000000004F588C750000000000000460
+t1331203189
 s1120
 
 N/Users/Leo/Projects/xcode/HIS/Frameworks/Three20/Three20/../../Build/Products/Debug-iphonesimulator/../three20/Three20UI/TTListDataSource.h
-c000000004F576D8D00000000000003F3
-t1331129741
+c000000004F588C7500000000000003F3
+t1331203189
 s1011
 
 N/Users/Leo/Projects/xcode/HIS/Frameworks/Three20/Three20/../../Build/Products/Debug-iphonesimulator/../three20/Three20UI/TTMessageController.h
-c000000004F576D8D0000000000001B6A
-t1331129741
+c000000004F588C750000000000001B6A
+t1331203189
 s7018
 
 N/Users/Leo/Projects/xcode/HIS/Frameworks/Three20/Three20/../../Build/Products/Debug-iphonesimulator/../three20/Three20UI/TTMessageControllerDelegate.h
-c000000004F576D8D000000000000081A
-t1331129741
+c000000004F588C75000000000000081A
+t1331203189
 s2074
 
 N/Users/Leo/Projects/xcode/HIS/Frameworks/Three20/Three20/../../Build/Products/Debug-iphonesimulator/../three20/Three20UI/TTMessageField.h
-c000000004F576D8D000000000000058E
-t1331129741
+c000000004F588C75000000000000058E
+t1331203189
 s1422
 
 N/Users/Leo/Projects/xcode/HIS/Frameworks/Three20/Three20/../../Build/Products/Debug-iphonesimulator/../three20/Three20UI/TTMessageRecipientField.h
-c000000004F576D8D00000000000003C8
-t1331129741
+c000000004F588C7500000000000003C8
+t1331203189
 s968
 
 N/Users/Leo/Projects/xcode/HIS/Frameworks/Three20/Three20/../../Build/Products/Debug-iphonesimulator/../three20/Three20UI/TTMessageSubjectField.h
-c000000004F576D8D000000000000037B
-t1331129741
+c000000004F588C75000000000000037B
+t1331203189
 s891
 
 N/Users/Leo/Projects/xcode/HIS/Frameworks/Three20/Three20/../../Build/Products/Debug-iphonesimulator/../three20/Three20UI/TTMessageTextField.h
-c000000004F576D8D0000000000000331
-t1331129741
+c000000004F588C750000000000000331
+t1331203189
 s817
 
 N/Users/Leo/Projects/xcode/HIS/Frameworks/Three20/Three20/../../Build/Products/Debug-iphonesimulator/../three20/Three20UI/TTModelViewController.h
-c000000004F576D8D0000000000001712
-t1331129741
+c000000004F588C750000000000001712
+t1331203189
 s5906
 
 N/Users/Leo/Projects/xcode/HIS/Frameworks/Three20/Three20/../../Build/Products/Debug-iphonesimulator/../three20/Three20UI/TTNavigationController.h
-c000000004F576D8E000000000000047D
-t1331129742
+c000000004F588C75000000000000047D
+t1331203189
 s1149
 
 N/Users/Leo/Projects/xcode/HIS/Frameworks/Three20/Three20/../../Build/Products/Debug-iphonesimulator/../three20/Three20UI/TTNavigator.h
-c000000004F576D8E00000000000004CB
-t1331129742
+c000000004F588C7500000000000004CB
+t1331203189
 s1227
 
 N/Users/Leo/Projects/xcode/HIS/Frameworks/Three20/Three20/../../Build/Products/Debug-iphonesimulator/../three20/Three20UI/TTPageControl.h
-c000000004F576D8D0000000000000505
-t1331129741
+c000000004F588C750000000000000505
+t1331203189
 s1285
 
 N/Users/Leo/Projects/xcode/HIS/Frameworks/Three20/Three20/../../Build/Products/Debug-iphonesimulator/../three20/Three20UI/TTPhoto.h
-c000000004F576D8D00000000000004FC
-t1331129741
+c000000004F588C7500000000000004FC
+t1331203189
 s1276
 
 N/Users/Leo/Projects/xcode/HIS/Frameworks/Three20/Three20/../../Build/Products/Debug-iphonesimulator/../three20/Three20UI/TTPhotoSource.h
-c000000004F576D8D00000000000004F7
-t1331129741
+c000000004F588C7500000000000004F7
+t1331203189
 s1271
 
 N/Users/Leo/Projects/xcode/HIS/Frameworks/Three20/Three20/../../Build/Products/Debug-iphonesimulator/../three20/Three20UI/TTPhotoVersion.h
-c000000004F576D8D00000000000002EB
-t1331129741
+c000000004F588C7500000000000002EB
+t1331203189
 s747
 
 N/Users/Leo/Projects/xcode/HIS/Frameworks/Three20/Three20/../../Build/Products/Debug-iphonesimulator/../three20/Three20UI/TTPhotoView.h
-c000000004F576D8D0000000000000581
-t1331129741
+c000000004F588C750000000000000581
+t1331203189
 s1409
 
 N/Users/Leo/Projects/xcode/HIS/Frameworks/Three20/Three20/../../Build/Products/Debug-iphonesimulator/../three20/Three20UI/TTPhotoViewController.h
-c000000004F576D8D0000000000000C70
-t1331129741
+c000000004F588C750000000000000C70
+t1331203189
 s3184
 
 N/Users/Leo/Projects/xcode/HIS/Frameworks/Three20/Three20/../../Build/Products/Debug-iphonesimulator/../three20/Three20UI/TTPickerTextField.h
-c000000004F576D8D0000000000000533
-t1331129741
+c000000004F588C750000000000000533
+t1331203189
 s1331
 
 N/Users/Leo/Projects/xcode/HIS/Frameworks/Three20/Three20/../../Build/Products/Debug-iphonesimulator/../three20/Three20UI/TTPickerTextFieldDelegate.h
-c000000004F576D8D00000000000003DE
-t1331129741
+c000000004F588C7500000000000003DE
+t1331203189
 s990
 
 N/Users/Leo/Projects/xcode/HIS/Frameworks/Three20/Three20/../../Build/Products/Debug-iphonesimulator/../three20/Three20UI/TTPopupViewController.h
-c000000004F576D8D00000000000005B3
-t1331129741
+c000000004F588C7500000000000005B3
+t1331203189
 s1459
 
 N/Users/Leo/Projects/xcode/HIS/Frameworks/Three20/Three20/../../Build/Products/Debug-iphonesimulator/../three20/Three20UI/TTPostController.h
-c000000004F576D8D0000000000000955
-t1331129741
+c000000004F588C750000000000000955
+t1331203189
 s2389
 
 N/Users/Leo/Projects/xcode/HIS/Frameworks/Three20/Three20/../../Build/Products/Debug-iphonesimulator/../three20/Three20UI/TTPostControllerDelegate.h
-c000000004F576D8D00000000000005F1
-t1331129741
+c000000004F588C7500000000000005F1
+t1331203189
 s1521
 
 N/Users/Leo/Projects/xcode/HIS/Frameworks/Three20/Three20/../../Build/Products/Debug-iphonesimulator/../three20/Three20UI/TTRecursiveProgress.h
-c000000004F576D8D0000000000000E79
-t1331129741
+c000000004F588C750000000000000E79
+t1331203189
 s3705
 
 N/Users/Leo/Projects/xcode/HIS/Frameworks/Three20/Three20/../../Build/Products/Debug-iphonesimulator/../three20/Three20UI/TTScrollView.h
-c000000004F576D8D0000000000001D7D
-t1331129741
+c000000004F588C750000000000001D7D
+t1331203189
 s7549
 
 N/Users/Leo/Projects/xcode/HIS/Frameworks/Three20/Three20/../../Build/Products/Debug-iphonesimulator/../three20/Three20UI/TTScrollViewDataSource.h
-c000000004F576D8D000000000000058A
-t1331129741
+c000000004F588C75000000000000058A
+t1331203189
 s1418
 
 N/Users/Leo/Projects/xcode/HIS/Frameworks/Three20/Three20/../../Build/Products/Debug-iphonesimulator/../three20/Three20UI/TTScrollViewDelegate.h
-c000000004F576D8D00000000000007A7
-t1331129741
+c000000004F588C7500000000000007A7
+t1331203189
 s1959
 
 N/Users/Leo/Projects/xcode/HIS/Frameworks/Three20/Three20/../../Build/Products/Debug-iphonesimulator/../three20/Three20UI/TTSearchBar.h
-c000000004F576D8D000000000000085C
-t1331129741
+c000000004F588C75000000000000085C
+t1331203189
 s2140
 
 N/Users/Leo/Projects/xcode/HIS/Frameworks/Three20/Three20/../../Build/Products/Debug-iphonesimulator/../three20/Three20UI/TTSearchDisplayController.h
-c000000004F576D8D0000000000000637
-t1331129741
+c000000004F588C750000000000000637
+t1331203189
 s1591
 
 N/Users/Leo/Projects/xcode/HIS/Frameworks/Three20/Three20/../../Build/Products/Debug-iphonesimulator/../three20/Three20UI/TTSearchTextField.h
-c000000004F576D8D0000000000000703
-t1331129741
+c000000004F588C750000000000000703
+t1331203189
 s1795
 
 N/Users/Leo/Projects/xcode/HIS/Frameworks/Three20/Three20/../../Build/Products/Debug-iphonesimulator/../three20/Three20UI/TTSearchTextFieldDelegate.h
-c000000004F576D8D0000000000000341
-t1331129741
+c000000004F588C750000000000000341
+t1331203189
 s833
 
 N/Users/Leo/Projects/xcode/HIS/Frameworks/Three20/Three20/../../Build/Products/Debug-iphonesimulator/../three20/Three20UI/TTSearchlightLabel.h
-c000000004F576D8D0000000000000520
-t1331129741
+c000000004F588C750000000000000520
+t1331203189
 s1312
 
 N/Users/Leo/Projects/xcode/HIS/Frameworks/Three20/Three20/../../Build/Products/Debug-iphonesimulator/../three20/Three20UI/TTSectionedDataSource.h
-c000000004F576D8D0000000000000841
-t1331129741
+c000000004F588C750000000000000841
+t1331203189
 s2113
 
 N/Users/Leo/Projects/xcode/HIS/Frameworks/Three20/Three20/../../Build/Products/Debug-iphonesimulator/../three20/Three20UI/TTSplitViewController.h
-c000000004F576D8E000000000000060D
-t1331129742
+c000000004F588C75000000000000060D
+t1331203189
 s1549
 
 N/Users/Leo/Projects/xcode/HIS/Frameworks/Three20/Three20/../../Build/Products/Debug-iphonesimulator/../three20/Three20UI/TTStyledTextLabel.h
-c000000004F576D8D00000000000008CE
-t1331129741
+c000000004F588C7500000000000008CE
+t1331203189
 s2254
 
 N/Users/Leo/Projects/xcode/HIS/Frameworks/Three20/Three20/../../Build/Products/Debug-iphonesimulator/../three20/Three20UI/TTStyledTextTableCell.h
-c000000004F576D8D0000000000000331
-t1331129741
+c000000004F588C750000000000000331
+t1331203189
 s817
 
 N/Users/Leo/Projects/xcode/HIS/Frameworks/Three20/Three20/../../Build/Products/Debug-iphonesimulator/../three20/Three20UI/TTStyledTextTableItemCell.h
-c000000004F576D8D0000000000000341
-t1331129741
+c000000004F588C750000000000000341
+t1331203189
 s833
 
 N/Users/Leo/Projects/xcode/HIS/Frameworks/Three20/Three20/../../Build/Products/Debug-iphonesimulator/../three20/Three20UI/TTTab.h
-c000000004F576D8D0000000000000374
-t1331129741
+c000000004F588C750000000000000374
+t1331203189
 s884
 
 N/Users/Leo/Projects/xcode/HIS/Frameworks/Three20/Three20/../../Build/Products/Debug-iphonesimulator/../three20/Three20UI/TTTabBar.h
-c000000004F576D8D00000000000005B2
-t1331129741
+c000000004F588C7500000000000005B2
+t1331203189
 s1458
 
 N/Users/Leo/Projects/xcode/HIS/Frameworks/Three20/Three20/../../Build/Products/Debug-iphonesimulator/../three20/Three20UI/TTTabDelegate.h
-c000000004F576D8D00000000000002FA
-t1331129741
+c000000004F588C7500000000000002FA
+t1331203189
 s762
 
 N/Users/Leo/Projects/xcode/HIS/Frameworks/Three20/Three20/../../Build/Products/Debug-iphonesimulator/../three20/Three20UI/TTTabGrid.h
-c000000004F576D8D00000000000002EC
-t1331129741
+c000000004F588C7500000000000002EC
+t1331203189
 s748
 
 N/Users/Leo/Projects/xcode/HIS/Frameworks/Three20/Three20/../../Build/Products/Debug-iphonesimulator/../three20/Three20UI/TTTabItem.h
-c000000004F576D8D0000000000000409
-t1331129741
+c000000004F588C750000000000000409
+t1331203189
 s1033
 
 N/Users/Leo/Projects/xcode/HIS/Frameworks/Three20/Three20/../../Build/Products/Debug-iphonesimulator/../three20/Three20UI/TTTabStrip.h
-c000000004F576D8E0000000000000359
-t1331129742
+c000000004F588C750000000000000359
+t1331203189
 s857
 
 N/Users/Leo/Projects/xcode/HIS/Frameworks/Three20/Three20/../../Build/Products/Debug-iphonesimulator/../three20/Three20UI/TTTableActivityItem.h
-c000000004F576D8D0000000000000319
-t1331129741
+c000000004F588C750000000000000319
+t1331203189
 s793
 
 N/Users/Leo/Projects/xcode/HIS/Frameworks/Three20/Three20/../../Build/Products/Debug-iphonesimulator/../three20/Three20UI/TTTableActivityItemCell.h
-c000000004F576D8D0000000000000385
-t1331129741
+c000000004F588C750000000000000385
+t1331203189
 s901
 
 N/Users/Leo/Projects/xcode/HIS/Frameworks/Three20/Three20/../../Build/Products/Debug-iphonesimulator/../three20/Three20UI/TTTableButton.h
-c000000004F576D8D00000000000002B1
-t1331129741
+c000000004F588C7500000000000002B1
+t1331203189
 s689
 
 N/Users/Leo/Projects/xcode/HIS/Frameworks/Three20/Three20/../../Build/Products/Debug-iphonesimulator/../three20/Three20UI/TTTableCaptionItem.h
-c000000004F576D8D0000000000000410
-t1331129741
+c000000004F588C750000000000000410
+t1331203189
 s1040
 
 N/Users/Leo/Projects/xcode/HIS/Frameworks/Three20/Three20/../../Build/Products/Debug-iphonesimulator/../three20/Three20UI/TTTableCaptionItemCell.h
-c000000004F576D8D00000000000002FF
-t1331129741
+c000000004F588C7500000000000002FF
+t1331203189
 s767
 
 N/Users/Leo/Projects/xcode/HIS/Frameworks/Three20/Three20/../../Build/Products/Debug-iphonesimulator/../three20/Three20UI/TTTableControlCell.h
-c000000004F576D8D000000000000039C
-t1331129741
+c000000004F588C75000000000000039C
+t1331203189
 s924
 
 N/Users/Leo/Projects/xcode/HIS/Frameworks/Three20/Three20/../../Build/Products/Debug-iphonesimulator/../three20/Three20UI/TTTableControlItem.h
-c000000004F576D8D0000000000000392
-t1331129741
+c000000004F588C750000000000000392
+t1331203189
 s914
 
 N/Users/Leo/Projects/xcode/HIS/Frameworks/Three20/Three20/../../Build/Products/Debug-iphonesimulator/../three20/Three20UI/TTTableFlushViewCell.h
-c000000004F576D8D000000000000038D
-t1331129741
+c000000004F588C75000000000000038D
+t1331203189
 s909
 
 N/Users/Leo/Projects/xcode/HIS/Frameworks/Three20/Three20/../../Build/Products/Debug-iphonesimulator/../three20/Three20UI/TTTableFooterInfiniteScrollView.h
-c000000004F576D8E000000000000036B
-t1331129742
+c000000004F588C75000000000000036B
+t1331203189
 s875
 
 N/Users/Leo/Projects/xcode/HIS/Frameworks/Three20/Three20/../../Build/Products/Debug-iphonesimulator/../three20/Three20UI/TTTableGrayTextItem.h
-c000000004F576D8D00000000000002B7
-t1331129741
+c000000004F588C7500000000000002B7
+t1331203189
 s695
 
 N/Users/Leo/Projects/xcode/HIS/Frameworks/Three20/Three20/../../Build/Products/Debug-iphonesimulator/../three20/Three20UI/TTTableHeaderDragRefreshView.h
-c000000004F576D8D00000000000007C6
-t1331129741
+c000000004F588C7500000000000007C6
+t1331203189
 s1990
 
 N/Users/Leo/Projects/xcode/HIS/Frameworks/Three20/Three20/../../Build/Products/Debug-iphonesimulator/../three20/Three20UI/TTTableHeaderView.h
-c000000004F576D8D00000000000002E2
-t1331129741
+c000000004F588C7500000000000002E2
+t1331203189
 s738
 
 N/Users/Leo/Projects/xcode/HIS/Frameworks/Three20/Three20/../../Build/Products/Debug-iphonesimulator/../three20/Three20UI/TTTableImageItem.h
-c000000004F576D8D0000000000000564
-t1331129741
+c000000004F588C750000000000000564
+t1331203189
 s1380
 
 N/Users/Leo/Projects/xcode/HIS/Frameworks/Three20/Three20/../../Build/Products/Debug-iphonesimulator/../three20/Three20UI/TTTableImageItemCell.h
-c000000004F576D8E0000000000000338
-t1331129742
+c000000004F588C750000000000000338
+t1331203189
 s824
 
 N/Users/Leo/Projects/xcode/HIS/Frameworks/Three20/Three20/../../Build/Products/Debug-iphonesimulator/../three20/Three20UI/TTTableItem.h
-c000000004F576D8E0000000000000302
-t1331129742
+c000000004F588C750000000000000302
+t1331203189
 s770
 
 N/Users/Leo/Projects/xcode/HIS/Frameworks/Three20/Three20/../../Build/Products/Debug-iphonesimulator/../three20/Three20UI/TTTableLink.h
-c000000004F576D8E00000000000002AF
-t1331129742
+c000000004F588C7500000000000002AF
+t1331203189
 s687
 
 N/Users/Leo/Projects/xcode/HIS/Frameworks/Three20/Three20/../../Build/Products/Debug-iphonesimulator/../three20/Three20UI/TTTableLinkedItem.h
-c000000004F576D8E0000000000000442
-t1331129742
+c000000004F588C750000000000000442
+t1331203189
 s1090
 
 N/Users/Leo/Projects/xcode/HIS/Frameworks/Three20/Three20/../../Build/Products/Debug-iphonesimulator/../three20/Three20UI/TTTableLinkedItemCell.h
-c000000004F576D8E00000000000002F5
-t1331129742
+c000000004F588C7500000000000002F5
+t1331203189
 s757
 
 N/Users/Leo/Projects/xcode/HIS/Frameworks/Three20/Three20/../../Build/Products/Debug-iphonesimulator/../three20/Three20UI/TTTableLongTextItem.h
-c000000004F576D8E00000000000002B7
-t1331129742
+c000000004F588C7500000000000002B7
+t1331203189
 s695
 
 N/Users/Leo/Projects/xcode/HIS/Frameworks/Three20/Three20/../../Build/Products/Debug-iphonesimulator/../three20/Three20UI/TTTableMessageItem.h
-c000000004F576D8E0000000000000518
-t1331129742
+c000000004F588C750000000000000518
+t1331203189
 s1304
 
 N/Users/Leo/Projects/xcode/HIS/Frameworks/Three20/Three20/../../Build/Products/Debug-iphonesimulator/../three20/Three20UI/TTTableMessageItemCell.h
-c000000004F576D8E000000000000044A
-t1331129742
+c000000004F588C75000000000000044A
+t1331203189
 s1098
 
 N/Users/Leo/Projects/xcode/HIS/Frameworks/Three20/Three20/../../Build/Products/Debug-iphonesimulator/../three20/Three20UI/TTTableMoreButton.h
-c000000004F576D8E000000000000036D
-t1331129742
+c000000004F588C75000000000000036D
+t1331203189
 s877
 
 N/Users/Leo/Projects/xcode/HIS/Frameworks/Three20/Three20/../../Build/Products/Debug-iphonesimulator/../three20/Three20UI/TTTableMoreButtonCell.h
-c000000004F576D8E00000000000003D1
-t1331129742
+c000000004F588C7500000000000003D1
+t1331203189
 s977
 
 N/Users/Leo/Projects/xcode/HIS/Frameworks/Three20/Three20/../../Build/Products/Debug-iphonesimulator/../three20/Three20UI/TTTableRightCaptionItem.h
-c000000004F576D8E00000000000002C1
-t1331129742
+c000000004F588C7500000000000002C1
+t1331203189
 s705
 
 N/Users/Leo/Projects/xcode/HIS/Frameworks/Three20/Three20/../../Build/Products/Debug-iphonesimulator/../three20/Three20UI/TTTableRightCaptionItemCell.h
-c000000004F576D8E0000000000000304
-t1331129742
+c000000004F588C750000000000000304
+t1331203189
 s772
 
 N/Users/Leo/Projects/xcode/HIS/Frameworks/Three20/Three20/../../Build/Products/Debug-iphonesimulator/../three20/Three20UI/TTTableRightImageItem.h
-c000000004F576D8E00000000000002BB
-t1331129742
+c000000004F588C7500000000000002BB
+t1331203189
 s699
 
 N/Users/Leo/Projects/xcode/HIS/Frameworks/Three20/Three20/../../Build/Products/Debug-iphonesimulator/../three20/Three20UI/TTTableSection.h
-c000000004F576D8E000000000000039E
-t1331129742
+c000000004F588C75000000000000039E
+t1331203189
 s926
 
 N/Users/Leo/Projects/xcode/HIS/Frameworks/Three20/Three20/../../Build/Products/Debug-iphonesimulator/../three20/Three20UI/TTTableSettingsItem.h
-c000000004F576D8E00000000000002BE
-t1331129742
+c000000004F588C7500000000000002BE
+t1331203189
 s702
 
 N/Users/Leo/Projects/xcode/HIS/Frameworks/Three20/Three20/../../Build/Products/Debug-iphonesimulator/../three20/Three20UI/TTTableSettingsItemCell.h
-c000000004F576D8E0000000000000300
-t1331129742
+c000000004F588C750000000000000300
+t1331203189
 s768
 
 N/Users/Leo/Projects/xcode/HIS/Frameworks/Three20/Three20/../../Build/Products/Debug-iphonesimulator/../three20/Three20UI/TTTableStyledTextItem.h
-c000000004F576D8E0000000000000482
-t1331129742
+c000000004F588C750000000000000482
+t1331203189
 s1154
 
 N/Users/Leo/Projects/xcode/HIS/Frameworks/Three20/Three20/../../Build/Products/Debug-iphonesimulator/../three20/Three20UI/TTTableSubtextItem.h
-c000000004F576D8E00000000000002BC
-t1331129742
+c000000004F588C7500000000000002BC
+t1331203189
 s700
 
 N/Users/Leo/Projects/xcode/HIS/Frameworks/Three20/Three20/../../Build/Products/Debug-iphonesimulator/../three20/Three20UI/TTTableSubtextItemCell.h
-c000000004F576D8E00000000000002FF
-t1331129742
+c000000004F588C7500000000000002FF
+t1331203189
 s767
 
 N/Users/Leo/Projects/xcode/HIS/Frameworks/Three20/Three20/../../Build/Products/Debug-iphonesimulator/../three20/Three20UI/TTTableSubtitleItem.h
-c000000004F576D8E00000000000005F5
-t1331129742
+c000000004F588C7500000000000005F5
+t1331203189
 s1525
 
 N/Users/Leo/Projects/xcode/HIS/Frameworks/Three20/Three20/../../Build/Products/Debug-iphonesimulator/../three20/Three20UI/TTTableSubtitleItemCell.h
-c000000004F576D8E0000000000000385
-t1331129742
+c000000004F588C750000000000000385
+t1331203189
 s901
 
 N/Users/Leo/Projects/xcode/HIS/Frameworks/Three20/Three20/../../Build/Products/Debug-iphonesimulator/../three20/Three20UI/TTTableSummaryItem.h
-c000000004F576D8E00000000000002B6
-t1331129742
+c000000004F588C7500000000000002B6
+t1331203189
 s694
 
 N/Users/Leo/Projects/xcode/HIS/Frameworks/Three20/Three20/../../Build/Products/Debug-iphonesimulator/../three20/Three20UI/TTTableTextItem.h
-c000000004F576D8E0000000000000406
-t1331129742
+c000000004F588C750000000000000406
+t1331203189
 s1030
 
 N/Users/Leo/Projects/xcode/HIS/Frameworks/Three20/Three20/../../Build/Products/Debug-iphonesimulator/../three20/Three20UI/TTTableTextItemCell.h
-c000000004F576D8E00000000000002C3
-t1331129742
+c000000004F588C7500000000000002C3
+t1331203189
 s707
 
 N/Users/Leo/Projects/xcode/HIS/Frameworks/Three20/Three20/../../Build/Products/Debug-iphonesimulator/../three20/Three20UI/TTTableView.h
-c000000004F576D8E000000000000070F
-t1331129742
+c000000004F588C75000000000000070F
+t1331203189
 s1807
 
 N/Users/Leo/Projects/xcode/HIS/Frameworks/Three20/Three20/../../Build/Products/Debug-iphonesimulator/../three20/Three20UI/TTTableViewCell.h
-c000000004F576D8E000000000000076F
-t1331129742
+c000000004F588C75000000000000076F
+t1331203189
 s1903
 
 N/Users/Leo/Projects/xcode/HIS/Frameworks/Three20/Three20/../../Build/Products/Debug-iphonesimulator/../three20/Three20UI/TTTableViewController.h
-c000000004F576D8E0000000000001103
-t1331129742
+c000000004F588C750000000000001103
+t1331203189
 s4355
 
 N/Users/Leo/Projects/xcode/HIS/Frameworks/Three20/Three20/../../Build/Products/Debug-iphonesimulator/../three20/Three20UI/TTTableViewDataSource.h
-c000000004F576D8E0000000000000BD1
-t1331129742
+c000000004F588C750000000000000BD1
+t1331203189
 s3025
 
 N/Users/Leo/Projects/xcode/HIS/Frameworks/Three20/Three20/../../Build/Products/Debug-iphonesimulator/../three20/Three20UI/TTTableViewDelegate.h
-c000000004F576D8E0000000000000710
-t1331129742
+c000000004F588C750000000000000710
+t1331203189
 s1808
 
 N/Users/Leo/Projects/xcode/HIS/Frameworks/Three20/Three20/../../Build/Products/Debug-iphonesimulator/../three20/Three20UI/TTTableViewDragRefreshDelegate.h
-c000000004F576D8E00000000000006BA
-t1331129742
+c000000004F588C7500000000000006BA
+t1331203189
 s1722
 
 N/Users/Leo/Projects/xcode/HIS/Frameworks/Three20/Three20/../../Build/Products/Debug-iphonesimulator/../three20/Three20UI/TTTableViewGroupedVarHeightDelegate.h
-c000000004F576D8E000000000000033F
-t1331129742
+c000000004F588C75000000000000033F
+t1331203189
 s831
 
 N/Users/Leo/Projects/xcode/HIS/Frameworks/Three20/Three20/../../Build/Products/Debug-iphonesimulator/../three20/Three20UI/TTTableViewItem.h
-c000000004F576D8E0000000000000371
-t1331129742
+c000000004F588C750000000000000371
+t1331203189
 s881
 
 N/Users/Leo/Projects/xcode/HIS/Frameworks/Three20/Three20/../../Build/Products/Debug-iphonesimulator/../three20/Three20UI/TTTableViewNetworkEnabledDelegate.h
-c000000004F576D8E000000000000067A
-t1331129742
+c000000004F588C75000000000000067A
+t1331203189
 s1658
 
 N/Users/Leo/Projects/xcode/HIS/Frameworks/Three20/Three20/../../Build/Products/Debug-iphonesimulator/../three20/Three20UI/TTTableViewPlainDelegate.h
-c000000004F576D8E000000000000030D
-t1331129742
+c000000004F588C75000000000000030D
+t1331203189
 s781
 
 N/Users/Leo/Projects/xcode/HIS/Frameworks/Three20/Three20/../../Build/Products/Debug-iphonesimulator/../three20/Three20UI/TTTableViewPlainVarHeightDelegate.h
-c000000004F576D8E00000000000002E5
-t1331129742
+c000000004F588C7500000000000002E5
+t1331203189
 s741
 
 N/Users/Leo/Projects/xcode/HIS/Frameworks/Three20/Three20/../../Build/Products/Debug-iphonesimulator/../three20/Three20UI/TTTableViewVarHeightDelegate.h
-c000000004F576D8E000000000000031D
-t1331129742
+c000000004F588C75000000000000031D
+t1331203189
 s797
 
 N/Users/Leo/Projects/xcode/HIS/Frameworks/Three20/Three20/../../Build/Products/Debug-iphonesimulator/../three20/Three20UI/TTTextBarController.h
-c000000004F576D8E00000000000008AC
-t1331129742
+c000000004F588C7500000000000008AC
+t1331203189
 s2220
 
 N/Users/Leo/Projects/xcode/HIS/Frameworks/Three20/Three20/../../Build/Products/Debug-iphonesimulator/../three20/Three20UI/TTTextBarDelegate.h
-c000000004F576D8E000000000000056B
-t1331129742
+c000000004F588C75000000000000056B
+t1331203189
 s1387
 
 N/Users/Leo/Projects/xcode/HIS/Frameworks/Three20/Three20/../../Build/Products/Debug-iphonesimulator/../three20/Three20UI/TTTextEditor.h
-c000000004F576D8E0000000000000691
-t1331129742
+c000000004F588C750000000000000691
+t1331203189
 s1681
 
 N/Users/Leo/Projects/xcode/HIS/Frameworks/Three20/Three20/../../Build/Products/Debug-iphonesimulator/../three20/Three20UI/TTTextEditorDelegate.h
-c000000004F576D8E0000000000000534
-t1331129742
+c000000004F588C750000000000000534
+t1331203189
 s1332
 
 N/Users/Leo/Projects/xcode/HIS/Frameworks/Three20/Three20/../../Build/Products/Debug-iphonesimulator/../three20/Three20UI/TTThumbView.h
-c000000004F576D8E00000000000002D3
-t1331129742
+c000000004F588C7500000000000002D3
+t1331203189
 s723
 
 N/Users/Leo/Projects/xcode/HIS/Frameworks/Three20/Three20/../../Build/Products/Debug-iphonesimulator/../three20/Three20UI/TTThumbsDataSource.h
-c000000004F576D8E0000000000000486
-t1331129742
+c000000004F588C750000000000000486
+t1331203189
 s1158
 
 N/Users/Leo/Projects/xcode/HIS/Frameworks/Three20/Three20/../../Build/Products/Debug-iphonesimulator/../three20/Three20UI/TTThumbsTableViewCell.h
-c000000004F576D8E0000000000000521
-t1331129742
+c000000004F588C750000000000000521
+t1331203189
 s1313
 
 N/Users/Leo/Projects/xcode/HIS/Frameworks/Three20/Three20/../../Build/Products/Debug-iphonesimulator/../three20/Three20UI/TTThumbsTableViewCellDelegate.h
-c000000004F576D8E000000000000031B
-t1331129742
+c000000004F588C75000000000000031B
+t1331203189
 s795
 
 N/Users/Leo/Projects/xcode/HIS/Frameworks/Three20/Three20/../../Build/Products/Debug-iphonesimulator/../three20/Three20UI/TTThumbsViewController.h
-c000000004F576D8E0000000000000578
-t1331129742
+c000000004F588C750000000000000578
+t1331203189
 s1400
 
 N/Users/Leo/Projects/xcode/HIS/Frameworks/Three20/Three20/../../Build/Products/Debug-iphonesimulator/../three20/Three20UI/TTThumbsViewControllerDelegate.h
-c000000004F576D8E0000000000000505
-t1331129742
+c000000004F588C750000000000000505
+t1331203189
 s1285
 
 N/Users/Leo/Projects/xcode/HIS/Frameworks/Three20/Three20/../../Build/Products/Debug-iphonesimulator/../three20/Three20UI/TTView.h
-c000000004F576D8E000000000000041F
-t1331129742
+c000000004F588C75000000000000041F
+t1331203189
 s1055
 
 N/Users/Leo/Projects/xcode/HIS/Frameworks/Three20/Three20/../../Build/Products/Debug-iphonesimulator/../three20/Three20UI/TTViewController.h
-c000000004F576D8E00000000000006C8
-t1331129742
+c000000004F588C7500000000000006C8
+t1331203189
 s1736
 
 N/Users/Leo/Projects/xcode/HIS/Frameworks/Three20/Three20/../../Build/Products/Debug-iphonesimulator/../three20/Three20UI/TTWebController.h
-c000000004F576D8E0000000000000A70
-t1331129742
+c000000004F588C750000000000000A70
+t1331203189
 s2672
 
 N/Users/Leo/Projects/xcode/HIS/Frameworks/Three20/Three20/../../Build/Products/Debug-iphonesimulator/../three20/Three20UI/TTYouTubeView.h
-c000000004F576D8E00000000000003CF
-t1331129742
+c000000004F588C7500000000000003CF
+t1331203189
 s975
 
 N/Users/Leo/Projects/xcode/HIS/Frameworks/Three20/Three20/../../Build/Products/Debug-iphonesimulator/../three20/Three20UI/Three20UI.h
-c000000004F576D8D00000000000015F4
-t1331129741
+c000000004F588C7500000000000015F4
+t1331203189
 s5620
 
 N/Users/Leo/Projects/xcode/HIS/Frameworks/Three20/Three20/../../Build/Products/Debug-iphonesimulator/../three20/Three20UICommon/TTBaseViewController.h
-c000000004F576D770000000000000A48
-t1331129719
+c000000004F588C670000000000000A48
+t1331203175
 s2632
 
 N/Users/Leo/Projects/xcode/HIS/Frameworks/Three20/Three20/../../Build/Products/Debug-iphonesimulator/../three20/Three20UICommon/TTGlobalUICommon.h
-c000000004F576D770000000000001895
-t1331129719
+c000000004F588C670000000000001895
+t1331203175
 s6293
 
 N/Users/Leo/Projects/xcode/HIS/Frameworks/Three20/Three20/../../Build/Products/Debug-iphonesimulator/../three20/Three20UICommon/Three20UICommon.h
-c000000004F576D7700000000000002CE
-t1331129719
+c000000004F588C6700000000000002CE
+t1331203175
 s718
 
 N/Users/Leo/Projects/xcode/HIS/Frameworks/Three20/Three20/../../Build/Products/Debug-iphonesimulator/../three20/Three20UINavigator/TTBaseNavigationController.h
-c000000004F576D8B000000000000050F
-t1331129739
+c000000004F588C6A000000000000050F
+t1331203178
 s1295
 
 N/Users/Leo/Projects/xcode/HIS/Frameworks/Three20/Three20/../../Build/Products/Debug-iphonesimulator/../three20/Three20UINavigator/TTBaseNavigator.h
-c000000004F576D8B00000000000021AD
-t1331129739
+c000000004F588C6A00000000000021AD
+t1331203178
 s8621
 
 N/Users/Leo/Projects/xcode/HIS/Frameworks/Three20/Three20/../../Build/Products/Debug-iphonesimulator/../three20/Three20UINavigator/TTGlobalNavigatorMetrics.h
-c000000004F576D8B00000000000006A1
-t1331129739
+c000000004F588C6A00000000000006A1
+t1331203178
 s1697
 
 N/Users/Leo/Projects/xcode/HIS/Frameworks/Three20/Three20/../../Build/Products/Debug-iphonesimulator/../three20/Three20UINavigator/TTNavigationMode.h
-c000000004F576D8B0000000000000449
-t1331129739
+c000000004F588C6A0000000000000449
+t1331203178
 s1097
 
 N/Users/Leo/Projects/xcode/HIS/Frameworks/Three20/Three20/../../Build/Products/Debug-iphonesimulator/../three20/Three20UINavigator/TTNavigatorDelegate.h
-c000000004F576D8B0000000000000657
-t1331129739
+c000000004F588C6A0000000000000657
+t1331203178
 s1623
 
 N/Users/Leo/Projects/xcode/HIS/Frameworks/Three20/Three20/../../Build/Products/Debug-iphonesimulator/../three20/Three20UINavigator/TTNavigatorPersistenceMode.h
-c000000004F576D8B0000000000000348
-t1331129739
+c000000004F588C6A0000000000000348
+t1331203178
 s840
 
 N/Users/Leo/Projects/xcode/HIS/Frameworks/Three20/Three20/../../Build/Products/Debug-iphonesimulator/../three20/Three20UINavigator/TTNavigatorRootContainer.h
-c000000004F576D8B000000000000036D
-t1331129739
+c000000004F588C6A000000000000036D
+t1331203178
 s877
 
 N/Users/Leo/Projects/xcode/HIS/Frameworks/Three20/Three20/../../Build/Products/Debug-iphonesimulator/../three20/Three20UINavigator/TTNavigatorViewController.h
-c000000004F576D8B000000000000036A
-t1331129739
+c000000004F588C6A000000000000036A
+t1331203178
 s874
 
 N/Users/Leo/Projects/xcode/HIS/Frameworks/Three20/Three20/../../Build/Products/Debug-iphonesimulator/../three20/Three20UINavigator/TTURLAction.h
-c000000004F576D8B0000000000000CBD
-t1331129739
+c000000004F588C6A0000000000000CBD
+t1331203178
 s3261
 
 N/Users/Leo/Projects/xcode/HIS/Frameworks/Three20/Three20/../../Build/Products/Debug-iphonesimulator/../three20/Three20UINavigator/TTURLGeneratorPattern.h
-c000000004F576D8B0000000000000379
-t1331129739
+c000000004F588C6A0000000000000379
+t1331203178
 s889
 
 N/Users/Leo/Projects/xcode/HIS/Frameworks/Three20/Three20/../../Build/Products/Debug-iphonesimulator/../three20/Three20UINavigator/TTURLMap.h
-c000000004F576D8B00000000000016B4
-t1331129739
+c000000004F588C6A00000000000016B4
+t1331203178
 s5812
 
 N/Users/Leo/Projects/xcode/HIS/Frameworks/Three20/Three20/../../Build/Products/Debug-iphonesimulator/../three20/Three20UINavigator/TTURLNavigatorPattern.h
-c000000004F576D8B0000000000000790
-t1331129739
+c000000004F588C6A0000000000000790
+t1331203178
 s1936
 
 N/Users/Leo/Projects/xcode/HIS/Frameworks/Three20/Three20/../../Build/Products/Debug-iphonesimulator/../three20/Three20UINavigator/TTURLObject.h
-c000000004F576D8B0000000000000497
-t1331129739
+c000000004F588C6A0000000000000497
+t1331203178
 s1175
 
 N/Users/Leo/Projects/xcode/HIS/Frameworks/Three20/Three20/../../Build/Products/Debug-iphonesimulator/../three20/Three20UINavigator/TTURLPattern.h
-c000000004F576D8B0000000000000511
-t1331129739
+c000000004F588C6A0000000000000511
+t1331203178
 s1297
 
 N/Users/Leo/Projects/xcode/HIS/Frameworks/Three20/Three20/../../Build/Products/Debug-iphonesimulator/../three20/Three20UINavigator/Three20UINavigator.h
-c000000004F576D8B0000000000000584
-t1331129739
+c000000004F588C6A0000000000000584
+t1331203178
 s1412
 
 N/Users/Leo/Projects/xcode/HIS/Frameworks/Three20/Three20/../../Build/Products/Debug-iphonesimulator/libThree20.a
-t1331129753
+t1331203199
 s1976
 
 N/Users/Leo/Projects/xcode/HIS/Frameworks/Three20/Three20/../../Build/Three20.build/Debug-iphonesimulator/Three20.build/Objects-normal/i386/Three20.LinkFileList
-c000000004F576D990000000000000095
-t1331129753
+c000000004F5889BC0000000000000095
+t1331202492
 s149
 
 N/Users/Leo/Projects/xcode/HIS/Frameworks/Three20/Three20/../../Build/Three20.build/Debug-iphonesimulator/Three20.build/Objects-normal/i386/Three20.o
-t1331129753
+t1331203199
 s1800
 
 N/Users/Leo/Projects/xcode/HIS/Frameworks/Three20/Three20/../../Build/Three20.build/Debug-iphonesimulator/Three20.build/Script-668E6653131ADFFD00ACE4AB.sh
-c000000004F56C0D30000000000000027
-t1331085523
+c000000004F5889BC0000000000000027
+t1331202492
 s39
 
 N/Users/Leo/Projects/xcode/HIS/Frameworks/Three20/Three20/../../Build/Three20.build/Debug-iphonesimulator/Three20.build/Script-6E645F461187B01F00F08CB1.sh
-c000000004F56C0D30000000000000026
-t1331085523
+c000000004F5889BC0000000000000026
+t1331202492
 s38
 
 N/Users/Leo/Projects/xcode/HIS/Frameworks/Three20/Three20/Headers/Three20+Additions.h
-c000000004F56C0D5000000000000044B
-t1331085525
+c000000004F5889BD000000000000044B
+t1331202493
 s1099
 
 N/Users/Leo/Projects/xcode/HIS/Frameworks/Three20/Three20/Headers/Three20.h
-c000000004F56C0D50000000000000388
-t1331085525
+c000000004F5889BD0000000000000388
+t1331202493
 s904
 
 N/Users/Leo/Projects/xcode/HIS/Frameworks/Three20/Three20/Headers/Three20_Prefix.pch
-c000000004F56C0D500000000000000B4
-t1331085525
+c000000004F5889BD00000000000000B4
+t1331202493
 s180
 i<Foundation/Foundation.h>
 i<UIKit/UIKit.h>
 
 N/Users/Leo/Projects/xcode/HIS/Frameworks/Three20/Three20/Source/Three20.m
-c000000004F56C0D50000000000000282
-t1331085525
+c000000004F5889BD0000000000000282
+t1331202493
 s642
 
 N/Users/Leo/Projects/xcode/Hand/Frameworks/Three20/Three20/../../Build/Products/Debug-iphonesimulator/../three20/Three20/Three20+Additions.h
@@ -2402,7 +2402,7 @@ t2
 s0
 
 N/var/folders/ry/l3zgfjx90jl5cbvr9qr3mbpm0000gn/C/com.apple.Xcode.501/SharedPrecompiledHeaders/Three20_Prefix-bnmlztskjyzrrwepzcpkoscwfxbf/Three20_Prefix.pch.pth
-t1331129753
+t1331203199
 s4032016
 
 N/var/folders/ry/l3zgfjx90jl5cbvr9qr3mbpm0000gn/C/com.apple.Xcode.501/SharedPrecompiledHeaders/Three20_Prefix-dlglqntyhuhstoeepcdtxbpindje/Three20_Prefix.pch.pth
@@ -2417,11 +2417,11 @@ r0
 
 CCheck dependencies
 r0
-lSLF05#21%IDEActivityLogSection1@2#32"com.apple.dt.IDE.BuildLogSection18"Check dependencies0a4ae9cacb07b541^5f43eccacb07b541^---0#1#0#--18"Check dependencies36"A7BFE566-21DC-494F-A082-BD037B22257E-
+lSLF05#21%IDEActivityLogSection1@2#32"com.apple.dt.IDE.BuildLogSection18"Check dependencies6b4828e6c508b541^79b128e6c508b541^---0#1#0#--18"Check dependencies36"E857665D-8ECA-4809-912D-76024936DC8A-
 
 CCompileC ../../Build/Three20.build/Debug-iphonesimulator/Three20.build/Objects-normal/i386/Three20.o /Users/Leo/Projects/xcode/HIS/Frameworks/Three20/Three20/Source/Three20.m normal i386 objective-c com.apple.compilers.llvm.clang.1_0.compiler
-s352822553.502685
-e352822553.581138
+s352895999.135640
+e352895999.215861
 r1
 xCompileC
 x../../Build/Three20.build/Debug-iphonesimulator/Three20.build/Objects-normal/i386/Three20.o
@@ -2430,7 +2430,7 @@ xnormal
 xi386
 xobjective-c
 xcom.apple.compilers.llvm.clang.1_0.compiler
-lSLF05#21%IDEActivityLogSection1@2#32"com.apple.dt.IDE.BuildLogSection81"Compile /Users/Leo/Projects/xcode/HIS/Frameworks/Three20/Three20/Source/Three20.m6eda8019a507b541^2ec69419a507b541^---0#0#0#-19%DVTDocumentLocation2@89"file://localhost/Users/Leo/Projects/xcode/HIS/Frameworks/Three20/Three20/Source/Three20.m0000000000000000^4134"CompileC ../../Build/Three20.build/Debug-iphonesimulator/Three20.build/Objects-normal/i386/Three20.o Source/Three20.m normal i386 objective-c com.apple.compilers.llvm.clang.1_0.compiler    cd /Users/Leo/Projects/xcode/HIS/Frameworks/Three20/Three20    setenv LANG en_US.US-ASCII    setenv PATH "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Applications/Xcode.app/Contents/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang -x objective-c -arch i386 -fmessage-length=0 -std=c99 -Wno-trigraphs -fpascal-strings -O0 -Wno-missing-field-initializers -Wno-missing-prototypes -Wreturn-type -Wno-implicit-atomic-properties -Wformat -Wno-missing-braces -Wparentheses -Wno-switch -Wunused-function -Wunused-label -Wno-unused-parameter -Wunused-variable -Wunused-value -Wno-uninitialized -Wno-unknown-pragmas -Wshadow -Wno-four-char-constants -Wno-sign-compare -Wno-shorten-64-to-32 -Wpointer-sign -Wnewline-eof -Wno-selector -Wno-strict-selector-match -Wno-undeclared-selector -Wno-deprecated-implementations -DDEBUG -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator5.0.sdk -fexceptions -fasm-blocks -Wprotocol -Wdeprecated-declarations -mmacosx-version-min=10.6 -g -Wno-conversion -Wno-sign-conversion -fobjc-abi-version=2 -fobjc-legacy-dispatch "-DIBOutlet=__attribute__((iboutlet))" "-DIBOutletCollection(ClassName)=__attribute__((iboutletcollection(ClassName)))" "-DIBAction=void)__attribute__((ibaction)" -D__IPHONE_OS_VERSION_MIN_REQUIRED=30000 -iquote /Users/Leo/Projects/xcode/HIS/Frameworks/Three20/Three20/../../Build/Three20.build/Debug-iphonesimulator/Three20.build/Three20-generated-files.hmap -I/Users/Leo/Projects/xcode/HIS/Frameworks/Three20/Three20/../../Build/Three20.build/Debug-iphonesimulator/Three20.build/Three20-own-target-headers.hmap -I/Users/Leo/Projects/xcode/HIS/Frameworks/Three20/Three20/../../Build/Three20.build/Debug-iphonesimulator/Three20.build/Three20-all-target-headers.hmap -iquote /Users/Leo/Projects/xcode/HIS/Frameworks/Three20/Three20/../../Build/Three20.build/Debug-iphonesimulator/Three20.build/Three20-project-headers.hmap -I/Users/Leo/Projects/xcode/HIS/Frameworks/Three20/Three20/../../Build/Products/Debug-iphonesimulator/include -I/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator5.0.sdk/usr/include -I/Users/Leo/Projects/xcode/HIS/Frameworks/Three20/Three20/../../Build/Products/Debug-iphonesimulator/../three20 -I/Users/Leo/Projects/xcode/HIS/Frameworks/Three20/Three20/../../Build/Products/Debug-iphonesimulator/../../three20 -I/Users/Leo/Projects/xcode/HIS/Frameworks/Three20/Three20/../../Build/Products/Debug-iphonesimulator/../../three20 -I/Users/Leo/Projects/xcode/HIS/Frameworks/Three20/Three20/../../Build/Three20.build/Debug-iphonesimulator/Three20.build/DerivedSources/i386 -I/Users/Leo/Projects/xcode/HIS/Frameworks/Three20/Three20/../../Build/Three20.build/Debug-iphonesimulator/Three20.build/DerivedSources -F/Users/Leo/Projects/xcode/HIS/Frameworks/Three20/Three20/../../Build/Products/Debug-iphonesimulator -F/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator5.0.sdk/Developer/Library/Frameworks -include /var/folders/ry/l3zgfjx90jl5cbvr9qr3mbpm0000gn/C/com.apple.Xcode.501/SharedPrecompiledHeaders/Three20_Prefix-bnmlztskjyzrrwepzcpkoscwfxbf/Three20_Prefix.pch -MMD -MT dependencies -MF /Users/Leo/Projects/xcode/HIS/Frameworks/Three20/Three20/../../Build/Three20.build/Debug-iphonesimulator/Three20.build/Objects-normal/i386/Three20.d --serialize-diagnostics /Users/Leo/Projects/xcode/HIS/Frameworks/Three20/Three20/../../Build/Three20.build/Debug-iphonesimulator/Three20.build/Objects-normal/i386/Three20.dia -c /Users/Leo/Projects/xcode/HIS/Frameworks/Three20/Three20/Source/Three20.m -o /Users/Leo/Projects/xcode/HIS/Frameworks/Three20/Three20/../../Build/Three20.build/Debug-iphonesimulator/Three20.build/Objects-normal/i386/Three20.o36"FDD91FB1-868D-4F44-B2D7-BD77D0388C87-
+lSLF05#21%IDEActivityLogSection1@2#32"com.apple.dt.IDE.BuildLogSection81"Compile /Users/Leo/Projects/xcode/HIS/Frameworks/Three20/Three20/Source/Three20.me3e022ffc308b541^744337ffc308b541^---0#0#0#-19%DVTDocumentLocation2@89"file://localhost/Users/Leo/Projects/xcode/HIS/Frameworks/Three20/Three20/Source/Three20.m0000000000000000^4134"CompileC ../../Build/Three20.build/Debug-iphonesimulator/Three20.build/Objects-normal/i386/Three20.o Source/Three20.m normal i386 objective-c com.apple.compilers.llvm.clang.1_0.compiler    cd /Users/Leo/Projects/xcode/HIS/Frameworks/Three20/Three20    setenv LANG en_US.US-ASCII    setenv PATH "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Applications/Xcode.app/Contents/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang -x objective-c -arch i386 -fmessage-length=0 -std=c99 -Wno-trigraphs -fpascal-strings -O0 -Wno-missing-field-initializers -Wno-missing-prototypes -Wreturn-type -Wno-implicit-atomic-properties -Wformat -Wno-missing-braces -Wparentheses -Wno-switch -Wunused-function -Wunused-label -Wno-unused-parameter -Wunused-variable -Wunused-value -Wno-uninitialized -Wno-unknown-pragmas -Wshadow -Wno-four-char-constants -Wno-sign-compare -Wno-shorten-64-to-32 -Wpointer-sign -Wnewline-eof -Wno-selector -Wno-strict-selector-match -Wno-undeclared-selector -Wno-deprecated-implementations -DDEBUG -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator5.0.sdk -fexceptions -fasm-blocks -Wprotocol -Wdeprecated-declarations -mmacosx-version-min=10.6 -g -Wno-conversion -Wno-sign-conversion -fobjc-abi-version=2 -fobjc-legacy-dispatch "-DIBOutlet=__attribute__((iboutlet))" "-DIBOutletCollection(ClassName)=__attribute__((iboutletcollection(ClassName)))" "-DIBAction=void)__attribute__((ibaction)" -D__IPHONE_OS_VERSION_MIN_REQUIRED=30000 -iquote /Users/Leo/Projects/xcode/HIS/Frameworks/Three20/Three20/../../Build/Three20.build/Debug-iphonesimulator/Three20.build/Three20-generated-files.hmap -I/Users/Leo/Projects/xcode/HIS/Frameworks/Three20/Three20/../../Build/Three20.build/Debug-iphonesimulator/Three20.build/Three20-own-target-headers.hmap -I/Users/Leo/Projects/xcode/HIS/Frameworks/Three20/Three20/../../Build/Three20.build/Debug-iphonesimulator/Three20.build/Three20-all-target-headers.hmap -iquote /Users/Leo/Projects/xcode/HIS/Frameworks/Three20/Three20/../../Build/Three20.build/Debug-iphonesimulator/Three20.build/Three20-project-headers.hmap -I/Users/Leo/Projects/xcode/HIS/Frameworks/Three20/Three20/../../Build/Products/Debug-iphonesimulator/include -I/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator5.0.sdk/usr/include -I/Users/Leo/Projects/xcode/HIS/Frameworks/Three20/Three20/../../Build/Products/Debug-iphonesimulator/../three20 -I/Users/Leo/Projects/xcode/HIS/Frameworks/Three20/Three20/../../Build/Products/Debug-iphonesimulator/../../three20 -I/Users/Leo/Projects/xcode/HIS/Frameworks/Three20/Three20/../../Build/Products/Debug-iphonesimulator/../../three20 -I/Users/Leo/Projects/xcode/HIS/Frameworks/Three20/Three20/../../Build/Three20.build/Debug-iphonesimulator/Three20.build/DerivedSources/i386 -I/Users/Leo/Projects/xcode/HIS/Frameworks/Three20/Three20/../../Build/Three20.build/Debug-iphonesimulator/Three20.build/DerivedSources -F/Users/Leo/Projects/xcode/HIS/Frameworks/Three20/Three20/../../Build/Products/Debug-iphonesimulator -F/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator5.0.sdk/Developer/Library/Frameworks -include /var/folders/ry/l3zgfjx90jl5cbvr9qr3mbpm0000gn/C/com.apple.Xcode.501/SharedPrecompiledHeaders/Three20_Prefix-bnmlztskjyzrrwepzcpkoscwfxbf/Three20_Prefix.pch -MMD -MT dependencies -MF /Users/Leo/Projects/xcode/HIS/Frameworks/Three20/Three20/../../Build/Three20.build/Debug-iphonesimulator/Three20.build/Objects-normal/i386/Three20.d --serialize-diagnostics /Users/Leo/Projects/xcode/HIS/Frameworks/Three20/Three20/../../Build/Three20.build/Debug-iphonesimulator/Three20.build/Objects-normal/i386/Three20.dia -c /Users/Leo/Projects/xcode/HIS/Frameworks/Three20/Three20/Source/Three20.m -o /Users/Leo/Projects/xcode/HIS/Frameworks/Three20/Three20/../../Build/Three20.build/Debug-iphonesimulator/Three20.build/Objects-normal/i386/Three20.o36"4D0F83D3-24A7-4417-9FF7-4CFAA7A07847-
 
 CCompileC ../../Build/Three20.build/Debug-iphonesimulator/Three20.build/Objects-normal/i386/Three20.o /Users/Leo/Projects/xcode/Hand/Frameworks/Three20/Three20/Source/Three20.m normal i386 objective-c com.apple.compilers.llvm.clang.1_0.compiler
 s352728525.181642
@@ -2446,26 +2446,26 @@ xcom.apple.compilers.llvm.clang.1_0.compiler
 lSLF05#21%IDEActivityLogSection1@2#32"com.apple.dt.IDE.BuildLogSection82"Compile /Users/Leo/Projects/xcode/Hand/Frameworks/Three20/Three20/Source/Three20.m22a82ecd3506b541^fdbb42cd3506b541^---0#0#0#-19%DVTDocumentLocation2@90"file://localhost/Users/Leo/Projects/xcode/Hand/Frameworks/Three20/Three20/Source/Three20.m0000000000000000^4150"CompileC ../../Build/Three20.build/Debug-iphonesimulator/Three20.build/Objects-normal/i386/Three20.o Source/Three20.m normal i386 objective-c com.apple.compilers.llvm.clang.1_0.compiler    cd /Users/Leo/Projects/xcode/Hand/Frameworks/Three20/Three20    setenv LANG en_US.US-ASCII    setenv PATH "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Applications/Xcode.app/Contents/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang -x objective-c -arch i386 -fmessage-length=0 -std=c99 -Wno-trigraphs -fpascal-strings -O0 -Wno-missing-field-initializers -Wno-missing-prototypes -Wreturn-type -Wno-implicit-atomic-properties -Wformat -Wno-missing-braces -Wparentheses -Wno-switch -Wunused-function -Wunused-label -Wno-unused-parameter -Wunused-variable -Wunused-value -Wno-uninitialized -Wno-unknown-pragmas -Wshadow -Wno-four-char-constants -Wno-sign-compare -Wno-shorten-64-to-32 -Wpointer-sign -Wnewline-eof -Wno-selector -Wno-strict-selector-match -Wno-undeclared-selector -Wno-deprecated-implementations -DDEBUG -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator5.0.sdk -fexceptions -fasm-blocks -Wprotocol -Wdeprecated-declarations -mmacosx-version-min=10.6 -g -Wno-conversion -Wno-sign-conversion -fobjc-abi-version=2 -fobjc-legacy-dispatch "-DIBOutlet=__attribute__((iboutlet))" "-DIBOutletCollection(ClassName)=__attribute__((iboutletcollection(ClassName)))" "-DIBAction=void)__attribute__((ibaction)" -D__IPHONE_OS_VERSION_MIN_REQUIRED=30000 -iquote /Users/Leo/Projects/xcode/Hand/Frameworks/Three20/Three20/../../Build/Three20.build/Debug-iphonesimulator/Three20.build/Three20-generated-files.hmap -I/Users/Leo/Projects/xcode/Hand/Frameworks/Three20/Three20/../../Build/Three20.build/Debug-iphonesimulator/Three20.build/Three20-own-target-headers.hmap -I/Users/Leo/Projects/xcode/Hand/Frameworks/Three20/Three20/../../Build/Three20.build/Debug-iphonesimulator/Three20.build/Three20-all-target-headers.hmap -iquote /Users/Leo/Projects/xcode/Hand/Frameworks/Three20/Three20/../../Build/Three20.build/Debug-iphonesimulator/Three20.build/Three20-project-headers.hmap -I/Users/Leo/Projects/xcode/Hand/Frameworks/Three20/Three20/../../Build/Products/Debug-iphonesimulator/include -I/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator5.0.sdk/usr/include -I/Users/Leo/Projects/xcode/Hand/Frameworks/Three20/Three20/../../Build/Products/Debug-iphonesimulator/../three20 -I/Users/Leo/Projects/xcode/Hand/Frameworks/Three20/Three20/../../Build/Products/Debug-iphonesimulator/../../three20 -I/Users/Leo/Projects/xcode/Hand/Frameworks/Three20/Three20/../../Build/Products/Debug-iphonesimulator/../../three20 -I/Users/Leo/Projects/xcode/Hand/Frameworks/Three20/Three20/../../Build/Three20.build/Debug-iphonesimulator/Three20.build/DerivedSources/i386 -I/Users/Leo/Projects/xcode/Hand/Frameworks/Three20/Three20/../../Build/Three20.build/Debug-iphonesimulator/Three20.build/DerivedSources -F/Users/Leo/Projects/xcode/Hand/Frameworks/Three20/Three20/../../Build/Products/Debug-iphonesimulator -F/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator5.0.sdk/Developer/Library/Frameworks -include /var/folders/ry/l3zgfjx90jl5cbvr9qr3mbpm0000gn/C/com.apple.Xcode.501/SharedPrecompiledHeaders/Three20_Prefix-dlglqntyhuhstoeepcdtxbpindje/Three20_Prefix.pch -MMD -MT dependencies -MF /Users/Leo/Projects/xcode/Hand/Frameworks/Three20/Three20/../../Build/Three20.build/Debug-iphonesimulator/Three20.build/Objects-normal/i386/Three20.d --serialize-diagnostics /Users/Leo/Projects/xcode/Hand/Frameworks/Three20/Three20/../../Build/Three20.build/Debug-iphonesimulator/Three20.build/Objects-normal/i386/Three20.dia -c /Users/Leo/Projects/xcode/Hand/Frameworks/Three20/Three20/Source/Three20.m -o /Users/Leo/Projects/xcode/Hand/Frameworks/Three20/Three20/../../Build/Three20.build/Debug-iphonesimulator/Three20.build/Objects-normal/i386/Three20.o36"1DED7701-B9BC-494E-BF69-38391052672A-
 
 CCpHeader Headers/Three20+Additions.h ../../Build/Products/Debug-iphonesimulator/../three20/Three20/Three20+Additions.h
-s352822553.055826
-e352822553.074305
+s352895998.705697
+e352895998.709057
 r1
 xCpHeader
 xHeaders/Three20+Additions.h
 x../../Build/Products/Debug-iphonesimulator/../three20/Three20/Three20+Additions.h
-lSLF05#21%IDEActivityLogSection1@2#32"com.apple.dt.IDE.BuildLogSection86"Copy ../../Build/Products/Debug-iphonesimulator/../three20/Three20/Three20+Additions.h685a0e19a507b541^8e071319a507b541^---0#0#0#-19%DVTDocumentLocation2@154"file://localhost/Users/Leo/Projects/xcode/HIS/Frameworks/Three20/Three20/../../Build/Products/Debug-iphonesimulator/../three20/Three20/Three20+Additions.h0000000000000000^799"CpHeader Headers/Three20+Additions.h ../../Build/Products/Debug-iphonesimulator/../three20/Three20/Three20+Additions.h    cd /Users/Leo/Projects/xcode/HIS/Frameworks/Three20/Three20    setenv PATH "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Applications/Xcode.app/Contents/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    builtin-copy -exclude .DS_Store -exclude CVS -exclude .svn -exclude .git -exclude .hg -resolve-src-symlinks -strip-tool /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/strip /Users/Leo/Projects/xcode/HIS/Frameworks/Three20/Three20/Headers/Three20+Additions.h /Users/Leo/Projects/xcode/HIS/Frameworks/Three20/Three20/../../Build/Products/Debug-iphonesimulator/../three20/Three2036"34BB88BE-AC49-4F90-B7F2-3294B96843BC-
+lSLF05#21%IDEActivityLogSection1@2#32"com.apple.dt.IDE.BuildLogSection86"Copy ../../Build/Products/Debug-iphonesimulator/../three20/Three20/Three20+Additions.h5fb7b4fec308b541^9886b5fec308b541^---0#0#0#-19%DVTDocumentLocation2@154"file://localhost/Users/Leo/Projects/xcode/HIS/Frameworks/Three20/Three20/../../Build/Products/Debug-iphonesimulator/../three20/Three20/Three20+Additions.h0000000000000000^799"CpHeader Headers/Three20+Additions.h ../../Build/Products/Debug-iphonesimulator/../three20/Three20/Three20+Additions.h    cd /Users/Leo/Projects/xcode/HIS/Frameworks/Three20/Three20    setenv PATH "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Applications/Xcode.app/Contents/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    builtin-copy -exclude .DS_Store -exclude CVS -exclude .svn -exclude .git -exclude .hg -resolve-src-symlinks -strip-tool /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/strip /Users/Leo/Projects/xcode/HIS/Frameworks/Three20/Three20/Headers/Three20+Additions.h /Users/Leo/Projects/xcode/HIS/Frameworks/Three20/Three20/../../Build/Products/Debug-iphonesimulator/../three20/Three2036"6CA63A35-E5E6-45AF-AE6E-ACD1A77F7BB9-
 
 CCpHeader Headers/Three20.h ../../Build/Products/Debug-iphonesimulator/../three20/Three20/Three20.h
-s352822553.055698
-e352822553.058771
+s352895998.705191
+e352895998.709152
 r1
 xCpHeader
 xHeaders/Three20.h
 x../../Build/Products/Debug-iphonesimulator/../three20/Three20/Three20.h
-lSLF05#21%IDEActivityLogSection1@2#32"com.apple.dt.IDE.BuildLogSection76"Copy ../../Build/Products/Debug-iphonesimulator/../three20/Three20/Three20.h21570e19a507b541^0d190f19a507b541^---0#0#0#-19%DVTDocumentLocation2@144"file://localhost/Users/Leo/Projects/xcode/HIS/Frameworks/Three20/Three20/../../Build/Products/Debug-iphonesimulator/../three20/Three20/Three20.h0000000000000000^769"CpHeader Headers/Three20.h ../../Build/Products/Debug-iphonesimulator/../three20/Three20/Three20.h    cd /Users/Leo/Projects/xcode/HIS/Frameworks/Three20/Three20    setenv PATH "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Applications/Xcode.app/Contents/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    builtin-copy -exclude .DS_Store -exclude CVS -exclude .svn -exclude .git -exclude .hg -resolve-src-symlinks -strip-tool /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/strip /Users/Leo/Projects/xcode/HIS/Frameworks/Three20/Three20/Headers/Three20.h /Users/Leo/Projects/xcode/HIS/Frameworks/Three20/Three20/../../Build/Products/Debug-iphonesimulator/../three20/Three2036"1CFC1EA0-C050-4E38-9546-CEB28D1B32BB-
+lSLF05#21%IDEActivityLogSection1@2#32"com.apple.dt.IDE.BuildLogSection76"Copy ../../Build/Products/Debug-iphonesimulator/../three20/Three20/Three20.h4e9cb4fec308b541^8e90b5fec308b541^---0#0#0#-19%DVTDocumentLocation2@144"file://localhost/Users/Leo/Projects/xcode/HIS/Frameworks/Three20/Three20/../../Build/Products/Debug-iphonesimulator/../three20/Three20/Three20.h0000000000000000^769"CpHeader Headers/Three20.h ../../Build/Products/Debug-iphonesimulator/../three20/Three20/Three20.h    cd /Users/Leo/Projects/xcode/HIS/Frameworks/Three20/Three20    setenv PATH "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Applications/Xcode.app/Contents/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    builtin-copy -exclude .DS_Store -exclude CVS -exclude .svn -exclude .git -exclude .hg -resolve-src-symlinks -strip-tool /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/strip /Users/Leo/Projects/xcode/HIS/Frameworks/Three20/Three20/Headers/Three20.h /Users/Leo/Projects/xcode/HIS/Frameworks/Three20/Three20/../../Build/Products/Debug-iphonesimulator/../three20/Three2036"994C9315-DBF2-4FD7-98BF-6ED0403C1BAD-
 
 CLibtool /Users/Leo/Projects/xcode/HIS/Frameworks/Three20/Three20/../../Build/Products/Debug-iphonesimulator/libThree20.a normal i386
-s352822553.587738
-e352822553.594795
+s352895999.223309
+e352895999.230469
 r1
 xLibtool
 x/Users/Leo/Projects/xcode/HIS/Frameworks/Three20/Three20/../../Build/Products/Debug-iphonesimulator/libThree20.a
@@ -2474,7 +2474,7 @@ xi386
 o/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/libtool: -dynamic not specified the following flags are invalid: -ObjC 
 o/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/libtool: file: /Users/Leo/Projects/xcode/HIS/Frameworks/Three20/Three20/../../Build/Three20.build/Debug-iphonesimulator/Three20.build/Objects-normal/i386/Three20.o has no symbols
 o/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/libtool: warning for library: /Users/Leo/Projects/xcode/HIS/Frameworks/Three20/Three20/../../Build/Products/Debug-iphonesimulator/libThree20.a the table of contents is empty (no object file members in the library define global symbols)
-lSLF05#21%IDEActivityLogSection1@2#32"com.apple.dt.IDE.BuildLogSection75"Libtool ../../Build/Products/Debug-iphonesimulator/libThree20.a normal i3869b909619a507b541^cc459819a507b541^---0#0#0#--1147"Libtool ../../Build/Products/Debug-iphonesimulator/libThree20.a normal i386    cd /Users/Leo/Projects/xcode/HIS/Frameworks/Three20/Three20    setenv MACOSX_DEPLOYMENT_TARGET 10.6    setenv PATH "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Applications/Xcode.app/Contents/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/libtool -static -arch_only i386 -syslibroot /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator5.0.sdk -L/Users/Leo/Projects/xcode/HIS/Frameworks/Three20/Three20/../../Build/Products/Debug-iphonesimulator -L/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator5.0.sdk/usr/lib -filelist /Users/Leo/Projects/xcode/HIS/Frameworks/Three20/Three20/../../Build/Three20.build/Debug-iphonesimulator/Three20.build/Objects-normal/i386/Three20.LinkFileList -ObjC -o /Users/Leo/Projects/xcode/HIS/Frameworks/Three20/Three20/../../Build/Products/Debug-iphonesimulator/libThree20.a36"D7BA6E2F-0AA8-45B7-A2FE-50E2F0BC8CF0-
+lSLF05#21%IDEActivityLogSection1@2#32"com.apple.dt.IDE.BuildLogSection75"Libtool ../../Build/Products/Debug-iphonesimulator/libThree20.a normal i386a24239ffc308b541^69003bffc308b541^---0#0#0#--1147"Libtool ../../Build/Products/Debug-iphonesimulator/libThree20.a normal i386    cd /Users/Leo/Projects/xcode/HIS/Frameworks/Three20/Three20    setenv MACOSX_DEPLOYMENT_TARGET 10.6    setenv PATH "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Applications/Xcode.app/Contents/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/libtool -static -arch_only i386 -syslibroot /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator5.0.sdk -L/Users/Leo/Projects/xcode/HIS/Frameworks/Three20/Three20/../../Build/Products/Debug-iphonesimulator -L/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator5.0.sdk/usr/lib -filelist /Users/Leo/Projects/xcode/HIS/Frameworks/Three20/Three20/../../Build/Three20.build/Debug-iphonesimulator/Three20.build/Objects-normal/i386/Three20.LinkFileList -ObjC -o /Users/Leo/Projects/xcode/HIS/Frameworks/Three20/Three20/../../Build/Products/Debug-iphonesimulator/libThree20.a36"306854F8-8DCE-4F29-89D4-33E4B2D169D7-
 
 CLibtool /Users/Leo/Projects/xcode/Hand/Frameworks/Three20/Three20/../../Build/Products/Debug-iphonesimulator/libThree20.a normal i386
 s352728525.268229
@@ -2490,13 +2490,13 @@ o/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/
 lSLF05#21%IDEActivityLogSection1@2#32"com.apple.dt.IDE.BuildLogSection75"Libtool ../../Build/Products/Debug-iphonesimulator/libThree20.a normal i386b8c944cd3506b541^e0d546cd3506b541^---0#0#0#--1151"Libtool ../../Build/Products/Debug-iphonesimulator/libThree20.a normal i386    cd /Users/Leo/Projects/xcode/Hand/Frameworks/Three20/Three20    setenv MACOSX_DEPLOYMENT_TARGET 10.6    setenv PATH "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Applications/Xcode.app/Contents/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/libtool -static -arch_only i386 -syslibroot /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator5.0.sdk -L/Users/Leo/Projects/xcode/Hand/Frameworks/Three20/Three20/../../Build/Products/Debug-iphonesimulator -L/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator5.0.sdk/usr/lib -filelist /Users/Leo/Projects/xcode/Hand/Frameworks/Three20/Three20/../../Build/Three20.build/Debug-iphonesimulator/Three20.build/Objects-normal/i386/Three20.LinkFileList -ObjC -o /Users/Leo/Projects/xcode/Hand/Frameworks/Three20/Three20/../../Build/Products/Debug-iphonesimulator/libThree20.a36"F62D8436-6F05-435B-9739-8986B2F98DC5-
 
 CPhaseScriptExecution "Protect Copied Headers" /Users/Leo/Projects/xcode/HIS/Frameworks/Three20/Three20/../../Build/Three20.build/Debug-iphonesimulator/Three20.build/Script-6E645F461187B01F00F08CB1.sh
-s352832458.962334
-e352832458.985524
+s352896486.191075
+e352896486.214013
 r1
 xPhaseScriptExecution
 xProtect Copied Headers
 x/Users/Leo/Projects/xcode/HIS/Frameworks/Three20/Three20/../../Build/Three20.build/Debug-iphonesimulator/Three20.build/Script-6E645F461187B01F00F08CB1.sh
-lSLF05#21%IDEActivityLogSection1@2#32"com.apple.dt.IDE.BuildLogSection48"Run custom shell script 'Protect Copied Headers'1079f7cacb07b541^304afccacb07b541^---0#0#0#--21365"PhaseScriptExecution "Protect Copied Headers" ../../Build/Three20.build/Debug-iphonesimulator/Three20.build/Script-6E645F461187B01F00F08CB1.sh    cd /Users/Leo/Projects/xcode/HIS/Frameworks/Three20/Three20    setenv ACTION build    setenv ADDRESSBOOKUI_FX "-framework AddressBookUI"    setenv ADDRESSBOOK_FX "-framework AddressBook"    setenv ALTERNATE_GROUP staff    setenv ALTERNATE_MODE u+w,go-w,a+rX    setenv ALTERNATE_OWNER Leo    setenv ALWAYS_SEARCH_USER_PATHS NO    setenv APPLE_INTERNAL_DEVELOPER_DIR /AppleInternal/Developer    setenv APPLE_INTERNAL_DIR /AppleInternal    setenv APPLE_INTERNAL_DOCUMENTATION_DIR /AppleInternal/Documentation    setenv APPLE_INTERNAL_LIBRARY_DIR /AppleInternal/Library    setenv APPLE_INTERNAL_TOOLS /AppleInternal/Developer/Tools    setenv APPLY_RULES_IN_COPY_FILES NO    setenv ARCHS i386    setenv ARCHS_STANDARD_32_BIT i386    setenv ARCHS_UNIVERSAL_IPHONE_OS i386    setenv AVAILABLE_PLATFORMS "iphonesimulator macosx iphoneos"    setenv AVFOUNDATION_FX "-framework AVFoundation"    setenv BASE_PRODUCT_NAME Three20    setenv BUILD_COMPONENTS "headers build"    setenv BUILD_DIR /Users/Leo/Projects/xcode/HIS/Frameworks/Three20/Three20/../../Build/Products    setenv BUILD_LIBRARY_VERSION 1.0    setenv BUILD_ROOT /Users/Leo/Projects/xcode/HIS/Frameworks/Three20/Three20/../../Build/Products    setenv BUILD_STYLE     setenv BUILD_VARIANTS normal    setenv BUILT_PRODUCTS_DIR /Users/Leo/Projects/xcode/HIS/Frameworks/Three20/Three20/../../Build/Products/Debug-iphonesimulator    setenv CACHE_ROOT /var/folders/ry/l3zgfjx90jl5cbvr9qr3mbpm0000gn/C/com.apple.Xcode.501    setenv CCHROOT /var/folders/ry/l3zgfjx90jl5cbvr9qr3mbpm0000gn/C/com.apple.Xcode.501    setenv CFNETWORK_FX "-framework CFNetwork"    setenv CHMOD /bin/chmod    setenv CHOWN /usr/sbin/chown    setenv CLASS_FILE_DIR /Users/Leo/Projects/xcode/HIS/Frameworks/Three20/Three20/../../Build/Three20.build/Debug-iphonesimulator/Three20.build/JavaClasses    setenv CLEAN_PRECOMPS YES    setenv CLONE_HEADERS NO    setenv CODESIGNING_FOLDER_PATH /Users/Leo/Projects/xcode/HIS/Frameworks/Three20/Three20/../../Build/Products/Debug-iphonesimulator/libThree20.a    setenv COMMAND_MODE legacy    setenv COMPOSITE_SDK_DIRS /var/folders/ry/l3zgfjx90jl5cbvr9qr3mbpm0000gn/C/com.apple.Xcode.501/CompositeSDKs    setenv COMPRESS_PNG_FILES YES    setenv CONFIGURATION Debug    setenv CONFIGURATION_BUILD_DIR /Users/Leo/Projects/xcode/HIS/Frameworks/Three20/Three20/../../Build/Products/Debug-iphonesimulator    setenv CONFIGURATION_TEMP_DIR /Users/Leo/Projects/xcode/HIS/Frameworks/Three20/Three20/../../Build/Three20.build/Debug-iphonesimulator    setenv COPYING_PRESERVES_HFS_DATA NO    setenv COPY_PHASE_STRIP NO    setenv COPY_RESOURCES_FROM_STATIC_FRAMEWORKS YES    setenv COREDATA_FX "-framework CoreData"    setenv COREFOUNDATION_FX "-framework CoreFoundation"    setenv COREGRAPHICS_FX "-framework CoreGraphics"    setenv CORELOCATION_FX "-framework CoreLocation"    setenv CP /bin/cp    setenv CURRENT_ARCH i386    setenv CURRENT_VARIANT normal    setenv DEAD_CODE_STRIPPING NO    setenv DEBUGGING_SYMBOLS YES    setenv DEBUG_INFORMATION_FORMAT dwarf-with-dsym    setenv DEFAULT_COMPILER com.apple.compilers.llvm.clang.1_0    setenv DEPLOYMENT_LOCATION NO    setenv DEPLOYMENT_POSTPROCESSING NO    setenv DERIVED_FILES_DIR /Users/Leo/Projects/xcode/HIS/Frameworks/Three20/Three20/../../Build/Three20.build/Debug-iphonesimulator/Three20.build/DerivedSources    setenv DERIVED_FILE_DIR /Users/Leo/Projects/xcode/HIS/Frameworks/Three20/Three20/../../Build/Three20.build/Debug-iphonesimulator/Three20.build/DerivedSources    setenv DERIVED_SOURCES_DIR /Users/Leo/Projects/xcode/HIS/Frameworks/Three20/Three20/../../Build/Three20.build/Debug-iphonesimulator/Three20.build/DerivedSources    setenv DEVELOPER_APPLICATIONS_DIR /Applications/Xcode.app/Contents/Developer/Applications    setenv DEVELOPER_BIN_DIR /Applications/Xcode.app/Contents/Developer/usr/bin    setenv DEVELOPER_DIR /Applications/Xcode.app/Contents/Developer    setenv DEVELOPER_FRAMEWORKS_DIR /Applications/Xcode.app/Contents/Developer/Library/Frameworks    setenv DEVELOPER_FRAMEWORKS_DIR_QUOTED "\"/Applications/Xcode.app/Contents/Developer/Library/Frameworks\""    setenv DEVELOPER_LIBRARY_DIR /Applications/Xcode.app/Contents/Developer/Library    setenv DEVELOPER_SDK_DIR /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs    setenv DEVELOPER_TOOLS_DIR /Applications/Xcode.app/Contents/Developer/Tools    setenv DEVELOPER_USR_DIR /Applications/Xcode.app/Contents/Developer/usr    setenv DEVELOPMENT_LANGUAGE English    setenv DO_HEADER_SCANNING_IN_JAM NO    setenv DSTROOT /tmp/Three20.dst    setenv DT_TOOLCHAIN_DIR /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain    setenv DWARF_DSYM_FILE_NAME libThree20.a.dSYM    setenv DWARF_DSYM_FILE_SHOULD_ACCOMPANY_PRODUCT NO    setenv DWARF_DSYM_FOLDER_PATH /Users/Leo/Projects/xcode/HIS/Frameworks/Three20/Three20/../../Build/Products/Debug-iphonesimulator    setenv EFFECTIVE_PLATFORM_NAME -iphonesimulator    setenv ENABLE_HEADER_DEPENDENCIES YES    setenv EXCLUDED_INSTALLSRC_SUBDIRECTORY_PATTERNS ".DS_Store .svn .git .hg CVS"    setenv EXCLUDED_RECURSIVE_SEARCH_PATH_SUBDIRECTORIES "*.nib *.lproj *.framework *.gch (*) .DS_Store CVS .svn .git .hg *.xcodeproj *.xcode *.pbproj *.pbxproj"    setenv EXECUTABLE_EXTENSION a    setenv EXECUTABLE_NAME libThree20.a    setenv EXECUTABLE_PATH libThree20.a    setenv EXECUTABLE_PREFIX lib    setenv EXECUTABLE_SUFFIX .a    setenv FILE_LIST /Users/Leo/Projects/xcode/HIS/Frameworks/Three20/Three20/../../Build/Three20.build/Debug-iphonesimulator/Three20.build/Objects/LinkFileList    setenv FIXED_FILES_DIR /Users/Leo/Projects/xcode/HIS/Frameworks/Three20/Three20/../../Build/Three20.build/Debug-iphonesimulator/Three20.build/FixedFiles    setenv FOUNDATION_FX "-framework Foundation"    setenv FRAMEWORK_FLAG_PREFIX -framework    setenv FRAMEWORK_SEARCH_PATHS "\"/Users/Leo/Projects/xcode/HIS/Frameworks/Three20/Three20/../../Build/Products/Debug-iphonesimulator\" \"/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator5.0.sdk/Developer/Library/Frameworks\""    setenv FRAMEWORK_VERSION A    setenv FULL_PRODUCT_NAME libThree20.a    setenv GAMEKIT_FX "-framework GameKit"    setenv GCC3_VERSION 3.3    setenv GCC_C_LANGUAGE_STANDARD c99    setenv GCC_DYNAMIC_NO_PIC NO    setenv GCC_ENABLE_SYMBOL_SEPARATION NO    setenv GCC_OBJC_LEGACY_DISPATCH YES    setenv GCC_OPTIMIZATION_LEVEL 0    setenv GCC_PFE_FILE_C_DIALECTS "c objective-c c++ objective-c++"    setenv GCC_PRECOMPILE_PREFIX_HEADER YES    setenv GCC_PREFIX_HEADER /Users/Leo/Projects/xcode/HIS/Frameworks/Three20/Three20/Headers/Three20_Prefix.pch    setenv GCC_PREPROCESSOR_DEFINITIONS DEBUG    setenv GCC_TREAT_WARNINGS_AS_ERRORS NO    setenv GCC_VERSION com.apple.compilers.llvm.clang.1_0    setenv GCC_WARN_ABOUT_MISSING_NEWLINE YES    setenv GCC_WARN_ABOUT_RETURN_TYPE YES    setenv GCC_WARN_CHECK_SWITCH_STATEMENTS NO    setenv GCC_WARN_EFFECTIVE_CPLUSPLUS_VIOLATIONS YES    setenv GCC_WARN_SHADOW YES    setenv GCC_WARN_UNUSED_FUNCTION YES    setenv GCC_WARN_UNUSED_LABEL YES    setenv GCC_WARN_UNUSED_VARIABLE YES    setenv GENERATE_MASTER_OBJECT_FILE NO    setenv GENERATE_PKGINFO_FILE NO    setenv GENERATE_PROFILING_CODE NO    setenv GID 20    setenv GROUP staff    setenv HEADERMAP_INCLUDES_FLAT_ENTRIES_FOR_TARGET_BEING_BUILT YES    setenv HEADERMAP_INCLUDES_FRAMEWORK_ENTRIES_FOR_ALL_PRODUCT_TYPES YES    setenv HEADERMAP_INCLUDES_NONPUBLIC_NONPRIVATE_HEADERS YES    setenv HEADERMAP_INCLUDES_PROJECT_HEADERS YES    setenv HEADERS_FOLDER_PATH /../three20/    setenv HEADER_SEARCH_PATHS "/Users/Leo/Projects/xcode/HIS/Frameworks/Three20/Three20/../../Build/Products/Debug-iphonesimulator/include /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator5.0.sdk/usr/include /Users/Leo/Projects/xcode/HIS/Frameworks/Three20/Three20/../../Build/Products/Debug-iphonesimulator/../three20 /Users/Leo/Projects/xcode/HIS/Frameworks/Three20/Three20/../../Build/Products/Debug-iphonesimulator/../../three20 /Users/Leo/Projects/xcode/HIS/Frameworks/Three20/Three20/../../Build/Products/Debug-iphonesimulator/../../three20"    setenv ICONV /usr/bin/iconv    setenv INFOPLIST_EXPAND_BUILD_SETTINGS YES    setenv INFOPLIST_OUTPUT_FORMAT binary    setenv INFOPLIST_PREPROCESS NO    setenv INSTALL_DIR /tmp/Three20.dst/usr/local/lib    setenv INSTALL_GROUP staff    setenv INSTALL_MODE_FLAG u+w,go-w,a+rX    setenv INSTALL_OWNER Leo    setenv INSTALL_PATH /usr/local/lib    setenv INSTALL_ROOT /tmp/Three20.dst    setenv IPHONEOS_DEPLOYMENT_TARGET 3.0    setenv JAVAC_DEFAULT_FLAGS "-J-Xms64m -J-XX:NewSize=4M -J-Dfile.encoding=UTF8"    setenv JAVA_APP_STUB /System/Library/Frameworks/JavaVM.framework/Resources/MacOS/JavaApplicationStub    setenv JAVA_ARCHIVE_CLASSES YES    setenv JAVA_ARCHIVE_TYPE JAR    setenv JAVA_COMPILER /usr/bin/javac    setenv JAVA_FRAMEWORK_RESOURCES_DIRS Resources    setenv JAVA_JAR_FLAGS cv    setenv JAVA_SOURCE_SUBDIR .    setenv JAVA_USE_DEPENDENCIES YES    setenv JAVA_ZIP_FLAGS -urg    setenv JIKES_DEFAULT_FLAGS "+E +OLDCSO"    setenv KEEP_PRIVATE_EXTERNS NO    setenv LD_GENERATE_MAP_FILE NO    setenv LD_MAP_FILE_PATH /Users/Leo/Projects/xcode/HIS/Frameworks/Three20/Three20/../../Build/Three20.build/Debug-iphonesimulator/Three20.build/Three20-LinkMap-normal-i386.txt    setenv LD_NO_PIE NO    setenv LEGACY_DEVELOPER_DIR /Applications/Xcode.app/Contents/PlugIns/Xcode3Core.ideplugin/Contents/SharedSupport/Developer    setenv LEX lex    setenv LIBRARY_FLAG_NOSPACE YES    setenv LIBRARY_FLAG_PREFIX -l    setenv LIBRARY_SEARCH_PATHS "/Users/Leo/Projects/xcode/HIS/Frameworks/Three20/Three20/../../Build/Products/Debug-iphonesimulator /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator5.0.sdk/usr/lib"    setenv LINKER_DISPLAYS_MANGLED_NAMES NO    setenv LINK_FILE_LIST_normal_i386 /Users/Leo/Projects/xcode/HIS/Frameworks/Three20/Three20/../../Build/Three20.build/Debug-iphonesimulator/Three20.build/Objects-normal/i386/Three20.LinkFileList    setenv LINK_WITH_STANDARD_LIBRARIES YES    setenv LOCAL_ADMIN_APPS_DIR /Applications/Utilities    setenv LOCAL_APPS_DIR /Applications    setenv LOCAL_DEVELOPER_DIR /Library/Developer    setenv LOCAL_LIBRARY_DIR /Library    setenv MACH_O_TYPE staticlib    setenv MACOSX_DEPLOYMENT_TARGET 10.6    setenv MAC_OS_X_PRODUCT_BUILD_VERSION 11D50    setenv MAC_OS_X_VERSION_ACTUAL 1073    setenv MAC_OS_X_VERSION_MAJOR 1070    setenv MAC_OS_X_VERSION_MINOR 0703    setenv MAPKIT_FX "-framework MapKit"    setenv MEDIAPLAYER_FX "-framework MediaPlayer"    setenv MESSAGEUI_FX "-framework MessageUI"    setenv MOBILECORESERVICES_FX "-framework MobileCoreServices"    setenv NATIVE_ARCH i386    setenv NATIVE_ARCH_32_BIT i386    setenv NATIVE_ARCH_64_BIT x86_64    setenv NATIVE_ARCH_ACTUAL x86_64    setenv NO_COMMON YES    setenv OBJC_ABI_VERSION 2    setenv OBJC_LIB -lobjc    setenv OBJC_LIBRARY -ObjC    setenv OBJECT_FILE_DIR /Users/Leo/Projects/xcode/HIS/Frameworks/Three20/Three20/../../Build/Three20.build/Debug-iphonesimulator/Three20.build/Objects    setenv OBJECT_FILE_DIR_normal /Users/Leo/Projects/xcode/HIS/Frameworks/Three20/Three20/../../Build/Three20.build/Debug-iphonesimulator/Three20.build/Objects-normal    setenv OBJROOT /Users/Leo/Projects/xcode/HIS/Frameworks/Three20/Three20/../../Build    setenv ONLY_ACTIVE_ARCH NO    setenv OPENGLES_FX "-framework OpenGLES"    setenv OPTIMIZATION_LEVEL 0    setenv OS MACOS    setenv OSAC /usr/bin/osacompile    setenv OTHER_LDFLAGS -ObjC    setenv PACKAGE_TYPE com.apple.package-type.static-library    setenv PASCAL_STRINGS YES    setenv PATH "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Applications/Xcode.app/Contents/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    setenv PATH_PREFIXES_EXCLUDED_FROM_HEADER_DEPENDENCIES "/usr/include /usr/local/include /System/Library/Frameworks /System/Library/PrivateFrameworks /Applications/Xcode.app/Contents/Developer/Headers /Applications/Xcode.app/Contents/Developer/SDKs /Applications/Xcode.app/Contents/Developer/Platforms"    setenv PFE_FILE_C_DIALECTS objective-c    setenv PKGINFO_FILE_PATH /Users/Leo/Projects/xcode/HIS/Frameworks/Three20/Three20/../../Build/Three20.build/Debug-iphonesimulator/Three20.build/PkgInfo    setenv PLATFORM_DEVELOPER_APPLICATIONS_DIR /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/Applications    setenv PLATFORM_DEVELOPER_BIN_DIR /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin    setenv PLATFORM_DEVELOPER_LIBRARY_DIR /Applications/Xcode.app/Contents/PlugIns/Xcode3Core.ideplugin/Contents/SharedSupport/Developer/Library    setenv PLATFORM_DEVELOPER_SDK_DIR /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs    setenv PLATFORM_DEVELOPER_TOOLS_DIR /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/Tools    setenv PLATFORM_DEVELOPER_USR_DIR /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/usr    setenv PLATFORM_DIR /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform    setenv PLATFORM_NAME iphonesimulator    setenv PLATFORM_PREFERRED_ARCH i386    setenv PLATFORM_PRODUCT_BUILD_VERSION 9A334    setenv PLATFORM_VERSION_AVAILABILITY_H_FORMAT 50000    setenv PLIST_FILE_OUTPUT_FORMAT binary    setenv PRECOMPS_INCLUDE_HEADERS_FROM_BUILT_PRODUCTS_DIR YES    setenv PRECOMP_DESTINATION_DIR /Users/Leo/Projects/xcode/HIS/Frameworks/Three20/Three20/../../Build/Three20.build/Debug-iphonesimulator/Three20.build/PrefixHeaders    setenv PRESERVE_DEAD_CODE_INITS_AND_TERMS NO    setenv PRIVATE_HEADERS_FOLDER_PATH /../three20/Three20/private    setenv PRODUCT_NAME Three20    setenv PRODUCT_SETTINGS_PATH     setenv PRODUCT_TYPE com.apple.product-type.library.static    setenv PROFILING_CODE NO    setenv PROJECT Three20    setenv PROJECT_DERIVED_FILE_DIR /Users/Leo/Projects/xcode/HIS/Frameworks/Three20/Three20/../../Build/Three20.build/DerivedSources    setenv PROJECT_DIR /Users/Leo/Projects/xcode/HIS/Frameworks/Three20/Three20    setenv PROJECT_FILE_PATH /Users/Leo/Projects/xcode/HIS/Frameworks/Three20/Three20/Three20.xcodeproj    setenv PROJECT_NAME Three20    setenv PROJECT_TEMP_DIR /Users/Leo/Projects/xcode/HIS/Frameworks/Three20/Three20/../../Build/Three20.build    setenv PUBLIC_HEADERS_FOLDER_PATH /../three20/Three20    setenv QUARTZCORE_FX "-framework QuartzCore"    setenv RECURSIVE_SEARCH_PATHS_FOLLOW_SYMLINKS YES    setenv REMOVE_CVS_FROM_RESOURCES YES    setenv REMOVE_GIT_FROM_RESOURCES YES    setenv REMOVE_HG_FROM_RESOURCES YES    setenv REMOVE_SVN_FROM_RESOURCES YES    setenv REPO_ROOT_PATH /Users/Leo/Projects/xcode/HIS/Frameworks/Three20/Three20/../..    setenv REZ_COLLECTOR_DIR /Users/Leo/Projects/xcode/HIS/Frameworks/Three20/Three20/../../Build/Three20.build/Debug-iphonesimulator/Three20.build/ResourceManagerResources    setenv REZ_EXECUTABLE YES    setenv REZ_OBJECTS_DIR /Users/Leo/Projects/xcode/HIS/Frameworks/Three20/Three20/../../Build/Three20.build/Debug-iphonesimulator/Three20.build/ResourceManagerResources/Objects    setenv REZ_SEARCH_PATHS "\"/Users/Leo/Projects/xcode/HIS/Frameworks/Three20/Three20/../../Build/Products/Debug-iphonesimulator\" "    setenv ROOT_SOURCE_PATH /Users/Leo/Projects/xcode/HIS/Frameworks/Three20/Three20/../../src    setenv RUN_CLANG_STATIC_ANALYZER NO    setenv SCAN_ALL_SOURCE_FILES_FOR_INCLUDES NO    setenv SCRIPT_INPUT_FILE_COUNT 0    setenv SCRIPT_OUTPUT_FILE_COUNT 0    setenv SDKROOT /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator5.0.sdk    setenv SDK_DIR /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator5.0.sdk    setenv SDK_NAME iphonesimulator5.0    setenv SDK_PRODUCT_BUILD_VERSION 9A334    setenv SECURITY_FX "-framework Security"    setenv SED /usr/bin/sed    setenv SENTESTINGKIT_FX "-framework SenTestingKit"    setenv SEPARATE_STRIP YES    setenv SEPARATE_SYMBOL_EDIT NO    setenv SET_DIR_MODE_OWNER_GROUP YES    setenv SET_FILE_MODE_OWNER_GROUP NO    setenv SHARED_DERIVED_FILE_DIR /Users/Leo/Projects/xcode/HIS/Frameworks/Three20/Three20/../../Build/Products/Debug-iphonesimulator/DerivedSources    setenv SHARED_PRECOMPS_DIR /var/folders/ry/l3zgfjx90jl5cbvr9qr3mbpm0000gn/C/com.apple.Xcode.501/SharedPrecompiledHeaders    setenv SKIP_INSTALL YES    setenv SOURCE_ROOT /Users/Leo/Projects/xcode/HIS/Frameworks/Three20/Three20    setenv SRCROOT /Users/Leo/Projects/xcode/HIS/Frameworks/Three20/Three20    setenv STDLIB_HEADERS /usr/include    setenv STDLIB_LIBRARY /usr/lib    setenv STOREKIT_FX "-framework StoreKit"    setenv STRINGS_FILE_OUTPUT_ENCODING binary    setenv STRIP_INSTALLED_PRODUCT YES    setenv STRIP_STYLE debugging    setenv SUPPORTED_DEVICE_FAMILIES "1 2"    setenv SUPPORTED_PLATFORMS "iphonesimulator iphoneos"    setenv SYMROOT /Users/Leo/Projects/xcode/HIS/Frameworks/Three20/Three20/../../Build/Products    setenv SYSTEMCONFIGURATION_FX "-framework SystemConfiguration"    setenv SYSTEM_ADMIN_APPS_DIR /Applications/Utilities    setenv SYSTEM_APPS_DIR /Applications    setenv SYSTEM_CORE_SERVICES_DIR /System/Library/CoreServices    setenv SYSTEM_DEMOS_DIR /Applications/Extras    setenv SYSTEM_DEVELOPER_APPS_DIR /Applications/Xcode.app/Contents/Developer/Applications    setenv SYSTEM_DEVELOPER_BIN_DIR /Applications/Xcode.app/Contents/Developer/usr/bin    setenv SYSTEM_DEVELOPER_DEMOS_DIR "/Applications/Xcode.app/Contents/Developer/Applications/Utilities/Built Examples"    setenv SYSTEM_DEVELOPER_DIR /Applications/Xcode.app/Contents/Developer    setenv SYSTEM_DEVELOPER_DOC_DIR "/Applications/Xcode.app/Contents/Developer/ADC Reference Library"    setenv SYSTEM_DEVELOPER_GRAPHICS_TOOLS_DIR "/Applications/Xcode.app/Contents/Developer/Applications/Graphics Tools"    setenv SYSTEM_DEVELOPER_JAVA_TOOLS_DIR "/Applications/Xcode.app/Contents/Developer/Applications/Java Tools"    setenv SYSTEM_DEVELOPER_PERFORMANCE_TOOLS_DIR "/Applications/Xcode.app/Contents/Developer/Applications/Performance Tools"    setenv SYSTEM_DEVELOPER_RELEASENOTES_DIR "/Applications/Xcode.app/Contents/Developer/ADC Reference Library/releasenotes"    setenv SYSTEM_DEVELOPER_TOOLS /Applications/Xcode.app/Contents/Developer/Tools    setenv SYSTEM_DEVELOPER_TOOLS_DOC_DIR "/Applications/Xcode.app/Contents/Developer/ADC Reference Library/documentation/DeveloperTools"    setenv SYSTEM_DEVELOPER_TOOLS_RELEASENOTES_DIR "/Applications/Xcode.app/Contents/Developer/ADC Reference Library/releasenotes/DeveloperTools"    setenv SYSTEM_DEVELOPER_USR_DIR /Applications/Xcode.app/Contents/Developer/usr    setenv SYSTEM_DEVELOPER_UTILITIES_DIR /Applications/Xcode.app/Contents/Developer/Applications/Utilities    setenv SYSTEM_DOCUMENTATION_DIR /Library/Documentation    setenv SYSTEM_LIBRARY_DIR /System/Library    setenv TARGETED_DEVICE_FAMILY 1    setenv TARGETNAME Three20    setenv TARGET_BUILD_DIR /Users/Leo/Projects/xcode/HIS/Frameworks/Three20/Three20/../../Build/Products/Debug-iphonesimulator    setenv TARGET_NAME Three20    setenv TARGET_TEMP_DIR /Users/Leo/Projects/xcode/HIS/Frameworks/Three20/Three20/../../Build/Three20.build/Debug-iphonesimulator/Three20.build    setenv TEMP_DIR /Users/Leo/Projects/xcode/HIS/Frameworks/Three20/Three20/../../Build/Three20.build/Debug-iphonesimulator/Three20.build    setenv TEMP_FILES_DIR /Users/Leo/Projects/xcode/HIS/Frameworks/Three20/Three20/../../Build/Three20.build/Debug-iphonesimulator/Three20.build    setenv TEMP_FILE_DIR /Users/Leo/Projects/xcode/HIS/Frameworks/Three20/Three20/../../Build/Three20.build/Debug-iphonesimulator/Three20.build    setenv TEMP_ROOT /Users/Leo/Projects/xcode/HIS/Frameworks/Three20/Three20/../../Build    setenv TEST_AFTER_BUILD NO    setenv UID 501    setenv UIKIT_FX "-framework UIKit"    setenv UNSTRIPPED_PRODUCT NO    setenv USER Leo    setenv USER_APPS_DIR /Users/Leo/Applications    setenv USER_LIBRARY_DIR /Users/Leo/Library    setenv USE_DYNAMIC_NO_PIC YES    setenv USE_HEADERMAP YES    setenv USE_HEADER_SYMLINKS NO    setenv VALIDATE_PRODUCT NO    setenv VALID_ARCHS i386    setenv VERBOSE_PBXCP NO    setenv VERSION_INFO_BUILDER Leo    setenv VERSION_INFO_FILE Three20_vers.c    setenv VERSION_INFO_STRING "\"@(#)PROGRAM:Three20  PROJECT:Three20-\""    setenv XCODE_APP_SUPPORT_DIR /Applications/Xcode.app/Contents/Developer/Library/Xcode    setenv XCODE_PRODUCT_BUILD_VERSION 4E109    setenv XCODE_VERSION_ACTUAL 0430    setenv XCODE_VERSION_MAJOR 0400    setenv XCODE_VERSION_MINOR 0430    setenv YACC yacc    /bin/sh -c /Users/Leo/Projects/xcode/HIS/Frameworks/Three20/Three20/../../Build/Three20.build/Debug-iphonesimulator/Three20.build/Script-6E645F461187B01F00F08CB1.sh36"87F0977B-98F7-44A0-939E-EB27A6CB240D-
+lSLF05#21%IDEActivityLogSection1@2#32"com.apple.dt.IDE.BuildLogSection48"Run custom shell script 'Protect Copied Headers'1e1a32e6c508b541^08c936e6c508b541^---0#0#0#--21365"PhaseScriptExecution "Protect Copied Headers" ../../Build/Three20.build/Debug-iphonesimulator/Three20.build/Script-6E645F461187B01F00F08CB1.sh    cd /Users/Leo/Projects/xcode/HIS/Frameworks/Three20/Three20    setenv ACTION build    setenv ADDRESSBOOKUI_FX "-framework AddressBookUI"    setenv ADDRESSBOOK_FX "-framework AddressBook"    setenv ALTERNATE_GROUP staff    setenv ALTERNATE_MODE u+w,go-w,a+rX    setenv ALTERNATE_OWNER Leo    setenv ALWAYS_SEARCH_USER_PATHS NO    setenv APPLE_INTERNAL_DEVELOPER_DIR /AppleInternal/Developer    setenv APPLE_INTERNAL_DIR /AppleInternal    setenv APPLE_INTERNAL_DOCUMENTATION_DIR /AppleInternal/Documentation    setenv APPLE_INTERNAL_LIBRARY_DIR /AppleInternal/Library    setenv APPLE_INTERNAL_TOOLS /AppleInternal/Developer/Tools    setenv APPLY_RULES_IN_COPY_FILES NO    setenv ARCHS i386    setenv ARCHS_STANDARD_32_BIT i386    setenv ARCHS_UNIVERSAL_IPHONE_OS i386    setenv AVAILABLE_PLATFORMS "iphonesimulator macosx iphoneos"    setenv AVFOUNDATION_FX "-framework AVFoundation"    setenv BASE_PRODUCT_NAME Three20    setenv BUILD_COMPONENTS "headers build"    setenv BUILD_DIR /Users/Leo/Projects/xcode/HIS/Frameworks/Three20/Three20/../../Build/Products    setenv BUILD_LIBRARY_VERSION 1.0    setenv BUILD_ROOT /Users/Leo/Projects/xcode/HIS/Frameworks/Three20/Three20/../../Build/Products    setenv BUILD_STYLE     setenv BUILD_VARIANTS normal    setenv BUILT_PRODUCTS_DIR /Users/Leo/Projects/xcode/HIS/Frameworks/Three20/Three20/../../Build/Products/Debug-iphonesimulator    setenv CACHE_ROOT /var/folders/ry/l3zgfjx90jl5cbvr9qr3mbpm0000gn/C/com.apple.Xcode.501    setenv CCHROOT /var/folders/ry/l3zgfjx90jl5cbvr9qr3mbpm0000gn/C/com.apple.Xcode.501    setenv CFNETWORK_FX "-framework CFNetwork"    setenv CHMOD /bin/chmod    setenv CHOWN /usr/sbin/chown    setenv CLASS_FILE_DIR /Users/Leo/Projects/xcode/HIS/Frameworks/Three20/Three20/../../Build/Three20.build/Debug-iphonesimulator/Three20.build/JavaClasses    setenv CLEAN_PRECOMPS YES    setenv CLONE_HEADERS NO    setenv CODESIGNING_FOLDER_PATH /Users/Leo/Projects/xcode/HIS/Frameworks/Three20/Three20/../../Build/Products/Debug-iphonesimulator/libThree20.a    setenv COMMAND_MODE legacy    setenv COMPOSITE_SDK_DIRS /var/folders/ry/l3zgfjx90jl5cbvr9qr3mbpm0000gn/C/com.apple.Xcode.501/CompositeSDKs    setenv COMPRESS_PNG_FILES YES    setenv CONFIGURATION Debug    setenv CONFIGURATION_BUILD_DIR /Users/Leo/Projects/xcode/HIS/Frameworks/Three20/Three20/../../Build/Products/Debug-iphonesimulator    setenv CONFIGURATION_TEMP_DIR /Users/Leo/Projects/xcode/HIS/Frameworks/Three20/Three20/../../Build/Three20.build/Debug-iphonesimulator    setenv COPYING_PRESERVES_HFS_DATA NO    setenv COPY_PHASE_STRIP NO    setenv COPY_RESOURCES_FROM_STATIC_FRAMEWORKS YES    setenv COREDATA_FX "-framework CoreData"    setenv COREFOUNDATION_FX "-framework CoreFoundation"    setenv COREGRAPHICS_FX "-framework CoreGraphics"    setenv CORELOCATION_FX "-framework CoreLocation"    setenv CP /bin/cp    setenv CURRENT_ARCH i386    setenv CURRENT_VARIANT normal    setenv DEAD_CODE_STRIPPING NO    setenv DEBUGGING_SYMBOLS YES    setenv DEBUG_INFORMATION_FORMAT dwarf-with-dsym    setenv DEFAULT_COMPILER com.apple.compilers.llvm.clang.1_0    setenv DEPLOYMENT_LOCATION NO    setenv DEPLOYMENT_POSTPROCESSING NO    setenv DERIVED_FILES_DIR /Users/Leo/Projects/xcode/HIS/Frameworks/Three20/Three20/../../Build/Three20.build/Debug-iphonesimulator/Three20.build/DerivedSources    setenv DERIVED_FILE_DIR /Users/Leo/Projects/xcode/HIS/Frameworks/Three20/Three20/../../Build/Three20.build/Debug-iphonesimulator/Three20.build/DerivedSources    setenv DERIVED_SOURCES_DIR /Users/Leo/Projects/xcode/HIS/Frameworks/Three20/Three20/../../Build/Three20.build/Debug-iphonesimulator/Three20.build/DerivedSources    setenv DEVELOPER_APPLICATIONS_DIR /Applications/Xcode.app/Contents/Developer/Applications    setenv DEVELOPER_BIN_DIR /Applications/Xcode.app/Contents/Developer/usr/bin    setenv DEVELOPER_DIR /Applications/Xcode.app/Contents/Developer    setenv DEVELOPER_FRAMEWORKS_DIR /Applications/Xcode.app/Contents/Developer/Library/Frameworks    setenv DEVELOPER_FRAMEWORKS_DIR_QUOTED "\"/Applications/Xcode.app/Contents/Developer/Library/Frameworks\""    setenv DEVELOPER_LIBRARY_DIR /Applications/Xcode.app/Contents/Developer/Library    setenv DEVELOPER_SDK_DIR /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs    setenv DEVELOPER_TOOLS_DIR /Applications/Xcode.app/Contents/Developer/Tools    setenv DEVELOPER_USR_DIR /Applications/Xcode.app/Contents/Developer/usr    setenv DEVELOPMENT_LANGUAGE English    setenv DO_HEADER_SCANNING_IN_JAM NO    setenv DSTROOT /tmp/Three20.dst    setenv DT_TOOLCHAIN_DIR /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain    setenv DWARF_DSYM_FILE_NAME libThree20.a.dSYM    setenv DWARF_DSYM_FILE_SHOULD_ACCOMPANY_PRODUCT NO    setenv DWARF_DSYM_FOLDER_PATH /Users/Leo/Projects/xcode/HIS/Frameworks/Three20/Three20/../../Build/Products/Debug-iphonesimulator    setenv EFFECTIVE_PLATFORM_NAME -iphonesimulator    setenv ENABLE_HEADER_DEPENDENCIES YES    setenv EXCLUDED_INSTALLSRC_SUBDIRECTORY_PATTERNS ".DS_Store .svn .git .hg CVS"    setenv EXCLUDED_RECURSIVE_SEARCH_PATH_SUBDIRECTORIES "*.nib *.lproj *.framework *.gch (*) .DS_Store CVS .svn .git .hg *.xcodeproj *.xcode *.pbproj *.pbxproj"    setenv EXECUTABLE_EXTENSION a    setenv EXECUTABLE_NAME libThree20.a    setenv EXECUTABLE_PATH libThree20.a    setenv EXECUTABLE_PREFIX lib    setenv EXECUTABLE_SUFFIX .a    setenv FILE_LIST /Users/Leo/Projects/xcode/HIS/Frameworks/Three20/Three20/../../Build/Three20.build/Debug-iphonesimulator/Three20.build/Objects/LinkFileList    setenv FIXED_FILES_DIR /Users/Leo/Projects/xcode/HIS/Frameworks/Three20/Three20/../../Build/Three20.build/Debug-iphonesimulator/Three20.build/FixedFiles    setenv FOUNDATION_FX "-framework Foundation"    setenv FRAMEWORK_FLAG_PREFIX -framework    setenv FRAMEWORK_SEARCH_PATHS "\"/Users/Leo/Projects/xcode/HIS/Frameworks/Three20/Three20/../../Build/Products/Debug-iphonesimulator\" \"/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator5.0.sdk/Developer/Library/Frameworks\""    setenv FRAMEWORK_VERSION A    setenv FULL_PRODUCT_NAME libThree20.a    setenv GAMEKIT_FX "-framework GameKit"    setenv GCC3_VERSION 3.3    setenv GCC_C_LANGUAGE_STANDARD c99    setenv GCC_DYNAMIC_NO_PIC NO    setenv GCC_ENABLE_SYMBOL_SEPARATION NO    setenv GCC_OBJC_LEGACY_DISPATCH YES    setenv GCC_OPTIMIZATION_LEVEL 0    setenv GCC_PFE_FILE_C_DIALECTS "c objective-c c++ objective-c++"    setenv GCC_PRECOMPILE_PREFIX_HEADER YES    setenv GCC_PREFIX_HEADER /Users/Leo/Projects/xcode/HIS/Frameworks/Three20/Three20/Headers/Three20_Prefix.pch    setenv GCC_PREPROCESSOR_DEFINITIONS DEBUG    setenv GCC_TREAT_WARNINGS_AS_ERRORS NO    setenv GCC_VERSION com.apple.compilers.llvm.clang.1_0    setenv GCC_WARN_ABOUT_MISSING_NEWLINE YES    setenv GCC_WARN_ABOUT_RETURN_TYPE YES    setenv GCC_WARN_CHECK_SWITCH_STATEMENTS NO    setenv GCC_WARN_EFFECTIVE_CPLUSPLUS_VIOLATIONS YES    setenv GCC_WARN_SHADOW YES    setenv GCC_WARN_UNUSED_FUNCTION YES    setenv GCC_WARN_UNUSED_LABEL YES    setenv GCC_WARN_UNUSED_VARIABLE YES    setenv GENERATE_MASTER_OBJECT_FILE NO    setenv GENERATE_PKGINFO_FILE NO    setenv GENERATE_PROFILING_CODE NO    setenv GID 20    setenv GROUP staff    setenv HEADERMAP_INCLUDES_FLAT_ENTRIES_FOR_TARGET_BEING_BUILT YES    setenv HEADERMAP_INCLUDES_FRAMEWORK_ENTRIES_FOR_ALL_PRODUCT_TYPES YES    setenv HEADERMAP_INCLUDES_NONPUBLIC_NONPRIVATE_HEADERS YES    setenv HEADERMAP_INCLUDES_PROJECT_HEADERS YES    setenv HEADERS_FOLDER_PATH /../three20/    setenv HEADER_SEARCH_PATHS "/Users/Leo/Projects/xcode/HIS/Frameworks/Three20/Three20/../../Build/Products/Debug-iphonesimulator/include /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator5.0.sdk/usr/include /Users/Leo/Projects/xcode/HIS/Frameworks/Three20/Three20/../../Build/Products/Debug-iphonesimulator/../three20 /Users/Leo/Projects/xcode/HIS/Frameworks/Three20/Three20/../../Build/Products/Debug-iphonesimulator/../../three20 /Users/Leo/Projects/xcode/HIS/Frameworks/Three20/Three20/../../Build/Products/Debug-iphonesimulator/../../three20"    setenv ICONV /usr/bin/iconv    setenv INFOPLIST_EXPAND_BUILD_SETTINGS YES    setenv INFOPLIST_OUTPUT_FORMAT binary    setenv INFOPLIST_PREPROCESS NO    setenv INSTALL_DIR /tmp/Three20.dst/usr/local/lib    setenv INSTALL_GROUP staff    setenv INSTALL_MODE_FLAG u+w,go-w,a+rX    setenv INSTALL_OWNER Leo    setenv INSTALL_PATH /usr/local/lib    setenv INSTALL_ROOT /tmp/Three20.dst    setenv IPHONEOS_DEPLOYMENT_TARGET 3.0    setenv JAVAC_DEFAULT_FLAGS "-J-Xms64m -J-XX:NewSize=4M -J-Dfile.encoding=UTF8"    setenv JAVA_APP_STUB /System/Library/Frameworks/JavaVM.framework/Resources/MacOS/JavaApplicationStub    setenv JAVA_ARCHIVE_CLASSES YES    setenv JAVA_ARCHIVE_TYPE JAR    setenv JAVA_COMPILER /usr/bin/javac    setenv JAVA_FRAMEWORK_RESOURCES_DIRS Resources    setenv JAVA_JAR_FLAGS cv    setenv JAVA_SOURCE_SUBDIR .    setenv JAVA_USE_DEPENDENCIES YES    setenv JAVA_ZIP_FLAGS -urg    setenv JIKES_DEFAULT_FLAGS "+E +OLDCSO"    setenv KEEP_PRIVATE_EXTERNS NO    setenv LD_GENERATE_MAP_FILE NO    setenv LD_MAP_FILE_PATH /Users/Leo/Projects/xcode/HIS/Frameworks/Three20/Three20/../../Build/Three20.build/Debug-iphonesimulator/Three20.build/Three20-LinkMap-normal-i386.txt    setenv LD_NO_PIE NO    setenv LEGACY_DEVELOPER_DIR /Applications/Xcode.app/Contents/PlugIns/Xcode3Core.ideplugin/Contents/SharedSupport/Developer    setenv LEX lex    setenv LIBRARY_FLAG_NOSPACE YES    setenv LIBRARY_FLAG_PREFIX -l    setenv LIBRARY_SEARCH_PATHS "/Users/Leo/Projects/xcode/HIS/Frameworks/Three20/Three20/../../Build/Products/Debug-iphonesimulator /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator5.0.sdk/usr/lib"    setenv LINKER_DISPLAYS_MANGLED_NAMES NO    setenv LINK_FILE_LIST_normal_i386 /Users/Leo/Projects/xcode/HIS/Frameworks/Three20/Three20/../../Build/Three20.build/Debug-iphonesimulator/Three20.build/Objects-normal/i386/Three20.LinkFileList    setenv LINK_WITH_STANDARD_LIBRARIES YES    setenv LOCAL_ADMIN_APPS_DIR /Applications/Utilities    setenv LOCAL_APPS_DIR /Applications    setenv LOCAL_DEVELOPER_DIR /Library/Developer    setenv LOCAL_LIBRARY_DIR /Library    setenv MACH_O_TYPE staticlib    setenv MACOSX_DEPLOYMENT_TARGET 10.6    setenv MAC_OS_X_PRODUCT_BUILD_VERSION 11D50    setenv MAC_OS_X_VERSION_ACTUAL 1073    setenv MAC_OS_X_VERSION_MAJOR 1070    setenv MAC_OS_X_VERSION_MINOR 0703    setenv MAPKIT_FX "-framework MapKit"    setenv MEDIAPLAYER_FX "-framework MediaPlayer"    setenv MESSAGEUI_FX "-framework MessageUI"    setenv MOBILECORESERVICES_FX "-framework MobileCoreServices"    setenv NATIVE_ARCH i386    setenv NATIVE_ARCH_32_BIT i386    setenv NATIVE_ARCH_64_BIT x86_64    setenv NATIVE_ARCH_ACTUAL x86_64    setenv NO_COMMON YES    setenv OBJC_ABI_VERSION 2    setenv OBJC_LIB -lobjc    setenv OBJC_LIBRARY -ObjC    setenv OBJECT_FILE_DIR /Users/Leo/Projects/xcode/HIS/Frameworks/Three20/Three20/../../Build/Three20.build/Debug-iphonesimulator/Three20.build/Objects    setenv OBJECT_FILE_DIR_normal /Users/Leo/Projects/xcode/HIS/Frameworks/Three20/Three20/../../Build/Three20.build/Debug-iphonesimulator/Three20.build/Objects-normal    setenv OBJROOT /Users/Leo/Projects/xcode/HIS/Frameworks/Three20/Three20/../../Build    setenv ONLY_ACTIVE_ARCH NO    setenv OPENGLES_FX "-framework OpenGLES"    setenv OPTIMIZATION_LEVEL 0    setenv OS MACOS    setenv OSAC /usr/bin/osacompile    setenv OTHER_LDFLAGS -ObjC    setenv PACKAGE_TYPE com.apple.package-type.static-library    setenv PASCAL_STRINGS YES    setenv PATH "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Applications/Xcode.app/Contents/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    setenv PATH_PREFIXES_EXCLUDED_FROM_HEADER_DEPENDENCIES "/usr/include /usr/local/include /System/Library/Frameworks /System/Library/PrivateFrameworks /Applications/Xcode.app/Contents/Developer/Headers /Applications/Xcode.app/Contents/Developer/SDKs /Applications/Xcode.app/Contents/Developer/Platforms"    setenv PFE_FILE_C_DIALECTS objective-c    setenv PKGINFO_FILE_PATH /Users/Leo/Projects/xcode/HIS/Frameworks/Three20/Three20/../../Build/Three20.build/Debug-iphonesimulator/Three20.build/PkgInfo    setenv PLATFORM_DEVELOPER_APPLICATIONS_DIR /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/Applications    setenv PLATFORM_DEVELOPER_BIN_DIR /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin    setenv PLATFORM_DEVELOPER_LIBRARY_DIR /Applications/Xcode.app/Contents/PlugIns/Xcode3Core.ideplugin/Contents/SharedSupport/Developer/Library    setenv PLATFORM_DEVELOPER_SDK_DIR /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs    setenv PLATFORM_DEVELOPER_TOOLS_DIR /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/Tools    setenv PLATFORM_DEVELOPER_USR_DIR /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/usr    setenv PLATFORM_DIR /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform    setenv PLATFORM_NAME iphonesimulator    setenv PLATFORM_PREFERRED_ARCH i386    setenv PLATFORM_PRODUCT_BUILD_VERSION 9A334    setenv PLATFORM_VERSION_AVAILABILITY_H_FORMAT 50000    setenv PLIST_FILE_OUTPUT_FORMAT binary    setenv PRECOMPS_INCLUDE_HEADERS_FROM_BUILT_PRODUCTS_DIR YES    setenv PRECOMP_DESTINATION_DIR /Users/Leo/Projects/xcode/HIS/Frameworks/Three20/Three20/../../Build/Three20.build/Debug-iphonesimulator/Three20.build/PrefixHeaders    setenv PRESERVE_DEAD_CODE_INITS_AND_TERMS NO    setenv PRIVATE_HEADERS_FOLDER_PATH /../three20/Three20/private    setenv PRODUCT_NAME Three20    setenv PRODUCT_SETTINGS_PATH     setenv PRODUCT_TYPE com.apple.product-type.library.static    setenv PROFILING_CODE NO    setenv PROJECT Three20    setenv PROJECT_DERIVED_FILE_DIR /Users/Leo/Projects/xcode/HIS/Frameworks/Three20/Three20/../../Build/Three20.build/DerivedSources    setenv PROJECT_DIR /Users/Leo/Projects/xcode/HIS/Frameworks/Three20/Three20    setenv PROJECT_FILE_PATH /Users/Leo/Projects/xcode/HIS/Frameworks/Three20/Three20/Three20.xcodeproj    setenv PROJECT_NAME Three20    setenv PROJECT_TEMP_DIR /Users/Leo/Projects/xcode/HIS/Frameworks/Three20/Three20/../../Build/Three20.build    setenv PUBLIC_HEADERS_FOLDER_PATH /../three20/Three20    setenv QUARTZCORE_FX "-framework QuartzCore"    setenv RECURSIVE_SEARCH_PATHS_FOLLOW_SYMLINKS YES    setenv REMOVE_CVS_FROM_RESOURCES YES    setenv REMOVE_GIT_FROM_RESOURCES YES    setenv REMOVE_HG_FROM_RESOURCES YES    setenv REMOVE_SVN_FROM_RESOURCES YES    setenv REPO_ROOT_PATH /Users/Leo/Projects/xcode/HIS/Frameworks/Three20/Three20/../..    setenv REZ_COLLECTOR_DIR /Users/Leo/Projects/xcode/HIS/Frameworks/Three20/Three20/../../Build/Three20.build/Debug-iphonesimulator/Three20.build/ResourceManagerResources    setenv REZ_EXECUTABLE YES    setenv REZ_OBJECTS_DIR /Users/Leo/Projects/xcode/HIS/Frameworks/Three20/Three20/../../Build/Three20.build/Debug-iphonesimulator/Three20.build/ResourceManagerResources/Objects    setenv REZ_SEARCH_PATHS "\"/Users/Leo/Projects/xcode/HIS/Frameworks/Three20/Three20/../../Build/Products/Debug-iphonesimulator\" "    setenv ROOT_SOURCE_PATH /Users/Leo/Projects/xcode/HIS/Frameworks/Three20/Three20/../../src    setenv RUN_CLANG_STATIC_ANALYZER NO    setenv SCAN_ALL_SOURCE_FILES_FOR_INCLUDES NO    setenv SCRIPT_INPUT_FILE_COUNT 0    setenv SCRIPT_OUTPUT_FILE_COUNT 0    setenv SDKROOT /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator5.0.sdk    setenv SDK_DIR /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator5.0.sdk    setenv SDK_NAME iphonesimulator5.0    setenv SDK_PRODUCT_BUILD_VERSION 9A334    setenv SECURITY_FX "-framework Security"    setenv SED /usr/bin/sed    setenv SENTESTINGKIT_FX "-framework SenTestingKit"    setenv SEPARATE_STRIP YES    setenv SEPARATE_SYMBOL_EDIT NO    setenv SET_DIR_MODE_OWNER_GROUP YES    setenv SET_FILE_MODE_OWNER_GROUP NO    setenv SHARED_DERIVED_FILE_DIR /Users/Leo/Projects/xcode/HIS/Frameworks/Three20/Three20/../../Build/Products/Debug-iphonesimulator/DerivedSources    setenv SHARED_PRECOMPS_DIR /var/folders/ry/l3zgfjx90jl5cbvr9qr3mbpm0000gn/C/com.apple.Xcode.501/SharedPrecompiledHeaders    setenv SKIP_INSTALL YES    setenv SOURCE_ROOT /Users/Leo/Projects/xcode/HIS/Frameworks/Three20/Three20    setenv SRCROOT /Users/Leo/Projects/xcode/HIS/Frameworks/Three20/Three20    setenv STDLIB_HEADERS /usr/include    setenv STDLIB_LIBRARY /usr/lib    setenv STOREKIT_FX "-framework StoreKit"    setenv STRINGS_FILE_OUTPUT_ENCODING binary    setenv STRIP_INSTALLED_PRODUCT YES    setenv STRIP_STYLE debugging    setenv SUPPORTED_DEVICE_FAMILIES "1 2"    setenv SUPPORTED_PLATFORMS "iphonesimulator iphoneos"    setenv SYMROOT /Users/Leo/Projects/xcode/HIS/Frameworks/Three20/Three20/../../Build/Products    setenv SYSTEMCONFIGURATION_FX "-framework SystemConfiguration"    setenv SYSTEM_ADMIN_APPS_DIR /Applications/Utilities    setenv SYSTEM_APPS_DIR /Applications    setenv SYSTEM_CORE_SERVICES_DIR /System/Library/CoreServices    setenv SYSTEM_DEMOS_DIR /Applications/Extras    setenv SYSTEM_DEVELOPER_APPS_DIR /Applications/Xcode.app/Contents/Developer/Applications    setenv SYSTEM_DEVELOPER_BIN_DIR /Applications/Xcode.app/Contents/Developer/usr/bin    setenv SYSTEM_DEVELOPER_DEMOS_DIR "/Applications/Xcode.app/Contents/Developer/Applications/Utilities/Built Examples"    setenv SYSTEM_DEVELOPER_DIR /Applications/Xcode.app/Contents/Developer    setenv SYSTEM_DEVELOPER_DOC_DIR "/Applications/Xcode.app/Contents/Developer/ADC Reference Library"    setenv SYSTEM_DEVELOPER_GRAPHICS_TOOLS_DIR "/Applications/Xcode.app/Contents/Developer/Applications/Graphics Tools"    setenv SYSTEM_DEVELOPER_JAVA_TOOLS_DIR "/Applications/Xcode.app/Contents/Developer/Applications/Java Tools"    setenv SYSTEM_DEVELOPER_PERFORMANCE_TOOLS_DIR "/Applications/Xcode.app/Contents/Developer/Applications/Performance Tools"    setenv SYSTEM_DEVELOPER_RELEASENOTES_DIR "/Applications/Xcode.app/Contents/Developer/ADC Reference Library/releasenotes"    setenv SYSTEM_DEVELOPER_TOOLS /Applications/Xcode.app/Contents/Developer/Tools    setenv SYSTEM_DEVELOPER_TOOLS_DOC_DIR "/Applications/Xcode.app/Contents/Developer/ADC Reference Library/documentation/DeveloperTools"    setenv SYSTEM_DEVELOPER_TOOLS_RELEASENOTES_DIR "/Applications/Xcode.app/Contents/Developer/ADC Reference Library/releasenotes/DeveloperTools"    setenv SYSTEM_DEVELOPER_USR_DIR /Applications/Xcode.app/Contents/Developer/usr    setenv SYSTEM_DEVELOPER_UTILITIES_DIR /Applications/Xcode.app/Contents/Developer/Applications/Utilities    setenv SYSTEM_DOCUMENTATION_DIR /Library/Documentation    setenv SYSTEM_LIBRARY_DIR /System/Library    setenv TARGETED_DEVICE_FAMILY 1    setenv TARGETNAME Three20    setenv TARGET_BUILD_DIR /Users/Leo/Projects/xcode/HIS/Frameworks/Three20/Three20/../../Build/Products/Debug-iphonesimulator    setenv TARGET_NAME Three20    setenv TARGET_TEMP_DIR /Users/Leo/Projects/xcode/HIS/Frameworks/Three20/Three20/../../Build/Three20.build/Debug-iphonesimulator/Three20.build    setenv TEMP_DIR /Users/Leo/Projects/xcode/HIS/Frameworks/Three20/Three20/../../Build/Three20.build/Debug-iphonesimulator/Three20.build    setenv TEMP_FILES_DIR /Users/Leo/Projects/xcode/HIS/Frameworks/Three20/Three20/../../Build/Three20.build/Debug-iphonesimulator/Three20.build    setenv TEMP_FILE_DIR /Users/Leo/Projects/xcode/HIS/Frameworks/Three20/Three20/../../Build/Three20.build/Debug-iphonesimulator/Three20.build    setenv TEMP_ROOT /Users/Leo/Projects/xcode/HIS/Frameworks/Three20/Three20/../../Build    setenv TEST_AFTER_BUILD NO    setenv UID 501    setenv UIKIT_FX "-framework UIKit"    setenv UNSTRIPPED_PRODUCT NO    setenv USER Leo    setenv USER_APPS_DIR /Users/Leo/Applications    setenv USER_LIBRARY_DIR /Users/Leo/Library    setenv USE_DYNAMIC_NO_PIC YES    setenv USE_HEADERMAP YES    setenv USE_HEADER_SYMLINKS NO    setenv VALIDATE_PRODUCT NO    setenv VALID_ARCHS i386    setenv VERBOSE_PBXCP NO    setenv VERSION_INFO_BUILDER Leo    setenv VERSION_INFO_FILE Three20_vers.c    setenv VERSION_INFO_STRING "\"@(#)PROGRAM:Three20  PROJECT:Three20-\""    setenv XCODE_APP_SUPPORT_DIR /Applications/Xcode.app/Contents/Developer/Library/Xcode    setenv XCODE_PRODUCT_BUILD_VERSION 4E109    setenv XCODE_VERSION_ACTUAL 0430    setenv XCODE_VERSION_MAJOR 0400    setenv XCODE_VERSION_MINOR 0430    setenv YACC yacc    /bin/sh -c /Users/Leo/Projects/xcode/HIS/Frameworks/Three20/Three20/../../Build/Three20.build/Debug-iphonesimulator/Three20.build/Script-6E645F461187B01F00F08CB1.sh36"EE33BF04-9511-487F-97A2-D211B6147DA7-
 
 CPhaseScriptExecution "Protect Copied Headers" /Users/Leo/Projects/xcode/Hand/Frameworks/Three20/Three20/../../Build/Three20.build/Debug-iphonesimulator/Three20.build/Script-6E645F461187B01F00F08CB1.sh
 s352731590.506434
@@ -2508,13 +2508,13 @@ x/Users/Leo/Projects/xcode/Hand/Frameworks/Three20/Three20/../../Build/Three20.b
 lSLF05#21%IDEActivityLogSection1@2#32"com.apple.dt.IDE.BuildLogSection48"Run custom shell script 'Protect Copied Headers'a8a882c64106b541^75e48cc64106b541^---0#0#0#--21413"PhaseScriptExecution "Protect Copied Headers" ../../Build/Three20.build/Debug-iphonesimulator/Three20.build/Script-6E645F461187B01F00F08CB1.sh    cd /Users/Leo/Projects/xcode/Hand/Frameworks/Three20/Three20    setenv ACTION build    setenv ADDRESSBOOKUI_FX "-framework AddressBookUI"    setenv ADDRESSBOOK_FX "-framework AddressBook"    setenv ALTERNATE_GROUP staff    setenv ALTERNATE_MODE u+w,go-w,a+rX    setenv ALTERNATE_OWNER Leo    setenv ALWAYS_SEARCH_USER_PATHS NO    setenv APPLE_INTERNAL_DEVELOPER_DIR /AppleInternal/Developer    setenv APPLE_INTERNAL_DIR /AppleInternal    setenv APPLE_INTERNAL_DOCUMENTATION_DIR /AppleInternal/Documentation    setenv APPLE_INTERNAL_LIBRARY_DIR /AppleInternal/Library    setenv APPLE_INTERNAL_TOOLS /AppleInternal/Developer/Tools    setenv APPLY_RULES_IN_COPY_FILES NO    setenv ARCHS i386    setenv ARCHS_STANDARD_32_BIT i386    setenv ARCHS_UNIVERSAL_IPHONE_OS i386    setenv AVAILABLE_PLATFORMS "iphonesimulator macosx iphoneos"    setenv AVFOUNDATION_FX "-framework AVFoundation"    setenv BASE_PRODUCT_NAME Three20    setenv BUILD_COMPONENTS "headers build"    setenv BUILD_DIR /Users/Leo/Projects/xcode/Hand/Frameworks/Three20/Three20/../../Build/Products    setenv BUILD_LIBRARY_VERSION 1.0    setenv BUILD_ROOT /Users/Leo/Projects/xcode/Hand/Frameworks/Three20/Three20/../../Build/Products    setenv BUILD_STYLE     setenv BUILD_VARIANTS normal    setenv BUILT_PRODUCTS_DIR /Users/Leo/Projects/xcode/Hand/Frameworks/Three20/Three20/../../Build/Products/Debug-iphonesimulator    setenv CACHE_ROOT /var/folders/ry/l3zgfjx90jl5cbvr9qr3mbpm0000gn/C/com.apple.Xcode.501    setenv CCHROOT /var/folders/ry/l3zgfjx90jl5cbvr9qr3mbpm0000gn/C/com.apple.Xcode.501    setenv CFNETWORK_FX "-framework CFNetwork"    setenv CHMOD /bin/chmod    setenv CHOWN /usr/sbin/chown    setenv CLASS_FILE_DIR /Users/Leo/Projects/xcode/Hand/Frameworks/Three20/Three20/../../Build/Three20.build/Debug-iphonesimulator/Three20.build/JavaClasses    setenv CLEAN_PRECOMPS YES    setenv CLONE_HEADERS NO    setenv CODESIGNING_FOLDER_PATH /Users/Leo/Projects/xcode/Hand/Frameworks/Three20/Three20/../../Build/Products/Debug-iphonesimulator/libThree20.a    setenv COMMAND_MODE legacy    setenv COMPOSITE_SDK_DIRS /var/folders/ry/l3zgfjx90jl5cbvr9qr3mbpm0000gn/C/com.apple.Xcode.501/CompositeSDKs    setenv COMPRESS_PNG_FILES YES    setenv CONFIGURATION Debug    setenv CONFIGURATION_BUILD_DIR /Users/Leo/Projects/xcode/Hand/Frameworks/Three20/Three20/../../Build/Products/Debug-iphonesimulator    setenv CONFIGURATION_TEMP_DIR /Users/Leo/Projects/xcode/Hand/Frameworks/Three20/Three20/../../Build/Three20.build/Debug-iphonesimulator    setenv COPYING_PRESERVES_HFS_DATA NO    setenv COPY_PHASE_STRIP NO    setenv COPY_RESOURCES_FROM_STATIC_FRAMEWORKS YES    setenv COREDATA_FX "-framework CoreData"    setenv COREFOUNDATION_FX "-framework CoreFoundation"    setenv COREGRAPHICS_FX "-framework CoreGraphics"    setenv CORELOCATION_FX "-framework CoreLocation"    setenv CP /bin/cp    setenv CURRENT_ARCH i386    setenv CURRENT_VARIANT normal    setenv DEAD_CODE_STRIPPING NO    setenv DEBUGGING_SYMBOLS YES    setenv DEBUG_INFORMATION_FORMAT dwarf-with-dsym    setenv DEFAULT_COMPILER com.apple.compilers.llvm.clang.1_0    setenv DEPLOYMENT_LOCATION NO    setenv DEPLOYMENT_POSTPROCESSING NO    setenv DERIVED_FILES_DIR /Users/Leo/Projects/xcode/Hand/Frameworks/Three20/Three20/../../Build/Three20.build/Debug-iphonesimulator/Three20.build/DerivedSources    setenv DERIVED_FILE_DIR /Users/Leo/Projects/xcode/Hand/Frameworks/Three20/Three20/../../Build/Three20.build/Debug-iphonesimulator/Three20.build/DerivedSources    setenv DERIVED_SOURCES_DIR /Users/Leo/Projects/xcode/Hand/Frameworks/Three20/Three20/../../Build/Three20.build/Debug-iphonesimulator/Three20.build/DerivedSources    setenv DEVELOPER_APPLICATIONS_DIR /Applications/Xcode.app/Contents/Developer/Applications    setenv DEVELOPER_BIN_DIR /Applications/Xcode.app/Contents/Developer/usr/bin    setenv DEVELOPER_DIR /Applications/Xcode.app/Contents/Developer    setenv DEVELOPER_FRAMEWORKS_DIR /Applications/Xcode.app/Contents/Developer/Library/Frameworks    setenv DEVELOPER_FRAMEWORKS_DIR_QUOTED "\"/Applications/Xcode.app/Contents/Developer/Library/Frameworks\""    setenv DEVELOPER_LIBRARY_DIR /Applications/Xcode.app/Contents/Developer/Library    setenv DEVELOPER_SDK_DIR /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs    setenv DEVELOPER_TOOLS_DIR /Applications/Xcode.app/Contents/Developer/Tools    setenv DEVELOPER_USR_DIR /Applications/Xcode.app/Contents/Developer/usr    setenv DEVELOPMENT_LANGUAGE English    setenv DO_HEADER_SCANNING_IN_JAM NO    setenv DSTROOT /tmp/Three20.dst    setenv DT_TOOLCHAIN_DIR /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain    setenv DWARF_DSYM_FILE_NAME libThree20.a.dSYM    setenv DWARF_DSYM_FILE_SHOULD_ACCOMPANY_PRODUCT NO    setenv DWARF_DSYM_FOLDER_PATH /Users/Leo/Projects/xcode/Hand/Frameworks/Three20/Three20/../../Build/Products/Debug-iphonesimulator    setenv EFFECTIVE_PLATFORM_NAME -iphonesimulator    setenv ENABLE_HEADER_DEPENDENCIES YES    setenv EXCLUDED_INSTALLSRC_SUBDIRECTORY_PATTERNS ".DS_Store .svn .git .hg CVS"    setenv EXCLUDED_RECURSIVE_SEARCH_PATH_SUBDIRECTORIES "*.nib *.lproj *.framework *.gch (*) .DS_Store CVS .svn .git .hg *.xcodeproj *.xcode *.pbproj *.pbxproj"    setenv EXECUTABLE_EXTENSION a    setenv EXECUTABLE_NAME libThree20.a    setenv EXECUTABLE_PATH libThree20.a    setenv EXECUTABLE_PREFIX lib    setenv EXECUTABLE_SUFFIX .a    setenv FILE_LIST /Users/Leo/Projects/xcode/Hand/Frameworks/Three20/Three20/../../Build/Three20.build/Debug-iphonesimulator/Three20.build/Objects/LinkFileList    setenv FIXED_FILES_DIR /Users/Leo/Projects/xcode/Hand/Frameworks/Three20/Three20/../../Build/Three20.build/Debug-iphonesimulator/Three20.build/FixedFiles    setenv FOUNDATION_FX "-framework Foundation"    setenv FRAMEWORK_FLAG_PREFIX -framework    setenv FRAMEWORK_SEARCH_PATHS "\"/Users/Leo/Projects/xcode/Hand/Frameworks/Three20/Three20/../../Build/Products/Debug-iphonesimulator\" \"/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator5.0.sdk/Developer/Library/Frameworks\""    setenv FRAMEWORK_VERSION A    setenv FULL_PRODUCT_NAME libThree20.a    setenv GAMEKIT_FX "-framework GameKit"    setenv GCC3_VERSION 3.3    setenv GCC_C_LANGUAGE_STANDARD c99    setenv GCC_DYNAMIC_NO_PIC NO    setenv GCC_ENABLE_SYMBOL_SEPARATION NO    setenv GCC_OBJC_LEGACY_DISPATCH YES    setenv GCC_OPTIMIZATION_LEVEL 0    setenv GCC_PFE_FILE_C_DIALECTS "c objective-c c++ objective-c++"    setenv GCC_PRECOMPILE_PREFIX_HEADER YES    setenv GCC_PREFIX_HEADER /Users/Leo/Projects/xcode/Hand/Frameworks/Three20/Three20/Headers/Three20_Prefix.pch    setenv GCC_PREPROCESSOR_DEFINITIONS DEBUG    setenv GCC_TREAT_WARNINGS_AS_ERRORS NO    setenv GCC_VERSION com.apple.compilers.llvm.clang.1_0    setenv GCC_WARN_ABOUT_MISSING_NEWLINE YES    setenv GCC_WARN_ABOUT_RETURN_TYPE YES    setenv GCC_WARN_CHECK_SWITCH_STATEMENTS NO    setenv GCC_WARN_EFFECTIVE_CPLUSPLUS_VIOLATIONS YES    setenv GCC_WARN_SHADOW YES    setenv GCC_WARN_UNUSED_FUNCTION YES    setenv GCC_WARN_UNUSED_LABEL YES    setenv GCC_WARN_UNUSED_VARIABLE YES    setenv GENERATE_MASTER_OBJECT_FILE NO    setenv GENERATE_PKGINFO_FILE NO    setenv GENERATE_PROFILING_CODE NO    setenv GID 20    setenv GROUP staff    setenv HEADERMAP_INCLUDES_FLAT_ENTRIES_FOR_TARGET_BEING_BUILT YES    setenv HEADERMAP_INCLUDES_FRAMEWORK_ENTRIES_FOR_ALL_PRODUCT_TYPES YES    setenv HEADERMAP_INCLUDES_NONPUBLIC_NONPRIVATE_HEADERS YES    setenv HEADERMAP_INCLUDES_PROJECT_HEADERS YES    setenv HEADERS_FOLDER_PATH /../three20/    setenv HEADER_SEARCH_PATHS "/Users/Leo/Projects/xcode/Hand/Frameworks/Three20/Three20/../../Build/Products/Debug-iphonesimulator/include /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator5.0.sdk/usr/include /Users/Leo/Projects/xcode/Hand/Frameworks/Three20/Three20/../../Build/Products/Debug-iphonesimulator/../three20 /Users/Leo/Projects/xcode/Hand/Frameworks/Three20/Three20/../../Build/Products/Debug-iphonesimulator/../../three20 /Users/Leo/Projects/xcode/Hand/Frameworks/Three20/Three20/../../Build/Products/Debug-iphonesimulator/../../three20"    setenv ICONV /usr/bin/iconv    setenv INFOPLIST_EXPAND_BUILD_SETTINGS YES    setenv INFOPLIST_OUTPUT_FORMAT binary    setenv INFOPLIST_PREPROCESS NO    setenv INSTALL_DIR /tmp/Three20.dst/usr/local/lib    setenv INSTALL_GROUP staff    setenv INSTALL_MODE_FLAG u+w,go-w,a+rX    setenv INSTALL_OWNER Leo    setenv INSTALL_PATH /usr/local/lib    setenv INSTALL_ROOT /tmp/Three20.dst    setenv IPHONEOS_DEPLOYMENT_TARGET 3.0    setenv JAVAC_DEFAULT_FLAGS "-J-Xms64m -J-XX:NewSize=4M -J-Dfile.encoding=UTF8"    setenv JAVA_APP_STUB /System/Library/Frameworks/JavaVM.framework/Resources/MacOS/JavaApplicationStub    setenv JAVA_ARCHIVE_CLASSES YES    setenv JAVA_ARCHIVE_TYPE JAR    setenv JAVA_COMPILER /usr/bin/javac    setenv JAVA_FRAMEWORK_RESOURCES_DIRS Resources    setenv JAVA_JAR_FLAGS cv    setenv JAVA_SOURCE_SUBDIR .    setenv JAVA_USE_DEPENDENCIES YES    setenv JAVA_ZIP_FLAGS -urg    setenv JIKES_DEFAULT_FLAGS "+E +OLDCSO"    setenv KEEP_PRIVATE_EXTERNS NO    setenv LD_GENERATE_MAP_FILE NO    setenv LD_MAP_FILE_PATH /Users/Leo/Projects/xcode/Hand/Frameworks/Three20/Three20/../../Build/Three20.build/Debug-iphonesimulator/Three20.build/Three20-LinkMap-normal-i386.txt    setenv LD_NO_PIE NO    setenv LEGACY_DEVELOPER_DIR /Applications/Xcode.app/Contents/PlugIns/Xcode3Core.ideplugin/Contents/SharedSupport/Developer    setenv LEX lex    setenv LIBRARY_FLAG_NOSPACE YES    setenv LIBRARY_FLAG_PREFIX -l    setenv LIBRARY_SEARCH_PATHS "/Users/Leo/Projects/xcode/Hand/Frameworks/Three20/Three20/../../Build/Products/Debug-iphonesimulator /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator5.0.sdk/usr/lib"    setenv LINKER_DISPLAYS_MANGLED_NAMES NO    setenv LINK_FILE_LIST_normal_i386 /Users/Leo/Projects/xcode/Hand/Frameworks/Three20/Three20/../../Build/Three20.build/Debug-iphonesimulator/Three20.build/Objects-normal/i386/Three20.LinkFileList    setenv LINK_WITH_STANDARD_LIBRARIES YES    setenv LOCAL_ADMIN_APPS_DIR /Applications/Utilities    setenv LOCAL_APPS_DIR /Applications    setenv LOCAL_DEVELOPER_DIR /Library/Developer    setenv LOCAL_LIBRARY_DIR /Library    setenv MACH_O_TYPE staticlib    setenv MACOSX_DEPLOYMENT_TARGET 10.6    setenv MAC_OS_X_PRODUCT_BUILD_VERSION 11D50    setenv MAC_OS_X_VERSION_ACTUAL 1073    setenv MAC_OS_X_VERSION_MAJOR 1070    setenv MAC_OS_X_VERSION_MINOR 0703    setenv MAPKIT_FX "-framework MapKit"    setenv MEDIAPLAYER_FX "-framework MediaPlayer"    setenv MESSAGEUI_FX "-framework MessageUI"    setenv MOBILECORESERVICES_FX "-framework MobileCoreServices"    setenv NATIVE_ARCH i386    setenv NATIVE_ARCH_32_BIT i386    setenv NATIVE_ARCH_64_BIT x86_64    setenv NATIVE_ARCH_ACTUAL x86_64    setenv NO_COMMON YES    setenv OBJC_ABI_VERSION 2    setenv OBJC_LIB -lobjc    setenv OBJC_LIBRARY -ObjC    setenv OBJECT_FILE_DIR /Users/Leo/Projects/xcode/Hand/Frameworks/Three20/Three20/../../Build/Three20.build/Debug-iphonesimulator/Three20.build/Objects    setenv OBJECT_FILE_DIR_normal /Users/Leo/Projects/xcode/Hand/Frameworks/Three20/Three20/../../Build/Three20.build/Debug-iphonesimulator/Three20.build/Objects-normal    setenv OBJROOT /Users/Leo/Projects/xcode/Hand/Frameworks/Three20/Three20/../../Build    setenv ONLY_ACTIVE_ARCH NO    setenv OPENGLES_FX "-framework OpenGLES"    setenv OPTIMIZATION_LEVEL 0    setenv OS MACOS    setenv OSAC /usr/bin/osacompile    setenv OTHER_LDFLAGS -ObjC    setenv PACKAGE_TYPE com.apple.package-type.static-library    setenv PASCAL_STRINGS YES    setenv PATH "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Applications/Xcode.app/Contents/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    setenv PATH_PREFIXES_EXCLUDED_FROM_HEADER_DEPENDENCIES "/usr/include /usr/local/include /System/Library/Frameworks /System/Library/PrivateFrameworks /Applications/Xcode.app/Contents/Developer/Headers /Applications/Xcode.app/Contents/Developer/SDKs /Applications/Xcode.app/Contents/Developer/Platforms"    setenv PFE_FILE_C_DIALECTS objective-c    setenv PKGINFO_FILE_PATH /Users/Leo/Projects/xcode/Hand/Frameworks/Three20/Three20/../../Build/Three20.build/Debug-iphonesimulator/Three20.build/PkgInfo    setenv PLATFORM_DEVELOPER_APPLICATIONS_DIR /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/Applications    setenv PLATFORM_DEVELOPER_BIN_DIR /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin    setenv PLATFORM_DEVELOPER_LIBRARY_DIR /Applications/Xcode.app/Contents/PlugIns/Xcode3Core.ideplugin/Contents/SharedSupport/Developer/Library    setenv PLATFORM_DEVELOPER_SDK_DIR /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs    setenv PLATFORM_DEVELOPER_TOOLS_DIR /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/Tools    setenv PLATFORM_DEVELOPER_USR_DIR /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/usr    setenv PLATFORM_DIR /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform    setenv PLATFORM_NAME iphonesimulator    setenv PLATFORM_PREFERRED_ARCH i386    setenv PLATFORM_PRODUCT_BUILD_VERSION 9A334    setenv PLATFORM_VERSION_AVAILABILITY_H_FORMAT 50000    setenv PLIST_FILE_OUTPUT_FORMAT binary    setenv PRECOMPS_INCLUDE_HEADERS_FROM_BUILT_PRODUCTS_DIR YES    setenv PRECOMP_DESTINATION_DIR /Users/Leo/Projects/xcode/Hand/Frameworks/Three20/Three20/../../Build/Three20.build/Debug-iphonesimulator/Three20.build/PrefixHeaders    setenv PRESERVE_DEAD_CODE_INITS_AND_TERMS NO    setenv PRIVATE_HEADERS_FOLDER_PATH /../three20/Three20/private    setenv PRODUCT_NAME Three20    setenv PRODUCT_SETTINGS_PATH     setenv PRODUCT_TYPE com.apple.product-type.library.static    setenv PROFILING_CODE NO    setenv PROJECT Three20    setenv PROJECT_DERIVED_FILE_DIR /Users/Leo/Projects/xcode/Hand/Frameworks/Three20/Three20/../../Build/Three20.build/DerivedSources    setenv PROJECT_DIR /Users/Leo/Projects/xcode/Hand/Frameworks/Three20/Three20    setenv PROJECT_FILE_PATH /Users/Leo/Projects/xcode/Hand/Frameworks/Three20/Three20/Three20.xcodeproj    setenv PROJECT_NAME Three20    setenv PROJECT_TEMP_DIR /Users/Leo/Projects/xcode/Hand/Frameworks/Three20/Three20/../../Build/Three20.build    setenv PUBLIC_HEADERS_FOLDER_PATH /../three20/Three20    setenv QUARTZCORE_FX "-framework QuartzCore"    setenv RECURSIVE_SEARCH_PATHS_FOLLOW_SYMLINKS YES    setenv REMOVE_CVS_FROM_RESOURCES YES    setenv REMOVE_GIT_FROM_RESOURCES YES    setenv REMOVE_HG_FROM_RESOURCES YES    setenv REMOVE_SVN_FROM_RESOURCES YES    setenv REPO_ROOT_PATH /Users/Leo/Projects/xcode/Hand/Frameworks/Three20/Three20/../..    setenv REZ_COLLECTOR_DIR /Users/Leo/Projects/xcode/Hand/Frameworks/Three20/Three20/../../Build/Three20.build/Debug-iphonesimulator/Three20.build/ResourceManagerResources    setenv REZ_EXECUTABLE YES    setenv REZ_OBJECTS_DIR /Users/Leo/Projects/xcode/Hand/Frameworks/Three20/Three20/../../Build/Three20.build/Debug-iphonesimulator/Three20.build/ResourceManagerResources/Objects    setenv REZ_SEARCH_PATHS "\"/Users/Leo/Projects/xcode/Hand/Frameworks/Three20/Three20/../../Build/Products/Debug-iphonesimulator\" "    setenv ROOT_SOURCE_PATH /Users/Leo/Projects/xcode/Hand/Frameworks/Three20/Three20/../../src    setenv RUN_CLANG_STATIC_ANALYZER NO    setenv SCAN_ALL_SOURCE_FILES_FOR_INCLUDES NO    setenv SCRIPT_INPUT_FILE_COUNT 0    setenv SCRIPT_OUTPUT_FILE_COUNT 0    setenv SDKROOT /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator5.0.sdk    setenv SDK_DIR /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator5.0.sdk    setenv SDK_NAME iphonesimulator5.0    setenv SDK_PRODUCT_BUILD_VERSION 9A334    setenv SECURITY_FX "-framework Security"    setenv SED /usr/bin/sed    setenv SENTESTINGKIT_FX "-framework SenTestingKit"    setenv SEPARATE_STRIP YES    setenv SEPARATE_SYMBOL_EDIT NO    setenv SET_DIR_MODE_OWNER_GROUP YES    setenv SET_FILE_MODE_OWNER_GROUP NO    setenv SHARED_DERIVED_FILE_DIR /Users/Leo/Projects/xcode/Hand/Frameworks/Three20/Three20/../../Build/Products/Debug-iphonesimulator/DerivedSources    setenv SHARED_PRECOMPS_DIR /var/folders/ry/l3zgfjx90jl5cbvr9qr3mbpm0000gn/C/com.apple.Xcode.501/SharedPrecompiledHeaders    setenv SKIP_INSTALL YES    setenv SOURCE_ROOT /Users/Leo/Projects/xcode/Hand/Frameworks/Three20/Three20    setenv SRCROOT /Users/Leo/Projects/xcode/Hand/Frameworks/Three20/Three20    setenv STDLIB_HEADERS /usr/include    setenv STDLIB_LIBRARY /usr/lib    setenv STOREKIT_FX "-framework StoreKit"    setenv STRINGS_FILE_OUTPUT_ENCODING binary    setenv STRIP_INSTALLED_PRODUCT YES    setenv STRIP_STYLE debugging    setenv SUPPORTED_DEVICE_FAMILIES "1 2"    setenv SUPPORTED_PLATFORMS "iphonesimulator iphoneos"    setenv SYMROOT /Users/Leo/Projects/xcode/Hand/Frameworks/Three20/Three20/../../Build/Products    setenv SYSTEMCONFIGURATION_FX "-framework SystemConfiguration"    setenv SYSTEM_ADMIN_APPS_DIR /Applications/Utilities    setenv SYSTEM_APPS_DIR /Applications    setenv SYSTEM_CORE_SERVICES_DIR /System/Library/CoreServices    setenv SYSTEM_DEMOS_DIR /Applications/Extras    setenv SYSTEM_DEVELOPER_APPS_DIR /Applications/Xcode.app/Contents/Developer/Applications    setenv SYSTEM_DEVELOPER_BIN_DIR /Applications/Xcode.app/Contents/Developer/usr/bin    setenv SYSTEM_DEVELOPER_DEMOS_DIR "/Applications/Xcode.app/Contents/Developer/Applications/Utilities/Built Examples"    setenv SYSTEM_DEVELOPER_DIR /Applications/Xcode.app/Contents/Developer    setenv SYSTEM_DEVELOPER_DOC_DIR "/Applications/Xcode.app/Contents/Developer/ADC Reference Library"    setenv SYSTEM_DEVELOPER_GRAPHICS_TOOLS_DIR "/Applications/Xcode.app/Contents/Developer/Applications/Graphics Tools"    setenv SYSTEM_DEVELOPER_JAVA_TOOLS_DIR "/Applications/Xcode.app/Contents/Developer/Applications/Java Tools"    setenv SYSTEM_DEVELOPER_PERFORMANCE_TOOLS_DIR "/Applications/Xcode.app/Contents/Developer/Applications/Performance Tools"    setenv SYSTEM_DEVELOPER_RELEASENOTES_DIR "/Applications/Xcode.app/Contents/Developer/ADC Reference Library/releasenotes"    setenv SYSTEM_DEVELOPER_TOOLS /Applications/Xcode.app/Contents/Developer/Tools    setenv SYSTEM_DEVELOPER_TOOLS_DOC_DIR "/Applications/Xcode.app/Contents/Developer/ADC Reference Library/documentation/DeveloperTools"    setenv SYSTEM_DEVELOPER_TOOLS_RELEASENOTES_DIR "/Applications/Xcode.app/Contents/Developer/ADC Reference Library/releasenotes/DeveloperTools"    setenv SYSTEM_DEVELOPER_USR_DIR /Applications/Xcode.app/Contents/Developer/usr    setenv SYSTEM_DEVELOPER_UTILITIES_DIR /Applications/Xcode.app/Contents/Developer/Applications/Utilities    setenv SYSTEM_DOCUMENTATION_DIR /Library/Documentation    setenv SYSTEM_LIBRARY_DIR /System/Library    setenv TARGETED_DEVICE_FAMILY 1    setenv TARGETNAME Three20    setenv TARGET_BUILD_DIR /Users/Leo/Projects/xcode/Hand/Frameworks/Three20/Three20/../../Build/Products/Debug-iphonesimulator    setenv TARGET_NAME Three20    setenv TARGET_TEMP_DIR /Users/Leo/Projects/xcode/Hand/Frameworks/Three20/Three20/../../Build/Three20.build/Debug-iphonesimulator/Three20.build    setenv TEMP_DIR /Users/Leo/Projects/xcode/Hand/Frameworks/Three20/Three20/../../Build/Three20.build/Debug-iphonesimulator/Three20.build    setenv TEMP_FILES_DIR /Users/Leo/Projects/xcode/Hand/Frameworks/Three20/Three20/../../Build/Three20.build/Debug-iphonesimulator/Three20.build    setenv TEMP_FILE_DIR /Users/Leo/Projects/xcode/Hand/Frameworks/Three20/Three20/../../Build/Three20.build/Debug-iphonesimulator/Three20.build    setenv TEMP_ROOT /Users/Leo/Projects/xcode/Hand/Frameworks/Three20/Three20/../../Build    setenv TEST_AFTER_BUILD NO    setenv UID 501    setenv UIKIT_FX "-framework UIKit"    setenv UNSTRIPPED_PRODUCT NO    setenv USER Leo    setenv USER_APPS_DIR /Users/Leo/Applications    setenv USER_LIBRARY_DIR /Users/Leo/Library    setenv USE_DYNAMIC_NO_PIC YES    setenv USE_HEADERMAP YES    setenv USE_HEADER_SYMLINKS NO    setenv VALIDATE_PRODUCT NO    setenv VALID_ARCHS i386    setenv VERBOSE_PBXCP NO    setenv VERSION_INFO_BUILDER Leo    setenv VERSION_INFO_FILE Three20_vers.c    setenv VERSION_INFO_STRING "\"@(#)PROGRAM:Three20  PROJECT:Three20-\""    setenv XCODE_APP_SUPPORT_DIR /Applications/Xcode.app/Contents/Developer/Library/Xcode    setenv XCODE_PRODUCT_BUILD_VERSION 4E109    setenv XCODE_VERSION_ACTUAL 0430    setenv XCODE_VERSION_MAJOR 0400    setenv XCODE_VERSION_MINOR 0430    setenv YACC yacc    /bin/sh -c /Users/Leo/Projects/xcode/Hand/Frameworks/Three20/Three20/../../Build/Three20.build/Debug-iphonesimulator/Three20.build/Script-6E645F461187B01F00F08CB1.sh36"E962F421-0C73-4AF2-9662-043351768297-
 
 CPhaseScriptExecution Lint /Users/Leo/Projects/xcode/HIS/Frameworks/Three20/Three20/../../Build/Three20.build/Debug-iphonesimulator/Three20.build/Script-668E6653131ADFFD00ACE4AB.sh
-s352832459.018052
-e352832459.161302
+s352896486.245637
+e352896486.388681
 r1
 xPhaseScriptExecution
 xLint
 x/Users/Leo/Projects/xcode/HIS/Frameworks/Three20/Three20/../../Build/Three20.build/Debug-iphonesimulator/Three20.build/Script-668E6653131ADFFD00ACE4AB.sh
-lSLF05#21%IDEActivityLogSection1@2#32"com.apple.dt.IDE.BuildLogSection30"Run custom shell script 'Lint'954905cbcb07b541^774c29cbcb07b541^---0#0#0#--356"PhaseScriptExecution Lint ../../Build/Three20.build/Debug-iphonesimulator/Three20.build/Script-668E6653131ADFFD00ACE4AB.sh    cd /Users/Leo/Projects/xcode/HIS/Frameworks/Three20/Three20    /bin/sh -c /Users/Leo/Projects/xcode/HIS/Frameworks/Three20/Three20/../../Build/Three20.build/Debug-iphonesimulator/Three20.build/Script-668E6653131ADFFD00ACE4AB.sh36"EAE98078-97E4-460A-9C25-6FD50A1C8675-
+lSLF05#21%IDEActivityLogSection1@2#32"com.apple.dt.IDE.BuildLogSection30"Run custom shell script 'Lint'45ba3fe6c508b541^888063e6c508b541^---0#0#0#--356"PhaseScriptExecution Lint ../../Build/Three20.build/Debug-iphonesimulator/Three20.build/Script-668E6653131ADFFD00ACE4AB.sh    cd /Users/Leo/Projects/xcode/HIS/Frameworks/Three20/Three20    /bin/sh -c /Users/Leo/Projects/xcode/HIS/Frameworks/Three20/Three20/../../Build/Three20.build/Debug-iphonesimulator/Three20.build/Script-668E6653131ADFFD00ACE4AB.sh36"E252DECB-BAF4-409C-A23F-9CA742BAD9A3-
 
 CPhaseScriptExecution Lint /Users/Leo/Projects/xcode/Hand/Frameworks/Three20/Three20/../../Build/Three20.build/Debug-iphonesimulator/Three20.build/Script-668E6653131ADFFD00ACE4AB.sh
 s352731590.596604
@@ -2532,8 +2532,8 @@ CProcessPCH /Users/Leo/Library/Developer/Xcode/DerivedData/HAND_MAS-glhdzakjybgs
 r0
 
 CProcessPCH /var/folders/ry/l3zgfjx90jl5cbvr9qr3mbpm0000gn/C/com.apple.Xcode.501/SharedPrecompiledHeaders/Three20_Prefix-bnmlztskjyzrrwepzcpkoscwfxbf/Three20_Prefix.pch.pth Headers/Three20_Prefix.pch normal i386 objective-c com.apple.compilers.llvm.clang.1_0.compiler
-s352822553.114302
-e352822553.495019
+s352895998.747139
+e352895999.128922
 r1
 xProcessPCH
 x/var/folders/ry/l3zgfjx90jl5cbvr9qr3mbpm0000gn/C/com.apple.Xcode.501/SharedPrecompiledHeaders/Three20_Prefix-bnmlztskjyzrrwepzcpkoscwfxbf/Three20_Prefix.pch.pth
@@ -2542,7 +2542,7 @@ xnormal
 xi386
 xobjective-c
 xcom.apple.compilers.llvm.clang.1_0.compiler
-lSLF05#21%IDEActivityLogSection1@2#32"com.apple.dt.IDE.BuildLogSection37"Precompile Headers/Three20_Prefix.pchd5781d19a507b541^d8b87e19a507b541^---0#0#0#-19%DVTDocumentLocation2@99"file://localhost/Users/Leo/Projects/xcode/HIS/Frameworks/Three20/Three20/Headers/Three20_Prefix.pch0000000000000000^4098"ProcessPCH /var/folders/ry/l3zgfjx90jl5cbvr9qr3mbpm0000gn/C/com.apple.Xcode.501/SharedPrecompiledHeaders/Three20_Prefix-bnmlztskjyzrrwepzcpkoscwfxbf/Three20_Prefix.pch.pth Headers/Three20_Prefix.pch normal i386 objective-c com.apple.compilers.llvm.clang.1_0.compiler    cd /Users/Leo/Projects/xcode/HIS/Frameworks/Three20/Three20    setenv LANG en_US.US-ASCII    setenv PATH "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Applications/Xcode.app/Contents/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang -x objective-c-header -arch i386 -fmessage-length=0 -std=c99 -Wno-trigraphs -fpascal-strings -O0 -Wno-missing-field-initializers -Wno-missing-prototypes -Wreturn-type -Wno-implicit-atomic-properties -Wformat -Wno-missing-braces -Wparentheses -Wno-switch -Wunused-function -Wunused-label -Wno-unused-parameter -Wunused-variable -Wunused-value -Wno-uninitialized -Wno-unknown-pragmas -Wshadow -Wno-four-char-constants -Wno-sign-compare -Wno-shorten-64-to-32 -Wpointer-sign -Wnewline-eof -Wno-selector -Wno-strict-selector-match -Wno-undeclared-selector -Wno-deprecated-implementations -DDEBUG -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator5.0.sdk -fexceptions -fasm-blocks -Wprotocol -Wdeprecated-declarations -mmacosx-version-min=10.6 -g -Wno-conversion -Wno-sign-conversion -fobjc-abi-version=2 -fobjc-legacy-dispatch "-DIBOutlet=__attribute__((iboutlet))" "-DIBOutletCollection(ClassName)=__attribute__((iboutletcollection(ClassName)))" "-DIBAction=void)__attribute__((ibaction)" -D__IPHONE_OS_VERSION_MIN_REQUIRED=30000 -iquote /Users/Leo/Projects/xcode/HIS/Frameworks/Three20/Three20/../../Build/Three20.build/Debug-iphonesimulator/Three20.build/Three20-generated-files.hmap -I/Users/Leo/Projects/xcode/HIS/Frameworks/Three20/Three20/../../Build/Three20.build/Debug-iphonesimulator/Three20.build/Three20-own-target-headers.hmap -I/Users/Leo/Projects/xcode/HIS/Frameworks/Three20/Three20/../../Build/Three20.build/Debug-iphonesimulator/Three20.build/Three20-all-target-headers.hmap -iquote /Users/Leo/Projects/xcode/HIS/Frameworks/Three20/Three20/../../Build/Three20.build/Debug-iphonesimulator/Three20.build/Three20-project-headers.hmap -I/Users/Leo/Projects/xcode/HIS/Frameworks/Three20/Three20/../../Build/Products/Debug-iphonesimulator/include -I/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator5.0.sdk/usr/include -I/Users/Leo/Projects/xcode/HIS/Frameworks/Three20/Three20/../../Build/Products/Debug-iphonesimulator/../three20 -I/Users/Leo/Projects/xcode/HIS/Frameworks/Three20/Three20/../../Build/Products/Debug-iphonesimulator/../../three20 -I/Users/Leo/Projects/xcode/HIS/Frameworks/Three20/Three20/../../Build/Products/Debug-iphonesimulator/../../three20 -I/Users/Leo/Projects/xcode/HIS/Frameworks/Three20/Three20/../../Build/Three20.build/Debug-iphonesimulator/Three20.build/DerivedSources/i386 -I/Users/Leo/Projects/xcode/HIS/Frameworks/Three20/Three20/../../Build/Three20.build/Debug-iphonesimulator/Three20.build/DerivedSources -F/Users/Leo/Projects/xcode/HIS/Frameworks/Three20/Three20/../../Build/Products/Debug-iphonesimulator -F/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator5.0.sdk/Developer/Library/Frameworks --serialize-diagnostics /var/folders/ry/l3zgfjx90jl5cbvr9qr3mbpm0000gn/C/com.apple.Xcode.501/SharedPrecompiledHeaders/Three20_Prefix-bnmlztskjyzrrwepzcpkoscwfxbf/Three20_Prefix.pch.dia -c /Users/Leo/Projects/xcode/HIS/Frameworks/Three20/Three20/Headers/Three20_Prefix.pch -o /var/folders/ry/l3zgfjx90jl5cbvr9qr3mbpm0000gn/C/com.apple.Xcode.501/SharedPrecompiledHeaders/Three20_Prefix-bnmlztskjyzrrwepzcpkoscwfxbf/Three20_Prefix.pch.pth -MMD -MT dependencies -MF /var/folders/ry/l3zgfjx90jl5cbvr9qr3mbpm0000gn/C/com.apple.Xcode.501/SharedPrecompiledHeaders/Three20_Prefix-bnmlztskjyzrrwepzcpkoscwfxbf/Three20_Prefix.pch.d36"64D75FAE-9600-4441-AE6F-B3C87F2802CE-
+lSLF05#21%IDEActivityLogSection1@2#32"com.apple.dt.IDE.BuildLogSection37"Precompile Headers/Three20_Prefix.pch516abffec308b541^9f0121ffc308b541^---0#0#0#-19%DVTDocumentLocation2@99"file://localhost/Users/Leo/Projects/xcode/HIS/Frameworks/Three20/Three20/Headers/Three20_Prefix.pch0000000000000000^4098"ProcessPCH /var/folders/ry/l3zgfjx90jl5cbvr9qr3mbpm0000gn/C/com.apple.Xcode.501/SharedPrecompiledHeaders/Three20_Prefix-bnmlztskjyzrrwepzcpkoscwfxbf/Three20_Prefix.pch.pth Headers/Three20_Prefix.pch normal i386 objective-c com.apple.compilers.llvm.clang.1_0.compiler    cd /Users/Leo/Projects/xcode/HIS/Frameworks/Three20/Three20    setenv LANG en_US.US-ASCII    setenv PATH "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Applications/Xcode.app/Contents/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang -x objective-c-header -arch i386 -fmessage-length=0 -std=c99 -Wno-trigraphs -fpascal-strings -O0 -Wno-missing-field-initializers -Wno-missing-prototypes -Wreturn-type -Wno-implicit-atomic-properties -Wformat -Wno-missing-braces -Wparentheses -Wno-switch -Wunused-function -Wunused-label -Wno-unused-parameter -Wunused-variable -Wunused-value -Wno-uninitialized -Wno-unknown-pragmas -Wshadow -Wno-four-char-constants -Wno-sign-compare -Wno-shorten-64-to-32 -Wpointer-sign -Wnewline-eof -Wno-selector -Wno-strict-selector-match -Wno-undeclared-selector -Wno-deprecated-implementations -DDEBUG -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator5.0.sdk -fexceptions -fasm-blocks -Wprotocol -Wdeprecated-declarations -mmacosx-version-min=10.6 -g -Wno-conversion -Wno-sign-conversion -fobjc-abi-version=2 -fobjc-legacy-dispatch "-DIBOutlet=__attribute__((iboutlet))" "-DIBOutletCollection(ClassName)=__attribute__((iboutletcollection(ClassName)))" "-DIBAction=void)__attribute__((ibaction)" -D__IPHONE_OS_VERSION_MIN_REQUIRED=30000 -iquote /Users/Leo/Projects/xcode/HIS/Frameworks/Three20/Three20/../../Build/Three20.build/Debug-iphonesimulator/Three20.build/Three20-generated-files.hmap -I/Users/Leo/Projects/xcode/HIS/Frameworks/Three20/Three20/../../Build/Three20.build/Debug-iphonesimulator/Three20.build/Three20-own-target-headers.hmap -I/Users/Leo/Projects/xcode/HIS/Frameworks/Three20/Three20/../../Build/Three20.build/Debug-iphonesimulator/Three20.build/Three20-all-target-headers.hmap -iquote /Users/Leo/Projects/xcode/HIS/Frameworks/Three20/Three20/../../Build/Three20.build/Debug-iphonesimulator/Three20.build/Three20-project-headers.hmap -I/Users/Leo/Projects/xcode/HIS/Frameworks/Three20/Three20/../../Build/Products/Debug-iphonesimulator/include -I/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator5.0.sdk/usr/include -I/Users/Leo/Projects/xcode/HIS/Frameworks/Three20/Three20/../../Build/Products/Debug-iphonesimulator/../three20 -I/Users/Leo/Projects/xcode/HIS/Frameworks/Three20/Three20/../../Build/Products/Debug-iphonesimulator/../../three20 -I/Users/Leo/Projects/xcode/HIS/Frameworks/Three20/Three20/../../Build/Products/Debug-iphonesimulator/../../three20 -I/Users/Leo/Projects/xcode/HIS/Frameworks/Three20/Three20/../../Build/Three20.build/Debug-iphonesimulator/Three20.build/DerivedSources/i386 -I/Users/Leo/Projects/xcode/HIS/Frameworks/Three20/Three20/../../Build/Three20.build/Debug-iphonesimulator/Three20.build/DerivedSources -F/Users/Leo/Projects/xcode/HIS/Frameworks/Three20/Three20/../../Build/Products/Debug-iphonesimulator -F/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator5.0.sdk/Developer/Library/Frameworks --serialize-diagnostics /var/folders/ry/l3zgfjx90jl5cbvr9qr3mbpm0000gn/C/com.apple.Xcode.501/SharedPrecompiledHeaders/Three20_Prefix-bnmlztskjyzrrwepzcpkoscwfxbf/Three20_Prefix.pch.dia -c /Users/Leo/Projects/xcode/HIS/Frameworks/Three20/Three20/Headers/Three20_Prefix.pch -o /var/folders/ry/l3zgfjx90jl5cbvr9qr3mbpm0000gn/C/com.apple.Xcode.501/SharedPrecompiledHeaders/Three20_Prefix-bnmlztskjyzrrwepzcpkoscwfxbf/Three20_Prefix.pch.pth -MMD -MT dependencies -MF /var/folders/ry/l3zgfjx90jl5cbvr9qr3mbpm0000gn/C/com.apple.Xcode.501/SharedPrecompiledHeaders/Three20_Prefix-bnmlztskjyzrrwepzcpkoscwfxbf/Three20_Prefix.pch.d36"E8965590-998A-4B84-807B-05844B7B07D6-
 
 CProcessPCH /var/folders/ry/l3zgfjx90jl5cbvr9qr3mbpm0000gn/C/com.apple.Xcode.501/SharedPrecompiledHeaders/Three20_Prefix-dlglqntyhuhstoeepcdtxbpindje/Three20_Prefix.pch.pth Headers/Three20_Prefix.pch normal i386 objective-c com.apple.compilers.llvm.clang.1_0.compiler
 s352728524.666989

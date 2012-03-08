@@ -1,2 +1,2 @@
 dependencies: \
-  /Users/Leo/Projects/xcode/Hand/Projects/hrms/hrms/../../../Utilities/AuroraHTTPRequest.m
+  /Users/Leo/Projects/xcode/HIS/Projects/hrms/hrms/../../../Utilities/AuroraHTTPRequest.m

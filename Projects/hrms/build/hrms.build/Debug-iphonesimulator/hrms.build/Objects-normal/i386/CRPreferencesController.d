@@ -1,3 +1,3 @@
 dependencies: \
-  /Users/Leo/Projects/xcode/Hand/Projects/hrms/hrms/Main/CRPreferencesController.m \
-  /Users/Leo/Projects/xcode/Hand/Projects/hrms/hrms/Main/CRPreferencesController.h
+  /Users/Leo/Projects/xcode/HIS/Projects/hrms/hrms/Main/CRPreferencesController.m \
+  /Users/Leo/Projects/xcode/HIS/Projects/hrms/hrms/Main/CRPreferencesController.h
