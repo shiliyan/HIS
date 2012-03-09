@@ -54,8 +54,9 @@ static  NSString* kLoginURLPath  = @"http://172.20.0.72:8080/hrmsdev_new/login.s
 //    NSLog(@"%@",[[dataSet objectAtIndex:0]valueForKey:@"user_name"]);
     [username resignFirstResponder];
     [password resignFirstResponder];
-    
-    [[TTNavigator navigator] openURLAction:[[[TTURLAction actionWithURLPath:@"tt://main"]
+    [self.navigationController.navigationBar setHidden:NO];
+
+    [[TTNavigator navigator] openURLAction:[[[TTURLAction actionWithURLPath:@"tt://aprove"]
                                              applyAnimated: YES]applyTransition:UIViewAnimationTransitionFlipFromRight]];
 }
 

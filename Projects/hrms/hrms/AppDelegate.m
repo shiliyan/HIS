@@ -60,7 +60,7 @@
     [map from:@"tt://about" toSharedViewController:[RCAboutUsController class]];
     
     //审批
-    [map from:@"tt://aprove" toViewController:[ApproveListController class]];
+    [map from:@"tt://aprove" parent:@"aprove" toSharedViewController:[ApproveListController class]];
 //    [map from:@"tt://menu/(initWithMenu:)" toSharedViewController:[MenuController class]];
     
     

@@ -21,7 +21,7 @@
         
         //加单元格标题栏背景
         titleBackground = [[[UIView alloc]initWithFrame:CGRectMake(0, 0, 320, 25)]autorelease];
-        titleBackground.backgroundColor = [UIColor colorWithRed:139.0/255 green:178.0/255 blue:38.0/255 alpha:1]; 
+//        titleBackground.backgroundColor = [UIColor colorWithRed:139.0/255 green:178.0/255 blue:38.0/255 alpha:1]; 
         titleBackground.autoresizingMask = UIViewAutoresizingFlexibleWidth|UIViewAutoresizingFlexibleLeftMargin;
         [self.contentView addSubview:titleBackground];
         
@@ -81,7 +81,7 @@
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated
 {
     [super setSelected:selected animated:animated];
-    titleBackground.backgroundColor = [UIColor lightGrayColor]; 
+//    titleBackground.backgroundColor = [UIColor lightGrayColor]; 
     // Configure the view for the selected state
 }
 
