@@ -16,7 +16,10 @@
 @synthesize languageValue;
 
 -(id) toDataSet{
+//    NSString * s = [[NSUserDefaults standardUserDefaults] stringForKey:@"deviceToken"];
+//    NSLog(@"%@", s);
     return  [NSDictionary dictionaryWithObjectsAndKeys:
+             [[NSUserDefaults standardUserDefaults] stringForKey:@"deviceToken"],@"device_token",
              @"hand",@"user_name",
              @"hand",@"user_password",
              @"简体中文",@"langugae",

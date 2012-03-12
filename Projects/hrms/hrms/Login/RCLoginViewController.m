@@ -47,6 +47,12 @@ static  NSString* kLoginURLPath  = @"http://172.20.0.72:8080/hrmsdev_new/login.s
        failedSelector:nil 
         errorSelector:nil];
     [loginEntity release];
+    /*
+     *TODO:正式使用时开启回调部分跳转，这里忽略了服务端登陆请求
+     */
+//    [[TTNavigator navigator] openURLAction:[[[TTURLAction actionWithURLPath:@"tt://aprove"]
+//                                             applyAnimated: YES]applyTransition:UIViewAnimationTransitionFlipFromRight]];
+    
 }
 
 - (void)loginSecretFetchComplete:(id)dataSet
@@ -54,10 +60,9 @@ static  NSString* kLoginURLPath  = @"http://172.20.0.72:8080/hrmsdev_new/login.s
 //    NSLog(@"%@",[[dataSet objectAtIndex:0]valueForKey:@"user_name"]);
     [username resignFirstResponder];
     [password resignFirstResponder];
-    [self.navigationController.navigationBar setHidden:NO];
+    
 
-    [[TTNavigator navigator] openURLAction:[[[TTURLAction actionWithURLPath:@"tt://aprove"]
-                                             applyAnimated: YES]applyTransition:UIViewAnimationTransitionFlipFromRight]];
+//    [[TTNavigator navigator] openURLAction:[[[TTURLAction actionWithURLPath:@"tt://aprove"]applyAnimated: YES]applyTransition:UIViewAnimationTransitionFlipFromRight]];
 }
 
 #pragma animations for keyborad
@@ -65,7 +70,7 @@ static  NSString* kLoginURLPath  = @"http://172.20.0.72:8080/hrmsdev_new/login.s
     //    NSLog(@"%f,%f",bounds.size.width,bounds.size.height);
     [UIView beginAnimations:@"keyboardAnimation" context:NULL];
     for (UIView * subView in [self.view subviews]) {
-        CGAffineTransform moveTransform = CGAffineTransformMakeTranslation(0, -100);
+        CGAffineTransform moveTransform = CGAffineTransformMakeTranslation(0, -140);
         [subView.layer setAffineTransform:moveTransform];
     }
     [UIView commitAnimations];
@@ -96,9 +101,17 @@ static  NSString* kLoginURLPath  = @"http://172.20.0.72:8080/hrmsdev_new/login.s
 {
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
+    
+}
+- (void)viewWillAppear:(BOOL)animated
+{
     [self.navigationController.navigationBar setHidden:YES];
 }
 
+-(void)viewDidDisappear:(BOOL)animated
+{
+    [self.navigationController.navigationBar setHidden:NO];
+}
 - (void)viewDidUnload
 {
     [super viewDidUnload];
