@@ -29,6 +29,7 @@
 {
     self = [super initWithURL:newURL];
     [self setDidFinishSelector:@selector(requestFetchSuccess:)];
+    [self setDidFailSelector:@selector(requestFetchFailed:)];
     [self setDelegate:self];
     return self;
 }
@@ -63,7 +64,7 @@
 -(void)requestFetchSuccess:(ASIHTTPRequest *)theRequest
 {
     //转换json数据为对象
-    NSLog(@"%@",[theRequest responseString]);
+//    NSLog(@"%@",[theRequest responseString]);
     id jsonData = [[theRequest responseString] JSONValue];
     BOOL successFlg = (BOOL)[jsonData valueForKey:@"success"];
     //返回状态为成功
@@ -107,12 +108,23 @@
     }
 }
 
+//网络链接失败，默认弹出alert
+-(void)requestFetchFailed:(ASIHTTPRequest *)theRequest
+{
+    UIAlertView * alert = [[UIAlertView alloc]initWithTitle:@"提示" message:@"网络连接失败" delegate:self cancelButtonTitle:@"确定" otherButtonTitles:nil];
+    [alert show];
+    [alert release];
+    
+}
+
+//aurora的失败消息默认函数，可以传入回调函数覆盖
 -(void) aruoraRequestFailed:(NSString *) failedMessage
 {
     NSLog(@"Aruora Request Failed");
     NSLog(@"%@",failedMessage);
 }
 
+//aurora框架的错误消息，可以传入回调函数覆盖
 -(void) aruoraRequestError:(NSString *) errorMessage
 {
     NSLog(@"Aruora Request Error");

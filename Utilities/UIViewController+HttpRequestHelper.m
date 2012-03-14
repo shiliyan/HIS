@@ -14,22 +14,30 @@
           withData:(id) datas 
    successSelector:(SEL) successSelector 
     failedSelector:(SEL) failedSelector
-     errorSelector:(SEL) errorSelector{
+     errorSelector:(SEL) errorSelector
+ noNetworkSelector:(SEL) noNetworkSelector
+{
     //TODO:
     AuroraHTTPRequest * request = [AuroraHTTPRequest requestWithURL:[NSURL URLWithString:url]];
     [request setUseCookiePersistence:YES];
     [request setRequestCookies:[NSMutableArray arrayWithArray:[[NSHTTPCookieStorage sharedHTTPCookieStorage] cookies]]];
     
+    //TODO:设置请求头
+    NSMutableDictionary * headers = [NSMutableDictionary dictionaryWithObjectsAndKeys:@"",@"",
+                                     nil];
+    [request setRequestHeaders:headers];
+    
     //设置回调函数
     [request setSuccessSelector:successSelector];
     [request setFaildSelector:failedSelector];
     [request setErrorSelector:errorSelector];
+    [request setDidFailSelector:noNetworkSelector];
     
     if (datas) {
         [request setPostParameter:datas];
     }
     //设置代理
-//    [request setDelegate:self];  
+    //    [request setDelegate:self];  
     [request setAuroraDelegate:self];
     [request startAsynchronous];
 }

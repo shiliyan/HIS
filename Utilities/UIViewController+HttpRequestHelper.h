@@ -16,6 +16,7 @@
           withData:(id) dic 
    successSelector:(SEL) successSelector 
     failedSelector:(SEL) failedSelector
-     errorSelector:(SEL) errorSelector;
+     errorSelector:(SEL) errorSelector
+ noNetworkSelector:(SEL) noNetworkSelector;
 
 @end
