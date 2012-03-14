@@ -22,15 +22,13 @@
 		B2B6CA801508B1DB0040CCCD /* ApproveListController.m in Sources */ = {isa = PBXBuildFile; fileRef = B2B6CA791508B1DB0040CCCD /* ApproveListController.m */; };
 		B2B6CA811508B1DB0040CCCD /* ApproveListDetail.xib in Resources */ = {isa = PBXBuildFile; fileRef = B2B6CA7A1508B1DB0040CCCD /* ApproveListDetail.xib */; };
 		B2B6CA821508B1DB0040CCCD /* ApproveListDetailController.m in Sources */ = {isa = PBXBuildFile; fileRef = B2B6CA7C1508B1DB0040CCCD /* ApproveListDetailController.m */; };
+		B32271C1150F36500058E452 /* RoleSelectViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B32271C0150F36500058E452 /* RoleSelectViewController.m */; };
 		B3618D32150632EA001FE8D5 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B3618D31150632EA001FE8D5 /* UIKit.framework */; };
 		B3618D34150632EA001FE8D5 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B3618D33150632EA001FE8D5 /* Foundation.framework */; };
 		B3618D36150632EA001FE8D5 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B3618D35150632EA001FE8D5 /* CoreGraphics.framework */; };
 		B3618D3C150632EA001FE8D5 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = B3618D3A150632EA001FE8D5 /* InfoPlist.strings */; };
 		B3618D3E150632EA001FE8D5 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = B3618D3D150632EA001FE8D5 /* main.m */; };
 		B3618D42150632EA001FE8D5 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = B3618D41150632EA001FE8D5 /* AppDelegate.m */; };
-		B3618D45150632EA001FE8D5 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B3618D44150632EA001FE8D5 /* ViewController.m */; };
-		B3618D48150632EA001FE8D5 /* ViewController_iPhone.xib in Resources */ = {isa = PBXBuildFile; fileRef = B3618D46150632EA001FE8D5 /* ViewController_iPhone.xib */; };
-		B3618D4B150632EB001FE8D5 /* ViewController_iPad.xib in Resources */ = {isa = PBXBuildFile; fileRef = B3618D49150632EA001FE8D5 /* ViewController_iPad.xib */; };
 		B3618E271506364D001FE8D5 /* libextThree20JSON+SBJSON.a in Frameworks */ = {isa = PBXBuildFile; fileRef = B3618E2215063640001FE8D5 /* libextThree20JSON+SBJSON.a */; };
 		B3618E2E1506375F001FE8D5 /* LoginModel.m in Sources */ = {isa = PBXBuildFile; fileRef = B3618E2A1506375F001FE8D5 /* LoginModel.m */; };
 		B3618E2F1506375F001FE8D5 /* RCLoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B3618E2C1506375F001FE8D5 /* RCLoginViewController.m */; };
@@ -340,6 +338,8 @@
 		B2B6CA7A1508B1DB0040CCCD /* ApproveListDetail.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = ApproveListDetail.xib; path = Approve/ApproveListDetail.xib; sourceTree = "<group>"; };
 		B2B6CA7B1508B1DB0040CCCD /* ApproveListDetailController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ApproveListDetailController.h; path = Approve/ApproveListDetailController.h; sourceTree = "<group>"; };
 		B2B6CA7C1508B1DB0040CCCD /* ApproveListDetailController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ApproveListDetailController.m; path = Approve/ApproveListDetailController.m; sourceTree = "<group>"; };
+		B32271BF150F36500058E452 /* RoleSelectViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RoleSelectViewController.h; sourceTree = "<group>"; };
+		B32271C0150F36500058E452 /* RoleSelectViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RoleSelectViewController.m; sourceTree = "<group>"; };
 		B3618D2D150632EA001FE8D5 /* hrms.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = hrms.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B3618D31150632EA001FE8D5 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		B3618D33150632EA001FE8D5 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -350,10 +350,6 @@
 		B3618D3F150632EA001FE8D5 /* hrms-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "hrms-Prefix.pch"; path = "hrms/hrms-Prefix.pch"; sourceTree = "<group>"; };
 		B3618D40150632EA001FE8D5 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		B3618D41150632EA001FE8D5 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
-		B3618D43150632EA001FE8D5 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
-		B3618D44150632EA001FE8D5 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
-		B3618D47150632EA001FE8D5 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/ViewController_iPhone.xib; sourceTree = "<group>"; };
-		B3618D4A150632EB001FE8D5 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/ViewController_iPad.xib; sourceTree = "<group>"; };
 		B3618E1615063640001FE8D5 /* extThree20JSON.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = extThree20JSON.xcodeproj; path = ../../Frameworks/Three20/extThree20JSON/extThree20JSON.xcodeproj; sourceTree = "<group>"; };
 		B3618E291506375F001FE8D5 /* LoginModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginModel.h; sourceTree = "<group>"; };
 		B3618E2A1506375F001FE8D5 /* LoginModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginModel.m; sourceTree = "<group>"; };
@@ -646,10 +642,6 @@
 				B3618E281506375F001FE8D5 /* Login */,
 				B3618D40150632EA001FE8D5 /* AppDelegate.h */,
 				B3618D41150632EA001FE8D5 /* AppDelegate.m */,
-				B3618D43150632EA001FE8D5 /* ViewController.h */,
-				B3618D44150632EA001FE8D5 /* ViewController.m */,
-				B3618D46150632EA001FE8D5 /* ViewController_iPhone.xib */,
-				B3618D49150632EA001FE8D5 /* ViewController_iPad.xib */,
 				B3618E3D150637B6001FE8D5 /* Utilities */,
 				B3618EEB15063970001FE8D5 /* Styles */,
 			);
@@ -738,6 +730,8 @@
 				B3618E2B1506375F001FE8D5 /* RCLoginViewController.h */,
 				B3618E2C1506375F001FE8D5 /* RCLoginViewController.m */,
 				B3618E2D1506375F001FE8D5 /* RCLoginViewController.xib */,
+				B32271BF150F36500058E452 /* RoleSelectViewController.h */,
+				B32271C0150F36500058E452 /* RoleSelectViewController.m */,
 			);
 			path = Login;
 			sourceTree = "<group>";
@@ -864,8 +858,8 @@
 		B3618EEB15063970001FE8D5 /* Styles */ = {
 			isa = PBXGroup;
 			children = (
-				B3618EEC150639D8001FE8D5 /* MyStyleSheet.m */,
 				B3618EED150639D8001FE8D5 /* MyStyleSheet.h */,
+				B3618EEC150639D8001FE8D5 /* MyStyleSheet.m */,
 			);
 			name = Styles;
 			sourceTree = "<group>";
@@ -1210,8 +1204,6 @@
 			files = (
 				320B6C86F11D9990244A9731 /* Three20.bundle in Resources */,
 				B3618D3C150632EA001FE8D5 /* InfoPlist.strings in Resources */,
-				B3618D48150632EA001FE8D5 /* ViewController_iPhone.xib in Resources */,
-				B3618D4B150632EB001FE8D5 /* ViewController_iPad.xib in Resources */,
 				B3618E301506375F001FE8D5 /* RCLoginViewController.xib in Resources */,
 				B3618E3C15063780001FE8D5 /* RCAboutUsController.xib in Resources */,
 				B3618E8E150637DB001FE8D5 /* README-GHUnit in Resources */,
@@ -1304,7 +1296,6 @@
 			files = (
 				B3618D3E150632EA001FE8D5 /* main.m in Sources */,
 				B3618D42150632EA001FE8D5 /* AppDelegate.m in Sources */,
-				B3618D45150632EA001FE8D5 /* ViewController.m in Sources */,
 				B3618E2E1506375F001FE8D5 /* LoginModel.m in Sources */,
 				B3618E2F1506375F001FE8D5 /* RCLoginViewController.m in Sources */,
 				B3618E3915063780001FE8D5 /* CRMainController.m in Sources */,
@@ -1340,6 +1331,7 @@
 				B2B6CA7E1508B1DB0040CCCD /* ApproveListCell.m in Sources */,
 				B2B6CA801508B1DB0040CCCD /* ApproveListController.m in Sources */,
 				B2B6CA821508B1DB0040CCCD /* ApproveListDetailController.m in Sources */,
+				B32271C1150F36500058E452 /* RoleSelectViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1391,22 +1383,6 @@
 			);
 			name = InfoPlist.strings;
 			path = hrms;
-			sourceTree = "<group>";
-		};
-		B3618D46150632EA001FE8D5 /* ViewController_iPhone.xib */ = {
-			isa = PBXVariantGroup;
-			children = (
-				B3618D47150632EA001FE8D5 /* en */,
-			);
-			name = ViewController_iPhone.xib;
-			sourceTree = "<group>";
-		};
-		B3618D49150632EA001FE8D5 /* ViewController_iPad.xib */ = {
-			isa = PBXVariantGroup;
-			children = (
-				B3618D4A150632EB001FE8D5 /* en */,
-			);
-			name = ViewController_iPad.xib;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
@@ -1481,11 +1457,13 @@
 					"${SDK_DIR}/usr/include/libxml2",
 				);
 				INFOPLIST_FILE = "hrms/hrms-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
 				OTHER_LDFLAGS = (
 					"-ObjC",
 					"-lxml2",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = 1;
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -1502,11 +1480,13 @@
 					"${SDK_DIR}/usr/include/libxml2",
 				);
 				INFOPLIST_FILE = "hrms/hrms-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
 				OTHER_LDFLAGS = (
 					"-ObjC",
 					"-lxml2",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = 1;
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;
