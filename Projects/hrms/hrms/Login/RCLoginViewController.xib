@@ -75,7 +75,6 @@
 						<string key="NSFrame">{{20, 300}, {280, 29}}</string>
 						<reference key="NSSuperview" ref="191373211"/>
 						<reference key="NSWindow"/>
-						<reference key="NSNextKeyView"/>
 						<string key="NSReuseIdentifierKey">_NS:225</string>
 						<bool key="IBUIOpaque">NO</bool>
 						<int key="IBUITag">20</int>
@@ -128,7 +127,7 @@
 							<object class="IBUITextField" id="1023534391">
 								<reference key="NSNextResponder" ref="39973567"/>
 								<int key="NSvFlags">292</int>
-								<string key="NSFrame">{{65, 2}, {151, 31}}</string>
+								<string key="NSFrame">{{65, 1}, {151, 31}}</string>
 								<reference key="NSSuperview" ref="39973567"/>
 								<reference key="NSWindow"/>
 								<reference key="NSNextKeyView" ref="188661723"/>
@@ -138,11 +137,12 @@
 								<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
 								<int key="IBUIContentVerticalAlignment">0</int>
 								<string key="IBUIText"/>
-								<string key="IBUIPlaceholder">Enter username</string>
+								<string key="IBUIPlaceholder">请输入用户名</string>
 								<reference key="IBUITextColor" ref="814846408"/>
-								<bool key="IBUIAdjustsFontSizeToFit">YES</bool>
 								<float key="IBUIMinimumFontSize">17</float>
 								<object class="IBUITextInputTraits" key="IBUITextInputTraits">
+									<int key="IBUIAutocorrectionType">1</int>
+									<int key="IBUIKeyboardType">2</int>
 									<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
 								</object>
 								<int key="IBUIClearButtonMode">1</int>
@@ -159,7 +159,7 @@
 							<object class="IBUITextField" id="913651519">
 								<reference key="NSNextResponder" ref="39973567"/>
 								<int key="NSvFlags">292</int>
-								<string key="NSFrame">{{65, 36}, {151, 31}}</string>
+								<string key="NSFrame">{{65, 37}, {151, 31}}</string>
 								<reference key="NSSuperview" ref="39973567"/>
 								<reference key="NSWindow"/>
 								<reference key="NSNextKeyView" ref="451152159"/>
@@ -169,11 +169,11 @@
 								<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
 								<int key="IBUIContentVerticalAlignment">0</int>
 								<string key="IBUIText"/>
-								<string key="IBUIPlaceholder">Enter Password</string>
+								<string key="IBUIPlaceholder">请输入密码</string>
 								<reference key="IBUITextColor" ref="814846408"/>
-								<bool key="IBUIAdjustsFontSizeToFit">YES</bool>
 								<float key="IBUIMinimumFontSize">17</float>
 								<object class="IBUITextInputTraits" key="IBUITextInputTraits">
+									<int key="IBUIKeyboardType">2</int>
 									<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
 								</object>
 								<int key="IBUIClearButtonMode">1</int>
@@ -252,14 +252,6 @@
 			<array class="NSMutableArray" key="connectionRecords">
 				<object class="IBConnectionRecord">
 					<object class="IBCocoaTouchOutletConnection" key="connection">
-						<string key="label">password</string>
-						<reference key="source" ref="372490531"/>
-						<reference key="destination" ref="913651519"/>
-					</object>
-					<int key="connectionID">13</int>
-				</object>
-				<object class="IBConnectionRecord">
-					<object class="IBCocoaTouchOutletConnection" key="connection">
 						<string key="label">view</string>
 						<reference key="source" ref="372490531"/>
 						<reference key="destination" ref="191373211"/>
@@ -268,11 +260,19 @@
 				</object>
 				<object class="IBConnectionRecord">
 					<object class="IBCocoaTouchOutletConnection" key="connection">
+						<string key="label">password</string>
+						<reference key="source" ref="372490531"/>
+						<reference key="destination" ref="913651519"/>
+					</object>
+					<int key="connectionID">29</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBCocoaTouchOutletConnection" key="connection">
 						<string key="label">username</string>
 						<reference key="source" ref="372490531"/>
 						<reference key="destination" ref="1023534391"/>
 					</object>
-					<int key="connectionID">14</int>
+					<int key="connectionID">30</int>
 				</object>
 				<object class="IBConnectionRecord">
 					<object class="IBCocoaTouchEventConnection" key="connection">
@@ -328,11 +328,11 @@
 						<int key="objectID">12</int>
 						<reference key="object" ref="39973567"/>
 						<array class="NSMutableArray" key="children">
-							<reference ref="913651519"/>
 							<reference ref="188661723"/>
 							<reference ref="504785040"/>
-							<reference ref="1023534391"/>
 							<reference ref="14843091"/>
+							<reference ref="913651519"/>
+							<reference ref="1023534391"/>
 						</array>
 						<reference key="parent" ref="191373211"/>
 					</object>
@@ -389,7 +389,7 @@
 			<nil key="activeLocalization"/>
 			<dictionary class="NSMutableDictionary" key="localizations"/>
 			<nil key="sourceID"/>
-			<int key="maxID">28</int>
+			<int key="maxID">30</int>
 		</object>
 		<object class="IBClassDescriber" key="IBDocument.Classes">
 			<array class="NSMutableArray" key="referencedPartialClassDescriptions">

@@ -8,6 +8,6 @@
 
 #import <Foundation/Foundation.h>
 
-@interface RoleSelectViewController : NSObject
+@interface RoleSelectViewController : TTTableViewController
 
 @end

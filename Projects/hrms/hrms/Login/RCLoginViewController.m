@@ -13,7 +13,7 @@
 
 @implementation RCLoginViewController
 
-static  NSString* kLoginURLPath  = @"http://172.20.0.72:8080/hrmsdev_new/login.svc";
+static  NSString* kLoginURLPath  = @"http://localhost:8080/hrms/login.svc";
 
 @synthesize username;
 @synthesize password;
@@ -23,7 +23,7 @@ static  NSString* kLoginURLPath  = @"http://172.20.0.72:8080/hrmsdev_new/login.s
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
         // Custom initialization 
-        self.autoresizesForKeyboard=YES;
+        [self setAutoresizesForKeyboard:YES];
     }
     return self;
 }
@@ -40,44 +40,50 @@ static  NSString* kLoginURLPath  = @"http://172.20.0.72:8080/hrmsdev_new/login.s
     LoginModel * loginEntity = [[LoginModel alloc]init];
     loginEntity.username = [username text];
     loginEntity.password = [password text];
-            
+    
     [self formRequest:kLoginURLPath  
              withData:[loginEntity toDataSet] 
       successSelector:@selector(loginSecretFetchComplete:)  
        failedSelector:nil 
-        errorSelector:nil];
+        errorSelector:nil
+    noNetworkSelector:nil];
     [loginEntity release];
     /*
      *TODO:正式使用时开启回调部分跳转，这里忽略了服务端登陆请求
      */
-//    [[TTNavigator navigator] openURLAction:[[[TTURLAction actionWithURLPath:@"tt://aprove"]
-//                                             applyAnimated: YES]applyTransition:UIViewAnimationTransitionFlipFromRight]];
+    
+    [[TTNavigator navigator] openURLAction:[[[TTURLAction actionWithURLPath:@"tt://role_select"]
+                                             applyAnimated: YES] 
+                                            applyTransition:UIViewAnimationTransitionFlipFromLeft]];
     
 }
 
 - (void)loginSecretFetchComplete:(id)dataSet
 {
-//    NSLog(@"%@",[[dataSet objectAtIndex:0]valueForKey:@"user_name"]);
+    //    NSLog(@"%@",[[dataSet objectAtIndex:0]valueForKey:@"user_name"]);
     [username resignFirstResponder];
     [password resignFirstResponder];
     
-
-//    [[TTNavigator navigator] openURLAction:[[[TTURLAction actionWithURLPath:@"tt://aprove"]applyAnimated: YES]applyTransition:UIViewAnimationTransitionFlipFromRight]];
+    
+//    [[TTNavigator navigator] openURLAction:[[[TTURLAction actionWithURLPath:@"tt://role_select"]
+//                                             applyAnimated: YES]applyTransition:UIViewAnimationTransitionFlipFromRight]];
 }
 
 #pragma animations for keyborad
--(void)keyboardWillAppear:(BOOL)animated withBounds:(CGRect)bounds{
+
+-(void)keyboardWillAppear:(BOOL)animated withBounds:(CGRect)bounds
+{
     //    NSLog(@"%f,%f",bounds.size.width,bounds.size.height);
     [UIView beginAnimations:@"keyboardAnimation" context:NULL];
     for (UIView * subView in [self.view subviews]) {
-        CGAffineTransform moveTransform = CGAffineTransformMakeTranslation(0, -140);
+        CGAffineTransform moveTransform = CGAffineTransformMakeTranslation(0, -120);
         [subView.layer setAffineTransform:moveTransform];
     }
     [UIView commitAnimations];
-    
 }
 
--(void)keyboardWillDisappear:(BOOL)animated withBounds:(CGRect)bounds{
+-(void)keyboardWillDisappear:(BOOL)animated withBounds:(CGRect)bounds
+{
     //    NSLog(@"%f,%f",bounds.size.width,bounds.size.height);
     [UIView beginAnimations:@"keyboardAnimation" context:NULL];
     for (UIView * subView in [self.view subviews]) {
@@ -105,11 +111,13 @@ static  NSString* kLoginURLPath  = @"http://172.20.0.72:8080/hrmsdev_new/login.s
 }
 - (void)viewWillAppear:(BOOL)animated
 {
+    [super viewWillAppear:animated];
     [self.navigationController.navigationBar setHidden:YES];
 }
 
--(void)viewDidDisappear:(BOOL)animated
+-(void)viewWillDisappear:(BOOL)animated
 {
+    [super viewDidDisappear:animated];
     [self.navigationController.navigationBar setHidden:NO];
 }
 - (void)viewDidUnload
