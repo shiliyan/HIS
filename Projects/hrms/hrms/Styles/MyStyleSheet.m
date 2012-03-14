@@ -11,7 +11,7 @@
 @implementation MyStyleSheet
 
 - (UIColor*)navigationBarTintColor {
-    return RGBCOLOR(32, 55, 101);
+    return RGBCOLOR(136, 152, 174);
 }
 
 @end
