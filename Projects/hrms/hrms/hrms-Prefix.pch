@@ -18,4 +18,8 @@
 #import "Three20UI/Three20UI+Additions.h" 
 
 #import "UIViewController+HttpRequestHelper.h"
+
+//导入FMDB
+#import "FMDatabase.h"
+
 #endif
