@@ -30,7 +30,6 @@
     
     if (cell == nil){
         cell = [[ApproveListCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellTableIdentifier];
-        
     }
     
     cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
@@ -49,14 +48,13 @@
     currentStatusLabel.text = rowData.currentStatus;
     deadLineLabel.text = rowData.deadLine;
     
-
-    //[rowData release];
     return cell;
 }
 
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
     return 80;
 }
+
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     
@@ -84,21 +82,7 @@
             adoptButton.enabled = NO;
             refuseButton.enabled = NO;
         }
-    }  
-}
-
--(void)tableView:(UITableView *)tableView accessoryButtonTappedForRowWithIndexPath:(NSIndexPath *)indexPath{
-    NSLog(@"%@",NSStringFromSelector(_cmd));
-    if (detailController == nil) {
-        detailController = [[ApproveListDetailController alloc]initWithNibName:@"ApproveListDetail" bundle:nil];
-        
     }
-    Approve *rowdata = [approveListArray objectAtIndex:[indexPath row]];
-    
-
-    detailController.title = rowdata.workflowName;
-    
-    [self.navigationController pushViewController:detailController animated:YES];
 }
 
 -(BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath{
@@ -108,7 +92,7 @@
 -(void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath{
     
     if (editingStyle == UITableViewCellEditingStyleDelete){
-        NSLog(@"asdf");
+        
     }
     return;
 }
@@ -126,8 +110,7 @@
 -(void)tableView:(UITableView *)tableView willBeginEditingRowAtIndexPath:(NSIndexPath *)indexPath{
     
     if (dataTableView.editing){
-        [self.navigationItem.rightBarButtonItem setTitle:@"Edit"];
-       
+        [self.navigationItem.rightBarButtonItem setTitle:@"Edit"]; 
     }
     else{
         [self.navigationItem.rightBarButtonItem setTitle:@"Cancel"];
@@ -152,11 +135,10 @@
     NSLog(@"%@",recognizer);
     if(recognizer.state == UIGestureRecognizerStateEnded){
 
-
     }
 }
 
--(void)toggleTabelViewEdit{
+-(void)toggleTabelViewEdit:(id)sender{
     [dataTableView setEditing:!dataTableView.editing animated:YES];
     if (dataTableView.editing){
         [self.navigationItem.rightBarButtonItem setTitle:@"Cancel"];
@@ -183,23 +165,44 @@
 
 //通过申请
 -(void)adoptApplication{
-    //删除显示元素
-    [self deleteTableViewRows:[dataTableView indexPathsForSelectedRows]];
+    [self showOpinionView:ACTION_TYPE_ADOPT];
 }
 
 //拒绝申请
 -(void)refuseApplication{
+    [self showOpinionView:ACTION_TYPE_REFUSE];
+}
+
+#pragma mark -实现模态视图的dismiss delegate
+-(void)ApproveOpinionViewDismissed:(int)resultCode{
+    [self dismissModalViewControllerAnimated:YES];
     
-    //删除显示元素
-    [self deleteTableViewRows:[dataTableView indexPathsForSelectedRows]];
+    if(resultCode == RESULT_OK){
+        //删除显示元素
+        [self performSelector:@selector(deleteTableViewRows:) withObject:[dataTableView indexPathsForSelectedRows] afterDelay:0.5];
+    }
+}
+
+//弹出审批意见
+-(void)showOpinionView:(int)actionType{
+    if(opinionView == nil){
+        opinionView = [[ApproveOpinionView alloc]init];
+        opinionView.modalTransitionStyle =UIModalTransitionStylePartialCurl;
+        opinionView.modalPresentationStyle = UIModalPresentationPageSheet;
+        [opinionView setControllerDelegate:self];
+    }
+    [self presentModalViewController:opinionView animated:YES];
 }
 
 -(void)deleteTableViewRows:(NSArray *)indexPathsArray{
     
+    NSMutableArray *toBeDeletedArray = [[NSMutableArray alloc]initWithCapacity:[approveListArray count]];
     for (NSIndexPath *p in indexPathsArray) {
         NSUInteger row = [p row];
-        [approveListArray removeObjectAtIndex:row];
+        [toBeDeletedArray addObject:[approveListArray objectAtIndex:row]];
     }
+    [approveListArray removeObjectsInArray:toBeDeletedArray];
+    
     [dataTableView beginUpdates];
     [dataTableView deleteRowsAtIndexPaths:indexPathsArray  withRowAnimation:UITableViewRowAnimationFade];
     [dataTableView endUpdates];
@@ -208,6 +211,8 @@
     refuseButton.title = @"拒绝";
     adoptButton.enabled = NO;
     refuseButton.enabled = NO;
+    
+    [toBeDeletedArray release];
 }
 
 #pragma mark - life circle
@@ -225,8 +230,10 @@
     
     approveListArray = datas;
     
+    self.navigationItem.leftBarButtonItem = nil;
+    
     //初始化导航条右侧按钮
-    self.navigationItem.rightBarButtonItem = [[[UIBarButtonItem alloc]initWithTitle:@"Edit" style:UIBarButtonItemStyleBordered target:self action:@selector(toggleTabelViewEdit)]autorelease];
+    self.navigationItem.rightBarButtonItem = [[[UIBarButtonItem alloc]initWithTitle:@"Edit" style:UIBarButtonItemStyleBordered target:self action:@selector(toggleTabelViewEdit:)]autorelease];
     
     dataTableView = [[[UITableView alloc]initWithFrame:CGRectMake(0, 0, 320, 416) style:UITableViewStylePlain]autorelease];
     dataTableView.autoresizingMask = UIViewAutoresizingFlexibleHeight|UIViewAutoresizingFlexibleWidth;
@@ -241,6 +248,7 @@
     //添加刷新按钮
     [normalToolBarItems addObject:[[[UIBarButtonItem alloc]initWithBarButtonSystemItem:UIBarButtonSystemItemRefresh target:self action:@selector(refreshTable)]autorelease]];
     [normalToolbar setItems:normalToolBarItems animated:YES];
+    [normalToolbar sizeToFit];
     [self.view addSubview:normalToolbar];
     
     //初始化底部状态文字
@@ -255,6 +263,7 @@
     checkToolBar = [[UIToolbar alloc]initWithFrame:CGRectMake(0, 416, 320, 44)];
     checkToolBar.hidden = YES;
     checkToolBar.autoresizingMask = UIViewAutoresizingFlexibleTopMargin|UIViewAutoresizingFlexibleWidth;
+    [checkToolBar sizeToFit];
     NSMutableArray *checkedToolBarItems = [NSMutableArray array];
     //添加审批通过按钮
     adoptButton = [[UIBarButtonItem alloc]initWithTitle:@"通过" style:UIBarButtonItemStyleBordered target:self action:@selector(adoptApplication)];
@@ -291,6 +300,7 @@
     dataTableView = nil;
     adoptButton = nil;
     refuseButton = nil;
+    opinionView = nil;
 }
 -(BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation{
     return YES;
@@ -305,6 +315,7 @@
     [dataTableView release];
     [adoptButton release];
     [refuseButton release];
+    [opinionView release];
 }
 
 @end

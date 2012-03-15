@@ -8,8 +8,13 @@
 
 #import <UIKit/UIKit.h>
 #import "ApproveListDetailController.h"
+#import "ApproveOpinionView.h"
+#import "ApproveOpinionViewDelegate.h"
 
-@interface ApproveListController : UIViewController<UITableViewDataSource,UITableViewDelegate>{
+static const int ACTION_TYPE_ADOPT = 1;
+static const int ACTION_TYPE_REFUSE = 2;
+
+@interface ApproveListController : UIViewController<UITableViewDataSource,UITableViewDelegate,ApproveOpinionViewDelegate>{
     NSMutableArray *approveListArray;
     
     UITableView *dataTableView;
@@ -22,12 +27,13 @@
     UIBarButtonItem *adoptButton;
     UIBarButtonItem *refuseButton;
     
-    NSMutableArray *testArray;
+    ApproveOpinionView *opinionView;
 }
 
 @property (retain, nonatomic) ApproveListDetailController *detailController;
 
--(void)toggleTabelViewEdit;
+//
+-(void)toggleTabelViewEdit:(id)sender;
 
 -(void)refreshTable;
 
@@ -38,4 +44,6 @@
 -(void)refuseApplication;
 
 -(void)deleteTableViewRows:(NSArray *)indexPathsArray;
+
+-(void)showOpinionView:(int)approveType;
 @end
