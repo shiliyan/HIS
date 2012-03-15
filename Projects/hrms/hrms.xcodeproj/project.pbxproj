@@ -16,12 +16,11 @@
 		320CC833B8AF0ACFD35E6225 /* libThree20Style.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 320CC833B8AF0ACFD35E6224 /* libThree20Style.a */; };
 		320D7DCCE32703ACAB9A45E5 /* libThree20.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 320D7DCCE32703ACAB9A45E4 /* libThree20.a */; };
 		320F2C48872C2E2C4DF86205 /* libThree20UI.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 320F2C48872C2E2C4DF86204 /* libThree20UI.a */; };
-		B2B6CA7D1508B1DB0040CCCD /* Approve.m in Sources */ = {isa = PBXBuildFile; fileRef = B2B6CA741508B1DB0040CCCD /* Approve.m */; };
-		B2B6CA7E1508B1DB0040CCCD /* ApproveListCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B2B6CA761508B1DB0040CCCD /* ApproveListCell.m */; };
-		B2B6CA7F1508B1DB0040CCCD /* ApproveListCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B2B6CA771508B1DB0040CCCD /* ApproveListCell.xib */; };
-		B2B6CA801508B1DB0040CCCD /* ApproveListController.m in Sources */ = {isa = PBXBuildFile; fileRef = B2B6CA791508B1DB0040CCCD /* ApproveListController.m */; };
-		B2B6CA811508B1DB0040CCCD /* ApproveListDetail.xib in Resources */ = {isa = PBXBuildFile; fileRef = B2B6CA7A1508B1DB0040CCCD /* ApproveListDetail.xib */; };
-		B2B6CA821508B1DB0040CCCD /* ApproveListDetailController.m in Sources */ = {isa = PBXBuildFile; fileRef = B2B6CA7C1508B1DB0040CCCD /* ApproveListDetailController.m */; };
+		B2BC05451511E51100EF6568 /* Approve.m in Sources */ = {isa = PBXBuildFile; fileRef = B2BC053A1511E51100EF6568 /* Approve.m */; };
+		B2BC05461511E51100EF6568 /* ApproveListCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B2BC053C1511E51100EF6568 /* ApproveListCell.m */; };
+		B2BC05471511E51100EF6568 /* ApproveListController.m in Sources */ = {isa = PBXBuildFile; fileRef = B2BC053E1511E51100EF6568 /* ApproveListController.m */; };
+		B2BC05491511E51100EF6568 /* ApproveListDetailController.m in Sources */ = {isa = PBXBuildFile; fileRef = B2BC05411511E51100EF6568 /* ApproveListDetailController.m */; };
+		B2BC054A1511E51100EF6568 /* ApproveOpinionView.m in Sources */ = {isa = PBXBuildFile; fileRef = B2BC05431511E51100EF6568 /* ApproveOpinionView.m */; };
 		B2BC78081511DC2B001BDB09 /* FMDatabase.m in Sources */ = {isa = PBXBuildFile; fileRef = B2BC77FE1511DC2B001BDB09 /* FMDatabase.m */; };
 		B2BC78091511DC2B001BDB09 /* FMDatabaseAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = B2BC78001511DC2B001BDB09 /* FMDatabaseAdditions.m */; };
 		B2BC780A1511DC2B001BDB09 /* FMDatabasePool.m in Sources */ = {isa = PBXBuildFile; fileRef = B2BC78021511DC2B001BDB09 /* FMDatabasePool.m */; };
@@ -334,16 +333,17 @@
 		320CC833B8AF0ACFD35E6220 /* Three20Style.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Three20Style.xcodeproj; path = ../../Frameworks/Three20/Three20Style/Three20Style.xcodeproj; sourceTree = SOURCE_ROOT; };
 		320D7DCCE32703ACAB9A45E0 /* Three20.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Three20.xcodeproj; path = ../../Frameworks/Three20/Three20/Three20.xcodeproj; sourceTree = SOURCE_ROOT; };
 		320F2C48872C2E2C4DF86200 /* Three20UI.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Three20UI.xcodeproj; path = ../../Frameworks/Three20/Three20UI/Three20UI.xcodeproj; sourceTree = SOURCE_ROOT; };
-		B2B6CA731508B1DB0040CCCD /* Approve.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Approve.h; path = Approve/Approve.h; sourceTree = "<group>"; };
-		B2B6CA741508B1DB0040CCCD /* Approve.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Approve.m; path = Approve/Approve.m; sourceTree = "<group>"; };
-		B2B6CA751508B1DB0040CCCD /* ApproveListCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ApproveListCell.h; path = Approve/ApproveListCell.h; sourceTree = "<group>"; };
-		B2B6CA761508B1DB0040CCCD /* ApproveListCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ApproveListCell.m; path = Approve/ApproveListCell.m; sourceTree = "<group>"; };
-		B2B6CA771508B1DB0040CCCD /* ApproveListCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = ApproveListCell.xib; path = Approve/ApproveListCell.xib; sourceTree = "<group>"; };
-		B2B6CA781508B1DB0040CCCD /* ApproveListController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ApproveListController.h; path = Approve/ApproveListController.h; sourceTree = "<group>"; };
-		B2B6CA791508B1DB0040CCCD /* ApproveListController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ApproveListController.m; path = Approve/ApproveListController.m; sourceTree = "<group>"; };
-		B2B6CA7A1508B1DB0040CCCD /* ApproveListDetail.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = ApproveListDetail.xib; path = Approve/ApproveListDetail.xib; sourceTree = "<group>"; };
-		B2B6CA7B1508B1DB0040CCCD /* ApproveListDetailController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ApproveListDetailController.h; path = Approve/ApproveListDetailController.h; sourceTree = "<group>"; };
-		B2B6CA7C1508B1DB0040CCCD /* ApproveListDetailController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ApproveListDetailController.m; path = Approve/ApproveListDetailController.m; sourceTree = "<group>"; };
+		B2BC05391511E51100EF6568 /* Approve.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Approve.h; sourceTree = "<group>"; };
+		B2BC053A1511E51100EF6568 /* Approve.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Approve.m; sourceTree = "<group>"; };
+		B2BC053B1511E51100EF6568 /* ApproveListCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ApproveListCell.h; sourceTree = "<group>"; };
+		B2BC053C1511E51100EF6568 /* ApproveListCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ApproveListCell.m; sourceTree = "<group>"; };
+		B2BC053D1511E51100EF6568 /* ApproveListController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ApproveListController.h; sourceTree = "<group>"; };
+		B2BC053E1511E51100EF6568 /* ApproveListController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ApproveListController.m; sourceTree = "<group>"; };
+		B2BC05401511E51100EF6568 /* ApproveListDetailController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ApproveListDetailController.h; sourceTree = "<group>"; };
+		B2BC05411511E51100EF6568 /* ApproveListDetailController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ApproveListDetailController.m; sourceTree = "<group>"; };
+		B2BC05421511E51100EF6568 /* ApproveOpinionView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ApproveOpinionView.h; sourceTree = "<group>"; };
+		B2BC05431511E51100EF6568 /* ApproveOpinionView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ApproveOpinionView.m; sourceTree = "<group>"; };
+		B2BC05441511E51100EF6568 /* ApproveOpinionViewDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ApproveOpinionViewDelegate.h; sourceTree = "<group>"; };
 		B2BC77FD1511DC2B001BDB09 /* FMDatabase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FMDatabase.h; path = ../../Frameworks/FMDB/FMDatabase.h; sourceTree = "<group>"; };
 		B2BC77FE1511DC2B001BDB09 /* FMDatabase.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FMDatabase.m; path = ../../Frameworks/FMDB/FMDatabase.m; sourceTree = "<group>"; };
 		B2BC77FF1511DC2B001BDB09 /* FMDatabaseAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FMDatabaseAdditions.h; path = ../../Frameworks/FMDB/FMDatabaseAdditions.h; sourceTree = "<group>"; };
@@ -615,6 +615,24 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
+		B2BC05381511E51100EF6568 /* Approve */ = {
+			isa = PBXGroup;
+			children = (
+				B2BC05391511E51100EF6568 /* Approve.h */,
+				B2BC053A1511E51100EF6568 /* Approve.m */,
+				B2BC053B1511E51100EF6568 /* ApproveListCell.h */,
+				B2BC053C1511E51100EF6568 /* ApproveListCell.m */,
+				B2BC053D1511E51100EF6568 /* ApproveListController.h */,
+				B2BC053E1511E51100EF6568 /* ApproveListController.m */,
+				B2BC05401511E51100EF6568 /* ApproveListDetailController.h */,
+				B2BC05411511E51100EF6568 /* ApproveListDetailController.m */,
+				B2BC05421511E51100EF6568 /* ApproveOpinionView.h */,
+				B2BC05431511E51100EF6568 /* ApproveOpinionView.m */,
+				B2BC05441511E51100EF6568 /* ApproveOpinionViewDelegate.h */,
+			);
+			path = Approve;
+			sourceTree = "<group>";
+		};
 		B2BC77F11511DC11001BDB09 /* FMDB */ = {
 			isa = PBXGroup;
 			children = (
@@ -635,13 +653,13 @@
 		B3618D22150632EA001FE8D5 = {
 			isa = PBXGroup;
 			children = (
-				B2BC780E1511DCD0001BDB09 /* libsqlite3.0.dylib */,
-				B3618D37150632EA001FE8D5 /* hrms */,
-				B3618D51150632FD001FE8D5 /* Other Sources */,
 				B3618D5215063316001FE8D5 /* Dependencies */,
 				B3618D30150632EA001FE8D5 /* Frameworks */,
-				B3618DA715063362001FE8D5 /* Resources */,
+				B3618D37150632EA001FE8D5 /* hrms */,
+				B2BC780E1511DCD0001BDB09 /* libsqlite3.0.dylib */,
+				B3618D51150632FD001FE8D5 /* Other Sources */,
 				B3618D2E150632EA001FE8D5 /* Products */,
+				B3618DA715063362001FE8D5 /* Resources */,
 			);
 			sourceTree = "<group>";
 		};
@@ -673,7 +691,7 @@
 		B3618D37150632EA001FE8D5 /* hrms */ = {
 			isa = PBXGroup;
 			children = (
-				B3618F8E15063CB0001FE8D5 /* Approve */,
+				B2BC05381511E51100EF6568 /* Approve */,
 				B3618E3115063780001FE8D5 /* Main */,
 				B3618E281506375F001FE8D5 /* Login */,
 				B3618D40150632EA001FE8D5 /* AppDelegate.h */,
@@ -1001,31 +1019,6 @@
 			path = ../../Rescources/Image/table_cell;
 			sourceTree = "<group>";
 		};
-		B3618F8E15063CB0001FE8D5 /* Approve */ = {
-			isa = PBXGroup;
-			children = (
-				B2B6CA751508B1DB0040CCCD /* ApproveListCell.h */,
-				B2B6CA761508B1DB0040CCCD /* ApproveListCell.m */,
-				B2B6CA771508B1DB0040CCCD /* ApproveListCell.xib */,
-				B2B6CA781508B1DB0040CCCD /* ApproveListController.h */,
-				B2B6CA791508B1DB0040CCCD /* ApproveListController.m */,
-				B2B6CA7A1508B1DB0040CCCD /* ApproveListDetail.xib */,
-				B2B6CA7B1508B1DB0040CCCD /* ApproveListDetailController.h */,
-				B2B6CA7C1508B1DB0040CCCD /* ApproveListDetailController.m */,
-				B3618FA315064223001FE8D5 /* model */,
-			);
-			name = Approve;
-			sourceTree = "<group>";
-		};
-		B3618FA315064223001FE8D5 /* model */ = {
-			isa = PBXGroup;
-			children = (
-				B2B6CA731508B1DB0040CCCD /* Approve.h */,
-				B2B6CA741508B1DB0040CCCD /* Approve.m */,
-			);
-			name = model;
-			sourceTree = "<group>";
-		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -1319,8 +1312,6 @@
 				B3618F8815063B9B001FE8D5 /* hrms_72.png in Resources */,
 				B3618F8C15063C8F001FE8D5 /* hurry_todo.png in Resources */,
 				B3618F8D15063C8F001FE8D5 /* normal_todo.png in Resources */,
-				B2B6CA7F1508B1DB0040CCCD /* ApproveListCell.xib in Resources */,
-				B2B6CA811508B1DB0040CCCD /* ApproveListDetail.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1364,16 +1355,17 @@
 				B3618E94150637DB001FE8D5 /* ASIS3Request.m in Sources */,
 				B3618E95150637DB001FE8D5 /* ASIS3ServiceRequest.m in Sources */,
 				B3618EEE150639D8001FE8D5 /* MyStyleSheet.m in Sources */,
-				B2B6CA7D1508B1DB0040CCCD /* Approve.m in Sources */,
-				B2B6CA7E1508B1DB0040CCCD /* ApproveListCell.m in Sources */,
-				B2B6CA801508B1DB0040CCCD /* ApproveListController.m in Sources */,
-				B2B6CA821508B1DB0040CCCD /* ApproveListDetailController.m in Sources */,
 				B32271C1150F36500058E452 /* RoleSelectViewController.m in Sources */,
 				B2BC78081511DC2B001BDB09 /* FMDatabase.m in Sources */,
 				B2BC78091511DC2B001BDB09 /* FMDatabaseAdditions.m in Sources */,
 				B2BC780A1511DC2B001BDB09 /* FMDatabasePool.m in Sources */,
 				B2BC780B1511DC2B001BDB09 /* FMDatabaseQueue.m in Sources */,
 				B2BC780D1511DC2B001BDB09 /* FMResultSet.m in Sources */,
+				B2BC05451511E51100EF6568 /* Approve.m in Sources */,
+				B2BC05461511E51100EF6568 /* ApproveListCell.m in Sources */,
+				B2BC05471511E51100EF6568 /* ApproveListController.m in Sources */,
+				B2BC05491511E51100EF6568 /* ApproveListDetailController.m in Sources */,
+				B2BC054A1511E51100EF6568 /* ApproveOpinionView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
