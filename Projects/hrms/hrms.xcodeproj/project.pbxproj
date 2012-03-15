@@ -22,6 +22,12 @@
 		B2B6CA801508B1DB0040CCCD /* ApproveListController.m in Sources */ = {isa = PBXBuildFile; fileRef = B2B6CA791508B1DB0040CCCD /* ApproveListController.m */; };
 		B2B6CA811508B1DB0040CCCD /* ApproveListDetail.xib in Resources */ = {isa = PBXBuildFile; fileRef = B2B6CA7A1508B1DB0040CCCD /* ApproveListDetail.xib */; };
 		B2B6CA821508B1DB0040CCCD /* ApproveListDetailController.m in Sources */ = {isa = PBXBuildFile; fileRef = B2B6CA7C1508B1DB0040CCCD /* ApproveListDetailController.m */; };
+		B2BC78081511DC2B001BDB09 /* FMDatabase.m in Sources */ = {isa = PBXBuildFile; fileRef = B2BC77FE1511DC2B001BDB09 /* FMDatabase.m */; };
+		B2BC78091511DC2B001BDB09 /* FMDatabaseAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = B2BC78001511DC2B001BDB09 /* FMDatabaseAdditions.m */; };
+		B2BC780A1511DC2B001BDB09 /* FMDatabasePool.m in Sources */ = {isa = PBXBuildFile; fileRef = B2BC78021511DC2B001BDB09 /* FMDatabasePool.m */; };
+		B2BC780B1511DC2B001BDB09 /* FMDatabaseQueue.m in Sources */ = {isa = PBXBuildFile; fileRef = B2BC78041511DC2B001BDB09 /* FMDatabaseQueue.m */; };
+		B2BC780D1511DC2B001BDB09 /* FMResultSet.m in Sources */ = {isa = PBXBuildFile; fileRef = B2BC78071511DC2B001BDB09 /* FMResultSet.m */; };
+		B2BC780F1511DCD0001BDB09 /* libsqlite3.0.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = B2BC780E1511DCD0001BDB09 /* libsqlite3.0.dylib */; };
 		B32271C1150F36500058E452 /* RoleSelectViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B32271C0150F36500058E452 /* RoleSelectViewController.m */; };
 		B3618D32150632EA001FE8D5 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B3618D31150632EA001FE8D5 /* UIKit.framework */; };
 		B3618D34150632EA001FE8D5 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B3618D33150632EA001FE8D5 /* Foundation.framework */; };
@@ -338,6 +344,17 @@
 		B2B6CA7A1508B1DB0040CCCD /* ApproveListDetail.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = ApproveListDetail.xib; path = Approve/ApproveListDetail.xib; sourceTree = "<group>"; };
 		B2B6CA7B1508B1DB0040CCCD /* ApproveListDetailController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ApproveListDetailController.h; path = Approve/ApproveListDetailController.h; sourceTree = "<group>"; };
 		B2B6CA7C1508B1DB0040CCCD /* ApproveListDetailController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ApproveListDetailController.m; path = Approve/ApproveListDetailController.m; sourceTree = "<group>"; };
+		B2BC77FD1511DC2B001BDB09 /* FMDatabase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FMDatabase.h; path = ../../Frameworks/FMDB/FMDatabase.h; sourceTree = "<group>"; };
+		B2BC77FE1511DC2B001BDB09 /* FMDatabase.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FMDatabase.m; path = ../../Frameworks/FMDB/FMDatabase.m; sourceTree = "<group>"; };
+		B2BC77FF1511DC2B001BDB09 /* FMDatabaseAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FMDatabaseAdditions.h; path = ../../Frameworks/FMDB/FMDatabaseAdditions.h; sourceTree = "<group>"; };
+		B2BC78001511DC2B001BDB09 /* FMDatabaseAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FMDatabaseAdditions.m; path = ../../Frameworks/FMDB/FMDatabaseAdditions.m; sourceTree = "<group>"; };
+		B2BC78011511DC2B001BDB09 /* FMDatabasePool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FMDatabasePool.h; path = ../../Frameworks/FMDB/FMDatabasePool.h; sourceTree = "<group>"; };
+		B2BC78021511DC2B001BDB09 /* FMDatabasePool.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FMDatabasePool.m; path = ../../Frameworks/FMDB/FMDatabasePool.m; sourceTree = "<group>"; };
+		B2BC78031511DC2B001BDB09 /* FMDatabaseQueue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FMDatabaseQueue.h; path = ../../Frameworks/FMDB/FMDatabaseQueue.h; sourceTree = "<group>"; };
+		B2BC78041511DC2B001BDB09 /* FMDatabaseQueue.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FMDatabaseQueue.m; path = ../../Frameworks/FMDB/FMDatabaseQueue.m; sourceTree = "<group>"; };
+		B2BC78061511DC2B001BDB09 /* FMResultSet.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FMResultSet.h; path = ../../Frameworks/FMDB/FMResultSet.h; sourceTree = "<group>"; };
+		B2BC78071511DC2B001BDB09 /* FMResultSet.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FMResultSet.m; path = ../../Frameworks/FMDB/FMResultSet.m; sourceTree = "<group>"; };
+		B2BC780E1511DCD0001BDB09 /* libsqlite3.0.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libsqlite3.0.dylib; path = usr/lib/libsqlite3.0.dylib; sourceTree = SDKROOT; };
 		B32271BF150F36500058E452 /* RoleSelectViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RoleSelectViewController.h; sourceTree = "<group>"; };
 		B32271C0150F36500058E452 /* RoleSelectViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RoleSelectViewController.m; sourceTree = "<group>"; };
 		B3618D2D150632EA001FE8D5 /* hrms.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = hrms.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -510,6 +527,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B2BC780F1511DCD0001BDB09 /* libsqlite3.0.dylib in Frameworks */,
 				B3618EA115063830001FE8D5 /* libxml2.2.7.3.dylib in Frameworks */,
 				B3618E9F1506382A001FE8D5 /* libz.1.1.3.dylib in Frameworks */,
 				B3618E9D15063820001FE8D5 /* MobileCoreServices.framework in Frameworks */,
@@ -597,9 +615,27 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
+		B2BC77F11511DC11001BDB09 /* FMDB */ = {
+			isa = PBXGroup;
+			children = (
+				B2BC77FD1511DC2B001BDB09 /* FMDatabase.h */,
+				B2BC77FE1511DC2B001BDB09 /* FMDatabase.m */,
+				B2BC77FF1511DC2B001BDB09 /* FMDatabaseAdditions.h */,
+				B2BC78001511DC2B001BDB09 /* FMDatabaseAdditions.m */,
+				B2BC78011511DC2B001BDB09 /* FMDatabasePool.h */,
+				B2BC78021511DC2B001BDB09 /* FMDatabasePool.m */,
+				B2BC78031511DC2B001BDB09 /* FMDatabaseQueue.h */,
+				B2BC78041511DC2B001BDB09 /* FMDatabaseQueue.m */,
+				B2BC78061511DC2B001BDB09 /* FMResultSet.h */,
+				B2BC78071511DC2B001BDB09 /* FMResultSet.m */,
+			);
+			name = FMDB;
+			sourceTree = "<group>";
+		};
 		B3618D22150632EA001FE8D5 = {
 			isa = PBXGroup;
 			children = (
+				B2BC780E1511DCD0001BDB09 /* libsqlite3.0.dylib */,
 				B3618D37150632EA001FE8D5 /* hrms */,
 				B3618D51150632FD001FE8D5 /* Other Sources */,
 				B3618D5215063316001FE8D5 /* Dependencies */,
@@ -660,6 +696,7 @@
 		B3618D5215063316001FE8D5 /* Dependencies */ = {
 			isa = PBXGroup;
 			children = (
+				B2BC77F11511DC11001BDB09 /* FMDB */,
 				B3618DA615063355001FE8D5 /* Three20 Extensions */,
 				B3618DA515063348001FE8D5 /* Three20 */,
 				B3618D5315063327001FE8D5 /* ASIHttpRequest */,
@@ -1332,6 +1369,11 @@
 				B2B6CA801508B1DB0040CCCD /* ApproveListController.m in Sources */,
 				B2B6CA821508B1DB0040CCCD /* ApproveListDetailController.m in Sources */,
 				B32271C1150F36500058E452 /* RoleSelectViewController.m in Sources */,
+				B2BC78081511DC2B001BDB09 /* FMDatabase.m in Sources */,
+				B2BC78091511DC2B001BDB09 /* FMDatabaseAdditions.m in Sources */,
+				B2BC780A1511DC2B001BDB09 /* FMDatabasePool.m in Sources */,
+				B2BC780B1511DC2B001BDB09 /* FMDatabaseQueue.m in Sources */,
+				B2BC780D1511DC2B001BDB09 /* FMResultSet.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
