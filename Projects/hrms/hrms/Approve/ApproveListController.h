@@ -10,16 +10,14 @@
 #import "ApproveListDetailController.h"
 #import "ApproveOpinionView.h"
 #import "ApproveOpinionViewDelegate.h"
+#import "ApproveDatabaseHelper.h"
 
 static const int ACTION_TYPE_ADOPT = 1;
 static const int ACTION_TYPE_REFUSE = 2;
 
 @interface ApproveListController : UIViewController<UITableViewDataSource,UITableViewDelegate,ApproveOpinionViewDelegate>{
     NSMutableArray *approveListArray;
-    
     UITableView *dataTableView;
-    
-    ApproveListDetailController *detailController;
     
     UIToolbar *normalToolbar;
     UIToolbar *checkToolBar;
@@ -27,23 +25,16 @@ static const int ACTION_TYPE_REFUSE = 2;
     UIBarButtonItem *adoptButton;
     UIBarButtonItem *refuseButton;
     
+    ApproveDatabaseHelper *dbHelper;
+    
+    ApproveListDetailController *detailController;
     ApproveOpinionView *opinionView;
+    
+    
 }
 
 @property (retain, nonatomic) ApproveListDetailController *detailController;
 
-//
--(void)toggleTabelViewEdit:(id)sender;
 
--(void)refreshTable;
 
-//通过申请
--(void)adoptApplication;
-
-//拒绝申请
--(void)refuseApplication;
-
--(void)deleteTableViewRows:(NSArray *)indexPathsArray;
-
--(void)showOpinionView:(int)approveType;
 @end
