@@ -10,6 +10,23 @@
 #import "Approve.h"
 #import "ApproveListCell.h"
 
+@interface ApproveListController()
+//
+-(void)toggleTabelViewEdit:(id)sender;
+
+-(void)refreshTable;
+
+//通过申请
+-(void)adoptApplication;
+
+//拒绝申请
+-(void)refuseApplication;
+
+-(void)deleteTableViewRows:(NSArray *)indexPathsArray;
+
+-(void)showOpinionView:(int)approveType;
+@end
+
 @implementation ApproveListController
 
 @synthesize detailController;
@@ -20,7 +37,12 @@
     return [approveListArray count];
 }
 
+-(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
+    return 1;
+}
+
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
+    NSLog(@"%@",NSStringFromSelector(_cmd));
     static NSString *CellTableIdentifier = @"ApproveCellIdentifier";
     
     NSUInteger row = [indexPath row];
@@ -159,10 +181,47 @@
     }
 }
 
+// TODO: 正式使用时使用真实回传数据
+#pragma mark - 刷新数据
 -(void)refreshTable{
+    //responseArray，模拟服务器返回数据
+    NSMutableArray *responseArray =[[NSMutableArray alloc]initWithCapacity:20];
+    
+    NSDate *temp = [NSDate date];
+    for (int i=0; i<20; i++) {
+        Approve *a= [[Approve alloc]initWithWorkflowId:i workflowName:[NSString stringWithFormat:@"转正申请 %i",[temp timeIntervalSince1970]] currentStatus:[NSString stringWithFormat:@"上级主管审批确认 %i",i] applicant:[NSString stringWithFormat:@"张轶 %i",i] deadLine:nil commitDate:@"2012-03-05 17:30" todoType:TODO_TYPE_NORMAL];
+        [responseArray addObject:a];
+        [a release];
+    }
+    
+    if(![dbHelper.db open]){
+        //打开数据库出错
+        NSLog(@"Open database error  in %@",NSStringFromSelector(_cmd));
+    }
+    
+    //插表，但这步应该放到一个业务处理对象中
+    [dbHelper.db executeUpdate:@"delete from approve_list"];
+    for (Approve *approve in responseArray) {
+        NSString *sql = [NSString stringWithFormat:@"insert into approve_list (%@,%@,%@,%@,%@,%@,%@) values ('%i','%@','%@','%@','%@','%@','%@')",COLUMN_WORKFLOW_ID,COLUMN_WORKFLOW_NAME,COLUMN_CURRENT_STATUS,COLUMN_APPLICANT,COLUMN_COMMIT_DATE,COLUMN_DEADLINE,COLUMN_TYPE,approve.workflowId,approve.workflowName,approve.currentStatus,approve.applicant,approve.commitDate,approve.deadLine,approve.type];
+        [dbHelper.db executeUpdate:sql];
+    }
+    [dbHelper.db close];
+    
+    
+    [approveListArray release];
+    approveListArray = [responseArray retain];
+    [dataTableView numberOfRowsInSection:[approveListArray count]];
+//    [dataTableView beginUpdates];
+//    [dataTableView setDelegate:self];
+//    [dataTableView setDataSource:self];
+    [dataTableView reloadData];
+//    [dataTableView endUpdates];
+    
+    [responseArray release];
     
 }
 
+#pragma mark - 审批动作
 //通过申请
 -(void)adoptApplication{
     [self showOpinionView:ACTION_TYPE_ADOPT];
@@ -177,9 +236,14 @@
 -(void)ApproveOpinionViewDismissed:(int)resultCode{
     [self dismissModalViewControllerAnimated:YES];
     
+    //点“提交”按钮
     if(resultCode == RESULT_OK){
         //删除显示元素
         [self performSelector:@selector(deleteTableViewRows:) withObject:[dataTableView indexPathsForSelectedRows] afterDelay:0.5];
+    }
+    //点“取消”按钮
+    else if (resultCode == RESULT_CANCEL){
+        
     }
 }
 
@@ -187,8 +251,7 @@
 -(void)showOpinionView:(int)actionType{
     if(opinionView == nil){
         opinionView = [[ApproveOpinionView alloc]init];
-        opinionView.modalTransitionStyle =UIModalTransitionStylePartialCurl;
-        opinionView.modalPresentationStyle = UIModalPresentationPageSheet;
+        opinionView.modalTransitionStyle =UIModalTransitionStyleCoverVertical;
         [opinionView setControllerDelegate:self];
     }
     [self presentModalViewController:opinionView animated:YES];
@@ -205,6 +268,7 @@
     
     [dataTableView beginUpdates];
     [dataTableView deleteRowsAtIndexPaths:indexPathsArray  withRowAnimation:UITableViewRowAnimationFade];
+    
     [dataTableView endUpdates];
     
     adoptButton.title = @"通过";
@@ -220,13 +284,23 @@
     [super viewDidLoad];
     self.title = @"待办事项";
     
+    //初始化数据库连接
+    dbHelper = [[ApproveDatabaseHelper alloc]init];
+    
     // 初始列表数据
     NSMutableArray *datas = [[NSMutableArray alloc]initWithCapacity:10];
-    for (int i=0; i<10; i++) {
-        Approve *a= [[Approve alloc]initWithWorkflowId:i workflowName:[NSString stringWithFormat:@"转正申请 %i",i] currentStatus:[NSString stringWithFormat:@"上级主管审批确认 %i",i] applicant:[NSString stringWithFormat:@"张轶 %i",i] deadLine:nil commitDate:@"2012-03-05 17:30" todoType:TODO_TYPE_NORMAL];
+    
+    //从数据库读取数据(应该放到一个业务逻辑类中)
+    [dbHelper.db open];
+    NSString *sql = [NSString stringWithFormat:@"select %@,%@,%@,%@,%@,%@,%@ from %@",COLUMN_WORKFLOW_ID,COLUMN_WORKFLOW_NAME,COLUMN_CURRENT_STATUS,COLUMN_APPLICANT,COLUMN_COMMIT_DATE,COLUMN_DEADLINE,COLUMN_TYPE,TABLE_NAME_APPROVE_LIST];
+    FMResultSet *resultSet = [dbHelper.db executeQuery:sql];
+    
+    while ([resultSet next]) {
+        Approve *a= [[Approve alloc]initWithWorkflowId:[resultSet intForColumn:COLUMN_WORKFLOW_ID] workflowName:[resultSet stringForColumn:COLUMN_WORKFLOW_NAME] currentStatus:[resultSet stringForColumn:COLUMN_CURRENT_STATUS] applicant:[resultSet stringForColumn:COLUMN_APPLICANT] deadLine:[resultSet stringForColumn:COLUMN_DEADLINE] commitDate:[resultSet stringForColumn:COLUMN_COMMIT_DATE] todoType:[resultSet stringForColumn:COLUMN_TYPE]];
         [datas addObject:a];
         [a release];
     }
+    [dbHelper.db close];
     
     approveListArray = datas;
     
@@ -235,7 +309,7 @@
     //初始化导航条右侧按钮
     self.navigationItem.rightBarButtonItem = [[[UIBarButtonItem alloc]initWithTitle:@"Edit" style:UIBarButtonItemStyleBordered target:self action:@selector(toggleTabelViewEdit:)]autorelease];
     
-    dataTableView = [[[UITableView alloc]initWithFrame:CGRectMake(0, 0, 320, 416) style:UITableViewStylePlain]autorelease];
+    dataTableView = [[UITableView alloc]initWithFrame:CGRectMake(0, 0, 320, 416) style:UITableViewStylePlain];
     dataTableView.autoresizingMask = UIViewAutoresizingFlexibleHeight|UIViewAutoresizingFlexibleWidth;
     [dataTableView setDelegate:self];
     [dataTableView setDataSource:self];
@@ -279,8 +353,6 @@
 
     [checkToolBar setItems:checkedToolBarItems animated:YES];
     [self.view addSubview:checkToolBar];
-
-    
         
     return;
     UISwipeGestureRecognizer *rightRecognizer = [[[UISwipeGestureRecognizer alloc]initWithTarget:self action:@selector(didSwip:)]autorelease];
@@ -291,8 +363,6 @@
 }
 
 -(void)viewDidUnload{
-    [super viewDidUnload];
-    NSLog(@"%@",NSStringFromSelector(_cmd));
     approveListArray =nil;
     detailController = nil;
     normalToolbar = nil;
@@ -301,13 +371,24 @@
     adoptButton = nil;
     refuseButton = nil;
     opinionView = nil;
+    dbHelper = nil;
+    [super viewDidUnload];
+}
+
+-(void)viewWillAppear:(BOOL)animated{
+    [super viewWillAppear:animated];
+    
+}
+
+-(void)viewWillDisappear:(BOOL)animated{
+    [super viewWillDisappear:animated];
+    NSLog(@"%@",NSStringFromSelector(_cmd));
 }
 -(BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation{
     return YES;
 }
 
 -(void)dealloc{
-    [super dealloc];
     [approveListArray release];
     [detailController release];
     [normalToolbar release];
@@ -316,6 +397,8 @@
     [adoptButton release];
     [refuseButton release];
     [opinionView release];
+    [dbHelper release];
+    [super dealloc];
 }
 
 @end
