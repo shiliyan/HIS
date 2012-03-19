@@ -16,6 +16,7 @@
 		320CC833B8AF0ACFD35E6225 /* libThree20Style.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 320CC833B8AF0ACFD35E6224 /* libThree20Style.a */; };
 		320D7DCCE32703ACAB9A45E5 /* libThree20.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 320D7DCCE32703ACAB9A45E4 /* libThree20.a */; };
 		320F2C48872C2E2C4DF86205 /* libThree20UI.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 320F2C48872C2E2C4DF86204 /* libThree20UI.a */; };
+		B2090D1C1516CE90005EC846 /* ApproveDatabaseHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = B2090D1B1516CE90005EC846 /* ApproveDatabaseHelper.m */; };
 		B2BC05451511E51100EF6568 /* Approve.m in Sources */ = {isa = PBXBuildFile; fileRef = B2BC053A1511E51100EF6568 /* Approve.m */; };
 		B2BC05461511E51100EF6568 /* ApproveListCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B2BC053C1511E51100EF6568 /* ApproveListCell.m */; };
 		B2BC05471511E51100EF6568 /* ApproveListController.m in Sources */ = {isa = PBXBuildFile; fileRef = B2BC053E1511E51100EF6568 /* ApproveListController.m */; };
@@ -333,6 +334,8 @@
 		320CC833B8AF0ACFD35E6220 /* Three20Style.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Three20Style.xcodeproj; path = ../../Frameworks/Three20/Three20Style/Three20Style.xcodeproj; sourceTree = SOURCE_ROOT; };
 		320D7DCCE32703ACAB9A45E0 /* Three20.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Three20.xcodeproj; path = ../../Frameworks/Three20/Three20/Three20.xcodeproj; sourceTree = SOURCE_ROOT; };
 		320F2C48872C2E2C4DF86200 /* Three20UI.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Three20UI.xcodeproj; path = ../../Frameworks/Three20/Three20UI/Three20UI.xcodeproj; sourceTree = SOURCE_ROOT; };
+		B2090D1A1516CE90005EC846 /* ApproveDatabaseHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ApproveDatabaseHelper.h; sourceTree = "<group>"; };
+		B2090D1B1516CE90005EC846 /* ApproveDatabaseHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ApproveDatabaseHelper.m; sourceTree = "<group>"; };
 		B2BC05391511E51100EF6568 /* Approve.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Approve.h; sourceTree = "<group>"; };
 		B2BC053A1511E51100EF6568 /* Approve.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Approve.m; sourceTree = "<group>"; };
 		B2BC053B1511E51100EF6568 /* ApproveListCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ApproveListCell.h; sourceTree = "<group>"; };
@@ -619,6 +622,8 @@
 			isa = PBXGroup;
 			children = (
 				B2BC05391511E51100EF6568 /* Approve.h */,
+				B2090D1A1516CE90005EC846 /* ApproveDatabaseHelper.h */,
+				B2090D1B1516CE90005EC846 /* ApproveDatabaseHelper.m */,
 				B2BC053A1511E51100EF6568 /* Approve.m */,
 				B2BC053B1511E51100EF6568 /* ApproveListCell.h */,
 				B2BC053C1511E51100EF6568 /* ApproveListCell.m */,
@@ -1029,6 +1034,7 @@
 				B3618D29150632EA001FE8D5 /* Sources */,
 				B3618D2A150632EA001FE8D5 /* Frameworks */,
 				B3618D2B150632EA001FE8D5 /* Resources */,
+				B2090D281516CF0C005EC846 /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -1317,6 +1323,22 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		B2090D281516CF0C005EC846 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "KEYWORDS=\"TODO:|FIXME:|\\?\\?\\?:|\\!\\!\\!:\"\nfind \"${SRCROOT}\" \\( -name \"*.h\" -or -name \"*.m\" \\) -print0 | xargs -0 egrep --with-filename --line-number --only-matching \"($KEYWORDS).*\\$\" | perl -p -e \"s/($KEYWORDS)/ warning: \\$1/\"";
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		B3618D29150632EA001FE8D5 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
@@ -1366,6 +1388,7 @@
 				B2BC05471511E51100EF6568 /* ApproveListController.m in Sources */,
 				B2BC05491511E51100EF6568 /* ApproveListDetailController.m in Sources */,
 				B2BC054A1511E51100EF6568 /* ApproveOpinionView.m in Sources */,
+				B2090D1C1516CE90005EC846 /* ApproveDatabaseHelper.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
