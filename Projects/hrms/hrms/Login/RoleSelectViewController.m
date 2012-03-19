@@ -48,13 +48,15 @@ static  NSString *  kRoleSelectURLPath = @"http://localhost:8080/hrms/autocrud/s
     //    UIImage* image = [UIImage imageNamed:@"preferences.png"];
     //    self.tabBarItem = [[[UITabBarItem alloc] initWithTitle:self.title image:image tag:0] autorelease];
     //    self..tabBarItem. =YES;
-       self.dataSource = [TTSectionedDataSource dataSourceWithObjects:
-                        @"",
-                          
-                          [TTTableTextItem itemWithText:@"角色1" delegate:self selector:@selector(gotoMain:)],
-                           [TTTableTextItem itemWithText:@"角色2" 
-                                                     URL:@"tt://approve"],
-                           nil];
+    self.dataSource = [TTSectionedDataSource dataSourceWithObjects:
+                       @"",
+                       
+                       [TTTableTextItem itemWithText:@"角色1" delegate:self selector:@selector(gotoMain:)],
+                       [TTTableTextItem itemWithText:@"角色2" 
+                                                 URL:@"tt://approve"],
+                       [TTTableTextItem itemWithText:@"角色3" 
+                                                 URL:@"tt://login"],
+                       nil];
 }
 
 -(void) gotoMain:(NSInteger)index

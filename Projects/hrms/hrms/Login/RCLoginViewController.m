@@ -52,9 +52,7 @@ static  NSString* kLoginURLPath  = @"http://localhost:8080/hrms/login.svc";
      *TODO:正式使用时开启回调部分跳转，这里忽略了服务端登陆请求
      */
     
-    [[TTNavigator navigator] openURLAction:[[[TTURLAction actionWithURLPath:@"tt://role_select"]
-                                             applyAnimated: YES] 
-                                            applyTransition:UIViewAnimationTransitionFlipFromLeft]];
+    [[self parentViewController] dismissModalViewControllerAnimated:YES];
     
 }
 
@@ -64,7 +62,7 @@ static  NSString* kLoginURLPath  = @"http://localhost:8080/hrms/login.svc";
     [username resignFirstResponder];
     [password resignFirstResponder];
     
-    
+    [[self parentViewController] dismissModalViewControllerAnimated:YES];
 //    [[TTNavigator navigator] openURLAction:[[[TTURLAction actionWithURLPath:@"tt://role_select"]
 //                                             applyAnimated: YES]applyTransition:UIViewAnimationTransitionFlipFromRight]];
 }
@@ -118,7 +116,7 @@ static  NSString* kLoginURLPath  = @"http://localhost:8080/hrms/login.svc";
 -(void)viewWillDisappear:(BOOL)animated
 {
     [super viewDidDisappear:animated];
-    [self.navigationController.navigationBar setHidden:NO];
+//    [self.navigationController.navigationBar setHidden:NO];
 }
 - (void)viewDidUnload
 {

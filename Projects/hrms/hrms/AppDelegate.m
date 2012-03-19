@@ -20,12 +20,13 @@
 //#import "RCAboutUsController.h"
 //审批
 #import "ApproveListController.h"
+//角色选择
+#import "RoleSelectViewController.h"
 
 @implementation AppDelegate
 
 -(void) applicationDidFinishLaunching:(UIApplication *)application
 {
-    application.applicationIconBadgeNumber = 0;
     //register notification
     [[UIApplication sharedApplication] registerForRemoteNotificationTypes:(UIRemoteNotificationTypeAlert|UIRemoteNotificationTypeBadge|UIRemoteNotificationTypeSound)];
     
@@ -48,24 +49,30 @@
     //main view
     //[map from:@"tt://main" toSharedViewController:[CRMainController class]];
     
-//    [map from:@"tt://preferences/(initWithStyle:)" 
-//       parent:@"aprove"  
-//toSharedViewController:[CRPreferencesController class]];
+    //    [map from:@"tt://preferences/(initWithStyle:)" 
+    //       parent:@"aprove"  
+    //toSharedViewController:[CRPreferencesController class]];
     
-//    [map from:@"tt://about" 
-//       parent:@"tt://preferences/1" 
-//toSharedViewController:[RCAboutUsController class]];
+    //    [map from:@"tt://about" 
+    //       parent:@"tt://preferences/1" 
+    //toSharedViewController:[RCAboutUsController class]];
     
     //审批
-    [map from:@"tt://aprove" 
-       parent:@"tt://preferences/1" 
+    [map from:@"tt://approve" 
+       //parent:@"tt://preferences/1" 
 toSharedViewController:[ApproveListController class]];
     //[map from:@"tt://menu/(initWithMenu:)" toSharedViewController:[MenuController class]];
     
+    //角色选择
+    [map from:@"tt://role_select" 
+//       parent:@"tt://login" 
+toSharedViewController:[RoleSelectViewController class]];
     
     
     if (![navigator restoreViewControllers]) {
-        [navigator openURLAction:[TTURLAction actionWithURLPath:@"tt://login"]];
+        [navigator openURLAction:[TTURLAction actionWithURLPath:@"tt://approve"]];
+        
+        [navigator openURLAction:[[TTURLAction actionWithURLPath:@"tt://login"]applyTransition:UIViewAnimationTransitionFlipFromLeft]];
     }
 }
 
@@ -81,11 +88,21 @@ toSharedViewController:[ApproveListController class]];
 -(void)application:(UIApplication *)application didFailToRegisterForRemoteNotificationsWithError:(NSError *)error
 {
     NSLog(@"Error in registration.Error: %@" ,error);
-//    UIAlertView * alert = [[UIAlertView alloc]initWithTitle:@"提示" message:@"注册推送失败，检查网络或推送服务" delegate:self cancelButtonTitle:@"确认" otherButtonTitles: nil];
-//    [alert show];
-//    [alert release];
+    [[NSUserDefaults standardUserDefaults] setValue:@"none" forKey:@"deviceToken"];
+}
+
+#pragma -mark 程序进入后台或激活时触发事件，用于保存数据，处理程序重新进入后的初始化
+-(void) applicationDidEnterBackground:(UIApplication *)application
+{
+    NSLog(@"%@",@"exit");
+    //[[TTNavigator navigator] removeAllViewControllers];
+    [[TTNavigator navigator] openURLAction:[[TTURLAction actionWithURLPath:@"tt://login"]applyTransition:UIViewAnimationTransitionFlipFromLeft]];
     
-    [[NSUserDefaults standardUserDefaults] setValue:nil forKey:@"deviceToken"];
+}
+
+-(void) applicationDidBecomeActive:(UIApplication *)application
+{
+    
 }
 
 - (void)applicationWillTerminate:(UIApplication *)application
