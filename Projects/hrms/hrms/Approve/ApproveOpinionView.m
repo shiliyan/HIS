@@ -63,10 +63,11 @@
 }
 
 -(void)commitData{
-    [controllerDelegate ApproveOpinionViewDismissed:RESULT_OK];
+    [controllerDelegate ApproveOpinionViewDismissed:RESULT_OK messageObject:nil];
+    
 }
 -(void)cancelCommit{
-    [controllerDelegate ApproveOpinionViewDismissed:RESULT_CANCEL];
+    [controllerDelegate ApproveOpinionViewDismissed:RESULT_CANCEL messageObject:nil];
 }
 
 -(void)toggleOutKeybord:(id)sender{

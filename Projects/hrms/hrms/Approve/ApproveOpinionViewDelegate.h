@@ -11,7 +11,6 @@
 @protocol ApproveOpinionViewDelegate <NSObject>
 
 @required
--(void)ApproveOpinionViewDismissed:(int)resultCode;
-
+-(void)ApproveOpinionViewDismissed:(int)resultCode messageObject:(NSObject *)obj;
 
 @end
