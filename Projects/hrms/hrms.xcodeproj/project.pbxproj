@@ -621,8 +621,7 @@
 		B2BC05381511E51100EF6568 /* Approve */ = {
 			isa = PBXGroup;
 			children = (
-				B2BC05391511E51100EF6568 /* Approve.h */,
-				B2BC053A1511E51100EF6568 /* Approve.m */,
+				B2FDF1A41519767F00625E14 /* entity */,
 				B2090D1A1516CE90005EC846 /* ApproveDatabaseHelper.h */,
 				B2090D1B1516CE90005EC846 /* ApproveDatabaseHelper.m */,
 				B2BC053B1511E51100EF6568 /* ApproveListCell.h */,
@@ -653,6 +652,15 @@
 				B2BC78071511DC2B001BDB09 /* FMResultSet.m */,
 			);
 			name = FMDB;
+			sourceTree = "<group>";
+		};
+		B2FDF1A41519767F00625E14 /* entity */ = {
+			isa = PBXGroup;
+			children = (
+				B2BC05391511E51100EF6568 /* Approve.h */,
+				B2BC053A1511E51100EF6568 /* Approve.m */,
+			);
+			name = entity;
 			sourceTree = "<group>";
 		};
 		B3618D22150632EA001FE8D5 = {
