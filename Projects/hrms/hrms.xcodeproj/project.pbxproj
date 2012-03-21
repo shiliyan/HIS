@@ -622,9 +622,9 @@
 			isa = PBXGroup;
 			children = (
 				B2BC05391511E51100EF6568 /* Approve.h */,
+				B2BC053A1511E51100EF6568 /* Approve.m */,
 				B2090D1A1516CE90005EC846 /* ApproveDatabaseHelper.h */,
 				B2090D1B1516CE90005EC846 /* ApproveDatabaseHelper.m */,
-				B2BC053A1511E51100EF6568 /* Approve.m */,
 				B2BC053B1511E51100EF6568 /* ApproveListCell.h */,
 				B2BC053C1511E51100EF6568 /* ApproveListCell.m */,
 				B2BC053D1511E51100EF6568 /* ApproveListController.h */,
