@@ -14,9 +14,12 @@
 
 static const int ACTION_TYPE_ADOPT = 1;
 static const int ACTION_TYPE_REFUSE = 2;
+static const int SECTION_APRROVE_LIST = 0;
+static const int SECTION_PROBLEM_LIST = 1;
 
 @interface ApproveListController : UIViewController<UITableViewDataSource,UITableViewDelegate,ApproveOpinionViewDelegate>{
     NSMutableArray *approveListArray;
+    NSMutableArray *problemListArray;
     UITableView *dataTableView;
     
     UIToolbar *normalToolbar;
@@ -31,10 +34,12 @@ static const int ACTION_TYPE_REFUSE = 2;
     ApproveOpinionView *opinionView;
     
     
+    
 }
 
 @property (retain, nonatomic) ApproveListDetailController *detailController;
-
+@property (retain, nonatomic) NSMutableArray *approveListArray;
+@property (retain, nonatomic) NSMutableArray *problemListArray;
 
 
 @end

@@ -25,30 +25,67 @@
 -(void)deleteTableViewRows:(NSArray *)indexPathsArray;
 
 -(void)showOpinionView:(int)approveType;
+
+-(void)querySuccess:(NSMutableArray *)dataset;
 @end
 
 @implementation ApproveListController
 
 @synthesize detailController;
-
+@synthesize approveListArray;
+@synthesize problemListArray;
 
 #pragma mark - 覆盖 tableView 方法
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
-    return [approveListArray count];
+    
+    if (section == SECTION_APRROVE_LIST) {
+        NSUInteger count = [approveListArray count];
+        return count;
+    }else if (section == SECTION_PROBLEM_LIST){
+        NSUInteger count = [problemListArray count];
+        return count;
+    }else{
+        return 0;
+    }
 }
 
 -(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
-    return 1;
+//    NSUInteger number = 0;
+//    if([approveListArray count]!=0)
+//        number +=1;
+//    if([problemListArray count]!=0)
+//        number +=1;
+//    return number;
+    return 2;
+}
+
+-(NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section{
+    if (section == SECTION_APRROVE_LIST) {
+        return @"待办";
+    }else if(section == SECTION_PROBLEM_LIST){
+        return @"有问题";
+    }else{
+        return nil;
+    }
 }
 
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
-    NSLog(@"%@",NSStringFromSelector(_cmd));
+
     static NSString *CellTableIdentifier = @"ApproveCellIdentifier";
+    UITableViewCell *cell= nil;
     
     NSUInteger row = [indexPath row];
-    Approve *rowData = [approveListArray objectAtIndex:row];
+    NSUInteger section = [indexPath section];
+    Approve *rowData = nil;
+
+    if (section == SECTION_APRROVE_LIST) {
+        rowData = [approveListArray objectAtIndex:row];
+    }else if(section == SECTION_PROBLEM_LIST){
+        rowData = [problemListArray objectAtIndex:row];
+    }
     
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellTableIdentifier];
+    
+    cell = [tableView dequeueReusableCellWithIdentifier:CellTableIdentifier];
     
     if (cell == nil){
         cell = [[ApproveListCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellTableIdentifier];
@@ -65,10 +102,11 @@
     
     typeImage.image = [UIImage imageNamed:@"hurry_todo.png"];
     workFlowNameLabel.text = rowData.workflowName;
-    applicantLabel.text = rowData.applicant;
-    commitDateLabel.text = rowData.commitDate;
-    currentStatusLabel.text = rowData.currentStatus;
-    deadLineLabel.text = rowData.deadLine;
+    applicantLabel.text = rowData.employeeName;
+    commitDateLabel.text = rowData.creationDate;
+    currentStatusLabel.text = rowData.nodeName;
+    deadLineLabel.text = rowData.dateLimit;
+    
     
     return cell;
 }
@@ -108,7 +146,9 @@
 }
 
 -(BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath{
-    return true;
+    
+        return true;
+    
 }
 
 -(void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath{
@@ -181,17 +221,29 @@
     }
 }
 
-// TODO: 正式使用时使用真实回传数据
+// TODO: 编写失败和网络连接错误的回调
 #pragma mark - 刷新数据
 -(void)refreshTable{
-    //responseArray，模拟服务器返回数据
-    NSMutableArray *responseArray =[[NSMutableArray alloc]initWithCapacity:20];
+    [self formRequest:@"http://localhost:8080/hr_new/autocrud/ios.IOS_APPROVE.ios_workflow_approve_query/query" withData:nil successSelector:@selector(querySuccess:) failedSelector:nil errorSelector:nil noNetworkSelector:nil];
+    [bottomStatusLabel setText:@"正在刷新"];
+
+}
+
+
+#pragma mark - 从服务器端取数据成功
+//从服务器端取数据成功
+-(void)querySuccess:(NSMutableArray *)dataset{
     
-    NSDate *temp = [NSDate date];
-    for (int i=0; i<20; i++) {
-        Approve *a= [[Approve alloc]initWithWorkflowId:i workflowName:[NSString stringWithFormat:@"转正申请 %i",[temp timeIntervalSince1970]] currentStatus:[NSString stringWithFormat:@"上级主管审批确认 %i",i] applicant:[NSString stringWithFormat:@"张轶 %i",i] deadLine:nil commitDate:@"2012-03-05 17:30" todoType:TODO_TYPE_NORMAL];
-        [responseArray addObject:a];
-        [a release];
+    NSDate *now = [NSDate date];
+    
+    [bottomStatusLabel setText:[NSString stringWithFormat:@"更新成功 %@",now]];
+    //responseArray，返回数据解析后存放
+    NSMutableArray *responseArray =[[NSMutableArray alloc]initWithCapacity:5];
+    
+    for (NSMutableDictionary *record in dataset) {
+        Approve *approveEntity = [[Approve alloc]initWithDictionary:record];
+        [responseArray addObject:approveEntity];
+        [approveEntity release];
     }
     
     if(![dbHelper.db open]){
@@ -200,25 +252,18 @@
     }
     
     //插表，但这步应该放到一个业务处理对象中
-    [dbHelper.db executeUpdate:@"delete from approve_list"];
+    [dbHelper.db executeUpdate:[NSString stringWithFormat:@"delete from %@ where %@ = 'NORMAL'",TABLE_NAME_APPROVE_LIST,APPROVE_PROPERTY_LOCAL_STATUS]];
     for (Approve *approve in responseArray) {
-        NSString *sql = [NSString stringWithFormat:@"insert into approve_list (%@,%@,%@,%@,%@,%@,%@) values ('%i','%@','%@','%@','%@','%@','%@')",COLUMN_WORKFLOW_ID,COLUMN_WORKFLOW_NAME,COLUMN_CURRENT_STATUS,COLUMN_APPLICANT,COLUMN_COMMIT_DATE,COLUMN_DEADLINE,COLUMN_TYPE,approve.workflowId,approve.workflowName,approve.currentStatus,approve.applicant,approve.commitDate,approve.deadLine,approve.type];
+        
+        NSString *sql = [NSString stringWithFormat:@"insert into %@ (%@,%@,%@,%@,%@,%@,%@,%@,%@,%@) values ('%i','%i','%@','%@','%@','%@','%@','%@','%@','%@');",TABLE_NAME_APPROVE_LIST,APPROVE_PROPERTY_WORKFLOW_ID,APPROVE_PROPERTY_RECORD_ID,APPROVE_PROPERTY_WORKFLOW_NAME,APPROVE_PROPERTY_WORKFLOW_DESC,APPROVE_PROPERTY_NODE_NAME,APPROVE_PROPERTY_EMPLOYEE_NAME,APPROVE_PROPERTY_CREATION_DATE,APPROVE_PROPERTY_DATE_LIMIT,APPROVE_PROPERTY_IS_LATE,APPROVE_PROPERTY_LOCAL_STATUS,approve.workflowId,approve.recordId,approve.workflowName,approve.workflowDesc,approve.nodeName,approve.employeeName,approve.creationDate,approve.dateLimit,approve.isLate,@"NORMAL"];
         [dbHelper.db executeUpdate:sql];
     }
     [dbHelper.db close];
     
-    
-    [approveListArray release];
-    approveListArray = [responseArray retain];
+    self.approveListArray = responseArray;
     [dataTableView numberOfRowsInSection:[approveListArray count]];
-//    [dataTableView beginUpdates];
-//    [dataTableView setDelegate:self];
-//    [dataTableView setDataSource:self];
     [dataTableView reloadData];
-//    [dataTableView endUpdates];
-    
     [responseArray release];
-    
 }
 
 #pragma mark - 审批动作
@@ -233,7 +278,7 @@
 }
 
 #pragma mark -实现模态视图的dismiss delegate
--(void)ApproveOpinionViewDismissed:(int)resultCode{
+-(void)ApproveOpinionViewDismissed:(int)resultCode messageObject:(NSObject *)obj{
     [self dismissModalViewControllerAnimated:YES];
     
     //点“提交”按钮
@@ -259,24 +304,39 @@
 
 -(void)deleteTableViewRows:(NSArray *)indexPathsArray{
     
-    NSMutableArray *toBeDeletedArray = [[NSMutableArray alloc]initWithCapacity:[approveListArray count]];
+    NSMutableArray *toBeDeletedApproveArray = [[NSMutableArray alloc]initWithCapacity:[approveListArray count]];
+    NSMutableArray *toBeDeletedProblemArray = [[NSMutableArray alloc]initWithCapacity:[problemListArray count]];
     for (NSIndexPath *p in indexPathsArray) {
         NSUInteger row = [p row];
-        [toBeDeletedArray addObject:[approveListArray objectAtIndex:row]];
+        if([p section]==SECTION_APRROVE_LIST){
+            [toBeDeletedApproveArray addObject:[approveListArray objectAtIndex:row]];
+        }else if([p section]==SECTION_PROBLEM_LIST){
+            [toBeDeletedProblemArray addObject:[problemListArray objectAtIndex:row]];
+        }
     }
-    [approveListArray removeObjectsInArray:toBeDeletedArray];
+    [approveListArray removeObjectsInArray:toBeDeletedApproveArray];
+    [problemListArray removeObjectsInArray:toBeDeletedProblemArray];
+    
     
     [dataTableView beginUpdates];
-    [dataTableView deleteRowsAtIndexPaths:indexPathsArray  withRowAnimation:UITableViewRowAnimationFade];
     
+    if ([approveListArray count] == 0){
+       
+    }
+    if([problemListArray count] == 0){
+        
+    }
+    [dataTableView deleteRowsAtIndexPaths:indexPathsArray  withRowAnimation:UITableViewRowAnimationFade];
     [dataTableView endUpdates];
+    
     
     adoptButton.title = @"通过";
     refuseButton.title = @"拒绝";
     adoptButton.enabled = NO;
     refuseButton.enabled = NO;
     
-    [toBeDeletedArray release];
+    [toBeDeletedApproveArray release];
+    [toBeDeletedProblemArray release];
 }
 
 #pragma mark - life circle
@@ -284,32 +344,34 @@
     [super viewDidLoad];
     self.title = @"待办事项";
     
+    [self refreshTable];
     //初始化数据库连接
     dbHelper = [[ApproveDatabaseHelper alloc]init];
+    
+    //从数据库读取数据(应该放到一个业务逻辑类中)
+    [dbHelper.db open];
+    NSString *sql = [NSString stringWithFormat:@"select %@,%@,%@,%@,%@,%@,%@ from %@ where %@ = 'ERROR'",APPROVE_PROPERTY_WORKFLOW_ID,APPROVE_PROPERTY_WORKFLOW_NAME,APPROVE_PROPERTY_NODE_NAME,APPROVE_PROPERTY_EMPLOYEE_NAME,APPROVE_PROPERTY_CREATION_DATE,APPROVE_PROPERTY_DATE_LIMIT,APPROVE_PROPERTY_IS_LATE,TABLE_NAME_APPROVE_LIST,APPROVE_PROPERTY_LOCAL_STATUS];
+    FMResultSet *resultSet = [dbHelper.db executeQuery:sql];
     
     // 初始列表数据
     NSMutableArray *datas = [[NSMutableArray alloc]initWithCapacity:10];
     
-    //从数据库读取数据(应该放到一个业务逻辑类中)
-    [dbHelper.db open];
-    NSString *sql = [NSString stringWithFormat:@"select %@,%@,%@,%@,%@,%@,%@ from %@",COLUMN_WORKFLOW_ID,COLUMN_WORKFLOW_NAME,COLUMN_CURRENT_STATUS,COLUMN_APPLICANT,COLUMN_COMMIT_DATE,COLUMN_DEADLINE,COLUMN_TYPE,TABLE_NAME_APPROVE_LIST];
-    FMResultSet *resultSet = [dbHelper.db executeQuery:sql];
-    
     while ([resultSet next]) {
-        Approve *a= [[Approve alloc]initWithWorkflowId:[resultSet intForColumn:COLUMN_WORKFLOW_ID] workflowName:[resultSet stringForColumn:COLUMN_WORKFLOW_NAME] currentStatus:[resultSet stringForColumn:COLUMN_CURRENT_STATUS] applicant:[resultSet stringForColumn:COLUMN_APPLICANT] deadLine:[resultSet stringForColumn:COLUMN_DEADLINE] commitDate:[resultSet stringForColumn:COLUMN_COMMIT_DATE] todoType:[resultSet stringForColumn:COLUMN_TYPE]];
+        Approve *a= [[Approve alloc]initWithWorkflowId:[resultSet intForColumn:APPROVE_PROPERTY_WORKFLOW_ID] workflowName:[resultSet stringForColumn:APPROVE_PROPERTY_WORKFLOW_NAME] currentStatus:[resultSet stringForColumn:APPROVE_PROPERTY_NODE_NAME] applicant:[resultSet stringForColumn:APPROVE_PROPERTY_EMPLOYEE_NAME] deadLine:[resultSet stringForColumn:APPROVE_PROPERTY_DATE_LIMIT] commitDate:[resultSet stringForColumn:APPROVE_PROPERTY_CREATION_DATE] todoType:[resultSet stringForColumn:APPROVE_PROPERTY_IS_LATE]];
         [datas addObject:a];
         [a release];
     }
     [dbHelper.db close];
     
-    approveListArray = datas;
+    self.problemListArray = datas;
+    [datas release];
     
     self.navigationItem.leftBarButtonItem = nil;
     
     //初始化导航条右侧按钮
     self.navigationItem.rightBarButtonItem = [[[UIBarButtonItem alloc]initWithTitle:@"Edit" style:UIBarButtonItemStyleBordered target:self action:@selector(toggleTabelViewEdit:)]autorelease];
     
-    dataTableView = [[UITableView alloc]initWithFrame:CGRectMake(0, 0, 320, 416) style:UITableViewStylePlain];
+    dataTableView = [[UITableView alloc]initWithFrame:CGRectMake(0, 0, 320, 416) style:UITableViewStyleGrouped];
     dataTableView.autoresizingMask = UIViewAutoresizingFlexibleHeight|UIViewAutoresizingFlexibleWidth;
     [dataTableView setDelegate:self];
     [dataTableView setDataSource:self];
@@ -328,8 +390,10 @@
     //初始化底部状态文字
     bottomStatusLabel = [[UILabel alloc]initWithFrame:CGRectMake(74, 427, 172, 21)];
     bottomStatusLabel.text = @"status";
+    
     bottomStatusLabel.backgroundColor = [UIColor clearColor];
     bottomStatusLabel.autoresizingMask = UIViewAutoresizingFlexibleWidth|UIViewAutoresizingFlexibleTopMargin;
+    bottomStatusLabel.adjustsFontSizeToFitWidth = YES;
     [self.view addSubview:bottomStatusLabel];
     
     
@@ -359,11 +423,11 @@
     rightRecognizer.direction = UISwipeGestureRecognizerDirectionRight;
     [dataTableView addGestureRecognizer:rightRecognizer];
     
-    [datas release];
 }
 
 -(void)viewDidUnload{
     approveListArray =nil;
+    problemListArray = nil;
     detailController = nil;
     normalToolbar = nil;
     checkToolBar = nil;
@@ -382,7 +446,7 @@
 
 -(void)viewWillDisappear:(BOOL)animated{
     [super viewWillDisappear:animated];
-    NSLog(@"%@",NSStringFromSelector(_cmd));
+
 }
 -(BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation{
     return YES;
@@ -390,6 +454,7 @@
 
 -(void)dealloc{
     [approveListArray release];
+    [problemListArray release];
     [detailController release];
     [normalToolbar release];
     [checkToolBar release];
