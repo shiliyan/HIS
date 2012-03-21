@@ -13,7 +13,8 @@
 
 @implementation RCLoginViewController
 
-static  NSString* kLoginURLPath  = @"http://localhost:8080/hrms/login.svc";
+//static NSString * kLoginURLPath  = @"http://localhost:8080/HandEmployeeServer/AuroraLogin";
+static NSString * kInitWithRequestPath = @"http://localhost:8080/HandEmployeeServer";
 
 @synthesize username;
 @synthesize password;
@@ -37,28 +38,42 @@ static  NSString* kLoginURLPath  = @"http://localhost:8080/hrms/login.svc";
 
 #pragma login functions
 -(IBAction)loginBtnPressed:(id)sender{
+    //请求指定地址获取登陆地址
+    /*
+    [self formRequest:kInitWithRequestPath 
+             withData:nil successSelector:@selector(login:) 
+       failedSelector:nil 
+        errorSelector:nil 
+    noNetworkSelector:nil];
+    /*
+     *TODO:正式使用时开启回调部分跳转，这里忽略了服务端登陆请求
+     */
+      
+    [[self parentViewController] dismissModalViewControllerAnimated:YES];
+}
+
+-(void)login:(id)dataSet
+{
+    
+    NSString * loginUrl = [[dataSet objectAtIndex:0] objectForKey:@"login_url"];
+    
+    
     LoginModel * loginEntity = [[LoginModel alloc]init];
     loginEntity.username = [username text];
     loginEntity.password = [password text];
     
-    [self formRequest:kLoginURLPath  
+    [self formRequest:loginUrl  
              withData:[loginEntity toDataSet] 
       successSelector:@selector(loginSecretFetchComplete:)  
        failedSelector:nil 
         errorSelector:nil
     noNetworkSelector:nil];
     [loginEntity release];
-    /*
-     *TODO:正式使用时开启回调部分跳转，这里忽略了服务端登陆请求
-     */
-    
-    [[self parentViewController] dismissModalViewControllerAnimated:YES];
-    
 }
 
 - (void)loginSecretFetchComplete:(id)dataSet
 {
-    //    NSLog(@"%@",[[dataSet objectAtIndex:0]valueForKey:@"user_name"]);
+    //NSLog(@"%@",[[dataSet objectAtIndex:0]valueForKey:@"user_name"]);
     [username resignFirstResponder];
     [password resignFirstResponder];
     
