@@ -7,12 +7,14 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "ASIHTTPRequest.h"
-#import "AuroraHTTPRequest.h"
+
+#import "HDFormDataRequest.h"
+#import "ASIWebPageRequest.h"
+#import "ASIDownloadCache.h"
 
 @interface UIViewController (HttpRequestHelper)
 
--(void)formRequest:(NSString *)url 
+-(void)formRequest:(NSString *) newURL 
           withData:(id) dic 
    successSelector:(SEL) successSelector 
     failedSelector:(SEL) failedSelector
