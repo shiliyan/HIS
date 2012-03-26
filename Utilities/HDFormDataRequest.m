@@ -76,6 +76,8 @@
             return self;
             break;
     }
+    NSLog(@"提交模式设置错误");
+    return NO;
 }
 
 /*
