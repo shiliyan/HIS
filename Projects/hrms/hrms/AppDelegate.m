@@ -15,7 +15,7 @@
 //审批
 #import "ApproveListController.h"
 //审批明细
-#import "ApproveDetailViewController.h"
+#import "HDApproveDetailViewController.h"
 
 //tab页面
 //#import "CRMainController.h"
@@ -35,7 +35,7 @@
     
     //Views Managment by Three20
     TTNavigator* navigator = [TTNavigator navigator];
-    navigator.persistenceMode = TTNavigatorPersistenceModeTop;
+    navigator.persistenceMode = TTNavigatorPersistenceModeNone;
     
     navigator.window = [[[UIWindow alloc] initWithFrame:TTScreenBounds()] autorelease];
     
@@ -46,13 +46,20 @@
     // Any URL that doesn't match will fall back on this one, and open in the web browser
     [map from:@"*" toViewController:[TTWebController class]];
     
+    
     //login view
-    [map from:@"tt://login" toModalViewController:[RCLoginViewController class]];
+    [map from:@"tt://login" 
+toModalViewController:[RCLoginViewController class]];
     
     //审批
-    [map from:@"tt://approve" toSharedViewController:[ApproveListController class]];
+    [map from:@"tt://approve" 
+toSharedViewController:[ApproveListController class]];
     
-    [map from:@"tt://approve_detail/(initWithName:)" parent:@"tt://approve" toViewController:[ApproveDetailViewController class] selector:nil transition:NO];
+    [map from:@"tt://approve_detail/(initWithName:)" 
+       parent:@"tt://approve" 
+toViewController:[HDApproveDetailViewController class] 
+     selector:nil 
+   transition:0];
     
     //main view
     //[map from:@"tt://main" toSharedViewController:[CRMainController class]];
@@ -73,13 +80,15 @@
     //       parent:@"tt://login" 
     //toSharedViewController:[RoleSelectViewController class]];
     
-    
+    //    
     if(![navigator restoreViewControllers])
     {
+        //        NSLog(@"No RestoreViewCtrl!!");
         [navigator openURLAction:[TTURLAction actionWithURLPath:@"tt://approve"]];
+        
+        [navigator openURLAction:[[TTURLAction actionWithURLPath:@"tt://login"]applyTransition:UIViewAnimationTransitionFlipFromLeft]];
     }
     
-    [navigator openURLAction:[[TTURLAction actionWithURLPath:@"tt://login"]applyTransition:UIViewAnimationTransitionFlipFromLeft]];
 }
 
 -(void)application:(UIApplication *)application didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken

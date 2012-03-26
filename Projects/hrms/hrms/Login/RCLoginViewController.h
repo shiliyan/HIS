@@ -8,9 +8,10 @@
 
 
 @interface RCLoginViewController : TTBaseViewController <TTURLRequestDelegate>{
-    
+    HDFormDataRequest * formDataRequest;
 }
 
+@property (nonatomic,retain) HDFormDataRequest * formDataRequest;
 @property (nonatomic,retain) IBOutlet UITextField * username;
 @property (nonatomic,retain) IBOutlet UITextField * password;
 //@property (nonatomic,retain) IBOutlet UIButton * loginBtn;

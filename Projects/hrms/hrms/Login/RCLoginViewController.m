@@ -15,9 +15,11 @@
 
 //static NSString * kLoginURLPath  = @"http://localhost:8080/HandEmployeeServer/AuroraLogin";
 static NSString * kInitWithRequestPath = @"http://localhost:8080/HandEmployeeServer";
+static NSString * kLoginURLPath =  @"http://localhost:8080/hrms/login.svc";
 
 @synthesize username;
 @synthesize password;
+@synthesize formDataRequest;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -32,22 +34,29 @@ static NSString * kInitWithRequestPath = @"http://localhost:8080/HandEmployeeSer
 -(void)dealloc{
     TT_RELEASE_SAFELY(username);
     TT_RELEASE_SAFELY(password);
+    TT_RELEASE_SAFELY(formDataRequest);
     //    TT_RELEASE_SAFELY(loginBtn);
     [super dealloc];
 }
 
 #pragma login functions
 -(IBAction)loginBtnPressed:(id)sender{
-    //请求指定地址获取登陆地址
-    /*
-    [self formRequest:kInitWithRequestPath 
-             withData:nil successSelector:@selector(login:) 
-       failedSelector:nil 
-        errorSelector:nil 
-    noNetworkSelector:nil];
     /*
      *TODO:正式使用时开启回调部分跳转，这里忽略了服务端登陆请求
-     */
+     
+    LoginModel * loginEntity = [[LoginModel alloc]init];
+    loginEntity.username = [username text];
+    loginEntity.password = [password text];
+    
+    self.formDataRequest  = [HDFormDataRequest hdRequestWithURL:kLoginURLPath 
+                                           withData:[loginEntity toDataSet] 
+                                            pattern:HDrequestPatternNormal];
+    
+    [loginEntity release];
+    [formDataRequest setDelegate:self];
+    [formDataRequest setSuccessSelector:@selector(loginSecretFetchComplete:)];
+    [formDataRequest startAsynchronous];
+    */
       
     [[self parentViewController] dismissModalViewControllerAnimated:YES];
 }
@@ -73,7 +82,7 @@ static NSString * kInitWithRequestPath = @"http://localhost:8080/HandEmployeeSer
 
 - (void)loginSecretFetchComplete:(id)dataSet
 {
-    //NSLog(@"%@",[[dataSet objectAtIndex:0]valueForKey:@"user_name"]);
+//    NSLog(@"%@",[[dataSet objectAtIndex:0]valueForKey:@"user_name"]);
     [username resignFirstResponder];
     [password resignFirstResponder];
     
@@ -136,8 +145,9 @@ static NSString * kInitWithRequestPath = @"http://localhost:8080/HandEmployeeSer
 - (void)viewDidUnload
 {
     [super viewDidUnload];
-    [self.username release];
-    [self.password release];
+    TT_RELEASE_SAFELY(username);
+    TT_RELEASE_SAFELY(password);
+    TT_RELEASE_SAFELY(formDataRequest);
     // Release any retained subviews of the main view.
     // e.g. self.myOutlet = nil;
 }
