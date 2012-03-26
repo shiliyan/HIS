@@ -17,6 +17,8 @@
 		320D7DCCE32703ACAB9A45E5 /* libThree20.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 320D7DCCE32703ACAB9A45E4 /* libThree20.a */; };
 		320F2C48872C2E2C4DF86205 /* libThree20UI.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 320F2C48872C2E2C4DF86204 /* libThree20UI.a */; };
 		B2090D1C1516CE90005EC846 /* ApproveDatabaseHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = B2090D1B1516CE90005EC846 /* ApproveDatabaseHelper.m */; };
+		B238C243151EDFBB0061FC0A /* ApproveListController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B238C242151EDFBB0061FC0A /* ApproveListController.xib */; };
+		B238C245151EE7970061FC0A /* ApproveOpinionView.xib in Resources */ = {isa = PBXBuildFile; fileRef = B238C244151EE7970061FC0A /* ApproveOpinionView.xib */; };
 		B2BC05451511E51100EF6568 /* Approve.m in Sources */ = {isa = PBXBuildFile; fileRef = B2BC053A1511E51100EF6568 /* Approve.m */; };
 		B2BC05461511E51100EF6568 /* ApproveListCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B2BC053C1511E51100EF6568 /* ApproveListCell.m */; };
 		B2BC05471511E51100EF6568 /* ApproveListController.m in Sources */ = {isa = PBXBuildFile; fileRef = B2BC053E1511E51100EF6568 /* ApproveListController.m */; };
@@ -336,6 +338,8 @@
 		320F2C48872C2E2C4DF86200 /* Three20UI.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Three20UI.xcodeproj; path = ../../Frameworks/Three20/Three20UI/Three20UI.xcodeproj; sourceTree = SOURCE_ROOT; };
 		B2090D1A1516CE90005EC846 /* ApproveDatabaseHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ApproveDatabaseHelper.h; sourceTree = "<group>"; };
 		B2090D1B1516CE90005EC846 /* ApproveDatabaseHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ApproveDatabaseHelper.m; sourceTree = "<group>"; };
+		B238C242151EDFBB0061FC0A /* ApproveListController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ApproveListController.xib; sourceTree = "<group>"; };
+		B238C244151EE7970061FC0A /* ApproveOpinionView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ApproveOpinionView.xib; sourceTree = "<group>"; };
 		B2BC05391511E51100EF6568 /* Approve.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Approve.h; sourceTree = "<group>"; };
 		B2BC053A1511E51100EF6568 /* Approve.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Approve.m; sourceTree = "<group>"; };
 		B2BC053B1511E51100EF6568 /* ApproveListCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ApproveListCell.h; sourceTree = "<group>"; };
@@ -621,18 +625,20 @@
 		B2BC05381511E51100EF6568 /* Approve */ = {
 			isa = PBXGroup;
 			children = (
-				B2FDF1A41519767F00625E14 /* entity */,
 				B2090D1A1516CE90005EC846 /* ApproveDatabaseHelper.h */,
 				B2090D1B1516CE90005EC846 /* ApproveDatabaseHelper.m */,
 				B2BC053B1511E51100EF6568 /* ApproveListCell.h */,
 				B2BC053C1511E51100EF6568 /* ApproveListCell.m */,
 				B2BC053D1511E51100EF6568 /* ApproveListController.h */,
 				B2BC053E1511E51100EF6568 /* ApproveListController.m */,
+				B238C242151EDFBB0061FC0A /* ApproveListController.xib */,
 				B2BC05401511E51100EF6568 /* ApproveListDetailController.h */,
 				B2BC05411511E51100EF6568 /* ApproveListDetailController.m */,
 				B2BC05421511E51100EF6568 /* ApproveOpinionView.h */,
 				B2BC05431511E51100EF6568 /* ApproveOpinionView.m */,
+				B238C244151EE7970061FC0A /* ApproveOpinionView.xib */,
 				B2BC05441511E51100EF6568 /* ApproveOpinionViewDelegate.h */,
+				B2FDF1A41519767F00625E14 /* entity */,
 			);
 			path = Approve;
 			sourceTree = "<group>";
@@ -1326,6 +1332,8 @@
 				B3618F8815063B9B001FE8D5 /* hrms_72.png in Resources */,
 				B3618F8C15063C8F001FE8D5 /* hurry_todo.png in Resources */,
 				B3618F8D15063C8F001FE8D5 /* normal_todo.png in Resources */,
+				B238C243151EDFBB0061FC0A /* ApproveListController.xib in Resources */,
+				B238C245151EE7970061FC0A /* ApproveOpinionView.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
