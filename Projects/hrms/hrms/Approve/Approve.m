@@ -19,6 +19,7 @@
 @synthesize creationDate;
 @synthesize dateLimit;
 @synthesize isLate;
+@synthesize screenName;
 @synthesize localStatus;
 @synthesize comment;
 @synthesize approveActionType;
@@ -33,21 +34,36 @@
     [isLate release];
     [localStatus release];
     [comment release];
-    [approveActionType release];
     
     [super dealloc];
 }
 
--(Approve *)initWithWorkflowId:(NSInteger)wid workflowName:(NSString *)wName currentStatus:(NSString *)cStatus applicant:(NSString *)a deadLine:(NSString *)dLine commitDate:(NSString *)cDate todoType:(NSString *)tType{
+-(Approve *)initWithWorkflowId:(NSUInteger)wid workflowName:(NSString *)wName nodeName:(NSString *)cStatus employeeName:(NSString *)a limitDate:(NSString *)dLine creationDate:(NSString *)cDate lsLate:(NSString *)tType{
+    return [self initWithWorkflowId:wid recordId:-1 workflowName:wName workflowDesc:nil nodeName:cStatus employeeName:a creationDate:cDate dateLimit:dLine isLate:tType screenName:nil  localStatus:nil comment:nil approveActionType:-1];
+    
+}
+
+-(Approve *)initWithWorkflowId:(NSUInteger)wid workflowName:(NSString *)wName nodeName:(NSString *)node employeeName:(NSString *)employee dateLimit:(NSString *)limit creationDate:(NSString *)creation isLate:(NSString *)late comment:(NSString *)cmt{
+    
+    return [self initWithWorkflowId:wid recordId:-1 workflowName:wName workflowDesc:nil nodeName:node employeeName:employee creationDate:creation dateLimit:limit isLate:late screenName:nil localStatus:nil comment:cmt approveActionType:-1];
+}
+
+-(Approve *)initWithWorkflowId:(NSUInteger)wid recordId:(NSUInteger)rId workflowName:(NSString *)wName workflowDesc:(NSString *)wDesc nodeName:(NSString *)node employeeName:(NSString *)employee creationDate:(NSString *)creation dateLimit:(NSString *)limit  isLate:(NSString *)late screenName:(NSString *)screen localStatus:(NSString *)status comment:(NSString *)cmt approveActionType:(NSUInteger)actionType{
     
     if (self = [super init]){
         self.workflowId = wid;
+        self.recordId = rId;
         self.workflowName = wName;
-        self.nodeName = cStatus;
-        self.employeeName = a;
-        self.dateLimit = dLine;
-        self.creationDate = cDate;
-        self.isLate = tType;
+        self.workflowDesc = wDesc;
+        self.nodeName = node;
+        self.employeeName = employee;
+        self.creationDate = creation;
+        self.dateLimit = limit;
+        self.isLate = late;
+        self.screenName = screen;
+        self.localStatus = status;
+        self.comment = cmt;
+        self.approveActionType = actionType;
     }
     
     return self;
@@ -65,9 +81,10 @@
         self.creationDate = [dic objectForKey:APPROVE_PROPERTY_CREATION_DATE];
         self.dateLimit = [dic objectForKey:APPROVE_PROPERTY_DATE_LIMIT];
         self.isLate = [dic objectForKey:APPROVE_PROPERTY_IS_LATE];
+        self.screenName = [dic objectForKey:APPROVE_PROPERTY_SCREEN_NAME];
         self.localStatus = [dic objectForKey:APPROVE_PROPERTY_LOCAL_STATUS];
         self.comment = [dic objectForKey:APPROVE_PROPERTY_COMMENT];
-        self.approveActionType = [dic objectForKey:APPROVE_PROPERTY_APPROVE_ACTION_TYPE];
+        self.approveActionType = [[dic objectForKey:APPROVE_PROPERTY_APPROVE_ACTION_TYPE]intValue];
     }
     
     return self;
