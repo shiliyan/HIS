@@ -40,6 +40,6 @@ typedef enum {
 -(id)initWithURL:(NSURL *)newURL;
 
 //设置提交参数
--(void)setPostParameter :(id) para;
+-(void)setPostParameter :(id) data;
 
 @end

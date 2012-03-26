@@ -21,9 +21,4 @@
      errorSelector:(SEL) errorSelector
  noNetworkSelector:(SEL) noNetworkSelector;
 
--(ASIWebPageRequest *) webPageRequestConfig:(ASIWebPageRequest *) webPageRequest
-                                        url:(NSString *) theURL
-                              loadSucceeded:(SEL) scuccessSelector
-                                 loadFailed:(SEL) failedSelector;
-
 @end

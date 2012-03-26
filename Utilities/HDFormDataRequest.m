@@ -48,9 +48,8 @@
     
     [request setRequestPattern:requestPattern];
     //set post parameter
-    if (data != nil) {
-        [request setPostParameter:data];
-    }
+   
+    [request setPostParameter:data];
     return request;
 }
 
@@ -69,6 +68,7 @@
             //set cookies
             [self setUseCookiePersistence:YES];
             [self setRequestCookies:[NSMutableArray arrayWithArray:[[NSHTTPCookieStorage sharedHTTPCookieStorage] cookies]]];
+            [self setResponseEncoding:NSUTF8StringEncoding];
             return self;
             break;
             
@@ -92,20 +92,26 @@
 }
 
 //为请求参数添加头
--(void) setPostParameter :(id) datas
+-(void) setPostParameter :(id) data
 {
-    [self setPostValue:[[NSDictionary dictionaryWithObject:datas 
-                                                    forKey:@"parameter"] JSONRepresentation] 
+     if (data != nil) {
+    [self setPostValue:[[NSDictionary dictionaryWithObject:data 
+                                                    forKey:@"parameter"] JSONRepresentation]
                 forKey:@"_request_data"];
+     }
 }
 
 //通信成功回调函数，根据也会返回状态调用不同的函数，成功后返回一个类似与dataSet的数组
 -(void)requestFetchSuccess:(ASIHTTPRequest *)theRequest
 {
-    //转换json数据为对象
-    //        NSLog(@"%@",[theRequest responseString]);
-    //debug:加入返回状态的判断，状态200才进行解析
+    
+//  NSLog(@"HDFormDataRequest.m -107 line \n\n%@",[theRequest responseString]);
+    /*
+     * debug:加入返回状态的判断，状态200才进行解析 
+     * Mar 22 2012
+     */
     if ([theRequest responseStatusCode] ==200) {
+        //转换json数据为对象
         id jsonData = [[theRequest responseString] JSONValue];
         BOOL successFlg = [[jsonData valueForKey:@"success"]boolValue];
         //返回状态为成功
