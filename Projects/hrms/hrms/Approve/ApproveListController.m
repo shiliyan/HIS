@@ -138,6 +138,10 @@
             adoptButton.enabled = YES;
             refuseButton.enabled = YES;
         }
+    }else{
+        [ [TTNavigator navigator] openURLAction:[[[TTURLAction actionWithURLPath:@"tt://approve_detail/Detail"]applyAnimated:YES] applyQuery: [NSDictionary dictionaryWithObject: [approveListArray objectAtIndex:indexPath.row] forKey:@"detailRecord"]]];
+        
+        [tableView deselectRowAtIndexPath:indexPath animated:YES];
     }
 }
 
@@ -249,10 +253,9 @@
 #pragma mark - 从服务器端取数据成功
 //从服务器端取数据成功
 -(void)querySuccess:(NSMutableArray *)dataset{
-    
-    NSDate *now = [NSDate date];
+        NSDate *now = [NSDate date];
     [bottomStatusLabel setText:[NSString stringWithFormat:@"更新成功 %@",now]];
-    
+
     //responseArray，返回数据解析后存放
     NSMutableArray *responseArray =[[NSMutableArray alloc]init];
     NSMutableArray *tempArray = [NSMutableArray array];
@@ -267,6 +270,16 @@
             if (localEntity.recordId == responseEntity.recordId) {
                 foundTheSame = true;
                 break;
+            }
+        }
+        
+        //说明在本地待办中没有找到recordId相同的项
+        if (!foundTheSame) {
+            for (Approve *localWaitingEntity in commitListArray) {
+                if (localWaitingEntity.recordId == responseEntity.recordId) {
+                    foundTheSame = true;
+                    break;
+                }
             }
         }
         
@@ -432,13 +445,15 @@
 -(void)commitApproveError:(NSArray *)dataset{
 
     //清空数据表中存在的待提交的记录
-    NSString *deleteSql = [NSString stringWithFormat:@"delete from %@ where %@ = '%@'",TABLE_NAME_APPROVE_LIST,APPROVE_PROPERTY_LOCAL_STATUS,@"WAITING"];
+    NSString *deleteSql = [NSString stringWithFormat:@"delete from %@ where %@ in ('%@','%@') ",TABLE_NAME_APPROVE_LIST,APPROVE_PROPERTY_LOCAL_STATUS,@"WAITING",@"NORMAL"];
     [dbHelper.db open];
     [dbHelper.db executeUpdate:deleteSql];
     
-    
+    NSMutableArray *tempArray = [NSMutableArray array];
+    [tempArray addObjectsFromArray:approveListArray];
+    [tempArray addObjectsFromArray:commitListArray];
     //把待提交array中的数据存表
-    for (Approve *approve in commitListArray) {
+    for (Approve *approve in tempArray) {
         NSString *updateSql = [NSString stringWithFormat:@"insert into %@(%@,%@,%@,%@,%@,%@,%@,%@,%@,%@,%@,%@,%@) values ('%i','%i','%@','%@','%@','%@','%@','%@','%@','%@','%@','%i','%@')",TABLE_NAME_APPROVE_LIST,APPROVE_PROPERTY_WORKFLOW_ID,APPROVE_PROPERTY_RECORD_ID,APPROVE_PROPERTY_WORKFLOW_NAME,APPROVE_PROPERTY_WORKFLOW_DESC,APPROVE_PROPERTY_NODE_NAME,APPROVE_PROPERTY_EMPLOYEE_NAME,APPROVE_PROPERTY_CREATION_DATE,APPROVE_PROPERTY_DATE_LIMIT,APPROVE_PROPERTY_IS_LATE,APPROVE_PROPERTY_LOCAL_STATUS,APPROVE_PROPERTY_COMMENT,APPROVE_PROPERTY_APPROVE_ACTION_TYPE,APPROVE_PROPERTY_SCREEN_NAME,approve.workflowId,approve.recordId,approve.workflowName,approve.workflowDesc,approve.nodeName,approve.employeeName,approve.creationDate,approve.dateLimit,approve.isLate,approve.localStatus,approve.comment,approve.approveActionType,approve.screenName];
         NSLog(@"%@, %@",NSStringFromSelector(_cmd),updateSql);
         [dbHelper.db executeUpdate:updateSql];
