@@ -110,18 +110,25 @@ toViewController:[HDApproveDetailViewController class]
 -(void) applicationDidEnterBackground:(UIApplication *)application
 {
     //    NSLog(@"%@",@"exit");
-    //    TTNavigator * nav = [TTNavigator navigator];
+//        TTNavigator * nav = [TTNavigator navigator];
     
     //    if (![[nav visibleViewController] isKindOfClass:[RCLoginViewController class]]) {
     //        [nav openURLAction:[TTURLAction actionWithURLPath:@"tt://approve"]];
     //        [[TTNavigator navigator] openURLAction:[[TTURLAction actionWithURLPath:@"tt://login"]applyTransition:UIViewAnimationTransitionFlipFromLeft]];
     //    }
+//    [[TTNavigator navigator].URLMap removeURL:@"tt://approve"];
     
+//    [nav removeAllViewControllers];
 }
 
 -(void) applicationDidBecomeActive:(UIApplication *)application
 {
+    TTNavigator * nav = [TTNavigator navigator];
     
+    if ([[nav visibleViewController] isKindOfClass:[ApproveListController class]]) {
+//        [[TTNavigator navigator] openURLAction:[TTURLAction actionWithURLPath:@"tt://approve"]];
+        [[nav visibleViewController] loadView];
+    }
 }
 
 - (void)applicationWillTerminate:(UIApplication *)application
