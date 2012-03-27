@@ -52,7 +52,7 @@
     //set post parameter
    
     [request setPostParameter:data];
-    return [request autorelease];
+    return request;
 }
 
 -(void)dealloc{
