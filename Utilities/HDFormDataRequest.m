@@ -9,7 +9,9 @@
 #import "HDFormDataRequest.h"
 
 @interface HDFormDataRequest()
-//-(void)requestFetchSuccess:(ASIHTTPRequest *)theRequest;
+
+//设置请求模式，例如cookies之类的默认模式
+-(id)setRequestPattern:(HDrequestPattern) requestPattern;
 //默认的错误回调函数
 -(void)aruoraRequestError:(NSString *) errorMessage;
 @end
@@ -50,7 +52,7 @@
     //set post parameter
    
     [request setPostParameter:data];
-    return request;
+    return [request autorelease];
 }
 
 -(void)dealloc{
@@ -76,6 +78,9 @@
             return self;
             break;
     }
+    /*
+     *debug:设置默认的return　NO,调用时的警告可能和这个有关系
+     */
     NSLog(@"提交模式设置错误");
     return NO;
 }
