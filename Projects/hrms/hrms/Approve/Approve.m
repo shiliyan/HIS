@@ -79,7 +79,8 @@
         self.nodeName = [dic objectForKey:APPROVE_PROPERTY_NODE_NAME];
         self.employeeName = [dic objectForKey:APPROVE_PROPERTY_EMPLOYEE_NAME];
         self.creationDate = [dic objectForKey:APPROVE_PROPERTY_CREATION_DATE];
-        self.dateLimit = [dic objectForKey:APPROVE_PROPERTY_DATE_LIMIT];
+        NSString *dl = [dic objectForKey:APPROVE_PROPERTY_DATE_LIMIT];
+        self.dateLimit = (dl == nil ? @"" : dl);
         self.isLate = [[dic objectForKey:APPROVE_PROPERTY_IS_LATE]integerValue];
         self.screenName = [dic objectForKey:APPROVE_PROPERTY_SCREEN_NAME];
         self.localStatus = [dic objectForKey:APPROVE_PROPERTY_LOCAL_STATUS];
