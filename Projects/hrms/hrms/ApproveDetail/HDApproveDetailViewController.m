@@ -7,7 +7,7 @@
 //
 
 #import "HDApproveDetailViewController.h"
-
+#import "ApproveOpinionView.h"
 
 @interface HDApproveDetailViewController ()
 -(void)setActionToolbar:(NSMutableArray *)dataSet;
@@ -16,12 +16,15 @@
 @implementation HDApproveDetailViewController
 
 @synthesize approveDetailRecord;
-@synthesize webPageRequest;
-@synthesize formDataRequest;
+@synthesize submitAction;
 
-static NSString * kDetailUrl = @"http://www.google.com.hk/";
-static NSString * kToolBarActionUrl = @"http://localhost:8080/hr_new/autocrud/ios.IOS_APPROVE.ios_workflow_approve_action_query/query";
-static NSString * kDoActionUrl = @"http://localhost:8080/hr_new/autocrud/ios.IOS_APPROVE.ios_workflow_approve_action_submit/update";
+@synthesize webPageRequest;
+@synthesize toolBarDataRequest;
+@synthesize actionRequest;
+
+static NSString * kBaseUrl = @"http://10.213.208.66:8080/hr_new/modules/ios/IOS_APPROVE/";
+static NSString * kToolBarActionUrl = @"http://10.213.208.66:8080/hr_new/autocrud/ios.IOS_APPROVE.ios_workflow_approve_action_query/query";
+static NSString * kDoActionUrl = @"http://10.213.208.66:8080/hr_new/autocrud/ios.IOS_APPROVE.ios_workflow_approve_action_submit/update";
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -36,16 +39,71 @@ static NSString * kDoActionUrl = @"http://localhost:8080/hr_new/autocrud/ios.IOS
 {
     self = [super init];
     if (self) {
-        self.title = name;
         self.approveDetailRecord = [record objectForKey:@"detailRecord"];
+        
+        self.submitAction = [NSMutableDictionary dictionaryWithObject: [NSNumber numberWithInteger: self.approveDetailRecord.recordId ] forKey:@"record_id"];
+        
+        self.title = approveDetailRecord.nodeName;
     }
     return self;
+}
+
+- (void)dealloc 
+{
+//    [[TTNavigator navigator].URLMap removeURL:@"tt://actionCommentView"];
+    [webPageRequest clearDelegatesAndCancel];
+    TT_RELEASE_SAFELY(actionRequest);
+    TT_RELEASE_SAFELY(toolBarDataRequest);
+    TT_RELEASE_SAFELY(webPageRequest);
+    [super dealloc];
+}
+
+#pragma -mark 提交时遮罩
+- (void)addActivityLabelWithStyle:(TTActivityLabelStyle)style{
+    UIView *backView = [[[UIView alloc]initWithFrame:CGRectMake(0, 0, 320, 480)] autorelease];
+    backView.backgroundColor = [UIColor colorWithRed:0 green:0 blue:0 alpha:0.3];
+    backView.tag = BACK_VIEW;
+    
+    TTActivityLabel* label = [[[TTActivityLabel alloc] initWithStyle:style] autorelease];
+    label.text = @"Loading...";
+    [label sizeToFit];
+    label.frame = CGRectMake(0, 180, self.view.width, label.height);
+    label.tag = ACTIVE_LABEL;
+    
+    [backView addSubview:label];
+    [self.view addSubview:backView];
+}
+
+
+-(void)ApproveOpinionViewDismissed:(int)resultCode messageDictionary:(NSDictionary *)dictionary
+{
+    if (resultCode == RESULT_OK) {
+        //开启遮罩
+        [self addActivityLabelWithStyle:TTActivityLabelStyleWhite];
+        //提交
+        [self dismissModalViewControllerAnimated:YES];
+        [self.submitAction setObject:[dictionary objectForKey:@"comment"] forKey:@"comment"];
+        
+        //TODO:未开启网络提交　　
+        /*
+        self.actionRequest  = [HDFormDataRequest hdRequestWithURL:kDoActionUrl 
+                                                              withData:self.submitAction
+                                                               pattern:HDrequestPatternNormal];
+        
+        [toolBarDataRequest setDelegate:self];
+        [toolBarDataRequest setSuccessSelector:@selector(doAdctionSuccess:)];
+        [toolBarDataRequest startAsynchronous];
+        */
+    }else {
+        //解除模态视图
+        [self dismissModalViewControllerAnimated:YES];
+    }
 }
 
 #pragma -mark 设置工具栏动作
 -(void)setActionToolbar:(NSMutableArray *)dataSet
 {
-//    NSLog(@"HDApproveDetailViewController.m -48 line \n\n %@,%i",NSStringFromSelector(_cmd),[dataSet count]);
+    //    NSLog(@"HDApproveDetailViewController.m -48 line \n\n %@,%i",NSStringFromSelector(_cmd),[dataSet count]);
     NSMutableArray * toolbarItems = [[NSMutableArray alloc]init];
     
     for (NSDictionary * actionRecord in dataSet) {
@@ -57,7 +115,12 @@ static NSString * kDoActionUrl = @"http://localhost:8080/hr_new/autocrud/ios.IOS
         [action setTag:[[actionRecord objectForKey:@"action_id"]integerValue]];
         [toolbarItems addObject:action];
         TT_RELEASE_SAFELY(action);
+        UIBarButtonItem * flexibleSpace = [[UIBarButtonItem alloc]initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace target:self action:nil];
+        [toolbarItems addObject:flexibleSpace];
+        TT_RELEASE_SAFELY(flexibleSpace);
     }
+    
+    [toolbarItems removeLastObject];
     
     [toolbar setItems:toolbarItems animated:YES];
     TT_RELEASE_SAFELY(toolbarItems);
@@ -65,25 +128,23 @@ static NSString * kDoActionUrl = @"http://localhost:8080/hr_new/autocrud/ios.IOS
 
 -(void)doAction:(id)sender
 {
-    NSLog(@"%i",[sender tag]);
-    NSMutableDictionary * action = [NSMutableDictionary dictionaryWithObject:@"update" forKey:@"_status"];
-    [action setValue:[NSNumber numberWithInteger:[sender tag]] forKey:@"action_id"];
-    [action setValue:@"可" forKey:@"comment"];
-    [action setValue:[NSNumber numberWithInteger: self.approveDetailRecord.recordId ] forKey:@"record_id"];
+
+    [self.submitAction setObject:[NSNumber numberWithInteger:[sender tag]] forKey:@"action_id"];
     
-    
-    self.formDataRequest  = [HDFormDataRequest hdRequestWithURL:kDoActionUrl 
-                                                       withData:action
-                                                        pattern:HDrequestPatternNormal];
-    
-    [formDataRequest setDelegate:self];
-    [formDataRequest setSuccessSelector:@selector(doAdctionSuccess:)];
-    [formDataRequest startAsynchronous];
+    ApproveOpinionView * opinionViewController = [[[ApproveOpinionView alloc]initWithNibName:@"ApproveOpinionView" bundle:nil] autorelease];
+    [opinionViewController setControllerDelegate:self];
+    opinionViewController.opinionTextView.text = @"可，同意";
+    [self presentModalViewController:opinionViewController animated:YES];
 }
 
 -(void) doAdctionSuccess:(NSArray *) dataSet
 {
+    //TODO:@~@
+    //解除遮罩
+    [[self.view viewWithTag:BACK_VIEW]removeFromSuperview];
     //退回到待办事项列表
+    //写数据库
+    
     [[TTNavigator navigator].topViewController.navigationController popViewControllerAnimated:YES];
 }
 
@@ -95,23 +156,37 @@ static NSString * kDoActionUrl = @"http://localhost:8080/hr_new/autocrud/ios.IOS
 
 - (void)webPageLoadSucceeded:(ASIHTTPRequest *)theRequest
 {
-	NSURL *baseURL;
+	
+    NSURL *baseURL;
     //	if ([replaceURLsSwitch isOn]) {
     baseURL = [theRequest url];
+    
+    if([theRequest responseStatusCode] == 404)
+    {
+        [webView loadHTMLString:@"<h1>ERROR</h1><br/><h1>404</h1>" baseURL:baseURL];
+    }
+    
+    if([theRequest responseStatusCode] == 500)
+    {
+        [webView loadHTMLString:@"<h1>ERROR</h1><br/><h1>500</h1>" baseURL:baseURL];
+    }
     
     // If we're using ASIReplaceExternalResourcesWithLocalURLs, we must set the baseURL to point to our locally cached file
     //	} else {
     //		baseURL = [NSURL fileURLWithPath:[request downloadDestinationPath]];
     //	}
-    
-	if ([theRequest downloadDestinationPath]) {
-		NSString *response = [NSString stringWithContentsOfFile:[theRequest downloadDestinationPath] encoding:[theRequest responseEncoding] error:nil];
-        //		[responseField setText:response];
-		[webView loadHTMLString:response baseURL:baseURL];
-	} else {
-        //		[responseField setText:[theRequest responseString]];
-		[webView loadHTMLString:[theRequest responseString] baseURL:baseURL];
-	}
+    if([theRequest responseStatusCode] == 200)
+    {
+        if ([theRequest downloadDestinationPath])
+        {
+            NSString *response = [NSString stringWithContentsOfFile:[theRequest downloadDestinationPath] encoding:[theRequest responseEncoding] error:nil];
+            //		[responseField setText:response];
+            [webView loadHTMLString:response baseURL:baseURL];
+        } else {
+            //		[responseField setText:[theRequest responseString]];
+            [webView loadHTMLString:[theRequest responseString] baseURL:baseURL];
+        }
+    }
 	
     //	[urlField setText:[[theRequest url] absoluteString]];
 }
@@ -125,17 +200,17 @@ static NSString * kDoActionUrl = @"http://localhost:8080/hr_new/autocrud/ios.IOS
 
 //页面加载开始
 - (void)webViewDidStartLoad:(UIWebView *)webView{
-
+    
 }
 
 //页面加载完成
 - (void)webViewDidFinishLoad:(UIWebView *)webView{
-
+    
 }
 
 //页面加载失败
 - (void)webView:(UIWebView *)webView didFailLoadWithError:(NSError *)error{
-
+    
 }
 
 #pragma -mark 页面load事件
@@ -148,25 +223,25 @@ static NSString * kDoActionUrl = @"http://localhost:8080/hr_new/autocrud/ios.IOS
      *这里暂时取出record_id拼接一个record_id
      */
     
-    NSLog(@"HDAppreoveDetailController -133 \n\n%i",self.approveDetailRecord.recordId);
+    NSLog(@"HDAppreoveDetailController -152 \n\n%i",self.approveDetailRecord.recordId);
     NSDictionary * data = [NSDictionary dictionaryWithObject:[NSNumber numberWithInteger:self.approveDetailRecord.recordId] forKey:@"record_id"];
     //////////////////////////////////////
-    self.formDataRequest = [HDFormDataRequest hdRequestWithURL:kToolBarActionUrl 
+    self.toolBarDataRequest = [HDFormDataRequest hdRequestWithURL:kToolBarActionUrl 
                                                       withData:data
                                                        pattern:HDrequestPatternNormal];
     
-    [formDataRequest setSuccessSelector: @selector(setActionToolbar:)];
-    [formDataRequest setDelegate:self];
-    [formDataRequest startAsynchronous];
+    [toolBarDataRequest setSuccessSelector: @selector(setActionToolbar:)];
+    [toolBarDataRequest setDelegate:self];
+    [toolBarDataRequest startAsynchronous];
     
     //   [self formRequest:@"" withData:[approveRecord toDataSet] successSelector:@selector(setToolbar:) failedSelector:nil errorSelector:nil noNetworkSelector:nil];
-    //request a screen to get the approve detail view
-    NSString * base_url = @"http://localhost:8080/hr_new/modules/ios/IOS_APPROVE/BX_ReimbursementWorkFlow.screen";
-    NSLog(@"%@",[NSString stringWithFormat:@"%@%@",base_url , self.approveDetailRecord.screenName]);
-//    NSString * screenUrl = [NSString stringWithFormat:@"%@%@",base_url , self.approveDetailRecord.screenName];
     
-    self.webPageRequest = [ASIWebPageRequest requestWithURL:[NSURL URLWithString:base_url]];
-    [self requestConfig:0];
+    //request a screen to get the approve detail view
+    //    NSLog(@"%@",[NSString stringWithFormat:@"%@%@?record_id=%i",kBaseUrl , self.approveDetailRecord.screenName,approveDetailRecord.recordId]);
+    NSString * screenUrl = [NSString stringWithFormat:@"%@%@?record_id=%i",kBaseUrl , self.approveDetailRecord.screenName,approveDetailRecord.recordId];
+    
+    self.webPageRequest = [ASIWebPageRequest requestWithURL:[NSURL URLWithString:screenUrl]];
+    [self requestConfig:HDrequestPatternNormal];
 	[webPageRequest setDidFailSelector:@selector(webPageLoadFailed:)];
 	[webPageRequest setDidFinishSelector:@selector(webPageLoadSucceeded:)];
 	[webPageRequest setDelegate:self];
@@ -200,6 +275,8 @@ static NSString * kDoActionUrl = @"http://localhost:8080/hr_new/autocrud/ios.IOS
     [super viewDidUnload];
     [webPageRequest clearDelegatesAndCancel];
     TT_RELEASE_SAFELY(webPageRequest);
+    TT_RELEASE_SAFELY(toolBarDataRequest);
+    TT_RELEASE_SAFELY(actionRequest);
     // Release any retained subviews of the main view.
     // e.g. self.myOutlet = nil;
 }

@@ -8,22 +8,31 @@
 
 #import <UIKit/UIKit.h>
 #import "Approve.h"
-#import "ASIWebPageRequest.h"
-#import "ASIDownloadCache.h"
+#import "ApproveOpinionViewDelegate.h"
+
+static const NSInteger BACK_VIEW =32;
+static const NSInteger ACTIVE_LABEL =64;
 
 @interface HDApproveDetailViewController : UIViewController
+< ApproveOpinionViewDelegate >
 {
     IBOutlet UIWebView * webView;
     IBOutlet UIToolbar * toolbar;
     
     Approve * approveDetailRecord;
+    NSMutableDictionary * submitAction;
+    
     ASIWebPageRequest * webPageRequest;
-    HDFormDataRequest *formDataRequest;
+    HDFormDataRequest * toolBarDataRequest;
+    HDFormDataRequest * actionRequest;
 }
 
 @property (retain,nonatomic) Approve * approveDetailRecord;
+@property (retain,nonatomic) NSMutableDictionary * submitAction;
+
 @property (retain,nonatomic) ASIWebPageRequest * webPageRequest;
-@property (retain,nonatomic) HDFormDataRequest * formDataRequest;
+@property (retain,nonatomic) HDFormDataRequest * toolBarDataRequest;
+@property (retain,nonatomic) HDFormDataRequest * actionRequest;
 
 -(id)initWithName:(NSString*) name query:(NSDictionary *) record;
 
