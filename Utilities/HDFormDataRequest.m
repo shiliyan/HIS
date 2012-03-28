@@ -13,7 +13,7 @@
 //设置请求模式，例如cookies之类的默认模式
 -(id)setRequestPattern:(HDrequestPattern) requestPattern;
 //默认的错误回调函数
--(void)aruoraRequestError:(NSString *) errorMessage;
+-(void) aruoraRequestError:(NSString *) errorMessage withRequest:(ASIHTTPRequest *) request;
 @end
 
 @implementation HDFormDataRequest
@@ -134,7 +134,9 @@
             }
             
             if (auroraDelegate && [auroraDelegate respondsToSelector:successSelector]) {
-                [auroraDelegate performSelector:successSelector withObject:dataSet];
+                [auroraDelegate performSelector:successSelector 
+                                     withObject:dataSet 
+                                     withObject:theRequest];
             }else {
                 NSLog(@"Aurora Request Success");
             }
@@ -146,9 +148,11 @@
             if (errorObj != nil) {
                 NSString * errorMessage = [errorObj valueForKey:@"message"];
                 if (auroraDelegate && [auroraDelegate respondsToSelector:errorSelector]) {
-                    [auroraDelegate performSelector:errorSelector withObject:errorMessage];
+                    [auroraDelegate performSelector:errorSelector 
+                                         withObject:errorMessage 
+                                         withObject:theRequest];
                 }else{
-                    [self aruoraRequestError:errorMessage];
+                    [self aruoraRequestError:errorMessage withRequest:theRequest];
                 }
             }
             
@@ -179,7 +183,7 @@
 }
 
 //aurora框架的错误消息，可以传入回调函数覆盖
--(void) aruoraRequestError:(NSString *) errorMessage
+-(void) aruoraRequestError:(NSString *) errorMessage withRequest:(ASIHTTPRequest *) request
 {
     NSLog(@"Aruora Request Error");
     NSLog(@"%@",errorMessage);

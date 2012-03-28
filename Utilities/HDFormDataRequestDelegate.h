@@ -15,11 +15,11 @@
 @protocol HDFormDataRequestDelegate <NSObject>
 
 @optional
-- (void)successSelector:(id)dataSet;
+- (void)successSelector:(id)dataSet  withRequest:(HDFormDataRequest *) request;
 
-- (void)serverErrorSelector:(NSString *)serverErrorMessage;
+- (void)serverErrorSelector:(NSString *)serverErrorMessage theRequest:(HDFormDataRequest *) request;
 
-- (void)errorSelector:(NSString *)errorMessage;
+- (void)errorSelector:(NSString *)errorMessage theRequest:(HDFormDataRequest *)request;
 
 - (void)asiFaildSelector:(HDFormDataRequest *) theRequest;
 
