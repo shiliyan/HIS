@@ -23,13 +23,16 @@
 -(void)showOpinionView:(int)approveType;
 
 -(void)querySuccess:(NSMutableArray *)dataset;
+-(void)queryFailed;
 
--(void)moveRows:(NSArray *)selectedIndexPaths;
+
 //将审批数据提交到服务器
 
--(void)commitApproveSuccess:(NSArray *)dataset;
--(void)commitApproveError:(NSArray *)dataset;
+-(void)commitApproveSuccess:(NSArray *)dataset withRequest:(ASIHTTPRequest *)request;
+-(void)commitApproveError:(NSString *)errorMessage withRequest:(ASIHTTPRequest *)request;
+-(void)commitApproveServerError;
 -(void)commitApproveNetWorkError:(ASIHTTPRequest *)request;
+-(void)commitRequestQueueFinished:(ASINetworkQueue *)queue;
 @end
 
 @implementation ApproveListController
@@ -38,6 +41,8 @@
 @synthesize approveListArray;
 @synthesize problemListArray;
 @synthesize commitListArray;
+@synthesize formRequest;
+@synthesize networkQueue;
 
 @synthesize dataTableView;
 @synthesize normalToolbar;
@@ -112,7 +117,11 @@
     UILabel *currentStatusLabel = (UILabel *)[cell viewWithTag:CURRENTSTATUS_TEXTVIEW_TAG];
     UILabel *deadLineLabel = (UILabel *)[cell viewWithTag:DEADLINE_TEXTVIEW_TAG];
     
-    typeImage.image = [UIImage imageNamed:@"hurry_todo.png"];
+    if(rowData.isLate == 0){
+        typeImage.image = [UIImage imageNamed:@"normal_todo.png"];
+    }else{
+        typeImage.image = [UIImage imageNamed:@"hurry_todo.png"];
+    }
     workFlowNameLabel.text = rowData.workflowName;
     applicantLabel.text = rowData.employeeName;
     commitDateLabel.text = rowData.creationDate;
@@ -172,7 +181,10 @@
 -(void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath{
     
     if (editingStyle == UITableViewCellEditingStyleDelete){
-        
+        [tableView setEditing:NO animated:YES];
+        [self.navigationItem.rightBarButtonItem setTitle:@"Edit"];
+        [tableView selectRowAtIndexPath:indexPath animated:NO scrollPosition:UITableViewScrollPositionNone];
+        [self showOpinionView:ACTION_TYPE_ADOPT];
     }
     return;
 }
@@ -243,17 +255,23 @@
 #pragma mark - 刷新数据
 -(void)refreshTable{
     
-    //2 获取最新的待办列表
-    [self formRequest:@"http://localhost:8080/hr_new/autocrud/ios.IOS_APPROVE.ios_workflow_approve_query/query" withData:nil successSelector:@selector(querySuccess:) failedSelector:nil errorSelector:nil noNetworkSelector:nil];
-    [bottomStatusLabel setText:@"正在刷新"];
+    // 获取最新的待办列表
     
+    self.formRequest  = [HDFormDataRequest hdRequestWithURL:@"http://localhost:8080/hr_new/autocrud/ios.IOS_APPROVE.ios_workflow_approve_query/query" pattern:HDrequestPatternNormal];
+    
+    [formRequest setDelegate:self];
+    [formRequest setSuccessSelector:@selector(querySuccess:)];
+    [formRequest setErrorSelector:@selector(queryFailed)];
+    [formRequest setAsiFaildSelector:@selector(queryFailed)];
+    [formRequest setServerErrorSelector:@selector(queryFailed)];
+    [formRequest startAsynchronous];
 }
 
 
 #pragma mark - 从服务器端取数据成功
 //从服务器端取数据成功
 -(void)querySuccess:(NSMutableArray *)dataset{
-        NSDate *now = [NSDate date];
+    NSDate *now = [NSDate date];
     [bottomStatusLabel setText:[NSString stringWithFormat:@"更新成功 %@",now]];
 
     //responseArray，返回数据解析后存放
@@ -293,6 +311,13 @@
     }
     [approveListArray addObjectsFromArray:tempArray];
     
+    [dbHelper.db open];
+    for (Approve *approve in tempArray) {
+        NSString *sql = [NSString stringWithFormat:@"insert into %@ (%@,%@,%@,%@,%@,%@,%@,%@,%@,%@,%@,%@,%@) values ('%i','%i','%@','%@','%@','%@','%@','%@','%i','%@','%@','%i','%@');",TABLE_NAME_APPROVE_LIST,APPROVE_PROPERTY_WORKFLOW_ID,APPROVE_PROPERTY_RECORD_ID,APPROVE_PROPERTY_WORKFLOW_NAME,APPROVE_PROPERTY_WORKFLOW_DESC,APPROVE_PROPERTY_NODE_NAME,APPROVE_PROPERTY_EMPLOYEE_NAME,APPROVE_PROPERTY_CREATION_DATE,APPROVE_PROPERTY_DATE_LIMIT,APPROVE_PROPERTY_IS_LATE,APPROVE_PROPERTY_LOCAL_STATUS,APPROVE_PROPERTY_COMMENT,APPROVE_PROPERTY_APPROVE_ACTION_TYPE,APPROVE_PROPERTY_SCREEN_NAME,approve.workflowId,approve.recordId,approve.workflowName,approve.workflowDesc,approve.nodeName,approve.employeeName,approve.creationDate,approve.dateLimit,approve.isLate,approve.localStatus,approve.comment,approve.approveActionType,approve.screenName];
+        [dbHelper.db executeUpdate:sql];
+    }
+    [dbHelper.db close];
+    
     [tempArray removeAllObjects];
     for (Approve *localEntity in approveListArray) {
         BOOL foundTheSame = false;
@@ -315,21 +340,20 @@
     
 
     [dbHelper.db open];
-    [tempArray removeAllObjects];
-    [tempArray addObjectsFromArray:approveListArray];
-    [tempArray addObjectsFromArray:problemListArray];
-    //插表，但这步应该放到一个业务处理对象中
-    [dbHelper.db executeUpdate:[NSString stringWithFormat:@"delete from %@ where %@ in('ERROR','NORMAL'); ",TABLE_NAME_APPROVE_LIST,APPROVE_PROPERTY_LOCAL_STATUS]];
-    for (Approve *approve in tempArray) {
-        NSString *sql = [NSString stringWithFormat:@"insert into %@ (%@,%@,%@,%@,%@,%@,%@,%@,%@,%@,%@,%@,%@) values ('%i','%i','%@','%@','%@','%@','%@','%@','%@','%@','%@','%i','%@');",TABLE_NAME_APPROVE_LIST,APPROVE_PROPERTY_WORKFLOW_ID,APPROVE_PROPERTY_RECORD_ID,APPROVE_PROPERTY_WORKFLOW_NAME,APPROVE_PROPERTY_WORKFLOW_DESC,APPROVE_PROPERTY_NODE_NAME,APPROVE_PROPERTY_EMPLOYEE_NAME,APPROVE_PROPERTY_CREATION_DATE,APPROVE_PROPERTY_DATE_LIMIT,APPROVE_PROPERTY_IS_LATE,APPROVE_PROPERTY_LOCAL_STATUS,APPROVE_PROPERTY_COMMENT,APPROVE_PROPERTY_APPROVE_ACTION_TYPE,APPROVE_PROPERTY_SCREEN_NAME,approve.workflowId,approve.recordId,approve.workflowName,approve.workflowDesc,approve.nodeName,approve.employeeName,approve.creationDate,approve.dateLimit,approve.isLate,approve.localStatus,approve.comment,approve.approveActionType,approve.screenName];
-        NSLog(@"%@, %@",NSStringFromSelector(_cmd),sql);
-        [dbHelper.db executeUpdate:sql];
+    //将有差异的数据存表
+    for (Approve *entity in tempArray) {
+        [dbHelper.db executeUpdate:[NSString stringWithFormat:@"update %@ set %@ = '%@' where %@ = '%i'",TABLE_NAME_APPROVE_LIST,APPROVE_PROPERTY_LOCAL_STATUS,entity.localStatus,APPROVE_PROPERTY_RECORD_ID,entity.recordId]];
     }
-    
     [dbHelper.db close];
     
     [dataTableView reloadData];
     [responseArray release];
+}
+
+-(void)queryFailed{
+    UIAlertView *alert = [[UIAlertView alloc]initWithTitle:@"提示" message:@"刷新数据失败" delegate:self cancelButtonTitle:@"好" otherButtonTitles:nil, nil];
+    [alert show];
+    [alert release];
 }
 
 #pragma mark - 审批动作
@@ -345,7 +369,7 @@
 
 #pragma mark -实现模态视图的dismiss delegate
 -(void)ApproveOpinionViewDismissed:(int)resultCode messageDictionary:(NSDictionary *)dictionary{
-    [self dismissModalViewControllerAnimated:YES];
+    
     
     //点“提交”按钮
     if(resultCode == RESULT_OK){
@@ -362,109 +386,137 @@
             approve.localStatus = @"WAITING";
             [tempArray addObject:approve];
         }
+        
+        [dbHelper.db open];
+        for (Approve *entity in tempArray) {
+            NSString *sql = [NSString stringWithFormat:@"update %@ set %@ = '%@',%@ = '%i',%@ = '%@' where %@ = '%i' and %@ = '%@'",TABLE_NAME_APPROVE_LIST,APPROVE_PROPERTY_COMMENT,entity.comment,APPROVE_PROPERTY_APPROVE_ACTION_TYPE,entity.approveActionType,APPROVE_PROPERTY_LOCAL_STATUS,entity.localStatus,APPROVE_PROPERTY_RECORD_ID,entity.recordId,APPROVE_PROPERTY_LOCAL_STATUS,@"NORMAL"];
+            [dbHelper.db executeUpdate:sql];
+        }
+        [dbHelper.db close];
+        
         [commitListArray addObjectsFromArray:tempArray];
         [approveListArray removeObjectsInArray:tempArray];
         
         //移动选中的列到“提交中”中
-        [self moveRows:selectedIndexPaths];
         
+        adoptButton.title = @"通过";
+        refuseButton.title = @"拒绝";
+        adoptButton.enabled = NO;
+        refuseButton.enabled = NO;
+        
+        [self dismissModalViewControllerAnimated:YES];
         [self commitApproveToServer:nil];
         
     }
     //点“取消”按钮
     else if (resultCode == RESULT_CANCEL){
-        
+        [self dismissModalViewControllerAnimated:YES];
     }
-}
-
--(void)moveRows:(NSArray *)selectedIndexPaths{
-    [dataTableView beginUpdates];
-    NSUInteger rowCount= [dataTableView numberOfRowsInSection:SECTION_WAITING_LIST];
-    NSMutableArray *newIndexPaths = [NSMutableArray array];
-    for (NSIndexPath *path in selectedIndexPaths) {
-        NSIndexPath *fromPath = path;
-        NSIndexPath *toPath = [NSIndexPath indexPathForRow:rowCount inSection:SECTION_WAITING_LIST];
-        [dataTableView deselectRowAtIndexPath:path animated:NO];
-        [dataTableView moveRowAtIndexPath:fromPath toIndexPath:toPath];
-        [newIndexPaths addObject:toPath];
-        [toPath release];
-        rowCount += 1;
-    }
-    [dataTableView endUpdates];
-    
-    
-    [dataTableView reloadRowsAtIndexPaths:newIndexPaths withRowAnimation:UITableViewRowAnimationMiddle];
-    
-    adoptButton.title = @"通过";
-    refuseButton.title = @"拒绝";
-    adoptButton.enabled = NO;
-    refuseButton.enabled = NO;
 }
 
 #pragma mark - 提交数据到服务器
 -(IBAction)commitApproveToServer:(id)sender{
-    
+
+    [bottomStatusLabel setText:@"正在处理"];
     if([commitListArray count] != 0){
-        NSMutableArray *dictionArray = [NSMutableArray arrayWithCapacity:[commitListArray count]];
+        
+        [self.networkQueue cancelAllOperations];
+        self.networkQueue = [ASINetworkQueue queue];
+        [[self networkQueue] setDelegate:self];
+        [[self networkQueue] setQueueDidFinishSelector:@selector(commitRequestQueueFinished:)];
+        [self.networkQueue setMaxConcurrentOperationCount:1 ];
+        [self.networkQueue setShouldCancelAllRequestsOnFailure:YES];
+        
         for (Approve *approve in commitListArray) {
+            //准备提交数据
             NSMutableDictionary *data = [NSMutableDictionary dictionary];
             [data setObject:[NSNumber numberWithInt:approve.recordId] forKey:APPROVE_PROPERTY_RECORD_ID];
             [data setObject:[NSNumber numberWithInt:approve.approveActionType] forKey:@"action_type"];
             [data setObject:approve.comment forKey:APPROVE_PROPERTY_COMMENT];
-            [dictionArray addObject:data];
+            
+            //准备request对象
+            HDFormDataRequest *request = [HDFormDataRequest hdRequestWithURL:@"http://localhost:8080/webtest/Approve" withData:data pattern:HDrequestPatternNormal];
+            request.tag = approve.recordId;
+            [request setDelegate:self];
+            [request setSuccessSelector:@selector(commitApproveSuccess:withRequest:)];
+            [request setErrorSelector:@selector(commitApproveError:withRequest:)];
+            [request setAsiFaildSelector:@selector(commitApproveNetWorkError:)];
+            [request setServerErrorSelector:@selector(commitApproveServerError)];
+            
+            [self.networkQueue addOperation:request];
         }
-        [self formRequest:@"http://localhost:8080/webtest/Approve" withData:dictionArray successSelector:@selector(commitApproveSuccess:) failedSelector:nil errorSelector:@selector(commitApproveError:) noNetworkSelector:@selector(commitApproveNetWorkError:)];
+        [networkQueue go];
+        
     }else{
         [self refreshTable];
     }
-    
-    
 }
 
 #pragma mark - 提交审批，成功
--(void)commitApproveSuccess:(NSArray *)dataset{
-    //清空待提交数组
-    [commitListArray removeAllObjects];
+-(void)commitApproveSuccess:(NSArray *)dataset withRequest:(ASIHTTPRequest *)request{
+    NSLog(@"%@, request tag : %i",NSStringFromSelector(_cmd),request.tag);
     
     [dbHelper.db open];
-    [dbHelper.db executeUpdate:[NSString stringWithFormat:@"delete from %@ where %@ in('WAITING','NORMAL'); ",TABLE_NAME_APPROVE_LIST,APPROVE_PROPERTY_LOCAL_STATUS]];
-    for (Approve *approve in approveListArray) {
-        NSString *sql = [NSString stringWithFormat:@"insert into %@ (%@,%@,%@,%@,%@,%@,%@,%@,%@,%@,%@,%@,%@) values ('%i','%i','%@','%@','%@','%@','%@','%@','%@','%@','%@','%i','%@');",TABLE_NAME_APPROVE_LIST,APPROVE_PROPERTY_WORKFLOW_ID,APPROVE_PROPERTY_RECORD_ID,APPROVE_PROPERTY_WORKFLOW_NAME,APPROVE_PROPERTY_WORKFLOW_DESC,APPROVE_PROPERTY_NODE_NAME,APPROVE_PROPERTY_EMPLOYEE_NAME,APPROVE_PROPERTY_CREATION_DATE,APPROVE_PROPERTY_DATE_LIMIT,APPROVE_PROPERTY_IS_LATE,APPROVE_PROPERTY_LOCAL_STATUS,APPROVE_PROPERTY_COMMENT,APPROVE_PROPERTY_APPROVE_ACTION_TYPE,APPROVE_PROPERTY_SCREEN_NAME,approve.workflowId,approve.recordId,approve.workflowName,approve.workflowDesc,approve.nodeName,approve.employeeName,approve.creationDate,approve.dateLimit,approve.isLate,approve.localStatus,approve.comment,approve.approveActionType,approve.screenName];
-        NSLog(@"%@, %@",NSStringFromSelector(_cmd),sql);
-        [dbHelper.db executeUpdate:sql];
-    }
+    NSString *sql = [NSString stringWithFormat:@"delete from %@ where %@ = '%i' ",TABLE_NAME_APPROVE_LIST,APPROVE_PROPERTY_RECORD_ID,request.tag];
+    [dbHelper.db executeUpdate:sql];
     [dbHelper.db close];
     
-    //重新读取待提交的界面
-    [dataTableView reloadSections:[NSIndexSet indexSetWithIndex:SECTION_WAITING_LIST] withRowAnimation:UITableViewRowAnimationFade];
     
-    [self refreshTable];
+    
+    for (Approve *approve in commitListArray) {
+        if (approve.recordId == request.tag) {
+            [commitListArray removeObject:approve];
+            break;
+        }
+    }
+    
+    //重新读取待提交的界面
+    [dataTableView beginUpdates];
+    [dataTableView reloadSections:[NSIndexSet indexSetWithIndex:SECTION_WAITING_LIST] withRowAnimation:UITableViewRowAnimationFade];
+    [dataTableView endUpdates];
+
     
 }
 
--(void)commitApproveError:(NSArray *)dataset{
-
-    //清空数据表中存在的待提交的记录
-    NSString *deleteSql = [NSString stringWithFormat:@"delete from %@ where %@ in ('%@','%@') ",TABLE_NAME_APPROVE_LIST,APPROVE_PROPERTY_LOCAL_STATUS,@"WAITING",@"NORMAL"];
-    [dbHelper.db open];
-    [dbHelper.db executeUpdate:deleteSql];
+-(void)commitApproveError:(NSString *)errorMessage withRequest:(ASIHTTPRequest *)request{
     
-    NSMutableArray *tempArray = [NSMutableArray array];
-    [tempArray addObjectsFromArray:approveListArray];
-    [tempArray addObjectsFromArray:commitListArray];
-    //把待提交array中的数据存表
-    for (Approve *approve in tempArray) {
-        NSString *updateSql = [NSString stringWithFormat:@"insert into %@(%@,%@,%@,%@,%@,%@,%@,%@,%@,%@,%@,%@,%@) values ('%i','%i','%@','%@','%@','%@','%@','%@','%@','%@','%@','%i','%@')",TABLE_NAME_APPROVE_LIST,APPROVE_PROPERTY_WORKFLOW_ID,APPROVE_PROPERTY_RECORD_ID,APPROVE_PROPERTY_WORKFLOW_NAME,APPROVE_PROPERTY_WORKFLOW_DESC,APPROVE_PROPERTY_NODE_NAME,APPROVE_PROPERTY_EMPLOYEE_NAME,APPROVE_PROPERTY_CREATION_DATE,APPROVE_PROPERTY_DATE_LIMIT,APPROVE_PROPERTY_IS_LATE,APPROVE_PROPERTY_LOCAL_STATUS,APPROVE_PROPERTY_COMMENT,APPROVE_PROPERTY_APPROVE_ACTION_TYPE,APPROVE_PROPERTY_SCREEN_NAME,approve.workflowId,approve.recordId,approve.workflowName,approve.workflowDesc,approve.nodeName,approve.employeeName,approve.creationDate,approve.dateLimit,approve.isLate,approve.localStatus,approve.comment,approve.approveActionType,approve.screenName];
-        NSLog(@"%@, %@",NSStringFromSelector(_cmd),updateSql);
-        [dbHelper.db executeUpdate:updateSql];
-    }
+    [dbHelper.db open];
+    NSString *sql = [NSString stringWithFormat:@"update %@ set %@ = 'ERROR' where %@ = '%i';",TABLE_NAME_APPROVE_LIST,APPROVE_PROPERTY_LOCAL_STATUS,APPROVE_PROPERTY_RECORD_ID,request.tag];
+    [dbHelper.db executeUpdate:sql];
     [dbHelper.db close];
-
+    
+    
+    for (Approve *approve in commitListArray) {
+        if (approve.recordId == request.tag) {
+            [problemListArray addObject:approve];
+            [commitListArray removeObject:approve];
+            break;
+        }
+    }
+    //重新读取待提交的界面
+    [dataTableView beginUpdates];
+    [dataTableView reloadSections:[NSIndexSet indexSetWithIndex:SECTION_PROBLEM_LIST] withRowAnimation:UITableViewRowAnimationFade];
+    [dataTableView reloadSections:[NSIndexSet indexSetWithIndex:SECTION_WAITING_LIST] withRowAnimation:UITableViewRowAnimationFade];
+    [dataTableView endUpdates];
+    
 }
 
 #pragma mark - 提交审批时网络故障
 -(void)commitApproveNetWorkError:(ASIHTTPRequest *)request{   
-    
+    NSLog(@"%@",NSStringFromSelector(_cmd));
+
+}
+
+-(void)commitApproveServerError{
+//    NSLog(@"%@",NSStringFromSelector(_cmd));
+//    UIAlertView *alert = [[UIAlertView alloc]initWithTitle:@"错误" message:@"服务器响应错误" delegate:self cancelButtonTitle:nil otherButtonTitles:nil, nil];
+//    [alert show];
+//    [alert release];
+}
+
+-(void)commitRequestQueueFinished:(ASINetworkQueue *)queue{
+    NSLog(@"queue finished");
+    [self refreshTable];
 }
 
 //弹出审批意见
@@ -495,8 +547,6 @@
     
     [dataTableView deleteRowsAtIndexPaths:indexPathsArray  withRowAnimation:UITableViewRowAnimationFade];
 
-    
-    
     adoptButton.title = @"通过";
     refuseButton.title = @"拒绝";
     adoptButton.enabled = NO;
@@ -519,10 +569,10 @@
     FMResultSet *resultSet = [dbHelper.db executeQuery:sql];
     
     // 初始列表数据
-    NSMutableArray *datas = [[NSMutableArray alloc]initWithCapacity:10];
+    NSMutableArray *datas = [[NSMutableArray alloc]init];
     
     while ([resultSet next]) {
-        Approve *a= [[Approve alloc]initWithWorkflowId:[resultSet intForColumn:APPROVE_PROPERTY_WORKFLOW_ID] recordId:[resultSet intForColumn:APPROVE_PROPERTY_RECORD_ID] workflowName:[resultSet stringForColumn:APPROVE_PROPERTY_WORKFLOW_NAME] workflowDesc:[resultSet stringForColumn:APPROVE_PROPERTY_WORKFLOW_DESC] nodeName:[resultSet stringForColumn:APPROVE_PROPERTY_NODE_NAME] employeeName:[resultSet stringForColumn:APPROVE_PROPERTY_EMPLOYEE_NAME] creationDate:[resultSet stringForColumn:APPROVE_PROPERTY_CREATION_DATE] dateLimit:[resultSet stringForColumn:APPROVE_PROPERTY_DATE_LIMIT] isLate:[resultSet stringForColumn:APPROVE_PROPERTY_IS_LATE] screenName:[resultSet stringForColumn:APPROVE_PROPERTY_SCREEN_NAME] localStatus:[resultSet stringForColumn:APPROVE_PROPERTY_LOCAL_STATUS] comment:[resultSet stringForColumn:APPROVE_PROPERTY_COMMENT] approveActionType:[resultSet intForColumn:APPROVE_PROPERTY_APPROVE_ACTION_TYPE]];
+        Approve *a= [[Approve alloc]initWithWorkflowId:[resultSet intForColumn:APPROVE_PROPERTY_WORKFLOW_ID] recordId:[resultSet intForColumn:APPROVE_PROPERTY_RECORD_ID] workflowName:[resultSet stringForColumn:APPROVE_PROPERTY_WORKFLOW_NAME] workflowDesc:[resultSet stringForColumn:APPROVE_PROPERTY_WORKFLOW_DESC] nodeName:[resultSet stringForColumn:APPROVE_PROPERTY_NODE_NAME] employeeName:[resultSet stringForColumn:APPROVE_PROPERTY_EMPLOYEE_NAME] creationDate:[resultSet stringForColumn:APPROVE_PROPERTY_CREATION_DATE] dateLimit:[resultSet stringForColumn:APPROVE_PROPERTY_DATE_LIMIT] isLate:[resultSet intForColumn:APPROVE_PROPERTY_IS_LATE] screenName:[resultSet stringForColumn:APPROVE_PROPERTY_SCREEN_NAME] localStatus:[resultSet stringForColumn:APPROVE_PROPERTY_LOCAL_STATUS] comment:[resultSet stringForColumn:APPROVE_PROPERTY_COMMENT] approveActionType:[resultSet intForColumn:APPROVE_PROPERTY_APPROVE_ACTION_TYPE]];
         [datas addObject:a];
         [a release];
     }
@@ -540,20 +590,21 @@
             [problemListArray addObject:entity];
         }
     }
-
-    [datas release];
     [resultSet close];
     [dbHelper.db close];
-   
+    [dataTableView reloadData];
+    [datas release];
 }
 
 #pragma mark - life circle
 -(void)viewDidLoad{
     [super viewDidLoad];
+    loadCount = 1;
     self.title = @"待办事项";
     
     //读取本地数据
     [self initTableViewData];
+    [self commitApproveToServer:nil];
     
     self.navigationItem.leftBarButtonItem = nil;
     
@@ -561,12 +612,13 @@
     self.navigationItem.rightBarButtonItem = [[[UIBarButtonItem alloc]initWithTitle:@"Edit" style:UIBarButtonItemStyleBordered target:self action:@selector(toggleTabelViewEdit:)]autorelease];
 
     
-    [self commitApproveToServer:nil];
-        
+    
     return;
     UISwipeGestureRecognizer *rightRecognizer = [[[UISwipeGestureRecognizer alloc]initWithTarget:self action:@selector(didSwip:)]autorelease];
     rightRecognizer.direction = UISwipeGestureRecognizerDirectionRight;
     [dataTableView addGestureRecognizer:rightRecognizer];
+    
+    
     
 }
 
@@ -574,6 +626,8 @@
     approveListArray =nil;
     problemListArray = nil;
     commitListArray = nil;
+    formRequest = nil;
+    networkQueue = nil;
     detailController = nil;
     normalToolbar = nil;
     checkToolBar = nil;
@@ -582,12 +636,18 @@
     refuseButton = nil;
     opinionView = nil;
     dbHelper = nil;
+    formRequest = nil;
     [super viewDidUnload];
 }
 
 -(void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
     
+    if(loadCount != 1){
+        //读取本地数据
+        [self initTableViewData];
+    }
+    loadCount+=1;
 }
 
 -(void)viewWillDisappear:(BOOL)animated{
@@ -602,6 +662,8 @@
     [approveListArray release];
     [problemListArray release];
     [commitListArray release];
+    [formRequest release];
+    [networkQueue release];
     [detailController release];
     [normalToolbar release];
     [checkToolBar release];
@@ -612,5 +674,7 @@
     [dbHelper release];
     [super dealloc];
 }
+
+
 
 @end

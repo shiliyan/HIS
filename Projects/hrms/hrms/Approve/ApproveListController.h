@@ -11,6 +11,7 @@
 #import "ApproveOpinionView.h"
 #import "ApproveOpinionViewDelegate.h"
 #import "ApproveDatabaseHelper.h"
+#import "ASINetworkQueue.h"
 
 static const int ACTION_TYPE_ADOPT = 1;
 static const int ACTION_TYPE_REFUSE = 2;
@@ -21,11 +22,16 @@ static const int SECTION_PROBLEM_LIST = 2;
 
 
 @interface ApproveListController : UIViewController<UITableViewDataSource,UITableViewDelegate,ApproveOpinionViewDelegate>{
+    
+    NSUInteger loadCount;
+    
     NSMutableArray *approveListArray;
     NSMutableArray *problemListArray;
     NSMutableArray *commitListArray;
-    UITableView *dataTableView;
+    HDFormDataRequest *formRequest;
+    ASINetworkQueue *networkQueue;
     
+    UITableView *dataTableView;
     UIToolbar *normalToolbar;
     UIToolbar *checkToolBar;
     UILabel *bottomStatusLabel;
@@ -45,6 +51,8 @@ static const int SECTION_PROBLEM_LIST = 2;
 @property (retain, nonatomic) NSMutableArray *approveListArray;
 @property (retain, nonatomic) NSMutableArray *problemListArray;
 @property (retain, nonatomic) NSMutableArray *commitListArray;
+@property (retain, nonatomic) HDFormDataRequest *formRequest;
+@property (retain) ASINetworkQueue *networkQueue;
 
 @property (retain,nonatomic) IBOutlet UITableView *dataTableView;
 @property (retain,nonatomic) IBOutlet UIToolbar *normalToolbar;
