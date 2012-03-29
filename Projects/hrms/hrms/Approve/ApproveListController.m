@@ -87,7 +87,7 @@
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
 
     static NSString *CellTableIdentifier = @"ApproveCellIdentifier";
-    UITableViewCell *cell= nil;
+    ApproveListCell *cell= nil;
     
     NSUInteger row = [indexPath row];
     NSUInteger section = [indexPath section];
@@ -110,23 +110,24 @@
     
     cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
     
-    UIImageView *typeImage = (UIImageView *)[cell viewWithTag:TYPEIMG_IMAGEVIEW_TAG];
-    UILabel *workFlowNameLabel = (UILabel *)[cell viewWithTag:WORKFLOW_TEXTVIEW_TAG];
-    UILabel *applicantLabel = (UILabel *)[cell viewWithTag:APPLICANT_TEXTVIEW_TAG];
-    UILabel *commitDateLabel = (UILabel *)[cell viewWithTag:COMMITDATE_TEXTVIEW_TAG];
-    UILabel *currentStatusLabel = (UILabel *)[cell viewWithTag:CURRENTSTATUS_TEXTVIEW_TAG];
-    UILabel *deadLineLabel = (UILabel *)[cell viewWithTag:DEADLINE_TEXTVIEW_TAG];
-    
-    if(rowData.isLate == 0){
-        typeImage.image = [UIImage imageNamed:@"normal_todo.png"];
-    }else{
-        typeImage.image = [UIImage imageNamed:@"hurry_todo.png"];
-    }
-    workFlowNameLabel.text = rowData.workflowName;
-    applicantLabel.text = rowData.employeeName;
-    commitDateLabel.text = rowData.creationDate;
-    currentStatusLabel.text = rowData.nodeName;
-    deadLineLabel.text = rowData.dateLimit;
+//    UIImageView *typeImage = (UIImageView *)[cell viewWithTag:TYPEIMG_IMAGEVIEW_TAG];
+//    UILabel *workFlowNameLabel = (UILabel *)[cell viewWithTag:WORKFLOW_TEXTVIEW_TAG];
+//    UILabel *applicantLabel = (UILabel *)[cell viewWithTag:APPLICANT_TEXTVIEW_TAG];
+//    UILabel *commitDateLabel = (UILabel *)[cell viewWithTag:COMMITDATE_TEXTVIEW_TAG];
+//    UILabel *currentStatusLabel = (UILabel *)[cell viewWithTag:CURRENTSTATUS_TEXTVIEW_TAG];
+//    UILabel *deadLineLabel = (UILabel *)[cell viewWithTag:DEADLINE_TEXTVIEW_TAG];
+//    
+//    if(rowData.isLate == 0){
+//        typeImage.image = [UIImage imageNamed:@"normal_todo.png"];
+//    }else{
+//        typeImage.image = [UIImage imageNamed:@"normal_todo.png"];
+//    }
+//    workFlowNameLabel.text = rowData.workflowName;
+//    applicantLabel.text = rowData.employeeName;
+//    commitDateLabel.text = rowData.creationDate;
+//    currentStatusLabel.text = rowData.nodeName;
+//    deadLineLabel.text = rowData.dateLimit;
+    [cell setCellData:rowData];
     
     return cell;
 }
@@ -178,16 +179,16 @@
     }
 }
 
--(void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath{
-    
-    if (editingStyle == UITableViewCellEditingStyleDelete){
-        [tableView setEditing:NO animated:YES];
-        [self.navigationItem.rightBarButtonItem setTitle:@"Edit"];
-        [tableView selectRowAtIndexPath:indexPath animated:NO scrollPosition:UITableViewScrollPositionNone];
-        [self showOpinionView:ACTION_TYPE_ADOPT];
-    }
-    return;
-}
+//-(void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath{
+//    
+//    if (editingStyle == UITableViewCellEditingStyleDelete){
+//        [tableView setEditing:NO animated:YES];
+//        [self.navigationItem.rightBarButtonItem setTitle:@"Edit"];
+//        [tableView selectRowAtIndexPath:indexPath animated:NO scrollPosition:UITableViewScrollPositionNone];
+//        [self showOpinionView:ACTION_TYPE_ADOPT];
+//    }
+//    return;
+//}
 
 -(void)tableView:(UITableView *)tableView didEndEditingRowAtIndexPath:(NSIndexPath *)indexPath{
     if (dataTableView.editing){
@@ -210,15 +211,15 @@
 
 }
 
--(NSString *)tableView:(UITableView *)tableView titleForDeleteConfirmationButtonForRowAtIndexPath:(NSIndexPath *)indexPath{
-    return @"通过"; 
-}
+//-(NSString *)tableView:(UITableView *)tableView titleForDeleteConfirmationButtonForRowAtIndexPath:(NSIndexPath *)indexPath{
+//    return @"通过"; 
+//}
 
 -(UITableViewCellEditingStyle)tableView:(UITableView *)tableView editingStyleForRowAtIndexPath:(NSIndexPath *)indexPath{
-    if ([tableView isEditing]) {
+//    if ([tableView isEditing]) {
         return UITableViewCellEditingStyleDelete|UITableViewCellEditingStyleInsert;
-    }
-    return UITableViewCellEditingStyleDelete;
+//    }
+//    return UITableViewCellEditingStyleDelete;
     
 }
 
@@ -226,7 +227,29 @@
 -(void)didSwip:(UISwipeGestureRecognizer *)recognizer{
     NSLog(@"%@",recognizer);
     if(recognizer.state == UIGestureRecognizerStateEnded){
-
+        CGPoint swipeLocation = [recognizer locationInView:self.dataTableView];
+        NSIndexPath *swipedIndexPath = [self.dataTableView indexPathForRowAtPoint:swipeLocation];
+        NSUInteger swipedSection = swipedIndexPath.section;
+        
+        Approve *entity = nil;
+        if(swipedSection == SECTION_PROBLEM_LIST){
+            entity = [problemListArray objectAtIndex:[swipedIndexPath row]];
+            
+        }else{
+            //其他区域不可删除
+            return;
+        }
+        [dbHelper.db open];
+        BOOL success = [dbHelper.db executeUpdate:[NSString stringWithFormat:@"delete from %@ where %@ = '%i' and %@ = '%@'",TABLE_NAME_APPROVE_LIST,APPROVE_PROPERTY_RECORD_ID,entity.recordId,APPROVE_PROPERTY_LOCAL_STATUS,@"ERROR"]];
+        [dbHelper.db close];
+        
+        if(success){
+            [problemListArray removeObjectAtIndex:[swipedIndexPath row]];
+            [dataTableView beginUpdates];
+            [dataTableView deleteRowsAtIndexPaths:[NSArray arrayWithObject:swipedIndexPath] withRowAnimation:UITableViewRowAnimationRight];
+            [dataTableView endUpdates];
+        }
+        
     }
 }
 
@@ -254,7 +277,6 @@
 // TODO: 编写失败和网络连接错误的回调
 #pragma mark - 刷新数据
 -(void)refreshTable{
-    
     // 获取最新的待办列表
     
     self.formRequest  = [HDFormDataRequest hdRequestWithURL:@"http://localhost:8080/hr_new/autocrud/ios.IOS_APPROVE.ios_workflow_approve_query/query" pattern:HDrequestPatternNormal];
@@ -271,8 +293,15 @@
 #pragma mark - 从服务器端取数据成功
 //从服务器端取数据成功
 -(void)querySuccess:(NSMutableArray *)dataset{
-    NSDate *now = [NSDate date];
-    [bottomStatusLabel setText:[NSString stringWithFormat:@"更新成功 %@",now]];
+    
+    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+    //设定时间格式
+    [dateFormatter setDateFormat:@"yyyy-MM-dd HH:mm:ss"];
+    //用[NSDate date]可以获取系统当前时间
+    NSString *currentDateStr = [dateFormatter stringFromDate:[NSDate date]];
+    [dateFormatter release];
+    
+    [bottomStatusLabel setText:[NSString stringWithFormat:@"更新成功 %@",currentDateStr]];
 
     //responseArray，返回数据解析后存放
     NSMutableArray *responseArray =[[NSMutableArray alloc]init];
@@ -345,8 +374,11 @@
         [dbHelper.db executeUpdate:[NSString stringWithFormat:@"update %@ set %@ = '%@' where %@ = '%i'",TABLE_NAME_APPROVE_LIST,APPROVE_PROPERTY_LOCAL_STATUS,entity.localStatus,APPROVE_PROPERTY_RECORD_ID,entity.recordId]];
     }
     [dbHelper.db close];
+    [dataTableView beginUpdates];
     
-    [dataTableView reloadData];
+    [dataTableView reloadSections:[NSIndexSet indexSetWithIndex:SECTION_APRROVE_LIST] withRowAnimation:UITableViewRowAnimationFade];
+    [dataTableView reloadSections:[NSIndexSet indexSetWithIndex:SECTION_PROBLEM_LIST] withRowAnimation:UITableViewRowAnimationFade];
+    [dataTableView endUpdates];
     [responseArray release];
 }
 
@@ -493,7 +525,7 @@
             break;
         }
     }
-    //重新读取待提交的界面
+    //重新读取界面
     [dataTableView beginUpdates];
     [dataTableView reloadSections:[NSIndexSet indexSetWithIndex:SECTION_PROBLEM_LIST] withRowAnimation:UITableViewRowAnimationFade];
     [dataTableView reloadSections:[NSIndexSet indexSetWithIndex:SECTION_WAITING_LIST] withRowAnimation:UITableViewRowAnimationFade];
@@ -613,7 +645,7 @@
 
     
     
-    return;
+    
     UISwipeGestureRecognizer *rightRecognizer = [[[UISwipeGestureRecognizer alloc]initWithTarget:self action:@selector(didSwip:)]autorelease];
     rightRecognizer.direction = UISwipeGestureRecognizerDirectionRight;
     [dataTableView addGestureRecognizer:rightRecognizer];
@@ -653,9 +685,6 @@
 -(void)viewWillDisappear:(BOOL)animated{
     [super viewWillDisappear:animated];
 
-}
--(BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation{
-    return YES;
 }
 
 -(void)dealloc{
