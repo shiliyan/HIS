@@ -19,59 +19,47 @@
         self.contentView.autoresizesSubviews = YES;
         self.contentView.clipsToBounds = YES;
         
-        //加单元格标题栏背景
-        titleBackground = [[[UIView alloc]initWithFrame:CGRectMake(0, 0, 320, 25)]autorelease];
-        titleBackground.backgroundColor = [UIColor colorWithRed:139.0/255 green:178.0/255 blue:38.0/255 alpha:1]; 
-        titleBackground.autoresizingMask = UIViewAutoresizingFlexibleWidth|UIViewAutoresizingFlexibleLeftMargin;
-        [self.contentView addSubview:titleBackground];
-        
-        // 加待办类型图片 
-        typeImg = [[[UIImageView alloc]initWithFrame:CGRectMake(20, 1, 24, 24)]autorelease];
-        typeImg.tag = TYPEIMG_IMAGEVIEW_TAG;
-        typeImg.autoresizingMask = UIViewAutoresizingFlexibleRightMargin|UIViewAutoresizingFlexibleBottomMargin;
-        [self.contentView addSubview:typeImg];
-        
         // 加待办标题
-        workflowTextView = [[[UILabel alloc]initWithFrame:CGRectMake(52, 2, 253, 21)]autorelease];
+        workflowTextView = [[[UILabel alloc]initWithFrame:CGRectMake(20, 5, 240, 20)]autorelease];
         workflowTextView.tag = WORKFLOW_TEXTVIEW_TAG;
-        workflowTextView.autoresizingMask = UIViewAutoresizingFlexibleLeftMargin|UIViewAutoresizingFlexibleBottomMargin|UIViewAutoresizingFlexibleWidth;
-        workflowTextView.adjustsFontSizeToFitWidth = YES;
+        workflowTextView.autoresizingMask = UIViewAutoresizingFlexibleWidth|UIViewAutoresizingFlexibleBottomMargin;
+        workflowTextView.adjustsFontSizeToFitWidth = NO;
         workflowTextView.backgroundColor  = [UIColor clearColor];
+        
+        [workflowTextView setFont:CELL_FONT(CELL_TITLE_FONTSIZE)];
         [self.contentView addSubview:workflowTextView];
         
-        // 加申请人
-        applicantTextView = [[[UILabel alloc]initWithFrame:CGRectMake(20, 30, 80, 21)]autorelease];
-        applicantTextView.tag = APPLICANT_TEXTVIEW_TAG;
-        applicantTextView.autoresizingMask =UIViewAutoresizingFlexibleRightMargin|UIViewAutoresizingFlexibleBottomMargin|UIViewAutoresizingFlexibleWidth;
-        applicantTextView.adjustsFontSizeToFitWidth = YES;
-        applicantTextView.backgroundColor  = [UIColor clearColor];
-        [self.contentView addSubview:applicantTextView];
-        
         // 加申请时间
-        commitDateTextView = [[[UILabel alloc]initWithFrame:CGRectMake(20, 53, 100, 21)]autorelease];
+        commitDateTextView = [[[UILabel alloc]initWithFrame:CGRectMake(220, 5, 100, 20)]autorelease];
         commitDateTextView.tag = COMMITDATE_TEXTVIEW_TAG;
-        commitDateTextView.autoresizingMask =UIViewAutoresizingFlexibleRightMargin|UIViewAutoresizingFlexibleBottomMargin|UIViewAutoresizingFlexibleWidth;
-        commitDateTextView.adjustsFontSizeToFitWidth = true;
+        commitDateTextView.autoresizingMask =UIViewAutoresizingFlexibleWidth;
+        commitDateTextView.adjustsFontSizeToFitWidth = NO;
         commitDateTextView.backgroundColor  = [UIColor clearColor];
+        [commitDateTextView setFont:[UIFont fontWithName:@"Helvetica" size:11]];
+        [commitDateTextView setTextColor:[UIColor blueColor]];
         [self.contentView addSubview:commitDateTextView];
         
         // 加审批动作名
-        currentStatusTextView = [[[UILabel alloc]initWithFrame:CGRectMake(140, 30, 165, 21)]autorelease];
+        currentStatusTextView = [[[UILabel alloc]initWithFrame:CGRectMake(20, 25, 300, 21)]autorelease];
         currentStatusTextView.tag = CURRENTSTATUS_TEXTVIEW_TAG;
-        currentStatusTextView.autoresizingMask = UIViewAutoresizingFlexibleLeftMargin|UIViewAutoresizingFlexibleWidth;
-        currentStatusTextView.textAlignment = UITextAlignmentRight;
-        currentStatusTextView.adjustsFontSizeToFitWidth = YES;
+        currentStatusTextView.autoresizingMask = UIViewAutoresizingFlexibleWidth;
+        currentStatusTextView.textAlignment = UITextAlignmentLeft;
+        currentStatusTextView.adjustsFontSizeToFitWidth = NO;
         currentStatusTextView.backgroundColor  = [UIColor clearColor];
+        [currentStatusTextView setFont:[UIFont fontWithName:@"Helvetica" size:13]];
         [self.contentView addSubview:currentStatusTextView];
         
         //截止时间
-        deadLineTextView = [[[UILabel alloc]initWithFrame:CGRectMake(205, 53, 100, 21)]autorelease];
+        deadLineTextView = [[[UILabel alloc]initWithFrame:CGRectMake(20, 45, 300, 32)]autorelease];
         deadLineTextView.tag = DEADLINE_TEXTVIEW_TAG;
-        deadLineTextView.autoresizingMask=UIViewAutoresizingFlexibleLeftMargin|UIViewAutoresizingFlexibleWidth;
-        deadLineTextView.adjustsFontSizeToFitWidth = YES;
-        deadLineTextView.textAlignment = UITextAlignmentRight;
-        deadLineTextView.textColor = [UIColor redColor];
+        deadLineTextView.autoresizingMask=UIViewAutoresizingFlexibleWidth;
+        deadLineTextView.adjustsFontSizeToFitWidth = NO;
+        deadLineTextView.textAlignment = UITextAlignmentLeft;
+        deadLineTextView.textColor = [UIColor grayColor];
         deadLineTextView.backgroundColor  = [UIColor clearColor];
+        [deadLineTextView setFont:[UIFont fontWithName:@"Helvetica" size:13]];
+        [deadLineTextView setLineBreakMode:UILineBreakModeCharacterWrap];
+        [deadLineTextView setNumberOfLines:2];
         [self.contentView addSubview:deadLineTextView];
         
     }
@@ -80,16 +68,17 @@
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated
 {
-    [super setSelected:selected animated:animated];
-
-    if(selected){
-        titleBackground.backgroundColor = [UIColor clearColor]; 
-    }else{
-        titleBackground.backgroundColor = [UIColor grayColor]; 
-    }
-    
-        
+    [super setSelected:selected animated:animated];    
     // Configure the view for the selected state
+}
+
+-(void)setCellData:(Approve *)approveEntity{
+    
+    workflowTextView.text = [NSString stringWithFormat:@"%@：%@",approveEntity.workflowName,approveEntity.employeeName];
+    currentStatusTextView.text = [NSString stringWithFormat:@"当前节点：%@",approveEntity.nodeName];
+    commitDateTextView.text = @"2012-03-28";
+    deadLineTextView.text = approveEntity.workflowDesc;
+    
 }
 
 
