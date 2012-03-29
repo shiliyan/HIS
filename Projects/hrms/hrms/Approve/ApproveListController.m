@@ -183,7 +183,7 @@
 //    
 //    if (editingStyle == UITableViewCellEditingStyleDelete){
 //        [tableView setEditing:NO animated:YES];
-//        [self.navigationItem.rightBarButtonItem setTitle:@"Edit"];
+//        [self.navigationItem.rightBarButtonItem setTitle:@"批量"];
 //        [tableView selectRowAtIndexPath:indexPath animated:NO scrollPosition:UITableViewScrollPositionNone];
 //        [self showOpinionView:ACTION_TYPE_ADOPT];
 //    }
@@ -192,21 +192,21 @@
 
 -(void)tableView:(UITableView *)tableView didEndEditingRowAtIndexPath:(NSIndexPath *)indexPath{
     if (dataTableView.editing){
-        [self.navigationItem.rightBarButtonItem setTitle:@"Cancel"];
+        [self.navigationItem.rightBarButtonItem setTitle:@"取消"];
         
     }
     else{
-        [self.navigationItem.rightBarButtonItem setTitle:@"Edit"];
+        [self.navigationItem.rightBarButtonItem setTitle:@"批量"];
     }
 }
 
 -(void)tableView:(UITableView *)tableView willBeginEditingRowAtIndexPath:(NSIndexPath *)indexPath{
     
     if (dataTableView.editing){
-        [self.navigationItem.rightBarButtonItem setTitle:@"Edit"]; 
+        [self.navigationItem.rightBarButtonItem setTitle:@"批量"]; 
     }
     else{
-        [self.navigationItem.rightBarButtonItem setTitle:@"Cancel"];
+        [self.navigationItem.rightBarButtonItem setTitle:@"取消"];
     }
 
 }
@@ -256,7 +256,7 @@
 -(void)toggleTabelViewEdit:(id)sender{
     [dataTableView setEditing:!dataTableView.editing animated:YES];
     if (dataTableView.editing){
-        [self.navigationItem.rightBarButtonItem setTitle:@"Cancel"];
+        [self.navigationItem.rightBarButtonItem setTitle:@"取消"];
         [normalToolbar resignFirstResponder];
         normalToolbar.hidden = YES;
         checkToolBar.hidden = NO;
@@ -267,7 +267,7 @@
         refuseButton.title = @"拒绝";
     }
     else{
-        [self.navigationItem.rightBarButtonItem setTitle:@"Edit"];
+        [self.navigationItem.rightBarButtonItem setTitle:@"批量"];
         [checkToolBar resignFirstResponder];
         checkToolBar.hidden = YES;
         normalToolbar.hidden = NO;
@@ -641,7 +641,7 @@
     self.navigationItem.leftBarButtonItem = nil;
     
     //初始化导航条右侧按钮
-    self.navigationItem.rightBarButtonItem = [[[UIBarButtonItem alloc]initWithTitle:@"Edit" style:UIBarButtonItemStyleBordered target:self action:@selector(toggleTabelViewEdit:)]autorelease];
+    self.navigationItem.rightBarButtonItem = [[[UIBarButtonItem alloc]initWithTitle:@"批量" style:UIBarButtonItemStyleBordered target:self action:@selector(toggleTabelViewEdit:)]autorelease];
 
     
     
