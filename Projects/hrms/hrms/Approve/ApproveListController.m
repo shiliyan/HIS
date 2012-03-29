@@ -279,7 +279,7 @@
 -(void)refreshTable{
     // 获取最新的待办列表
     
-    self.formRequest  = [HDFormDataRequest hdRequestWithURL:@"http://localhost:8080/hr_new/autocrud/ios.IOS_APPROVE.ios_workflow_approve_query/query" pattern:HDrequestPatternNormal];
+    self.formRequest  = [HDFormDataRequest hdRequestWithURL:@"http://172.20.0.20:8080/hr_new/autocrud/ios.IOS_APPROVE.ios_workflow_approve_query/query" pattern:HDrequestPatternNormal];
     
     [formRequest setDelegate:self];
     [formRequest setSuccessSelector:@selector(querySuccess:)];
@@ -467,7 +467,7 @@
             [data setObject:approve.comment forKey:APPROVE_PROPERTY_COMMENT];
             
             //准备request对象
-            HDFormDataRequest *request = [HDFormDataRequest hdRequestWithURL:@"http://localhost:8080/webtest/Approve" withData:data pattern:HDrequestPatternNormal];
+            HDFormDataRequest *request = [HDFormDataRequest hdRequestWithURL:@"http://172.20.0.20:8080/hr_new/Approve" withData:data pattern:HDrequestPatternNormal];
             request.tag = approve.recordId;
             [request setDelegate:self];
             [request setSuccessSelector:@selector(commitApproveSuccess:withRequest:)];
