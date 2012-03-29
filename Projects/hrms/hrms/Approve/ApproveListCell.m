@@ -76,7 +76,7 @@
     
     workflowTextView.text = [NSString stringWithFormat:@"%@：%@",approveEntity.workflowName,approveEntity.employeeName];
     currentStatusTextView.text = [NSString stringWithFormat:@"当前节点：%@",approveEntity.nodeName];
-    commitDateTextView.text = @"2012-03-28";
+    commitDateTextView.text = approveEntity.creationDate;
     deadLineTextView.text = approveEntity.workflowDesc;
     
 }
