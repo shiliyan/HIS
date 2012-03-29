@@ -14,34 +14,27 @@
 
 @synthesize titleLabel;
 @synthesize opinionTextView;
-@synthesize okButton;
-@synthesize cancelButton;
 
 -(void)viewDidLoad{
     [super viewDidLoad];
-
 }
 
 -(void)viewDidAppear:(BOOL)animated{
-    
-    opinionTextView.text = @"";
     [super viewDidAppear:animated];
+    opinionTextView.text = @"";
+    [opinionTextView becomeFirstResponder];
 }
 
 -(void)viewDidUnload{
     [super viewDidUnload];
     titleLabel = nil;
     opinionTextView = nil;
-    okButton = nil;
-    cancelButton = nil;
 }
 
 -(void)dealloc{
     [super dealloc];
     [titleLabel release];
     [opinionTextView release];
-    [okButton release];
-    [cancelButton release];
 }
 
 -(IBAction)commitData:(id)sender{
@@ -53,10 +46,6 @@
 }
 -(IBAction)cancelCommit:(id)sender{
     [controllerDelegate ApproveOpinionViewDismissed:RESULT_CANCEL messageDictionary:nil];
-}
-
--(IBAction)toggleOutKeybord:(id)sender{
-    [opinionTextView resignFirstResponder];
 }
 
 -(void)setControllerDelegate:(id<ApproveOpinionViewDelegate>)inDelegate{

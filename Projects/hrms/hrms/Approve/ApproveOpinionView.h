@@ -16,9 +16,6 @@ static const int RESULT_CANCEL = 2;
     UILabel *titleLabel;
     UITextView *opinionTextView;
     
-    UIButton *okButton;
-    UIButton *cancelButton;
-    
     NSUInteger approveType;
     
     id<ApproveOpinionViewDelegate> controllerDelegate;
@@ -27,12 +24,7 @@ static const int RESULT_CANCEL = 2;
 
 @property(retain,nonatomic) IBOutlet UILabel *titleLabel;
 @property(retain,nonatomic) IBOutlet UITextView *opinionTextView;
-@property(retain,nonatomic) IBOutlet UIButton *okButton;
-@property(retain,nonatomic) IBOutlet UIButton *cancelButton;
 
-
-
--(IBAction)toggleOutKeybord:(id)sender;
 -(IBAction)commitData:(id)sender;
 -(IBAction)cancelCommit:(id)sender;
 
