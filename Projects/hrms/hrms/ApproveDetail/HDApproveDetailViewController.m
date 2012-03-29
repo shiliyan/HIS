@@ -22,9 +22,9 @@
 @synthesize toolBarDataRequest;
 @synthesize actionRequest;
 
-static NSString * kBaseUrl = @"http://10.213.208.66:8080/hr_new/modules/ios/IOS_APPROVE/";
-static NSString * kToolBarActionUrl = @"http://10.213.208.66:8080/hr_new/autocrud/ios.IOS_APPROVE.ios_workflow_approve_action_query/query";
-static NSString * kDoActionUrl = @"http://10.213.208.66:8080/hr_new/autocrud/ios.IOS_APPROVE.ios_workflow_approve_action_submit/update";
+static NSString * kBaseUrl = @"http://172.20.0.20:8080/hr_new/modules/ios/IOS_APPROVE/";
+static NSString * kToolBarActionUrl = @"http://172.20.0.20:8080/hr_new/autocrud/ios.IOS_APPROVE.ios_workflow_approve_action_query/query";
+static NSString * kDoActionUrl = @"http://172.20.0.20:8080/hr_new/autocrud/ios.IOS_APPROVE.ios_workflow_approve_action_submit/update";
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -44,6 +44,8 @@ static NSString * kDoActionUrl = @"http://10.213.208.66:8080/hr_new/autocrud/ios
         self.submitAction = [NSMutableDictionary dictionaryWithObject: [NSNumber numberWithInteger: self.approveDetailRecord.recordId ] forKey:@"record_id"];
         
         self.title = approveDetailRecord.nodeName;
+        
+        self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc]initWithTitle:@"stop" style:UIBarButtonItemStyleBordered target:self action:@selector(stopRequest:)];
     }
     return self;
 }
@@ -52,6 +54,7 @@ static NSString * kDoActionUrl = @"http://10.213.208.66:8080/hr_new/autocrud/ios
 {
 //    [[TTNavigator navigator].URLMap removeURL:@"tt://actionCommentView"];
     [webPageRequest clearDelegatesAndCancel];
+    [toolBarDataRequest clearDelegatesAndCancel];
     TT_RELEASE_SAFELY(actionRequest);
     TT_RELEASE_SAFELY(toolBarDataRequest);
     TT_RELEASE_SAFELY(webPageRequest);
@@ -128,7 +131,7 @@ static NSString * kDoActionUrl = @"http://10.213.208.66:8080/hr_new/autocrud/ios
 
 -(void)doAction:(id)sender
 {
-
+    
     [self.submitAction setObject:[NSNumber numberWithInteger:[sender tag]] forKey:@"action_id"];
     
     ApproveOpinionView * opinionViewController = [[[ApproveOpinionView alloc]initWithNibName:@"ApproveOpinionView" bundle:nil] autorelease];
@@ -240,6 +243,7 @@ static NSString * kDoActionUrl = @"http://10.213.208.66:8080/hr_new/autocrud/ios
     //    NSLog(@"%@",[NSString stringWithFormat:@"%@%@?record_id=%i",kBaseUrl , self.approveDetailRecord.screenName,approveDetailRecord.recordId]);
     NSString * screenUrl = [NSString stringWithFormat:@"%@%@?record_id=%i",kBaseUrl , self.approveDetailRecord.screenName,approveDetailRecord.recordId];
     
+    
     self.webPageRequest = [ASIWebPageRequest requestWithURL:[NSURL URLWithString:screenUrl]];
     [self requestConfig:HDrequestPatternNormal];
 	[webPageRequest setDidFailSelector:@selector(webPageLoadFailed:)];
@@ -247,6 +251,7 @@ static NSString * kDoActionUrl = @"http://10.213.208.66:8080/hr_new/autocrud/ios
 	[webPageRequest setDelegate:self];
 	[webPageRequest setDownloadProgressDelegate:self];
     [webPageRequest startAsynchronous];
+     
 }
 
 #pragma -mark 配置webPageRequest
@@ -281,6 +286,8 @@ static NSString * kDoActionUrl = @"http://10.213.208.66:8080/hr_new/autocrud/ios
     // e.g. self.myOutlet = nil;
 }
 
+
+
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
 {
     return (interfaceOrientation == UIInterfaceOrientationPortrait);
@@ -300,6 +307,11 @@ static NSString * kDoActionUrl = @"http://10.213.208.66:8080/hr_new/autocrud/ios
     [toolbar setItems:toolbarItems animated:YES];
     //
     [webView stringByEvaluatingJavaScriptFromString:@"document.forms[0].submit(); "];
+}
+
+-(void) stopRequest:(id)sender
+{
+    [self.toolBarDataRequest clearDelegatesAndCancel];
 }
 
 @end
