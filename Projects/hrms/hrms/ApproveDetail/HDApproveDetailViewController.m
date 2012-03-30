@@ -141,11 +141,16 @@ static NSString * kDoActionUrl = @"http://172.20.0.20:8080/hr_new/autocrud/ios.I
 -(void) doActionSuccess:(NSArray *) dataSet
 {
     //写数据库
+    //初始化数据库连接
+    dbHelper = [[ApproveDatabaseHelper alloc]init];
+    
     [dbHelper.db open];
-    NSString * sql = [NSString stringWithFormat:@"delete from %@ where %@ = '%i' ",@"approve_list",@"record_id",self.approveDetailRecord.recordId];
+    NSString * sql = [NSString stringWithFormat:@"delete from %@ where %@ = %i",@"approve_list",@"record_id",self.approveDetailRecord.recordId];
+    NSLog(@"%@",sql);
     [dbHelper.db executeUpdate:sql];
     [dbHelper.db close];
     
+    [dbHelper release];
     //解除遮罩
     [[self.navigationController.view viewWithTag:BACK_VIEW]removeFromSuperview];
     
