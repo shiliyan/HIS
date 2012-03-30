@@ -9,6 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "Approve.h"
 #import "ApproveOpinionViewDelegate.h"
+#import "ApproveDatabaseHelper.h"
 
 static const NSInteger BACK_VIEW =32;
 static const NSInteger ACTIVE_LABEL =64;
@@ -25,6 +26,8 @@ static const NSInteger ACTIVE_LABEL =64;
     ASIWebPageRequest * webPageRequest;
     HDFormDataRequest * toolBarDataRequest;
     HDFormDataRequest * actionRequest;
+    
+    ApproveDatabaseHelper *dbHelper;
 }
 
 @property (retain,nonatomic) Approve * approveDetailRecord;

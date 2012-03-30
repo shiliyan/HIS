@@ -44,8 +44,6 @@ static NSString * kDoActionUrl = @"http://172.20.0.20:8080/hr_new/autocrud/ios.I
         self.submitAction = [NSMutableDictionary dictionaryWithObject: [NSNumber numberWithInteger: self.approveDetailRecord.recordId ] forKey:@"record_id"];
         
         self.title = approveDetailRecord.nodeName;
-        
-        self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc]initWithTitle:@"stop" style:UIBarButtonItemStyleBordered target:self action:@selector(stopRequest:)];
     }
     return self;
 }
@@ -74,7 +72,7 @@ static NSString * kDoActionUrl = @"http://172.20.0.20:8080/hr_new/autocrud/ios.I
     label.tag = ACTIVE_LABEL;
     
     [backView addSubview:label];
-    [self.view addSubview:backView];
+    [self.navigationController.view addSubview:backView];
 }
 
 
@@ -87,16 +85,16 @@ static NSString * kDoActionUrl = @"http://172.20.0.20:8080/hr_new/autocrud/ios.I
         [self dismissModalViewControllerAnimated:YES];
         [self.submitAction setObject:[dictionary objectForKey:@"comment"] forKey:@"comment"];
         
-        //TODO:未开启网络提交　　
-        /*
+        
         self.actionRequest  = [HDFormDataRequest hdRequestWithURL:kDoActionUrl 
                                                               withData:self.submitAction
                                                                pattern:HDrequestPatternNormal];
         
-        [toolBarDataRequest setDelegate:self];
-        [toolBarDataRequest setSuccessSelector:@selector(doAdctionSuccess:)];
-        [toolBarDataRequest startAsynchronous];
-        */
+        [actionRequest setDelegate:self];
+        [actionRequest setSuccessSelector:@selector(doActionSuccess:)];
+
+        [actionRequest startAsynchronous];
+        
     }else {
         //解除模态视图
         [self dismissModalViewControllerAnimated:YES];
@@ -140,15 +138,37 @@ static NSString * kDoActionUrl = @"http://172.20.0.20:8080/hr_new/autocrud/ios.I
     [self presentModalViewController:opinionViewController animated:YES];
 }
 
--(void) doAdctionSuccess:(NSArray *) dataSet
+-(void) doActionSuccess:(NSArray *) dataSet
 {
-    //TODO:@~@
-    //解除遮罩
-    [[self.view viewWithTag:BACK_VIEW]removeFromSuperview];
-    //退回到待办事项列表
     //写数据库
+    [dbHelper.db open];
+    NSString * sql = [NSString stringWithFormat:@"delete from %@ where %@ = '%i' ",@"approve_list",@"record_id",self.approveDetailRecord.recordId];
+    [dbHelper.db executeUpdate:sql];
+    [dbHelper.db close];
     
-    [[TTNavigator navigator].topViewController.navigationController popViewControllerAnimated:YES];
+    //解除遮罩
+    [[self.navigationController.view viewWithTag:BACK_VIEW]removeFromSuperview];
+    
+    //退回到待办事项列表
+    [self.navigationController popViewControllerAnimated:YES];
+}
+
+-(void) doActionError:(NSString *) msg
+{
+    //解除遮罩
+    [[self.navigationController.view viewWithTag:BACK_VIEW]removeFromSuperview];
+}
+
+-(void) doActionASIFailed:(ASIHTTPRequest *) theRequest
+{
+    //解除遮罩
+    [[self.navigationController.view viewWithTag:BACK_VIEW]removeFromSuperview];
+}
+
+-(void) doActionServerError:(NSString *)msg
+{
+    //解除遮罩
+    [[self.navigationController.view viewWithTag:BACK_VIEW]removeFromSuperview];
 }
 
 #pragma -mark web Page load callback functions  
@@ -307,11 +327,6 @@ static NSString * kDoActionUrl = @"http://172.20.0.20:8080/hr_new/autocrud/ios.I
     [toolbar setItems:toolbarItems animated:YES];
     //
     [webView stringByEvaluatingJavaScriptFromString:@"document.forms[0].submit(); "];
-}
-
--(void) stopRequest:(id)sender
-{
-    [self.toolBarDataRequest clearDelegatesAndCancel];
 }
 
 @end
