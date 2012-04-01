@@ -8,19 +8,20 @@
 
 #import <Foundation/Foundation.h>
 #import "HDFormDataRequestDelegate.h"
-#import "HDFormDataRequest.h"
+#import "ASIFormDataRequest.h"
 
 @class HDFormDataRequest;
 
 @protocol HDFormDataRequestDelegate <NSObject>
 
+@required
+- (void)requestSuccess:(ASIFormDataRequest *) request  dataSet:(NSArray *)dataSet;
+
 @optional
-- (void)successSelector:(id)dataSet  theRequest:(HDFormDataRequest *) request;
+- (void)requestServerError:(ASIFormDataRequest *) request errorMessage:(NSString *) message;
 
-- (void)serverErrorSelector:(HDFormDataRequest *) request;
+- (void)requestError:(ASIFormDataRequest *)request errorMessage: (NSString *) message;
 
-- (void)errorSelector:(NSString *)errorMessage theRequest:(HDFormDataRequest *)request;
-
-- (void)asiFaildSelector:(HDFormDataRequest *) theRequest;
+- (void)requestAsiFaild:(ASIFormDataRequest *) request errorMessage: (NSString *) message;
 
 @end

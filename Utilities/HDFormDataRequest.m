@@ -7,13 +7,15 @@
 //
 
 #import "HDFormDataRequest.h"
+#import "HDFunctionUtil.h"
+#import "HDConvertUtil.h"
 
 @interface HDFormDataRequest()
 
 //设置请求模式，例如cookies之类的默认模式
--(id)setRequestPattern:(HDrequestPattern) requestPattern;
+//-(id)setRequestPattern:(HDrequestPattern) requestPattern;
 //默认的错误回调函数
--(void) aruoraRequestError:(NSString *) errorMessage withRequest:(ASIHTTPRequest *) request;
+//-(void) aruoraRequestError:(NSString *) errorMessage withRequest:(ASIHTTPRequest *) request;
 @end
 
 @implementation HDFormDataRequest
@@ -24,7 +26,7 @@
 @synthesize errorSelector;
 @synthesize asiFaildSelector;
 
-//TODO:构造函数，根据需要对请求参数进行默认定制
+#pragma -mark initializtion
 -(id)initWithURL:(NSURL *)newURL
 {
     self = [super initWithURL:newURL];
@@ -46,31 +48,26 @@
              withData:(id) data
               pattern:(HDrequestPattern) requestPattern
 {
-    HDFormDataRequest * request = [[HDFormDataRequest alloc]initWithURL:[NSURL URLWithString:newURL]];    
+    HDFormDataRequest * request = [[[HDFormDataRequest alloc]initWithURL:[NSURL URLWithString:newURL]] autorelease];    
     
     [request setRequestPattern:requestPattern];
-    //set post parameter
-   
     [request setPostParameter:data];
     return request;
 }
 
 -(void)dealloc{
-    [super clearDelegatesAndCancel];
-    auroraDelegate = nil;
+    hdFormDataRequestDelegate = nil;
     [super dealloc];
 }
 
-/*
- *设置请求模式，例如cookies之类的默认模式
- */
+#pragma -mark 设置请求模式，例如cookies之类的默认模式
 -(id)setRequestPattern:(HDrequestPattern) requestPattern{
     switch (requestPattern) {
         case 0:
             //set cookies
             [self setUseCookiePersistence:YES];
             [self setRequestCookies:[NSMutableArray arrayWithArray:[[NSHTTPCookieStorage sharedHTTPCookieStorage] cookies]]];
-            [self setResponseEncoding:NSUTF8StringEncoding];
+            //            [self setResponseEncoding:NSUTF8StringEncoding];
             return self;
             break;
             
@@ -82,111 +79,143 @@
      *debug:设置默认的return　NO,调用时的警告可能和这个有关系
      */
     NSLog(@"提交模式设置错误");
-    return NO;
+    return self;
 }
 
-/*
- *设置回调函数delegate,因为父类存在一个delegate,这里手写存取器方法，设置父类的delegate和本类的delegate
- */
+
+#pragma -mark 设置回调函数delegate,因为父类存在一个delegate,这里手写存取器方法，设置父类的delegate和本类的delegate
+
 - (id)delegate
 {
-    return auroraDelegate;
+    return hdFormDataRequestDelegate;
 }
 
-- (void)setDelegate:(id)newDelegate
+- (id)setDelegate:(id)newDelegate
 {
-    auroraDelegate = newDelegate;
+    hdFormDataRequestDelegate = newDelegate;
+    return self;
 }
 
-//为请求参数添加头
--(void) setPostParameter :(id) data
+-(id)setPostParameter :(id) data
 {
-     if (data != nil) {
-    [self setPostValue:[[NSDictionary dictionaryWithObject:data 
-                                                    forKey:@"parameter"] JSONRepresentation]
+    [self setPostValue:[self generatePostData:data] 
                 forKey:@"_request_data"];
-     }
+    return self;
 }
 
+//包装请求参数
+-(id) generatePostData:(id)data
+{   
+    return HD_JSON_STRING([NSDictionary dictionaryWithObject:HD_NVL(data) 
+                                                      forKey:@"parameter"]);
+}
+
+//包装返回数据
+-(id) generateDataSet:(NSDictionary *)jsonData
+{
+    //把json包装成dataSet
+    NSMutableArray * dataSet;
+    id datas = [[jsonData valueForKey:@"result"]objectForKey:@"record"]; 
+    
+    if (datas == nil) {
+        datas = [jsonData valueForKey:@"result"];
+        dataSet = [NSMutableArray arrayWithObject:datas];
+    }else{
+        dataSet = datas;
+    }
+    
+    return dataSet;
+}
+
+#pragma -mark callback functions
 //通信成功回调函数，根据也会返回状态调用不同的函数，成功后返回一个类似与dataSet的数组
 -(void)requestFetchSuccess:(ASIHTTPRequest *)theRequest
 {
-    
-//  NSLog(@"HDFormDataRequest.m -107 line \n\n%@",[theRequest responseString]);
+    //      NSLog(@"HDFormDataRequest.m -107 line \n\n%@",[theRequest responseString]);
     /*
      * debug:加入返回状态的判断，状态200才进行解析 
      * Mar 22 2012
      */
-    if ([theRequest responseStatusCode] ==200) {
+    if ([theRequest responseStatusCode] == 200) {
         //转换json数据为对象
-        id jsonData = [[theRequest responseString] JSONValue];
-        BOOL successFlg = [[jsonData valueForKey:@"success"]boolValue];
+        id jsonData = HD_JSON_OBJECT([theRequest responseString]);
         //返回状态为成功
-        if (successFlg) {
-            //把json包装成dataSet
-            NSMutableArray * dataSet;
-            id datas = [[jsonData valueForKey:@"result"]objectForKey:@"record"];        
-            if (datas ==nil) {
-                datas = [jsonData valueForKey:@"result"];
-                dataSet = [NSMutableArray arrayWithObject:datas];
-            }else{
-                dataSet = datas;
-            }
-            
-            if (auroraDelegate && [auroraDelegate respondsToSelector:successSelector]) {
-                [auroraDelegate performSelector:successSelector 
-                                     withObject:dataSet 
-                                     withObject:theRequest];
-            }else {
-                NSLog(@"Aurora Request Success");
-            }
-            
+        if ([[jsonData valueForKey:@"success"]boolValue]) {
+            [self callRequestSuccess:theRequest];
         }else{
             //返回状态为error
-            id  errorObj = nil;
-            errorObj = [jsonData valueForKey:@"error"];
-            if (errorObj != nil) {
-                NSString * errorMessage = [errorObj valueForKey:@"message"];
-                if (auroraDelegate && [auroraDelegate respondsToSelector:errorSelector]) {
-                    [auroraDelegate performSelector:errorSelector 
-                                         withObject:errorMessage 
-                                         withObject:theRequest];
-                }else{
-                    [self aruoraRequestError:errorMessage withRequest:theRequest];
-                }
+            if ([jsonData valueForKey:@"error"] != nil) {
+                [self callRequestError:theRequest];
             }
-            
         }
     }else {
-        //返回状态为200 以外的状态 
-        if (auroraDelegate && [auroraDelegate respondsToSelector:serverErrorSelector]) {
-            [auroraDelegate performSelector:serverErrorSelector withObject:theRequest];
-        }else{
-            [self requestFetchFailed:theRequest];
-        }
+        [self callRequestServerError:theRequest];
     }
-    
 }
 
 //网络链接失败，默认弹出alert
 -(void)requestFetchFailed:(ASIHTTPRequest *)theRequest
 {
-    if (auroraDelegate && [auroraDelegate respondsToSelector:asiFaildSelector]) {
-        [auroraDelegate performSelector:asiFaildSelector withObject:theRequest];
-    }else{
-        NSLog(@"ASI网络请求失败");
+    SEL function = [HDFunctionUtil matchPerformDelegate:hdFormDataRequestDelegate forSelectors:asiFaildSelector,@selector(requestAsiFaild:errorMessage:), nil];
+    if (function !=nil) {
+        [hdFormDataRequestDelegate performSelector:function
+                                        withObject:theRequest
+                                        withObject:[theRequest responseStatusMessage]];
+    }else {
+        NSLog(@"ASI网络错误,超时或无法找到服务器");
+    }    
+}
+
+
+
+#pragma call selectors
+-(void)callRequestSuccess:(ASIHTTPRequest *) theRequest
+{
+    id jsonData = HD_JSON_OBJECT([theRequest responseString]);
+    //把json包装成dataSet
+    NSMutableArray * dataSet = [self generateDataSet:jsonData];
+    //执行成功回调
+
+    SEL function = [HDFunctionUtil matchPerformDelegate:hdFormDataRequestDelegate 
+                                           forSelectors:successSelector,@selector(requestSuccess:dataSet:), nil];
+    if (function !=nil) {
+        [hdFormDataRequestDelegate performSelector:function
+                                        withObject:theRequest
+                                        withObject:dataSet];
+    }else {
+        NSLog(@"成功的回调没有实现");
     }
-    //    UIAlertView * alert = [[UIAlertView alloc]initWithTitle:@"提示" message:@"ASI" delegate:self cancelButtonTitle:@"确定" otherButtonTitles:nil];
-    //    [alert show];
-    //    [alert release];
+}
+
+-(void)callRequestError:(ASIHTTPRequest *)theRequest
+{
+    NSString * errorMessage = [[HD_JSON_OBJECT([theRequest responseString]) valueForKey:@"error"] valueForKey:@"message"];
+    
+    //执行错误的回调
+    SEL function = [HDFunctionUtil matchPerformDelegate:hdFormDataRequestDelegate forSelectors:errorSelector,@selector(requestError:errorMessage:), nil];
+    if (function !=nil) {
+        [hdFormDataRequestDelegate performSelector:function
+                                        withObject:theRequest
+                                        withObject:errorMessage];
+    }else {
+        NSLog(@"Aurora的错误消息");
+    }
+}
+
+-(void)callRequestServerError:(ASIHTTPRequest *)theRequest
+{
+    //返回状态为200 以外的状态 
+    SEL function = [HDFunctionUtil matchPerformDelegate:hdFormDataRequestDelegate forSelectors:serverErrorSelector,@selector(requestServerError:errorMessage:), nil];
+    if (function !=nil) {
+        [hdFormDataRequestDelegate performSelector:function
+                                        withObject:theRequest
+                                        withObject:[theRequest responseStatusMessage]];
+    }else {
+        NSLog(@"调用默认的回调,状态不是200,服务器错误");
+    }
     
 }
 
-//aurora框架的错误消息，可以传入回调函数覆盖
--(void) aruoraRequestError:(NSString *) errorMessage withRequest:(ASIHTTPRequest *) request
-{
-    NSLog(@"Aruora Request Error");
-    NSLog(@"%@",errorMessage);
-}
+
 
 @end
