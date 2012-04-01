@@ -7,15 +7,24 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "HDLoginDelegate.h"
+#import "HDFormDataRequestDelegate.h"
+
+static NSString * kLoginURLPath =  @"http://172.20.0.20:8080/hr_new/login.svc";
 
 @interface LoginModel : NSObject{
-
+    id <HDLoginDelegate> delegate;
 }
 
+@property (assign) SEL loginSuccessSelector;
+@property (assign) SEL loginFailedSelector;
+
+@property (nonatomic,retain) HDFormDataRequest * loginRequest;
 @property (nonatomic,retain) NSString * username;
 @property (nonatomic,retain) NSString * password;
-@property (nonatomic,retain) NSString * languageDisplay;
-@property (nonatomic,retain) NSString * languageValue;
+@property (nonatomic,assign) id <HDLoginDelegate> delegate;
 
--(id) toDataSet;
+-(void)login;
+
 @end
+
