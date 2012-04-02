@@ -8,10 +8,11 @@
 
 #import "HDConvertUtil.h"
 
+
 @implementation HDConvertUtil
 
 //json 数据的转换
-+(id) ObjectForJSONString:(NSString *) jsonString
++(id) objectForJSONString:(NSString *) jsonString
 {
     return [jsonString JSONValue];
 }
@@ -21,11 +22,12 @@
     return [object JSONRepresentation];
 }
 
-+(id) NilToSpace:(id)object{
-    if (object ==nil) {
-        return @"";
++(id) ifNil:(id)theObject then:(id)convertObject
+{
+    if (theObject ==nil) {
+        return convertObject;
     }else {
-        return object;
+        return theObject;
     }
 }
 @end

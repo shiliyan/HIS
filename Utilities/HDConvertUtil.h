@@ -8,18 +8,18 @@
 
 #import <Foundation/Foundation.h>
 
-#define HD_NVL(__POINTER) [HDConvertUtil NilToSpace:__POINTER]
+#define HD_NVL(__POINTER,__DEFAULT) [HDConvertUtil ifNil:__POINTER then:__DEFAULT]
 
 #define HD_JSON_STRING(__POINTER) [HDConvertUtil JSONStringForObject:__POINTER]
 
-#define HD_JSON_OBJECT(__POINTER) [HDConvertUtil ObjectForJSONString:__POINTER]
+#define HD_JSON_OBJECT(__POINTER) [HDConvertUtil objectForJSONString:__POINTER]
 @interface HDConvertUtil : NSObject
 
 //json数据的转换
-+(id) ObjectForJSONString:(NSString *) jsonString;
++(id) objectForJSONString:(NSString *) jsonString;
 
 +(id) JSONStringForObject:(id) object;
 
-+(id) NilToSpace:(id)object;
++(id) ifNil:(id)theObject then:(id)convertObject;
 
 @end
