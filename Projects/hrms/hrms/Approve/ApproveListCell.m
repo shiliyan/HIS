@@ -10,8 +10,6 @@
 
 @implementation ApproveListCell
 
-@synthesize approveData;
-
 - (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier
 {
     self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
@@ -20,18 +18,18 @@
         self.contentView.clipsToBounds = YES;
         
         // 加待办标题
-        workflowTextView = [[[UILabel alloc]initWithFrame:CGRectMake(20, 5, 240, 20)]autorelease];
-        workflowTextView.tag = WORKFLOW_TEXTVIEW_TAG;
-        workflowTextView.autoresizingMask = UIViewAutoresizingFlexibleWidth|UIViewAutoresizingFlexibleBottomMargin;
-        workflowTextView.adjustsFontSizeToFitWidth = NO;
-        workflowTextView.backgroundColor  = [UIColor clearColor];
+        workflowNameLabel = [[[UILabel alloc]initWithFrame:CGRectMake(20, 5, 240, 20)]autorelease];
+        workflowNameLabel.tag = TAG_WORKFLOW_LABEL;
+        workflowNameLabel.autoresizingMask = UIViewAutoresizingFlexibleWidth|UIViewAutoresizingFlexibleBottomMargin;
+        workflowNameLabel.adjustsFontSizeToFitWidth = NO;
+        workflowNameLabel.backgroundColor  = [UIColor clearColor];
         
-        [workflowTextView setFont:CELL_FONT(CELL_TITLE_FONTSIZE)];
-        [self.contentView addSubview:workflowTextView];
+        [workflowNameLabel setFont:CELL_FONT(CELL_TITLE_FONTSIZE)];
+        [self.contentView addSubview:workflowNameLabel];
         
         // 加申请时间
         commitDateTextView = [[[UILabel alloc]initWithFrame:CGRectMake(220, 5, 100, 20)]autorelease];
-        commitDateTextView.tag = COMMITDATE_TEXTVIEW_TAG;
+        commitDateTextView.tag = TAG_COMMITDATE_LABEL;
         commitDateTextView.autoresizingMask =UIViewAutoresizingFlexibleWidth;
         commitDateTextView.adjustsFontSizeToFitWidth = NO;
         commitDateTextView.backgroundColor  = [UIColor clearColor];
@@ -39,9 +37,18 @@
         [commitDateTextView setTextColor:[UIColor blueColor]];
         [self.contentView addSubview:commitDateTextView];
         
+//        alertBackgroundView = [[[UIView alloc]initWithFrame:CGRectMake(20, 28, 280, 18)]autorelease];
+//        alertBackgroundView.backgroundColor = [UIColor colorWithRed:100/255 green:100/255 blue:100/255 alpha:1];
+        
+        alertBackgroundView = [[[UIView alloc]initWithFrame:CGRectMake(25, 28, 295, 18)]autorelease];
+        alertBackgroundView.backgroundColor = [UIColor colorWithRed:(255/255) green:(255/255) blue:(0/255) alpha:0.2f];
+        alertBackgroundView.opaque = false;
+        alertBackgroundView.autoresizingMask = UIViewAutoresizingFlexibleWidth|UIViewAutoresizingFlexibleLeftMargin;
+        [self.contentView addSubview:alertBackgroundView];
+        
         // 加审批动作名
         currentStatusTextView = [[[UILabel alloc]initWithFrame:CGRectMake(20, 25, 300, 21)]autorelease];
-        currentStatusTextView.tag = CURRENTSTATUS_TEXTVIEW_TAG;
+        currentStatusTextView.tag = TAG_CURRENTSTATUS_LABEL;
         currentStatusTextView.autoresizingMask = UIViewAutoresizingFlexibleWidth;
         currentStatusTextView.textAlignment = UITextAlignmentLeft;
         currentStatusTextView.adjustsFontSizeToFitWidth = NO;
@@ -51,7 +58,7 @@
         
         //截止时间
         deadLineTextView = [[[UILabel alloc]initWithFrame:CGRectMake(20, 45, 300, 32)]autorelease];
-        deadLineTextView.tag = DEADLINE_TEXTVIEW_TAG;
+        deadLineTextView.tag = TAG_DEADLINE_LABEL;
         deadLineTextView.autoresizingMask=UIViewAutoresizingFlexibleWidth;
         deadLineTextView.adjustsFontSizeToFitWidth = NO;
         deadLineTextView.textAlignment = UITextAlignmentLeft;
@@ -61,6 +68,15 @@
         [deadLineTextView setLineBreakMode:UILineBreakModeCharacterWrap];
         [deadLineTextView setNumberOfLines:2];
         [self.contentView addSubview:deadLineTextView];
+        
+        typeImg = [[[UIImageView alloc]initWithFrame:CGRectMake(1, 29, 16, 16)]autorelease];
+        // 加待办类型图片 
+
+        typeImg.tag = TAG_TYPEIMGVIEW;
+        typeImg.autoresizingMask = UIViewAutoresizingFlexibleRightMargin|UIViewAutoresizingFlexibleBottomMargin;
+        typeImg.image = [UIImage imageNamed:@"alert.png"];
+        typeImg.contentMode = UIViewContentModeScaleAspectFit;
+        [self.contentView addSubview:typeImg];
         
     }
     return self;
@@ -74,23 +90,29 @@
 
 -(void)setCellData:(Approve *)approveEntity{
     
-    workflowTextView.text = [NSString stringWithFormat:@"%@：%@",approveEntity.workflowName,approveEntity.employeeName];
-    currentStatusTextView.text = [NSString stringWithFormat:@"当前节点：%@",approveEntity.nodeName];
+    workflowNameLabel.text = [NSString stringWithFormat:@"%@：%@",approveEntity.workflowName,approveEntity.employeeName];
+    
     commitDateTextView.text = approveEntity.creationDate;
     deadLineTextView.text = approveEntity.workflowDesc;
     
+    if ([approveEntity.localStatus isEqualToString:@"ERROR"]){
+        typeImg.hidden = NO;
+        alertBackgroundView.hidden = NO;
+        currentStatusTextView.text = approveEntity.serverMessage;
+    }else{
+        typeImg.hidden = YES;
+        alertBackgroundView.hidden = YES;
+        currentStatusTextView.text = [NSString stringWithFormat:@"当前节点：%@",approveEntity.nodeName];
+    }
+   
 }
 
-
 -(void)dealloc{
-    [approveData release];
-    [workflowTextView release];
+    [workflowNameLabel release];
     [currentStatusTextView release];
-    [applicantTextView release];
     [commitDateTextView release];
     [deadLineTextView release];
     [typeImg release];
     [super dealloc];
 }
-
 @end
