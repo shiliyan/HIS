@@ -40,7 +40,7 @@
              withData:(id) data
               pattern:(HDrequestPattern) requestPattern
 {
-    HDFormDataRequest * request = [[[HDFormDataRequest alloc]initWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@%@",kBaseURLPath,newURL]]] autorelease];    
+    HDFormDataRequest * request = [[[HDFormDataRequest alloc]initWithURL:[NSURL URLWithString:newURL]] autorelease];    
     
     [request setRequestPattern:requestPattern];
     [request setPostParameter:data];
@@ -136,7 +136,7 @@
 //通信成功回调函数，根据也会返回状态调用不同的函数，成功后返回一个类似与dataSet的数组
 -(void)requestFetchSuccess:(ASIHTTPRequest *)theRequest
 {
-//    NSLog(@"HDFormDataRequest.m -144 line \n\n%@",[theRequest responseString]);
+    NSLog(@"HDFormDataRequest.m -139 line \n\n%@",[theRequest responseString]);
     /*
      * debug:加入返回状态的判断，状态200才进行解析 
      * Mar 22 2012

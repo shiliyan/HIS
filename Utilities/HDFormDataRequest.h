@@ -14,10 +14,6 @@ typedef enum {
     HDrequestPatternNormal = 0,
 } HDrequestPattern;
 
-static NSString * kBaseURLPath =  @"http://172.20.0.20:8080/hr_new";
-//static NSString * kBaseURLPath =  @"http://localhost:8080/hr_new";
-
-
 @interface HDFormDataRequest : ASIFormDataRequest{
     id <HDFormDataRequestDelegate> hdFormDataRequestDelegate;
 }
