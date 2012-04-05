@@ -10,9 +10,6 @@
 #import "HDLoginDelegate.h"
 #import "HDFormDataRequestDelegate.h"
 
-static NSString * kLoginURLPath =  @"/login.svc";
-static NSString * kWriteSessionPath = @"/role_select.svc";
-
 @interface LoginModel : NSObject{
     id <HDLoginDelegate> delegate;
 }

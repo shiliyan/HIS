@@ -54,7 +54,7 @@ static HDURLCenter * _URLCenter = nil;
 
 -(NSString *) getURLWithKey:(id)key
 {
-    return   [NSString stringWithFormat:@"%@%@",[self.theURLDictionary valueForKey:@"baseURL"],[self.theURLDictionary valueForKey:key]];
+    return   [NSString stringWithFormat:@"%@%@",[self.theURLDictionary valueForKey:@"BASE_URL"],[self.theURLDictionary valueForKey:key]];
 }
 
 +(NSString *) requestURLWithKey:(id)key

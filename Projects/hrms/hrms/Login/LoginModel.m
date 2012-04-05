@@ -8,6 +8,7 @@
 
 #import "LoginModel.h"
 #import "HDFunctionUtil.h"
+#import "HDURLCenter.h"
 
 @implementation LoginModel
 
@@ -49,7 +50,7 @@
 
 -(void)login
 {
-    self.loginRequest  = [HDFormDataRequest hdRequestWithURL:kLoginURLPath 
+    self.loginRequest  = [HDFormDataRequest hdRequestWithURL:[HDURLCenter requestURLWithKey:@"LOGIN_PATH"] 
                                                     withData:[self generateLoginData]
                                                      pattern:HDrequestPatternNormal];
     //注册回调
@@ -62,7 +63,7 @@
 
 -(void)writeSession
 {
-    self.loginRequest  = [HDFormDataRequest hdRequestWithURL:kWriteSessionPath 
+    self.loginRequest  = [HDFormDataRequest hdRequestWithURL:[HDURLCenter requestURLWithKey:@"WRITE_SESSION_PATH"] 
                                                     withData:[self generateLoginData]
                                                      pattern:HDrequestPatternNormal];
     //注册回调
