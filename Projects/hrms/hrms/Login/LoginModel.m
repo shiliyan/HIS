@@ -53,11 +53,23 @@
                                                     withData:[self generateLoginData]
                                                      pattern:HDrequestPatternNormal];
     //注册回调
-    [_loginRequest setSuccessSelector:@selector(successSelector:dataSet:)];
-    [_loginRequest setServerErrorSelector:@selector(errorSelector:errorMessage:)];
-    [_loginRequest setErrorSelector:@selector(errorSelector:errorMessage:)];
-    [_loginRequest setAsiFaildSelector:@selector(errorSelector:errorMessage:)];
-    
+    [_loginRequest setSuccessSelector:@selector(loginSVCSuccess:dataSet:)];
+    [_loginRequest setServerErrorSelector:@selector(LoginError:errorMessage:)];
+    [_loginRequest setErrorSelector:@selector(LoginError:errorMessage:)];
+    [_loginRequest setAsiFaildSelector:@selector(LoginError:errorMessage:)];
+    [[_loginRequest setDelegate:self]startAsynchronous];
+}
+
+-(void)writeSession
+{
+    self.loginRequest  = [HDFormDataRequest hdRequestWithURL:kWriteSessionPath 
+                                                    withData:[self generateLoginData]
+                                                     pattern:HDrequestPatternNormal];
+    //注册回调
+    [_loginRequest setSuccessSelector:@selector(writeSessionSuccess:dataSet:)];
+    [_loginRequest setServerErrorSelector:@selector(LoginError:errorMessage:)];
+    [_loginRequest setErrorSelector:@selector(LoginError:errorMessage:)];
+    [_loginRequest setAsiFaildSelector:@selector(LoginError:errorMessage:)]; 
     [[_loginRequest setDelegate:self]startAsynchronous];
 }
 
@@ -67,11 +79,11 @@
     [self.loginRequest cancel];
 }
 
-- (void)successSelector:(ASIFormDataRequest *) request  dataSet:(NSArray *)dataSet
+//write session successfully,call loginSuccessSelector
+- (void)writeSessionSuccess:(ASIFormDataRequest *) request  dataSet:(NSArray *)dataSet
 {
     SEL function = [HDFunctionUtil matchPerformDelegate:self.delegate 
-                                           forSelectors:loginSuccessSelector,
-                    @selector(loginSuccess:),nil];
+                                           forSelectors:loginSuccessSelector,@selector(loginSuccess:),nil];
     if (function!=nil) {
         [delegate performSelector:function
                        withObject:dataSet];
@@ -80,11 +92,15 @@
     }
 }
 
-- (void)errorSelector:(ASIFormDataRequest *)request errorMessage: (NSString *)errorMessage
+- (void)loginSVCSuccess:(ASIFormDataRequest *) request  dataSet:(NSArray *)dataSet
+{
+    [self writeSession];
+}
+
+- (void)LoginError:(ASIFormDataRequest *)request errorMessage: (NSString *)errorMessage
 {    
     SEL function = [HDFunctionUtil matchPerformDelegate:self.delegate 
-                                           forSelectors:loginFailedSelector,
-                    @selector(loginFailed:),nil];
+                                           forSelectors:loginFailedSelector,@selector(loginFailed:),nil];
     
     if (function!=nil) {
         [delegate performSelector:function
