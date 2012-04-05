@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>baseURL</key>
+	<string>http://172.20.0.20:8080/hr_new/</string>
+	<key>kLoginPath</key>
+	<string>login.svc</string>
+	<key>kWriteSessionPath</key>
+	<string>role_select.svc</string>
+	<key>kToolBarActionQueryPath</key>
+	<string>autocrud/ios.IOS_APPROVE.ios_workflow_approve_action_query/query</string>
+	<key>kDoActionUpdatePath</key>
+	<string>autocrud/ios.IOS_APPROVE.ios_workflow_approve_action_submit/update</string>
+	<key>kApproveScreenBasePath</key>
+	<string>modules/ios/IOS_APPROVE/</string>
+</dict>
+</plist>
