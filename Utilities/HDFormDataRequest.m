@@ -10,14 +10,6 @@
 #import "HDFunctionUtil.h"
 #import "HDConvertUtil.h"
 
-@interface HDFormDataRequest()
-
-//设置请求模式，例如cookies之类的默认模式
-//-(id)setRequestPattern:(HDrequestPattern) requestPattern;
-//默认的错误回调函数
-//-(void) aruoraRequestError:(NSString *) errorMessage withRequest:(ASIHTTPRequest *) request;
-@end
-
 @implementation HDFormDataRequest
 
 //业务状态回调函数
@@ -48,10 +40,11 @@
              withData:(id) data
               pattern:(HDrequestPattern) requestPattern
 {
-    HDFormDataRequest * request = [[[HDFormDataRequest alloc]initWithURL:[NSURL URLWithString:newURL]] autorelease];    
+    HDFormDataRequest * request = [[[HDFormDataRequest alloc]initWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@%@",kBaseURLPath,newURL]]] autorelease];    
     
     [request setRequestPattern:requestPattern];
     [request setPostParameter:data];
+    [request setRequestHeader];
     return request;
 }
 
@@ -67,7 +60,6 @@
             //set cookies
             [self setUseCookiePersistence:YES];
             [self setRequestCookies:[NSMutableArray arrayWithArray:[[NSHTTPCookieStorage sharedHTTPCookieStorage] cookies]]];
-            //            [self setResponseEncoding:NSUTF8StringEncoding];
             return self;
             break;
             
@@ -94,6 +86,19 @@
 {
     hdFormDataRequestDelegate = newDelegate;
     return self;
+}
+
+-(id)setRequestHeader
+{
+    NSArray * cookies =  [[NSHTTPCookieStorage sharedHTTPCookieStorage]cookies];
+    
+    NSMutableDictionary * header =   [NSMutableDictionary dictionary];
+    
+    for (NSHTTPCookie * cookie in cookies) {
+        [header setValue:[cookie value] forKey:[cookie name]];
+    }
+    [self setRequestHeaders:header];
+    return  self;
 }
 
 -(id)setPostParameter :(id) data
@@ -131,7 +136,7 @@
 //通信成功回调函数，根据也会返回状态调用不同的函数，成功后返回一个类似与dataSet的数组
 -(void)requestFetchSuccess:(ASIHTTPRequest *)theRequest
 {
-    //      NSLog(@"HDFormDataRequest.m -107 line \n\n%@",[theRequest responseString]);
+//    NSLog(@"HDFormDataRequest.m -144 line \n\n%@",[theRequest responseString]);
     /*
      * debug:加入返回状态的判断，状态200才进行解析 
      * Mar 22 2012
@@ -175,7 +180,7 @@
     //把json包装成dataSet
     NSMutableArray * dataSet = [self generateDataSet:jsonData];
     //执行成功回调
-
+    
     SEL function = [HDFunctionUtil matchPerformDelegate:hdFormDataRequestDelegate 
                                            forSelectors:successSelector,@selector(requestSuccess:dataSet:), nil];
     if (function !=nil) {
