@@ -22,6 +22,6 @@
 
 - (void)requestError:(ASIFormDataRequest *)request errorMessage: (NSString *) message;
 
-- (void)requestAsiFaild:(ASIFormDataRequest *) request errorMessage: (NSString *) message;
+- (void)requestASIFaild:(ASIFormDataRequest *) request errorMessage: (NSString *) message;
 
 @end

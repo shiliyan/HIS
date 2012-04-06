@@ -161,7 +161,7 @@
 //网络链接失败，默认弹出alert
 -(void)requestFetchFailed:(ASIHTTPRequest *)theRequest
 {
-    SEL function = [HDFunctionUtil matchPerformDelegate:hdFormDataRequestDelegate forSelectors:asiFaildSelector,@selector(requestAsiFaild:errorMessage:), nil];
+    SEL function = [HDFunctionUtil matchPerformDelegate:hdFormDataRequestDelegate forSelectors:asiFaildSelector,@selector(requestASIFaild:errorMessage:), nil];
     if (function !=nil) {
         [hdFormDataRequestDelegate performSelector:function
                                         withObject:theRequest
