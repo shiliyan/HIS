@@ -21,7 +21,7 @@ typedef enum {
 @property (assign) SEL successSelector;
 @property (assign) SEL serverErrorSelector;
 @property (assign) SEL errorSelector;
-@property (assign) SEL asiFaildSelector;
+@property (assign) SEL failedSelector;
 
 +(id)hdRequestWithURL:(NSString *)newURL
               pattern:(HDrequestPattern) requestPattern;

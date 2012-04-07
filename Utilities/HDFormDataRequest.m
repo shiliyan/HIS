@@ -16,7 +16,7 @@
 @synthesize successSelector;
 @synthesize serverErrorSelector;
 @synthesize errorSelector;
-@synthesize asiFaildSelector;
+@synthesize failedSelector;
 
 #pragma -mark initializtion
 -(id)initWithURL:(NSURL *)newURL
@@ -161,7 +161,7 @@
 //网络链接失败，默认弹出alert
 -(void)requestFetchFailed:(ASIHTTPRequest *)theRequest
 {
-    SEL function = [HDFunctionUtil matchPerformDelegate:hdFormDataRequestDelegate forSelectors:asiFaildSelector,@selector(requestASIFaild:errorMessage:), nil];
+    SEL function = [HDFunctionUtil matchPerformDelegate:hdFormDataRequestDelegate forSelectors:failedSelector,@selector(requestASIFailed:failedMessage:), nil];
     if (function !=nil) {
         [hdFormDataRequestDelegate performSelector:function
                                         withObject:theRequest
