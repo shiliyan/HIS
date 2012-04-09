@@ -23,7 +23,7 @@ static const NSInteger ACTIVE_LABEL =64;
 @property (nonatomic,retain) HDApproveDetailModel *approveModel;
 
 -(id)initWithName:(NSString *) name 
-         recordID:(NSNumber *) theRecordID 
+         recordID:(NSInteger) theRecordID 
        screenName:(NSString *) theScreenName;
 
 @end

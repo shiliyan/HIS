@@ -71,7 +71,7 @@
                                                      withData:data
                                                       pattern:HDrequestPatternNormal];
     
-    [_actionsRequest setSuccessSelector: @selector(callActionLoad:)];
+    [_actionsRequest setSuccessSelector: @selector(callActionLoad:withDataSet:)];
     [_actionsRequest setDelegate:self];
     [_actionsRequest startAsynchronous];
 }
@@ -130,22 +130,22 @@
 
 -(void) callWebPageLoad:(ASIHTTPRequest *) theRequest webPageContent:(NSString *)pageContent
 {
-    if ([delegate respondsToSelector:@selector(webPageLoad:responseString:)]) {
+    if (delegate && [delegate respondsToSelector:@selector(webPageLoad:responseString:)]) {
         [delegate performSelector:@selector(webPageLoad:responseString:) 
                        withObject:theRequest 
                        withObject:pageContent];
     }else {
-        NSLog(@"代理不响应该方法");
+        NSLog(@"代理不响应webPageLoad:responseString:方法");
     }
 }
 
--(void) callActionLoad:(NSArray *) dataSet
+-(void) callActionLoad:(ASIFormDataRequest *) request withDataSet:(NSMutableArray *) dataSet
 {
-    if ([delegate respondsToSelector:@selector(actionLoad:)]) {
+    if (delegate && [delegate respondsToSelector:@selector(actionLoad:)]) {
         [delegate performSelector:@selector(actionLoad:)
                        withObject:dataSet];
     }else {
-        NSLog(@"代理不响应该方法");
+        NSLog(@"代理不响应actionLoad:方法");
     }
 }
 

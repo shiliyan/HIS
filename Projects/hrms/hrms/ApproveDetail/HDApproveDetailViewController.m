@@ -24,12 +24,12 @@
 }
 
 -(id)initWithName:(NSString *) name 
-         recordID:(NSNumber *) theRecordID 
+         recordID:(NSInteger) theRecordID 
        screenName:(NSString *) theScreenName
 {
     self = [super init];
     if (self) {
-        self.approveModel = [[HDApproveDetailModel alloc]initWithRecordID:theRecordID 
+        self.approveModel = [[HDApproveDetailModel alloc]initWithRecordID:[NSNumber numberWithInt: theRecordID ]
                                                                screenName:theScreenName];
         self.title = name;
     }
