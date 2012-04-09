@@ -60,7 +60,7 @@ toModalViewController:[RCLoginViewController class]];
     [map from:@"tt://approve" 
 toSharedViewController:[ApproveListController class]];
     
-    [map from:@"tt://approve_detail/(initWithName:)" 
+    [map from:@"tt://approve_detail/(initWithName:)/(recordID:)/(screenName:)" 
        parent:@"tt://approve" 
 toViewController:[HDApproveDetailViewController class] 
      selector:nil 
@@ -89,7 +89,7 @@ toViewController:[HDApproveDetailViewController class]
     if(![navigator restoreViewControllers])
     {
         //        NSLog(@"No RestoreViewCtrl!!");
-        [navigator openURLAction:[TTURLAction actionWithURLPath:@"tt://approve_detail/2"]];
+        [navigator openURLAction:[TTURLAction actionWithURLPath:@"tt://approve"]];
         
         [navigator openURLAction:[[TTURLAction actionWithURLPath:@"tt://login"]applyTransition:UIViewAnimationTransitionFlipFromLeft]];
     }
