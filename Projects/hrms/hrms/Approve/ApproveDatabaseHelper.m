@@ -15,7 +15,7 @@
 -(void)initTables{
 
     NSString *createTableSql =
-    [NSString stringWithFormat:@"create table if not exists %@ (workflow_id integer,record_id integer,is_late text,screen_name text,workflow_name text,workflow_desc text,node_name text,employee_name text,creation_date text,date_limit text,localStatus text,comment text,approveActionType text)",TABLE_NAME_APPROVE_LIST];
+    [NSString stringWithFormat:@"create table if not exists %@ (workflow_id integer,record_id integer,is_late text,screen_name text,workflow_name text,workflow_desc text,node_name text,employee_name text,creation_date text,date_limit text,local_status text,comment text,action_type text,server_message text)",TABLE_NAME_APPROVE_LIST];
     
     if (![db open]) {
         [db release];

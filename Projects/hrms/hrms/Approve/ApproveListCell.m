@@ -28,9 +28,9 @@
         [self.contentView addSubview:workflowNameLabel];
         
         // 加申请时间
-        commitDateTextView = [[[UILabel alloc]initWithFrame:CGRectMake(220, 5, 100, 20)]autorelease];
+        commitDateTextView = [[[UILabel alloc]initWithFrame:CGRectMake(245, 5, 75, 20)]autorelease];
         commitDateTextView.tag = TAG_COMMITDATE_LABEL;
-        commitDateTextView.autoresizingMask =UIViewAutoresizingFlexibleWidth;
+        commitDateTextView.autoresizingMask =UIViewAutoresizingFlexibleWidth|UIViewAutoresizingFlexibleLeftMargin;
         commitDateTextView.adjustsFontSizeToFitWidth = NO;
         commitDateTextView.backgroundColor  = [UIColor clearColor];
         [commitDateTextView setFont:[UIFont fontWithName:@"Helvetica" size:11]];
@@ -57,7 +57,7 @@
         [self.contentView addSubview:currentStatusTextView];
         
         //截止时间
-        deadLineTextView = [[[UILabel alloc]initWithFrame:CGRectMake(20, 45, 300, 32)]autorelease];
+        deadLineTextView = [[[UILabel alloc]initWithFrame:CGRectMake(20, 45, 295, 32)]autorelease];
         deadLineTextView.tag = TAG_DEADLINE_LABEL;
         deadLineTextView.autoresizingMask=UIViewAutoresizingFlexibleWidth;
         deadLineTextView.adjustsFontSizeToFitWidth = NO;
@@ -92,8 +92,14 @@
     
     workflowNameLabel.text = [NSString stringWithFormat:@"%@：%@",approveEntity.workflowName,approveEntity.employeeName];
     
-    commitDateTextView.text = approveEntity.creationDate;
+    commitDateTextView.text = [approveEntity.creationDate substringToIndex:10];
     deadLineTextView.text = approveEntity.workflowDesc;
+    
+    if (approveEntity.isLate == 0) {
+        workflowNameLabel.textColor = [UIColor blackColor];
+    }else {
+        workflowNameLabel.textColor = [UIColor redColor];
+    }
     
     if ([approveEntity.localStatus isEqualToString:@"ERROR"]){
         typeImg.hidden = NO;
