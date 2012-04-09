@@ -6,15 +6,16 @@
 //  Copyright (c) 2012 __MyCompanyName__. All rights reserved.
 //
 
+#import "LoginModel.h"
 
-@interface RCLoginViewController : TTBaseViewController <TTURLRequestDelegate>{
-    HDFormDataRequest * formDataRequest;
+@interface RCLoginViewController : TTBaseViewController <HDLoginDelegate>
+{
 }
 
-@property (nonatomic,retain) HDFormDataRequest * formDataRequest;
+@property (nonatomic,retain) LoginModel * loginModel;
 @property (nonatomic,retain) IBOutlet UITextField * username;
 @property (nonatomic,retain) IBOutlet UITextField * password;
-//@property (nonatomic,retain) IBOutlet UIButton * loginBtn;
+
 
 -(IBAction)loginBtnPressed:(id)sender;
 

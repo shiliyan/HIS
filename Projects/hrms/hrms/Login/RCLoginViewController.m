@@ -8,18 +8,12 @@
 
 #import "RCLoginViewController.h"
 #import "LoginModel.h"
-#import "UIViewController+HttpRequestHelper.h"
-
 
 @implementation RCLoginViewController
 
-//static NSString * kLoginURLPath  = @"http://localhost:8080/HandEmployeeServer/AuroraLogin";
-static NSString * kInitWithRequestPath = @"http://localhost:8080/HandEmployeeServer";
-static NSString * kLoginURLPath =  @"http://localhost:8080/hrms/login.svc";
-
-@synthesize username;
-@synthesize password;
-@synthesize formDataRequest;
+@synthesize username = _username;
+@synthesize password = _password;
+@synthesize loginModel = _loginModel;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -32,70 +26,39 @@ static NSString * kLoginURLPath =  @"http://localhost:8080/hrms/login.svc";
 }
 
 -(void)dealloc{
-    TT_RELEASE_SAFELY(username);
-    TT_RELEASE_SAFELY(password);
-    TT_RELEASE_SAFELY(formDataRequest);
-    //    TT_RELEASE_SAFELY(loginBtn);
+    TT_RELEASE_SAFELY(_username);
+    TT_RELEASE_SAFELY(_password);
+    TT_RELEASE_SAFELY(_loginModel);
     [super dealloc];
 }
 
 #pragma login functions
 -(IBAction)loginBtnPressed:(id)sender{
-    /*
-     *TODO:正式使用时开启回调部分跳转，这里忽略了服务端登陆请求
-     
-    LoginModel * loginEntity = [[LoginModel alloc]init];
-    loginEntity.username = [username text];
-    loginEntity.password = [password text];
+    [_username resignFirstResponder];
+    [_password resignFirstResponder];
     
-    self.formDataRequest  = [HDFormDataRequest hdRequestWithURL:kLoginURLPath 
-                                           withData:[loginEntity toDataSet] 
-                                            pattern:HDrequestPatternNormal];
+    [self.loginModel setUsername:_username.text];
+    [self.loginModel setPassword:_password.text];    
     
-    [loginEntity release];
-    [formDataRequest setDelegate:self];
-    [formDataRequest setSuccessSelector:@selector(loginSecretFetchComplete:)];
-    [formDataRequest startAsynchronous];
-    */
-      
-    [[self parentViewController] dismissModalViewControllerAnimated:YES];
+    [self.loginModel login];
 }
 
--(void)login:(id)dataSet
+#pragma login delegate
+-(void)loginSuccess:(NSArray *) dataSet
 {
-    
-    NSString * loginUrl = [[dataSet objectAtIndex:0] objectForKey:@"login_url"];
-    
-    
-    LoginModel * loginEntity = [[LoginModel alloc]init];
-    loginEntity.username = [username text];
-    loginEntity.password = [password text];
-    
-    [self formRequest:loginUrl  
-             withData:[loginEntity toDataSet] 
-      successSelector:@selector(loginSecretFetchComplete:)  
-       failedSelector:nil 
-        errorSelector:nil
-    noNetworkSelector:nil];
-    [loginEntity release];
+    NSLog(@"success");
+    //TODO:未开启跳转
+//    [[self parentViewController] dismissModalViewControllerAnimated:YES];
 }
 
-- (void)loginSecretFetchComplete:(id)dataSet
+-(void)loginFailed:(NSString *) errorMessage;
 {
-//    NSLog(@"%@",[[dataSet objectAtIndex:0]valueForKey:@"user_name"]);
-    [username resignFirstResponder];
-    [password resignFirstResponder];
-    
-    [[self parentViewController] dismissModalViewControllerAnimated:YES];
-//    [[TTNavigator navigator] openURLAction:[[[TTURLAction actionWithURLPath:@"tt://role_select"]
-//                                             applyAnimated: YES]applyTransition:UIViewAnimationTransitionFlipFromRight]];
+    NSLog(@"failed");
 }
 
 #pragma animations for keyborad
-
 -(void)keyboardWillAppear:(BOOL)animated withBounds:(CGRect)bounds
 {
-    //    NSLog(@"%f,%f",bounds.size.width,bounds.size.height);
     [UIView beginAnimations:@"keyboardAnimation" context:NULL];
     for (UIView * subView in [self.view subviews]) {
         CGAffineTransform moveTransform = CGAffineTransformMakeTranslation(0, -120);
@@ -115,47 +78,41 @@ static NSString * kLoginURLPath =  @"http://localhost:8080/hrms/login.svc";
     [UIView commitAnimations];
 }
 
-- (void)didReceiveMemoryWarning
-{
-    // Releases the view if it doesn't have a superview.
-    [super didReceiveMemoryWarning];
-    
-    // Release any cached data, images, etc that aren't in use.
-}
-
 #pragma mark - View lifecycle
 
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    // Do any additional setup after loading the view from its nib.
-    
+    _loginModel = [[LoginModel alloc]init];
+    [self.loginModel setDelegate:self];
 }
+
+- (void)viewDidUnload
+{
+    TT_RELEASE_SAFELY(_username);
+    TT_RELEASE_SAFELY(_password);
+    TT_RELEASE_SAFELY(_loginModel);
+    [super viewDidUnload];
+}
+
 - (void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
     [self.navigationController.navigationBar setHidden:YES];
 }
 
--(void)viewWillDisappear:(BOOL)animated
-{
-    [super viewDidDisappear:animated];
-//    [self.navigationController.navigationBar setHidden:NO];
-}
-- (void)viewDidUnload
-{
-    [super viewDidUnload];
-    TT_RELEASE_SAFELY(username);
-    TT_RELEASE_SAFELY(password);
-    TT_RELEASE_SAFELY(formDataRequest);
-    // Release any retained subviews of the main view.
-    // e.g. self.myOutlet = nil;
-}
-
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
 {
     // Return YES for supported orientations
     return (interfaceOrientation == UIInterfaceOrientationPortrait);
+}
+
+- (void)didReceiveMemoryWarning
+{
+    // Releases the view if it doesn't have a superview.
+    [super didReceiveMemoryWarning];
+    
+    // Release any cached data, images, etc that aren't in use.
 }
 
 @end

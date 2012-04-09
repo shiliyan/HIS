@@ -8,7 +8,6 @@
 
 #import <Foundation/Foundation.h>
 #import "ASIFormDataRequest.h"
-
 #import "HDFormDataRequestDelegate.h"
 
 typedef enum {
@@ -16,14 +15,13 @@ typedef enum {
 } HDrequestPattern;
 
 @interface HDFormDataRequest : ASIFormDataRequest{
-    id <HDFormDataRequestDelegate> auroraDelegate;
+    id <HDFormDataRequestDelegate> hdFormDataRequestDelegate;
 }
 
 @property (assign) SEL successSelector;
 @property (assign) SEL serverErrorSelector;
 @property (assign) SEL errorSelector;
-@property (assign) SEL asiFaildSelector;
-
+@property (assign) SEL failedSelector;
 
 +(id)hdRequestWithURL:(NSString *)newURL
               pattern:(HDrequestPattern) requestPattern;
@@ -35,11 +33,11 @@ typedef enum {
 //请求回调的响应delegate 
 -(id)delegate;
 
--(void)setDelegate:(id)newDelegate;
+-(id)setDelegate:(id)newDelegate;
 
 -(id)initWithURL:(NSURL *)newURL;
 
 //设置提交参数
--(void)setPostParameter :(id) data;
+-(id)setPostParameter :(id) data;
 
 @end
