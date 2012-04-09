@@ -119,10 +119,10 @@
 -(id) generateDataSet:(NSDictionary *)jsonData
 {
     //把json包装成dataSet
-    NSMutableArray * dataSet;
+    NSMutableArray * dataSet = nil;
     id datas = [[jsonData valueForKey:@"result"]objectForKey:@"record"]; 
     
-    if (datas == nil) {
+    if (nil == datas) {
         datas = [jsonData valueForKey:@"result"];
         dataSet = [NSMutableArray arrayWithObject:datas];
     }else{
