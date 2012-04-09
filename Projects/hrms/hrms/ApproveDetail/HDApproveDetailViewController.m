@@ -95,7 +95,6 @@
        
         ApproveOpinionView * opinionViewController = [[[ApproveOpinionView alloc]initWithNibName:@"ApproveOpinionView" bundle:nil] autorelease];
         [opinionViewController setControllerDelegate:self];
-//        opinionViewController.opinionTextView.text = @"可，同意";
         [self presentModalViewController:opinionViewController animated:YES];
 }
 #pragma -mark 提交时遮罩

@@ -7,6 +7,7 @@
 //
 
 #import "HDApproveDetailModel.h"
+#import "HDURLCenter.h"
 
 @implementation HDApproveDetailModel
 
@@ -44,7 +45,7 @@
 
 -(void)loadWebPage{
     //创建页面载入请求
-    NSString * screenUrl = [NSString stringWithFormat:@"%@%@?record_id=%i",kBaseUrl,_screenName,_recordID];
+    NSString * screenUrl = [NSString stringWithFormat:@"%@%@?record_id=%i",[HDURLCenter requestURLWithKey:@"APPROVE_SCREEN_BASE_PATH"],_screenName,_recordID];
     
     self.webPageRequest = [ASIWebPageRequest requestWithURL:[NSURL URLWithString:screenUrl]];
     
@@ -63,10 +64,10 @@
     
 }
 -(void)loadWebActions{
-    NSLog(@"HDAppreoveDetailModel -68 \n\n%@",self.recordID);
+//    NSLog(@"HDAppreoveDetailModel -68 \n\n%@",self.recordID);
     NSDictionary * data = [NSDictionary dictionaryWithObject:self.recordID forKey:@"record_id"];
     //////////////////////////////////////
-    self.actionsRequest = [HDFormDataRequest hdRequestWithURL:kToolBarActionUrl 
+    self.actionsRequest = [HDFormDataRequest hdRequestWithURL:[HDURLCenter requestURLWithKey:@"TOOLBAR_ACTION_QUERY_PATH"] 
                                                      withData:data
                                                       pattern:HDrequestPatternNormal];
     
@@ -85,7 +86,7 @@
     NSDictionary * actionData = [NSDictionary dictionaryWithObjectsAndKeys:self.recordID,@"record_id",
                                  self.actionID,@"action_id",self.comment,@"comment" ,nil];
     //TODO:如何提交到队列
-    HDFormDataRequest * actionRequest  = [HDFormDataRequest hdRequestWithURL:kDoActionUrl 
+    HDFormDataRequest * actionRequest  = [HDFormDataRequest hdRequestWithURL:[HDURLCenter requestURLWithKey:@"EXEC_ACTION_UPDATE_PATH"] 
                                                      withData:actionData
                                                       pattern:HDrequestPatternNormal];
     

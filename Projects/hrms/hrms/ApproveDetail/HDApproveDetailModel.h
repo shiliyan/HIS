@@ -12,10 +12,6 @@
 #import "ASIWebPageRequest.h"
 #import "ASIDownloadCache.h"
 
-static NSString * kBaseUrl = @"http://172.20.0.20:8080/hr_new/modules/ios/IOS_APPROVE/";
-static NSString * kToolBarActionUrl = @"http://172.20.0.20:8080/hr_new/autocrud/ios.IOS_APPROVE.ios_workflow_approve_action_query/query";
-static NSString * kDoActionUrl = @"http://172.20.0.20:8080/hr_new/autocrud/ios.IOS_APPROVE.ios_workflow_approve_action_submit/update";
-
 @interface HDApproveDetailModel : NSObject
 {
     id <HDApproveDetailDelegate> delegate;
