@@ -10,6 +10,8 @@
 
 //styleSheet
 #import "MyStyleSheet.h"
+//
+#import "HDURLCenter.h"
 //view controllers
 #import "RCLoginViewController.h"
 //审批
@@ -32,6 +34,9 @@
 {
     //register notification
     [[UIApplication sharedApplication] registerForRemoteNotificationTypes:(UIRemoteNotificationTypeAlert|UIRemoteNotificationTypeBadge|UIRemoteNotificationTypeSound)];
+    
+    //配置首选项
+    [self setupByPreferences];
     
     //Views Managment by Three20
     TTNavigator* navigator = [TTNavigator navigator];
@@ -84,10 +89,54 @@ toViewController:[HDApproveDetailViewController class]
     if(![navigator restoreViewControllers])
     {
         //        NSLog(@"No RestoreViewCtrl!!");
-        [navigator openURLAction:[TTURLAction actionWithURLPath:@"tt://approve"]];
+        [navigator openURLAction:[TTURLAction actionWithURLPath:@"tt://approve_detail/2"]];
         
         [navigator openURLAction:[[TTURLAction actionWithURLPath:@"tt://login"]applyTransition:UIViewAnimationTransitionFlipFromLeft]];
     }
+    
+}
+
+- (void)setupByPreferences
+{
+    NSString *baseURL = [[NSUserDefaults standardUserDefaults] stringForKey:@"base_url_preference"];
+	if (nil == baseURL)
+	{
+        //从root文件读取配置
+        NSString *pathStr = [[NSBundle mainBundle] bundlePath];
+		NSString *settingsBundlePath = [pathStr stringByAppendingPathComponent:@"Settings.bundle"];
+		NSString *finalPath = [settingsBundlePath stringByAppendingPathComponent:@"Root.plist"];
+        
+		NSDictionary *settingsDict = [NSDictionary dictionaryWithContentsOfFile:finalPath];
+		NSArray *prefSpecifierArray = [settingsDict objectForKey:@"PreferenceSpecifiers"];
+        
+		NSString *baseURLDefault = nil;
+		NSString *approveDefault = nil;
+		
+		NSDictionary *prefItem;
+		for (prefItem in prefSpecifierArray)
+		{
+			NSString *keyValueStr = [prefItem objectForKey:@"Key"];
+			id defaultValue = [prefItem objectForKey:@"DefaultValue"];
+			
+			if ([keyValueStr isEqualToString:@"base_url_preference"])
+			{
+				baseURLDefault = defaultValue;
+			}
+			else if ([keyValueStr isEqualToString:@"default_approve_preference"])
+			{
+				approveDefault = defaultValue;
+			}
+			
+		}
+        	
+		NSDictionary *appDefaults = [NSDictionary dictionaryWithObjectsAndKeys:
+                                     baseURLDefault, @"base_url_preference",
+                                     approveDefault, @"default_approve_preference",
+                                     nil];
+        
+		[[NSUserDefaults standardUserDefaults] registerDefaults:appDefaults];
+		[[NSUserDefaults standardUserDefaults] synchronize];
+	}
     
 }
 
@@ -121,15 +170,15 @@ toViewController:[HDApproveDetailViewController class]
 //    [nav removeAllViewControllers];
 }
 
--(void) applicationDidBecomeActive:(UIApplication *)application
-{
-    TTNavigator * nav = [TTNavigator navigator];
+//-(void) applicationDidBecomeActive:(UIApplication *)application
+//{
+//    TTNavigator * nav = [TTNavigator navigator];
     
-    if ([[nav visibleViewController] isKindOfClass:[ApproveListController class]]) {
+//    if ([[nav visibleViewController] isKindOfClass:[ApproveListController class]]) {
 //        [[TTNavigator navigator] openURLAction:[TTURLAction actionWithURLPath:@"tt://approve"]];
-        [[nav visibleViewController] loadView];
-    }
-}
+//        [[nav visibleViewController] loadView];
+//    }
+//}
 
 - (void)applicationWillTerminate:(UIApplication *)application
 {
