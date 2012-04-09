@@ -65,10 +65,10 @@
             refuseButton.enabled = YES;
         }
     }else{
-        [ [TTNavigator navigator] openURLAction:[[[TTURLAction actionWithURLPath:@"tt://approve_detail/Detail"]applyAnimated:YES] applyQuery: [NSDictionary dictionaryWithObject: [tableAdapter.approveArray objectAtIndex:indexPath.row] forKey:@"detailRecord"]]];
-        
-        [tableView deselectRowAtIndexPath:indexPath animated:YES];
+        Approve *data = [tableAdapter.approveArray objectAtIndex:[indexPath row]];
+        [[TTNavigator navigator] openURLAction:[[TTURLAction actionWithURLPath:[NSString stringWithFormat:@"tt://approve_detail/Detail/%i/%@",data.recordId,data.screenName]]applyAnimated:YES]];
     }
+//    @"tt://approve_detail/Detail/recordId/screenName"
 }
 
 -(void)tableView:(UITableView *)tableView didDeselectRowAtIndexPath:(NSIndexPath *)indexPath{
@@ -116,7 +116,7 @@
 #pragma mark - 刷新数据
 -(void)refreshTable{
     // 获取最新的待办列表
-    self.formRequest  = [HDFormDataRequest hdRequestWithURL:@"http://172.20.0.20:8080/hr_new/autocrud/ios.IOS_APPROVE.ios_workflow_approve_query/query" pattern:HDrequestPatternNormal];
+    self.formRequest  = [HDFormDataRequest hdRequestWithURL:[HDURLCenter requestURLWithKey:@"APPROVE_TABLE_QUERY_URL"] pattern:HDrequestPatternNormal];
     
     [formRequest setDelegate:self];
     [formRequest setSuccessSelector:@selector(querySuccess:withDataSet:)];

@@ -13,6 +13,7 @@
 #import "ApproveDatabaseHelper.h"
 #import "ASINetworkQueue.h"
 #import "ApproveTableAdapter.h"
+#import "HDURLCenter.h"
 
 static const int ACTION_TYPE_ADOPT = 1;
 static const int ACTION_TYPE_REFUSE = 2;
