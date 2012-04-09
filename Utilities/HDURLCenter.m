@@ -47,14 +47,15 @@ static HDURLCenter * _URLCenter = nil;
 
 -(void)dealloc
 {
-    [_theURLDictionary release];
-    [_URLCenter release];
+    TT_RELEASE_SAFELY(_theURLDictionary);
     [super dealloc];
 }
 
 -(NSString *) getURLWithKey:(id)key
-{
-    return   [NSString stringWithFormat:@"%@%@",[self.theURLDictionary valueForKey:@"BASE_URL"],[self.theURLDictionary valueForKey:key]];
+{ 
+    return   [NSString stringWithFormat:@"%@%@",[[NSUserDefaults standardUserDefaults]stringForKey:@"base_url_preference"],[self.theURLDictionary valueForKey:key]];
+    
+    //    return   [NSString stringWithFormat:@"%@%@",[self.theURLDictionary valueForKey:@"BASE_URL"],[self.theURLDictionary valueForKey:key]];
 }
 
 +(NSString *) requestURLWithKey:(id)key
