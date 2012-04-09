@@ -45,8 +45,7 @@
 
 -(void)loadWebPage{
     //创建页面载入请求
-    NSString * screenUrl = [NSString stringWithFormat:@"%@%@?record_id=%i",[HDURLCenter requestURLWithKey:@"APPROVE_SCREEN_BASE_PATH"],_screenName,_recordID];
-    
+    NSString * screenUrl = [NSString stringWithFormat:@"%@%@?record_id=%@",[HDURLCenter requestURLWithKey:@"APPROVE_SCREEN_BASE_PATH"],_screenName,_recordID];
     self.webPageRequest = [ASIWebPageRequest requestWithURL:[NSURL URLWithString:screenUrl]];
     
     [_webPageRequest setUrlReplacementMode:ASIReplaceExternalResourcesWithData];
