@@ -9,6 +9,7 @@
 #import "LoginModel.h"
 #import "HDFunctionUtil.h"
 #import "HDURLCenter.h"
+#import "HDHTTPRequestCenter.h"
 
 @implementation LoginModel
 
@@ -25,8 +26,39 @@
 //登陆协议 
 @synthesize delegate;
 
+- (id)init
+{
+    self = [super init];
+    if (self) {
+        HDRequestConfig * loginRequestConfig = [[HDRequestConfig alloc]init];
+        [loginRequestConfig setDelegate:self];
+        [loginRequestConfig setSuccessSelector:@selector(loginSVCSuccess:dataSet:)];
+        [loginRequestConfig setServerErrorSelector:@selector(LoginError:errorMessage:)];
+        [loginRequestConfig setErrorSelector:@selector(LoginError:errorMessage:)];
+        [loginRequestConfig setFailedSelector:@selector(LoginError:errorMessage:)];
+        
+        HDRequestConfig * sessionWriteRequestConfig = [[HDRequestConfig alloc]init];
+        [sessionWriteRequestConfig setDelegate:self];
+        [sessionWriteRequestConfig setSuccessSelector:@selector(writeSessionSuccess:dataSet:)];
+        [sessionWriteRequestConfig setServerErrorSelector:@selector(LoginError:errorMessage:)];
+        [sessionWriteRequestConfig setErrorSelector:@selector(LoginError:errorMessage:)];
+        [sessionWriteRequestConfig setFailedSelector:@selector(LoginError:errorMessage:)];
+        
+        HDRequestConfigMap * map = [[HDHTTPRequestCenter shareHTTPRequestCenter] requestConfigMap];
+        [map addConfig:loginRequestConfig forKey:@"loginSVC"];
+        [map addConfig:sessionWriteRequestConfig forKey:@"sessionWrite"];
+        
+        [loginRequestConfig release];
+        [sessionWriteRequestConfig release];
+        
+    }
+    return self;
+}
+
 -(void)dealloc
 {
+    [[[HDHTTPRequestCenter shareHTTPRequestCenter] requestConfigMap]removeConfigForKey:@"loginSVC"];
+    [[[HDHTTPRequestCenter shareHTTPRequestCenter] requestConfigMap]removeConfigForKey:@"sessionWrite"];
     [self.loginRequest clearDelegatesAndCancel];
     TT_RELEASE_SAFELY(_loginRequest);
     TT_RELEASE_SAFELY(_username);
@@ -50,28 +82,43 @@
 
 -(void)login
 {
-    self.loginRequest  = [HDFormDataRequest hdRequestWithURL:[HDURLCenter requestURLWithKey:@"LOGIN_PATH"] 
-                                                    withData:[self generateLoginData]
-                                                     pattern:HDrequestPatternNormal];
+//    self.loginRequest  = [HDFormDataRequest hdRequestWithURL:[HDURLCenter requestURLWithKey:@"LOGIN_PATH"] 
+//                                                    withData:[self generateLoginData]
+//                                                     pattern:HDrequestPatternNormal];
     //注册回调
-    [_loginRequest setSuccessSelector:@selector(loginSVCSuccess:dataSet:)];
-    [_loginRequest setServerErrorSelector:@selector(LoginError:errorMessage:)];
-    [_loginRequest setErrorSelector:@selector(LoginError:errorMessage:)];
-    [_loginRequest setAsiFaildSelector:@selector(LoginError:errorMessage:)];
-    [[_loginRequest setDelegate:self]startAsynchronous];
+//    [_loginRequest setSuccessSelector:@selector(loginSVCSuccess:dataSet:)];
+//    [_loginRequest setServerErrorSelector:@selector(LoginError:errorMessage:)];
+//    [_loginRequest setErrorSelector:@selector(LoginError:errorMessage:)];
+//    [_loginRequest setFailedSelector:@selector(LoginError:errorMessage:)];
+    
+    HDHTTPRequestCenter * requestCenter = [HDHTTPRequestCenter shareHTTPRequestCenter];
+    self.loginRequest = [requestCenter requestWithURL:[HDURLCenter requestURLWithKey:@"LOGIN_PATH"] 
+                                             withData:[self generateLoginData] 
+                                          requestType:HDRequestTypeFormData 
+                                               forKey:@"loginSVC"];
+    
+    [_loginRequest startAsynchronous];
 }
 
 -(void)writeSession
 {
-    self.loginRequest  = [HDFormDataRequest hdRequestWithURL:[HDURLCenter requestURLWithKey:@"WRITE_SESSION_PATH"] 
-                                                    withData:[self generateLoginData]
-                                                     pattern:HDrequestPatternNormal];
-    //注册回调
-    [_loginRequest setSuccessSelector:@selector(writeSessionSuccess:dataSet:)];
-    [_loginRequest setServerErrorSelector:@selector(LoginError:errorMessage:)];
-    [_loginRequest setErrorSelector:@selector(LoginError:errorMessage:)];
-    [_loginRequest setAsiFaildSelector:@selector(LoginError:errorMessage:)]; 
-    [[_loginRequest setDelegate:self]startAsynchronous];
+//    self.loginRequest  = [HDFormDataRequest hdRequestWithURL:[HDURLCenter requestURLWithKey:@"WRITE_SESSION_PATH"] 
+//                                                    withData:[self generateLoginData]
+//                                                     pattern:HDrequestPatternNormal];
+//    //注册回调
+//    [_loginRequest setSuccessSelector:@selector(writeSessionSuccess:dataSet:)];
+//    [_loginRequest setServerErrorSelector:@selector(LoginError:errorMessage:)];
+//    [_loginRequest setErrorSelector:@selector(LoginError:errorMessage:)];
+//    [_loginRequest setFailedSelector:@selector(LoginError:errorMessage:)]; 
+    HDHTTPRequestCenter * requestCenter = [HDHTTPRequestCenter shareHTTPRequestCenter];
+    self.loginRequest = [requestCenter requestWithURL:[HDURLCenter requestURLWithKey:@"WRITE_SESSION_PATH"]
+                                             withData:[self generateLoginData]
+                                          requestType:HDRequestTypeFormData
+                                               forKey:@"sessionWrite"];
+    
+    
+    
+    [_loginRequest startAsynchronous];
 }
 
 //取消登陆
