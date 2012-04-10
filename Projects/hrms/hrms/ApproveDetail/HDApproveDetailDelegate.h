@@ -10,8 +10,12 @@
 
 @protocol HDApproveDetailDelegate <NSObject>
 
--(void) webPageLoad:(ASIHTTPRequest*) theRequest responseString:(NSString *) htmlString;
+-(void) webPageLoad:(ASIHTTPRequest *) theRequest responseString:(NSString *) htmlString;
 
 -(void) actionLoad:(NSArray *) dataSet;
+
+-(void) execActionSuccess:(NSArray *) dataSet;
+
+-(void) execActionFailed: (NSString *) errorMessage;
 
 @end
