@@ -48,6 +48,7 @@ static NSString *APPROVE_PROPERTY_APPROVE_ACTION_TYPE=@"action_type";
 static NSString *APPROVE_PROPERTY_SERVER_MESSAGE=@"server_message";
 
 @interface Approve : NSObject{
+    NSUInteger rowId;//本地数据主键
     NSUInteger workflowId;
     NSUInteger recordId;
     NSString *workflowName;//工作流名称
@@ -64,7 +65,7 @@ static NSString *APPROVE_PROPERTY_SERVER_MESSAGE=@"server_message";
     NSString *serverMessage;
     
 }
-
+@property(nonatomic) NSUInteger rowId;
 @property(nonatomic) NSUInteger workflowId;
 @property(nonatomic) NSUInteger recordId;
 @property(copy, nonatomic) NSString *workflowName;
@@ -81,11 +82,9 @@ static NSString *APPROVE_PROPERTY_SERVER_MESSAGE=@"server_message";
 @property(copy, nonatomic) NSString *serverMessage;
 
 
--(Approve *)initWithWorkflowId:(NSUInteger)wid workflowName:(NSString *)wName nodeName:(NSString *)currentStatus employeeName:(NSString *)applicant limitDate:(NSString *)deadLine creationDate:(NSString *)commitDate lsLate:(NSUInteger)tType;
 
--(Approve *)initWithWorkflowId:(NSUInteger)wid workflowName:(NSString *)wName nodeName:(NSString *)node employeeName:(NSString *)employee dateLimit:(NSString *)limit creationDate:(NSString *)creation isLate:(NSUInteger)late comment:(NSString *)cmt;
 
--(Approve *)initWithWorkflowId:(NSUInteger)wid recordId:(NSUInteger)rId workflowName:(NSString *)wName workflowDesc:(NSString *)wDesc nodeName:(NSString *)node employeeName:(NSString *)employee creationDate:(NSString *)creation dateLimit:(NSString *)limit  isLate:(NSUInteger)late screenName:(NSString *)screen localStatus:(NSString *)status comment:(NSString *)cmt actionType:(NSUInteger)actionType serverMessage:(NSString *)sMessage;
+-(Approve *)initWithRowId:(NSUInteger)rowid workflowId:(NSUInteger)wid recordId:(NSUInteger)rId workflowName:(NSString *)wName workflowDesc:(NSString *)wDesc nodeName:(NSString *)node employeeName:(NSString *)employee creationDate:(NSString *)creation dateLimit:(NSString *)limit  isLate:(NSUInteger)late screenName:(NSString *)screen localStatus:(NSString *)status comment:(NSString *)cmt actionType:(NSUInteger)aType serverMessage:(NSString *)sMessage;
 
 -(Approve *)initWithDictionary:(NSMutableDictionary *)dic;
 @end

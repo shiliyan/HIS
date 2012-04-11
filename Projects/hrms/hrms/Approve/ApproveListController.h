@@ -37,7 +37,6 @@ static const int ACTION_TYPE_REFUSE = 2;
     
     ApproveListDetailController *detailController;
     ApproveOpinionView *opinionView;
-
 }
 
 @property (retain, nonatomic) ApproveListDetailController *detailController;
@@ -51,8 +50,6 @@ static const int ACTION_TYPE_REFUSE = 2;
 @property (retain,nonatomic) IBOutlet UILabel *bottomStatusLabel;
 @property (retain,nonatomic) IBOutlet UIBarButtonItem *adoptButton;
 @property (retain,nonatomic) IBOutlet UIBarButtonItem *refuseButton;
-
-
 
 -(IBAction)commitApproveToServer:(id)sender;
 
