@@ -11,6 +11,7 @@
 #import "HDFormDataRequest.h"
 #import "ASIWebPageRequest.h"
 #import "ASIDownloadCache.h"
+#import "ApproveDatabaseHelper.h"
 
 @interface HDApproveDetailModel : NSObject
 {
@@ -26,6 +27,8 @@
 @property (nonatomic,retain) ASIWebPageRequest * webPageRequest;
 
 @property (nonatomic,assign) id <HDApproveDetailDelegate> delegate;
+
+@property (nonatomic,retain) ApproveDatabaseHelper * dbHelper;
 
 -(void)loadWebPage;
 -(void)loadWebActions;

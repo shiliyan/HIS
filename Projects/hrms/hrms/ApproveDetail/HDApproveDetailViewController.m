@@ -29,7 +29,7 @@
 {
     self = [super init];
     if (self) {
-        self.approveModel = [[HDApproveDetailModel alloc]initWithRecordID:[NSNumber numberWithInt: theRecordID ]
+        self.approveModel = [[HDApproveDetailModel alloc]initWithRecordID:[NSNumber numberWithInt:theRecordID]
                                                                screenName:theScreenName];
         self.title = name;
     }
@@ -52,7 +52,7 @@
     [self dismissModalViewControllerAnimated:YES];
     if (resultCode == RESULT_OK) {
         //开启遮罩
-//        [self addActivityLabelWithStyle:TTActivityLabelStyleWhite];
+        [self addActivityLabelWithStyle:TTActivityLabelStyleWhite];
         //提交
         [_approveModel setComment:[dictionary objectForKey:@"comment"]];
         [_approveModel execAction];
@@ -97,81 +97,48 @@
         [opinionViewController setControllerDelegate:self];
         [self presentModalViewController:opinionViewController animated:YES];
 }
+
 #pragma -mark 提交时遮罩
-//- (void)addActivityLabelWithStyle:(TTActivityLabelStyle)style{
-//    UIView *backView = [[[UIView alloc]initWithFrame:CGRectMake(0, 0, 320, 480)] autorelease];
-//    backView.backgroundColor = [UIColor colorWithRed:0 green:0 blue:0 alpha:0.3];
-//    backView.tag = BACK_VIEW;
-//    
-//    TTActivityLabel* label = [[[TTActivityLabel alloc] initWithStyle:style] autorelease];
-//    label.text = @"Loading...";
-//    [label sizeToFit];
-//    label.frame = CGRectMake(0, 180, self.view.width, label.height);
-//    label.tag = ACTIVE_LABEL;
-//    
-//    [backView addSubview:label];
-//    [self.navigationController.view addSubview:backView];
-//}
+- (void)addActivityLabelWithStyle:(TTActivityLabelStyle)style
+{
+    UIView *backView = [[[UIView alloc]initWithFrame:CGRectMake(0, 0, 320, 480)] autorelease];
+    backView.backgroundColor = [UIColor colorWithRed:0 green:0 blue:0 alpha:0.3];
+    backView.tag = BACK_VIEW;
+    
+    TTActivityLabel* label = [[[TTActivityLabel alloc] initWithStyle:style] autorelease];
+    label.text = @"Loading...";
+    [label sizeToFit];
+    label.frame = CGRectMake(0, 180, self.view.width, label.height);
+    label.tag = ACTIVE_LABEL;
+    
+    [backView addSubview:label];
+    [self.navigationController.view addSubview:backView];
+}
 
-#pragma -mark 提交成功失败回调
-//-(void) doActionSuccess:(NSArray *) dataSet
-//{
-//    //写数据库
-//    //初始化数据库连接
-//    dbHelper = [[ApproveDatabaseHelper alloc]init];
-//    
-//    [dbHelper.db open];
-//    NSString * sql = [NSString stringWithFormat:@"delete from %@ where %@ = %i",@"approve_list",@"record_id",self.approveDetailRecord.recordID];
-//    NSLog(@"%@",sql);
-//    [dbHelper.db executeUpdate:sql];
-//    [dbHelper.db close];
-//    
-//    [dbHelper release];
-//    //解除遮罩
-//    [[self.navigationController.view viewWithTag:BACK_VIEW]removeFromSuperview];
-//    
-//    //退回到待办事项列表
-//    [self.navigationController popViewControllerAnimated:YES];
-//}
-//
-//-(void) doActionError:(NSString *) msg
-//{
-//    //解除遮罩
-//    [[self.navigationController.view viewWithTag:BACK_VIEW]removeFromSuperview];
-//}
-//
-//-(void) doActionASIFailed:(ASIHTTPRequest *) theRequest
-//{
-//    //解除遮罩
-//    [[self.navigationController.view viewWithTag:BACK_VIEW]removeFromSuperview];
-//}
-//
-//-(void) doActionServerError:(NSString *)msg
-//{
-//    //解除遮罩
-//    [[self.navigationController.view viewWithTag:BACK_VIEW]removeFromSuperview];
-//}
+-(void) removeActivityLabel
+{
+    [[self.navigationController.view viewWithTag:BACK_VIEW]removeFromSuperview];
+}
 
-#pragma -mark webView的代理方法
-//- (BOOL)webView:(UIWebView *)webView shouldStartLoadWithRequest:(NSURLRequest *)request navigationType:(UIWebViewNavigationType)navigationType
-//{
-//    return YES;
-//}
-//
-////页面加载开始
-//- (void)webViewDidStartLoad:(UIWebView *)webView{
-//    
-//}
-//
-////页面加载完成
-//- (void)webViewDidFinishLoad:(UIWebView *)webView{
-//    
-//}
-//
-////页面加载失败
-//- (void)webView:(UIWebView *)webView didFailLoadWithError:(NSError *)error{
-//    
-//}
+//提交成功,退回列表
+-(void) execActionSuccess:(NSArray *) dataSet
+{
+    [self removeActivityLabel];
+    [self.navigationController popViewControllerAnimated:YES];
+}
+
+//提交失败,弹出对话框
+-(void) execActionFailed: (NSString *) errorMessage
+{
+    [self removeActivityLabel];
+    UIAlertView * alert = [[UIAlertView alloc]initWithTitle:@"失败" 
+                                                    message:errorMessage 
+                                                   delegate:nil 
+                                          cancelButtonTitle:@"确定" 
+                                          otherButtonTitles:nil];
+    [alert show];
+    TT_RELEASE_SAFELY(alert);
+}
 
 #pragma -mark 页面load事件
 - (void)viewDidLoad

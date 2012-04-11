@@ -8,6 +8,9 @@
 
 #import "HDApproveDetailModel.h"
 #import "HDURLCenter.h"
+#import "HDHTTPRequestCenter.h"
+
+static NSString * kExecAction = @"execAction";
 
 @implementation HDApproveDetailModel
 
@@ -17,6 +20,7 @@
 @synthesize actionID = _actionID;
 @synthesize comment = _comment;
 @synthesize screenName = _screenName;
+@synthesize dbHelper = _dbHelper;
 
 //明细协议
 @synthesize delegate;
@@ -28,18 +32,32 @@
     if (self) {
         self.recordID = theRecordID;
         self.screenName = theScreenName;
+        //
+        HDRequestConfig * execActionRequestConfig = [[HDRequestConfig alloc]init];
+        [execActionRequestConfig setDelegate:self];
+        [execActionRequestConfig setSuccessSelector:@selector(doActionSuccess:dataSet:)];
+        [execActionRequestConfig setServerErrorSelector:@selector(doActionFailed:errorMessage:)];
+        [execActionRequestConfig setErrorSelector:@selector(doActionFailed:errorMessage:)];
+        [execActionRequestConfig setFailedSelector:@selector(doActionFailed:errorMessage:)];
+        
+        
+        HDRequestConfigMap * map = [[HDHTTPRequestCenter shareHTTPRequestCenter] requestConfigMap];
+        [map addConfig:execActionRequestConfig forKey:kExecAction];
+        [execActionRequestConfig release];
     }
     return self;
 }
 
 -(void)dealloc
 {
+    [[[HDHTTPRequestCenter shareHTTPRequestCenter] requestConfigMap] removeConfigForKey:kExecAction];
     [_actionsRequest clearDelegatesAndCancel];
     [_webPageRequest clearDelegatesAndCancel];
     TT_RELEASE_SAFELY(_actionsRequest);
     TT_RELEASE_SAFELY(_webPageRequest);
     TT_RELEASE_SAFELY(_recordID);
     TT_RELEASE_SAFELY(_actionID);
+    TT_RELEASE_SAFELY(_dbHelper);
     [super dealloc];
 }
 
@@ -62,6 +80,7 @@
     [_webPageRequest startAsynchronous];
     
 }
+
 -(void)loadWebActions{
 //    NSLog(@"HDAppreoveDetailModel -68 \n\n%@",self.recordID);
     NSDictionary * data = [NSDictionary dictionaryWithObject:self.recordID forKey:@"record_id"];
@@ -82,15 +101,19 @@
 
 -(void)execAction
 {
-    NSDictionary * actionData = [NSDictionary dictionaryWithObjectsAndKeys:self.recordID,@"record_id",
-                                 self.actionID,@"action_id",self.comment,@"comment" ,nil];
-    //TODO:如何提交到队列
-    HDFormDataRequest * actionRequest  = [HDFormDataRequest hdRequestWithURL:[HDURLCenter requestURLWithKey:@"EXEC_ACTION_UPDATE_PATH"] 
-                                                     withData:actionData
-                                                      pattern:HDrequestPatternNormal];
+    NSDictionary * actionData = [NSDictionary dictionaryWithObjectsAndKeys:self.recordID,@"record_id", self.actionID,@"action_id", self.comment,@"comment", nil];
+    HDHTTPRequestCenter * requestCenter = [HDHTTPRequestCenter shareHTTPRequestCenter];
+    HDFormDataRequest * actionRequest = [requestCenter requestWithURL:[HDURLCenter requestURLWithKey:@"EXEC_ACTION_UPDATE_PATH"] 
+                                                             withData:actionData 
+                                                          requestType:HDRequestTypeFormData 
+                                                               forKey:kExecAction];
     
-    [actionRequest setDelegate:self];
-    [actionRequest setSuccessSelector:@selector(doActionSuccess:)];
+//    HDFormDataRequest * actionRequest  = [HDFormDataRequest hdRequestWithURL:[HDURLCenter requestURLWithKey:@"EXEC_ACTION_UPDATE_PATH"] 
+//                                                     withData:actionData
+//                                                      pattern:HDrequestPatternNormal];
+    
+//    [actionRequest setDelegate:self];
+//    [actionRequest setSuccessSelector:@selector(doActionSuccess:)];
     [actionRequest startAsynchronous];
 }
 
@@ -102,10 +125,39 @@
     [self execAction];
 }
 
+-(void)removeLocalData :(NSNumber *) recordID
+{
+//  写数据库
+//  初始化数据库连接
+    _dbHelper = [[ApproveDatabaseHelper alloc]init];
+    
+    [_dbHelper.db open];
+    NSString * sql = [NSString stringWithFormat:@"delete from %@ where %@ = %@",@"approve_list",@"record_id",self.recordID];
+    NSLog(@"%@",sql);
+    [_dbHelper.db executeUpdate:sql];
+    [_dbHelper.db close];
+    
+    [_dbHelper release];
+}
+
+#pragma -mark exec action callback functions
+-(void)doActionSuccess:(ASIHTTPRequest *) theRequest dataSet:(NSMutableArray *) dataSet
+{
+    //执行成功
+    [self removeLocalData:self.recordID];
+    [self callExecActionSuccess:theRequest withDataSet:dataSet];
+}    
+
+-(void) doActionFailed:(ASIHTTPRequest *) theRequest errorMessage:(NSString *) errorMessage
+{
+    //执行失败
+    [self callExecActionFailed:theRequest withErrorMessage:errorMessage];
+}
+
 #pragma -mark web Page load callback functions  
 - (void)webPageLoadFailed:(ASIHTTPRequest *)theRequest
 {
-	NSLog(@"%@",[NSString stringWithFormat:@"Something went wrong: %@",[theRequest error]]);
+//	NSLog(@"%@",[NSString stringWithFormat:@"Something went wrong: %@",[theRequest error]]);
     [self callWebPageLoad:theRequest webPageContent:@"<h1>页面加载失败</h>"];
 }
 
@@ -127,6 +179,7 @@
     [self callWebPageLoad:theRequest webPageContent:webPageContent];
 }
 
+#pragma -mark 操作回调
 -(void) callWebPageLoad:(ASIHTTPRequest *) theRequest webPageContent:(NSString *)pageContent
 {
     if (delegate && [delegate respondsToSelector:@selector(webPageLoad:responseString:)]) {
@@ -148,4 +201,26 @@
     }
 }
 
+-(void) callExecActionSuccess:(ASIHTTPRequest *) request withDataSet:(NSMutableArray *) dataSet
+{
+    
+    if (delegate && [delegate respondsToSelector:@selector(execActionSuccess:)]) {
+        [delegate performSelector:@selector(execActionSuccess:)
+                       withObject:dataSet];
+    }else {
+        NSLog(@"代理不响应execActionSuccess:方法");
+    }
+}
+
+-(void) callExecActionFailed:(ASIHTTPRequest *) request withErrorMessage:(NSString *) errorMessage
+{
+    //错误的消息
+    //TODO:错误消息内容是什么
+    if (delegate && [delegate respondsToSelector:@selector(execActionFailed:)]) {
+        [delegate performSelector:@selector(execActionFailed:)
+                       withObject:errorMessage];
+    }else {
+        NSLog(@"代理不响应execActionFailed:方法");
+    }
+}
 @end
