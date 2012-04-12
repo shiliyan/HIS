@@ -37,11 +37,8 @@
         [commitDateTextView setTextColor:[UIColor blueColor]];
         [self.contentView addSubview:commitDateTextView];
         
-//        alertBackgroundView = [[[UIView alloc]initWithFrame:CGRectMake(20, 28, 280, 18)]autorelease];
-//        alertBackgroundView.backgroundColor = [UIColor colorWithRed:100/255 green:100/255 blue:100/255 alpha:1];
-        
         alertBackgroundView = [[[UIView alloc]initWithFrame:CGRectMake(25, 28, 295, 18)]autorelease];
-        alertBackgroundView.backgroundColor = [UIColor colorWithRed:(255/255) green:(255/255) blue:(0/255) alpha:0.2f];
+        
         alertBackgroundView.opaque = false;
         alertBackgroundView.autoresizingMask = UIViewAutoresizingFlexibleWidth|UIViewAutoresizingFlexibleLeftMargin;
         [self.contentView addSubview:alertBackgroundView];
@@ -74,7 +71,6 @@
 
         typeImg.tag = TAG_TYPEIMGVIEW;
         typeImg.autoresizingMask = UIViewAutoresizingFlexibleRightMargin|UIViewAutoresizingFlexibleBottomMargin;
-        typeImg.image = [UIImage imageNamed:@"alert.png"];
         typeImg.contentMode = UIViewContentModeScaleAspectFit;
         [self.contentView addSubview:typeImg];
         
@@ -101,7 +97,15 @@
         workflowNameLabel.textColor = [UIColor redColor];
     }
     
-    if ([approveEntity.localStatus isEqualToString:@"ERROR"]){
+    if ([approveEntity.localStatus isEqualToString:@"DIFFERENT"]){
+        typeImg.image = [UIImage imageNamed:@"alert.png"];
+        alertBackgroundView.backgroundColor = [UIColor colorWithRed:(255/255) green:(255/255) blue:(0/255) alpha:0.2f];
+        typeImg.hidden = NO;
+        alertBackgroundView.hidden = NO;
+        currentStatusTextView.text = approveEntity.serverMessage;
+    }else if([approveEntity.localStatus isEqualToString:@"ERROR"]){
+        typeImg.image = [UIImage imageNamed:@"error.png"];
+        alertBackgroundView.backgroundColor = [UIColor colorWithRed:(255/255) green:(0/255) blue:(0/255) alpha:0.2f];
         typeImg.hidden = NO;
         alertBackgroundView.hidden = NO;
         currentStatusTextView.text = approveEntity.serverMessage;
@@ -110,7 +114,6 @@
         alertBackgroundView.hidden = YES;
         currentStatusTextView.text = [NSString stringWithFormat:@"当前节点：%@",approveEntity.nodeName];
     }
-   
 }
 
 -(void)dealloc{

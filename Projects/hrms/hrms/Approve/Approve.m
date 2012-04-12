@@ -10,6 +10,7 @@
 
 @implementation Approve
 
+@synthesize rowId;
 @synthesize workflowId;
 @synthesize recordId;
 @synthesize workflowName;
@@ -38,19 +39,12 @@
     [super dealloc];
 }
 
--(Approve *)initWithWorkflowId:(NSUInteger)wid workflowName:(NSString *)wName nodeName:(NSString *)cStatus employeeName:(NSString *)a limitDate:(NSString *)dLine creationDate:(NSString *)cDate lsLate:(NSUInteger)tType{
-    return [self initWithWorkflowId:wid recordId:-1 workflowName:wName workflowDesc:nil nodeName:cStatus employeeName:a creationDate:cDate dateLimit:dLine isLate:tType screenName:nil  localStatus:nil comment:nil actionType:-1 serverMessage:nil];
-    
-}
 
--(Approve *)initWithWorkflowId:(NSUInteger)wid workflowName:(NSString *)wName nodeName:(NSString *)node employeeName:(NSString *)employee dateLimit:(NSString *)limit creationDate:(NSString *)creation isLate:(NSUInteger)late comment:(NSString *)cmt{
-    
-    return [self initWithWorkflowId:wid recordId:-1 workflowName:wName workflowDesc:nil nodeName:node employeeName:employee creationDate:creation dateLimit:limit isLate:late screenName:nil localStatus:nil comment:cmt actionType:-1 serverMessage:nil];
-}
 
--(Approve *)initWithWorkflowId:(NSUInteger)wid recordId:(NSUInteger)rId workflowName:(NSString *)wName workflowDesc:(NSString *)wDesc nodeName:(NSString *)node employeeName:(NSString *)employee creationDate:(NSString *)creation dateLimit:(NSString *)limit  isLate:(NSUInteger)late screenName:(NSString *)screen localStatus:(NSString *)status comment:(NSString *)cmt actionType:(NSUInteger)aType serverMessage:(NSString *)sMessage{
+-(Approve *)initWithRowId:(NSUInteger)rowid workflowId:(NSUInteger)wid recordId:(NSUInteger)rId workflowName:(NSString *)wName workflowDesc:(NSString *)wDesc nodeName:(NSString *)node employeeName:(NSString *)employee creationDate:(NSString *)creation dateLimit:(NSString *)limit  isLate:(NSUInteger)late screenName:(NSString *)screen localStatus:(NSString *)status comment:(NSString *)cmt actionType:(NSUInteger)aType serverMessage:(NSString *)sMessage{
     
     if (self = [super init]){
+        self.rowId = rowid;
         self.workflowId = wid;
         self.recordId = rId;
         self.workflowName = wName;
@@ -72,7 +66,6 @@
 
 -(Approve *)initWithDictionary:(NSMutableDictionary *)dic{
     if (self = [super init]){
-        
         self.workflowId = [[dic objectForKey:APPROVE_PROPERTY_WORKFLOW_ID] integerValue];
         self.recordId = [[dic objectForKey:APPROVE_PROPERTY_RECORD_ID] integerValue];
         self.workflowName = [dic objectForKey:APPROVE_PROPERTY_WORKFLOW_NAME];
@@ -90,6 +83,10 @@
     }
     
     return self;
+}
+
+-(NSString *)description{
+    return [NSString stringWithFormat:@"%@ recordId:%i rowid:%i",[super description],self.recordId,self.rowId];
 }
 
 @end

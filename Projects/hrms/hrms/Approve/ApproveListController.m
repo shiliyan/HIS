@@ -27,6 +27,7 @@
 //将审批数据提交到服务器
 
 -(void)commitApproveSuccess:(ASIHTTPRequest *)request withDataSet:(NSArray *)dataset;
+
 -(void)commitApproveError:(ASIHTTPRequest *)request withMessage:(NSString *)errorMessage;
 -(void)commitApproveServerError:(ASIHTTPRequest *)request withResponseStatus:(NSString *)status;
 -(void)commitApproveNetWorkError:(ASIHTTPRequest *)request;
@@ -109,6 +110,7 @@
         [checkToolBar resignFirstResponder];
         checkToolBar.hidden = YES;
         normalToolbar.hidden = NO;
+       
     }
 }
 
@@ -175,14 +177,18 @@
         }
         [responseEntity release];
     }
-    [tableAdapter.approveArray insertObjects:tempArray atIndexes:[NSIndexSet indexSetWithIndexesInRange:NSMakeRange(0, [tempArray count])]];
+    
     
     [dbHelper.db open];
     for (Approve *approve in tempArray) {
         NSString *sql = [NSString stringWithFormat:@"insert into %@ (%@,%@,%@,%@,%@,%@,%@,%@,%@,%@,%@,%@,%@) values ('%i','%i','%@','%@','%@','%@','%@','%@','%i','%@','%@','%i','%@');",TABLE_NAME_APPROVE_LIST,APPROVE_PROPERTY_WORKFLOW_ID,APPROVE_PROPERTY_RECORD_ID,APPROVE_PROPERTY_WORKFLOW_NAME,APPROVE_PROPERTY_WORKFLOW_DESC,APPROVE_PROPERTY_NODE_NAME,APPROVE_PROPERTY_EMPLOYEE_NAME,APPROVE_PROPERTY_CREATION_DATE,APPROVE_PROPERTY_DATE_LIMIT,APPROVE_PROPERTY_IS_LATE,APPROVE_PROPERTY_LOCAL_STATUS,APPROVE_PROPERTY_COMMENT,APPROVE_PROPERTY_APPROVE_ACTION_TYPE,APPROVE_PROPERTY_SCREEN_NAME,approve.workflowId,approve.recordId,approve.workflowName,approve.workflowDesc,approve.nodeName,approve.employeeName,approve.creationDate,approve.dateLimit,approve.isLate,approve.localStatus,approve.comment,approve.actionType,approve.screenName];
         [dbHelper.db executeUpdate:sql];
+
+        approve.rowId = sqlite3_last_insert_rowid([dbHelper.db sqliteHandle]);
     }
+    
     [dbHelper.db close];
+    [tableAdapter.approveArray insertObjects:tempArray atIndexes:[NSIndexSet indexSetWithIndexesInRange:NSMakeRange(0, [tempArray count])]];
     
     [tempArray removeAllObjects];
     for (Approve *localEntity in tableAdapter.approveArray) {
@@ -197,19 +203,18 @@
             //找到相同的，说明没问题
         }else{
             //在本地数据中没有找到和服务器返回的相同的记录，说明发生了变化，存入“有差异”数组
-//            [localEntity setLocalStatus:@"DIFFERENT"];
-            [localEntity setLocalStatus:@"ERROR"];
+            [localEntity setLocalStatus:@"DIFFERENT"];
+//            [localEntity setLocalStatus:@"ERROR"];
             [tempArray addObject:localEntity];
         }
     }
     [tableAdapter.errorArray addObjectsFromArray:tempArray];
     [tableAdapter.approveArray removeObjectsInArray:tempArray];
     
-
     [dbHelper.db open];
     //将有差异的数据存表
     for (Approve *entity in tempArray) {
-        [dbHelper.db executeUpdate:[NSString stringWithFormat:@"update %@ set %@ = '%@' where %@ = '%i'",TABLE_NAME_APPROVE_LIST,APPROVE_PROPERTY_LOCAL_STATUS,entity.localStatus,APPROVE_PROPERTY_RECORD_ID,entity.recordId]];
+        [dbHelper.db executeUpdate:[NSString stringWithFormat:@"update %@ set %@ = '%@' where %@ = '%i'",TABLE_NAME_APPROVE_LIST,APPROVE_PROPERTY_LOCAL_STATUS,entity.localStatus,@"rowid",entity.rowId]];
     }
     [dbHelper.db close];
     
@@ -267,7 +272,7 @@
         
         [dbHelper.db open];
         for (Approve *entity in selectedArray) {
-            NSString *sql = [NSString stringWithFormat:@"update %@ set %@ = '%@',%@ = '%i',%@ = '%@' where %@ = '%i' and %@ = '%@'",TABLE_NAME_APPROVE_LIST,APPROVE_PROPERTY_COMMENT,entity.comment,APPROVE_PROPERTY_APPROVE_ACTION_TYPE,entity.actionType,APPROVE_PROPERTY_LOCAL_STATUS,entity.localStatus,APPROVE_PROPERTY_RECORD_ID,entity.recordId,APPROVE_PROPERTY_LOCAL_STATUS,@"NORMAL"];
+            NSString *sql = [NSString stringWithFormat:@"update %@ set %@ = '%@',%@ = '%i',%@ = '%@' where %@ = '%i'",TABLE_NAME_APPROVE_LIST,APPROVE_PROPERTY_COMMENT,entity.comment,APPROVE_PROPERTY_APPROVE_ACTION_TYPE,entity.actionType,APPROVE_PROPERTY_LOCAL_STATUS,entity.localStatus,@"rowid",entity.rowId];
             [dbHelper.db executeUpdate:sql];
         }
         [dbHelper.db close];
@@ -323,7 +328,7 @@
             
             //准备request对象
             HDFormDataRequest *request = [HDFormDataRequest hdRequestWithURL:@"http://172.20.0.20:8080/hr_new/Approve" withData:data pattern:HDrequestPatternNormal];
-            request.tag = approve.recordId;
+            request.tag = approve.rowId;
             [request setDelegate:self];
             [request setSuccessSelector:@selector(commitApproveSuccess:withDataSet:)];
             [request setErrorSelector:@selector(commitApproveError:withMessage:)];
@@ -341,44 +346,17 @@
 -(void)commitApproveSuccess:(ASIHTTPRequest *)request withDataSet:(NSArray *)dataset{
     NSLog(@"%@, tag:%i",NSStringFromSelector(_cmd),request.tag);
     [dbHelper.db open];
-    NSString *sql = [NSString stringWithFormat:@"delete from %@ where %@ = '%i' ",TABLE_NAME_APPROVE_LIST,APPROVE_PROPERTY_RECORD_ID,request.tag];
+    NSString *sql = [NSString stringWithFormat:@"delete from %@ where %@ = '%i' ",TABLE_NAME_APPROVE_LIST,@"rowid",request.tag];
     [dbHelper.db executeUpdate:sql];
     [dbHelper.db close];
-    
-//    for (Approve *approve in tableAdapter.commitArray) {
-//        if (approve.recordId == request.tag) {
-//            [tableAdapter.commitArray removeObject:approve];
-//            break;
-//        }
-//    }
-    
-//    //重新读取待提交的界面
-//    [dataTableView beginUpdates];
-//    [dataTableView reloadSections:[NSIndexSet indexSetWithIndex:SECTION_WAITING_LIST] withRowAnimation:UITableViewRowAnimationFade];
-//    [dataTableView endUpdates];
 }
 
 -(void)commitApproveError:(ASIHTTPRequest *)request withMessage:(NSString *)errorMessage{
     NSLog(@"%@, tag:%i",NSStringFromSelector(_cmd),request.tag);
     [dbHelper.db open];
-    NSString *sql = [NSString stringWithFormat:@"update %@ set %@ = 'ERROR',%@ = '%@' where %@ = '%i' ;",TABLE_NAME_APPROVE_LIST,APPROVE_PROPERTY_LOCAL_STATUS,APPROVE_PROPERTY_SERVER_MESSAGE,errorMessage,APPROVE_PROPERTY_RECORD_ID,request.tag];
+    NSString *sql = [NSString stringWithFormat:@"update %@ set %@ = 'ERROR',%@ = '%@' where %@ = '%i' ;",TABLE_NAME_APPROVE_LIST,APPROVE_PROPERTY_LOCAL_STATUS,APPROVE_PROPERTY_SERVER_MESSAGE,errorMessage,@"rowid",request.tag];
     [dbHelper.db executeUpdate:sql];
     [dbHelper.db close];
-    
-//    for (Approve *approve in tableAdapter.commitArray) {
-//        if (approve.recordId == request.tag) {
-//            approve.localStatus = @"ERROR";
-//            approve.serverMessage = errorMessage;
-//            [tableAdapter.errorArray addObject:approve];
-//            [tableAdapter.commitArray removeObject:approve];
-//            break;
-//        }
-//    }
-//    //重新读取界面
-//    [dataTableView beginUpdates];
-//    [dataTableView reloadSections:[NSIndexSet indexSetWithIndex:SECTION_PROBLEM_LIST] withRowAnimation:UITableViewRowAnimationFade];
-//    [dataTableView reloadSections:[NSIndexSet indexSetWithIndex:SECTION_WAITING_LIST] withRowAnimation:UITableViewRowAnimationFade];
-//    [dataTableView endUpdates];
     
 }
 
@@ -430,7 +408,7 @@
             return;
         }
         [dbHelper.db open];
-        BOOL success = [dbHelper.db executeUpdate:[NSString stringWithFormat:@"delete from %@ where %@ = '%i' and %@ = '%@'",TABLE_NAME_APPROVE_LIST,APPROVE_PROPERTY_RECORD_ID,entity.recordId,APPROVE_PROPERTY_LOCAL_STATUS,@"ERROR"]];
+        BOOL success = [dbHelper.db executeUpdate:[NSString stringWithFormat:@"delete from %@ where %@ = '%i'",TABLE_NAME_APPROVE_LIST,@"rowid",entity.rowId]];
         [dbHelper.db close];
         
         if(success){
@@ -448,14 +426,14 @@
     
     //从数据库读取数据(应该放到一个业务逻辑类中)
     [dbHelper.db open];
-    NSString *sql = [NSString stringWithFormat:@"select %@,%@,%@,%@,%@,%@,%@,%@,%@,%@,%@,%@,%@,%@ from %@ order by %@ desc",APPROVE_PROPERTY_WORKFLOW_ID,APPROVE_PROPERTY_RECORD_ID,APPROVE_PROPERTY_WORKFLOW_NAME,APPROVE_PROPERTY_WORKFLOW_DESC,APPROVE_PROPERTY_NODE_NAME,APPROVE_PROPERTY_EMPLOYEE_NAME,APPROVE_PROPERTY_CREATION_DATE,APPROVE_PROPERTY_DATE_LIMIT,APPROVE_PROPERTY_IS_LATE,APPROVE_PROPERTY_LOCAL_STATUS,APPROVE_PROPERTY_COMMENT,APPROVE_PROPERTY_APPROVE_ACTION_TYPE,APPROVE_PROPERTY_SCREEN_NAME,APPROVE_PROPERTY_SERVER_MESSAGE, TABLE_NAME_APPROVE_LIST,APPROVE_PROPERTY_CREATION_DATE];
+    NSString *sql = [NSString stringWithFormat:@"select rowid, %@,%@,%@,%@,%@,%@,%@,%@,%@,%@,%@,%@,%@,%@ from %@ order by %@ desc",APPROVE_PROPERTY_WORKFLOW_ID,APPROVE_PROPERTY_RECORD_ID,APPROVE_PROPERTY_WORKFLOW_NAME,APPROVE_PROPERTY_WORKFLOW_DESC,APPROVE_PROPERTY_NODE_NAME,APPROVE_PROPERTY_EMPLOYEE_NAME,APPROVE_PROPERTY_CREATION_DATE,APPROVE_PROPERTY_DATE_LIMIT,APPROVE_PROPERTY_IS_LATE,APPROVE_PROPERTY_LOCAL_STATUS,APPROVE_PROPERTY_COMMENT,APPROVE_PROPERTY_APPROVE_ACTION_TYPE,APPROVE_PROPERTY_SCREEN_NAME,APPROVE_PROPERTY_SERVER_MESSAGE, TABLE_NAME_APPROVE_LIST,APPROVE_PROPERTY_CREATION_DATE];
     FMResultSet *resultSet = [dbHelper.db executeQuery:sql];
     
     // 初始列表数据
     NSMutableArray *datas = [[NSMutableArray alloc]init];
     
     while ([resultSet next]) {
-        Approve *a= [[Approve alloc]initWithWorkflowId:[resultSet intForColumn:APPROVE_PROPERTY_WORKFLOW_ID] recordId:[resultSet intForColumn:APPROVE_PROPERTY_RECORD_ID] workflowName:[resultSet stringForColumn:APPROVE_PROPERTY_WORKFLOW_NAME] workflowDesc:[resultSet stringForColumn:APPROVE_PROPERTY_WORKFLOW_DESC] nodeName:[resultSet stringForColumn:APPROVE_PROPERTY_NODE_NAME] employeeName:[resultSet stringForColumn:APPROVE_PROPERTY_EMPLOYEE_NAME] creationDate:[resultSet stringForColumn:APPROVE_PROPERTY_CREATION_DATE] dateLimit:[resultSet stringForColumn:APPROVE_PROPERTY_DATE_LIMIT] isLate:[resultSet intForColumn:APPROVE_PROPERTY_IS_LATE] screenName:[resultSet stringForColumn:APPROVE_PROPERTY_SCREEN_NAME] localStatus:[resultSet stringForColumn:APPROVE_PROPERTY_LOCAL_STATUS] comment:[resultSet stringForColumn:APPROVE_PROPERTY_COMMENT] actionType:[resultSet intForColumn:APPROVE_PROPERTY_APPROVE_ACTION_TYPE] serverMessage:[resultSet stringForColumn:APPROVE_PROPERTY_SERVER_MESSAGE]];
+        Approve *a= [[Approve alloc]initWithRowId:[resultSet intForColumn:@"rowid"] workflowId:[resultSet intForColumn:APPROVE_PROPERTY_WORKFLOW_ID] recordId:[resultSet intForColumn:APPROVE_PROPERTY_RECORD_ID] workflowName:[resultSet stringForColumn:APPROVE_PROPERTY_WORKFLOW_NAME] workflowDesc:[resultSet stringForColumn:APPROVE_PROPERTY_WORKFLOW_DESC] nodeName:[resultSet stringForColumn:APPROVE_PROPERTY_NODE_NAME] employeeName:[resultSet stringForColumn:APPROVE_PROPERTY_EMPLOYEE_NAME] creationDate:[resultSet stringForColumn:APPROVE_PROPERTY_CREATION_DATE] dateLimit:[resultSet stringForColumn:APPROVE_PROPERTY_DATE_LIMIT] isLate:[resultSet intForColumn:APPROVE_PROPERTY_IS_LATE] screenName:[resultSet stringForColumn:APPROVE_PROPERTY_SCREEN_NAME] localStatus:[resultSet stringForColumn:APPROVE_PROPERTY_LOCAL_STATUS] comment:[resultSet stringForColumn:APPROVE_PROPERTY_COMMENT] actionType:[resultSet intForColumn:APPROVE_PROPERTY_APPROVE_ACTION_TYPE] serverMessage:[resultSet stringForColumn:APPROVE_PROPERTY_SERVER_MESSAGE]];
         [datas addObject:a];
         [a release];
     }
@@ -470,7 +448,7 @@
         }else if([entity.localStatus isEqualToString:@"WAITING"]){
             [commitArray addObject:entity];
 //        }else if([entity.localStatus isEqualToString:@"DIFFERENT"] || [entity.localStatus isEqualToString:@"ERROR"]){
-        }else if([entity.localStatus isEqualToString:@"ERROR"] || [entity.localStatus isEqualToString:@"ERROR"]){
+        }else if([entity.localStatus isEqualToString:@"ERROR"] || [entity.localStatus isEqualToString:@"DIFFERENT"]){
             [errorArray addObject:entity];
         }
     }
@@ -534,6 +512,8 @@
     formRequest = nil;
     [super viewDidUnload];
 }
+
+
 
 -(void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
