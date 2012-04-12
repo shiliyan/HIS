@@ -152,7 +152,7 @@ toViewController:[HDApproveDetailViewController class]
 -(void)application:(UIApplication *)application didFailToRegisterForRemoteNotificationsWithError:(NSError *)error
 {
     NSLog(@"Error in registration.Error: %@" ,error);
-    [[NSUserDefaults standardUserDefaults] setValue:@"none" forKey:@"deviceToken"];
+    [[NSUserDefaults standardUserDefaults] setValue:@"null" forKey:@"deviceToken"];
 }
 
 #pragma -mark 程序进入后台或激活时触发事件，用于保存数据，处理程序重新进入后的初始化
