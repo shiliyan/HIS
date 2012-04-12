@@ -40,6 +40,8 @@
              withData:(id) data
               pattern:(HDrequestPattern) requestPattern
 {
+    NSLog(@"%@",newURL);
+    
     HDFormDataRequest * request = [[[HDFormDataRequest alloc]initWithURL:[NSURL URLWithString:newURL]] autorelease];    
     
     [request setRequestPattern:requestPattern];
@@ -96,6 +98,7 @@
     
     for (NSHTTPCookie * cookie in cookies) {
         [header setValue:[cookie value] forKey:[cookie name]];
+        //        NSLog(@"%@",[cookie value]);
     }
     [self setRequestHeaders:header];
     return  self;
@@ -120,11 +123,12 @@
 {
     //把json包装成dataSet
     NSMutableArray * dataSet = nil;
-    id datas = [[jsonData valueForKey:@"result"]objectForKey:@"record"]; 
-    
+    id datas = [jsonData valueForKeyPath:@"result.record"]; 
     if (nil == datas) {
         datas = [jsonData valueForKey:@"result"];
-        dataSet = [NSMutableArray arrayWithObject:datas];
+        if([[datas allKeys] count]!= 0){
+            dataSet = [NSMutableArray arrayWithObject:datas];
+        }
     }else{
         dataSet = datas;
     }
