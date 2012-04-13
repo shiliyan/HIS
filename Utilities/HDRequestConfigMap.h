@@ -14,6 +14,8 @@
     id <HDFormDataRequestDelegate,ASIHTTPRequestDelegate> delegate;
 
 }
+@property (nonatomic,retain) NSString *requestURL;
+@property (nonatomic,retain) id requestData;
 
 @property (assign) id  delegate;
 @property (assign) SEL successSelector;

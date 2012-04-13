@@ -36,4 +36,6 @@ typedef enum {
         requestType:(HDRequestType) requestType
              forKey:(id)requestConfigKey;
 
+-(id)requestWithKey:(id)requestConfigKey 
+        requestType:(HDRequestType)requestType;
 @end

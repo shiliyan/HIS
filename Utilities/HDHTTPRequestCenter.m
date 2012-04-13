@@ -8,6 +8,7 @@
 
 #import "HDHTTPRequestCenter.h"
 #import "HDRequestConfigMap.h"
+#import "ASIDownloadCache.h"
 
 @implementation HDHTTPRequestCenter
 
@@ -62,6 +63,17 @@ static HDHTTPRequestCenter * _requestCenter = nil;
                          forKey:requestConfigKey];
 }
 
+-(id)requestWithKey:(id)requestConfigKey 
+        requestType:(HDRequestType)requestType
+{
+    HDRequestConfig * config = [self.requestConfigMap configForKey:requestConfigKey];
+    
+    return [self requestWithURL:[config requestURL] 
+                       withData:[config requestData] 
+                    requestType:requestType
+                         forKey:requestConfigKey];
+}
+
 //根据传入参数生成request
 -(id)requestWithURL:(NSString *)newURL 
            withData:(id) data 
@@ -92,6 +104,14 @@ static HDHTTPRequestCenter * _requestCenter = nil;
             [theRequest setDelegate:config.delegate];
             [theRequest setDidFinishSelector:config.ASIDidFinishSelector];
             [theRequest setDidFailSelector:config.ASIDidFailSelector];
+            
+            [theRequest setUrlReplacementMode:ASIReplaceExternalResourcesWithData];
+            [theRequest setDownloadCache:[ASIDownloadCache sharedCache]];
+            [theRequest setCachePolicy:ASIDoNotReadFromCacheCachePolicy|ASIDoNotWriteToCacheCachePolicy];
+            
+            [theRequest setDownloadDestinationPath:[[ASIDownloadCache sharedCache] pathToStoreCachedResponseDataForRequest:theRequest]];
+            [[ASIDownloadCache sharedCache] setShouldRespectCacheControlHeaders:NO];
+            
             return theRequest;
         }    
         default:

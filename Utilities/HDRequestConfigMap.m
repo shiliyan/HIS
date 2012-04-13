@@ -10,6 +10,9 @@
 
 @implementation HDRequestConfig
 
+@synthesize requestURL;
+@synthesize requestData;
+
 @synthesize delegate;
 @synthesize successSelector;
 @synthesize errorSelector;
