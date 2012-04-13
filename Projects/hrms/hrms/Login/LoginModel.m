@@ -60,8 +60,8 @@
 {
     return  [NSMutableDictionary dictionaryWithObjectsAndKeys:
              [[NSUserDefaults standardUserDefaults] stringForKey:@"deviceToken"],@"device_token",
-             @"admin",@"user_name",
-             @"admin",@"user_password",
+             _username,@"user_name",
+             _password,@"user_password",
              @"简体中文",@"langugae",
              @"ZHS",@"user_language",
              @"N",@"is_ipad", 
@@ -87,7 +87,7 @@
                                              withData:[self generateLoginData] 
                                           requestType:HDRequestTypeFormData 
                                                forKey:@"loginSVC"];
-    
+
     [_loginRequest startAsynchronous];
 }
 
