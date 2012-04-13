@@ -13,6 +13,7 @@
 @synthesize webPage = _webPage;
 @synthesize toolbar = _toolbar;
 @synthesize approveModel = _approveModel;
+@synthesize loadType;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -26,12 +27,17 @@
 -(id)initWithName:(NSString *) name 
          recordID:(NSInteger) theRecordID 
        screenName:(NSString *) theScreenName
+         loadType:(NSInteger) type
 {
     self = [super init];
     if (self) {
         self.approveModel = [[HDApproveDetailModel alloc]initWithRecordID:[NSNumber numberWithInt:theRecordID]
                                                                screenName:theScreenName];
         self.title = name;
+        self.loadType = HD_LOAD_WITHOUT_ACTION;
+        if (type) {
+            self.loadType = type;
+        }
     }
     return self;
 }
@@ -51,11 +57,17 @@
     //解除模态视图
     [self dismissModalViewControllerAnimated:YES];
     if (resultCode == RESULT_OK) {
-        //开启遮罩
-        [self addActivityLabelWithStyle:TTActivityLabelStyleWhite];
-        //提交
+//        //开启遮罩
+//        [self addActivityLabelWithStyle:TTActivityLabelStyleWhite];
+//        //提交
+//        [_approveModel setComment:[dictionary objectForKey:@"comment"]];
+//        [_approveModel execAction];
+        //TODO:直接回去
         [_approveModel setComment:[dictionary objectForKey:@"comment"]];
         [_approveModel execAction];
+        [self.navigationController popViewControllerAnimated:YES];
+        //发送提交审批的通知
+        [[NSNotificationCenter defaultCenter] postNotificationName:@"detailApproved" object:nil];
     }
 }
 
@@ -92,10 +104,10 @@
 -(void)actionBrtPressed: (id)sender
 {
     [_approveModel setActionID:[NSNumber numberWithInteger:[sender tag]]];
-       
-        ApproveOpinionView * opinionViewController = [[[ApproveOpinionView alloc]initWithNibName:@"ApproveOpinionView" bundle:nil] autorelease];
-        [opinionViewController setControllerDelegate:self];
-        [self presentModalViewController:opinionViewController animated:YES];
+    
+    ApproveOpinionView * opinionViewController = [[[ApproveOpinionView alloc]initWithNibName:@"ApproveOpinionView" bundle:nil] autorelease];
+    [opinionViewController setControllerDelegate:self];
+    [self presentModalViewController:opinionViewController animated:YES];
 }
 
 #pragma -mark 提交时遮罩
@@ -144,9 +156,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];  
-    [_approveModel setDelegate:self];
-    [_approveModel loadWebPage];
-    [_approveModel loadWebActions];
+     
 }
 
 - (void)viewDidUnload
@@ -156,6 +166,17 @@
     TT_RELEASE_SAFELY(_approveModel);
     [_approveModel loadCancel];
     [super viewDidUnload];
+}
+
+-(void)viewDidAppear:(BOOL)animated
+{
+    [super viewDidAppear:animated];
+    [_approveModel setDelegate:self];
+    if (self.loadType == HD_LOAD_WITH_ACTION) {
+        [_approveModel loadWebActions];
+    }
+    
+    [_approveModel loadWebPage];
 }
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation

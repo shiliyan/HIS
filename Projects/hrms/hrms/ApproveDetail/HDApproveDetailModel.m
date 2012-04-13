@@ -33,17 +33,16 @@ static NSString * kExecAction = @"execAction";
         self.recordID = theRecordID;
         self.screenName = theScreenName;
         //
-        HDRequestConfig * execActionRequestConfig = [[HDRequestConfig alloc]init];
-        [execActionRequestConfig setDelegate:self];
-        [execActionRequestConfig setSuccessSelector:@selector(doActionSuccess:dataSet:)];
-        [execActionRequestConfig setServerErrorSelector:@selector(doActionFailed:errorMessage:)];
-        [execActionRequestConfig setErrorSelector:@selector(doActionFailed:errorMessage:)];
-        [execActionRequestConfig setFailedSelector:@selector(doActionFailed:errorMessage:)];
-        
-        
-        HDRequestConfigMap * map = [[HDHTTPRequestCenter shareHTTPRequestCenter] requestConfigMap];
-        [map addConfig:execActionRequestConfig forKey:kExecAction];
-        [execActionRequestConfig release];
+//        HDRequestConfig * execActionRequestConfig = [[HDRequestConfig alloc]init];
+//        [execActionRequestConfig setDelegate:self];
+//        [execActionRequestConfig setSuccessSelector:@selector(doActionSuccess:dataSet:)];
+//        [execActionRequestConfig setServerErrorSelector:@selector(doActionFailed:errorMessage:)];
+//        [execActionRequestConfig setErrorSelector:@selector(doActionFailed:errorMessage:)];
+//        [execActionRequestConfig setFailedSelector:@selector(doActionFailed:errorMessage:)];  
+//        
+//        HDRequestConfigMap * map = [[HDHTTPRequestCenter shareHTTPRequestCenter] requestConfigMap];
+//        [map addConfig:execActionRequestConfig forKey:kExecAction];
+//        [execActionRequestConfig release];
     }
     return self;
 }
@@ -64,14 +63,8 @@ static NSString * kExecAction = @"execAction";
 -(void)loadWebPage{
     //创建页面载入请求
     NSString * screenUrl = [NSString stringWithFormat:@"%@%@?record_id=%@",[HDURLCenter requestURLWithKey:@"APPROVE_SCREEN_BASE_PATH"],_screenName,_recordID];
-    self.webPageRequest = [ASIWebPageRequest requestWithURL:[NSURL URLWithString:screenUrl]];
     
-    [_webPageRequest setUrlReplacementMode:ASIReplaceExternalResourcesWithData];
-	[_webPageRequest setDownloadCache:[ASIDownloadCache sharedCache]];
-	[_webPageRequest setCachePolicy:ASIDoNotReadFromCacheCachePolicy|ASIDoNotWriteToCacheCachePolicy];
-	
-    [_webPageRequest setDownloadDestinationPath:[[ASIDownloadCache sharedCache] pathToStoreCachedResponseDataForRequest:_webPageRequest]];
-	[[ASIDownloadCache sharedCache] setShouldRespectCacheControlHeaders:NO];
+    self.webPageRequest = [[HDHTTPRequestCenter shareHTTPRequestCenter] requestWithURL:screenUrl requestType:ASIRequestTypeWebPage forKey:nil];
     
 	[_webPageRequest setDidFailSelector:@selector(webPageLoadFailed:)];
 	[_webPageRequest setDidFinishSelector:@selector(webPageLoadSucceeded:)];
@@ -102,28 +95,29 @@ static NSString * kExecAction = @"execAction";
 -(void)execAction
 {
     NSDictionary * actionData = [NSDictionary dictionaryWithObjectsAndKeys:self.recordID,@"record_id", self.actionID,@"action_id", self.comment,@"comment", nil];
-    HDHTTPRequestCenter * requestCenter = [HDHTTPRequestCenter shareHTTPRequestCenter];
-    HDFormDataRequest * actionRequest = [requestCenter requestWithURL:[HDURLCenter requestURLWithKey:@"EXEC_ACTION_UPDATE_PATH"] 
-                                                             withData:actionData 
-                                                          requestType:HDRequestTypeFormData 
-                                                               forKey:kExecAction];
+    //TODO:配置请求
+    HDRequestConfigMap * map = [[HDHTTPRequestCenter shareHTTPRequestCenter] requestConfigMap];
+    HDRequestConfig * execActionRequestConfig  = [map configForKey:@"detial_ready_post"];
+    [execActionRequestConfig setRequestURL:[HDURLCenter requestURLWithKey:@"EXEC_ACTION_UPDATE_PATH"]];
+    [execActionRequestConfig setRequestData:actionData];
     
-//    HDFormDataRequest * actionRequest  = [HDFormDataRequest hdRequestWithURL:[HDURLCenter requestURLWithKey:@"EXEC_ACTION_UPDATE_PATH"] 
-//                                                     withData:actionData
-//                                                      pattern:HDrequestPatternNormal];
     
-//    [actionRequest setDelegate:self];
-//    [actionRequest setSuccessSelector:@selector(doActionSuccess:)];
-    [actionRequest startAsynchronous];
+    
+//    HDHTTPRequestCenter * requestCenter = [HDHTTPRequestCenter shareHTTPRequestCenter];
+//    HDFormDataRequest * actionRequest = [requestCenter requestWithURL:[HDURLCenter requestURLWithKey:@"EXEC_ACTION_UPDATE_PATH"] 
+//                                                             withData:actionData 
+//                                                          requestType:HDRequestTypeFormData 
+//                                                               forKey:kExecAction];
+//    [actionRequest startAsynchronous];
 }
 
--(void)execAction:(NSNumber *) theActionID
-{
-    if (theActionID != nil) {
-        self.actionID = theActionID;
-    }
-    [self execAction];
-}
+//-(void)execAction:(NSNumber *) theActionID
+//{
+//    if (theActionID != nil) {
+//        self.actionID = theActionID;
+//    }
+//    [self execAction];
+//}
 
 -(void)removeLocalData :(NSNumber *) recordID
 {
@@ -223,4 +217,5 @@ static NSString * kExecAction = @"execAction";
         NSLog(@"代理不响应execActionFailed:方法");
     }
 }
+
 @end

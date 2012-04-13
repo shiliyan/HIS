@@ -35,7 +35,7 @@
 -(void)loadCancel;
 
 -(void)execAction;
--(void)execAction:(NSNumber *) theActionID;
+//-(void)execAction:(NSNumber *) theActionID;
 
 -(id)initWithRecordID:(NSNumber *) theRecordID 
            screenName:(NSString *) theScreenName;
