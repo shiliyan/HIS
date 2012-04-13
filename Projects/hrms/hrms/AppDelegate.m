@@ -10,23 +10,12 @@
 
 //styleSheet
 #import "MyStyleSheet.h"
-//
-#import "HDURLCenter.h"
 //view controllers
 #import "RCLoginViewController.h"
 //审批
 #import "ApproveListController.h"
 //审批明细
 #import "HDApproveDetailViewController.h"
-
-//tab页面
-//#import "CRMainController.h"
-//偏好设置
-//#import "CRPreferencesController.h"
-////关于
-//#import "RCAboutUsController.h"
-//角色选择
-//#import "RoleSelectViewController.h"
 
 @implementation AppDelegate
 
@@ -38,54 +27,14 @@
     //配置首选项
     [self setupByPreferences];
     
+    //注册显示登陆
+    [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(showLoginView:) name:@"show_login_view" object:nil];
+    
     //Views Managment by Three20
-    TTNavigator* navigator = [TTNavigator navigator];
-    navigator.persistenceMode = TTNavigatorPersistenceModeNone;
+    TTNavigator* navigator = [TTNavigator navigator]; 
     
-    navigator.window = [[[UIWindow alloc] initWithFrame:TTScreenBounds()] autorelease];
+    [self initViewControllers:navigator];
     
-    [TTStyleSheet setGlobalStyleSheet:[[[MyStyleSheet alloc]init]autorelease]];
-    
-    TTURLMap* map = navigator.URLMap;
-    
-    // Any URL that doesn't match will fall back on this one, and open in the web browser
-    [map from:@"*" toViewController:[TTWebController class]];
-    
-    
-    //login view
-    [map from:@"tt://login" 
-toModalViewController:[RCLoginViewController class]];
-    
-    //审批
-    [map from:@"tt://approve" 
-toSharedViewController:[ApproveListController class]];
-    
-    [map from:@"tt://approve_detail/(initWithName:)/(recordID:)/(screenName:)" 
-       parent:@"tt://approve" 
-toViewController:[HDApproveDetailViewController class] 
-     selector:nil 
-   transition:0];
-    
-    //main view
-    //[map from:@"tt://main" toSharedViewController:[CRMainController class]];
-    
-    //    [map from:@"tt://preferences/(initWithStyle:)" 
-    //       parent:@"aprove"  
-    //toSharedViewController:[CRPreferencesController class]];
-    
-    //    [map from:@"tt://about" 
-    //       parent:@"tt://preferences/1" 
-    //toSharedViewController:[RCAboutUsController class]];
-    
-    
-    //[map from:@"tt://menu/(initWithMenu:)" toSharedViewController:[MenuController class]];
-    
-    //角色选择
-    //    [map from:@"tt://role_select" 
-    //       parent:@"tt://login" 
-    //toSharedViewController:[RoleSelectViewController class]];
-    
-    //    
     if(![navigator restoreViewControllers])
     {
         //        NSLog(@"No RestoreViewCtrl!!");
@@ -96,93 +45,105 @@ toViewController:[HDApproveDetailViewController class]
     
 }
 
+-(void) initViewControllers:(TTNavigator *) navigator
+{   
+    navigator.persistenceMode = TTNavigatorPersistenceModeNone;
+    
+    navigator.window = [[[UIWindow alloc] initWithFrame:TTScreenBounds()] autorelease];
+    
+    [TTStyleSheet setGlobalStyleSheet:[[[MyStyleSheet alloc]init]autorelease]];
+    
+    TTURLMap* map = navigator.URLMap;
+    
+    // Any URL that doesn't match will fall back on this one, and open in the web browser
+    [map from:@"*" toViewController:[TTWebController class]]; 
+    
+    //login view
+    [map from:@"tt://login" 
+toModalViewController:[RCLoginViewController class]];
+    
+    //审批
+    [map from:@"tt://approve" 
+toSharedViewController:[ApproveListController class]];
+    
+    //审批明细
+    [map from:@"tt://approve_detail/(initWithName:)/(recordID:)/(screenName:)/(loadType:)" 
+       parent:@"tt://approve" 
+toViewController:[HDApproveDetailViewController class] 
+     selector:nil 
+   transition:0];
+
+}
+
+-(void)showLoginView:(id)sender
+{
+    NSLog(@"catch");
+    //TODO:弹出登录界面,session失效时触发
+    TTNavigator* navigator = [TTNavigator navigator];
+    [navigator openURLAction:[[[TTURLAction actionWithURLPath:@"tt://login"]applyTransition:UIViewAnimationTransitionFlipFromLeft] applyAnimated:YES]];
+}
+
+//初始化偏好设置
 - (void)setupByPreferences
 {
     NSString *baseURL = [[NSUserDefaults standardUserDefaults] stringForKey:@"base_url_preference"];
 	if (nil == baseURL)
 	{
         //从root文件读取配置
-        NSString *pathStr = [[NSBundle mainBundle] bundlePath];
-		NSString *settingsBundlePath = [pathStr stringByAppendingPathComponent:@"Settings.bundle"];
-		NSString *finalPath = [settingsBundlePath stringByAppendingPathComponent:@"Root.plist"];
+        NSString *settingsBundlePath = [[[NSBundle mainBundle] bundlePath] stringByAppendingPathComponent:@"Settings.bundle"];
         
-		NSDictionary *settingsDict = [NSDictionary dictionaryWithContentsOfFile:finalPath];
-		NSArray *prefSpecifierArray = [settingsDict objectForKey:@"PreferenceSpecifiers"];
+        NSString *finalPath = [settingsBundlePath stringByAppendingPathComponent:@"Root.plist"];
+        NSDictionary *settingsDict = [NSDictionary dictionaryWithContentsOfFile:finalPath];
         
-		NSString *baseURLDefault = nil;
-		NSString *approveDefault = nil;
-		
-		NSDictionary *prefItem;
-		for (prefItem in prefSpecifierArray)
-		{
-			NSString *keyValueStr = [prefItem objectForKey:@"Key"];
-			id defaultValue = [prefItem objectForKey:@"DefaultValue"];
-			
-			if ([keyValueStr isEqualToString:@"base_url_preference"])
-			{
-				baseURLDefault = defaultValue;
-			}
-			else if ([keyValueStr isEqualToString:@"default_approve_preference"])
-			{
-				approveDefault = defaultValue;
-			}
-			
-		}
-        	
-		NSDictionary *appDefaults = [NSDictionary dictionaryWithObjectsAndKeys:
-                                     baseURLDefault, @"base_url_preference",
-                                     approveDefault, @"default_approve_preference",
-                                     nil];
+        NSArray *prefSpecifierArray = [settingsDict objectForKey:@"PreferenceSpecifiers"];
         
-		[[NSUserDefaults standardUserDefaults] registerDefaults:appDefaults];
-		[[NSUserDefaults standardUserDefaults] synchronize];
+        NSMutableDictionary *appDefaults = [NSMutableDictionary dictionary];
+        for (NSDictionary *prefItem in prefSpecifierArray)
+        {
+            if ([prefItem objectForKey:@"DefaultValue"] != nil) {
+                [appDefaults setValue:[prefItem objectForKey:@"DefaultValue"] 
+                               forKey:[prefItem objectForKey:@"Key"]];
+            }
+        }
+        
+        [[NSUserDefaults standardUserDefaults] registerDefaults:appDefaults];
+        [[NSUserDefaults standardUserDefaults] synchronize];
 	}
-    
 }
 
+//获取token成功,格式化token,放入用户设置中
 -(void)application:(UIApplication *)application didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken
 {
     //get the deivcetoken
     NSLog(@"My token is: %@", deviceToken);
     NSLog(@"%@",[[deviceToken description] stringByTrimmingCharactersInSet:[NSCharacterSet characterSetWithCharactersInString:@"<>"]]); 
+    
+    //format token
+    NSString *tokenWithBlank = [[deviceToken description] stringByTrimmingCharactersInSet:[NSCharacterSet characterSetWithCharactersInString:@"<>"]];
+    NSString *tokenWithoutBlank = [tokenWithBlank stringByReplacingOccurrencesOfString:@" " withString:@""];
+    
     //save deviceToken to userDefaults
-    [[NSUserDefaults standardUserDefaults] setValue:[[deviceToken description] stringByTrimmingCharactersInSet:[NSCharacterSet characterSetWithCharactersInString:@"<>"]] forKey:@"deviceToken"];
+    [[NSUserDefaults standardUserDefaults] setValue:tokenWithoutBlank forKey:@"deviceToken"];
 }
 
 -(void)application:(UIApplication *)application didFailToRegisterForRemoteNotificationsWithError:(NSError *)error
 {
     NSLog(@"Error in registration.Error: %@" ,error);
     [[NSUserDefaults standardUserDefaults] setValue:@"null" forKey:@"deviceToken"];
+    UIAlertView * alert = [[UIAlertView alloc]initWithTitle:@"提示" message:@"无法设置推送请检查网络是否可用" delegate:nil cancelButtonTitle:@"确定" otherButtonTitles:nil];
+    [alert show];
+    [alert release];
 }
 
 #pragma -mark 程序进入后台或激活时触发事件，用于保存数据，处理程序重新进入后的初始化
 -(void) applicationDidEnterBackground:(UIApplication *)application
 {
-    //    NSLog(@"%@",@"exit");
-//        TTNavigator * nav = [TTNavigator navigator];
-    
-    //    if (![[nav visibleViewController] isKindOfClass:[RCLoginViewController class]]) {
-    //        [nav openURLAction:[TTURLAction actionWithURLPath:@"tt://approve"]];
-    //        [[TTNavigator navigator] openURLAction:[[TTURLAction actionWithURLPath:@"tt://login"]applyTransition:UIViewAnimationTransitionFlipFromLeft]];
-    //    }
-//    [[TTNavigator navigator].URLMap removeURL:@"tt://approve"];
-    
-//    [nav removeAllViewControllers];
 }
-
-//-(void) applicationDidBecomeActive:(UIApplication *)application
-//{
-//    TTNavigator * nav = [TTNavigator navigator];
-    
-//    if ([[nav visibleViewController] isKindOfClass:[ApproveListController class]]) {
-//        [[TTNavigator navigator] openURLAction:[TTURLAction actionWithURLPath:@"tt://approve"]];
-//        [[nav visibleViewController] loadView];
-//    }
-//}
 
 - (void)applicationWillTerminate:(UIApplication *)application
 {
     // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
+    NSLog(@"Kill");
 }
 
 @end

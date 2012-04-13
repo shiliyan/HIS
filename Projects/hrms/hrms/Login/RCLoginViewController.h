@@ -7,10 +7,9 @@
 //
 
 #import "LoginModel.h"
+#import "Binding.h"
 
 @interface RCLoginViewController : TTBaseViewController <HDLoginDelegate>
-{
-}
 
 @property (nonatomic,retain) LoginModel * loginModel;
 @property (nonatomic,retain) IBOutlet UITextField * username;

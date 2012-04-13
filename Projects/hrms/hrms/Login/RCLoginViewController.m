@@ -7,7 +7,6 @@
 //
 
 #import "RCLoginViewController.h"
-#import "LoginModel.h"
 
 @implementation RCLoginViewController
 
@@ -46,9 +45,8 @@
 #pragma login delegate
 -(void)loginSuccess:(NSArray *) dataSet
 {
-    NSLog(@"success");
     //TODO:未开启跳转
-//    [[self parentViewController] dismissModalViewControllerAnimated:YES];
+    [[self parentViewController] dismissModalViewControllerAnimated:YES];
 }
 
 -(void)loginFailed:(NSString *) errorMessage;
@@ -84,14 +82,17 @@
 {
     [super viewDidLoad];
     _loginModel = [[LoginModel alloc]init];
+
+    _username.text = @"311";
+    _password.text = @"handhand";
     [self.loginModel setDelegate:self];
 }
 
 - (void)viewDidUnload
 {
-    TT_RELEASE_SAFELY(_username);
-    TT_RELEASE_SAFELY(_password);
-    TT_RELEASE_SAFELY(_loginModel);
+//    TT_RELEASE_SAFELY(_username);
+//    TT_RELEASE_SAFELY(_password);
+//    TT_RELEASE_SAFELY(_loginModel);
     [super viewDidUnload];
 }
 
