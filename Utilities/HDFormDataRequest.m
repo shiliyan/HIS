@@ -130,9 +130,17 @@
             dataSet = [NSMutableArray arrayWithObject:datas];
         }
     }else{
-        dataSet = datas;
+        /*
+         * debug:对请求bm的单条记录包装成数组 
+         * Aor 12 2012
+         */
+        if ([datas isKindOfClass:[NSArray class]]) {
+            dataSet = datas;
+        }else {
+            dataSet = [NSMutableArray arrayWithObject:datas];
+        }
+        
     }
-    
     return dataSet;
 }
 
@@ -147,14 +155,14 @@
      */
     if ([theRequest responseStatusCode] == 200) {
         //转换json数据为对象
-        id jsonData = HD_JSON_OBJECT([theRequest responseString]);
+        id JSONObj = HD_JSON_OBJECT([theRequest responseString]);
         //返回状态为成功
-        if ([[jsonData valueForKey:@"success"]boolValue]) {
-            [self callRequestSuccess:theRequest];
+        if ([[JSONObj valueForKey:@"success"] boolValue]) {
+            [self callRequestSuccess:theRequest withJSONObj:JSONObj];
         }else{
             //返回状态为error
-            if ([jsonData valueForKey:@"error"] != nil) {
-                [self callRequestError:theRequest];
+            if ([JSONObj valueForKey:@"error"] != nil) {
+                [self callRequestError:theRequest withJSONObj:JSONObj];
             }
         }
     }else {
@@ -175,14 +183,11 @@
     }    
 }
 
-
-
 #pragma call selectors
--(void)callRequestSuccess:(ASIHTTPRequest *) theRequest
+-(void)callRequestSuccess:(ASIHTTPRequest *) theRequest withJSONObj:(id) JSONObj
 {
-    id jsonData = HD_JSON_OBJECT([theRequest responseString]);
     //把json包装成dataSet
-    NSMutableArray * dataSet = [self generateDataSet:jsonData];
+    NSMutableArray * dataSet = [self generateDataSet:JSONObj];
     //执行成功回调
     
     SEL function = [HDFunctionUtil matchPerformDelegate:hdFormDataRequestDelegate 
@@ -196,10 +201,16 @@
     }
 }
 
--(void)callRequestError:(ASIHTTPRequest *)theRequest
+-(void)callRequestError:(ASIHTTPRequest *)theRequest withJSONObj:(id) JSONObj
 {
-    NSString * errorMessage = [[HD_JSON_OBJECT([theRequest responseString]) valueForKey:@"error"] valueForKey:@"message"];
     
+    NSString * errorMessage = [JSONObj valueForKeyPath:@"error.message"];
+    NSString * errorCode = [JSONObj valueForKeyPath:@"error.code"];
+    if ([errorCode isEqual:@"login_required"]) {
+        //TODO:退回到登陆界面,这里时机可能有问题,此时视图可能在跳转中,会打断返回登录,应该由视图控制器控制跳转?
+        [[NSNotificationCenter defaultCenter] postNotificationName:@"show_login_view" object:nil];
+        return;
+    }
     //执行错误的回调
     SEL function = [HDFunctionUtil matchPerformDelegate:hdFormDataRequestDelegate forSelectors:errorSelector,@selector(requestError:errorMessage:), nil];
     if (function !=nil) {
