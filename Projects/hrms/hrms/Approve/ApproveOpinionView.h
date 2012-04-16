@@ -16,11 +16,11 @@ static const int RESULT_CANCEL = 2;
     UILabel *titleLabel;
     UITextView *opinionTextView;
     
-    NSUInteger approveType;
+    NSString *approveType;
     
     id<ApproveOpinionViewDelegate> controllerDelegate;
 }
-@property(nonatomic) NSUInteger approveType;
+@property(copy, nonatomic) NSString *approveType;
 
 @property(retain,nonatomic) IBOutlet UILabel *titleLabel;
 @property(retain,nonatomic) IBOutlet UITextView *opinionTextView;

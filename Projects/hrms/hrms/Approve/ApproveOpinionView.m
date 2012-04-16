@@ -39,7 +39,7 @@
 
 -(IBAction)commitData:(id)sender{
     NSMutableDictionary *dic = [NSMutableDictionary dictionaryWithCapacity:2];
-    [dic setObject:[NSNumber numberWithInt:approveType] forKey:@"type"];
+    [dic setObject:approveType forKey:@"type"];
     [dic setObject:opinionTextView.text forKey:@"comment"];
     [controllerDelegate ApproveOpinionViewDismissed:RESULT_OK messageDictionary:dic];
     
