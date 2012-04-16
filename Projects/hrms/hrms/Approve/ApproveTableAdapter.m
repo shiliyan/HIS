@@ -68,7 +68,7 @@
     }else if(section == SECTION_WAITING_LIST){
         return [self.commitArray count]==0 ? @"" : @"等待提交";
     }else if(section == SECTION_PROBLEM_LIST){
-        return [self.errorArray count]==0 ? @"" : @"出错的审批或已在别处处理";
+        return [self.errorArray count]==0 ? @"" : @"出错的审批或已被处理";
     }else{
         return nil;
     }
