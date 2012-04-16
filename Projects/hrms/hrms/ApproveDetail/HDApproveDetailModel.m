@@ -26,28 +26,6 @@ static NSString * kExecAction = @"execAction";
 //明细协议
 @synthesize delegate;
 
-//-(id)initWithRecordID:(NSNumber *) theRecordID 
-//           screenName:(NSString *) theScreenName
-//{   
-//    self = [super init];
-//    if (self) {
-//        self.recordID = theRecordID;
-//        self.screenName = theScreenName;
-//        //
-//        HDRequestConfig * execActionRequestConfig = [[HDRequestConfig alloc]init];
-//        [execActionRequestConfig setDelegate:self];
-//        [execActionRequestConfig setSuccessSelector:@selector(doActionSuccess:dataSet:)];
-//        [execActionRequestConfig setServerErrorSelector:@selector(doActionFailed:errorMessage:)];
-//        [execActionRequestConfig setErrorSelector:@selector(doActionFailed:errorMessage:)];
-//        [execActionRequestConfig setFailedSelector:@selector(doActionFailed:errorMessage:)];  
-//        
-//        HDRequestConfigMap * map = [[HDHTTPRequestCenter shareHTTPRequestCenter] requestConfigMap];
-//        [map addConfig:execActionRequestConfig forKey:kExecAction];
-//        [execActionRequestConfig release];
-//    }
-//    return self;
-//}
-
 -(id)initWithApprove:(Approve *)theApprove
 {
     self = [super init];
@@ -59,14 +37,12 @@ static NSString * kExecAction = @"execAction";
 
 -(void)dealloc
 {
-//    [[[HDHTTPRequestCenter shareHTTPRequestCenter] requestConfigMap] removeConfigForKey:kExecAction];
+
     [_actionsRequest clearDelegatesAndCancel];
     [_webPageRequest clearDelegatesAndCancel];
     TT_RELEASE_SAFELY(_actionsRequest);
     TT_RELEASE_SAFELY(_webPageRequest);
     TT_RELEASE_SAFELY(_detailApprove);
-//    TT_RELEASE_SAFELY(_recordID);
-//    TT_RELEASE_SAFELY(_actionID);
     TT_RELEASE_SAFELY(_dbHelper);
     [super dealloc];
 }
@@ -103,9 +79,9 @@ static NSString * kExecAction = @"execAction";
     [_actionsRequest clearDelegatesAndCancel];
 }
 
--(void)setActionID:(NSUInteger) theActionID
+-(void)setActionID:(NSString *) theActionID
 {
-    _detailApprove.actionType = theActionID;
+    _detailApprove.action= theActionID;
 }
 
 -(void)setComment:(NSString *) theComment
@@ -115,59 +91,34 @@ static NSString * kExecAction = @"execAction";
 
 -(void)execAction
 {
-    NSDictionary * actionData = [NSDictionary dictionaryWithObjectsAndKeys:[NSNumber numberWithInt: _detailApprove.recordId],@"record_id", [NSNumber numberWithInt:_detailApprove.actionType],@"action_id", [_detailApprove comment],@"comment", nil];
-    //TODO:配置请求
+    [self configRequest];
+//    [self writeDataBase];
+}
+
+//配置请求
+-(void) configRequest
+{
+    NSDictionary * actionData = [NSDictionary dictionaryWithObjectsAndKeys:[NSNumber numberWithInt: _detailApprove.recordId],@"record_id", _detailApprove.action,@"action_id", [_detailApprove comment],@"comment", nil];
+
     HDRequestConfigMap * map = [[HDHTTPRequestCenter shareHTTPRequestCenter] requestConfigMap];
     HDRequestConfig * execActionRequestConfig  = [map configForKey:@"detial_ready_post"];
     [execActionRequestConfig setRequestURL:[HDURLCenter requestURLWithKey:@"EXEC_ACTION_UPDATE_PATH"]];
     [execActionRequestConfig setRequestData:actionData];
     [execActionRequestConfig setTag:[_detailApprove rowId]];
-    
-    
-//    HDHTTPRequestCenter * requestCenter = [HDHTTPRequestCenter shareHTTPRequestCenter];
-//    HDFormDataRequest * actionRequest = [requestCenter requestWithURL:[HDURLCenter requestURLWithKey:@"EXEC_ACTION_UPDATE_PATH"] 
-//                                                             withData:actionData 
-//                                                          requestType:HDRequestTypeFormData 
-//                                                               forKey:kExecAction];
-//    [actionRequest startAsynchronous];
 }
 
-//-(void)execAction:(NSNumber *) theActionID
-//{
-//    if (theActionID != nil) {
-//        self.actionID = theActionID;
-//    }
-//    [self execAction];
-//}
-
-//-(void)removeLocalData :(NSNumber *) recordID
-//{
-////  写数据库
-////  初始化数据库连接
-//    _dbHelper = [[ApproveDatabaseHelper alloc]init];
-//    
-//    [_dbHelper.db open];
-//    NSString * sql = [NSString stringWithFormat:@"delete from %@ where %@ = %@",@"approve_list",@"record_id",self.recordID];
-//    NSLog(@"%@",sql);
-//    [_dbHelper.db executeUpdate:sql];
-//    [_dbHelper.db close];
-//    
-//    [_dbHelper release];
-//}
-
-#pragma -mark exec action callback functions
-//-(void)doActionSuccess:(ASIHTTPRequest *) theRequest dataSet:(NSMutableArray *) dataSet
-//{
-//    //执行成功
-//    [self removeLocalData:self.recordID];
-//    [self callExecActionSuccess:theRequest withDataSet:dataSet];
-//}    
-
-//-(void) doActionFailed:(ASIHTTPRequest *) theRequest errorMessage:(NSString *) errorMessage
-//{
-//    //执行失败
-//    [self callExecActionFailed:theRequest withErrorMessage:errorMessage];
-//}
+//修改数据库记录状态 
+-(void) writeDataBase
+{
+    ApproveDatabaseHelper * dbHelper = [[ApproveDatabaseHelper alloc]init];
+    [dbHelper.db open];
+    
+    //TODO:修改数据路记录,sql未完成 
+    NSString *sql = [NSString stringWithFormat:@"update approve_list set ddd = %@ where rowId = %i"];
+    [dbHelper.db executeUpdate:sql];
+    [dbHelper.db close];
+    TT_RELEASE_SAFELY(dbHelper);
+}
 
 #pragma -mark web Page load callback functions  
 - (void)webPageLoadFailed:(ASIHTTPRequest *)theRequest
@@ -215,28 +166,5 @@ static NSString * kExecAction = @"execAction";
         NSLog(@"代理不响应actionLoad:方法");
     }
 }
-
-//-(void) callExecActionSuccess:(ASIHTTPRequest *) request withDataSet:(NSMutableArray *) dataSet
-//{
-//    
-//    if (delegate && [delegate respondsToSelector:@selector(execActionSuccess:)]) {
-//        [delegate performSelector:@selector(execActionSuccess:)
-//                       withObject:dataSet];
-//    }else {
-//        NSLog(@"代理不响应execActionSuccess:方法");
-//    }
-//}
-
-//-(void) callExecActionFailed:(ASIHTTPRequest *) request withErrorMessage:(NSString *) errorMessage
-//{
-//    //错误的消息
-//    //TODO:错误消息内容是什么
-//    if (delegate && [delegate respondsToSelector:@selector(execActionFailed:)]) {
-//        [delegate performSelector:@selector(execActionFailed:)
-//                       withObject:errorMessage];
-//    }else {
-//        NSLog(@"代理不响应execActionFailed:方法");
-//    }
-//}
 
 @end

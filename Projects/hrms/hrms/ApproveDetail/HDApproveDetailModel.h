@@ -10,7 +10,6 @@
 #import "HDApproveDetailDelegate.h"
 #import "HDFormDataRequest.h"
 #import "ASIWebPageRequest.h"
-#import "ASIDownloadCache.h"
 #import "ApproveDatabaseHelper.h"
 #import "Approve.h"
 
@@ -42,7 +41,7 @@
 
 //-(id)initWithRecordID:(NSNumber *) theRecordID 
 //           screenName:(NSString *) theScreenName;
--(void)setActionID:(NSUInteger) theActionID;
+-(void)setActionID:(NSString *) theActionID;
 
 -(void)setComment:(NSString *) theComment;
 
