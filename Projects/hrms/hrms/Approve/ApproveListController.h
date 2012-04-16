@@ -14,9 +14,13 @@
 #import "ASINetworkQueue.h"
 #import "ApproveTableAdapter.h"
 #import "HDURLCenter.h"
+#import "HDHTTPRequestCenter.h"
 
-static const int ACTION_TYPE_ADOPT = 1;
-static const int ACTION_TYPE_REFUSE = 2;
+static const NSString *ACTION_TYPE_ADOPT = @"Y";
+static const NSString *ACTION_TYPE_REFUSE = @"N";
+static const NSString *DETAIL_REQUEST_KEY = @"detial_ready_post";
+
+
 
 @interface ApproveListController : UIViewController<UITableViewDelegate,ApproveOpinionViewDelegate>{
     ApproveTableAdapter *tableAdapter;
