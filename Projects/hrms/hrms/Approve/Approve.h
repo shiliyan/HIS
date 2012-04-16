@@ -42,10 +42,13 @@ static NSString *APPROVE_PROPERTY_LOCAL_STATUS=@"local_status";
 static NSString *APPROVE_PROPERTY_COMMENT=@"comment";
 
 //审批动作类型
-static NSString *APPROVE_PROPERTY_APPROVE_ACTION_TYPE=@"action_type";
+static NSString *APPROVE_PROPERTY_APPROVE_ACTION=@"action";
 
 //服务器返回信息
 static NSString *APPROVE_PROPERTY_SERVER_MESSAGE=@"server_message";
+
+//提交的地址
+static NSString *APPROVE_PROPERTY_SUBMIT_URL=@"submit_url";
 
 @interface Approve : NSObject{
     NSUInteger rowId;//本地数据主键
@@ -61,8 +64,9 @@ static NSString *APPROVE_PROPERTY_SERVER_MESSAGE=@"server_message";
     NSString *screenName;//页面地址
     NSString *localStatus;//本地状态，分三类：NORMAL:正常，从服务器取得的未处理数据；WAITING:用户已处理，但未提交到服务器；Done:已提交数据，并且服务器返回ok；ERROR:错误，服务器返回的错误状态
     NSString *comment;//审批意见
-    NSUInteger actionType ;//审批动作类型
+    NSString *action ;//审批动作
     NSString *serverMessage;
+    NSString *submitUrl;
     
 }
 @property(nonatomic) NSUInteger rowId;
@@ -78,13 +82,11 @@ static NSString *APPROVE_PROPERTY_SERVER_MESSAGE=@"server_message";
 @property(copy, nonatomic) NSString *screenName;
 @property(copy, nonatomic) NSString *localStatus;
 @property(copy, nonatomic) NSString *comment;
-@property(nonatomic) NSUInteger actionType;
+@property(copy, nonatomic) NSString *action;
 @property(copy, nonatomic) NSString *serverMessage;
+@property(copy, nonatomic) NSString *submitUrl;
 
-
-
-
--(Approve *)initWithRowId:(NSUInteger)rowid workflowId:(NSUInteger)wid recordId:(NSUInteger)rId workflowName:(NSString *)wName workflowDesc:(NSString *)wDesc nodeName:(NSString *)node employeeName:(NSString *)employee creationDate:(NSString *)creation dateLimit:(NSString *)limit  isLate:(NSUInteger)late screenName:(NSString *)screen localStatus:(NSString *)status comment:(NSString *)cmt actionType:(NSUInteger)aType serverMessage:(NSString *)sMessage;
+-(Approve *)initWithRowId:(NSUInteger)rowid workflowId:(NSUInteger)wid recordId:(NSUInteger)rId workflowName:(NSString *)wName workflowDesc:(NSString *)wDesc nodeName:(NSString *)node employeeName:(NSString *)employee creationDate:(NSString *)creation dateLimit:(NSString *)limit  isLate:(NSUInteger)late screenName:(NSString *)screen localStatus:(NSString *)status comment:(NSString *)cmt actionType:(NSString *)aType serverMessage:(NSString *)sMessage submitUrl:(NSString *)url;
 
 -(Approve *)initWithDictionary:(NSMutableDictionary *)dic;
 @end

@@ -23,8 +23,9 @@
 @synthesize screenName;
 @synthesize localStatus;
 @synthesize comment;
-@synthesize actionType;
+@synthesize action;
 @synthesize serverMessage;
+@synthesize submitUrl;
 
 -(void)dealloc{
     [workflowName release];
@@ -41,7 +42,7 @@
 
 
 
--(Approve *)initWithRowId:(NSUInteger)rowid workflowId:(NSUInteger)wid recordId:(NSUInteger)rId workflowName:(NSString *)wName workflowDesc:(NSString *)wDesc nodeName:(NSString *)node employeeName:(NSString *)employee creationDate:(NSString *)creation dateLimit:(NSString *)limit  isLate:(NSUInteger)late screenName:(NSString *)screen localStatus:(NSString *)status comment:(NSString *)cmt actionType:(NSUInteger)aType serverMessage:(NSString *)sMessage{
+-(Approve *)initWithRowId:(NSUInteger)rowid workflowId:(NSUInteger)wid recordId:(NSUInteger)rId workflowName:(NSString *)wName workflowDesc:(NSString *)wDesc nodeName:(NSString *)node employeeName:(NSString *)employee creationDate:(NSString *)creation dateLimit:(NSString *)limit  isLate:(NSUInteger)late screenName:(NSString *)screen localStatus:(NSString *)status comment:(NSString *)cmt actionType:(NSString *)aType serverMessage:(NSString *)sMessage submitUrl:(NSString *)url{
     
     if (self = [super init]){
         self.rowId = rowid;
@@ -57,8 +58,9 @@
         self.screenName = screen;
         self.localStatus = status;
         self.comment = cmt;
-        self.actionType = aType;
+        self.action = aType;
         self.serverMessage = sMessage;
+        self.submitUrl = url;
     }
     
     return self;
@@ -78,8 +80,9 @@
         self.screenName = [dic objectForKey:APPROVE_PROPERTY_SCREEN_NAME];
         self.localStatus = [dic objectForKey:APPROVE_PROPERTY_LOCAL_STATUS];
         self.comment = [dic objectForKey:APPROVE_PROPERTY_COMMENT];
-        self.actionType = [[dic objectForKey:APPROVE_PROPERTY_APPROVE_ACTION_TYPE]intValue];
+        self.action = [dic objectForKey:APPROVE_PROPERTY_APPROVE_ACTION];
         self.serverMessage = [dic objectForKey:APPROVE_PROPERTY_SERVER_MESSAGE];
+        self.submitUrl = [dic objectForKey:APPROVE_PROPERTY_SUBMIT_URL];
     }
     
     return self;
