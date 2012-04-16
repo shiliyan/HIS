@@ -17,10 +17,6 @@ static NSString * kExecAction = @"execAction";
 @synthesize actionsRequest = _actionsRequest;
 @synthesize webPageRequest = _webPageRequest;
 @synthesize detailApprove = _detailApprove;
-//@synthesize recordID = _recordID;
-//@synthesize actionID = _actionID;
-//@synthesize comment = _comment;
-//@synthesize screenName = _screenName;
 @synthesize dbHelper = _dbHelper;
 
 //明细协议
@@ -49,8 +45,7 @@ static NSString * kExecAction = @"execAction";
 
 -(void)loadWebPage{
     //创建页面载入请求
-    NSString * screenUrl = [NSString stringWithFormat:@"%@%@?record_id=%i",[HDURLCenter requestURLWithKey:@"APPROVE_SCREEN_BASE_PATH"],[_detailApprove screenName],[_detailApprove recordId]];
-    
+    NSString * screenUrl = [NSString stringWithFormat:@"%@%@?record_id=%i",[HDURLCenter requestURLWithKey:@"APPROVE_SCREEN_BASE_PATH"],[_detailApprove screenName],[_detailApprove recordId]];    
     self.webPageRequest = [[HDHTTPRequestCenter shareHTTPRequestCenter] requestWithURL:screenUrl requestType:ASIRequestTypeWebPage forKey:nil];
     
 	[_webPageRequest setDidFailSelector:@selector(webPageLoadFailed:)];
@@ -92,7 +87,7 @@ static NSString * kExecAction = @"execAction";
 -(void)execAction
 {
     [self configRequest];
-//    [self writeDataBase];
+    [self writeDataBase];
 }
 
 //配置请求
@@ -113,8 +108,9 @@ static NSString * kExecAction = @"execAction";
     ApproveDatabaseHelper * dbHelper = [[ApproveDatabaseHelper alloc]init];
     [dbHelper.db open];
     
-    //TODO:修改数据路记录,sql未完成 
-    NSString *sql = [NSString stringWithFormat:@"update approve_list set ddd = %@ where rowId = %i"];
+    NSString *sql = [NSString stringWithFormat:@"update %@ set %@ = '%@',%@ = '%@' ,%@ = '%@' ,%@ = '%@' where rowId = %i",TABLE_NAME_APPROVE_LIST,APPROVE_PROPERTY_LOCAL_STATUS,@"WAITING",APPROVE_PROPERTY_APPROVE_ACTION,_detailApprove.action,APPROVE_PROPERTY_SUBMIT_URL,[HDURLCenter requestURLWithKey:@"EXEC_ACTION_UPDATE_PATH"],APPROVE_PROPERTY_COMMENT,_detailApprove.comment,_detailApprove.rowId];
+    
+//    NSLog(@"%@",sql);
     [dbHelper.db executeUpdate:sql];
     [dbHelper.db close];
     TT_RELEASE_SAFELY(dbHelper);

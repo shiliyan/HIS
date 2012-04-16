@@ -31,15 +31,11 @@
     self = [super init];
     if (self) {
         Approve * approve = [query objectForKey:HD_APPROVE_DATA];
-//        NSUInteger theRecordID = approve.recordId;
-//        NSString * theScreenName = approve.screenName;
         
-//        self.detailModel = [[HDApproveDetailModel alloc]initWithRecordID:[NSNumber numberWithInt:theRecordID]
-//                                                               screenName:theScreenName];
         self.detailModel = [[HDApproveDetailModel alloc]initWithApprove:approve];
         self.title = name;
         self.loadType = HD_LOAD_WITHOUT_ACTION;
-        if (approve.localStatus == @"NORMAL") {
+        if ([approve.localStatus isEqualToString: @"NORMAL"]) {
             self.loadType = HD_LOAD_WITH_ACTION;
         }
     }
@@ -61,12 +57,7 @@
     //解除模态视图
     [self dismissModalViewControllerAnimated:YES];
     if (resultCode == RESULT_OK) {
-//        //开启遮罩
-//        [self addActivityLabelWithStyle:TTActivityLabelStyleWhite];
-//        //提交
-//        [_detailModel setComment:[dictionary objectForKey:@"comment"]];
-//        [_detailModel execAction];
-        //TODO:直接回去
+
         [_detailModel setComment:[dictionary objectForKey:@"comment"]];
         [_detailModel execAction];
         [self.navigationController popViewControllerAnimated:YES];
@@ -114,53 +105,10 @@
     [self presentModalViewController:opinionViewController animated:YES];
 }
 
-//#pragma -mark 提交时遮罩
-//- (void)addActivityLabelWithStyle:(TTActivityLabelStyle)style
-//{
-//    UIView *backView = [[[UIView alloc]initWithFrame:CGRectMake(0, 0, 320, 480)] autorelease];
-//    backView.backgroundColor = [UIColor colorWithRed:0 green:0 blue:0 alpha:0.3];
-//    backView.tag = BACK_VIEW;
-//    
-//    TTActivityLabel* label = [[[TTActivityLabel alloc] initWithStyle:style] autorelease];
-//    label.text = @"Loading...";
-//    [label sizeToFit];
-//    label.frame = CGRectMake(0, 180, self.view.width, label.height);
-//    label.tag = ACTIVE_LABEL;
-//    
-//    [backView addSubview:label];
-//    [self.navigationController.view addSubview:backView];
-//}
-
-//-(void) removeActivityLabel
-//{
-//    [[self.navigationController.view viewWithTag:BACK_VIEW]removeFromSuperview];
-//}
-
-////提交成功,退回列表
-//-(void) execActionSuccess:(NSArray *) dataSet
-//{
-//    [self removeActivityLabel];
-//    [self.navigationController popViewControllerAnimated:YES];
-//}
-
-////提交失败,弹出对话框
-//-(void) execActionFailed: (NSString *) errorMessage
-//{
-//    [self removeActivityLabel];
-//    UIAlertView * alert = [[UIAlertView alloc]initWithTitle:@"失败" 
-//                                                    message:errorMessage 
-//                                                   delegate:nil 
-//                                          cancelButtonTitle:@"确定" 
-//                                          otherButtonTitles:nil];
-//    [alert show];
-//    TT_RELEASE_SAFELY(alert);
-//}
-
 #pragma -mark 页面load事件
 - (void)viewDidLoad
 {
     [super viewDidLoad];  
-     
 }
 
 - (void)viewDidUnload
