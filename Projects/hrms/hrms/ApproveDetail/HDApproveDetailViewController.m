@@ -7,12 +7,13 @@
 //
 
 #import "HDApproveDetailViewController.h"
+#import "Approve.h"
 
 @implementation HDApproveDetailViewController
 
 @synthesize webPage = _webPage;
 @synthesize toolbar = _toolbar;
-@synthesize approveModel = _approveModel;
+@synthesize detailModel = _detailModel;
 @synthesize loadType;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
@@ -25,14 +26,18 @@
 }
 
 -(id)initWithName:(NSString *) name 
-         recordID:(NSInteger) theRecordID 
-       screenName:(NSString *) theScreenName
          loadType:(NSInteger) type
+            query:(NSDictionary *) query
 {
     self = [super init];
     if (self) {
-        self.approveModel = [[HDApproveDetailModel alloc]initWithRecordID:[NSNumber numberWithInt:theRecordID]
-                                                               screenName:theScreenName];
+        Approve * approve = [query objectForKey:HD_APPROVE_DATA];
+//        NSUInteger theRecordID = approve.recordId;
+//        NSString * theScreenName = approve.screenName;
+        
+//        self.detailModel = [[HDApproveDetailModel alloc]initWithRecordID:[NSNumber numberWithInt:theRecordID]
+//                                                               screenName:theScreenName];
+        self.detailModel = [[HDApproveDetailModel alloc]initWithApprove:approve];
         self.title = name;
         self.loadType = HD_LOAD_WITHOUT_ACTION;
         if (type) {
@@ -46,8 +51,8 @@
 {
     TT_RELEASE_SAFELY(_webPage);
     TT_RELEASE_SAFELY(_toolbar);
-    TT_RELEASE_SAFELY(_approveModel);
-    [_approveModel loadCancel];
+    TT_RELEASE_SAFELY(_detailModel);
+    [_detailModel loadCancel];
     [super dealloc];
 }
 
@@ -60,11 +65,11 @@
 //        //开启遮罩
 //        [self addActivityLabelWithStyle:TTActivityLabelStyleWhite];
 //        //提交
-//        [_approveModel setComment:[dictionary objectForKey:@"comment"]];
-//        [_approveModel execAction];
+//        [_detailModel setComment:[dictionary objectForKey:@"comment"]];
+//        [_detailModel execAction];
         //TODO:直接回去
-        [_approveModel setComment:[dictionary objectForKey:@"comment"]];
-        [_approveModel execAction];
+        [_detailModel setComment:[dictionary objectForKey:@"comment"]];
+        [_detailModel execAction];
         [self.navigationController popViewControllerAnimated:YES];
         //发送提交审批的通知
         [[NSNotificationCenter defaultCenter] postNotificationName:@"detailApproved" object:nil];
@@ -103,54 +108,54 @@
 
 -(void)actionBrtPressed: (id)sender
 {
-    [_approveModel setActionID:[NSNumber numberWithInteger:[sender tag]]];
+    [_detailModel setActionID:[sender tag]];
     
     ApproveOpinionView * opinionViewController = [[[ApproveOpinionView alloc]initWithNibName:@"ApproveOpinionView" bundle:nil] autorelease];
     [opinionViewController setControllerDelegate:self];
     [self presentModalViewController:opinionViewController animated:YES];
 }
 
-#pragma -mark 提交时遮罩
-- (void)addActivityLabelWithStyle:(TTActivityLabelStyle)style
-{
-    UIView *backView = [[[UIView alloc]initWithFrame:CGRectMake(0, 0, 320, 480)] autorelease];
-    backView.backgroundColor = [UIColor colorWithRed:0 green:0 blue:0 alpha:0.3];
-    backView.tag = BACK_VIEW;
-    
-    TTActivityLabel* label = [[[TTActivityLabel alloc] initWithStyle:style] autorelease];
-    label.text = @"Loading...";
-    [label sizeToFit];
-    label.frame = CGRectMake(0, 180, self.view.width, label.height);
-    label.tag = ACTIVE_LABEL;
-    
-    [backView addSubview:label];
-    [self.navigationController.view addSubview:backView];
-}
+//#pragma -mark 提交时遮罩
+//- (void)addActivityLabelWithStyle:(TTActivityLabelStyle)style
+//{
+//    UIView *backView = [[[UIView alloc]initWithFrame:CGRectMake(0, 0, 320, 480)] autorelease];
+//    backView.backgroundColor = [UIColor colorWithRed:0 green:0 blue:0 alpha:0.3];
+//    backView.tag = BACK_VIEW;
+//    
+//    TTActivityLabel* label = [[[TTActivityLabel alloc] initWithStyle:style] autorelease];
+//    label.text = @"Loading...";
+//    [label sizeToFit];
+//    label.frame = CGRectMake(0, 180, self.view.width, label.height);
+//    label.tag = ACTIVE_LABEL;
+//    
+//    [backView addSubview:label];
+//    [self.navigationController.view addSubview:backView];
+//}
 
--(void) removeActivityLabel
-{
-    [[self.navigationController.view viewWithTag:BACK_VIEW]removeFromSuperview];
-}
+//-(void) removeActivityLabel
+//{
+//    [[self.navigationController.view viewWithTag:BACK_VIEW]removeFromSuperview];
+//}
 
-//提交成功,退回列表
--(void) execActionSuccess:(NSArray *) dataSet
-{
-    [self removeActivityLabel];
-    [self.navigationController popViewControllerAnimated:YES];
-}
+////提交成功,退回列表
+//-(void) execActionSuccess:(NSArray *) dataSet
+//{
+//    [self removeActivityLabel];
+//    [self.navigationController popViewControllerAnimated:YES];
+//}
 
-//提交失败,弹出对话框
--(void) execActionFailed: (NSString *) errorMessage
-{
-    [self removeActivityLabel];
-    UIAlertView * alert = [[UIAlertView alloc]initWithTitle:@"失败" 
-                                                    message:errorMessage 
-                                                   delegate:nil 
-                                          cancelButtonTitle:@"确定" 
-                                          otherButtonTitles:nil];
-    [alert show];
-    TT_RELEASE_SAFELY(alert);
-}
+////提交失败,弹出对话框
+//-(void) execActionFailed: (NSString *) errorMessage
+//{
+//    [self removeActivityLabel];
+//    UIAlertView * alert = [[UIAlertView alloc]initWithTitle:@"失败" 
+//                                                    message:errorMessage 
+//                                                   delegate:nil 
+//                                          cancelButtonTitle:@"确定" 
+//                                          otherButtonTitles:nil];
+//    [alert show];
+//    TT_RELEASE_SAFELY(alert);
+//}
 
 #pragma -mark 页面load事件
 - (void)viewDidLoad
@@ -163,20 +168,20 @@
 {
     TT_RELEASE_SAFELY(_webPage);
     TT_RELEASE_SAFELY(_toolbar);
-    TT_RELEASE_SAFELY(_approveModel);
-    [_approveModel loadCancel];
+    TT_RELEASE_SAFELY(_detailModel);
+    [_detailModel loadCancel];
     [super viewDidUnload];
 }
 
 -(void)viewDidAppear:(BOOL)animated
 {
     [super viewDidAppear:animated];
-    [_approveModel setDelegate:self];
+    [_detailModel setDelegate:self];
     if (self.loadType == HD_LOAD_WITH_ACTION) {
-        [_approveModel loadWebActions];
+        [_detailModel loadWebActions];
     }
     
-    [_approveModel loadWebPage];
+    [_detailModel loadWebPage];
 }
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation

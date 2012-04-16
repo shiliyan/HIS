@@ -14,8 +14,8 @@
 
 -(void) actionLoad:(NSArray *) dataSet;
 
--(void) execActionSuccess:(NSArray *) dataSet;
+//-(void) execActionSuccess:(NSArray *) dataSet;
 
--(void) execActionFailed: (NSString *) errorMessage;
+//-(void) execActionFailed: (NSString *) errorMessage;
 
 @end

@@ -16,19 +16,20 @@ static const NSInteger ACTIVE_LABEL =64;
 static const NSInteger HD_LOAD_WITHOUT_ACTION = 3;
 static const NSInteger HD_LOAD_WITH_ACTION = 6;
 
+static const NSString * HD_APPROVE_DATA  = @"data";
+
 @interface HDApproveDetailViewController : UIViewController
 < ApproveOpinionViewDelegate ,HDApproveDetailDelegate>
 
 @property (nonatomic,retain) IBOutlet UIWebView * webPage;
 @property (nonatomic,retain) IBOutlet UIToolbar * toolbar;
 
-@property (nonatomic,retain) HDApproveDetailModel * approveModel;
+@property (nonatomic,retain) HDApproveDetailModel * detailModel;
 
 @property (nonatomic,assign) NSInteger loadType;
 
 -(id)initWithName:(NSString *) name 
-         recordID:(NSInteger) theRecordID 
-       screenName:(NSString *) theScreenName
-         loadType:(NSInteger) type;
+         loadType:(NSInteger) type
+            query:(NSDictionary *) query;
 
 @end
