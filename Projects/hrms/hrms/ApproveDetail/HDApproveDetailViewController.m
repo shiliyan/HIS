@@ -26,7 +26,6 @@
 }
 
 -(id)initWithName:(NSString *) name 
-         loadType:(NSInteger) type
             query:(NSDictionary *) query
 {
     self = [super init];
@@ -40,8 +39,8 @@
         self.detailModel = [[HDApproveDetailModel alloc]initWithApprove:approve];
         self.title = name;
         self.loadType = HD_LOAD_WITHOUT_ACTION;
-        if (type) {
-            self.loadType = type;
+        if (approve.localStatus == @"NORMAL") {
+            self.loadType = HD_LOAD_WITH_ACTION;
         }
     }
     return self;
@@ -108,7 +107,7 @@
 
 -(void)actionBrtPressed: (id)sender
 {
-    [_detailModel setActionID:[sender tag]];
+    [_detailModel setActionID:[NSString stringWithFormat:@"%i",[sender tag]]];
     
     ApproveOpinionView * opinionViewController = [[[ApproveOpinionView alloc]initWithNibName:@"ApproveOpinionView" bundle:nil] autorelease];
     [opinionViewController setControllerDelegate:self];

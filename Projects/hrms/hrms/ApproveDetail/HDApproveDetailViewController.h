@@ -12,7 +12,7 @@
 
 static const NSInteger BACK_VIEW =32;
 static const NSInteger ACTIVE_LABEL =64;
-
+//TODO:修改是否带工具栏为字符串
 static const NSInteger HD_LOAD_WITHOUT_ACTION = 3;
 static const NSInteger HD_LOAD_WITH_ACTION = 6;
 
@@ -29,7 +29,6 @@ static const NSString * HD_APPROVE_DATA  = @"data";
 @property (nonatomic,assign) NSInteger loadType;
 
 -(id)initWithName:(NSString *) name 
-         loadType:(NSInteger) type
             query:(NSDictionary *) query;
 
 @end
