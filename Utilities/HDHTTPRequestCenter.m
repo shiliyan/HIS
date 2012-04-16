@@ -86,13 +86,26 @@ static HDHTTPRequestCenter * _requestCenter = nil;
         {
             HDRequestConfig * config = [self.requestConfigMap configForKey:requestConfigKey];
             HDFormDataRequest * theRequest = [HDFormDataRequest hdRequestWithURL:newURL
-                                                                        withData:data
+                                                                    withData:data
                                                                          pattern:HDrequestPatternNormal];
+
+
+            //TODO:动态获取属性列表
+//            id LenderClass  = [config class];
+//            unsigned int outCount, i;
+//            objc_objectptr_t * properties = class_copyPropertyList(LenderClass, &outCount);
+//            for (i = 0; i < outCount; i++) {
+//                objc_objectptr_t property = properties[i];
+//             fprintf(stdout, "%s %s\n", property_getName(property), property_getAttributes(property));
+//            }
+            
             [theRequest setDelegate:config.delegate];
             [theRequest setSuccessSelector:config.successSelector];
             [theRequest setErrorSelector:config.errorSelector];
             [theRequest setServerErrorSelector:config.serverErrorSelector];
-            [theRequest setFailedSelector:config.ASIDidFailSelector];         
+            [theRequest setFailedSelector:config.ASIDidFailSelector];  
+            
+            [theRequest setTag:config.tag];
             return theRequest;
             break;
         }

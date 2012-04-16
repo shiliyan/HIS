@@ -16,6 +16,7 @@
 }
 @property (nonatomic,retain) NSString *requestURL;
 @property (nonatomic,retain) id requestData;
+@property (nonatomic) NSUInteger tag;
 
 @property (assign) id  delegate;
 @property (assign) SEL successSelector;

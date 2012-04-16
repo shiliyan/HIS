@@ -13,6 +13,8 @@
 @synthesize requestURL;
 @synthesize requestData;
 
+@synthesize tag;
+
 @synthesize delegate;
 @synthesize successSelector;
 @synthesize errorSelector;
