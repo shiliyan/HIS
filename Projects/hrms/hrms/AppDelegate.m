@@ -67,7 +67,7 @@ toModalViewController:[RCLoginViewController class]];
 toSharedViewController:[ApproveListController class]];
     
     //审批明细
-    [map from:@"tt://approve_detail/(initWithName:)/(recordID:)/(screenName:)/(loadType:)" 
+    [map from:@"tt://approve_detail/(initWithName:)/(loadType:)" 
        parent:@"tt://approve" 
 toViewController:[HDApproveDetailViewController class] 
      selector:nil 
