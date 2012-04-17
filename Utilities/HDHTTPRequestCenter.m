@@ -9,6 +9,7 @@
 #import "HDHTTPRequestCenter.h"
 #import "HDRequestConfigMap.h"
 #import "ASIDownloadCache.h"
+#import <objc/runtime.h>
 
 @implementation HDHTTPRequestCenter
 
@@ -91,13 +92,21 @@ static HDHTTPRequestCenter * _requestCenter = nil;
 
 
             //TODO:动态获取属性列表
-//            id LenderClass  = [config class];
+//            NSLog(@"%@",[[config class] classFallbacksForKeyedArchiver]);
+//            id LenderClass  = [[config class] description];
 //            unsigned int outCount, i;
 //            objc_objectptr_t * properties = class_copyPropertyList(LenderClass, &outCount);
 //            for (i = 0; i < outCount; i++) {
 //                objc_objectptr_t property = properties[i];
-//             fprintf(stdout, "%s %s\n", property_getName(property), property_getAttributes(property));
+//                NSLog(@"%@",[NSString stringWithFormat:@"%s",property_getName(property)]);
+//             fprintf(stdout, "%s %s\n", property_getName(property),property_getAttributes(property));
 //            }
+            
+//            NSDictionary * dic = [NSDictionary dictionaryWithObjectsAndKeys:
+//                                  config.delegate,@"delegate",
+//                                  config.successSelector,@""
+//                                  nil]
+//            [theRequest setValuesForKeysWithDictionary:@"successSelector"];
             
             [theRequest setDelegate:config.delegate];
             [theRequest setSuccessSelector:config.successSelector];
@@ -120,7 +129,7 @@ static HDHTTPRequestCenter * _requestCenter = nil;
             
             [theRequest setUrlReplacementMode:ASIReplaceExternalResourcesWithData];
             [theRequest setDownloadCache:[ASIDownloadCache sharedCache]];
-            [theRequest setCachePolicy:ASIDoNotReadFromCacheCachePolicy|ASIDoNotWriteToCacheCachePolicy];
+            [theRequest setCachePolicy:ASIUseDefaultCachePolicy];
             
             [theRequest setDownloadDestinationPath:[[ASIDownloadCache sharedCache] pathToStoreCachedResponseDataForRequest:theRequest]];
             [[ASIDownloadCache sharedCache] setShouldRespectCacheControlHeaders:NO];
