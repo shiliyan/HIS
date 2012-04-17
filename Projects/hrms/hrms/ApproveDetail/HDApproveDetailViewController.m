@@ -108,7 +108,13 @@
 #pragma -mark 页面load事件
 - (void)viewDidLoad
 {
-    [super viewDidLoad];  
+    [super viewDidLoad]; 
+    [_detailModel setDelegate:self];
+    if (self.loadType == HD_LOAD_WITH_ACTION) {
+        [_detailModel loadWebActions];
+    }
+    
+    [_detailModel loadWebPage];
 }
 
 - (void)viewDidUnload
@@ -118,17 +124,6 @@
     TT_RELEASE_SAFELY(_detailModel);
     [_detailModel loadCancel];
     [super viewDidUnload];
-}
-
--(void)viewDidAppear:(BOOL)animated
-{
-    [super viewDidAppear:animated];
-    [_detailModel setDelegate:self];
-    if (self.loadType == HD_LOAD_WITH_ACTION) {
-        [_detailModel loadWebActions];
-    }
-    
-    [_detailModel loadWebPage];
 }
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
