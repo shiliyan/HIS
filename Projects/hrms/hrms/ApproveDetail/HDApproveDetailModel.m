@@ -32,8 +32,7 @@ static NSString * kExecAction = @"execAction";
 }
 
 -(void)dealloc
-{
-
+{    
     [_actionsRequest clearDelegatesAndCancel];
     [_webPageRequest clearDelegatesAndCancel];
     TT_RELEASE_SAFELY(_actionsRequest);
@@ -57,14 +56,14 @@ static NSString * kExecAction = @"execAction";
 }
 
 -(void)loadWebActions{
-//    NSLog(@"HDAppreoveDetailModel -68 \n\n%@",self.recordID);
+    //    NSLog(@"HDAppreoveDetailModel -68 \n\n%@",self.recordID);
     NSDictionary * data = [NSDictionary dictionaryWithObject:[NSNumber numberWithInt:_detailApprove.recordId] forKey:@"record_id"];
     //////////////////////////////////////
     self.actionsRequest = [HDFormDataRequest hdRequestWithURL:[HDURLCenter requestURLWithKey:@"TOOLBAR_ACTION_QUERY_PATH"] 
                                                      withData:data
                                                       pattern:HDrequestPatternNormal];
     
-    [_actionsRequest setSuccessSelector: @selector(callActionLoad:withDataSet:)];
+    [_actionsRequest setSuccessSelector: @selector(actionLoadSucceeded:withDataSet:)];
     [_actionsRequest setDelegate:self];
     [_actionsRequest startAsynchronous];
 }
@@ -87,14 +86,14 @@ static NSString * kExecAction = @"execAction";
 -(void)execAction
 {
     [self configRequest];
-    [self writeDataBase];
+    [self modifyRecordAction];
 }
 
 //配置请求
 -(void) configRequest
 {
     NSDictionary * actionData = [NSDictionary dictionaryWithObjectsAndKeys:[NSNumber numberWithInt: _detailApprove.recordId],@"record_id", _detailApprove.action,@"action_id", [_detailApprove comment],@"comment", nil];
-
+    
     HDRequestConfigMap * map = [[HDHTTPRequestCenter shareHTTPRequestCenter] requestConfigMap];
     HDRequestConfig * execActionRequestConfig  = [map configForKey:@"detial_ready_post"];
     [execActionRequestConfig setRequestURL:[HDURLCenter requestURLWithKey:@"EXEC_ACTION_UPDATE_PATH"]];
@@ -103,14 +102,14 @@ static NSString * kExecAction = @"execAction";
 }
 
 //修改数据库记录状态 
--(void) writeDataBase
+-(void) modifyRecordAction
 {
     ApproveDatabaseHelper * dbHelper = [[ApproveDatabaseHelper alloc]init];
     [dbHelper.db open];
     
     NSString *sql = [NSString stringWithFormat:@"update %@ set %@ = '%@',%@ = '%@' ,%@ = '%@' ,%@ = '%@' where rowId = %i",TABLE_NAME_APPROVE_LIST,APPROVE_PROPERTY_LOCAL_STATUS,@"WAITING",APPROVE_PROPERTY_APPROVE_ACTION,_detailApprove.action,APPROVE_PROPERTY_SUBMIT_URL,[HDURLCenter requestURLWithKey:@"EXEC_ACTION_UPDATE_PATH"],APPROVE_PROPERTY_COMMENT,_detailApprove.comment,_detailApprove.rowId];
     
-//    NSLog(@"%@",sql);
+    //    NSLog(@"%@",sql);
     [dbHelper.db executeUpdate:sql];
     [dbHelper.db close];
     TT_RELEASE_SAFELY(dbHelper);
@@ -119,7 +118,7 @@ static NSString * kExecAction = @"execAction";
 #pragma -mark web Page load callback functions  
 - (void)webPageLoadFailed:(ASIHTTPRequest *)theRequest
 {
-//	NSLog(@"%@",[NSString stringWithFormat:@"Something went wrong: %@",[theRequest error]]);
+    //	NSLog(@"%@",[NSString stringWithFormat:@"Something went wrong: %@",[theRequest error]]);
     [self callWebPageLoad:theRequest webPageContent:@"<h1>页面加载失败</h>"];
 }
 
@@ -153,7 +152,15 @@ static NSString * kExecAction = @"execAction";
     }
 }
 
--(void) callActionLoad:(ASIFormDataRequest *) request withDataSet:(NSMutableArray *) dataSet
+- (void)actionLoadSucceeded:(ASIFormDataRequest *)theRequest withDataSet:(NSArray *) dataSet
+{
+    //写数据库
+    [self saveRecordActions:dataSet];
+    //调用成功
+    [self callActionLoad:theRequest withDataSet:dataSet];
+}
+
+-(void) callActionLoad:(ASIFormDataRequest *) theRequest withDataSet:(NSArray *) dataSet
 {
     if (delegate && [delegate respondsToSelector:@selector(actionLoad:)]) {
         [delegate performSelector:@selector(actionLoad:)
@@ -161,6 +168,42 @@ static NSString * kExecAction = @"execAction";
     }else {
         NSLog(@"代理不响应actionLoad:方法");
     }
+}
+
+//保存审批动作
+-(void)saveRecordActions:(NSArray *) dataSet
+{
+    ApproveDatabaseHelper * dbHelper = [[ApproveDatabaseHelper alloc]init];
+    [dbHelper.db open];
+    [dbHelper.db beginTransaction];
+    
+    NSString * deleteActionsSql = [NSString stringWithFormat:@"delete from %@ where record_id = %i;",TABLE_NAME_APPROVE_ACTION_LIST,_detailApprove.recordId];
+    [dbHelper.db executeUpdate:deleteActionsSql];
+    NSLog(@"%@",deleteActionsSql);
+    
+    for (NSDictionary * actionRecord in dataSet) 
+    {
+        NSString * insertActionsSql = [NSString stringWithFormat:@"insert into %@ (record_id,action_id,action_title) values('%i','%@','%@');",TABLE_NAME_APPROVE_ACTION_LIST,_detailApprove.recordId,[actionRecord valueForKey:@"action_id"],[actionRecord valueForKey:@"action_title"]];
+        
+        [dbHelper.db executeUpdate:insertActionsSql];
+        NSLog(@"%@",insertActionsSql);
+    }
+    [dbHelper.db commit];
+    [dbHelper.db close];
+    TT_RELEASE_SAFELY(dbHelper);
+}
+
+-(void) removeRecordActions:(NSUInteger) theRecordID
+{
+    ApproveDatabaseHelper * dbHelper = [[ApproveDatabaseHelper alloc]init];
+    [dbHelper.db open];
+    [dbHelper.db beginTransaction];
+    
+    NSString * removeActionsSql = [NSString stringWithFormat:@"delete from %@ where record_id = %i;",TABLE_NAME_APPROVE_ACTION_LIST,theRecordID];
+    [dbHelper.db executeUpdate:removeActionsSql];
+    
+    NSLog(@"%@",removeActionsSql);
+
 }
 
 @end

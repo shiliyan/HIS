@@ -5,6 +5,12 @@
 //  Created by Rocky Lee on 4/1/12.
 //  Copyright (c) 2012 __MyCompanyName__. All rights reserved.
 //
+// 加载审批动作
+// 请求网页
+// 修改审批记录  
+// 保存审批动作
+// ----删除审批动作
+// ----
 
 #import <Foundation/Foundation.h>
 #import "HDApproveDetailDelegate.h"
@@ -46,5 +52,7 @@
 -(void)setComment:(NSString *) theComment;
 
 -(id)initWithApprove:(Approve *) theApprove;
+
+-(void) removeRecordActions:(NSUInteger) theRecordID;
 
 @end
