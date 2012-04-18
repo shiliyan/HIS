@@ -114,7 +114,7 @@
 //包装请求参数
 -(id) generatePostData:(id)data
 {   
-    return HD_JSON_STRING([NSDictionary dictionaryWithObject:HD_NVL(data, @"") 
+    return HD_JSON_STRING([NSDictionary dictionaryWithObject:(data == nil ? @"": data) 
                                                       forKey:@"parameter"]);
 }
 
