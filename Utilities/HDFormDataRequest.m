@@ -175,9 +175,10 @@
 {
     SEL function = [HDFunctionUtil matchPerformDelegate:hdFormDataRequestDelegate forSelectors:failedSelector,@selector(requestASIFailed:failedMessage:), nil];
     if (function !=nil) {
+//        NSLog(@"%@",[[theRequest error]localizedDescription]);
         [hdFormDataRequestDelegate performSelector:function
                                         withObject:theRequest
-                                        withObject:[theRequest responseStatusMessage]];
+                                        withObject:[[theRequest error]localizedDescription]];
     }else {
         NSLog(@"ASI网络错误,超时或无法找到服务器");
     }    

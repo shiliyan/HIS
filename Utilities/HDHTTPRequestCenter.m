@@ -112,7 +112,7 @@ static HDHTTPRequestCenter * _requestCenter = nil;
             [theRequest setSuccessSelector:config.successSelector];
             [theRequest setErrorSelector:config.errorSelector];
             [theRequest setServerErrorSelector:config.serverErrorSelector];
-            [theRequest setFailedSelector:config.ASIDidFailSelector];  
+            [theRequest setFailedSelector:config.failedSelector];  
             
             [theRequest setTag:config.tag];
             return theRequest;
