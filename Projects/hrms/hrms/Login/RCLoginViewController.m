@@ -52,6 +52,9 @@
 -(void)loginFailed:(NSString *) errorMessage;
 {
     NSLog(@"failed");
+    UIAlertView * alert = [[UIAlertView alloc]initWithTitle:@"错误" message:errorMessage delegate:self cancelButtonTitle:@"确认" otherButtonTitles:nil];
+    [alert show];
+    [alert release];
 }
 
 #pragma animations for keyborad
