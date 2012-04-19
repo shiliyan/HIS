@@ -63,15 +63,17 @@
 }
 
 -(NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section{
+    
+    NSString *title = nil;
     if (section == SECTION_NORMAL) {
-        return [self.approveArray count]==0 ? @"" : @"待办";
+        title = [self.approveArray count]==0 ? @"待办" : @"待办";
     }else if(section == SECTION_WAITING_LIST){
-        return [self.commitArray count]==0 ? @"" : @"等待提交";
+        title = [self.commitArray count]==0 ? @"等待提交" : @"等待提交";
     }else if(section == SECTION_PROBLEM_LIST){
-        return [self.errorArray count]==0 ? @"" : @"出错的审批或已被处理";
-    }else{
-        return nil;
+        title = [self.errorArray count]==0 ? @"出错的审批或已被处理" : @"出错的审批或已被处理";
     }
+
+    return title;
 }
 
 -(BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath{

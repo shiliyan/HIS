@@ -10,9 +10,9 @@
 
 @implementation Approve
 
-@synthesize rowId;
-@synthesize workflowId;
-@synthesize recordId;
+@synthesize rowID;
+@synthesize workflowID;
+@synthesize recordID;
 @synthesize workflowName;
 @synthesize workflowDesc;
 @synthesize nodeName;
@@ -28,26 +28,34 @@
 @synthesize submitUrl;
 
 -(void)dealloc{
-    [workflowName release];
-    [workflowDesc release];
-    [nodeName release];
-    [employeeName release];
-    [creationDate release];
-    [dateLimit release];
-    [localStatus release];
-    [comment release];
-    [serverMessage release];
+    
+    [rowID release];
+    [ workflowID release];
+    [ recordID release];
+    [ workflowName release];
+    [ workflowDesc release];
+    [ nodeName release];
+    [ employeeName release];
+    [ creationDate release];
+    [ dateLimit release];
+    [ isLate release];
+    [ screenName release];
+    [ localStatus release];
+    [ comment release];
+    [ action release];
+    [ serverMessage release];
+    [ submitUrl release];
     [super dealloc];
 }
 
 
 
--(Approve *)initWithRowId:(NSUInteger)rowid workflowId:(NSUInteger)wid recordId:(NSUInteger)rId workflowName:(NSString *)wName workflowDesc:(NSString *)wDesc nodeName:(NSString *)node employeeName:(NSString *)employee creationDate:(NSString *)creation dateLimit:(NSString *)limit  isLate:(NSUInteger)late screenName:(NSString *)screen localStatus:(NSString *)status comment:(NSString *)cmt actionType:(NSString *)aType serverMessage:(NSString *)sMessage submitUrl:(NSString *)url{
+-(Approve *)initWithRowId:(NSNumber *)rowid workflowId:(NSNumber *)wid recordId:(NSNumber *)rId workflowName:(NSString *)wName workflowDesc:(NSString *)wDesc nodeName:(NSString *)node employeeName:(NSString *)employee creationDate:(NSString *)creation dateLimit:(NSString *)limit  isLate:(NSNumber *)late screenName:(NSString *)screen localStatus:(NSString *)status comment:(NSString *)cmt actionType:(NSString *)aType serverMessage:(NSString *)sMessage submitUrl:(NSString *)url{
     
     if (self = [super init]){
-        self.rowId = rowid;
-        self.workflowId = wid;
-        self.recordId = rId;
+        self.rowID = rowid;
+        self.workflowID = wid;
+        self.recordID = rId;
         self.workflowName = wName;
         self.workflowDesc = wDesc;
         self.nodeName = node;
@@ -66,17 +74,17 @@
     return self;
 }
 
--(Approve *)initWithDictionary:(NSMutableDictionary *)dic{
+-(Approve *)initWithDictionary:(NSDictionary *)dic{
     if (self = [super init]){
-        self.workflowId = [[dic objectForKey:APPROVE_PROPERTY_WORKFLOW_ID] integerValue];
-        self.recordId = [[dic objectForKey:APPROVE_PROPERTY_RECORD_ID] integerValue];
+        self.workflowID = [dic objectForKey:APPROVE_PROPERTY_WORKFLOW_ID];
+        self.recordID = [dic objectForKey:APPROVE_PROPERTY_RECORD_ID];
         self.workflowName = [dic objectForKey:APPROVE_PROPERTY_WORKFLOW_NAME];
         self.workflowDesc = [dic objectForKey:APPROVE_PROPERTY_WORKFLOW_DESC];
         self.nodeName = [dic objectForKey:APPROVE_PROPERTY_NODE_NAME];
         self.employeeName = [dic objectForKey:APPROVE_PROPERTY_EMPLOYEE_NAME];
         self.creationDate = [dic objectForKey:APPROVE_PROPERTY_CREATION_DATE];
         self.dateLimit = [dic objectForKey:APPROVE_PROPERTY_DATE_LIMIT];
-        self.isLate = [[dic objectForKey:APPROVE_PROPERTY_IS_LATE]integerValue];
+        self.isLate = [dic objectForKey:APPROVE_PROPERTY_IS_LATE];
         self.screenName = [dic objectForKey:APPROVE_PROPERTY_SCREEN_NAME];
         self.localStatus = [dic objectForKey:APPROVE_PROPERTY_LOCAL_STATUS];
         self.comment = [dic objectForKey:APPROVE_PROPERTY_COMMENT];
@@ -84,12 +92,11 @@
         self.serverMessage = [dic objectForKey:APPROVE_PROPERTY_SERVER_MESSAGE];
         self.submitUrl = [dic objectForKey:APPROVE_PROPERTY_SUBMIT_URL];
     }
-    
     return self;
 }
 
 -(NSString *)description{
-    return [NSString stringWithFormat:@"%@ recordId:%i rowid:%i",[super description],self.recordId,self.rowId];
+    return [NSString stringWithFormat:@"%@ recordId:%i rowid:%i",[super description],self.recordID.init,self.rowID.init];
 }
 
 @end
