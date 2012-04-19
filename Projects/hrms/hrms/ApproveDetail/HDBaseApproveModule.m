@@ -153,8 +153,4 @@
 //审批
 -(void)submitApprove{}
 
-//-(void)webPageLoad:(NSString *)htmlString baseURL:(NSURL *)theBaseURL{}
-
-//-(void)actionLoad:(NSArray *) actionArray{}
-
 @end

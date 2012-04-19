@@ -7,12 +7,12 @@
 //
 
 #import "HDBaseApproveModule.h"
-#import "HDApprove.h"
+#import "Approve.h"
 
 @interface HDApproveModule : HDBaseApproveModule
 
-@property (nonatomic,retain) HDApprove * approveEntity;
+@property (nonatomic,retain) Approve * approveEntity;
 
--(id) initWithApproveModule:(HDApprove *) approve;
+-(id) initWithApproveModule:(Approve *) approve;
 
 @end

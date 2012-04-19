@@ -13,7 +13,7 @@
 
 @synthesize approveEntity = _approveEntity;
 
--(id) initWithApproveModule:(HDApprove *) approve
+-(id) initWithApproveModule:(Approve *) approve
 {
     self = [super init];
     if (self) {
@@ -32,10 +32,10 @@
     [actionModule setActionLoadParameters:parameter];
 }
 
--(void)startLoad
-{
-    //如果记录状态是等待,不加载动作    
-}
+//-(void)startLoad
+//{
+//    //如果记录状态是等待,不加载动作    
+//}
 
 //审批
 -(void)approve
