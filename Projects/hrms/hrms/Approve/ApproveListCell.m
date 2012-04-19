@@ -91,7 +91,7 @@
     commitDateTextView.text = [approveEntity.creationDate substringToIndex:10];
     deadLineTextView.text = approveEntity.workflowDesc;
     
-    if (approveEntity.isLate == 0) {
+    if (approveEntity.isLate.intValue == 0) {
         workflowNameLabel.textColor = [UIColor blackColor];
     }else {
         workflowNameLabel.textColor = [UIColor redColor];
