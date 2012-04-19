@@ -16,8 +16,8 @@
 #import "HDURLCenter.h"
 #import "HDHTTPRequestCenter.h"
 
-static const NSString *ACTION_TYPE_ADOPT = @"Y";
-static const NSString *ACTION_TYPE_REFUSE = @"N";
+static NSString *ACTION_TYPE_ADOPT = @"Y";
+static NSString *ACTION_TYPE_REFUSE = @"N";
 static const NSString *DETAIL_REQUEST_KEY = @"detial_ready_post";
 
 
