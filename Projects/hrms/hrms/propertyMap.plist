@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>rowid</key>
+	<string>rowID</string>
+	<key>rowID</key>
+	<string>rowid</string>
+	<key>workflow_id</key>
+	<string>workflowID</string>
+	<key>workflowID</key>
+	<string>workflow_id</string>
+	<key>record_id</key>
+	<string>recordID</string>
+	<key>recordID</key>
+	<string>record_id</string>
+	<key>workflow_name</key>
+	<string>workflowName</string>
+	<key>workflowName</key>
+	<string>workflow_name</string>
+</dict>
+</plist>
