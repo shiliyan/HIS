@@ -7,27 +7,35 @@
 //
 
 #import "HDConvertUtil.h"
-
+#import "extThree20JSON/YAJL.h"
 
 @implementation HDConvertUtil
 
 //json 数据的转换
-+(id) objectForJSONString:(NSString *) jsonString
++(id) objectForJSONSData:(NSData *) jsonData
 {
-    return [jsonString JSONValue];
+    NSError* error = nil;
+    id object = [NSJSONSerialization JSONObjectWithData:jsonData 
+                                                options:NSJSONReadingMutableLeaves 
+                                                  error:&error];
+    if (!object) {
+        // inspect error
+        NSLog(@"%@", [error localizedDescription]);
+    }
+    [error release];
+    return object;
 }
 
 +(NSString *) JSONStringForObject:(id) object
 {
-    return [object JSONRepresentation];
+    NSError* error = nil;
+    NSData * data = [NSJSONSerialization dataWithJSONObject:object options:NSJSONWritingPrettyPrinted error:&error];
+    NSString * JSONString = [[[NSString alloc]initWithData:data encoding:NSUTF8StringEncoding] autorelease];
+    if (!object) {
+        // inspect error
+        NSLog(@"%@", [error localizedDescription]);
+    }
+    return  JSONString;
 }
 
-+(id) ifNil:(id)theObject then:(id)convertObject
-{
-    if (theObject ==nil) {
-        return convertObject;
-    }else {
-        return theObject;
-    }
-}
 @end

@@ -155,7 +155,8 @@
      */
     if ([theRequest responseStatusCode] == 200) {
         //转换json数据为对象
-        id JSONObj = HD_JSON_OBJECT([theRequest responseString]);
+        id JSONObj = HD_JSON_OBJECT([theRequest responseData]);
+
         //返回状态为成功
         if ([[JSONObj valueForKey:@"success"] boolValue]) {
             [self callRequestSuccess:theRequest withJSONObj:JSONObj];
