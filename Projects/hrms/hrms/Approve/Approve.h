@@ -51,34 +51,34 @@ static NSString *APPROVE_PROPERTY_SERVER_MESSAGE=@"server_message";
 static NSString *APPROVE_PROPERTY_SUBMIT_URL=@"submit_url";
 
 @interface Approve : NSObject{
-    NSUInteger rowId;//本地数据主键
-    NSUInteger workflowId;
-    NSUInteger recordId;
+    NSNumber *rowID;//本地数据主键
+    NSNumber *workflowID;
+    NSNumber *recordID;
     NSString *workflowName;//工作流名称
     NSString *workflowDesc;//
     NSString *nodeName;//当前节点
     NSString *employeeName;//申请人
     NSString *creationDate;//提交时间
     NSString *dateLimit;//处理时限
-    NSUInteger isLate;//催办还是代办
+    NSNumber *isLate;//催办还是代办
     NSString *screenName;//页面地址
     NSString *localStatus;//本地状态，分三类：NORMAL:正常，从服务器取得的未处理数据；WAITING:用户已处理，但未提交到服务器；Done:已提交数据，并且服务器返回ok；ERROR:错误，服务器返回的错误状态
     NSString *comment;//审批意见
     NSString *action ;//审批动作
     NSString *serverMessage;
     NSString *submitUrl;
-    
 }
-@property(nonatomic) NSUInteger rowId;
-@property(nonatomic) NSUInteger workflowId;
-@property(nonatomic) NSUInteger recordId;
+
+@property(retain ,nonatomic) NSNumber *rowID;
+@property(retain ,nonatomic) NSNumber *workflowID;
+@property(retain ,nonatomic) NSNumber *recordID;
 @property(copy, nonatomic) NSString *workflowName;
 @property(copy, nonatomic) NSString *workflowDesc;
 @property(copy, nonatomic) NSString *nodeName;
 @property(copy, nonatomic) NSString *employeeName;
 @property(copy, nonatomic) NSString *creationDate;
 @property(copy, nonatomic) NSString *dateLimit;
-@property(nonatomic) NSUInteger isLate;
+@property(retain ,nonatomic) NSNumber *isLate;
 @property(copy, nonatomic) NSString *screenName;
 @property(copy, nonatomic) NSString *localStatus;
 @property(copy, nonatomic) NSString *comment;
@@ -86,7 +86,7 @@ static NSString *APPROVE_PROPERTY_SUBMIT_URL=@"submit_url";
 @property(copy, nonatomic) NSString *serverMessage;
 @property(copy, nonatomic) NSString *submitUrl;
 
--(Approve *)initWithRowId:(NSUInteger)rowid workflowId:(NSUInteger)wid recordId:(NSUInteger)rId workflowName:(NSString *)wName workflowDesc:(NSString *)wDesc nodeName:(NSString *)node employeeName:(NSString *)employee creationDate:(NSString *)creation dateLimit:(NSString *)limit  isLate:(NSUInteger)late screenName:(NSString *)screen localStatus:(NSString *)status comment:(NSString *)cmt actionType:(NSString *)aType serverMessage:(NSString *)sMessage submitUrl:(NSString *)url;
+-(Approve *)initWithRowId:(NSNumber *)rowid workflowId:(NSNumber *)wid recordId:(NSNumber *)rId workflowName:(NSString *)wName workflowDesc:(NSString *)wDesc nodeName:(NSString *)node employeeName:(NSString *)employee creationDate:(NSString *)creation dateLimit:(NSString *)limit  isLate:(NSNumber *)late screenName:(NSString *)screen localStatus:(NSString *)status comment:(NSString *)cmt actionType:(NSString *)aType serverMessage:(NSString *)sMessage submitUrl:(NSString *)url;
 
--(Approve *)initWithDictionary:(NSMutableDictionary *)dic;
+-(Approve *)initWithDictionary:(NSDictionary *)dic;
 @end
