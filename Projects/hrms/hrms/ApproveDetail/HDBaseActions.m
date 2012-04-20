@@ -13,16 +13,57 @@
 @synthesize delegate;
 @synthesize actionsObject;
 @synthesize didLoadSelector;
-@synthesize actionLoadParameters = _actionLoadParameters;
+@synthesize actionsInfo = _actionsInfo;
+@synthesize actionsLoadRequest = _actionsLoadRequest;
+@synthesize actionLoadURL = _actionLoadURL;
 
 +(id)actionsModule
 {
     return [[[HDBaseActions alloc]init]autorelease];
 }
 
--(void)loadActions
+-(void)dealloc
 {
-    //加载动作
+    [self cancelLoadingActions];
+    TT_RELEASE_SAFELY(_actionsLoadRequest);
+    TT_RELEASE_SAFELY(_actionLoadURL);
+    [super dealloc];
+}
+
+-(void)loadTheActions
+{
+    //加载动作,默认从远程加载
+    if ([self loadTheLocalActions:_actionsInfo]) {
+        [self callDidLoadSelector];
+    }else {
+        [self loadTheRemoteActions];
+    }
+}
+
+-(BOOL) loadTheLocalActions:(id) actionsInfo
+{
+    return NO;
+}
+
+-(void)loadTheRemoteActions
+{
+    self.actionsLoadRequest = [HDFormDataRequest hdRequestWithURL:_actionLoadURL 
+                                                         withData:_actionsInfo
+                                                          pattern:HDrequestPatternNormal];
+    
+    [_actionsLoadRequest setSuccessSelector: @selector(actionLoadSucceeded:withDataSet:)];
+    [_actionsLoadRequest setDelegate:self];
+    [self beforeLoadTheRemoteActions:self];
+    [_actionsLoadRequest startAsynchronous];
+}
+
+-(void)beforeLoadTheRemoteActions:(HDBaseActions *) actionModule{}
+
+- (void)actionLoadSucceeded:(ASIFormDataRequest *)theRequest withDataSet:(NSArray *) dataSet
+{
+    self.actionsObject = dataSet;
+    [self saveTheActions];
+    [self callDidLoadSelector];
 }
 
 -(void)callDidLoadSelector
@@ -35,11 +76,14 @@
     }
 }
 
--(void)cancelLoadingActions{}
+-(void)cancelLoadingActions
+{
+    [_actionsLoadRequest clearDelegatesAndCancel];
+}
 
--(void)saveActions{}
+-(void)saveTheActions{}
 
--(void)removeActions{}
+-(void)removeTheActions{}
 
 @end
 

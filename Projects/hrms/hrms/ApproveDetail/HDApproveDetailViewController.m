@@ -32,10 +32,11 @@
     self = [super init];
     if (self) {
         Approve * approve = [query objectForKey:HD_APPROVE_DATA];
+        self.title = approve.workflowName;
+        //设置url,动作信息?
         self.detailModule = [[HDApproveModule alloc]initWithApproveModule:approve];
         [self.detailModule setActions:[HDApproveActions actionsModule]];
         
-        self.title = approve.workflowName;
     }
     return self;
 }
@@ -56,7 +57,7 @@
     [self dismissModalViewControllerAnimated:YES];
     if (resultCode == RESULT_OK) {
         [_detailModel.approveEntity setComment:[dictionary valueForKey:@"comment"]];
-        [_detailModel approve];
+        [_detailModel saveApprove];
         [self.navigationController popViewControllerAnimated:YES];
         //发送提交审批的通知
         [[NSNotificationCenter defaultCenter] postNotificationName:@"detailApproved" object:nil];

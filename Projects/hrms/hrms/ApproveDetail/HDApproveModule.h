@@ -15,6 +15,6 @@
 
 -(id) initWithApproveModule:(Approve *) approve;
 
--(void)approve;
+-(void)saveApprove;
 
 @end

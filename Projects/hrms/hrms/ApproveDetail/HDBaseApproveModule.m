@@ -46,13 +46,20 @@
     _actions.didLoadSelector = @selector(actionDidLoadSelector:);
     //动作加载参数前,可以配置action的参数,这里考虑调用的位置,如果在delegate的配置之后,则外部可以打断回调路径,直接获取回调的信息 
     [self beforeLoadActions:_actions];
-    [self.actions loadActions];
+    _actions.actionsInfo = [self getActionsInfo];
+    [self.actions loadTheActions];
 }
 
 //动作加载开始前,配置加载参数
 -(void)beforeLoadActions:(HDBaseActions *) actionModule
 {
 
+}
+
+//加载的参数
+-(id)getActionsInfo
+{
+    return @"";
 }
 
 //动作加载完成

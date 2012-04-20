@@ -28,24 +28,27 @@
     return self;
 }
 
--(void)beforeLoadActions:(HDBaseActions *)actionModule
+-(id)getActionsInfo
 {
-    NSDictionary * parameter = [NSDictionary dictionaryWithObject:[_approveEntity recordID] 
-                                                           forKey:@"record_id"];
-    [actionModule setActionLoadParameters:parameter];
+    return [NSDictionary dictionaryWithObject:[_approveEntity recordID] 
+                                       forKey:@"record_id"];
 }
 
-//-(void)startLoad
-//{
-//    //如果记录状态是等待,不加载动作    
-//}
+-(void)startLoad
+{
+    //如果记录状态是等待,不加载动作  
+    if (![_approveEntity.localStatus isEqualToString:@"WAITING"]) {
+        [self startLoadAction];
+    }
+    [self startLoadWebPage];
+}
 
 //审批
--(void)approve
+-(void)saveApprove
 {
-    //TODO:如果只是单纯的保存数据库,然后发送消息?
+    _approveEntity.submitUrl = [HDURLCenter requestURLWithKey:@"EXEC_ACTION_UPDATE_PATH"];
     [self configRequest];
-    [self modifyRecordAction];
+    [self updateRecordAction];
 }
 
 //配置请求
@@ -55,19 +58,23 @@
     
     HDRequestConfigMap * map = [[HDHTTPRequestCenter shareHTTPRequestCenter] requestConfigMap];
     HDRequestConfig * execActionRequestConfig  = [map configForKey:@"detial_ready_post"];
-    [execActionRequestConfig setRequestURL:[HDURLCenter requestURLWithKey:@"EXEC_ACTION_UPDATE_PATH"]];
+    [execActionRequestConfig setRequestURL:_approveEntity.submitUrl];
     [execActionRequestConfig setRequestData:approveObject];
     [execActionRequestConfig setTag:_approveEntity.rowID.integerValue];
 }
 
 //修改数据库记录状态 
--(void) modifyRecordAction
+-(void) updateRecordAction
 {
     ApproveDatabaseHelper * dbHelper = [[ApproveDatabaseHelper alloc]init];
     [dbHelper.db open];
     
-    NSString *sql = [NSString stringWithFormat:@"update %@ set %@ = '%@',%@ = '%@' ,%@ = '%@' ,%@ = '%@' where rowId = %i",TABLE_NAME_APPROVE_LIST,APPROVE_PROPERTY_LOCAL_STATUS,@"WAITING",APPROVE_PROPERTY_APPROVE_ACTION,_approveEntity.action,APPROVE_PROPERTY_SUBMIT_URL,[HDURLCenter requestURLWithKey:@"EXEC_ACTION_UPDATE_PATH"],APPROVE_PROPERTY_COMMENT,_approveEntity.comment,_approveEntity.rowID];
-    
+    NSString *sql = [NSString stringWithFormat:@"update approve_list set local_status = '%@',action = '%@' ,submit_url = '%@' ,comment = '%@' where rowid = %i",
+                     @"WAITING",
+                     _approveEntity.action,
+                     _approveEntity.submitUrl,
+                     _approveEntity.comment,
+                     _approveEntity.rowID];
     //    NSLog(@"%@",sql);
     [dbHelper.db executeUpdate:sql];
     [dbHelper.db close];

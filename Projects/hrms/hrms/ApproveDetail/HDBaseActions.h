@@ -7,24 +7,41 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "HDURLCenter.h"
 
 @interface HDBaseActions : NSObject
 
 @property (nonatomic,assign) id delegate;
 @property (nonatomic,retain) id actionsObject;
 @property (nonatomic,assign) SEL didLoadSelector;
-@property (nonatomic,retain) id actionLoadParameters;
+@property (nonatomic,retain) id actionsInfo;
+@property (nonatomic,retain) HDFormDataRequest * actionsLoadRequest;
+@property (nonatomic,copy) NSString * actionLoadURL;
 
 +(id)actionsModule;
 
--(void)loadActions;
+-(void)loadTheActions;
 
+//从远程加载动作
+-(void)loadTheRemoteActions;
+
+//too dangerous
+//-(void)beforeLoadTheRemoteActions:(HDBaseActions *) actionModule;
+
+// 从本地数据库/文件等等加载动作,默认先从本地加载,返回NO则从远程加载
+// 可以通过重写 loadTheActions 改变加载顺序
+-(BOOL) loadTheLocalActions:(id) actionsInfo;
+
+//调用加载完成回调,通知注册的delegate对象加载完成,返回 actionsObject
 -(void)callDidLoadSelector;
 
+//取消加载,默认取消远程加载的网络请求
 -(void)cancelLoadingActions;
 
--(void)saveActions;
+//保存动作
+-(void)saveTheActions;
 
--(void)removeActions;
+//根据参数删除动作
+-(void)removeTheActions;
 
 @end

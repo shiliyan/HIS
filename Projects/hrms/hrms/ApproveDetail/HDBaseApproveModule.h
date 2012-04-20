@@ -21,14 +21,20 @@
 //加载开始
 -(void)startLoad;
 
+-(void)startLoadWebPage;
+-(void)startLoadAction;
+
 //取消加载
 -(void)loadCancel;
 
 //调用响应的delegate函数
--(void) callActionLoad:(id) actionsObject;
+-(void)callActionLoad:(id) actionsObject;
 
 //动作加载开始前,配置加载参数
 -(void)beforeLoadActions:(HDBaseActions *) actionModule;
+
+//加载动作需要的参数
+-(id)getActionsInfo;
 
 -(NSArray *) transformToActionArray:(id) actionsObject; 
 
