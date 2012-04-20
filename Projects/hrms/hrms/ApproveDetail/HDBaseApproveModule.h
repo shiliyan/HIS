@@ -35,7 +35,7 @@
 //web请求前配置
 -(void)beforeLoadWebPage:(ASIWebPageRequest *) webPageRequest;
 
--(void) callWebPageLoad:(NSString *)pageContent baseURL:(NSURL *)theBaseURL;
+-(void)callWebPageLoad:(NSString *)pageContent baseURL:(NSURL *)theBaseURL;
 
 //审批
 -(void)submitApprove;

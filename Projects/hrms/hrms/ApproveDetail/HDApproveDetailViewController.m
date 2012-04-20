@@ -32,38 +32,10 @@
     self = [super init];
     if (self) {
         Approve * approve = [query objectForKey:HD_APPROVE_DATA];
-//        
-//        HDApprove * hdApprove = [[HDApprove alloc]init];
-//        hdApprove.rowID = [NSNumber numberWithInt:approve.rowId];
-//        hdApprove.recordID = [NSNumber numberWithInt:approve.recordId];
-//        hdApprove.workflowID = [NSNumber numberWithInt:approve.workflowId];
-//        hdApprove.action = approve.action;
-//        hdApprove.nodeName = approve.nodeName;
-//        hdApprove.workflowName = approve.workflowName;
-//        hdApprove.workflowDesc = approve.workflowDesc;
-//        hdApprove.employeeName = approve.employeeName;
-//        hdApprove.creationDate = approve.creationDate;
-//        hdApprove.dateLimit = approve.dateLimit;
-//        hdApprove.isLate = [NSNumber numberWithInt:approve.isLate];
-//        hdApprove.screenName = approve.screenName;
-//        hdApprove.localStatus = approve.localStatus;
-//        hdApprove.comment = approve.comment;
-//        hdApprove.serverMessage = approve.serverMessage;
-//        hdApprove.submitURL = approve.submitUrl;
-        
-        
-        //        self.detailModel = [[HDApproveDetailModel alloc]initWithApprove:hdApprove];
         self.detailModule = [[HDApproveModule alloc]initWithApproveModule:approve];
         [self.detailModule setActions:[HDApproveActions actionsModule]];
         
         self.title = approve.workflowName;
-//        self.loadType = HD_APPROVE_ERROR;
-//        if ([approve.localStatus isEqualToString: @"NORMAL"]) {
-//            self.loadType = HD_APPROVE_NORMAL;
-//        }
-//        if ([approve.localStatus isEqualToString:@"DIFFERENT"]) {
-//            self.loadType = HD_APPROVE_EXCEPTION;
-//        }
     }
     return self;
 }
@@ -84,10 +56,7 @@
     [self dismissModalViewControllerAnimated:YES];
     if (resultCode == RESULT_OK) {
         [_detailModel.approveEntity setComment:[dictionary valueForKey:@"comment"]];
-        
-        
-        //        [_detailModel setComment:[dictionary objectForKey:@"comment"]];
-        //        [_detailModel execAction];
+        [_detailModel approve];
         [self.navigationController popViewControllerAnimated:YES];
         //发送提交审批的通知
         [[NSNotificationCenter defaultCenter] postNotificationName:@"detailApproved" object:nil];
@@ -106,13 +75,13 @@
     NSMutableArray * toolbarItems = [[NSMutableArray alloc]init];       
     for (NSDictionary * actionRecord in actionArray) {
         [actionRecord valueForKey:@"action_title"];
-        UIBarButtonItem * action = [[UIBarButtonItem alloc]initWithTitle:[actionRecord valueForKey:@"action_title"] 
+        UIBarButtonItem * actionButton = [[UIBarButtonItem alloc]initWithTitle:[actionRecord valueForKey:@"action_title"] 
                                                                    style:UIBarButtonItemStyleBordered 
                                                                   target:self 
                                                                   action:@selector(actionBrtPressed:)];
-        [action setTag:[[actionRecord objectForKey:@"action_id"]integerValue]];
-        [toolbarItems addObject:action];
-        TT_RELEASE_SAFELY(action);
+        [actionButton setTag:[[actionRecord objectForKey:@"action_id"]integerValue]];
+        [toolbarItems addObject:actionButton];
+        TT_RELEASE_SAFELY(actionButton);
         UIBarButtonItem * flexibleSpace = [[UIBarButtonItem alloc]initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace target:self action:nil];
         [toolbarItems addObject:flexibleSpace];
         TT_RELEASE_SAFELY(flexibleSpace);
