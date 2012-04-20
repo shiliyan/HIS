@@ -113,7 +113,7 @@ static HDHTTPRequestCenter * _requestCenter = nil;
             [theRequest setErrorSelector:config.errorSelector];
             [theRequest setServerErrorSelector:config.serverErrorSelector];
             [theRequest setFailedSelector:config.failedSelector];  
-            
+            [theRequest setTimeOutSeconds:60];
             [theRequest setTag:config.tag];
             return theRequest;
             break;
@@ -130,6 +130,7 @@ static HDHTTPRequestCenter * _requestCenter = nil;
             [theRequest setUrlReplacementMode:ASIReplaceExternalResourcesWithData];
             [theRequest setDownloadCache:[ASIDownloadCache sharedCache]];
             [theRequest setCachePolicy:ASIUseDefaultCachePolicy];
+            [theRequest setTimeOutSeconds:60];
             
             [theRequest setDownloadDestinationPath:[[ASIDownloadCache sharedCache] pathToStoreCachedResponseDataForRequest:theRequest]];
             [[ASIDownloadCache sharedCache] setShouldRespectCacheControlHeaders:NO];
