@@ -38,12 +38,32 @@ static HDHTTPRequestCenter * _requestCenter = nil;
     return nil;
 }
 
+- (id)copyWithZone:(NSZone *)zone
+{
+    return self;
+}
+
+- (id)retain
+{
+    return self;
+}
+
 -(id)init
 {
     self = [super init];
     if (self) {
         _requestConfigMap = [[HDRequestConfigMap alloc]init];
     }
+    return self;
+}
+
+-(unsigned)retainCount
+{
+    return UINT_MAX;  //denotes an object that cannot be released
+}
+
+- (id)autorelease
+{
     return self;
 }
 
@@ -89,8 +109,6 @@ static HDHTTPRequestCenter * _requestCenter = nil;
             HDFormDataRequest * theRequest = [HDFormDataRequest hdRequestWithURL:newURL
                                                                     withData:data
                                                                          pattern:HDrequestPatternNormal];
-
-
             //TODO:动态获取属性列表
 //            NSLog(@"%@",[[config class] classFallbacksForKeyedArchiver]);
 //            id LenderClass  = [[config class] description];
@@ -113,7 +131,7 @@ static HDHTTPRequestCenter * _requestCenter = nil;
             [theRequest setErrorSelector:config.errorSelector];
             [theRequest setServerErrorSelector:config.serverErrorSelector];
             [theRequest setFailedSelector:config.failedSelector];  
-            [theRequest setTimeOutSeconds:60];
+            [theRequest setTimeOutSeconds:30];
             [theRequest setTag:config.tag];
             return theRequest;
             break;
@@ -126,15 +144,15 @@ static HDHTTPRequestCenter * _requestCenter = nil;
             [theRequest setDelegate:config.delegate];
             [theRequest setDidFinishSelector:config.ASIDidFinishSelector];
             [theRequest setDidFailSelector:config.ASIDidFailSelector];
-            
             [theRequest setUrlReplacementMode:ASIReplaceExternalResourcesWithData];
+            [theRequest setShouldAttemptPersistentConnection:NO];
+            //debug:这里设置问不修嘎url 否则会导致auroa加载资源失败
+            [theRequest setShouldIgnoreExternalResourceErrors:NO];
             [theRequest setDownloadCache:[ASIDownloadCache sharedCache]];
             [theRequest setCachePolicy:ASIUseDefaultCachePolicy];
-            [theRequest setTimeOutSeconds:60];
-            
-            [theRequest setDownloadDestinationPath:[[ASIDownloadCache sharedCache] pathToStoreCachedResponseDataForRequest:theRequest]];
+            [theRequest setDownloadDestinationPath:[[ASIDownloadCache sharedCache]pathToStoreCachedResponseDataForRequest:theRequest]];
+            [theRequest setTimeOutSeconds:30];
             [[ASIDownloadCache sharedCache] setShouldRespectCacheControlHeaders:NO];
-            
             return theRequest;
         }    
         default:
