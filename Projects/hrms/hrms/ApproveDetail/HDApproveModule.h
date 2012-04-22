@@ -13,7 +13,9 @@
 
 @property (nonatomic,retain) Approve * approveEntity;
 
--(id) initWithApproveModule:(Approve *) approve;
++(id) approveModuleWithApprove:(Approve *) approve;
+
+-(id) initWithApprove:(Approve *) approve;
 
 -(void)saveApprove;
 

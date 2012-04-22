@@ -11,7 +11,7 @@
 @implementation HDBaseActions
 
 @synthesize delegate;
-@synthesize actionsObject;
+@synthesize actionsObject = _actionsObject;
 @synthesize didLoadSelector;
 @synthesize actionsInfo = _actionsInfo;
 @synthesize actionsLoadRequest = _actionsLoadRequest;
@@ -19,7 +19,7 @@
 
 +(id)actionsModule
 {
-    return [[[HDBaseActions alloc]init]autorelease];
+    return [[[self alloc]init]autorelease];
 }
 
 -(void)dealloc
@@ -27,6 +27,8 @@
     [self cancelLoadingActions];
     TT_RELEASE_SAFELY(_actionsLoadRequest);
     TT_RELEASE_SAFELY(_actionLoadURL);
+    TT_RELEASE_SAFELY(_actionsInfo);
+    TT_RELEASE_SAFELY(_actionsObject);
     [super dealloc];
 }
 

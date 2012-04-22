@@ -18,6 +18,9 @@
 @property (nonatomic,retain) HDBaseActions * actions;
 @property (nonatomic,copy) NSString * webPageURL;
 @property (nonatomic,retain) ASIWebPageRequest * webPageRequest;
+
+-(id)initWithWebPageURL:(NSString *) theURL;
+
 //加载开始
 -(void)startLoad;
 
@@ -28,7 +31,7 @@
 -(void)loadCancel;
 
 //调用响应的delegate函数
--(void)callActionLoad:(id) actionsObject;
+-(void)callActionDidLoad:(id) actionsObject;
 
 //动作加载开始前,配置加载参数
 -(void)beforeLoadActions:(HDBaseActions *) actionModule;
@@ -41,7 +44,7 @@
 //web请求前配置
 -(void)beforeLoadWebPage:(ASIWebPageRequest *) webPageRequest;
 
--(void)callWebPageLoad:(NSString *)pageContent baseURL:(NSURL *)theBaseURL;
+-(void)callWebPageDidLoad:(NSString *)pageContent baseURL:(NSURL *)theBaseURL;
 
 //审批
 -(void)submitApprove;
@@ -51,8 +54,8 @@
 
 @required
 //网页加载完成回调
--(void) webPageLoad:(NSString *)htmlString baseURL:(NSURL *)theBaseURL;
+-(void) webPageDidLoad:(NSString *)htmlString baseURL:(NSURL *)theBaseURL;
 
 //审批动作完成回调
--(void) actionLoad:(NSArray *) actionArray;
+-(void) actionDidLoad:(NSArray *) actionArray;
 @end

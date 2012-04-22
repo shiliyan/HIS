@@ -33,20 +33,18 @@
     if (self) {
         Approve * approve = [query objectForKey:HD_APPROVE_DATA];
         self.title = approve.workflowName;
-        //设置url,动作信息?
-        self.detailModule = [[HDApproveModule alloc]initWithApproveModule:approve];
+        self.detailModule = [HDApproveModule approveModuleWithApprove:approve];
         [self.detailModule setActions:[HDApproveActions actionsModule]];
-        
     }
     return self;
 }
 
 - (void)dealloc 
 {
+    [_detailModel loadCancel];
     TT_RELEASE_SAFELY(_webPage);
     TT_RELEASE_SAFELY(_toolbar);
     TT_RELEASE_SAFELY(_detailModel);
-    [_detailModel loadCancel];
     [super dealloc];
 }
 
@@ -65,12 +63,12 @@
 }
 
 #pragma -mark webview和toolbar数据协议
--(void) webPageLoad:(NSString *)htmlString baseURL:(NSURL *)theBaseURL
+-(void) webPageDidLoad:(NSString *)htmlString baseURL:(NSURL *)theBaseURL
 {
     [self.webPage loadHTMLString:htmlString baseURL:theBaseURL];
 }
 
--(void) actionLoad:(NSArray *)actionArray
+-(void) actionDidLoad:(NSArray *)actionArray
 {
     //    NSLog(@"HDApproveDetailViewController.m -48 line \n\n %@,%i",NSStringFromSelector(_cmd),[actionArray count]); 
     NSMutableArray * toolbarItems = [[NSMutableArray alloc]init];       
@@ -112,11 +110,11 @@
 
 - (void)viewDidUnload
 {
+    [super viewDidUnload];
     [_detailModel loadCancel];
     TT_RELEASE_SAFELY(_webPage);
     TT_RELEASE_SAFELY(_toolbar);
     TT_RELEASE_SAFELY(_detailModel);
-    [super viewDidUnload];
 }
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation

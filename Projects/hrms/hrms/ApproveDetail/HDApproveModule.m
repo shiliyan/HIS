@@ -16,16 +16,26 @@
 
 @synthesize approveEntity = _approveEntity;
 
--(id) initWithApproveModule:(Approve *) approve
++(id) approveModuleWithApprove:(Approve *) approve
 {
-    self = [super init];
+    return [[[HDApproveModule alloc]initWithApprove:approve]autorelease];
+}
+
+-(id) initWithApprove:(Approve *) approve
+{
+    NSString * screenUrl = [[[NSString alloc]initWithFormat:@"%@%@?record_id=%@",[HDURLCenter requestURLWithKey:@"APPROVE_SCREEN_BASE_PATH"],[approve screenName],[approve recordID]]autorelease];
+    
+    self = [super initWithWebPageURL:screenUrl];
     if (self) {
         self.approveEntity = approve;
-        NSString * screenUrl = [NSString stringWithFormat:@"%@%@?record_id=%@",[HDURLCenter requestURLWithKey:@"APPROVE_SCREEN_BASE_PATH"],[_approveEntity screenName],[_approveEntity recordID]];  
-        NSLog(@"%@",screenUrl);
-        self.webPageURL = screenUrl;
     }
     return self;
+}
+
+-(void)dealloc
+{
+    TT_RELEASE_SAFELY(_approveEntity);
+    [super dealloc];
 }
 
 -(id)getActionsInfo

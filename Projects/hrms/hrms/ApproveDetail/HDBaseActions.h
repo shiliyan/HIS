@@ -12,8 +12,9 @@
 @interface HDBaseActions : NSObject
 
 @property (nonatomic,assign) id delegate;
-@property (nonatomic,retain) id actionsObject;
 @property (nonatomic,assign) SEL didLoadSelector;
+
+@property (nonatomic,retain) id actionsObject;
 @property (nonatomic,retain) id actionsInfo;
 @property (nonatomic,retain) HDFormDataRequest * actionsLoadRequest;
 @property (nonatomic,copy) NSString * actionLoadURL;

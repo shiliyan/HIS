@@ -13,7 +13,7 @@
 
 +(id)actionsModule
 {
-    return [[[HDApproveActions alloc]init]autorelease];
+    return [[[self alloc]init]autorelease];
 }
 
 -(id)init
@@ -28,7 +28,6 @@
 -(BOOL) loadTheLocalActions:(id) actionsInfo
 {
     NSNumber * recordID = [actionsInfo objectForKey:@"record_id"];
-    NSLog(@"%@",recordID);
     ApproveDatabaseHelper * dbHelper = [[ApproveDatabaseHelper alloc]init];
     [dbHelper.db open];
     
@@ -39,6 +38,7 @@
     while ([resultSet next]) {
         [actions addObject:[resultSet resultDict]];
     }
+    [resultSet close];
     self.actionsObject = actions; 
     [actions release];
     [dbHelper.db close];

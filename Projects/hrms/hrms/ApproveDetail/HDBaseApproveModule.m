@@ -16,13 +16,22 @@
 @synthesize webPageURL = _webPageURL;
 @synthesize webPageRequest = _webPageRequest;
 
+-(id)initWithWebPageURL:(NSString *)theURL
+{
+    self = [super init];
+    if (self) {
+        self.webPageURL  = theURL;
+    }
+    return self;
+}
+
 -(void)dealloc
 {
-    [super dealloc];
     [self loadCancel];
     TT_RELEASE_SAFELY(_actions);
     TT_RELEASE_SAFELY(_webPageURL);
     TT_RELEASE_SAFELY(_webPageRequest);
+    [super dealloc];
 }
 
 //加载动作
@@ -65,7 +74,7 @@
 //动作加载完成
 -(void) actionDidLoadSelector:(id) actionsObject
 {
-    [self callActionLoad:[self transformToActionArray:actionsObject]];
+    [self callActionDidLoad:[self transformToActionArray:actionsObject]];
 }
 
 //转换action回调信息为NSArray
@@ -75,10 +84,10 @@
 }
 
 //通知界面动作加载完成
--(void) callActionLoad:(NSArray *) actionArray
+-(void) callActionDidLoad:(NSArray *) actionArray
 {
-    if (delegate && [delegate respondsToSelector:@selector(actionLoad:)]) {
-        [delegate performSelector:@selector(actionLoad:)
+    if (delegate && [delegate respondsToSelector:@selector(actionDidLoad:)]) {
+        [delegate performSelector:@selector(actionDidLoad:)
                        withObject:actionArray];
     }else {
         NSLog(@"代理不响应actionLoad:方法");
@@ -94,8 +103,7 @@
 //        [self callWebPageLoad:@"<h1>审批的URL未指定</h>" baseURL:nil];
 //        return;
 //    }
-    NSLog(@"%@",self.webPageURL);
-    _webPageRequest = [[HDHTTPRequestCenter shareHTTPRequestCenter] requestWithURL:self.webPageURL
+    self.webPageRequest = [[HDHTTPRequestCenter shareHTTPRequestCenter] requestWithURL:_webPageURL
                                                                        requestType:ASIRequestTypeWebPage 
                                                                             forKey:nil];
     
@@ -112,12 +120,11 @@
 //动作加载开始前,配置加载参数
 -(void)beforeLoadWebPage:(ASIWebPageRequest *) webPageRequest
 {
-    NSLog(@"%@",webPageRequest.url.URLValue);
 }
 
 -(void)webPageLoadFailed:(ASIHTTPRequest *)theRequest
 {
-    [self callWebPageLoad:@"<h1>页面加载失败</h>" baseURL:[theRequest url]];
+    [self callWebPageDidLoad:@"<h1>页面加载失败</h>" baseURL:[theRequest url]];
 }
 
 -(void)webPageLoadSucceeded:(ASIHTTPRequest *)theRequest
@@ -135,18 +142,18 @@
         webPageContent =  [theRequest responseStatusMessage];
     }
     
-    [self callWebPageLoad:webPageContent baseURL:[theRequest url]];
+    [self callWebPageDidLoad:webPageContent baseURL:[theRequest url]];
 }
 
 //通知页面web页面加载完成 
--(void) callWebPageLoad:(NSString *)pageContent baseURL:(NSURL *)theBaseURL
+-(void) callWebPageDidLoad:(NSString *)pageContent baseURL:(NSURL *)theBaseURL
 {
-    if (delegate && [delegate respondsToSelector:@selector(webPageLoad:baseURL:)]) {
-        [delegate performSelector:@selector(webPageLoad:baseURL:) 
+    if (delegate && [delegate respondsToSelector:@selector(webPageDidLoad:baseURL:)]) {
+        [delegate performSelector:@selector(webPageDidLoad:baseURL:) 
                        withObject:pageContent
                        withObject:theBaseURL];
     }else {
-        NSLog(@"代理不响应webPageLoad:responseString:方法");
+        NSLog(@"代理不响应webPageDidLoad:responseString:方法");
     }
 }
 
