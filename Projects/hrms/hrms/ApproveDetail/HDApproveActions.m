@@ -11,56 +11,77 @@
 
 @implementation HDApproveActions
 
+@synthesize actionsLoadRequest = _actionsLoadRequest;
+
 +(id)actionsModule
 {
     return [[[self alloc]init]autorelease];
 }
 
--(id)init
+-(void)dealloc
 {
-    self = [super init];
-    if (self) {
-        self.actionLoadURL = [HDURLCenter requestURLWithKey:@"TOOLBAR_ACTION_QUERY_PATH"];
-    }
-    return self;
+    [self cancelLoadingActions];
+    TT_RELEASE_SAFELY(_actionsLoadRequest);
+    [super dealloc];
 }
 
--(BOOL) loadTheLocalActions:(id) actionsInfo
+-(void)cancelLoadingActions
 {
-    NSNumber * recordID = [actionsInfo objectForKey:@"record_id"];
+    [_actionsLoadRequest clearDelegatesAndCancel];
+}
+
+//加载远程动作
+-(void)loadTheRemoteActions
+{
+    self.actionsLoadRequest = 
+    [HDFormDataRequest hdRequestWithURL:[self configActionsLoadPathWithType:HDActionLoadTypeRemote] 
+                               withData:[self configActionsLoadParameterWithType:HDActionLoadTypeRemote]
+                                pattern:HDrequestPatternNormal];
+    
+    [_actionsLoadRequest setSuccessSelector: @selector(remoteActionLoadSucceeded:withDataSet:)];
+    [_actionsLoadRequest setDelegate:self];
+    [_actionsLoadRequest startAsynchronous];
+}
+
+//远程动作加载成功
+-(void)remoteActionLoadSucceeded:(ASIFormDataRequest *)theRequest withDataSet:(NSArray *) dataSet
+{
+    //尝试保存动作到本地,由子类实现其方法
+    [self saveTheActions:dataSet];
+    [self callDidLoadSelector:@selector(actionsDidLoad:) 
+                   withObject:dataSet];
+}
+
+-(id)loadTheLocalDataBaseActions
+{
+    NSNumber * recordID = [[self configActionsLoadParameterWithType:HDActionLoadTypeLocalDatabase] objectForKey:@"record_id"];
     ApproveDatabaseHelper * dbHelper = [[ApproveDatabaseHelper alloc]init];
     [dbHelper.db open];
     
     NSString * actionSelectSql = [NSString stringWithFormat:@"select record_id,action_id,action_title from action_list where record_id = %@ order by action_id;",recordID];
     
     FMResultSet *resultSet = [dbHelper.db executeQuery:actionSelectSql];
-    NSMutableArray * actions = [[NSMutableArray alloc]init];
+    NSMutableArray * actions = [NSMutableArray array];
+    
     while ([resultSet next]) {
         [actions addObject:[resultSet resultDict]];
     }
     [resultSet close];
-    self.actionsObject = actions; 
-    [actions release];
     [dbHelper.db close];
+    
     TT_RELEASE_SAFELY(dbHelper);
-    //如果成功返回 YES
-    //否则返回 NO
-    if (0 < [actions count]) {
-        return YES;
-    }else {
-        return NO;
-    }
-    return NO;
+    
+    return actions;
 }
 
 //保存审批动作
--(void)saveTheActions
+-(void)saveTheActions:(NSArray *)actionsObject
 {
-    [self removeTheActions];
+    [self removeTheActions:actionsObject];
     ApproveDatabaseHelper * dbHelper = [[ApproveDatabaseHelper alloc]init];
     [dbHelper.db open];
     [dbHelper.db beginTransaction]; 
-    for (NSDictionary * actionRecord in self.actionsObject) 
+    for (NSDictionary * actionRecord in actionsObject) 
     {
         NSString * insertActionsSql = [NSString stringWithFormat:@"insert into %@ (record_id,action_id,action_title) values(%@,%@,'%@');",TABLE_NAME_APPROVE_ACTION_LIST,
                                        [actionRecord valueForKey:@"record_id"],
@@ -75,11 +96,11 @@
     TT_RELEASE_SAFELY(dbHelper);
 }
 
--(void)removeTheActions
+-(void)removeTheActions:(NSArray *) actionsObject
 {
-    if (nil != self.actionsObject & 0 < [self.actionsObject count]) {
+    if (nil != actionsObject && 0 < [actionsObject count]) {
         //获取第一条记录
-        NSNumber * recordID = [[self.actionsObject objectAtIndex:0] objectForKey:@"record_id"];
+        NSNumber * recordID = [[actionsObject objectAtIndex:0] objectForKey:@"record_id"];
         
         ApproveDatabaseHelper * dbHelper = [[ApproveDatabaseHelper alloc]init];
         [dbHelper.db open];

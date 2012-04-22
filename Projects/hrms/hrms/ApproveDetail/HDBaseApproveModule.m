@@ -34,6 +34,8 @@
     [super dealloc];
 }
 
+
+
 //加载动作
 -(void)startLoad
 {
@@ -52,35 +54,36 @@
         [self setActions:[HDBaseActions actionsModule]];
     }
     _actions.delegate = self;
-    _actions.didLoadSelector = @selector(actionDidLoadSelector:);
-    //动作加载参数前,可以配置action的参数,这里考虑调用的位置,如果在delegate的配置之后,则外部可以打断回调路径,直接获取回调的信息 
-    [self beforeLoadActions:_actions];
-    _actions.actionsInfo = [self getActionsInfo];
     [self.actions loadTheActions];
 }
 
-//动作加载开始前,配置加载参数
--(void)beforeLoadActions:(HDBaseActions *) actionModule
-{
-
-}
-
-//加载的参数
--(id)getActionsInfo
-{
-    return @"";
-}
-
 //动作加载完成
--(void) actionDidLoadSelector:(id) actionsObject
+-(void) actionsDidLoad:(NSArray *)actionsObject
 {
-    [self callActionDidLoad:[self transformToActionArray:actionsObject]];
+    [self callActionDidLoad:actionsObject];
+}
+
+#pragma -mark action的代理方法
+//设置动作加载参数 
+-(id)actionsLoadParameterWithType:(NSString *)loadType
+{
+    return nil;
+}
+
+-(NSString *)actionsLoadPathWithType:(NSString *)loadType
+{
+    return nil;
 }
 
 //转换action回调信息为NSArray
 -(NSArray *) transformToActionArray:(id) actionsObject 
 {
-    return actionsObject;
+    if (nil == actionsObject) {
+        return [NSArray array];
+    }else {
+        return actionsObject;
+    }
+    
 }
 
 //通知界面动作加载完成
@@ -99,13 +102,13 @@
 -(void)startLoadWebPage
 {
     //创建页面载入请求 
-//    if (nil == self.webPageURL) {
-//        [self callWebPageLoad:@"<h1>审批的URL未指定</h>" baseURL:nil];
-//        return;
-//    }
+    //    if (nil == self.webPageURL) {
+    //        [self callWebPageLoad:@"<h1>审批的URL未指定</h>" baseURL:nil];
+    //        return;
+    //    }
     self.webPageRequest = [[HDHTTPRequestCenter shareHTTPRequestCenter] requestWithURL:_webPageURL
-                                                                       requestType:ASIRequestTypeWebPage 
-                                                                            forKey:nil];
+                                                                           requestType:ASIRequestTypeWebPage 
+                                                                                forKey:nil];
     
 	[_webPageRequest setDidFailSelector:@selector(webPageLoadFailed:)];
 	[_webPageRequest setDidFinishSelector:@selector(webPageLoadSucceeded:)];

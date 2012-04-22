@@ -10,4 +10,6 @@
 
 @interface HDApproveActions : HDBaseActions
 
+@property (nonatomic,retain) HDFormDataRequest * actionsLoadRequest;
+
 @end

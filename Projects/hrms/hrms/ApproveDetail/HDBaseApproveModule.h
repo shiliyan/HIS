@@ -7,15 +7,15 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "HDBaseActions.h"
+#import "HDApproveActions.h"
 #import "ASIWebPageRequest.h"
 
 @protocol HDApproveDetailDelegate;
 
-@interface HDBaseApproveModule : NSObject
+@interface HDBaseApproveModule : NSObject<HDActionsDelegate>
 
 @property (nonatomic,assign) id <HDApproveDetailDelegate> delegate;
-@property (nonatomic,retain) HDBaseActions * actions;
+@property (nonatomic,retain) HDApproveActions * actions;
 @property (nonatomic,copy) NSString * webPageURL;
 @property (nonatomic,retain) ASIWebPageRequest * webPageRequest;
 
@@ -33,12 +33,7 @@
 //调用响应的delegate函数
 -(void)callActionDidLoad:(id) actionsObject;
 
-//动作加载开始前,配置加载参数
--(void)beforeLoadActions:(HDBaseActions *) actionModule;
-
-//加载动作需要的参数
--(id)getActionsInfo;
-
+//将动作对象转换为数组,默认为直接返回actionObject,如果actionObject不是数组,重载该方法 
 -(NSArray *) transformToActionArray:(id) actionsObject; 
 
 //web请求前配置

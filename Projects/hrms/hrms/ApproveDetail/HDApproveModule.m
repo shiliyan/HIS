@@ -38,10 +38,15 @@
     [super dealloc];
 }
 
--(id)getActionsInfo
+-(id)actionsLoadParameterWithType:(NSString *)loadType
 {
     return [NSDictionary dictionaryWithObject:[_approveEntity recordID] 
                                        forKey:@"record_id"];
+}
+
+-(NSString *)actionsLoadPathWithType:(NSString *)loadType
+{
+    return [HDURLCenter requestURLWithKey:@"TOOLBAR_ACTION_QUERY_PATH"];
 }
 
 -(void)startLoad
