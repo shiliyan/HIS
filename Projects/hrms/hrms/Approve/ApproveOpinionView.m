@@ -19,9 +19,9 @@
     [super viewDidLoad];
 }
 
--(void)viewDidAppear:(BOOL)animated{
-    [super viewDidAppear:animated];
-    opinionTextView.text = @"";
+-(void)viewWillAppear:(BOOL)animated{
+    [super viewWillAppear:animated];
+    opinionTextView.text = [[NSUserDefaults standardUserDefaults] stringForKey:@"default_approve_preference"];
     [opinionTextView becomeFirstResponder];
 }
 
