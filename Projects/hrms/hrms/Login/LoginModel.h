@@ -7,8 +7,8 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "HDLoginDelegate.h"
-#import "HDFormDataRequestDelegate.h"
+
+@protocol HDLoginDelegate;
 
 @interface LoginModel : NSObject{
     id <HDLoginDelegate> delegate;
@@ -26,3 +26,14 @@
 
 @end
 
+@protocol HDLoginDelegate <NSObject>
+
+@required
+
+//登陆成功
+-(void)loginSuccess:(NSArray *) dataSet;
+
+//服务器登陆错误
+-(void)loginFailed:(NSString *) errorMessage;
+
+@end

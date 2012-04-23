@@ -8,11 +8,12 @@
 
 #import <Foundation/Foundation.h>
 #import "ASIFormDataRequest.h"
-#import "HDFormDataRequestDelegate.h"
 
 typedef enum {
     HDrequestPatternNormal = 0,
 } HDrequestPattern;
+
+@protocol HDFormDataRequestDelegate;
 
 @interface HDFormDataRequest : ASIFormDataRequest{
     id <HDFormDataRequestDelegate> hdFormDataRequestDelegate;
@@ -39,5 +40,19 @@ typedef enum {
 
 //设置提交参数
 -(id)setPostParameter :(id) data;
+
+@end
+
+@protocol HDFormDataRequestDelegate <NSObject>
+
+@required
+- (void)requestSuccess:(ASIFormDataRequest *) request  dataSet:(NSArray *)dataSet;
+
+@optional
+- (void)requestServerError:(ASIFormDataRequest *) request errorMessage:(NSString *) message;
+
+- (void)requestError:(ASIFormDataRequest *)request errorMessage: (NSString *) message;
+
+- (void)requestASIFailed:(ASIFormDataRequest *) request failedMessage: (NSString *) message;
 
 @end
