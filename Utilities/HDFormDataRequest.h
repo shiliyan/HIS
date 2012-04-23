@@ -13,6 +13,9 @@ typedef enum {
     HDrequestPatternNormal = 0,
 } HDrequestPattern;
 
+static  NSString * ERROR_CODE = @"code";
+static  NSString * ERROR_MESSAGE = @"message";
+
 @protocol HDFormDataRequestDelegate;
 
 @interface HDFormDataRequest : ASIFormDataRequest{
@@ -49,10 +52,10 @@ typedef enum {
 - (void)requestSuccess:(ASIFormDataRequest *) request  dataSet:(NSArray *)dataSet;
 
 @optional
-- (void)requestServerError:(ASIFormDataRequest *) request errorMessage:(NSString *) message;
+- (void)requestServerError:(ASIFormDataRequest *) request error:(NSDictionary *) errorObject;
 
-- (void)requestError:(ASIFormDataRequest *)request errorMessage: (NSString *) message;
+- (void)requestError:(ASIFormDataRequest *)request error: (NSDictionary *) errorObject;
 
-- (void)requestASIFailed:(ASIFormDataRequest *) request failedMessage: (NSString *) message;
+- (void)requestASIFailed:(ASIFormDataRequest *) request error: (NSDictionary *) errorObject;
 
 @end
