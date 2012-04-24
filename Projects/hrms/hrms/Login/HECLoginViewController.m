@@ -50,6 +50,11 @@
     return 1;
 }
 
+-(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    return 60;   
+}
+
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     static NSString * CellIdentifier = @"Cell";
@@ -60,8 +65,8 @@
     }
     
     if (_roleList) {
-        cell.textLabel.text = [[_roleList objectAtIndex:indexPath.row]valueForKey:@"role_code"];
-        cell.detailTextLabel.text = [[_roleList objectAtIndex:indexPath.row]valueForKey:@"role_code"];
+        cell.textLabel.text = [[_roleList objectAtIndex:indexPath.row]valueForKey:@"role_description"];
+        cell.detailTextLabel.text = [[_roleList objectAtIndex:indexPath.row]valueForKey:@"company_description"];
     }
     return cell;
     
@@ -72,7 +77,6 @@
     //调用角色选择
     self.roleSelectModule = [[HDRoleSelectModule alloc]init];
     [_roleSelectModule setDelegate:self];
-    [_roleSelectModule setRoleSelectFailedSelector:@selector(loginFailed:)];
     [_roleSelectModule selectRole:[_roleList objectAtIndex:indexPath.row]];
 }
 
@@ -80,6 +84,12 @@
 -(void)roleSelectSuccess:(NSArray *)dataSet
 {
     [self dismissModalViewControllerAnimated:YES];
+}
+
+-(void)roleSelectFailed:(NSString *)errorMessage
+{
+    [self loginFailed:errorMessage];
+    [_roleSelectView  deselectRowAtIndexPath: _roleSelectView.indexPathForSelectedRow animated:YES];
 }
 
 - (void)viewDidUnload
