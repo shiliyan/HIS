@@ -2,12 +2,10 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
-	<key>BASE_URL</key>
-	<string>http://172.20.0.20:8080/hr_new/</string>
 	<key>LOGIN_PATH</key>
-	<string>modules/ios/public/login_iphone.svc</string>
-	<key>WRITE_SESSION_PATH</key>
-	<string>role_select.svc</string>
+	<string>login_iphone.svc</string>
+	<key>ROLE_SELECT_PATH</key>
+	<string>role_select_for_ios.svc</string>
 	<key>TOOLBAR_ACTION_QUERY_PATH</key>
 	<string>autocrud/ios.ios_approve.ios_workflow_approve_action_query/query</string>
 	<key>EXEC_ACTION_UPDATE_PATH</key>
