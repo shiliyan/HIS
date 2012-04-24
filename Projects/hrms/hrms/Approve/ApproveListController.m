@@ -43,7 +43,7 @@
 @synthesize detailController;
 @synthesize formRequest;
 @synthesize networkQueue;
-@synthesize selectedArray;
+
 @synthesize tableAdapter;
 @synthesize dataTableView;
 @synthesize normalToolbar;
@@ -275,14 +275,6 @@
 //审批动作
 -(IBAction)doAction:(id)sender{
     
-    NSArray *selectedIndexPaths = [dataTableView indexPathsForSelectedRows];
-    
-    [self.selectedArray removeAllObjects];
-    for (NSIndexPath *path in selectedIndexPaths) {
-        Approve *approve = [tableAdapter.approveArray objectAtIndex:[path row]];
-        [selectedArray addObject:approve];
-    }
-    
     [self showOpinionView:[sender tag]];
 }
 
@@ -313,44 +305,71 @@
         NSString *localStatus = @"WAITING";
         
         //修改approveList中的数据
-        for (int i = 0; i < selectedArray.count; i++) {
-            Approve *selectedEntity = selectedEntity = [selectedArray objectAtIndex:i];
-            selectedEntity.action = action;
-            selectedEntity.comment = comment;
-            selectedEntity.submitUrl = submitUrl;
-            selectedEntity.localStatus = localStatus;
-            for (int j = 0; j < tableAdapter.approveArray.count; j++) {
-                Approve *approveEntity = [tableAdapter.approveArray objectAtIndex:j];
-                if([selectedEntity.rowID isEqualToNumber:approveEntity.rowID] ){
-                    approveEntity.action = action;
-                    approveEntity.comment = comment;
-                    approveEntity.submitUrl = submitUrl;
-                    approveEntity.localStatus = localStatus;
-                    break;
-                }
-            }
-        }
-        
+//        for (int i = 0; i < selectedArray.count; i++) {
+//            Approve *selectedEntity = selectedEntity = [selectedArray objectAtIndex:i];
+//            selectedEntity.action = action;
+//            selectedEntity.comment = comment;
+//            selectedEntity.submitUrl = submitUrl;
+//            selectedEntity.localStatus = localStatus;
+//            for (int j = 0; j < tableAdapter.approveArray.count; j++) {
+//                Approve *approveEntity = [tableAdapter.approveArray objectAtIndex:j];
+//                if([selectedEntity.rowID isEqualToNumber:approveEntity.rowID] ){
+//                    approveEntity.action = action;
+//                    approveEntity.comment = comment;
+//                    approveEntity.submitUrl = submitUrl;
+//                    approveEntity.localStatus = localStatus;
+//                    break;
+//                }
+//            }
+//        }
+        NSArray *selectedIndePaths = [dataTableView indexPathsForSelectedRows];
+        NSMutableArray *selectedArray = [NSMutableArray array];
         [dbHelper.db open];
-        for (Approve *entity in selectedArray) {
+        for (NSIndexPath *indexPath in selectedIndePaths) {
+            NSUInteger row = [indexPath row];
+            Approve *entity = [tableAdapter.approveArray objectAtIndex:row];
+            entity.action = action;
+            entity.comment = comment;
+            entity.submitUrl = submitUrl;
+            entity.localStatus = localStatus;
             NSString *sql = [NSString stringWithFormat:@"update %@ set %@ = '%@',%@ = '%@',%@ = '%@',%@ = '%@' where %@ = '%@'",TABLE_NAME_APPROVE_LIST,APPROVE_PROPERTY_COMMENT,comment,APPROVE_PROPERTY_APPROVE_ACTION,action,APPROVE_PROPERTY_LOCAL_STATUS,localStatus,APPROVE_PROPERTY_SUBMIT_URL,submitUrl,@"rowid",entity.rowID];
             [dbHelper.db executeUpdate:sql];
+            [selectedArray addObject:entity];
         }
         [dbHelper.db close];
         
+        
+//        //移动UI，从待审批到等待提交
+//        NSUInteger toIndex = 0;
+//        NSMutableArray *changedIndexPaths = [NSMutableArray arrayWithCapacity:selectedIndePaths.count];
+//        [dataTableView beginUpdates];
+//        for (Approve *selectedEntity in selectedArray) {
+//            NSUInteger fromIndex = [tableAdapter.approveArray indexOfObject:selectedEntity];
+//            NSIndexPath *fromIndexPath = [NSIndexPath indexPathForRow:fromIndex inSection:SECTION_NORMAL];
+//            NSIndexPath *toIndexPath = [NSIndexPath indexPathForRow:toIndex inSection:SECTION_WAITING_LIST];
+//            [dataTableView deselectRowAtIndexPath:fromIndexPath animated:YES];
+//            [dataTableView moveRowAtIndexPath:fromIndexPath toIndexPath:toIndexPath];
+//            [changedIndexPaths addObject:toIndexPath];
+//            toIndex++;
+//        }
+        
         //移动UI，从待审批到等待提交
         NSUInteger toIndex = 0;
-        NSMutableArray *changedIndexPaths = [NSMutableArray arrayWithCapacity:selectedArray.count];
+        NSMutableArray *changedIndexPaths = [NSMutableArray arrayWithCapacity:selectedIndePaths.count];
         [dataTableView beginUpdates];
-        for (Approve *selectedEntity in selectedArray) {
-            NSUInteger fromIndex = [tableAdapter.approveArray indexOfObject:selectedEntity];
-            NSIndexPath *fromIndexPath = [NSIndexPath indexPathForRow:fromIndex inSection:SECTION_NORMAL];
+        for (NSIndexPath *fromIndexPath in selectedIndePaths) {
+            
+            
             NSIndexPath *toIndexPath = [NSIndexPath indexPathForRow:toIndex inSection:SECTION_WAITING_LIST];
-            [dataTableView deselectRowAtIndexPath:fromIndexPath animated:YES];
             [dataTableView moveRowAtIndexPath:fromIndexPath toIndexPath:toIndexPath];
             [changedIndexPaths addObject:toIndexPath];
             toIndex++;
         }
+        
+        for (NSIndexPath *indexPath in selectedIndePaths) {
+            [dataTableView deselectRowAtIndexPath:indexPath animated:YES];
+        }
+        
         [tableAdapter.approveArray removeObjectsInArray:selectedArray];
         [tableAdapter.commitArray insertObjects:selectedArray atIndexes:[NSIndexSet indexSetWithIndexesInRange:NSMakeRange(0, selectedArray.count)]];
         [dataTableView endUpdates];
@@ -645,8 +664,6 @@
     loadCount = 1;
     self.title = @"待办事项";
     
-    self.selectedArray = [NSMutableArray array]; 
-    
     //初始化数据库连接
     dbHelper = [[ApproveDatabaseHelper alloc]init];
     
@@ -729,7 +746,6 @@
 -(void)dealloc{
     [tableAdapter release];
     [formRequest release];
-    [selectedArray release];
     [networkQueue cancelAllOperations];
     [networkQueue release];
     [detailController release];
