@@ -7,10 +7,12 @@
 //
 
 #import "RCLoginViewController.h"
+#import "HDRoleSelectModule.h"
 
-@interface HECLoginViewController : RCLoginViewController<UITableViewDataSource,UITableViewDelegate>
+@interface HECLoginViewController : RCLoginViewController<UITableViewDataSource,UITableViewDelegate,HDRoleSelectDelegate>
 
 @property (nonatomic,retain) UITableView * roleSelectView;
+@property (nonatomic,retain) HDRoleSelectModule * roleSelectModule;
 @property (nonatomic,retain) NSArray * roleList;
 
 @end
