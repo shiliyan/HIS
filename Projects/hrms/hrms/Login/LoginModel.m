@@ -33,9 +33,9 @@
         HDRequestConfig * loginRequestConfig = [[HDRequestConfig alloc]init];
         [loginRequestConfig setDelegate:self];
         [loginRequestConfig setSuccessSelector:@selector(loginSVCSuccess:dataSet:)];
-        [loginRequestConfig setServerErrorSelector:@selector(LoginError:errorMessage:)];
-        [loginRequestConfig setErrorSelector:@selector(LoginError:errorMessage:)];
-        [loginRequestConfig setFailedSelector:@selector(LoginError:errorMessage:)];
+        [loginRequestConfig setServerErrorSelector:@selector(LoginError:error:)];
+        [loginRequestConfig setErrorSelector:@selector(LoginError:error:)];
+        [loginRequestConfig setFailedSelector:@selector(LoginError:error:)];
         
         HDRequestConfigMap * map = [[HDHTTPRequestCenter shareHTTPRequestCenter] requestConfigMap];
         [map addConfig:loginRequestConfig forKey:@"loginSVC"];
@@ -97,7 +97,7 @@
     [self.loginRequest cancel];
 }
 
-- (void)loginSVCSuccess:(ASIFormDataRequest *) request  dataSet:(NSArray *)dataSet
+- (void)loginSVCSuccess:(ASIHTTPRequest *) request  dataSet:(NSArray *)dataSet
 {
     SEL function = [HDFunctionUtil matchPerformDelegate:self.delegate 
                                            forSelectors:loginSuccessSelector,@selector(loginSuccess:),nil];
@@ -109,8 +109,10 @@
     }
 }
 
-- (void)LoginError:(ASIFormDataRequest *)request errorMessage: (NSString *)errorMessage
+- (void)LoginError:(ASIHTTPRequest *)request error: (NSDictionary *)errorObject
 {    
+//    [errorObject valueForKey:@"code"];
+    NSString * errorMessage =  [errorObject valueForKey:ERROR_MESSAGE];
     SEL function = [HDFunctionUtil matchPerformDelegate:self.delegate 
                                            forSelectors:loginFailedSelector,@selector(loginFailed:),nil];
     

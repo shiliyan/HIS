@@ -40,7 +40,7 @@
              withData:(id) data
               pattern:(HDrequestPattern) requestPattern
 {
-    NSLog(@"%@",newURL);
+//    NSLog(@"%@",newURL);
     
     HDFormDataRequest * request = [[[HDFormDataRequest alloc]initWithURL:[NSURL URLWithString:newURL]] autorelease];    
     
@@ -148,7 +148,7 @@
 //通信成功回调函数，根据也会返回状态调用不同的函数，成功后返回一个类似与dataSet的数组
 -(void)requestFetchSuccess:(ASIHTTPRequest *)theRequest
 {
-    NSLog(@"HDFormDataRequest.m -139 line \n\n%@",[theRequest responseString]);
+//    NSLog(@"HDFormDataRequest.m -139 line \n\n%@",[theRequest responseString]);
     /*
      * debug:加入返回状态的判断，状态200才进行解析 
      * Mar 22 2012
@@ -171,15 +171,20 @@
     }
 }
 
-//网络链接失败，默认弹出alert
+//ASI定义的网络链接失败
 -(void)requestFetchFailed:(ASIHTTPRequest *)theRequest
 {
+    //创建错误信息字典 
+    NSString * errorCode = [NSString stringWithFormat:@"%i",[[theRequest error] code]];
+    NSString * errorMessage = [[theRequest error]localizedDescription];
+    NSDictionary * errorObject = [NSDictionary dictionaryWithObjectsAndKeys:errorCode,ERROR_CODE,errorMessage,ERROR_MESSAGE, nil];
+    
+    
     SEL function = [HDFunctionUtil matchPerformDelegate:hdFormDataRequestDelegate forSelectors:failedSelector,@selector(requestASIFailed:failedMessage:), nil];
     if (function !=nil) {
-//        NSLog(@"%@",[[theRequest error]localizedDescription]);
         [hdFormDataRequestDelegate performSelector:function
                                         withObject:theRequest
-                                        withObject:[[theRequest error]localizedDescription]];
+                                        withObject:errorObject];
     }else {
         NSLog(@"ASI网络错误,超时或无法找到服务器");
     }    
@@ -191,7 +196,6 @@
     //把json包装成dataSet
     NSMutableArray * dataSet = [self generateDataSet:JSONObj];
     //执行成功回调
-    
     SEL function = [HDFunctionUtil matchPerformDelegate:hdFormDataRequestDelegate 
                                            forSelectors:successSelector,@selector(requestSuccess:dataSet:), nil];
     if (function !=nil) {
@@ -205,20 +209,20 @@
 
 -(void)callRequestError:(ASIHTTPRequest *)theRequest withJSONObj:(id) JSONObj
 {
-    
-    NSString * errorMessage = [JSONObj valueForKeyPath:@"error.message"];
+    //TODO:session超时的code是什么?固定?处理session超时错误
     NSString * errorCode = [JSONObj valueForKeyPath:@"error.code"];
     if ([errorCode isEqual:@"login_required"]) {
         //TODO:退回到登陆界面,这里时机可能有问题,此时视图可能在跳转中,会打断返回登录,应该由视图控制器控制跳转?
         [[NSNotificationCenter defaultCenter] postNotificationName:@"show_login_view" object:nil];
         return;
     }
+    
     //执行错误的回调
-    SEL function = [HDFunctionUtil matchPerformDelegate:hdFormDataRequestDelegate forSelectors:errorSelector,@selector(requestError:errorMessage:), nil];
+    SEL function = [HDFunctionUtil matchPerformDelegate:hdFormDataRequestDelegate forSelectors:errorSelector,@selector(requestServerError:error:), nil];
     if (function !=nil) {
         [hdFormDataRequestDelegate performSelector:function
                                         withObject:theRequest
-                                        withObject:errorMessage];
+                                        withObject:[JSONObj valueForKey:@"error"]];
     }else {
         NSLog(@"Aurora的错误消息");
     }
@@ -226,18 +230,24 @@
 
 -(void)callRequestServerError:(ASIHTTPRequest *)theRequest
 {
-    //返回状态为200 以外的状态 
+    //返回状态为200 以外的状态
+    //创建错误返回字典
+    NSNumber * statusCode  = [NSString stringWithFormat:@"%i",[theRequest responseStatusCode]];
+    NSDictionary * errorObject = 
+    [NSDictionary dictionaryWithObjectsAndKeys:statusCode,ERROR_CODE,
+                                  [theRequest responseStatusMessage],ERROR_MESSAGE,
+                                  nil];
+    
+    
     SEL function = [HDFunctionUtil matchPerformDelegate:hdFormDataRequestDelegate forSelectors:serverErrorSelector,@selector(requestServerError:errorMessage:), nil];
     if (function !=nil) {
         [hdFormDataRequestDelegate performSelector:function
                                         withObject:theRequest
-                                        withObject:[theRequest responseStatusMessage]];
+                                        withObject:errorObject];
     }else {
         NSLog(@"调用默认的回调,状态不是200,服务器错误");
     }
     
 }
-
-
 
 @end
