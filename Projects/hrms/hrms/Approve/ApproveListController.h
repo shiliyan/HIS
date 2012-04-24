@@ -25,7 +25,6 @@ static const NSString *DETAIL_REQUEST_KEY = @"detial_ready_post";
 @interface ApproveListController : UIViewController<UITableViewDelegate,ApproveOpinionViewDelegate>{
     ApproveTableAdapter *tableAdapter;
     NSUInteger loadCount;
-    NSMutableArray *selectedArray;
     
     HDFormDataRequest *formRequest;
     ASINetworkQueue *networkQueue;
@@ -47,7 +46,6 @@ static const NSString *DETAIL_REQUEST_KEY = @"detial_ready_post";
 @property (retain, nonatomic) HDFormDataRequest *formRequest;
 @property (retain, nonatomic) ASINetworkQueue *networkQueue;
 @property (retain, nonatomic) ApproveTableAdapter *tableAdapter;
-@property (retain, nonatomic) NSMutableArray *selectedArray;
 @property (retain,nonatomic) IBOutlet UITableView *dataTableView;
 @property (retain,nonatomic) IBOutlet UIToolbar *normalToolbar;
 @property (retain,nonatomic) IBOutlet UIToolbar *checkToolBar;

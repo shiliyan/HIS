@@ -11,10 +11,16 @@
 	<key>TOOLBAR_ACTION_QUERY_PATH</key>
 	<string>autocrud/ios.ios_approve.ios_workflow_approve_action_query/query</string>
 	<key>EXEC_ACTION_UPDATE_PATH</key>
-	<string>autocrud/ios. ios_approve.ios_workflow_approve_action_submit/update</string>
+	<string>autocrud/ios.ios_approve.ios_workflow_approve_action_submit/update</string>
 	<key>APPROVE_SCREEN_BASE_PATH</key>
 	<string>modules/ios/ios_approve/</string>
 	<key>APPROVE_TABLE_QUERY_URL</key>
-	<string>autocrud/ios. ios_approve.ios_workflow_approve_query/query</string>
+	<string>autocrud/ios.ios_approve.ios_workflow_approve_query/query?_fetchall=true&amp;_autocount=false</string>
+	<key>APPROVE_TABLE_BATCH_COMMIT_back</key>
+	<string>autocrud/ios.ios_approve.ios_workflow_approve_batch_commit/execute</string>
+	<key>APPROVE_TABLE_BATCH_COMMIT_back_2</key>
+	<string>Approve</string>
+	<key>APPROVE_TABLE_BATCH_COMMIT</key>
+	<string>autocrud/ios.ios_approve.ios_workflow_approve_batch_commit/execute</string>
 </dict>
 </plist>
