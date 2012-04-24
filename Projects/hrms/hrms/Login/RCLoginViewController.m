@@ -12,23 +12,17 @@
 
 @synthesize username = _username;
 @synthesize password = _password;
-@synthesize loginModel = _loginModel;
+@synthesize loginModule = _loginModel;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
-    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
+    self = [super initWithNibName:@"RCLoginViewController" bundle:nibBundleOrNil];
     if (self) {
         // Custom initialization 
+
         [self setAutoresizesForKeyboard:YES];
     }
     return self;
-}
-
--(void)dealloc{
-    TT_RELEASE_SAFELY(_username);
-    TT_RELEASE_SAFELY(_password);
-    TT_RELEASE_SAFELY(_loginModel);
-    [super dealloc];
 }
 
 #pragma login functions
@@ -36,16 +30,15 @@
     [_username resignFirstResponder];
     [_password resignFirstResponder];
     
-    [self.loginModel setUsername:_username.text];
-    [self.loginModel setPassword:_password.text];    
+    [self.loginModule setUsername:_username.text];
+    [self.loginModule setPassword:_password.text];    
     
-    [self.loginModel login];
+    [self.loginModule login];
 }
 
 #pragma login delegate
 -(void)loginSuccess:(NSArray *) dataSet
 {
-    //TODO:未开启跳转
     [[self parentViewController] dismissModalViewControllerAnimated:YES];
 }
 
@@ -84,18 +77,18 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    _loginModel = [[LoginModel alloc]init];
+    _loginModel = [[HDLoginModule alloc]init];
 
-    _username.text = @"311";
-    _password.text = @"handhand";
-    [self.loginModel setDelegate:self];
+    _username.text = @"test002";
+    _password.text = @"1";
+    [self.loginModule setDelegate:self];
 }
 
 - (void)viewDidUnload
 {
-//    TT_RELEASE_SAFELY(_username);
-//    TT_RELEASE_SAFELY(_password);
-//    TT_RELEASE_SAFELY(_loginModel);
+    TT_RELEASE_SAFELY(_username);
+    TT_RELEASE_SAFELY(_password);
+    TT_RELEASE_SAFELY(_loginModel);
     [super viewDidUnload];
 }
 

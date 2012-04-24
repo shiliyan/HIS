@@ -6,16 +6,19 @@
 //  Copyright (c) 2012 __MyCompanyName__. All rights reserved.
 //
 
-#import "LoginModel.h"
-#import "Binding.h"
+#import "HDLoginModule.h"
 
 @interface RCLoginViewController : TTBaseViewController <HDLoginDelegate>
 
-@property (nonatomic,retain) LoginModel * loginModel;
+@property (nonatomic,retain) HDLoginModule * loginModule;
 @property (nonatomic,retain) IBOutlet UITextField * username;
 @property (nonatomic,retain) IBOutlet UITextField * password;
 
 
 -(IBAction)loginBtnPressed:(id)sender;
+
+-(void)loginSuccess:(NSArray *) dataSet;
+
+-(void)loginFailed:(NSString *) errorMessage;
 
 @end
