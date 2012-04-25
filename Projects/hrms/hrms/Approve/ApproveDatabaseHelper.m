@@ -13,10 +13,9 @@
 @synthesize db;
 
 -(void)initTables{
-
-    NSString *createTableSql =
-    [NSString stringWithFormat:@"create table if not exists %@ (workflow_id integer,record_id integer,is_late text,screen_name text,workflow_name text,workflow_desc text,node_name text,employee_name text,creation_date text,date_limit text,local_status text,comment text,action text,server_message text, submit_url text)",TABLE_NAME_APPROVE_LIST];
     
+    NSString *createTableSql =
+    [NSString stringWithFormat:@"create table if not exists %@ (workflow_id integer,record_id integer,node_id integer,instance_id integer,is_late text,doc_page_url text,order_type text,instance_desc text,instance_param integer,node_name text,employee_name text,apply_date_view text,date_limit text,local_status text,comment text,action text,server_message text, submit_url text)",TABLE_NAME_APPROVE_LIST];
     NSString * createActionTableSql = [NSString stringWithFormat:@"create table if not exists %@ (record_id integer, action_id integer,action_title text)",TABLE_NAME_APPROVE_ACTION_LIST];
     
     if (![db open]) {
@@ -40,7 +39,7 @@
         NSString *documentDirectory = [paths objectAtIndex:0];  
         //dbPath： 数据库路径，在Document中。  
         NSString *dbPath = [documentDirectory stringByAppendingPathComponent:DB_NAME]; 
-//        NSLog(@"%@",dbPath);
+        NSLog(@"%@",dbPath);
         //创建数据库实例 db  
         db= [[FMDatabase databaseWithPath:dbPath]retain]; 
         
