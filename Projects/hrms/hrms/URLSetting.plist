@@ -13,7 +13,7 @@
 	<key>APPROVE_SCREEN_BASE_PATH</key>
 	<string>modules/ios/ios_approve/</string>
 	<key>APPROVE_TABLE_QUERY_URL</key>
-	<string>autocrud/wfl.wfl_workflow_instance_for_todo/query?_fetchall=true&amp;amp;_autocount=false</string>
+	<string>autocrud/ios.ios_wfl.wfl_workflow_instance_for_todo_for_ios/query?_fetchall=true&amp;amp;_autocount=false</string>
 	<key>APPROVE_TABLE_BATCH_COMMIT_back</key>
 	<string>autocrud/ios.ios_approve.ios_workflow_approve_batch_commit/execute</string>
 	<key>APPROVE_TABLE_BATCH_COMMIT_back_2</key>
