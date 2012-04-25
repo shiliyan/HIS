@@ -31,8 +31,8 @@
 
 -(void)commitApproveSuccess:(ASIHTTPRequest *)request withDataSet:(NSArray *)dataset;
 
--(void)commitApproveError:(ASIHTTPRequest *)request withMessage:(NSString *)errorMessage;
--(void)commitApproveServerError:(ASIHTTPRequest *)request withResponseStatus:(NSString *)status;
+-(void)commitApproveError:(ASIHTTPRequest *)request withDictionary:(NSDictionary *)errorDic;
+-(void)commitApproveServerError:(ASIHTTPRequest *)request withDictionary:(NSDictionary *)errorDic;
 -(void)commitApproveNetWorkError:(ASIHTTPRequest *)request;
 -(void)commitRequestQueueFinished:(ASINetworkQueue *)queue;
 
@@ -134,9 +134,9 @@
 -(void)refreshTable{
     // 获取最新的待办列表
     //暂时注视
-//    self.formRequest  = [HDFormDataRequest hdRequestWithURL:[HDURLCenter requestURLWithKey:@"APPROVE_TABLE_QUERY_URL"] pattern:HDrequestPatternNormal];
+    self.formRequest  = [HDFormDataRequest hdRequestWithURL:[HDURLCenter requestURLWithKey:@"APPROVE_TABLE_QUERY_URL"] pattern:HDrequestPatternNormal];
     
-    self.formRequest  =[HDFormDataRequest hdRequestWithURL:[HDURLCenter requestURLWithKey:@"APPROVE_TABLE_QUERY_URL"] withData:[NSDictionary dictionaryWithObject:@"22" forKey:@"user_id"] pattern:HDrequestPatternNormal];
+//    self.formRequest  =[HDFormDataRequest hdRequestWithURL:[HDURLCenter requestURLWithKey:@"APPROVE_TABLE_QUERY_URL"] withData:[NSDictionary dictionaryWithObject:@"22" forKey:@"user_id"] pattern:HDrequestPatternNormal];
     
     [formRequest setDelegate:self];
     [formRequest setSuccessSelector:@selector(querySuccess:withDataSet:)];
@@ -393,9 +393,9 @@
             request.tag = approve.rowID.intValue;
             [request setDelegate:self];
             [request setSuccessSelector:@selector(commitApproveSuccess:withDataSet:)];
-            [request setErrorSelector:@selector(commitApproveError:withMessage:)];
+            [request setErrorSelector:@selector(commitApproveError:withDictionary:)];
             [request setFailedSelector:@selector(commitApproveNetWorkError:)];
-            [request setServerErrorSelector:@selector(commitApproveServerError:withResponseStatus:)];
+            [request setServerErrorSelector:@selector(commitApproveServerError:withDictionary:)];
             
             [self.networkQueue addOperation:request];
         }
@@ -426,9 +426,9 @@
             request.tag = approve.rowID.intValue;
             [request setDelegate:self];
             [request setSuccessSelector:@selector(commitApproveSuccess:withDataSet:)];
-            [request setErrorSelector:@selector(commitApproveError:withMessage:)];
+            [request setErrorSelector:@selector(commitApproveError:withDictionary:)];
             [request setFailedSelector:@selector(commitApproveNetWorkError:)];
-            [request setServerErrorSelector:@selector(commitApproveServerError:withResponseStatus:)];
+            [request setServerErrorSelector:@selector(commitApproveServerError:withDictionary:)];
             
             [self.networkQueue addOperation:request];
         }
@@ -464,12 +464,12 @@
     
 }
 
--(void)commitApproveError:(ASIHTTPRequest *)request withMessage:(NSString *)errorMessage{
+-(void)commitApproveError:(ASIHTTPRequest *)request withDictionary:(NSDictionary *)errorDic{
     NSLog(@"%@, tag:%i",NSStringFromSelector(_cmd),request.tag);
     
     //修改数据
     [dbHelper.db open];
-    NSString *sql = [NSString stringWithFormat:@"update %@ set %@ = 'ERROR',%@ = '%@' where %@ = '%i' ;",TABLE_NAME_APPROVE_LIST,APPROVE_PROPERTY_LOCAL_STATUS,APPROVE_PROPERTY_SERVER_MESSAGE,errorMessage,@"rowid",request.tag];
+    NSString *sql = [NSString stringWithFormat:@"update %@ set %@ = 'ERROR',%@ = '%@' where %@ = '%i' ;",TABLE_NAME_APPROVE_LIST,APPROVE_PROPERTY_LOCAL_STATUS,APPROVE_PROPERTY_SERVER_MESSAGE,[errorDic objectForKey:ERROR_MESSAGE],@"rowid",request.tag];
     [dbHelper.db executeUpdate:sql];
     [dbHelper.db close];
     
@@ -483,7 +483,7 @@
         if (currentEntity.rowID.intValue == request.tag) {
             targetIndex = i;
             currentEntity.localStatus = @"ERROR";
-            currentEntity.serverMessage = errorMessage;
+            currentEntity.serverMessage = [errorDic objectForKey:ERROR_MESSAGE];
             NSIndexPath *toIndexPath = [NSIndexPath indexPathForRow:0 inSection:SECTION_PROBLEM_LIST];
             [dataTableView moveRowAtIndexPath:[NSIndexPath indexPathForRow:targetIndex inSection:SECTION_WAITING_LIST] toIndexPath:toIndexPath];
             changedIndexPaths = [NSArray arrayWithObject:toIndexPath];
@@ -506,7 +506,7 @@
 
 }
 
--(void)commitApproveServerError:(ASIHTTPRequest *)request withResponseStatus:(NSString *)status{
+-(void)commitApproveServerError:(ASIHTTPRequest *)request withDictionary:(NSDictionary *)errorDic{
     [dataTableView reloadSectionIndexTitles];
 
 }
@@ -689,7 +689,9 @@
     
     //读取本地数据
     [self initTableViewData];
-    [self commitApproveToServer:nil];
+    
+    [self performSelector:@selector(commitApproveToServer:) withObject:nil afterDelay:1];
+    
     
     //初始化导航条右侧按钮
     self.navigationItem.rightBarButtonItem = [[[UIBarButtonItem alloc]initWithTitle:@"批量" style:UIBarButtonItemStyleBordered target:self action:@selector(toggleTabelViewEdit:)]autorelease];
@@ -716,8 +718,8 @@
     //设定请求相关回调函数
     [requestConfig setDelegate:self];
     [requestConfig setSuccessSelector:@selector(commitApproveSuccess:withDataSet:)];
-    [requestConfig setServerErrorSelector:@selector(commitApproveServerError:withResponseStatus:)];
-    [requestConfig setErrorSelector:@selector(commitApproveError:withMessage:)];
+    [requestConfig setServerErrorSelector:@selector(commitApproveServerError:withDictionary:)];
+    [requestConfig setErrorSelector:@selector(commitApproveError:withDictionary:)];
     [requestConfig setFailedSelector:@selector(commitApproveNetWorkError:)];  
     //获取请求配置列表
     HDRequestConfigMap * map = [[HDHTTPRequestCenter shareHTTPRequestCenter] requestConfigMap];
