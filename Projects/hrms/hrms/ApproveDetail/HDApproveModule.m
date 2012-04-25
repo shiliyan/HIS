@@ -23,8 +23,8 @@
 
 -(id) initWithApprove:(Approve *) approve
 {
-    NSString * screenUrl = [[[NSString alloc]initWithFormat:@"%@%@?record_id=%@",[HDURLCenter requestURLWithKey:@"APPROVE_SCREEN_BASE_PATH"],[approve screenName],[approve recordID]]autorelease];
-    
+    NSString * screenUrl = [[[NSString alloc]initWithFormat:@"%@?record_id=%@",[HDURLCenter requestURLWithKey:@"APPROVE_SCREEN_BASE_PATH"],[approve screenName],[approve recordID]]autorelease];
+    NSLog(@"%@,screenUrl",screenUrl);
     self = [super initWithWebPageURL:screenUrl];
     if (self) {
         self.approveEntity = approve;
@@ -38,12 +38,15 @@
     [super dealloc];
 }
 
+//动作加载的代理方法
+//指定加载动作的参数
 -(id)actionsLoadParameterWithType:(NSString *)loadType
 {
     return [NSDictionary dictionaryWithObject:[_approveEntity recordID] 
                                        forKey:@"record_id"];
 }
 
+//指定动作加载的路径
 -(NSString *)actionsLoadPathWithType:(NSString *)loadType
 {
     return [HDURLCenter requestURLWithKey:@"TOOLBAR_ACTION_QUERY_PATH"];
@@ -55,7 +58,7 @@
     if (![_approveEntity.localStatus isEqualToString:@"WAITING"]) {
         [self startLoadAction];
     }
-    [self startLoadWebPage];
+//    [self startLoadWebPage];
 }
 
 //审批
@@ -63,13 +66,13 @@
 {
     _approveEntity.submitUrl = [HDURLCenter requestURLWithKey:@"EXEC_ACTION_UPDATE_PATH"];
     [self configRequest];
-    [self updateRecordAction];
+    [self updateApproveRecord];
 }
 
 //配置请求
 -(void) configRequest
 {
-    NSDictionary * approveObject = [NSDictionary dictionaryWithObjectsAndKeys:_approveEntity.recordID,@"record_id", _approveEntity.action,@"action_id", _approveEntity.comment,@"comment", nil];
+    NSDictionary * approveObject = [NSArray arrayWithObject:[NSDictionary dictionaryWithObjectsAndKeys:_approveEntity.recordID,@"record_id", _approveEntity.action,@"action_id", _approveEntity.comment,@"comment", nil]];
     
     HDRequestConfigMap * map = [[HDHTTPRequestCenter shareHTTPRequestCenter] requestConfigMap];
     HDRequestConfig * execActionRequestConfig  = [map configForKey:@"detial_ready_post"];
@@ -79,7 +82,7 @@
 }
 
 //修改数据库记录状态 
--(void) updateRecordAction
+-(void) updateApproveRecord
 {
     ApproveDatabaseHelper * dbHelper = [[ApproveDatabaseHelper alloc]init];
     [dbHelper.db open];
