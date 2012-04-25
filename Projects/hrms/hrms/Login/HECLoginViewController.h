@@ -13,6 +13,5 @@
 
 @property (nonatomic,retain) UITableView * roleSelectView;
 @property (nonatomic,retain) HDRoleSelectModule * roleSelectModule;
-@property (nonatomic,retain) NSArray * roleList;
 
 @end

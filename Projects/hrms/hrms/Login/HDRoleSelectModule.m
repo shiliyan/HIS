@@ -18,10 +18,17 @@
 
 @synthesize delegate;
 
-@synthesize roleSelectSuccessSelector;
-@synthesize roleSelectFailedSelector;
+-(id)initWithDataSet:(NSArray *)dataSet
+{
+    self = [self init];
+    if (self) {
+        _roleList = dataSet;
+        [_roleList retain];
+    }
+    return self;
+}
 
-- (id)init
+-(id)init
 {
     self = [super init];
     if (self) {
@@ -45,18 +52,28 @@
     [[[HDHTTPRequestCenter shareHTTPRequestCenter] requestConfigMap]removeConfigForKey:@"roleSelectSVC"];
     [_roleSelectRequest clearDelegatesAndCancel];
     TT_RELEASE_SAFELY(_roleSelectRequest);
+    TT_RELEASE_SAFELY(_roleList);
     [super dealloc];
 }
 
+-(NSUInteger)roleCount
+{
+    return [_roleList count];
+}
 
--(void)selectRole:(id) roleRecord
+-(id)roleAtIndex:(NSUInteger) index
+{
+    return [_roleList objectAtIndex:index];
+}
+
+
+-(void)selectRoleAtIndex:(NSUInteger) index
 {   
     HDHTTPRequestCenter * requestCenter = [HDHTTPRequestCenter shareHTTPRequestCenter];
-    //    NSLog(@"%@",[HDURLCenter requestURLWithKey:@"LOGIN_PATH"]);
     self.roleSelectRequest = [requestCenter requestWithURL:[HDURLCenter requestURLWithKey:@"ROLE_SELECT_PATH"] 
-                                             withData:roleRecord 
-                                          requestType:HDRequestTypeFormData 
-                                               forKey:@"roleSelectSVC"];
+                                                  withData:[_roleList objectAtIndex:index] 
+                                               requestType:HDRequestTypeFormData 
+                                                    forKey:@"roleSelectSVC"];
     
     [_roleSelectRequest startAsynchronous];
 }
@@ -70,7 +87,7 @@
 - (void)roleSelectSVCSuccess:(ASIHTTPRequest *) request dataSet:(NSArray *)dataSet
 {
     SEL function = [HDFunctionUtil matchPerformDelegate:self.delegate 
-                                           forSelectors:roleSelectSuccessSelector,@selector(roleSelectSuccess:),nil];
+                                           forSelectors:@selector(roleSelectSuccess:),nil];
     if (function!=nil) {
         [delegate performSelector:function
                        withObject:dataSet];
@@ -84,7 +101,7 @@
     //    [errorObject valueForKey:@"code"];
     NSString * errorMessage =  [errorObject valueForKey:ERROR_MESSAGE];
     SEL function = [HDFunctionUtil matchPerformDelegate:self.delegate 
-                                           forSelectors:roleSelectFailedSelector,@selector(roleSelectFailed:),nil];
+                                           forSelectors:@selector(roleSelectFailed:),nil];
     
     if (function!=nil) {
         [delegate performSelector:function

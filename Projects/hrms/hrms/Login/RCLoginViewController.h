@@ -14,11 +14,6 @@
 @property (nonatomic,retain) IBOutlet UITextField * username;
 @property (nonatomic,retain) IBOutlet UITextField * password;
 
-
 -(IBAction)loginBtnPressed:(id)sender;
-
--(void)loginSuccess:(NSArray *) dataSet;
-
--(void)loginFailed:(NSString *) errorMessage;
 
 @end

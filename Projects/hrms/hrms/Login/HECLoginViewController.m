@@ -15,7 +15,6 @@
 @implementation HECLoginViewController
 
 @synthesize roleSelectView = _roleSelectView;
-@synthesize roleList = _roleList;
 @synthesize roleSelectModule = _roleSelectModule;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
@@ -30,19 +29,28 @@
 #pragma 重载父类的登陆成功方法,添加角色选择页面
 -(void)loginSuccess:(NSArray *) dataSet
 {
-    self.roleList = dataSet;  
     //加载角色选择tableView 并刷新数据
-    _roleSelectView = [[UITableView alloc]initWithFrame:CGRectMake(0, 10, 320, 412) style:UITableViewStyleGrouped];
+    self.roleSelectModule = [[HDRoleSelectModule alloc]initWithDataSet:dataSet];
+    
+    [_roleSelectModule setDelegate:self];
+    _roleSelectView = [[TTTableView alloc]initWithFrame:CGRectMake(0, 0, 320, 460) style:UITableViewStyleGrouped];
     [_roleSelectView setDelegate:self];
     [_roleSelectView setDataSource:self];
+    
+    //动画
+    [UIView beginAnimations:nil context:NULL];
+    [UIView setAnimationTransition:UIViewAnimationTransitionFlipFromRight forView:self.view cache:YES];
+    [UIView setAnimationDuration:1];
     [self.view addSubview:_roleSelectView];
+    [UIView commitAnimations];
+    
     [_roleSelectView reloadData];
 }
 
 #pragma 重载taleview代理方法
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return [_roleList count];
+    return [_roleSelectModule roleCount];
 }
 
 -(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
@@ -52,7 +60,7 @@
 
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    return 60;   
+    return 48;   
 }
 
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -63,21 +71,18 @@
     if (cell == nil) {
         cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:CellIdentifier] autorelease];
     }
-    
-    if (_roleList) {
-        cell.textLabel.text = [[_roleList objectAtIndex:indexPath.row]valueForKey:@"role_description"];
-        cell.detailTextLabel.text = [[_roleList objectAtIndex:indexPath.row]valueForKey:@"company_description"];
+    id roleInfo = [_roleSelectModule roleAtIndex:indexPath.row];
+    if (roleInfo) {
+        cell.textLabel.text = [roleInfo valueForKey:@"role_description"];
+        cell.detailTextLabel.text = [roleInfo valueForKey:@"company_description"];
     }
+    cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
     return cell;
-    
 }
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    //调用角色选择
-    self.roleSelectModule = [[HDRoleSelectModule alloc]init];
-    [_roleSelectModule setDelegate:self];
-    [_roleSelectModule selectRole:[_roleList objectAtIndex:indexPath.row]];
+    [_roleSelectModule selectRoleAtIndex:indexPath.row];
 }
 
 #pragma -mark 实现角色选择代理方法
@@ -95,7 +100,6 @@
 - (void)viewDidUnload
 {
     TT_RELEASE_SAFELY(_roleSelectModule);
-    TT_RELEASE_SAFELY(_roleList);
     TT_RELEASE_SAFELY(_roleSelectView);
     [super viewDidUnload];
 }
