@@ -19,10 +19,6 @@
 @synthesize username = _username;
 @synthesize password = _password;
 
-//成功与失败的回调
-@synthesize loginSuccessSelector;
-@synthesize loginFailedSelector;
-
 //登陆协议 
 @synthesize delegate;
 
@@ -65,8 +61,7 @@
              @"简体中文",@"langugae",
              @"ZHS",@"user_language",
              @"N",@"is_ipad", 
-             @"1",@"company_id",
-             @"41",@"role_id",
+             @"PHONE",@"device_type",
              nil];
 }
 
@@ -91,7 +86,7 @@
 - (void)loginSVCSuccess:(ASIHTTPRequest *) request  dataSet:(NSArray *)dataSet
 {
     SEL function = [HDFunctionUtil matchPerformDelegate:self.delegate 
-                                           forSelectors:loginSuccessSelector,@selector(loginSuccess:),nil];
+                                           forSelectors:@selector(loginSuccess:),nil];
     if (function!=nil) {
         [delegate performSelector:function
                        withObject:dataSet];
@@ -105,7 +100,7 @@
 //    [errorObject valueForKey:@"code"];
     NSString * errorMessage =  [errorObject valueForKey:ERROR_MESSAGE];
     SEL function = [HDFunctionUtil matchPerformDelegate:self.delegate 
-                                           forSelectors:loginFailedSelector,@selector(loginFailed:),nil];
+                                           forSelectors:@selector(loginFailed:),nil];
     
     if (function!=nil) {
         [delegate performSelector:function

@@ -32,7 +32,6 @@
     
     [self.loginModule setUsername:_username.text];
     [self.loginModule setPassword:_password.text];    
-    
     [self.loginModule login];
 }
 
@@ -95,7 +94,7 @@
 - (void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
-    [self.navigationController.navigationBar setHidden:YES];
+//    [self.navigationController.navigationBar setHidden:YES];
 }
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation

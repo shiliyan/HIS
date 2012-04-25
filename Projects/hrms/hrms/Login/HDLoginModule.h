@@ -14,9 +14,6 @@
     id <HDLoginDelegate> delegate;
 }
 
-@property (assign) SEL loginSuccessSelector;
-@property (assign) SEL loginFailedSelector;
-
 @property (nonatomic,retain) HDFormDataRequest * loginRequest;
 @property (nonatomic,retain) NSString * username;
 @property (nonatomic,retain) NSString * password;
