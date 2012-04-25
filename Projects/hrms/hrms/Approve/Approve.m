@@ -13,8 +13,11 @@
 @synthesize rowID;
 @synthesize workflowID;
 @synthesize recordID;
-@synthesize workflowName;
-@synthesize workflowDesc;
+@synthesize nodeId;
+@synthesize instanceId;
+@synthesize orderType;
+@synthesize instanceDesc;
+@synthesize instanceParam;
 @synthesize nodeName;
 @synthesize employeeName;
 @synthesize creationDate;
@@ -30,34 +33,37 @@
 -(void)dealloc{
     
     [rowID release];
-    [ workflowID release];
-    [ recordID release];
-    [ workflowName release];
-    [ workflowDesc release];
-    [ nodeName release];
-    [ employeeName release];
-    [ creationDate release];
-    [ dateLimit release];
-    [ isLate release];
-    [ screenName release];
-    [ localStatus release];
-    [ comment release];
-    [ action release];
-    [ serverMessage release];
-    [ submitUrl release];
+    [workflowID release];
+    [recordID release];
+    [orderType release];
+    [instanceDesc release];
+    [nodeName release];
+    [employeeName release];
+    [creationDate release];
+    [dateLimit release];
+    [isLate release];
+    [screenName release];
+    [localStatus release];
+    [comment release];
+    [action release];
+    [serverMessage release];
+    [submitUrl release];
+    [nodeId release];
+    [instanceId release];
+    [instanceParam release];
     [super dealloc];
 }
 
 
 
--(Approve *)initWithRowId:(NSNumber *)rowid workflowId:(NSNumber *)wid recordId:(NSNumber *)rId workflowName:(NSString *)wName workflowDesc:(NSString *)wDesc nodeName:(NSString *)node employeeName:(NSString *)employee creationDate:(NSString *)creation dateLimit:(NSString *)limit  isLate:(NSNumber *)late screenName:(NSString *)screen localStatus:(NSString *)status comment:(NSString *)cmt actionType:(NSString *)aType serverMessage:(NSString *)sMessage submitUrl:(NSString *)url{
+-(Approve *)initWithRowId:(NSNumber *)rowid workflowId:(NSNumber *)wid recordId:(NSNumber *)rId nodeId:(NSNumber *)nId instanceId:(NSNumber *)insId orderType:(NSString *)wName instanceDesc:(NSString *)wDesc instanceParam:(NSNumber *)insParam nodeName:(NSString *)node employeeName:(NSString *)employee creationDate:(NSString *)creation dateLimit:(NSString *)limit  isLate:(NSNumber *)late screenName:(NSString *)screen localStatus:(NSString *)status comment:(NSString *)cmt actionType:(NSString *)aType serverMessage:(NSString *)sMessage submitUrl:(NSString *)url{
     
     if (self = [super init]){
         self.rowID = rowid;
         self.workflowID = wid;
         self.recordID = rId;
-        self.workflowName = wName;
-        self.workflowDesc = wDesc;
+        self.orderType = wName;
+        self.instanceDesc = wDesc;
         self.nodeName = node;
         self.employeeName = employee;
         self.creationDate = creation;
@@ -69,6 +75,11 @@
         self.action = aType;
         self.serverMessage = sMessage;
         self.submitUrl = url;
+        
+        self.nodeId = nId;
+        self.instanceId = insId;
+        self.instanceParam = insParam;
+
     }
     
     return self;
@@ -78,8 +89,8 @@
     if (self = [super init]){
         self.workflowID = [dic objectForKey:APPROVE_PROPERTY_WORKFLOW_ID];
         self.recordID = [dic objectForKey:APPROVE_PROPERTY_RECORD_ID];
-        self.workflowName = [dic objectForKey:APPROVE_PROPERTY_WORKFLOW_NAME];
-        self.workflowDesc = [dic objectForKey:APPROVE_PROPERTY_WORKFLOW_DESC];
+        self.orderType = [dic objectForKey:APPROVE_PROPERTY_ORDER_TYPE];
+        self.instanceDesc = [dic objectForKey:APPROVE_PROPERTY_INSTANCE_DESC];
         self.nodeName = [dic objectForKey:APPROVE_PROPERTY_NODE_NAME];
         self.employeeName = [dic objectForKey:APPROVE_PROPERTY_EMPLOYEE_NAME];
         self.creationDate = [dic objectForKey:APPROVE_PROPERTY_CREATION_DATE];
@@ -91,12 +102,15 @@
         self.action = [dic objectForKey:APPROVE_PROPERTY_APPROVE_ACTION];
         self.serverMessage = [dic objectForKey:APPROVE_PROPERTY_SERVER_MESSAGE];
         self.submitUrl = [dic objectForKey:APPROVE_PROPERTY_SUBMIT_URL];
+        self.nodeId = [dic objectForKey:APPROVE_PROPERTY_NODE_ID];
+        self.instanceId=[dic objectForKey:APPROVE_PROPERTY_INSTANCE_ID];
+        self.instanceParam = [dic objectForKey:APPROVE_PROPERTY_INSTANCE_PARAM];
     }
     return self;
 }
 
 -(NSString *)description{
-    return [NSString stringWithFormat:@"%@ recordId:%i rowid:%i",[super description],self.recordID.init,self.rowID.init];
+    return [NSString stringWithFormat:@"%@ recordId:%i rowid:%i ,screenname:%@",[super description],self.recordID.init,self.rowID.init,self.screenName];
 }
 
 @end

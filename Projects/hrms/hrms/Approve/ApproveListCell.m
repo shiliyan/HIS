@@ -86,10 +86,10 @@
 
 -(void)setCellData:(Approve *)approveEntity{
     
-    workflowNameLabel.text = [NSString stringWithFormat:@"%@：%@",approveEntity.workflowName,approveEntity.employeeName];
+    workflowNameLabel.text = [NSString stringWithFormat:@"%@：%@",approveEntity.orderType,approveEntity.employeeName];
     
     commitDateTextView.text = [approveEntity.creationDate substringToIndex:10];
-    deadLineTextView.text = approveEntity.workflowDesc;
+    deadLineTextView.text = approveEntity.instanceDesc;
     
     if (approveEntity.isLate.intValue == 0) {
         workflowNameLabel.textColor = [UIColor blackColor];

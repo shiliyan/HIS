@@ -10,18 +10,22 @@
 
 static NSString *APPROVE_PROPERTY_WORKFLOW_ID=@"workflow_id";
 static NSString *APPROVE_PROPERTY_RECORD_ID=@"record_id";
+static NSString *APPROVE_PROPERTY_NODE_ID = @"node_id";
+static NSString *APPROVE_PROPERTY_INSTANCE_ID = @"instance_id";
 
 //是否超时
 static NSString *APPROVE_PROPERTY_IS_LATE=@"is_late";
 
 //页面地址
-static NSString *APPROVE_PROPERTY_SCREEN_NAME = @"screen_name";
+static NSString *APPROVE_PROPERTY_SCREEN_NAME = @"doc_page_url";
 
 //工作流名称
-static NSString *APPROVE_PROPERTY_WORKFLOW_NAME=@"workflow_name";
+static NSString *APPROVE_PROPERTY_ORDER_TYPE=@"order_type";
 
 //工作流描述
-static NSString *APPROVE_PROPERTY_WORKFLOW_DESC=@"workflow_desc";
+static NSString *APPROVE_PROPERTY_INSTANCE_DESC=@"instance_desc";
+
+static NSString *APPROVE_PROPERTY_INSTANCE_PARAM = @"instance_param";
 
 //当前节点
 static NSString *APPROVE_PROPERTY_NODE_NAME=@"node_name";
@@ -30,7 +34,7 @@ static NSString *APPROVE_PROPERTY_NODE_NAME=@"node_name";
 static NSString *APPROVE_PROPERTY_EMPLOYEE_NAME=@"employee_name";
 
 //提交时间
-static NSString *APPROVE_PROPERTY_CREATION_DATE=@"creation_date";
+static NSString *APPROVE_PROPERTY_CREATION_DATE=@"apply_date_view";
 
 //处理时限
 static NSString *APPROVE_PROPERTY_DATE_LIMIT=@"date_limit";
@@ -54,8 +58,13 @@ static NSString *APPROVE_PROPERTY_SUBMIT_URL=@"submit_url";
     NSNumber *rowID;//本地数据主键
     NSNumber *workflowID;
     NSNumber *recordID;
-    NSString *workflowName;//工作流名称
-    NSString *workflowDesc;//
+    
+    NSNumber *nodeId;
+    NSNumber *instanceId;
+    NSNumber *instanceParam;
+    
+    NSString *orderType;//工作流名称
+    NSString *instanceDesc;//
     NSString *nodeName;//当前节点
     NSString *employeeName;//申请人
     NSString *creationDate;//提交时间
@@ -72,8 +81,11 @@ static NSString *APPROVE_PROPERTY_SUBMIT_URL=@"submit_url";
 @property(retain ,nonatomic) NSNumber *rowID;
 @property(retain ,nonatomic) NSNumber *workflowID;
 @property(retain ,nonatomic) NSNumber *recordID;
-@property(copy, nonatomic) NSString *workflowName;
-@property(copy, nonatomic) NSString *workflowDesc;
+@property(retain ,nonatomic) NSNumber *nodeId;
+@property(retain ,nonatomic) NSNumber *instanceId;
+@property(copy, nonatomic) NSString *orderType;
+@property(copy, nonatomic) NSString *instanceDesc;
+@property(retain ,nonatomic) NSNumber *instanceParam;
 @property(copy, nonatomic) NSString *nodeName;
 @property(copy, nonatomic) NSString *employeeName;
 @property(copy, nonatomic) NSString *creationDate;
@@ -86,7 +98,8 @@ static NSString *APPROVE_PROPERTY_SUBMIT_URL=@"submit_url";
 @property(copy, nonatomic) NSString *serverMessage;
 @property(copy, nonatomic) NSString *submitUrl;
 
--(Approve *)initWithRowId:(NSNumber *)rowid workflowId:(NSNumber *)wid recordId:(NSNumber *)rId workflowName:(NSString *)wName workflowDesc:(NSString *)wDesc nodeName:(NSString *)node employeeName:(NSString *)employee creationDate:(NSString *)creation dateLimit:(NSString *)limit  isLate:(NSNumber *)late screenName:(NSString *)screen localStatus:(NSString *)status comment:(NSString *)cmt actionType:(NSString *)aType serverMessage:(NSString *)sMessage submitUrl:(NSString *)url;
+
+-(Approve *)initWithRowId:(NSNumber *)rowid workflowId:(NSNumber *)wid recordId:(NSNumber *)rId nodeId:(NSNumber *)nId instanceId:(NSNumber *)insId orderType:(NSString *)wName instanceDesc:(NSString *)wDesc instanceParam:(NSNumber *)insParam nodeName:(NSString *)node employeeName:(NSString *)employee creationDate:(NSString *)creation dateLimit:(NSString *)limit  isLate:(NSNumber *)late screenName:(NSString *)screen localStatus:(NSString *)status comment:(NSString *)cmt actionType:(NSString *)aType serverMessage:(NSString *)sMessage submitUrl:(NSString *)url;
 
 -(Approve *)initWithDictionary:(NSDictionary *)dic;
 @end
