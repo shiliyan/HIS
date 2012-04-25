@@ -32,7 +32,7 @@
     self = [super init];
     if (self) {
         Approve * approve = [query objectForKey:HD_APPROVE_DATA];
-        self.title = approve.workflowName;
+        self.title = approve.orderType;
         self.detailModule = [HDApproveModule approveModuleWithApprove:approve];
         [self.detailModule setActions:[HDApproveActions actionsModule]];
     }
