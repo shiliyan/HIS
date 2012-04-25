@@ -40,7 +40,7 @@
         //        NSLog(@"No RestoreViewCtrl!!");
         [navigator openURLAction:[TTURLAction actionWithURLPath:@"tt://approve"]];
         
-        [navigator openURLAction:[[TTURLAction actionWithURLPath:@"tt://login"]applyTransition:UIViewAnimationTransitionFlipFromLeft]];
+        [navigator openURLAction:[TTURLAction actionWithURLPath:@"tt://login"]];
     }
     
 }
@@ -80,7 +80,7 @@ toViewController:[HDApproveDetailViewController class]
     NSLog(@"catch");
     //TODO:弹出登录界面,session失效时触发
     TTNavigator* navigator = [TTNavigator navigator];
-    [navigator openURLAction:[[[TTURLAction actionWithURLPath:@"tt://login"]applyTransition:UIViewAnimationTransitionFlipFromLeft] applyAnimated:YES]];
+    [navigator openURLAction:[[[TTURLAction actionWithURLPath:@"tt://login"]applyTransition:UIViewAnimationTransitionFlipFromRight] applyAnimated:YES]];
 }
 
 //初始化偏好设置
