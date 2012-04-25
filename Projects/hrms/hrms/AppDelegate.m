@@ -11,7 +11,7 @@
 //styleSheet
 #import "MyStyleSheet.h"
 //view controllers
-#import "RCLoginViewController.h"
+#import "HECLoginViewController.h"
 //审批
 #import "ApproveListController.h"
 //审批明细
@@ -60,7 +60,7 @@
     
     //login view
     [map from:@"tt://login" 
-toModalViewController:[RCLoginViewController class]];
+toModalViewController:[HECLoginViewController class]];
     
     //审批
     [map from:@"tt://approve" 
@@ -130,7 +130,7 @@ toViewController:[HDApproveDetailViewController class]
 {
     NSLog(@"Error in registration.Error: %@" ,error);
     [[NSUserDefaults standardUserDefaults] setValue:@"null" forKey:@"deviceToken"];
-    UIAlertView * alert = [[UIAlertView alloc]initWithTitle:@"提示" message:@"无法设置推送请检查网络是否可用" delegate:nil cancelButtonTitle:@"确定" otherButtonTitles:nil];
+    UIAlertView * alert = [[UIAlertView alloc]initWithTitle:@"提示" message:@"无法设置推送请检查网络是否可用" delegate:self cancelButtonTitle:@"确定" otherButtonTitles:nil];
     [alert show];
     [alert release];
 }
