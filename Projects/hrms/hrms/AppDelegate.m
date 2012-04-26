@@ -36,12 +36,12 @@
     [self initViewControllers:navigator];
     
     if(![navigator restoreViewControllers])
-    {
+    {}
         //        NSLog(@"No RestoreViewCtrl!!");
         [navigator openURLAction:[TTURLAction actionWithURLPath:@"tt://approve"]];
         
-        [navigator openURLAction:[TTURLAction actionWithURLPath:@"tt://login"]];
-    }
+        [navigator openURLAction:[TTURLAction actionWithURLPath:@"tt://login/RCLoginViewController/1"]];
+//    }
     
 }
 
@@ -59,7 +59,7 @@
     [map from:@"*" toViewController:[TTWebController class]]; 
     
     //login view
-    [map from:@"tt://login" 
+    [map from:@"tt://login/(initWithNibName:)/(bundle:)" 
 toModalViewController:[HECLoginViewController class]];
     
     //审批
@@ -80,7 +80,7 @@ toViewController:[HDApproveDetailViewController class]
     NSLog(@"catch");
     //TODO:弹出登录界面,session失效时触发
     TTNavigator* navigator = [TTNavigator navigator];
-    [navigator openURLAction:[[[TTURLAction actionWithURLPath:@"tt://login"]applyTransition:UIViewAnimationTransitionFlipFromRight] applyAnimated:YES]];
+    [navigator openURLAction:[[[TTURLAction actionWithURLPath:@"tt://login/RCLoginViewController/"]applyTransition:UIViewAnimationTransitionFlipFromRight] applyAnimated:YES]];
 }
 
 //初始化偏好设置

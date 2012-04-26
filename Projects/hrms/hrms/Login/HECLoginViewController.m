@@ -19,7 +19,7 @@
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
-    self = [super initWithNibName:@"RCLoginViewController" bundle:nil];
+    self = [super initWithNibName:nibNameOrNil bundle:nil];
     if (self) {
         // Custom initialization
     }
@@ -37,6 +37,7 @@
     [_roleSelectView setDelegate:self];
     [_roleSelectView setDataSource:self];
     
+
     //动画
     [UIView beginAnimations:nil context:NULL];
     [UIView setAnimationTransition:UIViewAnimationTransitionFlipFromRight forView:self.view cache:YES];

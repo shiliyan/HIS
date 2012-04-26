@@ -16,10 +16,8 @@
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
-    self = [super initWithNibName:@"RCLoginViewController" bundle:nibBundleOrNil];
+    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
-        // Custom initialization 
-
         [self setAutoresizesForKeyboard:YES];
     }
     return self;
@@ -62,7 +60,6 @@
 
 -(void)keyboardWillDisappear:(BOOL)animated withBounds:(CGRect)bounds
 {
-    //    NSLog(@"%f,%f",bounds.size.width,bounds.size.height);
     [UIView beginAnimations:@"keyboardAnimation" context:NULL];
     for (UIView * subView in [self.view subviews]) {
         CGAffineTransform moveTransform = CGAffineTransformMakeTranslation(0, 0);
@@ -77,8 +74,7 @@
 {
     [super viewDidLoad];
     _loginModel = [[HDLoginModule alloc]init];
-
-    _username.text = @"test002";
+    _username.text = @"zhouhao";
     _password.text = @"1";
     [self.loginModule setDelegate:self];
 }
@@ -105,10 +101,7 @@
 
 - (void)didReceiveMemoryWarning
 {
-    // Releases the view if it doesn't have a superview.
     [super didReceiveMemoryWarning];
-    
-    // Release any cached data, images, etc that aren't in use.
 }
 
 @end
