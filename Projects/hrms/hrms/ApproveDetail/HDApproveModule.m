@@ -52,13 +52,20 @@
     return [HDURLCenter requestURLWithKey:@"TOOLBAR_ACTION_QUERY_PATH"];
 }
 
+-(void)beforeLoadWebPage:(ASIWebPageRequest *)webPageRequest
+{
+    NSString * webPageURL = [NSString stringWithFormat:@"%@?%@=%@&%@=%@",[HDURLCenter requestURLWithKey:@"APPROVE_DETIAL_WEB_PAGE_PATH"],APPROVE_PROPERTY_SCREEN_NAME,_approveEntity.screenName,APPROVE_PROPERTY_INSTANCE_ID,_approveEntity.instanceId];
+    TTDPRINT(@"%@",webPageURL);
+    [webPageRequest setURL:[NSURL URLWithString:webPageURL]];
+}
+
 -(void)startLoad
 {
     //如果记录状态是等待,不加载动作  
     if (![_approveEntity.localStatus isEqualToString:@"WAITING"]) {
         [self startLoadAction];
     }
-//    [self startLoadWebPage];
+    [self startLoadWebPage];
 }
 
 //审批
