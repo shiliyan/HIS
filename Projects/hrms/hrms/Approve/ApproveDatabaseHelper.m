@@ -40,13 +40,26 @@
         //dbPath： 数据库路径，在Document中。  
         NSString *dbPath = [documentDirectory stringByAppendingPathComponent:DB_NAME]; 
         NSLog(@"%@",dbPath);
-        //创建数据库实例 db  
+//        //创建数据库实例 db  
         db= [[FMDatabase databaseWithPath:dbPath]retain]; 
         
         [self initTables];
     }
     
     return self; 
+}
+
+-(void) dropAllTables
+{
+    NSString * dropTableSql = [NSString stringWithFormat: @"delete from %@; delete from %@",TABLE_NAME_APPROVE_LIST,TABLE_NAME_APPROVE_ACTION_LIST];
+    if (![db open]) {
+        [db release];
+        NSLog(@"Could not open db.");  
+        return;
+    }
+    
+    [db executeUpdate:dropTableSql];
+    [db close];
 }
 
 -(void)dealloc{
