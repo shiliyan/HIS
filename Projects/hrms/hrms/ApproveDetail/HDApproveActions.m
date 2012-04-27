@@ -33,6 +33,7 @@
 //加载远程动作
 -(void)loadTheRemoteActions
 {
+//    TTDPRINT(@"%@",[self configActionsLoadPathWithType:HDActionLoadTypeRemote] );
     self.actionsLoadRequest = 
     [HDFormDataRequest hdRequestWithURL:[self configActionsLoadPathWithType:HDActionLoadTypeRemote] 
                                withData:[self configActionsLoadParameterWithType:HDActionLoadTypeRemote]
@@ -47,6 +48,7 @@
 -(void)remoteActionLoadSucceeded:(ASIFormDataRequest *)theRequest withDataSet:(NSArray *) dataSet
 {
     //尝试保存动作到本地,由子类实现其方法
+//    TTDPRINT(@"%@",dataSet);
     [self saveTheActions:dataSet];
     [self callDidLoadSelector:@selector(actionsDidLoad:) 
                    withObject:dataSet];
@@ -70,7 +72,9 @@
     [dbHelper.db close];
     
     TT_RELEASE_SAFELY(dbHelper);
-    
+    if ([actions count] == 0) {
+        return nil;
+    }
     return actions;
 }
 
