@@ -7,7 +7,7 @@
 //
 
 #import "RCLoginViewController.h"
-
+#import "MyStyleSheet.h"
 @implementation RCLoginViewController
 
 @synthesize username = _username;
@@ -74,7 +74,7 @@
 {
     [super viewDidLoad];
     _loginModel = [[HDLoginModule alloc]init];
-    _username.text = @"zhouhao";
+    _username.text = _loginModel.username;
     _password.text = @"1";
     [self.loginModule setDelegate:self];
 }

@@ -10,7 +10,7 @@
 #import "HDFunctionUtil.h"
 #import "HDURLCenter.h"
 #import "HDHTTPRequestCenter.h"
-
+#import "ApproveDatabaseHelper.h"
 @implementation HDLoginModule
 
 //登陆请求
@@ -35,9 +35,11 @@
         [loginRequestConfig setFailedSelector:@selector(LoginError:error:)];
         
         HDRequestConfigMap * map = [[HDHTTPRequestCenter shareHTTPRequestCenter] requestConfigMap];
-        [map addConfig:loginRequestConfig forKey:@"loginSVC"];
-        
+        [map addConfig:loginRequestConfig forKey:@"loginSVC"];   
         [loginRequestConfig release];
+        
+        //获取用户名
+         self.username = [[NSUserDefaults standardUserDefaults] valueForKey:@"username"];
     }
     return self;
 }
@@ -67,16 +69,31 @@
 
 -(void)login
 {   
+    TTDPRINT(@"%@",[HDURLCenter requestURLWithKey:@"LOGIN_PATH"]);
+    
+    //如果是不同用户登陆的,清空数据库
+    [self initUsers];
+    //发送登陆请求
     HDHTTPRequestCenter * requestCenter = [HDHTTPRequestCenter shareHTTPRequestCenter];
-//    NSLog(@"%@",[HDURLCenter requestURLWithKey:@"LOGIN_PATH"]);
     self.loginRequest = [requestCenter requestWithURL:[HDURLCenter requestURLWithKey:@"LOGIN_PATH"] 
                                              withData:[self generateLoginData] 
                                           requestType:HDRequestTypeFormData 
                                                forKey:@"loginSVC"];
-
     [_loginRequest startAsynchronous];
 }
 
+-(void)initUsers
+{
+    //不同用户登录,清除数据库
+    if (self.username != [[NSUserDefaults standardUserDefaults] valueForKey:@"username"]) {
+        //
+        ApproveDatabaseHelper * dbHelper = [[ApproveDatabaseHelper alloc]init];
+        [dbHelper.db open];
+        [dbHelper dropAllTables];
+        [dbHelper.db close];
+    }   
+    [[NSUserDefaults standardUserDefaults] setValue:_username forKey:@"username"];
+}
 //取消登陆
 -(void)cancelLogin
 {
@@ -97,7 +114,6 @@
 
 - (void)LoginError:(ASIHTTPRequest *)request error: (NSDictionary *)errorObject
 {    
-//    [errorObject valueForKey:@"code"];
     NSString * errorMessage =  [errorObject valueForKey:ERROR_MESSAGE];
     SEL function = [HDFunctionUtil matchPerformDelegate:self.delegate 
                                            forSelectors:@selector(loginFailed:),nil];

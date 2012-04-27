@@ -101,11 +101,6 @@
 //加载webView
 -(void)startLoadWebPage
 {
-    //创建页面载入请求 
-    //    if (nil == self.webPageURL) {
-    //        [self callWebPageLoad:@"<h1>审批的URL未指定</h>" baseURL:nil];
-    //        return;
-    //    }
     self.webPageRequest = [[HDHTTPRequestCenter shareHTTPRequestCenter] requestWithURL:_webPageURL
                                                                            requestType:ASIRequestTypeWebPage 
                                                                                 forKey:nil];
