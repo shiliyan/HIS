@@ -20,4 +20,7 @@ static NSString *TABLE_NAME_APPROVE_ACTION_LIST = @"action_list";
 @property (readonly) FMDatabase *db;
 
 -(void)initTables;
+
+-(void) dropAllTables;
+
 @end
