@@ -45,8 +45,10 @@
 {
     TTListDataSource* dataSource = [[[TTListDataSource alloc] init] autorelease];
     for (NSDictionary * record in dataSet) {
-        NSString * textContent = [NSString stringWithFormat:@"%@ - %@" ,[record valueForKey:@"status_name"],[record valueForKey:@"curr_approve_name"]];
-        NSString * screenUrl = [NSString stringWithFormat:@"%@?record_id=%@",[HDURLCenter requestURLWithKey:@"APPROVE_SCREEN_BASE_PATH"],[record valueForKey:@" screenName"]];
+        NSString * textContent = [NSString stringWithFormat:@"%@ - %@" ,[record valueForKey:@"status_name"],[record valueForKey:@"instance_desc"]];
+        NSString * screenUrl = [NSString stringWithFormat:@"%@?doc_page_url=%@&instance_id=%@",[HDURLCenter requestURLWithKey:@"APPROVE_DETIAL_WEB_PAGE_PATH"],[record valueForKey:@"doc_page_url"],[record valueForKey:@"instance_id"]];
+
+        [NSString stringWithFormat:@"%@?record_id=%@",[HDURLCenter requestURLWithKey:@"APPROVE_SCREEN_BASE_PATH"],[record valueForKey:@" service_name"]];
         TTDPRINT(@"%@",screenUrl);
         
         [dataSource.items addObject:
