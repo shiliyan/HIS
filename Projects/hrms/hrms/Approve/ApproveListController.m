@@ -110,9 +110,7 @@
 -(void)toggleTabelViewEdit:(id)sender{
     
     [self.tableView setEditing:!self.tableView.editing animated:YES];
-    NSLog(@"%i",self.tableView.isEditing);
     if (self.tableView.editing){
-        NSLog(@"1");
         [self.navigationItem.rightBarButtonItem setTitle:@"取消"];
         
         adoptButton.enabled = NO;
@@ -121,7 +119,7 @@
         adoptButton.title = @"通过";
         refuseButton.title = @"拒绝";
         
-        [UIView animateWithDuration:0.30f animations:^{
+        [UIView animateWithDuration:0.25f animations:^{
             CALayer *tooBarLayer = self.checkToolBar.layer;
 //            tooBar.affineTransform = CGAffineTransformMakeTranslation(0, 300);
             tooBarLayer.position = CGPointMake(320/2, 345);
@@ -129,11 +127,10 @@
         
     }
     else{
-        NSLog(@"2");
         [self.navigationItem.rightBarButtonItem setTitle:@"批量"];
         [checkToolBar resignFirstResponder];
         
-        [UIView animateWithDuration:0.30f animations:^{
+        [UIView animateWithDuration:0.25f animations:^{
             CALayer *tooBarLayer = self.checkToolBar.layer;
             tooBarLayer.position = CGPointMake(320/2, 390);
         }];
