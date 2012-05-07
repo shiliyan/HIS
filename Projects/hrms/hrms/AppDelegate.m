@@ -17,6 +17,11 @@
 //审批明细
 #import "HDApproveDetailViewController.h"
 
+//主tab界面
+#import "MainTabController.h"
+
+#import "HDApprovedListViewController.h"
+
 @implementation AppDelegate
 
 -(void) applicationDidFinishLaunching:(UIApplication *)application
@@ -38,7 +43,7 @@
     if(![navigator restoreViewControllers])
     {}
         //        NSLog(@"No RestoreViewCtrl!!");
-        [navigator openURLAction:[TTURLAction actionWithURLPath:@"tt://approve"]];
+        [navigator openURLAction:[TTURLAction actionWithURLPath:@"tt://mainTab"]];
         
         [navigator openURLAction:[TTURLAction actionWithURLPath:@"tt://login/RCLoginViewController/1"]];
 //    }
@@ -62,6 +67,8 @@
     [map from:@"tt://login/(initWithNibName:)/(bundle:)" 
 toModalViewController:[HECLoginViewController class]];
     
+    [map from:@"tt://mainTab" toSharedViewController:[MainTabController class]];
+    
     //审批
     [map from:@"tt://approve" 
 toSharedViewController:[ApproveListController class]];
@@ -72,6 +79,10 @@ toSharedViewController:[ApproveListController class]];
 toViewController:[HDApproveDetailViewController class] 
      selector:nil 
    transition:0];
+    
+    //已审批的单据查询
+    [map from:@"tt://approvedList" 
+toSharedViewController:[HDApprovedListViewController class]];
 
 }
 
