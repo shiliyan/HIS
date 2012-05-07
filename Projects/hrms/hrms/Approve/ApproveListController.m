@@ -45,10 +45,9 @@
 @synthesize networkQueue;
 
 @synthesize tableAdapter;
-@synthesize dataTableView;
-@synthesize normalToolbar;
+
 @synthesize checkToolBar;
-@synthesize bottomStatusLabel;
+
 @synthesize adoptButton;
 @synthesize refuseButton;
 
@@ -84,7 +83,7 @@
         
         [[TTNavigator navigator] openURLAction:[[[TTURLAction actionWithURLPath:theURL] applyQuery:dataInfo] applyAnimated:YES]];
         
-        [dataTableView deselectRowAtIndexPath:indexPath animated:YES];
+        [self.tableView deselectRowAtIndexPath:indexPath animated:YES];
     }
 }
 
@@ -109,24 +108,39 @@
 }
 
 -(void)toggleTabelViewEdit:(id)sender{
-    [dataTableView setEditing:!dataTableView.editing animated:YES];
-    if (dataTableView.editing){
+    
+    [self.tableView setEditing:!self.tableView.editing animated:YES];
+    NSLog(@"%i",self.tableView.isEditing);
+    if (self.tableView.editing){
+        NSLog(@"1");
         [self.navigationItem.rightBarButtonItem setTitle:@"取消"];
-        [normalToolbar resignFirstResponder];
-        normalToolbar.hidden = YES;
-        checkToolBar.hidden = NO;
+        
         adoptButton.enabled = NO;
         refuseButton.enabled = NO;
         
         adoptButton.title = @"通过";
         refuseButton.title = @"拒绝";
+        
+        [UIView animateWithDuration:0.30f animations:^{
+            CALayer *tooBarLayer = self.checkToolBar.layer;
+//            tooBar.affineTransform = CGAffineTransformMakeTranslation(0, 300);
+            tooBarLayer.position = CGPointMake(320/2, 345);
+        }];
+        
     }
     else{
+        NSLog(@"2");
         [self.navigationItem.rightBarButtonItem setTitle:@"批量"];
         [checkToolBar resignFirstResponder];
-        checkToolBar.hidden = YES;
-        normalToolbar.hidden = NO;
+        
+        [UIView animateWithDuration:0.30f animations:^{
+            CALayer *tooBarLayer = self.checkToolBar.layer;
+            tooBarLayer.position = CGPointMake(320/2, 390);
+        }];
+        
     }
+    
+    
 }
 
 // TODO: 编写失败和网络连接错误的回调
@@ -135,8 +149,6 @@
     // 获取最新的待办列表
     //暂时注视
     self.formRequest  = [HDFormDataRequest hdRequestWithURL:[HDURLCenter requestURLWithKey:@"APPROVE_TABLE_QUERY_URL"] pattern:HDrequestPatternNormal];
-    
-//    self.formRequest  =[HDFormDataRequest hdRequestWithURL:[HDURLCenter requestURLWithKey:@"APPROVE_TABLE_QUERY_URL"] withData:[NSDictionary dictionaryWithObject:@"22" forKey:@"user_id"] pattern:HDrequestPatternNormal];
     
     [formRequest setDelegate:self];
     [formRequest setSuccessSelector:@selector(querySuccess:withDataSet:)];
@@ -150,15 +162,6 @@
 #pragma mark - 从服务器端取数据成功
 //从服务器端取数据成功
 -(void)querySuccess:(ASIFormDataRequest *)request withDataSet:(NSMutableArray *)dataset{
-    
-    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
-    //设定时间格式
-    [dateFormatter setDateFormat:@"yyyy-MM-dd HH:mm:ss"];
-    //用[NSDate date]可以获取系统当前时间
-    NSString *currentDateStr = [dateFormatter stringFromDate:[NSDate date]];
-    [dateFormatter release];
-    
-    [bottomStatusLabel setText:[NSString stringWithFormat:@"更新成功 %@",currentDateStr]];
 
     //responseArray，返回数据解析后存放
     NSMutableArray *responseArray =[[NSMutableArray alloc]init];
@@ -211,15 +214,15 @@
     
     NSMutableArray *newIndexPaths = [NSMutableArray array];
 //    NSLog(@"new temp: %@",tempArray);
-    [dataTableView beginUpdates];
+    [self.tableView beginUpdates];
     //插入待审批数据源（因为本地缺少的数据只可能是新数据，所以不用比较，直接从列表前段插入）
     [tableAdapter.approveArray insertObjects:tempArray atIndexes:[NSIndexSet indexSetWithIndexesInRange:NSMakeRange(0, [tempArray count])]];
     //生成新的indexPaths
     for (int i=0; i<tempArray.count; i++) {
         [newIndexPaths addObject:[NSIndexPath indexPathForRow:i inSection:SECTION_NORMAL]];
     }
-    [dataTableView insertRowsAtIndexPaths:newIndexPaths withRowAnimation:UITableViewRowAnimationMiddle];
-    [dataTableView endUpdates];
+    [self.tableView insertRowsAtIndexPaths:newIndexPaths withRowAnimation:UITableViewRowAnimationMiddle];
+    [self.tableView endUpdates];
     
     //查找本地有差异的数据
     [tempArray removeAllObjects];
@@ -244,18 +247,18 @@
     //移动UI行
     NSUInteger beginIndex = 0;
     NSMutableArray *reloadIndexes = [NSMutableArray array];
-    [dataTableView beginUpdates];
+    [self.tableView beginUpdates];
     for (Approve *differentEntity in tempArray) {
         NSUInteger fromIndex = [tableAdapter.approveArray indexOfObject:differentEntity];
         NSIndexPath *toIndexPath = [NSIndexPath indexPathForRow:beginIndex inSection:SECTION_PROBLEM_LIST];
-        [dataTableView moveRowAtIndexPath:[NSIndexPath indexPathForRow:fromIndex inSection:SECTION_NORMAL] toIndexPath:toIndexPath];
+        [self.tableView moveRowAtIndexPath:[NSIndexPath indexPathForRow:fromIndex inSection:SECTION_NORMAL] toIndexPath:toIndexPath];
         [reloadIndexes addObject:toIndexPath];
         beginIndex++;
     }
     [tableAdapter.approveArray removeObjectsInArray:tempArray];
     [tableAdapter.errorArray insertObjects:tempArray atIndexes:[NSIndexSet indexSetWithIndexesInRange:NSMakeRange(0, tempArray.count)]];
-    [dataTableView endUpdates];
-    [dataTableView reloadRowsAtIndexPaths:reloadIndexes withRowAnimation:UITableViewRowAnimationNone];
+    [self.tableView endUpdates];
+    [self.tableView reloadRowsAtIndexPaths:reloadIndexes withRowAnimation:UITableViewRowAnimationNone];
     
     [dbHelper.db open];
     //将有差异的数据存表
@@ -265,15 +268,18 @@
     [dbHelper.db close];
 
     [responseArray release];
+    //更新提示数字
     [self updateApplicationBadgeNumber];
+    //通知下拉刷新UI，结束显示
+    [super performSelector:@selector(dataSourceDidFinishLoadingNewData:) withObject:[NSNumber numberWithInt:1] afterDelay:1.0];
 }
 
 -(void)queryFailed{
-    UIAlertView *alert = [[UIAlertView alloc]initWithTitle:@"提示" message:@"网络无连接或服务器无响应" delegate:self cancelButtonTitle:@"好" otherButtonTitles:nil, nil];
-    [alert show];
-    [alert release];
+//    UIAlertView *alert = [[UIAlertView alloc]initWithTitle:@"提示" message:@"网络无连接或服务器无响应" delegate:self cancelButtonTitle:@"好" otherButtonTitles:nil, nil];
+//    [alert show];
+//    [alert release];
+    [super performSelector:@selector(dataSourceDidFinishLoadingNewData:) withObject:[NSNumber numberWithInt:0] afterDelay:1.0];
     
-    bottomStatusLabel.text = @"网络错误，操作失败";
 }
 
 #pragma mark - 审批动作
@@ -327,7 +333,7 @@
 //                }
 //            }
 //        }
-        NSArray *selectedIndePaths = [dataTableView indexPathsForSelectedRows];
+        NSArray *selectedIndePaths = [self.tableView indexPathsForSelectedRows];
         NSMutableArray *selectedArray = [NSMutableArray array];
         [dbHelper.db open];
         for (NSIndexPath *indexPath in selectedIndePaths) {
@@ -361,25 +367,25 @@
         //移动UI，从待审批到等待提交
         NSUInteger toIndex = 0;
         NSMutableArray *changedIndexPaths = [NSMutableArray arrayWithCapacity:selectedIndePaths.count];
-        [dataTableView beginUpdates];
+        [self.tableView beginUpdates];
         for (NSIndexPath *fromIndexPath in selectedIndePaths) {
             
             
             NSIndexPath *toIndexPath = [NSIndexPath indexPathForRow:toIndex inSection:SECTION_WAITING_LIST];
-            [dataTableView moveRowAtIndexPath:fromIndexPath toIndexPath:toIndexPath];
+            [self.tableView moveRowAtIndexPath:fromIndexPath toIndexPath:toIndexPath];
             [changedIndexPaths addObject:toIndexPath];
             toIndex++;
         }
         
         for (NSIndexPath *indexPath in selectedIndePaths) {
-            [dataTableView deselectRowAtIndexPath:indexPath animated:YES];
+            [self.tableView deselectRowAtIndexPath:indexPath animated:YES];
         }
         
         [tableAdapter.approveArray removeObjectsInArray:selectedArray];
         [tableAdapter.commitArray insertObjects:selectedArray atIndexes:[NSIndexSet indexSetWithIndexesInRange:NSMakeRange(0, selectedArray.count)]];
-        [dataTableView endUpdates];
+        [self.tableView endUpdates];
         
-        [dataTableView reloadRowsAtIndexPaths:changedIndexPaths withRowAnimation:UITableViewRowAnimationFade];
+        [self.tableView reloadRowsAtIndexPaths:changedIndexPaths withRowAnimation:UITableViewRowAnimationFade];
         
         //准备提交数据
         for (Approve *approve in selectedArray) {
@@ -405,13 +411,13 @@
         [self dismissModalViewControllerAnimated:YES];
     }
     
-    [dataTableView reloadSectionIndexTitles];
+    [self.tableView reloadSectionIndexTitles];
 }
 
 #pragma mark - 提交数据到服务器
 -(IBAction)commitApproveToServer:(id)sender{
 
-    [bottomStatusLabel setText:@"正在处理"];
+    
     if([tableAdapter.commitArray count] != 0){
         
         for (Approve *approve in tableAdapter.commitArray) {
@@ -449,7 +455,7 @@
     
     //删除UI元素
     NSUInteger targetIndex = 0;
-    [dataTableView beginUpdates];
+    [self.tableView beginUpdates];
     for (int i=0; i<tableAdapter.commitArray.count; i++) {
         Approve *currentEntity = [tableAdapter.commitArray objectAtIndex:i];
         if (currentEntity.rowID.intValue == request.tag) {
@@ -458,9 +464,9 @@
             break;
         }
     }
-    [dataTableView deleteRowsAtIndexPaths:[NSArray arrayWithObject:[NSIndexPath indexPathForRow:targetIndex inSection:SECTION_WAITING_LIST]] withRowAnimation:UITableViewRowAnimationFade];
-    [dataTableView endUpdates];
-    [dataTableView reloadSectionIndexTitles];
+    [self.tableView deleteRowsAtIndexPaths:[NSArray arrayWithObject:[NSIndexPath indexPathForRow:targetIndex inSection:SECTION_WAITING_LIST]] withRowAnimation:UITableViewRowAnimationFade];
+    [self.tableView endUpdates];
+    [self.tableView reloadSectionIndexTitles];
     
 }
 
@@ -477,7 +483,7 @@
     NSUInteger targetIndex = 0;
     NSArray *changedIndexPaths = nil;
    
-    [dataTableView beginUpdates];
+    [self.tableView beginUpdates];
     for (int i=0; i<tableAdapter.commitArray.count; i++) {
         Approve *currentEntity = [tableAdapter.commitArray objectAtIndex:i];
         if (currentEntity.rowID.intValue == request.tag) {
@@ -485,29 +491,28 @@
             currentEntity.localStatus = @"ERROR";
             currentEntity.serverMessage = [errorDic objectForKey:ERROR_MESSAGE];
             NSIndexPath *toIndexPath = [NSIndexPath indexPathForRow:0 inSection:SECTION_PROBLEM_LIST];
-            [dataTableView moveRowAtIndexPath:[NSIndexPath indexPathForRow:targetIndex inSection:SECTION_WAITING_LIST] toIndexPath:toIndexPath];
+            [self.tableView moveRowAtIndexPath:[NSIndexPath indexPathForRow:targetIndex inSection:SECTION_WAITING_LIST] toIndexPath:toIndexPath];
             changedIndexPaths = [NSArray arrayWithObject:toIndexPath];
             [tableAdapter.errorArray insertObject:currentEntity atIndex:0];
             [tableAdapter.commitArray removeObject:currentEntity];
             break;
         }
     }
-    [dataTableView endUpdates];
+    [self.tableView endUpdates];
     
-    [dataTableView reloadRowsAtIndexPaths:changedIndexPaths withRowAnimation:UITableViewRowAnimationFade];
-    [dataTableView reloadSectionIndexTitles];
+    [self.tableView reloadRowsAtIndexPaths:changedIndexPaths withRowAnimation:UITableViewRowAnimationFade];
+    [self.tableView reloadSectionIndexTitles];
     
 }
 
 #pragma mark - 提交审批时网络故障
 -(void)commitApproveNetWorkError:(ASIHTTPRequest *)request{   
     NSLog(@"%@",NSStringFromSelector(_cmd));
-    bottomStatusLabel.text = @"网络错误";
-
+    
 }
 
 -(void)commitApproveServerError:(ASIHTTPRequest *)request withDictionary:(NSDictionary *)errorDic{
-    [dataTableView reloadSectionIndexTitles];
+    [self.tableView reloadSectionIndexTitles];
 
 }
 
@@ -540,8 +545,8 @@
     if(recognizer.state == UIGestureRecognizerStateEnded){
         
         if(recognizer.numberOfTouches == 1){
-            CGPoint swipeLocation = [recognizer locationInView:self.dataTableView];
-            NSIndexPath *swipedIndexPath = [self.dataTableView indexPathForRowAtPoint:swipeLocation];
+            CGPoint swipeLocation = [recognizer locationInView:self.tableView];
+            NSIndexPath *swipedIndexPath = [self.tableView indexPathForRowAtPoint:swipeLocation];
             NSUInteger swipedSection = swipedIndexPath.section;
             
             Approve *entity = nil;
@@ -558,11 +563,11 @@
             
             if(success){
                 [tableAdapter.errorArray removeObjectAtIndex:[swipedIndexPath row]];
-                [dataTableView beginUpdates];
-                [dataTableView deleteRowsAtIndexPaths:[NSArray arrayWithObject:swipedIndexPath] withRowAnimation:UITableViewRowAnimationRight];
-                [dataTableView endUpdates];
+                [self.tableView beginUpdates];
+                [self.tableView deleteRowsAtIndexPaths:[NSArray arrayWithObject:swipedIndexPath] withRowAnimation:UITableViewRowAnimationRight];
+                [self.tableView endUpdates];
                 
-                [dataTableView reloadSectionIndexTitles];
+                [self.tableView reloadSectionIndexTitles];
                 
             }
         }else if (recognizer.numberOfTouches == 2) {
@@ -572,10 +577,10 @@
             BOOL isSuccess = [dbHelper.db executeUpdate:sql];
             [dbHelper.db close];
             if(isSuccess){
-                [dataTableView beginUpdates];
+                [self.tableView beginUpdates];
                 [tableAdapter.errorArray removeAllObjects];
-                [dataTableView reloadSections:[NSIndexSet indexSetWithIndex:SECTION_PROBLEM_LIST] withRowAnimation:UITableViewRowAnimationRight];
-                [dataTableView endUpdates];
+                [self.tableView reloadSections:[NSIndexSet indexSetWithIndex:SECTION_PROBLEM_LIST] withRowAnimation:UITableViewRowAnimationRight];
+                [self.tableView endUpdates];
             }
         }else if (recognizer.numberOfTouches ==3) {
             //清除所有数据
@@ -585,14 +590,14 @@
             BOOL isSuccess = [dbHelper.db executeUpdate:sql];
             [dbHelper.db close];
             if(isSuccess){
-                [dataTableView beginUpdates];
+                [self.tableView beginUpdates];
                 [tableAdapter.approveArray removeAllObjects];
                 [tableAdapter.errorArray removeAllObjects];
                 [tableAdapter.commitArray removeAllObjects];
-                [dataTableView reloadSections:[NSIndexSet indexSetWithIndex:SECTION_NORMAL] withRowAnimation:UITableViewRowAnimationRight];
-                [dataTableView reloadSections:[NSIndexSet indexSetWithIndex:SECTION_WAITING_LIST] withRowAnimation:UITableViewRowAnimationRight];
-                [dataTableView reloadSections:[NSIndexSet indexSetWithIndex:SECTION_PROBLEM_LIST] withRowAnimation:UITableViewRowAnimationRight];
-                [dataTableView endUpdates];
+                [self.tableView reloadSections:[NSIndexSet indexSetWithIndex:SECTION_NORMAL] withRowAnimation:UITableViewRowAnimationRight];
+                [self.tableView reloadSections:[NSIndexSet indexSetWithIndex:SECTION_WAITING_LIST] withRowAnimation:UITableViewRowAnimationRight];
+                [self.tableView reloadSections:[NSIndexSet indexSetWithIndex:SECTION_PROBLEM_LIST] withRowAnimation:UITableViewRowAnimationRight];
+                [self.tableView endUpdates];
             }
         }
     }
@@ -633,7 +638,7 @@
     [resultSet close];
     [dbHelper.db close];
 
-    [dataTableView reloadData];
+    [self.tableView reloadData];
     [datas release];
     
     [self updateApplicationBadgeNumber];
@@ -642,7 +647,7 @@
 -(void)addRequestIntoQueueFromCenter{
     ASIHTTPRequest *request = [[HDHTTPRequestCenter shareHTTPRequestCenter] requestWithKey:DETAIL_REQUEST_KEY requestType:HDRequestTypeFormData];
     
-    [dataTableView beginUpdates];
+    [self.tableView beginUpdates];
     NSUInteger fromIndex = 0;
     for (Approve *entity in tableAdapter.approveArray) {
         if (entity.rowID.intValue == request.tag) {//
@@ -652,8 +657,8 @@
             break;
         }
     }
-    [dataTableView moveRowAtIndexPath:[NSIndexPath indexPathForRow:fromIndex inSection:SECTION_NORMAL] toIndexPath:[NSIndexPath indexPathForRow:0 inSection:SECTION_WAITING_LIST]];
-    [dataTableView endUpdates];
+    [self.tableView moveRowAtIndexPath:[NSIndexPath indexPathForRow:fromIndex inSection:SECTION_NORMAL] toIndexPath:[NSIndexPath indexPathForRow:0 inSection:SECTION_WAITING_LIST]];
+    [self.tableView endUpdates];
     
     [self.networkQueue addOperation:request];
     
@@ -667,15 +672,16 @@
 -(void)viewDidLoad{
     [super viewDidLoad];
     
-    loadCount = 1;
     self.title = @"待办事项";
+    
+    self.tabBarItem = [[UITabBarItem alloc]initWithTitle:self.title image:[UIImage imageNamed:@"mailclosed.png"] tag:(50+1)];
     
     //初始化数据库连接
     dbHelper = [[ApproveDatabaseHelper alloc]init];
     
     tableAdapter = [[ApproveTableAdapter alloc]init];
-    [dataTableView setDelegate:self];
-    [dataTableView setDataSource:tableAdapter];
+    [self.tableView setDelegate:self];
+    [self.tableView setDataSource:tableAdapter];
     
     //初始化提交队列
     [self.networkQueue cancelAllOperations];
@@ -701,17 +707,17 @@
     UISwipeGestureRecognizer *removeOneRecordRecognizer = [[[UISwipeGestureRecognizer alloc]initWithTarget:self action:@selector(didSwip:)]autorelease];
     removeOneRecordRecognizer.direction = UISwipeGestureRecognizerDirectionRight;
     removeOneRecordRecognizer.numberOfTouchesRequired = 1;
-    [dataTableView addGestureRecognizer:removeOneRecordRecognizer];
+    [self.tableView addGestureRecognizer:removeOneRecordRecognizer];
     
     UISwipeGestureRecognizer *removeErrorRecordRecognizer = [[[UISwipeGestureRecognizer alloc]initWithTarget:self action:@selector(didSwip:)]autorelease];
     removeErrorRecordRecognizer.direction = UISwipeGestureRecognizerDirectionRight;
     removeErrorRecordRecognizer.numberOfTouchesRequired = 2;
-    [dataTableView addGestureRecognizer:removeErrorRecordRecognizer];
+    [self.tableView addGestureRecognizer:removeErrorRecordRecognizer];
     
     UISwipeGestureRecognizer *removeAllRecordRecognizer = [[[UISwipeGestureRecognizer alloc]initWithTarget:self action:@selector(didSwip:)]autorelease];
     removeAllRecordRecognizer.direction = UISwipeGestureRecognizerDirectionRight;
     removeAllRecordRecognizer.numberOfTouchesRequired = 3;
-    [dataTableView addGestureRecognizer:removeAllRecordRecognizer];
+    [self.tableView addGestureRecognizer:removeAllRecordRecognizer];
     
     //初始化明细页面的审批请求
     HDRequestConfig * requestConfig = [[HDRequestConfig alloc]init];
@@ -740,9 +746,8 @@
     formRequest = nil;
     networkQueue = nil;
     detailController = nil;
-    normalToolbar = nil;
+    
     checkToolBar = nil;
-    dataTableView = nil;
     adoptButton = nil;
     refuseButton = nil;
     opinionView = nil;
@@ -757,14 +762,44 @@
     [networkQueue cancelAllOperations];
     [networkQueue release];
     [detailController release];
-    [normalToolbar release];
     [checkToolBar release];
-    [dataTableView release];
     [adoptButton release];
     [refuseButton release];
     [opinionView release];
     [dbHelper release];
     [super dealloc];
+}
+
+- (void)reloadTableViewDataSource
+{
+    // Should be calling your tableview's model to reload.
+//    [super performSelector:@selector(dataSourceDidFinishLoadingNewData:) withObject:[NSNumber numberWithInt:1] afterDelay:3.0];
+    [self commitApproveToServer:nil];
+}
+
+- (void)dataSourceDidFinishLoadingNewData:(NSNumber *)loadedData
+{
+    // Should check if data reload was successful.
+    if ([loadedData boolValue]) {
+        [refreshHeaderView setCurrentDate];
+        [super dataSourceDidFinishLoadingNewData:nil];
+        [self.tableView reloadData];
+    } else {
+        [super dataSourceDidFinishLoadingNewData:nil];
+        // Present an informative UIAlertView
+        [self dataSourceDidFailPresentingError];
+    }
+}
+
+- (void)dataSourceDidFailPresentingError
+{
+    UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"网络异常"
+                                                        message:@"网络无连接或服务器无响应。\n请稍后再试"
+                                                       delegate:self 
+                                              cancelButtonTitle:@"好" 
+                                              otherButtonTitles:nil];
+    [alertView show];
+    [alertView release];
 }
 
 @end

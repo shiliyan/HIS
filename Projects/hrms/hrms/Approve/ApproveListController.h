@@ -15,6 +15,7 @@
 #import "ApproveTableAdapter.h"
 #import "HDURLCenter.h"
 #import "HDHTTPRequestCenter.h"
+#import "PullToRefreshViewController.h"
 
 static NSString *ACTION_TYPE_ADOPT = @"Y";
 static NSString *ACTION_TYPE_REFUSE = @"N";
@@ -22,17 +23,15 @@ static const NSString *DETAIL_REQUEST_KEY = @"detial_ready_post";
 
 
 
-@interface ApproveListController : UIViewController<UITableViewDelegate,ApproveOpinionViewDelegate>{
+@interface ApproveListController :PullToRefreshViewController <UITableViewDelegate,ApproveOpinionViewDelegate>{
     ApproveTableAdapter *tableAdapter;
-    NSUInteger loadCount;
     
     HDFormDataRequest *formRequest;
     ASINetworkQueue *networkQueue;
+
     
-    UITableView *dataTableView;
-    UIToolbar *normalToolbar;
     UIToolbar *checkToolBar;
-    UILabel *bottomStatusLabel;
+    
     UIBarButtonItem *adoptButton;
     UIBarButtonItem *refuseButton;
     
@@ -46,10 +45,9 @@ static const NSString *DETAIL_REQUEST_KEY = @"detial_ready_post";
 @property (retain, nonatomic) HDFormDataRequest *formRequest;
 @property (retain, nonatomic) ASINetworkQueue *networkQueue;
 @property (retain, nonatomic) ApproveTableAdapter *tableAdapter;
-@property (retain,nonatomic) IBOutlet UITableView *dataTableView;
-@property (retain,nonatomic) IBOutlet UIToolbar *normalToolbar;
+
 @property (retain,nonatomic) IBOutlet UIToolbar *checkToolBar;
-@property (retain,nonatomic) IBOutlet UILabel *bottomStatusLabel;
+
 @property (retain,nonatomic) IBOutlet UIBarButtonItem *adoptButton;
 @property (retain,nonatomic) IBOutlet UIBarButtonItem *refuseButton;
 
