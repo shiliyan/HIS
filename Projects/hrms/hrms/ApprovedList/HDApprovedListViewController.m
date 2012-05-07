@@ -1,0 +1,69 @@
+//
+//  HDApprovedListViewControllerViewController.m
+//  hrms
+//
+//  Created by Rocky Lee on 5/7/12.
+//  Copyright (c) 2012 __MyCompanyName__. All rights reserved.
+//
+
+#import "HDApprovedListViewController.h"
+#import "HDURLCenter.h"
+
+@interface HDApprovedListViewController ()
+
+@end
+
+@implementation HDApprovedListViewController
+
+- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
+{
+    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
+    if (self) {
+        // Custom initialization
+        self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc]initWithBarButtonSystemItem:UIBarButtonSystemItemSearch target:self action:@selector(queryData)];
+        self.title = @"审批完成";
+        self.variableHeightRows = YES;
+
+        _approvedList = [[ApprovedListModel alloc]init];
+        _approvedList.delegate = self;
+    }
+    return self;
+}
+
+-(void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+    [_approvedList loadApprovedList];
+}
+
+-(void)queryData
+{
+    TTAlert(@"弹出模态视图,输入查询条件查询");
+}
+
+-(void)loadSuccess:(NSArray *)dataSet
+{
+    TTListDataSource* dataSource = [[[TTListDataSource alloc] init] autorelease];
+    for (NSDictionary * record in dataSet) {
+        NSString * textContent = [NSString stringWithFormat:@"%@ - %@" ,[record valueForKey:@"status_name"],[record valueForKey:@"curr_approve_name"]];
+        NSString * screenUrl = [NSString stringWithFormat:@"%@?record_id=%@",[HDURLCenter requestURLWithKey:@"APPROVE_SCREEN_BASE_PATH"],[record valueForKey:@" screenName"]];
+        TTDPRINT(@"%@",screenUrl);
+        
+        [dataSource.items addObject:
+         [TTTableMessageItem itemWithTitle:[record valueForKey:@"order_type"] 
+                                   caption:[record valueForKey:@"workflow_name"]
+                                      text:textContent 
+                                 timestamp:nil
+                                  imageURL:nil 
+                                       URL:screenUrl]];
+    }
+    self.dataSource = dataSource;
+}
+
+-(void)loadFailed:(NSString *) errorMessage;
+{
+    TTAlertNoTitle(errorMessage);
+    self.dataSource = [TTListDataSource dataSourceWithObjects:nil];
+}
+
+@end
