@@ -101,6 +101,7 @@
 //加载webView
 -(void)startLoadWebPage
 {
+    TTDPRINT(@"%@",_webPageURL);
     self.webPageRequest = [[HDHTTPRequestCenter shareHTTPRequestCenter] requestWithURL:_webPageURL
                                                                            requestType:ASIRequestTypeWebPage 
                                                                                 forKey:nil];

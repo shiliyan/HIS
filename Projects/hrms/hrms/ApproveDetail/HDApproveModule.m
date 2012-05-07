@@ -23,9 +23,9 @@
 
 -(id) initWithApprove:(Approve *) approve
 {
-    NSString * screenUrl = [[[NSString alloc]initWithFormat:@"%@?record_id=%@",[HDURLCenter requestURLWithKey:@"APPROVE_SCREEN_BASE_PATH"],[approve screenName],[approve recordID]]autorelease];
-    NSLog(@"%@,screenUrl",screenUrl);
-    self = [super initWithWebPageURL:screenUrl];
+     NSString * webPageURL = [NSString stringWithFormat:@"%@?%@=%@&%@=%@",[HDURLCenter requestURLWithKey:@"APPROVE_DETIAL_WEB_PAGE_PATH"],APPROVE_PROPERTY_SCREEN_NAME,approve.screenName,APPROVE_PROPERTY_INSTANCE_ID,approve.instanceId];
+
+    self = [super initWithWebPageURL:webPageURL];
     if (self) {
         self.approveEntity = approve;
     }
@@ -52,12 +52,6 @@
     return [HDURLCenter requestURLWithKey:@"TOOLBAR_ACTION_QUERY_PATH"];
 }
 
--(void)beforeLoadWebPage:(ASIWebPageRequest *)webPageRequest
-{
-    NSString * webPageURL = [NSString stringWithFormat:@"%@?%@=%@&%@=%@",[HDURLCenter requestURLWithKey:@"APPROVE_DETIAL_WEB_PAGE_PATH"],APPROVE_PROPERTY_SCREEN_NAME,_approveEntity.screenName,APPROVE_PROPERTY_INSTANCE_ID,_approveEntity.instanceId];
-    TTDPRINT(@"%@",webPageURL);
-    [webPageRequest setURL:[NSURL URLWithString:webPageURL]];
-}
 
 -(void)startLoad
 {
