@@ -23,7 +23,7 @@
 
 -(id) initWithApprove:(Approve *) approve
 {
-     NSString * webPageURL = [NSString stringWithFormat:@"%@?%@=%@&%@=%@",[HDURLCenter requestURLWithKey:@"APPROVE_DETIAL_WEB_PAGE_PATH"],APPROVE_PROPERTY_SCREEN_NAME,approve.screenName,APPROVE_PROPERTY_INSTANCE_ID,approve.instanceId];
+     NSString * webPageURL = [NSString stringWithFormat:@"%@?%@=%@&%@=%@",[HDURLCenter requestURLWithKey:@"APPROVE_DETIAL_WEB_PAGE_PATH"],APPROVE_PROPERTY_SCREEN_NAME,approve.docPageUrl,APPROVE_PROPERTY_INSTANCE_ID,approve.instanceId];
 
     self = [super initWithWebPageURL:webPageURL];
     if (self) {
