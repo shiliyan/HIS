@@ -9,6 +9,7 @@
 #import "ApproveListCell.h"
 
 @implementation ApproveListCell
+@synthesize cellData = _cellData;
 
 - (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier
 {
@@ -85,38 +86,49 @@
 }
 
 -(void)setCellData:(Approve *)approveEntity{
+    [_cellData release];
+    _cellData = [approveEntity retain];
+    self.layer.backgroundColor = [UIColor clearColor].CGColor;
     
-    workflowNameLabel.text = [NSString stringWithFormat:@"%@：%@",approveEntity.orderType,approveEntity.employeeName];
+    workflowNameLabel.text = [NSString stringWithFormat:@"%@：%@",_cellData.orderType,_cellData.employeeName];
     
-    commitDateTextView.text = [approveEntity.creationDate substringToIndex:10];
-    deadLineTextView.text = approveEntity.instanceDesc;
+    commitDateTextView.text = [_cellData.creationDate substringToIndex:10];
+    deadLineTextView.text = _cellData.instanceDesc;
     
-    if (approveEntity.isLate.intValue == 0) {
+    if (_cellData.isLate.intValue == 0) {
         workflowNameLabel.textColor = [UIColor blackColor];
     }else {
         workflowNameLabel.textColor = [UIColor redColor];
     }
     
-    if ([approveEntity.localStatus isEqualToString:@"DIFFERENT"]){
+    if ([_cellData.localStatus isEqualToString:@"DIFFERENT"]){
         typeImg.image = [UIImage imageNamed:@"alert.png"];
         alertBackgroundView.backgroundColor = [UIColor colorWithRed:(255/255) green:(255/255) blue:(0/255) alpha:0.2f];
         typeImg.hidden = NO;
         alertBackgroundView.hidden = NO;
-        currentStatusTextView.text = approveEntity.serverMessage;
-    }else if([approveEntity.localStatus isEqualToString:@"ERROR"]){
+        currentStatusTextView.text = _cellData.serverMessage;
+    }else if([_cellData.localStatus isEqualToString:@"ERROR"]){
         typeImg.image = [UIImage imageNamed:@"error.png"];
         alertBackgroundView.backgroundColor = [UIColor colorWithRed:(255/255) green:(0/255) blue:(0/255) alpha:0.2f];
         typeImg.hidden = NO;
         alertBackgroundView.hidden = NO;
-        currentStatusTextView.text = approveEntity.serverMessage;
-    }else{
+        currentStatusTextView.text = _cellData.serverMessage;
+    }else if ([_cellData.localStatus isEqualToString:@"WAITING"]){
+        typeImg.image = [UIImage imageNamed:@"error.png"];
+        alertBackgroundView.backgroundColor = [UIColor colorWithRed:(255/255) green:(255/255) blue:(255/255) alpha:0.2f];
+        typeImg.hidden = NO;
+        alertBackgroundView.hidden = NO;
+        currentStatusTextView.text = @"等待提交中";
+    
+    } else{
         typeImg.hidden = YES;
         alertBackgroundView.hidden = YES;
-        currentStatusTextView.text = [NSString stringWithFormat:@"当前节点：%@",approveEntity.nodeName];
+        currentStatusTextView.text = [NSString stringWithFormat:@"当前节点：%@",_cellData.nodeName];
     }
 }
 
 -(void)dealloc{
+    [_cellData release];
     [workflowNameLabel release];
     [currentStatusTextView release];
     [commitDateTextView release];

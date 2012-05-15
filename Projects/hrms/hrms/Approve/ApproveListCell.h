@@ -32,7 +32,11 @@ static const int const TAG_TYPEIMG_IMAGEVIEW = 6;
     UILabel *deadLineTextView;
     UIImageView *typeImg;
     
+    Approve *_cellData;
 }
 
+@property (retain,nonatomic) Approve *cellData;
+
 -(void)setCellData:(Approve *)approveEntity;
+
 @end
