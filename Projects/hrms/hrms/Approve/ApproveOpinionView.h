@@ -7,7 +7,8 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "ApproveOpinionViewDelegate.h"
+
+@protocol ApproveOpinionViewDelegate;
 
 static const int RESULT_OK = 1;
 static const int RESULT_CANCEL = 2;
@@ -32,3 +33,10 @@ static const int RESULT_CANCEL = 2;
 
 @end
 
+
+@protocol ApproveOpinionViewDelegate <NSObject>
+
+@required
+-(void)ApproveOpinionViewDismissed:(int)resultCode messageDictionary:(NSDictionary *)dictionary;
+
+@end
