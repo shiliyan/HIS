@@ -78,9 +78,7 @@
                   comment:(NSString *)cmt
                actionType:(NSString *)aType 
             serverMessage:(NSString *)sMessage
-                submitUrl:(NSString *)url 
-               statusName:(NSString *)sName
-             workflowName:(NSString *)wfName{
+                submitUrl:(NSString *)url{
     
     if (self = [super init]){
         self.rowID = rowid;
@@ -103,9 +101,6 @@
         self.nodeId = nId;
         self.instanceId = insId;
         self.instanceParam = insParam;
-        self.statusName = sName;
-        self.workflowName = wfName;
-
     }
     
     return self;

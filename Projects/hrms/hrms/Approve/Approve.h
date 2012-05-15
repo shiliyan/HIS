@@ -101,9 +101,7 @@ static NSString *APPROVE_PROPERTY_WORKFLOW_NAME  =@"workflow_name";
                   comment:(NSString *)cmt
                actionType:(NSString *)aType 
             serverMessage:(NSString *)sMessage
-                submitUrl:(NSString *)url 
-               statusName:(NSString *)sName
-             workflowName:(NSString *)wfName;
+                submitUrl:(NSString *)url;
 
 -(Approve *)initWithDictionary:(NSDictionary *)dic;
 @end
