@@ -19,6 +19,7 @@
 
 #import "UIViewController+HttpRequestHelper.h"
 #import "HDFormDataRequest.h"
+#import "HDBeanFactoryFromXML.h"
 
 //导入FMDB
 #import "FMDatabase.h"
