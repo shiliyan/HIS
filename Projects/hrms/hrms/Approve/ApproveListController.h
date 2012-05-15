@@ -9,7 +9,6 @@
 #import <UIKit/UIKit.h>
 #import "ApproveListDetailController.h"
 #import "ApproveOpinionView.h"
-#import "ApproveOpinionViewDelegate.h"
 #import "ApproveDatabaseHelper.h"
 #import "ASINetworkQueue.h"
 #import "ApproveTableAdapter.h"
@@ -23,35 +22,43 @@ static const NSString *DETAIL_REQUEST_KEY = @"detial_ready_post";
 
 
 
-@interface ApproveListController :PullToRefreshViewController <UITableViewDelegate,ApproveOpinionViewDelegate>{
-    ApproveTableAdapter *tableAdapter;
+@interface ApproveListController :PullToRefreshViewController <UITableViewDelegate,ApproveOpinionViewDelegate,UISearchBarDelegate>{
+    ApproveTableAdapter *_tableAdapter;
     
-    HDFormDataRequest *formRequest;
-    ASINetworkQueue *networkQueue;
+    HDFormDataRequest *_formRequest;
+    ASINetworkQueue *_networkQueue;
 
     
-    UIToolbar *checkToolBar;
+    UIToolbar *_checkToolBar;
     
-    UIBarButtonItem *adoptButton;
-    UIBarButtonItem *refuseButton;
+    UIBarButtonItem *_adoptButton;
+    UIBarButtonItem *_refuseButton;
+    UIView *_searchCoverView;
     
-    ApproveDatabaseHelper *dbHelper;
+    ApproveDatabaseHelper *_dbHelper;
     
-    ApproveListDetailController *detailController;
-    ApproveOpinionView *opinionView;
+    ApproveListDetailController *_detailController;
+    ApproveOpinionView *_opinionView;
+    
+    NSMutableArray *_animationCells;
+    
+    NSTimer *_timer;
+    BOOL _inSearchStatus;
 }
 
 @property (retain, nonatomic) ApproveListDetailController *detailController;
 @property (retain, nonatomic) HDFormDataRequest *formRequest;
 @property (retain, nonatomic) ASINetworkQueue *networkQueue;
 @property (retain, nonatomic) ApproveTableAdapter *tableAdapter;
+@property (readonly,nonatomic) NSMutableArray *animationCells;
 
 @property (retain,nonatomic) IBOutlet UIToolbar *checkToolBar;
 
 @property (retain,nonatomic) IBOutlet UIBarButtonItem *adoptButton;
 @property (retain,nonatomic) IBOutlet UIBarButtonItem *refuseButton;
+@property (retain,nonatomic) IBOutlet UIView *searchCoverView;
 
--(IBAction)commitApproveToServer:(id)sender;
+-(void)commitApproveToServer;
 
 //审批动作
 -(IBAction)doAction:(id)sender;

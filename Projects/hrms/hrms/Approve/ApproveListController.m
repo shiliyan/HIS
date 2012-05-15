@@ -10,6 +10,7 @@
 #import "Approve.h"
 #import "ApproveListCell.h"
 
+
 @interface ApproveListController()
 //
 -(void)toggleTabelViewEdit:(id)sender;
@@ -27,6 +28,8 @@
 
 -(void)updateApplicationBadgeNumber;
 
+-(void)searchRecords:(NSString *)keyword;
+
 //将审批数据提交到服务器
 
 -(void)commitApproveSuccess:(ASIHTTPRequest *)request withDataSet:(NSArray *)dataset;
@@ -36,20 +39,29 @@
 -(void)commitApproveNetWorkError:(ASIHTTPRequest *)request;
 -(void)commitRequestQueueFinished:(ASINetworkQueue *)queue;
 
+-(void)_showCellAnimation;
+-(void)_startCellWarningAnimation;
+
 @end
 
 @implementation ApproveListController
 
-@synthesize detailController;
-@synthesize formRequest;
-@synthesize networkQueue;
+@synthesize detailController = _detailController;
+@synthesize formRequest = _formRequest;
+@synthesize networkQueue = _networkQueue;
+@synthesize tableAdapter= _tableAdapter;
+@synthesize animationCells = _animationCells;
 
-@synthesize tableAdapter;
+@synthesize checkToolBar = _checkToolBar;
 
-@synthesize checkToolBar;
+@synthesize adoptButton = _adoptButton;
+@synthesize refuseButton = _refuseButton;
+@synthesize searchCoverView = _searchCoverView;
 
-@synthesize adoptButton;
-@synthesize refuseButton;
+-(id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil{
+    self = [super initWithNibName:@"ApproveListController" bundle:nil];
+    return self;
+}
 
 #pragma mark - 覆盖 tableView 方法
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
@@ -57,26 +69,18 @@
 }
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
-    NSUInteger section = [indexPath section];
     NSUInteger row = [indexPath row];
     if (tableView.isEditing){
         NSArray *selectedIndexPaths = [tableView indexPathsForSelectedRows];
-        adoptButton.title = [NSString stringWithFormat:@"通过 (%i)",[selectedIndexPaths count]];
-        refuseButton.title = [NSString stringWithFormat:@"拒绝 (%i)",[selectedIndexPaths count]];
+        _adoptButton.title = [NSString stringWithFormat:@"通过 (%i)",[selectedIndexPaths count]];
+        _refuseButton.title = [NSString stringWithFormat:@"拒绝 (%i)",[selectedIndexPaths count]];
         
         if ([selectedIndexPaths count]>0){
-            adoptButton.enabled = YES;
-            refuseButton.enabled = YES;
+            _adoptButton.enabled = YES;
+            _refuseButton.enabled = YES;
         }
     }else{
-        Approve *data =nil;
-        if(section == SECTION_NORMAL){
-            data = [tableAdapter.approveArray objectAtIndex:row];
-        }else if (section == SECTION_WAITING_LIST){
-            data = [tableAdapter.commitArray objectAtIndex:row];
-        }else if(section == SECTION_PROBLEM_LIST){
-            data = [tableAdapter.errorArray objectAtIndex:row];
-        }
+        Approve *data = [_tableAdapter.approveArray objectAtIndex:row];
 
         NSString * theURL = [NSString stringWithFormat:@"tt://approve_detail/Detail"];
         NSDictionary * dataInfo = [NSDictionary dictionaryWithObject:data forKey:@"data"];
@@ -92,12 +96,12 @@
     if(tableView.isEditing){
         NSArray *selectedIndexPaths = [tableView indexPathsForSelectedRows];
         
-        adoptButton.title = [NSString stringWithFormat:@"通过 (%i)",[selectedIndexPaths count]];
-        refuseButton.title = [NSString stringWithFormat:@"拒绝 (%i)",[selectedIndexPaths count]];
+        _adoptButton.title = [NSString stringWithFormat:@"通过 (%i)",[selectedIndexPaths count]];
+        _refuseButton.title = [NSString stringWithFormat:@"拒绝 (%i)",[selectedIndexPaths count]];
         
         if ([selectedIndexPaths count] == 0){
-            adoptButton.enabled = NO;
-            refuseButton.enabled = NO;
+            _adoptButton.enabled = NO;
+            _refuseButton.enabled = NO;
         }
     }
 }
@@ -107,17 +111,54 @@
         return UITableViewCellEditingStyleDelete|UITableViewCellEditingStyleInsert;
 }
 
+-(void)_showCellAnimation{
+    if ((self.animationCells == nil) || (self.animationCells.count == 0)) {
+        return;
+    }
+    UITableViewCell *cell = [self.animationCells objectAtIndex:0];
+    CALayer *layer = cell.layer;
+    [UIView animateWithDuration:0.2f animations:^{
+        layer.affineTransform = CGAffineTransformMakeScale(1.15, 1.15);
+        layer.affineTransform = CGAffineTransformIdentity; 
+    }];
+    [self.animationCells removeObjectAtIndex:0];
+    
+    if (self.animationCells.count == 0) {
+        [_timer invalidate];
+        [_timer release];
+        _timer = nil;
+    }
+}
+
+-(void)_startCellWarningAnimation{
+    
+    if (!_timer){
+        
+        for (ApproveListCell *cell in self.tableView.visibleCells) {
+            if ([cell.cellData.localStatus isEqualToString:@"DIFFERENT"]||[cell.cellData.localStatus isEqualToString:@"ERROR"]) {
+                [self.animationCells addObject:cell];
+            }
+        }
+        
+        SEL selector = @selector(_showCellAnimation);
+        
+        // Adding timer to runloop to make sure UI event won't block the timer from firing
+        _timer = [[NSTimer timerWithTimeInterval:0.1f target:self selector:selector userInfo:nil repeats:YES] retain];
+        [[NSRunLoop currentRunLoop] addTimer:_timer forMode:NSRunLoopCommonModes];
+    }
+}
+
 -(void)toggleTabelViewEdit:(id)sender{
     
     [self.tableView setEditing:!self.tableView.editing animated:YES];
     if (self.tableView.editing){
         [self.navigationItem.rightBarButtonItem setTitle:@"取消"];
         
-        adoptButton.enabled = NO;
-        refuseButton.enabled = NO;
+        _adoptButton.enabled = NO;
+        _refuseButton.enabled = NO;
         
-        adoptButton.title = @"通过";
-        refuseButton.title = @"拒绝";
+        _adoptButton.title = @"通过";
+        _refuseButton.title = @"拒绝";
         
         [UIView animateWithDuration:0.25f animations:^{
             CALayer *tooBarLayer = self.checkToolBar.layer;
@@ -128,7 +169,7 @@
     }
     else{
         [self.navigationItem.rightBarButtonItem setTitle:@"批量"];
-        [checkToolBar resignFirstResponder];
+        [_checkToolBar resignFirstResponder];
         
         [UIView animateWithDuration:0.25f animations:^{
             CALayer *tooBarLayer = self.checkToolBar.layer;
@@ -143,77 +184,71 @@
 // TODO: 编写失败和网络连接错误的回调
 #pragma mark - 刷新数据
 -(void)refreshTable{
+    if (_inSearchStatus) {
+        //搜索状态不允许刷新数据
+        return;
+    }
+    
     // 获取最新的待办列表
-    //暂时注视
     self.formRequest  = [HDFormDataRequest hdRequestWithURL:[HDURLCenter requestURLWithKey:@"APPROVE_TABLE_QUERY_URL"] pattern:HDrequestPatternNormal];
     
-    [formRequest setDelegate:self];
-    [formRequest setSuccessSelector:@selector(querySuccess:withDataSet:)];
-    [formRequest setErrorSelector:@selector(queryFailed)];
-    [formRequest setFailedSelector:@selector(queryFailed)];
-    [formRequest setServerErrorSelector:@selector(queryFailed)];
-    [formRequest startAsynchronous];
+    [_formRequest setDelegate:self];
+    [_formRequest setSuccessSelector:@selector(querySuccess:withDataSet:)];
+    [_formRequest setErrorSelector:@selector(queryFailed)];
+    [_formRequest setFailedSelector:@selector(queryFailed)];
+    [_formRequest setServerErrorSelector:@selector(queryFailed)];
+    [_formRequest startAsynchronous];
 }
 
 
 #pragma mark - 从服务器端取数据成功
 //从服务器端取数据成功
 -(void)querySuccess:(ASIFormDataRequest *)request withDataSet:(NSMutableArray *)dataset{
-
+    
+    HDBeanFactoryFromXML *factory = [HDBeanFactoryFromXML shareBeanFactory];
+    
     //responseArray，返回数据解析后存放
     NSMutableArray *responseArray =[[NSMutableArray alloc]init];
     NSMutableArray *tempArray = [NSMutableArray array];
     for (NSMutableDictionary *record in dataset) {
-        Approve *responseEntity = [[Approve alloc]initWithDictionary:record];
+        Approve *responseEntity = [factory getBeanWithDic:record path:@"/service/field-mappings/field-mapping[@url_name='APPROVE_TABLE_QUERY_URL']"];
+        
         [responseEntity setLocalStatus:@"NORMAL"];
         [responseArray addObject:responseEntity];
         
         BOOL foundTheSame = false;
         
-        for (Approve *localEntity in tableAdapter.approveArray) {
-            if ([localEntity.recordID isEqualToNumber:responseEntity.recordID] ) {
+        for (Approve *localEntity in _tableAdapter.approveArray) {
+            if ([localEntity.recordID isEqualToNumber:responseEntity.recordID]) {
                 foundTheSame = true;
                 break;
             }
         }
         
-        //说明在本地待办中没有找到recordId相同的项
-        if (!foundTheSame) {
-            for (Approve *localWaitingEntity in tableAdapter.commitArray) {
-                if ([localWaitingEntity.recordID isEqualToNumber:responseEntity.recordID] ) {
-                    foundTheSame = true;
-                    break;
-                }
-            }
-        }
-        
-        if (foundTheSame) {
-            //在返回的数据中找到了和本地待办中相同的记录，说明本地数据没问题
-        }else{
+        if (!foundTheSame){
             //在返回的数据中没有找到和本地待办相同的记录，插入本地
             [tempArray addObject:responseEntity];
         }
-        [responseEntity release];
     }
     
     //新增数据插表
-    [dbHelper.db open];
+    [_dbHelper.db open];
     for (Approve *approve in tempArray) {
 //        NSLog(@"%@",tempArray);
-        NSString *sql = [NSString stringWithFormat:@"insert into %@ (%@,%@,%@,%@,%@,%@,%@,%@,%@,%@,%@,%@,%@,%@) values ('%@','%@','%@','%@','%@','%@','%@','%@','%@','%@','%@','%@','%@','%@')",TABLE_NAME_APPROVE_LIST,APPROVE_PROPERTY_WORKFLOW_ID,APPROVE_PROPERTY_RECORD_ID,APPROVE_PROPERTY_ORDER_TYPE,APPROVE_PROPERTY_INSTANCE_DESC,APPROVE_PROPERTY_NODE_NAME,APPROVE_PROPERTY_EMPLOYEE_NAME,APPROVE_PROPERTY_CREATION_DATE,APPROVE_PROPERTY_DATE_LIMIT,APPROVE_PROPERTY_IS_LATE,APPROVE_PROPERTY_LOCAL_STATUS,APPROVE_PROPERTY_SCREEN_NAME,APPROVE_PROPERTY_NODE_ID,APPROVE_PROPERTY_INSTANCE_ID,APPROVE_PROPERTY_INSTANCE_PARAM,approve.workflowID,approve.recordID,approve.orderType,approve.instanceDesc,approve.nodeName,approve.employeeName,approve.creationDate,approve.dateLimit,approve.isLate,approve.localStatus,approve.screenName,approve.nodeId,approve.instanceId,approve.instanceParam];
-        [dbHelper.db executeUpdate:sql];
+        NSString *sql = [NSString stringWithFormat:@"insert into %@ (%@,%@,%@,%@,%@,%@,%@,%@,%@,%@,%@,%@,%@,%@) values ('%@','%@','%@','%@','%@','%@','%@','%@','%@','%@','%@','%@','%@','%@')",TABLE_NAME_APPROVE_LIST,APPROVE_PROPERTY_WORKFLOW_ID,APPROVE_PROPERTY_RECORD_ID,APPROVE_PROPERTY_ORDER_TYPE,APPROVE_PROPERTY_INSTANCE_DESC,APPROVE_PROPERTY_NODE_NAME,APPROVE_PROPERTY_EMPLOYEE_NAME,APPROVE_PROPERTY_CREATION_DATE,APPROVE_PROPERTY_DATE_LIMIT,APPROVE_PROPERTY_IS_LATE,APPROVE_PROPERTY_LOCAL_STATUS,APPROVE_PROPERTY_SCREEN_NAME,APPROVE_PROPERTY_NODE_ID,APPROVE_PROPERTY_INSTANCE_ID,APPROVE_PROPERTY_INSTANCE_PARAM,approve.workflowID,approve.recordID,approve.orderType,approve.instanceDesc,approve.nodeName,approve.employeeName,approve.creationDate,approve.dateLimit,approve.isLate,approve.localStatus,approve.docPageUrl,approve.nodeId,approve.instanceId,approve.instanceParam];
+        [_dbHelper.db executeUpdate:sql];
         
-        approve.rowID = [NSNumber numberWithInt:sqlite3_last_insert_rowid([dbHelper.db sqliteHandle])] ;
+        approve.rowID = [NSNumber numberWithInt:sqlite3_last_insert_rowid([_dbHelper.db sqliteHandle])] ;
         
     }
-    [dbHelper.db close];
+    [_dbHelper.db close];
     
     
     NSMutableArray *newIndexPaths = [NSMutableArray array];
 //    NSLog(@"new temp: %@",tempArray);
     [self.tableView beginUpdates];
     //插入待审批数据源（因为本地缺少的数据只可能是新数据，所以不用比较，直接从列表前段插入）
-    [tableAdapter.approveArray insertObjects:tempArray atIndexes:[NSIndexSet indexSetWithIndexesInRange:NSMakeRange(0, [tempArray count])]];
+    [_tableAdapter.approveArray insertObjects:tempArray atIndexes:[NSIndexSet indexSetWithIndexesInRange:NSMakeRange(0, [tempArray count])]];
     //生成新的indexPaths
     for (int i=0; i<tempArray.count; i++) {
         [newIndexPaths addObject:[NSIndexPath indexPathForRow:i inSection:SECTION_NORMAL]];
@@ -223,7 +258,7 @@
     
     //查找本地有差异的数据
     [tempArray removeAllObjects];
-    for (Approve *localEntity in tableAdapter.approveArray) {
+    for (Approve *localEntity in _tableAdapter.approveArray) {
         BOOL foundTheSame = false;
         for (Approve *responseEntity in responseArray) {
             if ([localEntity.recordID isEqualToNumber:responseEntity.recordID] ) {
@@ -241,41 +276,35 @@
         }
     }
     
-    //移动UI行
-    NSUInteger beginIndex = 0;
+    // TODO: 做差异数据动画
     NSMutableArray *reloadIndexes = [NSMutableArray array];
-    [self.tableView beginUpdates];
     for (Approve *differentEntity in tempArray) {
-        NSUInteger fromIndex = [tableAdapter.approveArray indexOfObject:differentEntity];
-        NSIndexPath *toIndexPath = [NSIndexPath indexPathForRow:beginIndex inSection:SECTION_PROBLEM_LIST];
-        [self.tableView moveRowAtIndexPath:[NSIndexPath indexPathForRow:fromIndex inSection:SECTION_NORMAL] toIndexPath:toIndexPath];
-        [reloadIndexes addObject:toIndexPath];
-        beginIndex++;
+        NSUInteger fromIndex = [_tableAdapter.approveArray indexOfObject:differentEntity];
+        NSIndexPath *reloadIndex = [NSIndexPath indexPathForRow:fromIndex inSection:SECTION_NORMAL];
+        [reloadIndexes addObject:reloadIndex];
     }
-    [tableAdapter.approveArray removeObjectsInArray:tempArray];
-    [tableAdapter.errorArray insertObjects:tempArray atIndexes:[NSIndexSet indexSetWithIndexesInRange:NSMakeRange(0, tempArray.count)]];
-    [self.tableView endUpdates];
-    [self.tableView reloadRowsAtIndexPaths:reloadIndexes withRowAnimation:UITableViewRowAnimationNone];
+    [self.tableView reloadRowsAtIndexPaths:reloadIndexes withRowAnimation:UITableViewRowAnimationFade];
     
-    [dbHelper.db open];
+    [self _startCellWarningAnimation];
+    
+
+    [_dbHelper.db open];
     //将有差异的数据存表
     for (Approve *entity in tempArray) {
-        [dbHelper.db executeUpdate:[NSString stringWithFormat:@"update %@ set %@ = '%@',%@ = '%@' where %@ = '%@'",TABLE_NAME_APPROVE_LIST,APPROVE_PROPERTY_LOCAL_STATUS,entity.localStatus,APPROVE_PROPERTY_SERVER_MESSAGE,entity.serverMessage,@"rowid",entity.rowID]];
+        [_dbHelper.db executeUpdate:[NSString stringWithFormat:@"update %@ set %@ = '%@',%@ = '%@' where %@ = '%@'",TABLE_NAME_APPROVE_LIST,APPROVE_PROPERTY_LOCAL_STATUS,entity.localStatus,APPROVE_PROPERTY_SERVER_MESSAGE,entity.serverMessage,@"rowid",entity.rowID]];
     }
-    [dbHelper.db close];
+    [_dbHelper.db close];
 
     [responseArray release];
     //更新提示数字
     [self updateApplicationBadgeNumber];
+    
     //通知下拉刷新UI，结束显示
-    [super performSelector:@selector(dataSourceDidFinishLoadingNewData:) withObject:[NSNumber numberWithInt:1] afterDelay:1.0];
+    [self performSelector:@selector(dataSourceDidFinishLoadingNewData:) withObject:[NSNumber numberWithInt:1] afterDelay:1.0];
 }
 
 -(void)queryFailed{
-//    UIAlertView *alert = [[UIAlertView alloc]initWithTitle:@"提示" message:@"网络无连接或服务器无响应" delegate:self cancelButtonTitle:@"好" otherButtonTitles:nil, nil];
-//    [alert show];
-//    [alert release];
-    [super performSelector:@selector(dataSourceDidFinishLoadingNewData:) withObject:[NSNumber numberWithInt:0] afterDelay:1.0];
+    [self performSelector:@selector(dataSourceDidFinishLoadingNewData:) withObject:[NSNumber numberWithInt:0] afterDelay:1.0];
     
 }
 
@@ -294,10 +323,10 @@
     if(resultCode == RESULT_OK){
         [self.networkQueue cancelAllOperations];
         
-        adoptButton.title = @"通过";
-        refuseButton.title = @"拒绝";
-        adoptButton.enabled = NO;
-        refuseButton.enabled = NO;
+        _adoptButton.title = @"通过";
+        _refuseButton.title = @"拒绝";
+        _adoptButton.enabled = NO;
+        _refuseButton.enabled = NO;
         
         [self dismissModalViewControllerAnimated:YES];
         
@@ -312,77 +341,60 @@
         NSString *submitUrl = [HDURLCenter requestURLWithKey:@"APPROVE_TABLE_BATCH_COMMIT"];
         NSString *localStatus = @"WAITING";
         
-        //修改approveList中的数据
-//        for (int i = 0; i < selectedArray.count; i++) {
-//            Approve *selectedEntity = selectedEntity = [selectedArray objectAtIndex:i];
-//            selectedEntity.action = action;
-//            selectedEntity.comment = comment;
-//            selectedEntity.submitUrl = submitUrl;
-//            selectedEntity.localStatus = localStatus;
-//            for (int j = 0; j < tableAdapter.approveArray.count; j++) {
-//                Approve *approveEntity = [tableAdapter.approveArray objectAtIndex:j];
-//                if([selectedEntity.rowID isEqualToNumber:approveEntity.rowID] ){
-//                    approveEntity.action = action;
-//                    approveEntity.comment = comment;
-//                    approveEntity.submitUrl = submitUrl;
-//                    approveEntity.localStatus = localStatus;
-//                    break;
-//                }
-//            }
-//        }
+        
         NSArray *selectedIndePaths = [self.tableView indexPathsForSelectedRows];
         NSMutableArray *selectedArray = [NSMutableArray array];
-        [dbHelper.db open];
+        [_dbHelper.db open];
         for (NSIndexPath *indexPath in selectedIndePaths) {
             NSUInteger row = [indexPath row];
-            Approve *entity = [tableAdapter.approveArray objectAtIndex:row];
+            Approve *entity = [_tableAdapter.approveArray objectAtIndex:row];
             entity.action = action;
             entity.comment = comment;
             entity.submitUrl = submitUrl;
             entity.localStatus = localStatus;
             NSString *sql = [NSString stringWithFormat:@"update %@ set %@ = '%@',%@ = '%@',%@ = '%@',%@ = '%@' where %@ = '%@'",TABLE_NAME_APPROVE_LIST,APPROVE_PROPERTY_COMMENT,comment,APPROVE_PROPERTY_APPROVE_ACTION,action,APPROVE_PROPERTY_LOCAL_STATUS,localStatus,APPROVE_PROPERTY_SUBMIT_URL,submitUrl,@"rowid",entity.rowID];
-            [dbHelper.db executeUpdate:sql];
+            [_dbHelper.db executeUpdate:sql];
             [selectedArray addObject:entity];
         }
-        [dbHelper.db close];
+        [_dbHelper.db close];
         
         
-//        //移动UI，从待审批到等待提交
+        
+        //移动UI，从待审批到等待提交
 //        NSUInteger toIndex = 0;
 //        NSMutableArray *changedIndexPaths = [NSMutableArray arrayWithCapacity:selectedIndePaths.count];
-//        [dataTableView beginUpdates];
-//        for (Approve *selectedEntity in selectedArray) {
-//            NSUInteger fromIndex = [tableAdapter.approveArray indexOfObject:selectedEntity];
-//            NSIndexPath *fromIndexPath = [NSIndexPath indexPathForRow:fromIndex inSection:SECTION_NORMAL];
+//        [self.tableView beginUpdates];
+//        for (NSIndexPath *fromIndexPath in selectedIndePaths) {
+//            
+//            
 //            NSIndexPath *toIndexPath = [NSIndexPath indexPathForRow:toIndex inSection:SECTION_WAITING_LIST];
-//            [dataTableView deselectRowAtIndexPath:fromIndexPath animated:YES];
-//            [dataTableView moveRowAtIndexPath:fromIndexPath toIndexPath:toIndexPath];
+//            [self.tableView moveRowAtIndexPath:fromIndexPath toIndexPath:toIndexPath];
 //            [changedIndexPaths addObject:toIndexPath];
 //            toIndex++;
 //        }
-        
-        //移动UI，从待审批到等待提交
-        NSUInteger toIndex = 0;
-        NSMutableArray *changedIndexPaths = [NSMutableArray arrayWithCapacity:selectedIndePaths.count];
-        [self.tableView beginUpdates];
-        for (NSIndexPath *fromIndexPath in selectedIndePaths) {
-            
-            
-            NSIndexPath *toIndexPath = [NSIndexPath indexPathForRow:toIndex inSection:SECTION_WAITING_LIST];
-            [self.tableView moveRowAtIndexPath:fromIndexPath toIndexPath:toIndexPath];
-            [changedIndexPaths addObject:toIndexPath];
-            toIndex++;
-        }
-        
+//        
+//        for (NSIndexPath *indexPath in selectedIndePaths) {
+//            [self.tableView deselectRowAtIndexPath:indexPath animated:YES];
+//        }
+//        
+//        [tableAdapter.approveArray removeObjectsInArray:selectedArray];
+//        [tableAdapter.commitArray insertObjects:selectedArray atIndexes:[NSIndexSet indexSetWithIndexesInRange:NSMakeRange(0, selectedArray.count)]];
+//        [self.tableView endUpdates];
+//        
+//        [self.tableView reloadRowsAtIndexPaths:changedIndexPaths withRowAnimation:UITableViewRowAnimationFade];
+        // TODO: 编写动画
+//        [self.tableView beginUpdates];
+//        
+//        for (NSIndexPath *indexPath in selectedIndePaths) {
+//            [self.tableView deselectRowAtIndexPath:indexPath animated:YES];
+//        }
+//        
+//        [self.tableView endUpdates];
+        [self.tableView reloadRowsAtIndexPaths:selectedIndePaths withRowAnimation:UITableViewRowAnimationFade];
         for (NSIndexPath *indexPath in selectedIndePaths) {
             [self.tableView deselectRowAtIndexPath:indexPath animated:YES];
         }
         
-        [tableAdapter.approveArray removeObjectsInArray:selectedArray];
-        [tableAdapter.commitArray insertObjects:selectedArray atIndexes:[NSIndexSet indexSetWithIndexesInRange:NSMakeRange(0, selectedArray.count)]];
-        [self.tableView endUpdates];
-        
-        [self.tableView reloadRowsAtIndexPaths:changedIndexPaths withRowAnimation:UITableViewRowAnimationFade];
         
         //准备提交数据
         for (Approve *approve in selectedArray) {
@@ -411,13 +423,14 @@
     [self.tableView reloadSectionIndexTitles];
 }
 
-#pragma mark - 提交数据到服务器
--(IBAction)commitApproveToServer:(id)sender{
 
-    
-    if([tableAdapter.commitArray count] != 0){
-        
-        for (Approve *approve in tableAdapter.commitArray) {
+
+#pragma mark - 提交数据到服务器
+-(void)commitApproveToServer{
+    [self initTableViewData];
+    BOOL needRefreshDataFromServer = true;
+    for (Approve *approve in _tableAdapter.approveArray) {
+        if ([approve.localStatus isEqualToString:@"WAITING"]) {
             //准备提交数据
             NSMutableDictionary *data = [NSMutableDictionary dictionary];
             [data setObject:approve.recordID forKey:APPROVE_PROPERTY_RECORD_ID];
@@ -434,10 +447,14 @@
             [request setServerErrorSelector:@selector(commitApproveServerError:withDictionary:)];
             
             [self.networkQueue addOperation:request];
+            
+            needRefreshDataFromServer = false;
         }
-    }else{
-        [self refreshTable];
     }
+    
+    if (needRefreshDataFromServer) 
+        [self refreshTable];
+    
 }
 
 #pragma mark - 提交审批，成功
@@ -445,23 +462,24 @@
     NSLog(@"%@, tag:%i",NSStringFromSelector(_cmd),request.tag);
     
     //修改数据
-    [dbHelper.db open];
+    [_dbHelper.db open];
     NSString *sql = [NSString stringWithFormat:@"delete from %@ where %@ = '%i' ",TABLE_NAME_APPROVE_LIST,@"rowid",request.tag];
-    [dbHelper.db executeUpdate:sql];
-    [dbHelper.db close];
+    [_dbHelper.db executeUpdate:sql];
+    [_dbHelper.db close];
     
     //删除UI元素
     NSUInteger targetIndex = 0;
     [self.tableView beginUpdates];
-    for (int i=0; i<tableAdapter.commitArray.count; i++) {
-        Approve *currentEntity = [tableAdapter.commitArray objectAtIndex:i];
+    for (int i=0; i<_tableAdapter.approveArray.count; i++) {
+        Approve *currentEntity = [_tableAdapter.approveArray objectAtIndex:i];
         if (currentEntity.rowID.intValue == request.tag) {
             targetIndex = i;
-            [tableAdapter.commitArray removeObject:currentEntity];
+            [_tableAdapter.approveArray removeObject:currentEntity];
             break;
         }
     }
-    [self.tableView deleteRowsAtIndexPaths:[NSArray arrayWithObject:[NSIndexPath indexPathForRow:targetIndex inSection:SECTION_WAITING_LIST]] withRowAnimation:UITableViewRowAnimationFade];
+    
+    [self.tableView deleteRowsAtIndexPaths:[NSArray arrayWithObject:[NSIndexPath indexPathForRow:targetIndex inSection:SECTION_NORMAL]] withRowAnimation:UITableViewRowAnimationFade];
     [self.tableView endUpdates];
     [self.tableView reloadSectionIndexTitles];
     
@@ -471,35 +489,23 @@
     NSLog(@"%@, tag:%i",NSStringFromSelector(_cmd),request.tag);
     
     //修改数据
-    [dbHelper.db open];
+    [_dbHelper.db open];
     NSString *sql = [NSString stringWithFormat:@"update %@ set %@ = 'ERROR',%@ = '%@' where %@ = '%i' ;",TABLE_NAME_APPROVE_LIST,APPROVE_PROPERTY_LOCAL_STATUS,APPROVE_PROPERTY_SERVER_MESSAGE,[errorDic objectForKey:ERROR_MESSAGE],@"rowid",request.tag];
-    [dbHelper.db executeUpdate:sql];
-    [dbHelper.db close];
+    [_dbHelper.db executeUpdate:sql];
+    [_dbHelper.db close];
     
-    //移动UI元素
-    NSUInteger targetIndex = 0;
-    NSArray *changedIndexPaths = nil;
-   
-    [self.tableView beginUpdates];
-    for (int i=0; i<tableAdapter.commitArray.count; i++) {
-        Approve *currentEntity = [tableAdapter.commitArray objectAtIndex:i];
-        if (currentEntity.rowID.intValue == request.tag) {
-            targetIndex = i;
-            currentEntity.localStatus = @"ERROR";
-            currentEntity.serverMessage = [errorDic objectForKey:ERROR_MESSAGE];
-            NSIndexPath *toIndexPath = [NSIndexPath indexPathForRow:0 inSection:SECTION_PROBLEM_LIST];
-            [self.tableView moveRowAtIndexPath:[NSIndexPath indexPathForRow:targetIndex inSection:SECTION_WAITING_LIST] toIndexPath:toIndexPath];
-            changedIndexPaths = [NSArray arrayWithObject:toIndexPath];
-            [tableAdapter.errorArray insertObject:currentEntity atIndex:0];
-            [tableAdapter.commitArray removeObject:currentEntity];
-            break;
+    // TODO: 编写动画
+    NSMutableArray *reloadIndexArray = [NSMutableArray array];
+    for (Approve *entity in self.tableAdapter.approveArray) {
+        if (entity.rowID.intValue == request.tag) {
+            entity.localStatus = @"ERROR";
+            entity.serverMessage = [errorDic objectForKey:ERROR_MESSAGE];
+            NSUInteger row = [self.tableAdapter.approveArray indexOfObject:entity];
+            [reloadIndexArray addObject:[NSIndexPath indexPathForRow:row inSection:SECTION_NORMAL]];
         }
     }
-    [self.tableView endUpdates];
-    
-    [self.tableView reloadRowsAtIndexPaths:changedIndexPaths withRowAnimation:UITableViewRowAnimationFade];
-    [self.tableView reloadSectionIndexTitles];
-    
+    [self.tableView reloadRowsAtIndexPaths:reloadIndexArray withRowAnimation:UITableViewRowAnimationFade];
+    [self _startCellWarningAnimation];
 }
 
 #pragma mark - 提交审批时网络故障
@@ -517,24 +523,17 @@
     NSLog(@"queue finished");
     [self updateApplicationBadgeNumber];
     [self refreshTable];
-    
-//    [self initTableViewData];
-//    [dataTableView beginUpdates];
-//    [dataTableView reloadSections:[NSIndexSet indexSetWithIndex:SECTION_PROBLEM_LIST] withRowAnimation:UITableViewRowAnimationFade];
-//    [dataTableView reloadSections:[NSIndexSet indexSetWithIndex:SECTION_WAITING_LIST] withRowAnimation:UITableViewRowAnimationFade];
-//    [dataTableView endUpdates];
-//    [self refreshTable];
 }
 
 //弹出审批意见
 -(void)showOpinionView:(int)actionType{
-    if(opinionView == nil){
-        opinionView = [[ApproveOpinionView alloc]initWithNibName:@"ApproveOpinionView" bundle:nil];
-        opinionView.modalTransitionStyle =UIModalTransitionStyleCoverVertical;
-        [opinionView setControllerDelegate:self];
+    if(_opinionView == nil){
+        _opinionView = [[ApproveOpinionView alloc]initWithNibName:@"ApproveOpinionView" bundle:nil];
+        _opinionView.modalTransitionStyle =UIModalTransitionStyleCoverVertical;
+        [_opinionView setControllerDelegate:self];
     }
-    [opinionView setApproveType:[NSString stringWithFormat:@"%i",actionType]];
-    [self presentModalViewController:opinionView animated:YES];
+    [_opinionView setApproveType:[NSString stringWithFormat:@"%i",actionType]];
+    [self presentModalViewController:_opinionView animated:YES];
 }
 
 #pragma mark - 手势 
@@ -544,56 +543,60 @@
         if(recognizer.numberOfTouches == 1){
             CGPoint swipeLocation = [recognizer locationInView:self.tableView];
             NSIndexPath *swipedIndexPath = [self.tableView indexPathForRowAtPoint:swipeLocation];
-            NSUInteger swipedSection = swipedIndexPath.section;
             
-            Approve *entity = nil;
-            if(swipedSection == SECTION_PROBLEM_LIST){
-                entity = [tableAdapter.errorArray objectAtIndex:[swipedIndexPath row]];
-                
-            }else{
-                //其他区域不可删除
-                return;
-            }
-            [dbHelper.db open];
-            BOOL success = [dbHelper.db executeUpdate:[NSString stringWithFormat:@"delete from %@ where %@ = '%@'",TABLE_NAME_APPROVE_LIST,@"rowid",entity.rowID]];
-            [dbHelper.db close];
             
-            if(success){
-                [tableAdapter.errorArray removeObjectAtIndex:[swipedIndexPath row]];
-                [self.tableView beginUpdates];
-                [self.tableView deleteRowsAtIndexPaths:[NSArray arrayWithObject:swipedIndexPath] withRowAnimation:UITableViewRowAnimationRight];
-                [self.tableView endUpdates];
+            Approve *entity = [_tableAdapter.approveArray objectAtIndex:[swipedIndexPath row]];
+            
+            if ([entity.localStatus isEqualToString:@"DIFFERENT"]) {
+                [_dbHelper.db open];
+                BOOL success = [_dbHelper.db executeUpdate:[NSString stringWithFormat:@"delete from %@ where %@ = '%@'",TABLE_NAME_APPROVE_LIST,@"rowid",entity.rowID]];
+                [_dbHelper.db close];
                 
-                [self.tableView reloadSectionIndexTitles];
-                
+                if(success){
+                    [_tableAdapter.approveArray removeObject:entity];
+                    [self.tableView beginUpdates];
+                    [self.tableView deleteRowsAtIndexPaths:[NSArray arrayWithObject:swipedIndexPath] withRowAnimation:UITableViewRowAnimationRight];
+                    [self.tableView endUpdates];  
+                }
             }
+                
+            
         }else if (recognizer.numberOfTouches == 2) {
             //清除错误的记录
-            [dbHelper.db open];
+            [_dbHelper.db open];
             NSString *sql = [NSString stringWithFormat:@"delete from %@ where %@ in ('ERROR','DIFFERENT');",TABLE_NAME_APPROVE_LIST,APPROVE_PROPERTY_LOCAL_STATUS];
-            BOOL isSuccess = [dbHelper.db executeUpdate:sql];
-            [dbHelper.db close];
+            BOOL isSuccess = [_dbHelper.db executeUpdate:sql];
+            [_dbHelper.db close];
             if(isSuccess){
                 [self.tableView beginUpdates];
-                [tableAdapter.errorArray removeAllObjects];
-                [self.tableView reloadSections:[NSIndexSet indexSetWithIndex:SECTION_PROBLEM_LIST] withRowAnimation:UITableViewRowAnimationRight];
+                NSMutableArray *tempEntities = [NSMutableArray array];
+                NSMutableArray *tempIndexPaths = [NSMutableArray array];
+                NSUInteger targetIndex = 0;
+                for (Approve *entity in _tableAdapter.approveArray) {
+                    if ([entity.localStatus isEqualToString:@"ERROR"]||[entity.localStatus isEqualToString:@"DIFFERENT"]) {
+                        [tempEntities addObject:entity];
+                        targetIndex = [_tableAdapter.approveArray indexOfObject:entity];
+                        [tempIndexPaths addObject:[NSIndexPath indexPathForRow:targetIndex inSection:SECTION_NORMAL]];
+                        
+                    }
+                }
+                [_tableAdapter.approveArray removeObjectsInArray:tempEntities];
+                [self.tableView deleteRowsAtIndexPaths:tempIndexPaths withRowAnimation:UITableViewRowAnimationRight];
                 [self.tableView endUpdates];
             }
         }else if (recognizer.numberOfTouches ==3) {
             //清除所有数据
             
-            [dbHelper.db open];
+            [_dbHelper.db open];
             NSString *sql = [NSString stringWithFormat:@"delete from %@ ;",TABLE_NAME_APPROVE_LIST];
-            BOOL isSuccess = [dbHelper.db executeUpdate:sql];
-            [dbHelper.db close];
+            BOOL isSuccess = [_dbHelper.db executeUpdate:sql];
+            [_dbHelper.db close];
             if(isSuccess){
                 [self.tableView beginUpdates];
-                [tableAdapter.approveArray removeAllObjects];
-                [tableAdapter.errorArray removeAllObjects];
-                [tableAdapter.commitArray removeAllObjects];
+                [_tableAdapter.approveArray removeAllObjects];
+                
                 [self.tableView reloadSections:[NSIndexSet indexSetWithIndex:SECTION_NORMAL] withRowAnimation:UITableViewRowAnimationRight];
-                [self.tableView reloadSections:[NSIndexSet indexSetWithIndex:SECTION_WAITING_LIST] withRowAnimation:UITableViewRowAnimationRight];
-                [self.tableView reloadSections:[NSIndexSet indexSetWithIndex:SECTION_PROBLEM_LIST] withRowAnimation:UITableViewRowAnimationRight];
+                
                 [self.tableView endUpdates];
             }
         }
@@ -604,10 +607,10 @@
 -(void)initTableViewData{
     
     //从数据库读取数据(应该放到一个业务逻辑类中)
-    [dbHelper.db open];
+    [_dbHelper.db open];
 
     NSString *sql = [NSString stringWithFormat:@"select rowid, %@,%@,%@,%@,%@,%@,%@,%@,%@,%@,%@,%@,%@,%@,%@,%@,%@,%@ from %@ order by %@ desc",APPROVE_PROPERTY_WORKFLOW_ID,APPROVE_PROPERTY_RECORD_ID,APPROVE_PROPERTY_ORDER_TYPE,APPROVE_PROPERTY_INSTANCE_DESC,APPROVE_PROPERTY_NODE_NAME,APPROVE_PROPERTY_EMPLOYEE_NAME,APPROVE_PROPERTY_CREATION_DATE,APPROVE_PROPERTY_DATE_LIMIT,APPROVE_PROPERTY_IS_LATE,APPROVE_PROPERTY_LOCAL_STATUS,APPROVE_PROPERTY_COMMENT,APPROVE_PROPERTY_APPROVE_ACTION,APPROVE_PROPERTY_SCREEN_NAME,APPROVE_PROPERTY_SERVER_MESSAGE, APPROVE_PROPERTY_SUBMIT_URL,APPROVE_PROPERTY_NODE_ID,APPROVE_PROPERTY_INSTANCE_ID,APPROVE_PROPERTY_INSTANCE_PARAM,TABLE_NAME_APPROVE_LIST,APPROVE_PROPERTY_CREATION_DATE];
-    FMResultSet *resultSet = [dbHelper.db executeQuery:sql];
+    FMResultSet *resultSet = [_dbHelper.db executeQuery:sql];
     // 初始列表数据
     NSMutableArray *datas = [[NSMutableArray alloc]init];
     
@@ -618,22 +621,10 @@
         [a release];
     }
     
-    NSMutableArray *approveArray = [NSMutableArray array];
-    NSMutableArray *commitArray = [NSMutableArray array];
-    NSMutableArray *errorArray = [NSMutableArray array];
     
-    for (Approve *entity in datas) {
-        if ([entity.localStatus isEqualToString:@"NORMAL"]) {
-            [approveArray addObject:entity];
-        }else if([entity.localStatus isEqualToString:@"WAITING"]){
-            [commitArray addObject:entity];
-        }else if([entity.localStatus isEqualToString:@"ERROR"] || [entity.localStatus isEqualToString:@"DIFFERENT"]){
-            [errorArray addObject:entity];
-        }
-    }
-    [tableAdapter setApproveArray:approveArray commitArray:commitArray errorArray:errorArray];
+    [_tableAdapter setApproveArray:datas];
     [resultSet close];
-    [dbHelper.db close];
+    [_dbHelper.db close];
 
     [self.tableView reloadData];
     [datas release];
@@ -644,41 +635,49 @@
 -(void)addRequestIntoQueueFromCenter{
     ASIHTTPRequest *request = [[HDHTTPRequestCenter shareHTTPRequestCenter] requestWithKey:DETAIL_REQUEST_KEY requestType:HDRequestTypeFormData];
     
-    [self.tableView beginUpdates];
-    NSUInteger fromIndex = 0;
-    for (Approve *entity in tableAdapter.approveArray) {
-        if (entity.rowID.intValue == request.tag) {//
-            fromIndex = [tableAdapter.approveArray indexOfObject:entity];
-            [tableAdapter.commitArray insertObject:entity atIndex:0];
-            [tableAdapter.approveArray removeObject:entity];
-            break;
-        }
-    }
-    [self.tableView moveRowAtIndexPath:[NSIndexPath indexPathForRow:fromIndex inSection:SECTION_NORMAL] toIndexPath:[NSIndexPath indexPathForRow:0 inSection:SECTION_WAITING_LIST]];
-    [self.tableView endUpdates];
+//    [self.tableView beginUpdates];
+//    NSUInteger fromIndex = 0;
+//    for (Approve *entity in tableAdapter.approveArray) {
+//        if (entity.rowID.intValue == request.tag) {//
+//            fromIndex = [tableAdapter.approveArray indexOfObject:entity];
+//            [tableAdapter.commitArray insertObject:entity atIndex:0];
+//            [tableAdapter.approveArray removeObject:entity];
+//            break;
+//        }
+//    }
+//    [self.tableView moveRowAtIndexPath:[NSIndexPath indexPathForRow:fromIndex inSection:SECTION_NORMAL] toIndexPath:[NSIndexPath indexPathForRow:0 inSection:SECTION_WAITING_LIST]];
+//    [self.tableView endUpdates];
     
     [self.networkQueue addOperation:request];
     
 }
 
 -(void)updateApplicationBadgeNumber{
-    [UIApplication sharedApplication].applicationIconBadgeNumber = [tableAdapter.approveArray count];
+    NSString *sql = [NSString stringWithFormat:@"select count(*) from %@ where %@ = 'NORMAL'",TABLE_NAME_APPROVE_LIST,APPROVE_PROPERTY_LOCAL_STATUS];
+    int number = 0;
+    [_dbHelper.db open];
+    FMResultSet *rs = [_dbHelper.db executeQuery:sql];
+    if (rs.next) 
+        number = [rs intForColumnIndex:0];
+    
+    [UIApplication sharedApplication].applicationIconBadgeNumber = number;
 }
 
 #pragma mark - life circle
 -(void)viewDidLoad{
     [super viewDidLoad];
-    
+    _inSearchStatus = NO;
     self.title = @"待办事项";
+    _animationCells = [[NSMutableArray alloc]init];
     
     self.tabBarItem = [[UITabBarItem alloc]initWithTitle:self.title image:[UIImage imageNamed:@"mailclosed.png"] tag:(50+1)];
     
     //初始化数据库连接
-    dbHelper = [[ApproveDatabaseHelper alloc]init];
+    _dbHelper = [[ApproveDatabaseHelper alloc]init];
     
-    tableAdapter = [[ApproveTableAdapter alloc]init];
+    _tableAdapter = [[ApproveTableAdapter alloc]init];
     [self.tableView setDelegate:self];
-    [self.tableView setDataSource:tableAdapter];
+    [self.tableView setDataSource:_tableAdapter];
     
     //初始化提交队列
     [self.networkQueue cancelAllOperations];
@@ -693,7 +692,7 @@
     //读取本地数据
     [self initTableViewData];
     
-    [self performSelector:@selector(commitApproveToServer:) withObject:nil afterDelay:1];
+    [self performSelector:@selector(commitApproveToServer) withObject:nil afterDelay:1];
     
     
     //初始化导航条右侧按钮
@@ -734,54 +733,70 @@
     //注册到通知中心，表明对 detailApproved 消息的关注,响应方法为：,目的是将此request放在请求队列中
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(addRequestIntoQueueFromCenter) name:@"detailApproved" object:nil];
     
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(commitApproveToServer:) name:UIApplicationDidBecomeActiveNotification object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(commitApproveToServer) name:UIApplicationDidBecomeActiveNotification object:nil];
     
 }
 
 -(void)viewDidUnload{
-    tableAdapter = nil;
-    formRequest = nil;
-    networkQueue = nil;
-    detailController = nil;
-    
-    checkToolBar = nil;
-    adoptButton = nil;
-    refuseButton = nil;
-    opinionView = nil;
-    dbHelper = nil;
-    formRequest = nil;
+    _tableAdapter = nil;
+    _formRequest = nil;
+    _networkQueue = nil;
+    _detailController = nil;
+    _animationCells = nil;
+    _timer = nil;
+    _checkToolBar = nil;
+    _adoptButton = nil;
+    _refuseButton = nil;
+    _opinionView = nil;
+    _dbHelper = nil;
+    _formRequest = nil;
     [super viewDidUnload];
 }
 
 -(void)dealloc{
-    [tableAdapter release];
-    [formRequest release];
-    [networkQueue cancelAllOperations];
-    [networkQueue release];
-    [detailController release];
-    [checkToolBar release];
-    [adoptButton release];
-    [refuseButton release];
-    [opinionView release];
-    [dbHelper release];
+    [_tableAdapter release];
+    [_formRequest release];
+    [_networkQueue cancelAllOperations];
+    [_networkQueue release];
+    [_animationCells release];
+    [_timer invalidate];
+    [_timer release];
+    [_detailController release];
+    [_checkToolBar release];
+    [_adoptButton release];
+    [_refuseButton release];
+    [_opinionView release];
+    [_dbHelper release];
     [super dealloc];
 }
 
+#pragma mark - 实现下拉刷新相关方法
 - (void)reloadTableViewDataSource
 {
-    // Should be calling your tableview's model to reload.
-//    [super performSelector:@selector(dataSourceDidFinishLoadingNewData:) withObject:[NSNumber numberWithInt:1] afterDelay:3.0];
-    [self commitApproveToServer:nil];
+    if (_inSearchStatus) {
+//        [super dataSourceDidFinishLoadingNewData:[NSNumber numberWithInt:-1]];
+        [self dataSourceDidFinishLoadingNewData:[NSNumber numberWithInt:-1]];
+        return;
+    }
+    
+    [self commitApproveToServer];
 }
 
 - (void)dataSourceDidFinishLoadingNewData:(NSNumber *)loadedData
 {
     // Should check if data reload was successful.
-    if ([loadedData boolValue]) {
+    if ([loadedData isEqualToNumber:[NSNumber numberWithInt:1]]) {
+        //成功
         [refreshHeaderView setCurrentDate];
         [super dataSourceDidFinishLoadingNewData:nil];
         [self.tableView reloadData];
-    } else {
+    } else if ([loadedData isEqualToNumber:[NSNumber numberWithInt:-1]]){
+        //搜索状态，不能查询
+        [super dataSourceDidFinishLoadingNewData:nil];
+        // Present an informative UIAlertView
+        [self dataSourceCantRefresh];
+    } else  {
+        //网络异常
         [super dataSourceDidFinishLoadingNewData:nil];
         // Present an informative UIAlertView
         [self dataSourceDidFailPresentingError];
@@ -797,6 +812,81 @@
                                               otherButtonTitles:nil];
     [alertView show];
     [alertView release];
+}
+
+- (void)dataSourceCantRefresh{
+    UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"提示"
+                                                        message:@"当前为搜索数据状态无法获取新数据。如果需要刷新数据，请先在搜索条上点“取消”。"
+                                                       delegate:self 
+                                              cancelButtonTitle:@"好" 
+                                              otherButtonTitles:nil];
+    [alertView show];
+    [alertView release];
+}
+
+#pragma mark - 实现搜索框代理方法
+- (void)searchBar:(UISearchBar *)searchBar textDidChange:(NSString *)searchText{
+    if (searchBar.text.length>0) {
+        [UIView animateWithDuration:0.25 animations:^{
+            _searchCoverView.alpha = 0.0;
+        }];
+        _searchCoverView.userInteractionEnabled = NO;
+    }else {
+        [UIView animateWithDuration:0.25 animations:^{
+            _searchCoverView.alpha = 0.7;
+        }];
+        _searchCoverView.userInteractionEnabled = YES;
+    }
+    
+    [self searchRecords:searchText];
+}
+
+-(BOOL)searchBarShouldBeginEditing:(UISearchBar *)searchBar{
+    
+    _inSearchStatus = YES;
+    if (searchBar.text.length == 0) {
+        [UIView animateWithDuration:0.25 animations:^{
+            _searchCoverView.alpha = 0.7;
+        }];
+        _searchCoverView.userInteractionEnabled = YES;
+    }
+    searchBar.showsCancelButton = YES;
+    return true;
+}
+
+-(void)searchBarCancelButtonClicked:(UISearchBar *)searchBar{
+    _inSearchStatus = NO;
+    [searchBar resignFirstResponder];
+    [self initTableViewData];
+    searchBar.showsCancelButton = NO;
+    searchBar.text = @"";
+    
+    [UIView animateWithDuration:0.25 animations:^{
+        _searchCoverView.alpha = 0.0;
+    }];
+    _searchCoverView.userInteractionEnabled = NO;
+}
+
+-(void)searchBarSearchButtonClicked:(UISearchBar *)searchBar{
+    [searchBar resignFirstResponder];
+    _searchCoverView.userInteractionEnabled = NO;
+    searchBar.showsCancelButton = NO;
+}
+
+-(void)searchRecords:(NSString *)keyword{
+    NSString *sql = [NSString stringWithFormat:@"select *,rowid from %@ where %@ like '%%%@%%' or %@ like '%%%@%%' or %@ like '%%%@%%' or %@ like '%%%@%%' or %@ like '%%%@%%' order by %@ desc",TABLE_NAME_APPROVE_LIST,APPROVE_PROPERTY_ORDER_TYPE,keyword,APPROVE_PROPERTY_INSTANCE_DESC,keyword,APPROVE_PROPERTY_NODE_NAME,keyword,APPROVE_PROPERTY_EMPLOYEE_NAME,keyword,APPROVE_PROPERTY_CREATION_DATE,keyword,APPROVE_PROPERTY_CREATION_DATE];
+    
+    [_dbHelper.db open];
+    NSLog(@"%@",sql);
+    FMResultSet *resultSet = [_dbHelper.db executeQuery:sql];
+    NSMutableArray *resultObjs = [NSMutableArray array];
+    while (resultSet.next) {
+        Approve *a= [[Approve alloc]initWithRowId:[resultSet objectForColumnName:@"rowid"] workflowId:[resultSet objectForColumnName:APPROVE_PROPERTY_WORKFLOW_ID] recordId:[resultSet objectForColumnName:APPROVE_PROPERTY_RECORD_ID] nodeId:[resultSet objectForColumnName:APPROVE_PROPERTY_NODE_ID] instanceId:[resultSet objectForColumnName:APPROVE_PROPERTY_INSTANCE_ID] orderType:[resultSet stringForColumn:APPROVE_PROPERTY_ORDER_TYPE] instanceDesc:[resultSet stringForColumn:APPROVE_PROPERTY_INSTANCE_DESC] instanceParam:[resultSet objectForColumnName:APPROVE_PROPERTY_INSTANCE_PARAM] nodeName:[resultSet stringForColumn:APPROVE_PROPERTY_NODE_NAME] employeeName:[resultSet stringForColumn:APPROVE_PROPERTY_EMPLOYEE_NAME] creationDate:[resultSet stringForColumn:APPROVE_PROPERTY_CREATION_DATE] dateLimit:[resultSet stringForColumn:APPROVE_PROPERTY_DATE_LIMIT] isLate:[resultSet objectForColumnName:APPROVE_PROPERTY_IS_LATE] screenName:[resultSet stringForColumn:APPROVE_PROPERTY_SCREEN_NAME] localStatus:[resultSet stringForColumn:APPROVE_PROPERTY_LOCAL_STATUS] comment:[resultSet stringForColumn:APPROVE_PROPERTY_COMMENT] actionType:[resultSet stringForColumn:APPROVE_PROPERTY_APPROVE_ACTION] serverMessage:[resultSet stringForColumn:APPROVE_PROPERTY_SERVER_MESSAGE] submitUrl:[resultSet stringForColumn:APPROVE_PROPERTY_SUBMIT_URL]];
+        [resultObjs addObject:a];
+        [a release];
+    }
+    self.tableAdapter.approveArray = resultObjs;
+    [self.tableView reloadData];
 }
 
 @end
