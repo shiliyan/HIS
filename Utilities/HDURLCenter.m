@@ -12,8 +12,7 @@
 
 static HDURLCenter * _URLCenter = nil;
 
-@synthesize baseURL = _baseURL;
-@synthesize theURLDictionary = _theURLDictionary;
+//@synthesize baseURL = _baseURL;
 
 +(id) sharedURLCenter
 {
@@ -35,27 +34,20 @@ static HDURLCenter * _URLCenter = nil;
     return nil;
 }
 
--(id)init
-{
-    self = [super init];
-    if (self) {
-        NSString *path =[[NSBundle mainBundle] pathForResource:@"URLSetting" ofType:@"plist"];
-        _theURLDictionary = [[NSDictionary alloc] initWithContentsOfFile:path];
-    }
-    return self;
-}
-
--(void)dealloc
-{
-    TT_RELEASE_SAFELY(_theURLDictionary);
-    [super dealloc];
-}
-
 -(NSString *) getURLWithKey:(id)key
 { 
-    return   [NSString stringWithFormat:@"%@%@",[[NSUserDefaults standardUserDefaults]stringForKey:@"base_url_preference"],[self.theURLDictionary valueForKey:key]];
+    NSError *error = nil;
+    NSString *url = nil;
+    NSString *xpath = [NSString stringWithFormat:@"/service/urls/url[@name='%@']",key];
+    HDBeanFactoryFromXML *factory = [HDBeanFactoryFromXML shareBeanFactory];
     
-    //    return   [NSString stringWithFormat:@"%@%@",[self.theURLDictionary valueForKey:@"BASE_URL"],[self.theURLDictionary valueForKey:key]];
+    CXMLNode *node = [factory.document nodeForXPath:xpath error:&error];
+    
+    if ([node isKindOfClass:[CXMLElement class]]) {
+        url = [[((CXMLElement *)node) attributeForName:@"value"]stringValue];
+    }
+    
+    return   [NSString stringWithFormat:@"%@%@",[[NSUserDefaults standardUserDefaults]stringForKey:@"base_url_preference"],url];
 }
 
 +(NSString *) requestURLWithKey:(id)key

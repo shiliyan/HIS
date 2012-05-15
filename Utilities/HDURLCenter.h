@@ -7,11 +7,11 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "TouchXML.h"
 
 @interface HDURLCenter : NSObject
 
-@property (nonatomic,retain) NSString * baseURL;
-@property (nonatomic,readonly) NSDictionary * theURLDictionary;
+//@property (nonatomic,retain) NSString * baseURL;
 
 +(NSString *) requestURLWithKey:(id) key; 
 
