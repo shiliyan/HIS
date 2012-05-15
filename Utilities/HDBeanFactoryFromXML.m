@@ -62,10 +62,13 @@ static HDBeanFactoryFromXML * _xmlFactory = nil;
 
 -(id)init{
     self = [super init];
-    
+    NSError *error = nil;
     if (self) {
-        _document = [[CXMLDocument alloc]initWithContentsOfURL:[NSURL URLWithString:@"http://localhost:8080/webtest/services.xml"] encoding:NSUTF8StringEncoding options:0 error:nil];
+        NSString *url = [NSString stringWithFormat:@"%@services.xml",[[NSUserDefaults standardUserDefaults]stringForKey:@"base_url_preference"]];
+        _document = [[CXMLDocument alloc]initWithContentsOfURL:[NSURL URLWithString:url] encoding:NSUTF8StringEncoding options:0 error:&error];
     }
+    TTDPRINT(@"%@",error.description);
+    
     return self;
 }
 
