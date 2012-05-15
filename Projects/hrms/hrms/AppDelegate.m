@@ -141,9 +141,9 @@ toSharedViewController:[HDApprovedListViewController class]];
 {
     NSLog(@"Error in registration.Error: %@" ,error);
     [[NSUserDefaults standardUserDefaults] setValue:@"null" forKey:@"deviceToken"];
-    UIAlertView * alert = [[UIAlertView alloc]initWithTitle:@"提示" message:@"无法设置推送请检查网络是否可用" delegate:self cancelButtonTitle:@"确定" otherButtonTitles:nil];
-    [alert show];
-    [alert release];
+//    UIAlertView * alert = [[UIAlertView alloc]initWithTitle:@"提示" message:@"无法设置推送请检查网络是否可用" delegate:self cancelButtonTitle:@"确定" otherButtonTitles:nil];
+//    [alert show];
+//    [alert release];
 }
 
 #pragma -mark 程序进入后台或激活时触发事件，用于保存数据，处理程序重新进入后的初始化
