@@ -11,25 +11,13 @@
 @implementation ApproveTableAdapter
 
 @synthesize approveArray;
-@synthesize commitArray;
-@synthesize errorArray;
 
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     static NSString *CellTableIdentifier = @"ApproveCellIdentifier";
     ApproveListCell *cell= nil;
     
     NSUInteger row = [indexPath row];
-    NSUInteger section = [indexPath section];
-    Approve *rowData = nil;
-    
-    if (section == SECTION_NORMAL) {
-        rowData = [approveArray objectAtIndex:row];
-    }else if(section == SECTION_WAITING_LIST){
-        rowData = [commitArray objectAtIndex:row];
-    }else if(section == SECTION_PROBLEM_LIST){
-        rowData = [errorArray objectAtIndex:row];
-    }
-    
+    Approve *rowData = [approveArray objectAtIndex:row];
     
     cell = [tableView dequeueReusableCellWithIdentifier:CellTableIdentifier];
     
@@ -45,68 +33,39 @@
 }
 
 -(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
-    return 3;
+    return 1;
 }
 
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
-    if (section == SECTION_NORMAL) {
-        NSUInteger count = [self.approveArray count];
-        return count;
-    }else if(section == SECTION_WAITING_LIST){
-        return [self.commitArray count];
-    }else if (section == SECTION_PROBLEM_LIST){
-        NSUInteger count = [self.errorArray count];
-        return count;
-    }else{
-        return 0;
-    }
-}
-
--(NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section{
     
-    NSString *title = nil;
-    if (section == SECTION_NORMAL) {
-        title = [self.approveArray count]==0 ? @"待办" : @"待办";
-    }else if(section == SECTION_WAITING_LIST){
-        title = [self.commitArray count]==0 ? @"等待提交" : @"等待提交";
-    }else if(section == SECTION_PROBLEM_LIST){
-        title = [self.errorArray count]==0 ? @"出错的审批或已被处理" : @"出错的审批或已被处理";
-    }
-
-    return title;
+    NSUInteger count = [self.approveArray count];
+    return count;
+    
 }
 
 -(BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath{
-    NSUInteger section = [indexPath section];
-    if (section == SECTION_NORMAL) {
+    NSUInteger row = [indexPath row];
+    Approve *entity = [self.approveArray objectAtIndex:row];
+    if ([entity.localStatus isEqualToString:@"NORMAL"]) {
         return true;
     }else{
         return false;
     }
-}
-
--(void)setApproveArray:(NSMutableArray *)aArray commitArray:(NSMutableArray *)cArray errorArray:(NSMutableArray *)eArray{
-    self.approveArray = aArray;
-    self.commitArray = cArray;
-    self.errorArray = eArray;
+    
 }
 
 -(id)init{
     self = [super init];
     if (self){
         self.approveArray = [NSMutableArray array];
-        self.commitArray = [NSMutableArray array];
-        self.errorArray = [NSMutableArray array];
     }
     return self;
 }
 
--(id)initWithApproveArray:(NSMutableArray *)aArray commitArray:(NSMutableArray *)cArray errorArray:(NSMutableArray *)eArray{
+-(id)initWithApproveArray:(NSMutableArray *)aArray{
     self = [self init];
     if(self){
         self.approveArray = aArray;
-        self.commitArray = cArray;
-        self.errorArray = eArray;
     }
     return  self;
 }
