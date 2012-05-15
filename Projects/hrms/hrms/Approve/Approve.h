@@ -54,52 +54,56 @@ static NSString *APPROVE_PROPERTY_SERVER_MESSAGE=@"server_message";
 //提交的地址
 static NSString *APPROVE_PROPERTY_SUBMIT_URL=@"submit_url";
 
-@interface Approve : NSObject{
-    NSNumber *rowID;//本地数据主键
-    NSNumber *workflowID;
-    NSNumber *recordID;
-    
-    NSNumber *nodeId;
-    NSNumber *instanceId;
-    NSNumber *instanceParam;
-    
-    NSString *orderType;//工作流名称
-    NSString *instanceDesc;//
-    NSString *nodeName;//当前节点
-    NSString *employeeName;//申请人
-    NSString *creationDate;//提交时间
-    NSString *dateLimit;//处理时限
-    NSNumber *isLate;//催办还是代办
-    NSString *screenName;//页面地址
-    NSString *localStatus;//本地状态，分三类：NORMAL:正常，从服务器取得的未处理数据；WAITING:用户已处理，但未提交到服务器；Done:已提交数据，并且服务器返回ok；ERROR:错误，服务器返回的错误状态
-    NSString *comment;//审批意见
-    NSString *action ;//审批动作
-    NSString *serverMessage;
-    NSString *submitUrl;
-}
+static NSString *APPROVE_PROPERTY_STATUS_NAME = @"status_name";
 
-@property(retain ,nonatomic) NSNumber *rowID;
+static NSString *APPROVE_PROPERTY_WORKFLOW_NAME  =@"workflow_name";
+
+@interface Approve : NSObject
+
+@property(retain ,nonatomic) NSNumber *rowID;//本地数据主键
 @property(retain ,nonatomic) NSNumber *workflowID;
 @property(retain ,nonatomic) NSNumber *recordID;
 @property(retain ,nonatomic) NSNumber *nodeId;
 @property(retain ,nonatomic) NSNumber *instanceId;
-@property(copy, nonatomic) NSString *orderType;
+@property(copy, nonatomic) NSString *orderType;//工作流名称
 @property(copy, nonatomic) NSString *instanceDesc;
 @property(retain ,nonatomic) NSNumber *instanceParam;
-@property(copy, nonatomic) NSString *nodeName;
-@property(copy, nonatomic) NSString *employeeName;
-@property(copy, nonatomic) NSString *creationDate;
-@property(copy, nonatomic) NSString *dateLimit;
-@property(retain ,nonatomic) NSNumber *isLate;
-@property(copy, nonatomic) NSString *screenName;
-@property(copy, nonatomic) NSString *localStatus;
-@property(copy, nonatomic) NSString *comment;
-@property(copy, nonatomic) NSString *action;
+@property(copy, nonatomic) NSString *nodeName;//当前节点
+@property(copy, nonatomic) NSString *employeeName;//申请人
+@property(copy, nonatomic) NSString *creationDate;//提交时间
+@property(copy, nonatomic) NSString *dateLimit;//处理时限
+@property(retain ,nonatomic) NSNumber *isLate;//催办还是代办
+@property(copy, nonatomic) NSString *docPageUrl;//页面地址
+@property(copy, nonatomic) NSString *localStatus;//本地状态，分三类：NORMAL:正常，从服务器取得的未处理数据；WAITING:用户已处理，但未提交到服务器；Done:已提交数据，并且服务器返回ok；ERROR:错误，服务器返回的错误状态
+@property(copy, nonatomic) NSString *comment;//审批意见
+@property(copy, nonatomic) NSString *action;//审批动作
 @property(copy, nonatomic) NSString *serverMessage;
 @property(copy, nonatomic) NSString *submitUrl;
+@property(copy, nonatomic) NSString *statusName;
+@property(copy, nonatomic) NSString *workflowName;
 
 
--(Approve *)initWithRowId:(NSNumber *)rowid workflowId:(NSNumber *)wid recordId:(NSNumber *)rId nodeId:(NSNumber *)nId instanceId:(NSNumber *)insId orderType:(NSString *)wName instanceDesc:(NSString *)wDesc instanceParam:(NSNumber *)insParam nodeName:(NSString *)node employeeName:(NSString *)employee creationDate:(NSString *)creation dateLimit:(NSString *)limit  isLate:(NSNumber *)late screenName:(NSString *)screen localStatus:(NSString *)status comment:(NSString *)cmt actionType:(NSString *)aType serverMessage:(NSString *)sMessage submitUrl:(NSString *)url;
+-(Approve *)initWithRowId:(NSNumber *)rowid 
+               workflowId:(NSNumber *)wid 
+                 recordId:(NSNumber *)rId
+                   nodeId:(NSNumber *)nId 
+               instanceId:(NSNumber *)insId 
+                orderType:(NSString *)wName 
+             instanceDesc:(NSString *)wDesc 
+            instanceParam:(NSNumber *)insParam 
+                 nodeName:(NSString *)node
+             employeeName:(NSString *)employee 
+             creationDate:(NSString *)creation 
+                dateLimit:(NSString *)limit  
+                   isLate:(NSNumber *)late
+               screenName:(NSString *)screen 
+              localStatus:(NSString *)status 
+                  comment:(NSString *)cmt
+               actionType:(NSString *)aType 
+            serverMessage:(NSString *)sMessage
+                submitUrl:(NSString *)url 
+               statusName:(NSString *)sName
+             workflowName:(NSString *)wfName;
 
 -(Approve *)initWithDictionary:(NSDictionary *)dic;
 @end
