@@ -5,12 +5,12 @@
 //  Created by Rocky Lee on 5/7/12.
 //  Copyright (c) 2012 __MyCompanyName__. All rights reserved.
 //
-#import "ApprovedListModel.h"
+#import "HDApprovedListModel.h"
 
 @interface HDApprovedListViewController : TTTableViewController
-<ApprovedListDelegate>
+//<ApprovedListDelegate>
 {
-    ApprovedListModel * _approvedList;
+//    ApprovedListModel * _approvedList;
 }
 
 @end
