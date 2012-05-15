@@ -41,12 +41,12 @@
     [self initViewControllers:navigator];
     
     if(![navigator restoreViewControllers])
-    {}
+    {
         //        NSLog(@"No RestoreViewCtrl!!");
         [navigator openURLAction:[TTURLAction actionWithURLPath:@"tt://mainTab"]];
         
         [navigator openURLAction:[TTURLAction actionWithURLPath:@"tt://login/RCLoginViewController/1"]];
-//    }
+    }
     
 }
 
