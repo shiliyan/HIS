@@ -10,19 +10,11 @@
 
 //styleSheet
 #import "MyStyleSheet.h"
-//view controllers
-#import "HECLoginViewController.h"
-//审批
-#import "ApproveListController.h"
-//审批明细
-#import "HDApproveDetailViewController.h"
-
-//主tab界面
-#import "MainTabController.h"
-
-#import "HDApprovedListViewController.h"
 
 @implementation AppDelegate
+
+NSString * kLoginPathName =@"HD_LOGIN_VC_PATH";
+NSString * kMainPathName =@"HD_MAIN_VC_PATH";
 
 -(void) applicationDidFinishLaunching:(UIApplication *)application
 {
@@ -33,65 +25,36 @@
     [self setupByPreferences];
     
     //注册显示登陆
-    [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(showLoginView:) name:@"show_login_view" object:nil];
+    [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(backToLoginView) name:@"show_login_view" object:nil];
     
     //Views Managment by Three20
-    TTNavigator* navigator = [TTNavigator navigator]; 
-    
-    [self initViewControllers:navigator];
-    
-    if(![navigator restoreViewControllers])
-    {
-        //        NSLog(@"No RestoreViewCtrl!!");
-        [navigator openURLAction:[TTURLAction actionWithURLPath:@"tt://mainTab"]];
-        
-        [navigator openURLAction:[TTURLAction actionWithURLPath:@"tt://login/RCLoginViewController/1"]];
+    [TTStyleSheet setGlobalStyleSheet:[[[MyStyleSheet alloc]init]autorelease]];
+      
+    if(![[HDNavigator navigator] restoreViewControllers])
+    {      
+        [self showLoginView];
     }
     
 }
 
--(void) initViewControllers:(TTNavigator *) navigator
-{   
-    navigator.persistenceMode = TTNavigatorPersistenceModeNone;
+-(void)showLoginView
+{
+    HDNavigator* navigator = [HDNavigator navigator];
+    NSString * kMainViewControllerPathPath = [[HDBeanFactoryFromXML shareBeanFactory] actionURLPathWithKey:kMainPathName];
     
-    navigator.window = [[[UIWindow alloc] initWithFrame:TTScreenBounds()] autorelease];
+    [navigator openURLAction:[TTURLAction actionWithURLPath:kMainViewControllerPathPath]];
     
-    [TTStyleSheet setGlobalStyleSheet:[[[MyStyleSheet alloc]init]autorelease]];
+    NSString * kLoginViewControllerPath = [[HDBeanFactoryFromXML shareBeanFactory] actionURLPathWithKey:kLoginPathName];
     
-    TTURLMap* map = navigator.URLMap;
-    
-    // Any URL that doesn't match will fall back on this one, and open in the web browser
-    [map from:@"*" toViewController:[TTWebController class]]; 
-    
-    //login view
-    [map from:@"tt://login/(initWithNibName:)/(bundle:)" 
-toModalViewController:[HECLoginViewController class]];
-    
-    [map from:@"tt://mainTab" toSharedViewController:[MainTabController class]];
-    
-    //审批
-    [map from:@"tt://approve" 
-toSharedViewController:[ApproveListController class]];
-    
-    //审批明细
-    [map from:@"tt://approve_detail/(initWithName:)" 
-       parent:@"tt://approve" 
-toViewController:[HDApproveDetailViewController class] 
-     selector:nil 
-   transition:0];
-    
-    //已审批的单据查询
-    [map from:@"tt://approvedList" 
-toSharedViewController:[HDApprovedListViewController class]];
-
+    [navigator openURLAction:[TTURLAction actionWithURLPath:kLoginViewControllerPath]];
 }
 
--(void)showLoginView:(id)sender
+-(void)backToLoginView
 {
-    NSLog(@"catch");
-    //TODO:弹出登录界面,session失效时触发
-    TTNavigator* navigator = [TTNavigator navigator];
-    [navigator openURLAction:[[[TTURLAction actionWithURLPath:@"tt://login/RCLoginViewController/"]applyTransition:UIViewAnimationTransitionFlipFromRight] applyAnimated:YES]];
+    TTAlert(@"登录超时");
+    HDNavigator* navigator = [HDNavigator navigator];
+    [navigator removeAllViewControllers];
+    [self showLoginView];
 }
 
 //初始化偏好设置
