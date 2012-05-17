@@ -39,7 +39,7 @@ static HDURLCenter * _URLCenter = nil;
     NSError *error = nil;
     NSString *url = nil;
     NSString *xpath = [NSString stringWithFormat:@"/service/urls/url[@name='%@']",key];
-    HDBeanFactoryFromXML *factory = [HDBeanFactoryFromXML shareBeanFactory];
+    HDGodXMLFactory *factory = [HDGodXMLFactory shareBeanFactory];
     
     CXMLNode *node = [factory.document nodeForXPath:xpath error:&error];
     
