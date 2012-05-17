@@ -7,7 +7,7 @@
 //
 
 #import "HDClassConfigParser.h"
-#import "HDBeanFactoryFromXML.h"
+#import "HDGodXMLFactory.h"
 
 static NSString * kClassConfigPath = @"/service/classes/class";
 static NSString * kNibConfigPath = @"/service/nibs/nib";
@@ -30,7 +30,7 @@ static NSString * kNibConfigPath = @"/service/nibs/nib";
 -(id)readConfigWithKey:(NSString *) key
 {
     NSError * error = nil;
-    id config = [[[HDBeanFactoryFromXML shareBeanFactory] document] nodesForXPath:key error:&error];
+    id config = [[[HDGodXMLFactory shareBeanFactory] document] nodesForXPath:key error:&error];
     if (nil != config) {
         return config;
     }
