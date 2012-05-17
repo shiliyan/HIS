@@ -17,9 +17,10 @@
 #import "extThree20JSON/SBJSON.h"
 #import "Three20UI/Three20UI+Additions.h" 
 
-#import "UIViewController+HttpRequestHelper.h"
 #import "HDFormDataRequest.h"
-#import "HDBeanFactoryFromXML.h"
+#import "HDNavigator.h"
+
+#import "HDGodXMLFactory.h"
 
 //导入FMDB
 #import "FMDatabase.h"
