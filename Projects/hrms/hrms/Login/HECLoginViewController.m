@@ -17,15 +17,6 @@
 @synthesize roleSelectView = _roleSelectView;
 @synthesize roleSelectModule = _roleSelectModule;
 
-- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
-{
-    self = [super initWithNibName:nibNameOrNil bundle:nil];
-    if (self) {
-        // Custom initialization
-    }
-    return self;
-}
-
 #pragma 重载父类的登陆成功方法,添加角色选择页面
 -(void)loginSuccess:(NSArray *) dataSet
 {
@@ -77,7 +68,7 @@
         cell.textLabel.text = [roleInfo valueForKey:@"role_description"];
         cell.detailTextLabel.text = [roleInfo valueForKey:@"company_description"];
     }
-    cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
+//    cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
     return cell;
 }
 
