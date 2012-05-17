@@ -61,17 +61,26 @@
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 - (UIColor*)tableHeaderTintColor {
-    return RGBCOLOR(181, 128, 108);
+//    return RGBCOLOR(181, 128, 108);
+    return RGBCOLOR(118, 141, 176);
 }
 
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 - (UIColor*)navigationBarTintColor {
-    return RGBCOLOR(181, 128, 108);
+//    return RGBCOLOR(181, 128, 108);
+    return RGBCOLOR(118, 141, 176);
 }
 
 -(UIColor *)toolbarTintColor
 {
-    return RGBCOLOR(181, 128, 108);
+//    return RGBCOLOR(181, 128, 108);
+    return RGBCOLOR(118, 141, 176);
 }
+
+-(UIColor *)searchBarTintColor
+{
+    return RGBCOLOR(118, 141, 176);
+}
+
 @end
