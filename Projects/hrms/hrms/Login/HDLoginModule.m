@@ -26,18 +26,6 @@
 {
     self = [super init];
     if (self) {
-        //配置登录请求
-        HDRequestConfig * loginRequestConfig = [[HDRequestConfig alloc]init];
-        [loginRequestConfig setDelegate:self];
-        [loginRequestConfig setSuccessSelector:@selector(loginSVCSuccess:dataSet:)];
-        [loginRequestConfig setServerErrorSelector:@selector(LoginError:error:)];
-        [loginRequestConfig setErrorSelector:@selector(LoginError:error:)];
-        [loginRequestConfig setFailedSelector:@selector(LoginError:error:)];
-        
-        HDRequestConfigMap * map = [[HDHTTPRequestCenter shareHTTPRequestCenter] requestConfigMap];
-        [map addConfig:loginRequestConfig forKey:@"loginSVC"];   
-        [loginRequestConfig release];
-        
         //获取用户名
          self.username = [[NSUserDefaults standardUserDefaults] valueForKey:@"username"];
     }
@@ -78,7 +66,12 @@
     self.loginRequest = [requestCenter requestWithURL:[HDURLCenter requestURLWithKey:@"LOGIN_PATH"] 
                                              withData:[self generateLoginData] 
                                           requestType:HDRequestTypeFormData 
-                                               forKey:@"loginSVC"];
+                                               forKey:nil];
+    [_loginRequest setDelegate:self];
+    [_loginRequest setSuccessSelector:@selector(loginSVCSuccess:dataSet:)];
+    [_loginRequest setServerErrorSelector:@selector(LoginError:error:)];
+    [_loginRequest setErrorSelector:@selector(LoginError:error:)];
+    [_loginRequest setFailedSelector:@selector(LoginError:error:)];
     [_loginRequest startAsynchronous];
 }
 
