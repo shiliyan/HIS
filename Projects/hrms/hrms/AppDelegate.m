@@ -40,11 +40,11 @@ NSString * kMainPathName =@"HD_MAIN_VC_PATH";
 -(void)showLoginView
 {
     HDNavigator* navigator = [HDNavigator navigator];
-    NSString * kMainViewControllerPathPath = [[HDBeanFactoryFromXML shareBeanFactory] actionURLPathWithKey:kMainPathName];
+    NSString * kMainViewControllerPathPath = [[HDGodXMLFactory shareBeanFactory] actionURLPathWithKey:kMainPathName];
     
     [navigator openURLAction:[TTURLAction actionWithURLPath:kMainViewControllerPathPath]];
     
-    NSString * kLoginViewControllerPath = [[HDBeanFactoryFromXML shareBeanFactory] actionURLPathWithKey:kLoginPathName];
+    NSString * kLoginViewControllerPath = [[HDGodXMLFactory shareBeanFactory] actionURLPathWithKey:kLoginPathName];
     
     [navigator openURLAction:[TTURLAction actionWithURLPath:kLoginViewControllerPath]];
 }
