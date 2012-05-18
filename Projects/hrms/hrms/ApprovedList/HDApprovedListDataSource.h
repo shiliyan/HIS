@@ -9,13 +9,15 @@
 
 @interface HDApprovedListModel : TTURLRequestModel
 
-//@property(nonatomic,retain) HDFormDataRequest * formRequest;
 @property(nonatomic,readonly ) NSArray * approvedList;
+@property(nonatomic) NSUInteger pageNum;
+
+- (void)search:(NSString*)text;
 
 @end
 
 @interface HDApprovedListDataSource : TTListDataSource
 
-@property(nonatomic,readonly) HDApprovedListModel * approvedList;
+@property(nonatomic,readonly) HDApprovedListModel * approvedListModel;
 
 @end
