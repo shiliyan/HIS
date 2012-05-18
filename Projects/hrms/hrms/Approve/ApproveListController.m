@@ -65,7 +65,20 @@
 
 #pragma mark - 覆盖 tableView 方法
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
-    return 80;
+    
+    Approve *data = [_tableAdapter.approveArray objectAtIndex:[indexPath row]];
+    CGFloat cellHeight = 0;
+    if (([data.localStatus isEqualToString:@"NORMAL"])||([data.localStatus isEqualToString:@"WAITING"])) {
+        cellHeight = 85;
+    }else {
+        cellHeight = 126;
+    }
+    
+    if ((data.instanceDesc == nil) || (data.instanceDesc.length == 0)) {
+//        cellHeight  = cellHeight - 32;
+    }
+    
+    return cellHeight;
 }
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
@@ -112,6 +125,7 @@
 }
 
 -(void)_showCellAnimation{
+    NSLog(@"animation");
     if ((self.animationCells == nil) || (self.animationCells.count == 0)) {
         return;
     }
@@ -138,6 +152,9 @@
             if ([cell.cellData.localStatus isEqualToString:@"DIFFERENT"]||[cell.cellData.localStatus isEqualToString:@"ERROR"]) {
                 [self.animationCells addObject:cell];
             }
+        }
+        if (self.animationCells.count == 0) {
+            return;
         }
         
         SEL selector = @selector(_showCellAnimation);
@@ -205,7 +222,7 @@
 //从服务器端取数据成功
 -(void)querySuccess:(ASIFormDataRequest *)request withDataSet:(NSMutableArray *)dataset{
     
-    HDBeanFactoryFromXML *factory = [HDBeanFactoryFromXML shareBeanFactory];
+    HDGodXMLFactory *factory = [HDGodXMLFactory shareBeanFactory];
     
     //responseArray，返回数据解析后存放
     NSMutableArray *responseArray =[[NSMutableArray alloc]init];
@@ -235,7 +252,7 @@
     [_dbHelper.db open];
     for (Approve *approve in tempArray) {
 //        NSLog(@"%@",tempArray);
-        NSString *sql = [NSString stringWithFormat:@"insert into %@ (%@,%@,%@,%@,%@,%@,%@,%@,%@,%@,%@,%@,%@,%@) values ('%@','%@','%@','%@','%@','%@','%@','%@','%@','%@','%@','%@','%@','%@')",TABLE_NAME_APPROVE_LIST,APPROVE_PROPERTY_WORKFLOW_ID,APPROVE_PROPERTY_RECORD_ID,APPROVE_PROPERTY_ORDER_TYPE,APPROVE_PROPERTY_INSTANCE_DESC,APPROVE_PROPERTY_NODE_NAME,APPROVE_PROPERTY_EMPLOYEE_NAME,APPROVE_PROPERTY_CREATION_DATE,APPROVE_PROPERTY_DATE_LIMIT,APPROVE_PROPERTY_IS_LATE,APPROVE_PROPERTY_LOCAL_STATUS,APPROVE_PROPERTY_SCREEN_NAME,APPROVE_PROPERTY_NODE_ID,APPROVE_PROPERTY_INSTANCE_ID,APPROVE_PROPERTY_INSTANCE_PARAM,approve.workflowID,approve.recordID,approve.orderType,approve.instanceDesc,approve.nodeName,approve.employeeName,approve.creationDate,approve.dateLimit,approve.isLate,approve.localStatus,approve.docPageUrl,approve.nodeId,approve.instanceId,approve.instanceParam];
+        NSString *sql = [NSString stringWithFormat:@"insert into %@ (%@,%@,%@,%@,%@,%@,%@,%@,%@,%@,%@,%@,%@,%@) values ('%@','%@','%@',%@,'%@','%@','%@','%@','%@','%@','%@','%@','%@','%@')",TABLE_NAME_APPROVE_LIST,APPROVE_PROPERTY_WORKFLOW_ID,APPROVE_PROPERTY_RECORD_ID,APPROVE_PROPERTY_ORDER_TYPE,APPROVE_PROPERTY_INSTANCE_DESC,APPROVE_PROPERTY_NODE_NAME,APPROVE_PROPERTY_EMPLOYEE_NAME,APPROVE_PROPERTY_CREATION_DATE,APPROVE_PROPERTY_DATE_LIMIT,APPROVE_PROPERTY_IS_LATE,APPROVE_PROPERTY_LOCAL_STATUS,APPROVE_PROPERTY_SCREEN_NAME,APPROVE_PROPERTY_NODE_ID,APPROVE_PROPERTY_INSTANCE_ID,APPROVE_PROPERTY_INSTANCE_PARAM,approve.workflowID,approve.recordID,approve.orderType,(approve.instanceDesc == nil ? NULL : [NSString stringWithFormat:@"'%@'",approve.instanceDesc]),approve.nodeName,approve.employeeName,approve.creationDate,approve.dateLimit,approve.isLate,approve.localStatus,approve.docPageUrl,approve.nodeId,approve.instanceId,approve.instanceParam];
         [_dbHelper.db executeUpdate:sql];
         
         approve.rowID = [NSNumber numberWithInt:sqlite3_last_insert_rowid([_dbHelper.db sqliteHandle])] ;
@@ -359,42 +376,21 @@
         [_dbHelper.db close];
         
         
-        
         //移动UI，从待审批到等待提交
 //        NSUInteger toIndex = 0;
-//        NSMutableArray *changedIndexPaths = [NSMutableArray arrayWithCapacity:selectedIndePaths.count];
-//        [self.tableView beginUpdates];
-//        for (NSIndexPath *fromIndexPath in selectedIndePaths) {
-//            
-//            
-//            NSIndexPath *toIndexPath = [NSIndexPath indexPathForRow:toIndex inSection:SECTION_WAITING_LIST];
-//            [self.tableView moveRowAtIndexPath:fromIndexPath toIndexPath:toIndexPath];
-//            [changedIndexPaths addObject:toIndexPath];
-//            toIndex++;
-//        }
-//        
-//        for (NSIndexPath *indexPath in selectedIndePaths) {
-//            [self.tableView deselectRowAtIndexPath:indexPath animated:YES];
-//        }
-//        
-//        [tableAdapter.approveArray removeObjectsInArray:selectedArray];
-//        [tableAdapter.commitArray insertObjects:selectedArray atIndexes:[NSIndexSet indexSetWithIndexesInRange:NSMakeRange(0, selectedArray.count)]];
-//        [self.tableView endUpdates];
-//        
-//        [self.tableView reloadRowsAtIndexPaths:changedIndexPaths withRowAnimation:UITableViewRowAnimationFade];
-        // TODO: 编写动画
-//        [self.tableView beginUpdates];
-//        
-//        for (NSIndexPath *indexPath in selectedIndePaths) {
-//            [self.tableView deselectRowAtIndexPath:indexPath animated:YES];
-//        }
-//        
-//        [self.tableView endUpdates];
-        [self.tableView reloadRowsAtIndexPaths:selectedIndePaths withRowAnimation:UITableViewRowAnimationFade];
+        NSMutableArray *changedIndexPaths = [NSMutableArray arrayWithCapacity:selectedIndePaths.count];
+        [self.tableView beginUpdates];
+        //保存已经选中的记录的indexpath
+        for (NSIndexPath *changedIndexPath in selectedIndePaths) {
+            [changedIndexPaths addObject:changedIndexPath];
+        }
+        //解除选中状态
         for (NSIndexPath *indexPath in selectedIndePaths) {
             [self.tableView deselectRowAtIndexPath:indexPath animated:YES];
         }
-        
+        [self.tableView endUpdates];
+//        
+        [self.tableView reloadRowsAtIndexPaths:changedIndexPaths withRowAnimation:UITableViewRowAnimationFade];
         
         //准备提交数据
         for (Approve *approve in selectedArray) {
@@ -505,7 +501,6 @@
         }
     }
     [self.tableView reloadRowsAtIndexPaths:reloadIndexArray withRowAnimation:UITableViewRowAnimationFade];
-    [self _startCellWarningAnimation];
 }
 
 #pragma mark - 提交审批时网络故障
@@ -539,7 +534,6 @@
 #pragma mark - 手势 
 -(void)didSwip:(UISwipeGestureRecognizer *)recognizer{
     if(recognizer.state == UIGestureRecognizerStateEnded){
-        
         if(recognizer.numberOfTouches == 1){
             CGPoint swipeLocation = [recognizer locationInView:self.tableView];
             NSIndexPath *swipedIndexPath = [self.tableView indexPathForRowAtPoint:swipeLocation];
@@ -635,19 +629,13 @@
 -(void)addRequestIntoQueueFromCenter{
     ASIHTTPRequest *request = [[HDHTTPRequestCenter shareHTTPRequestCenter] requestWithKey:DETAIL_REQUEST_KEY requestType:HDRequestTypeFormData];
     
-//    [self.tableView beginUpdates];
-//    NSUInteger fromIndex = 0;
-//    for (Approve *entity in tableAdapter.approveArray) {
-//        if (entity.rowID.intValue == request.tag) {//
-//            fromIndex = [tableAdapter.approveArray indexOfObject:entity];
-//            [tableAdapter.commitArray insertObject:entity atIndex:0];
-//            [tableAdapter.approveArray removeObject:entity];
-//            break;
-//        }
-//    }
-//    [self.tableView moveRowAtIndexPath:[NSIndexPath indexPathForRow:fromIndex inSection:SECTION_NORMAL] toIndexPath:[NSIndexPath indexPathForRow:0 inSection:SECTION_WAITING_LIST]];
-//    [self.tableView endUpdates];
-    
+    for (Approve *entity in _tableAdapter.approveArray) {
+        if (entity.rowID.intValue == request.tag) {//
+            entity.localStatus = @"WAITING";
+            break;
+        }
+    }
+    [_tableView reloadRowsAtIndexPaths:[_tableView indexPathsForVisibleRows] withRowAnimation:UITableViewRowAnimationNone];
     [self.networkQueue addOperation:request];
     
 }
