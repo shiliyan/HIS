@@ -22,15 +22,22 @@ static const int const TAG_COMMITDATE_LABEL = 4;
 static const int const TAG_DEADLINE_LABEL = 5;
 static const int const TAG_TYPEIMG_IMAGEVIEW = 6;
 
+static const float kCellContentFirstOriginY = 5.0f;
+static const float kCellContentSecondOriginY = 25.0f;
+static const float kCellContentThirdOriginY = 45.0f;
+
 
 @interface ApproveListCell : UITableViewCell{
     
     UILabel *workflowNameLabel;
-    UIView *alertBackgroundView;
+    UIImageView *alertBackgroundView;
+    UILabel *alertMessageLabel;
     UILabel *currentStatusTextView;
     UILabel *commitDateTextView;
     UILabel *deadLineTextView;
     UIImageView *typeImg;
+    UIView *coverView;
+    UIActivityIndicatorView *indicatorView;
     
     Approve *_cellData;
 }

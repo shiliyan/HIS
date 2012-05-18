@@ -19,7 +19,7 @@
         self.contentView.clipsToBounds = YES;
         
         // 加待办标题
-        workflowNameLabel = [[[UILabel alloc]initWithFrame:CGRectMake(20, 5, 240, 20)]autorelease];
+        workflowNameLabel = [[[UILabel alloc]initWithFrame:CGRectMake(20, kCellContentFirstOriginY, 240, 20)]autorelease];
         workflowNameLabel.tag = TAG_WORKFLOW_LABEL;
         workflowNameLabel.autoresizingMask = UIViewAutoresizingFlexibleWidth|UIViewAutoresizingFlexibleBottomMargin;
         workflowNameLabel.adjustsFontSizeToFitWidth = NO;
@@ -29,23 +29,37 @@
         [self.contentView addSubview:workflowNameLabel];
         
         // 加申请时间
-        commitDateTextView = [[[UILabel alloc]initWithFrame:CGRectMake(245, 5, 75, 20)]autorelease];
+        commitDateTextView = [[[UILabel alloc]initWithFrame:CGRectMake(240, kCellContentFirstOriginY, 85, 20)]autorelease];
         commitDateTextView.tag = TAG_COMMITDATE_LABEL;
         commitDateTextView.autoresizingMask =UIViewAutoresizingFlexibleWidth|UIViewAutoresizingFlexibleLeftMargin;
         commitDateTextView.adjustsFontSizeToFitWidth = NO;
         commitDateTextView.backgroundColor  = [UIColor clearColor];
-        [commitDateTextView setFont:[UIFont fontWithName:@"Helvetica" size:11]];
+        [commitDateTextView setFont:[UIFont fontWithName:@"Helvetica" size:12]];
+//        [commitDateTextView setTextColor:RGBCOLOR(102, 102, 102)];
         [commitDateTextView setTextColor:[UIColor blueColor]];
+
         [self.contentView addSubview:commitDateTextView];
         
-        alertBackgroundView = [[[UIView alloc]initWithFrame:CGRectMake(25, 28, 295, 18)]autorelease];
+        alertBackgroundView = [[UIImageView alloc]initWithImage:[UIImage imageNamed:@"r.png"]];
         
         alertBackgroundView.opaque = false;
-        alertBackgroundView.autoresizingMask = UIViewAutoresizingFlexibleWidth|UIViewAutoresizingFlexibleLeftMargin;
+        alertBackgroundView.origin = CGPointMake(20, kCellContentFirstOriginY);
+//        alertBackgroundView.frame = CGRectMake(20, kCellContentFirstOriginY, alertBackgroundView.image.size.width, alertBackgroundView.image.size.height);
+//        alertBackgroundView.layer.shadowOffset = CGSizeMake(0.2, 0.2);
+//        alertBackgroundView.layer.shadowColor = [[UIColor blackColor]CGColor];
+//        alertBackgroundView.layer.shadowOpacity = 0.5;
         [self.contentView addSubview:alertBackgroundView];
         
+        alertMessageLabel = [[UILabel alloc]initWithFrame:CGRectMake(alertBackgroundView.origin.x+6, alertBackgroundView.origin.y+3, 170, 15)];
+        alertMessageLabel.backgroundColor = [UIColor clearColor];
+        [alertMessageLabel setFont:[UIFont fontWithName:@"Helvetica-Bold" size:12]];
+        alertMessageLabel.textColor = [UIColor whiteColor];
+        alertMessageLabel.adjustsFontSizeToFitWidth = NO;
+        [alertBackgroundView addSubview:alertMessageLabel];
+        
+        
         // 加审批动作名
-        currentStatusTextView = [[[UILabel alloc]initWithFrame:CGRectMake(20, 25, 300, 21)]autorelease];
+        currentStatusTextView = [[[UILabel alloc]initWithFrame:CGRectMake(20, kCellContentSecondOriginY, 300, 21)]autorelease];
         currentStatusTextView.tag = TAG_CURRENTSTATUS_LABEL;
         currentStatusTextView.autoresizingMask = UIViewAutoresizingFlexibleWidth;
         currentStatusTextView.textAlignment = UITextAlignmentLeft;
@@ -55,7 +69,7 @@
         [self.contentView addSubview:currentStatusTextView];
         
         //截止时间
-        deadLineTextView = [[[UILabel alloc]initWithFrame:CGRectMake(20, 45, 295, 32)]autorelease];
+        deadLineTextView = [[[UILabel alloc]initWithFrame:CGRectMake(20, kCellContentThirdOriginY, 295, 32)]autorelease];
         deadLineTextView.tag = TAG_DEADLINE_LABEL;
         deadLineTextView.autoresizingMask=UIViewAutoresizingFlexibleWidth;
         deadLineTextView.adjustsFontSizeToFitWidth = NO;
@@ -67,22 +81,26 @@
         [deadLineTextView setNumberOfLines:2];
         [self.contentView addSubview:deadLineTextView];
         
-        typeImg = [[[UIImageView alloc]initWithFrame:CGRectMake(1, 29, 16, 16)]autorelease];
         // 加待办类型图片 
-
-        typeImg.tag = TAG_TYPEIMGVIEW;
-        typeImg.autoresizingMask = UIViewAutoresizingFlexibleRightMargin|UIViewAutoresizingFlexibleBottomMargin;
-        typeImg.contentMode = UIViewContentModeScaleAspectFit;
-        [self.contentView addSubview:typeImg];
+//        typeImg = [[[UIImageView alloc]initWithFrame:CGRectMake(1, 29, 16, 16)]autorelease];
+//        typeImg.tag = TAG_TYPEIMGVIEW;
+//        typeImg.autoresizingMask = UIViewAutoresizingFlexibleRightMargin|UIViewAutoresizingFlexibleBottomMargin;
+//        typeImg.contentMode = UIViewContentModeScaleAspectFit;
+//        [self.contentView addSubview:typeImg];
+        
+        //提交中的遮罩
+        coverView = [[UIView alloc]initWithFrame:CGRectMake(0, 1, 320, 84)];
+        coverView.backgroundColor = RGBACOLOR(237, 237, 237, 0.8);
+        coverView.hidden = YES;
+        [self.contentView addSubview:coverView];
+        
+        //提交中的进度指示
+        indicatorView = [[UIActivityIndicatorView alloc]initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
+        indicatorView.center = coverView.center;
+        [coverView addSubview:indicatorView];
         
     }
     return self;
-}
-
-- (void)setSelected:(BOOL)selected animated:(BOOL)animated
-{
-    [super setSelected:selected animated:animated];    
-    // Configure the view for the selected state
 }
 
 -(void)setCellData:(Approve *)approveEntity{
@@ -90,41 +108,84 @@
     _cellData = [approveEntity retain];
     self.layer.backgroundColor = [UIColor clearColor].CGColor;
     
+    //设置共同的要显示数据
     workflowNameLabel.text = [NSString stringWithFormat:@"%@：%@",_cellData.orderType,_cellData.employeeName];
     
-    commitDateTextView.text = [_cellData.creationDate substringToIndex:10];
-    deadLineTextView.text = _cellData.instanceDesc;
+    if (_cellData.creationDate.length >= 10) {
+        commitDateTextView.text = [_cellData.creationDate substringToIndex:10];
+    }else {
+        commitDateTextView.text = _cellData.creationDate;
+    }
     
+    deadLineTextView.text = _cellData.instanceDesc;
+    currentStatusTextView.text = [NSString stringWithFormat:@"当前节点：%@",_cellData.nodeName];
+    
+    //根据数据内容，设置不同的属性
     if (_cellData.isLate.intValue == 0) {
         workflowNameLabel.textColor = [UIColor blackColor];
     }else {
         workflowNameLabel.textColor = [UIColor redColor];
     }
     
-    if ([_cellData.localStatus isEqualToString:@"DIFFERENT"]){
-        typeImg.image = [UIImage imageNamed:@"alert.png"];
-        alertBackgroundView.backgroundColor = [UIColor colorWithRed:(255/255) green:(255/255) blue:(0/255) alpha:0.2f];
-        typeImg.hidden = NO;
-        alertBackgroundView.hidden = NO;
-        currentStatusTextView.text = _cellData.serverMessage;
-    }else if([_cellData.localStatus isEqualToString:@"ERROR"]){
-        typeImg.image = [UIImage imageNamed:@"error.png"];
-        alertBackgroundView.backgroundColor = [UIColor colorWithRed:(255/255) green:(0/255) blue:(0/255) alpha:0.2f];
-        typeImg.hidden = NO;
-        alertBackgroundView.hidden = NO;
-        currentStatusTextView.text = _cellData.serverMessage;
-    }else if ([_cellData.localStatus isEqualToString:@"WAITING"]){
-        typeImg.image = [UIImage imageNamed:@"error.png"];
-        alertBackgroundView.backgroundColor = [UIColor colorWithRed:(255/255) green:(255/255) blue:(255/255) alpha:0.2f];
-        typeImg.hidden = NO;
-        alertBackgroundView.hidden = NO;
-        currentStatusTextView.text = @"等待提交中";
     
-    } else{
-        typeImg.hidden = YES;
-        alertBackgroundView.hidden = YES;
-        currentStatusTextView.text = [NSString stringWithFormat:@"当前节点：%@",_cellData.nodeName];
+    if (([_cellData.localStatus isEqualToString:@"ERROR"]) || ([_cellData.localStatus isEqualToString:@"DIFFERENT"])) {
+        coverView.hidden = YES;
+        [indicatorView stopAnimating];
+        indicatorView.hidden = YES;
+        alertBackgroundView.hidden = NO;
+        alertMessageLabel.text = _cellData.serverMessage;
+        
+        //计算信息栏占的高度
+        float alertViewHeight = alertBackgroundView.frame.size.height;
+        
+        //移动工作流标题
+        workflowNameLabel.origin = CGPointMake(workflowNameLabel.origin.x, kCellContentFirstOriginY+alertViewHeight);
+        //移动提交时间
+        commitDateTextView.origin = CGPointMake(commitDateTextView.origin.x, kCellContentFirstOriginY+alertViewHeight);
+        //移动副标题
+        currentStatusTextView.origin = CGPointMake(currentStatusTextView.origin.x, kCellContentSecondOriginY+alertViewHeight);
+        //移动描述信息
+        deadLineTextView.origin = CGPointMake(deadLineTextView.origin.x, kCellContentThirdOriginY + alertViewHeight);
+        
+        if ([_cellData.localStatus isEqualToString:@"DIFFERENT"]){
+            alertBackgroundView.image = [UIImage imageNamed:@"g.png"];
+            
+        }else if([_cellData.localStatus isEqualToString:@"ERROR"]){
+             alertBackgroundView.image = [UIImage imageNamed:@"r.png"];
+           
+        }else if ([_cellData.localStatus isEqualToString:@"WAITING"]){
+            alertMessageLabel.text = @"等待提交中";
+        }
     }
+    
+     else{
+        alertBackgroundView.hidden = YES;
+         
+         //移动工作流标题
+         workflowNameLabel.origin = CGPointMake(workflowNameLabel.origin.x, kCellContentFirstOriginY);
+         //移动提交时间
+         commitDateTextView.origin = CGPointMake(commitDateTextView.origin.x, kCellContentFirstOriginY);
+         //移动副标题
+         currentStatusTextView.origin = CGPointMake(currentStatusTextView.origin.x, kCellContentSecondOriginY);
+         //移动描述信息
+         deadLineTextView.origin = CGPointMake(deadLineTextView.origin.x, kCellContentThirdOriginY);
+         
+         if ([_cellData.localStatus isEqualToString:@"WAITING"]) {
+             coverView.hidden = NO;
+             indicatorView.hidden = NO;
+             [indicatorView startAnimating];
+         }else {
+             coverView.hidden = YES;
+             indicatorView.hidden = YES;
+             [indicatorView stopAnimating];
+         }
+        
+    }
+}
+
+-(void)setSelected:(BOOL)selected animated:(BOOL)animated{
+    [super setSelected:selected animated:animated];
+    alertMessageLabel.backgroundColor = [UIColor clearColor];
 }
 
 -(void)dealloc{
