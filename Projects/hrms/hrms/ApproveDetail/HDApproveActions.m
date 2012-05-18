@@ -8,6 +8,7 @@
 
 #import "HDApproveActions.h"
 #import "ApproveDatabaseHelper.h"
+#import "HDHTTPRequestCenter.h"
 
 @implementation HDApproveActions
 
@@ -33,11 +34,16 @@
 //加载远程动作
 -(void)loadTheRemoteActions
 {
-//    TTDPRINT(@"%@",[self configActionsLoadPathWithType:HDActionLoadTypeRemote] );
+    //    TTDPRINT(@"%@",[self configActionsLoadPathWithType:HDActionLoadTypeRemote] );
     self.actionsLoadRequest = 
-    [HDFormDataRequest hdRequestWithURL:[self configActionsLoadPathWithType:HDActionLoadTypeRemote] 
+    [[HDHTTPRequestCenter shareHTTPRequestCenter]
+                               requestWithURL:[self configActionsLoadPathWithType:HDActionLoadTypeRemote]
                                withData:[self configActionsLoadParameterWithType:HDActionLoadTypeRemote]
-                                pattern:HDrequestPatternNormal];
+                               requestType:HDRequestTypeFormData forKey:nil];
+    
+//    [HDFormDataRequest hdRequestWithURL:[self configActionsLoadPathWithType:HDActionLoadTypeRemote] 
+//                               withData:[self configActionsLoadParameterWithType:HDActionLoadTypeRemote]
+//                                pattern:HDrequestPatternNormal];
     
     [_actionsLoadRequest setSuccessSelector: @selector(remoteActionLoadSucceeded:withDataSet:)];
     [_actionsLoadRequest setDelegate:self];
@@ -48,7 +54,7 @@
 -(void)remoteActionLoadSucceeded:(ASIFormDataRequest *)theRequest withDataSet:(NSArray *) dataSet
 {
     //尝试保存动作到本地,由子类实现其方法
-//    TTDPRINT(@"%@",dataSet);
+    //    TTDPRINT(@"%@",dataSet);
     [self saveTheActions:dataSet];
     [self callDidLoadSelector:@selector(actionsDidLoad:) 
                    withObject:dataSet];
