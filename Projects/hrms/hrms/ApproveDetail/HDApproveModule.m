@@ -89,7 +89,7 @@
     ApproveDatabaseHelper * dbHelper = [[ApproveDatabaseHelper alloc]init];
     [dbHelper.db open];
     
-    NSString *sql = [NSString stringWithFormat:@"update approve_list set local_status = '%@',action = '%@' ,submit_url = '%@' ,comment = '%@' where rowid = %i",
+    NSString *sql = [NSString stringWithFormat:@"update approve_list set local_status = '%@',action = '%@' ,submit_url = '%@' ,comment = '%@' where rowid = %@",
                      @"WAITING",
                      _approveEntity.action,
                      _approveEntity.submitUrl,
