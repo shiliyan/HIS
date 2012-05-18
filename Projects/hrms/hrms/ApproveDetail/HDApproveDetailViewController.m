@@ -104,8 +104,20 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad]; 
+    if (![self showLoadAction]) {
+        self.toolbar.hidden=YES;
+    }
+    self.toolbar.tintColor =TTSTYLEVAR(toolbarTintColor);
     [_detailModel setDelegate:self];
     [_detailModel startLoad];
+    
+}
+
+-(BOOL)showLoadAction
+{
+     NSString * status = _detailModel.approveEntity.localStatus;
+    return(![status isEqualToString:@"WAITING"] &&
+           ![status isEqualToString:@"DIFFERENT"]);
 }
 
 - (void)viewDidUnload
