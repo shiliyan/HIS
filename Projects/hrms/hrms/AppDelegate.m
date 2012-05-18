@@ -42,11 +42,16 @@ NSString * kMainPathName =@"HD_MAIN_VC_PATH";
     HDNavigator* navigator = [HDNavigator navigator];
     NSString * kMainViewControllerPathPath = [[HDGodXMLFactory shareBeanFactory] actionURLPathWithKey:kMainPathName];
     
-    [navigator openURLAction:[TTURLAction actionWithURLPath:kMainViewControllerPathPath]];
-    
     NSString * kLoginViewControllerPath = [[HDGodXMLFactory shareBeanFactory] actionURLPathWithKey:kLoginPathName];
-    
+
+    if (!kMainViewControllerPathPath || !kLoginViewControllerPath) {
+        //如果没有配置,弹默认视图
+        [navigator openURLAction:[TTURLAction actionWithURLPath:@"default"]];
+    }else {
+    [navigator openURLAction:[TTURLAction actionWithURLPath:kMainViewControllerPathPath]];
+       
     [navigator openURLAction:[TTURLAction actionWithURLPath:kLoginViewControllerPath]];
+    }
 }
 
 -(void)backToLoginView

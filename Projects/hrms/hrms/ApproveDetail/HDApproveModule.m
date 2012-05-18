@@ -56,7 +56,8 @@
 -(void)startLoad
 {
     //如果记录状态是等待,不加载动作  
-    if (![_approveEntity.localStatus isEqualToString:@"WAITING"]) {
+    if (![_approveEntity.localStatus isEqualToString:@"WAITING"]&&
+        ![_approveEntity.localStatus isEqualToString:@"DIFFERENT"]) {
         [self startLoadAction];
     }
     [self startLoadWebPage];
@@ -88,7 +89,7 @@
     ApproveDatabaseHelper * dbHelper = [[ApproveDatabaseHelper alloc]init];
     [dbHelper.db open];
     
-    NSString *sql = [NSString stringWithFormat:@"update approve_list set local_status = '%@',action = '%@' ,submit_url = '%@' ,comment = '%@' where rowid = %i",
+    NSString *sql = [NSString stringWithFormat:@"update approve_list set local_status = '%@',action = '%@' ,submit_url = '%@' ,comment = '%@' where rowid = %@",
                      @"WAITING",
                      _approveEntity.action,
                      _approveEntity.submitUrl,

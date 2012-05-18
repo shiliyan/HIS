@@ -12,31 +12,43 @@
 #import "HDDataJSONFilter.h"
 
 @implementation HDApprovedListModel
-//@synthesize formRequest = _formRequest;
 @synthesize approvedList = _approvedList;
+@synthesize pageNum = _pageNum;
+
+-(id)init
+{
+    if (self = [super init]) {
+        _pageNum = 1;
+    }
+    return self;
+}
+
+-(void)search:(NSString *)text
+{
+    [self cancel];
+    TT_RELEASE_SAFELY(_approvedList);
+    if (text.length) {
+        [self.delegates performSelector:@selector(modelDidStartLoad:) withObject:self]; 
+        [self.delegates performSelector:@selector(modelDidChange:) withObject:self];
+    }
+}
 
 -(void)load:(TTURLRequestCachePolicy)cachePolicy more:(BOOL)more
 {
     NSString * queryUrl = [HDURLCenter requestURLWithKey:@"APPROVED_LIST_QUERY_PATH"];
-    //    self.formRequest = [HDFormDataRequest hdRequestWithURL:queryUrl withData:nil pattern:HDrequestPatternNormal];
-    //    [_formRequest setDelegate:self];
-    //    [_formRequest setSuccessSelector:@selector(approvedListLoadSuccess:dataSet:)];
-    //    [_formRequest setFailedSelector:@selector(approvedListLoadError:error:)];
-    //    [_formRequest setServerErrorSelector:@selector(approvedListLoadError:error:)];
-    //    [_formRequest setErrorSelector:@selector(approvedListLoadError:error:)];
-    //    [_formRequest startAsynchronous];
+    queryUrl = [NSString stringWithFormat:@"%@?pagesize=10&pagenum=%i&_fetchall=false&_autocount=false",queryUrl,_pageNum];
+
     TTURLRequest *request = [TTURLRequest requestWithURL:queryUrl delegate:self];
     
     request.cachePolicy = TTURLRequestCachePolicyNoCache;
     request.httpMethod = @"POST";
     request.multiPartForm = false;
-    request.response = [[TTURLDataResponse alloc]init];
+    request.response = [[[TTURLDataResponse alloc]init] autorelease];
     [request send];
 }
 
 -(void)requestDidFinishLoad:(TTURLRequest *)request
 {
-    
     TTURLDataResponse * response = request.response;
     NSError *error =nil;
     
@@ -49,11 +61,17 @@
     if (!dataSet) {
         [self didFailLoadWithError:error];
     }else {
-        NSMutableArray * tempApproveList = [NSMutableArray arrayWithCapacity:dataSet.count];
-        for (id record in dataSet) {
-            [tempApproveList addObject:[[[Approve alloc]initWithDictionary:record] autorelease]];
-        }
-        _approvedList = [NSArray arrayWithArray:tempApproveList];
+        NSArray * tempApproveList = [[[HDGodXMLFactory shareBeanFactory] beansWithArray:dataSet path:@"/service/field-mappings/field-mapping[@url_name='APPROVE_TABLE_QUERY_URL']"]retain] ;
+        
+//        NSMutableArray * tempApproveList = [NSMutableArray arrayWithCapacity:dataSet.count];
+//        for (id record in dataSet) {
+//            [tempApproveList addObject:[[[Approve alloc]initWithDictionary:record] autorelease]];
+//        }
+//        if (nil!= _approvedList && _approvedList.count > 0) {
+//            [tempApproveList insertObjects:_approvedList atIndexes:0];
+//        }
+        _approvedList = tempApproveList;
+        
         [self didFinishLoad];
         
         [super requestDidFinishLoad:request];          
@@ -64,71 +82,55 @@
 {
     [self didFailLoadWithError:error];
 }
-//#pragma -mark HDFormRequest delegate functions
-//-(void)approvedListLoadSuccess:(ASIFormDataRequest *)request dataSet:(NSArray *)dataSet
-//{
-//    NSMutableArray * tempApproveList = [NSMutableArray arrayWithCapacity:dataSet.count];
-//    for (id record in dataSet) {
-//         [tempApproveList addObject:[[[Approve alloc]initWithDictionary:record] autorelease]];
-//    }
-//    _approvedList = [NSArray arrayWithArray:tempApproveList];
-//    [self didFinishLoad];
-//}
-//
-//- (void)approvedListLoadError:(ASIFormDataRequest *)request error: (NSDictionary *) errorObject
-//{
-//    [self didFailLoadWithError:
-//     [NSError errorWithDomain:request.domain
-//                         code:request.responseStatusCode 
-//                     userInfo:errorObject]];
-//}
 
 @end
 
+////////////////////////////////////////////////////////////////////////////////////////////////
 @implementation HDApprovedListDataSource
-@synthesize approvedList = _approvedList;
+@synthesize approvedListModel = _approvedListModel;
 
 - (id)init
 {
     self = [super init];
     if (self) {
-        _approvedList = [[HDApprovedListModel alloc]init];
-        self.model = _approvedList;
+        _approvedListModel = [[HDApprovedListModel alloc]init];
+        self.model = _approvedListModel;
     }
     return self;
 }
 
 -(void)dealloc
 {
-    TT_RELEASE_SAFELY(_approvedList);
+    TT_RELEASE_SAFELY(_approvedListModel);
     [super dealloc];
 }
 
 -(void)tableViewDidLoadModel:(UITableView *)tableView
 {
     self.items = [NSMutableArray array];
-    for (Approve * approvedRecord in _approvedList.approvedList) {
+    for (Approve * approvedRecord in _approvedListModel.approvedList) {
         NSString * textContent = [NSString stringWithFormat:@"%@ %@",
-                                  approvedRecord.statusName,
-                                  approvedRecord.instanceDesc];
+                                  (nil == approvedRecord.statusName)?@"":approvedRecord.statusName,
+                                  (nil ==approvedRecord.instanceDesc)?@"":approvedRecord.instanceDesc];
         NSString * screenUrl =  
         [NSString stringWithFormat:@"%@?doc_page_url=%@&instance_id=%@",
          [HDURLCenter requestURLWithKey:@"APPROVE_DETIAL_WEB_PAGE_PATH"],
-         approvedRecord.screenName,
+         approvedRecord.docPageUrl,
          approvedRecord.instanceId];
         
-        [self.items addObject:[TTTableMessageItem itemWithTitle:approvedRecord.orderType  
-                                                        caption:approvedRecord.workflowName           
-                                                           text:textContent 
-                                                      timestamp:nil
-                                                       imageURL:nil 
-                                                            URL:screenUrl]];
+        [self.items addObject:
+         [TTTableMessageItem itemWithTitle:approvedRecord.orderType  
+                                   caption:approvedRecord.workflowName                                
+                                      text:textContent 
+                                 timestamp:nil
+                                  imageURL:nil 
+                                       URL:screenUrl]];
     }
 }
 
 -(id<TTModel>)model
 {
-    return _approvedList;
+    return _approvedListModel;
 }
 
 @end
