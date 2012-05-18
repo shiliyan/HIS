@@ -56,7 +56,8 @@
 -(void)startLoad
 {
     //如果记录状态是等待,不加载动作  
-    if (![_approveEntity.localStatus isEqualToString:@"WAITING"]) {
+    if (![_approveEntity.localStatus isEqualToString:@"WAITING"]&&
+        ![_approveEntity.localStatus isEqualToString:@"DIFFERENT"]) {
         [self startLoadAction];
     }
     [self startLoadWebPage];
