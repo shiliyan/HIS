@@ -46,7 +46,7 @@
 -(BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath{
     NSUInteger row = [indexPath row];
     Approve *entity = [self.approveArray objectAtIndex:row];
-    if ([entity.localStatus isEqualToString:@"NORMAL"]) {
+    if ([entity.localStatus isEqualToString:@"NORMAL"] || [entity.localStatus isEqualToString:@"ERROR"]) {
         return true;
     }else{
         return false;
