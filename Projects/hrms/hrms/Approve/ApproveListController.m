@@ -207,7 +207,8 @@
     }
     
     // 获取最新的待办列表
-    self.formRequest  = [HDFormDataRequest hdRequestWithURL:[HDURLCenter requestURLWithKey:@"APPROVE_TABLE_QUERY_URL"] pattern:HDrequestPatternNormal];
+    self.formRequest = [[HDHTTPRequestCenter shareHTTPRequestCenter]requestWithURL:[HDURLCenter requestURLWithKey:@"APPROVE_TABLE_QUERY_URL"] requestType:HDRequestTypeFormData forKey:nil];
+//    self.formRequest  = [HDFormDataRequest hdRequestWithURL:[HDURLCenter requestURLWithKey:@"APPROVE_TABLE_QUERY_URL"] pattern:HDrequestPatternNormal];
     
     [_formRequest setDelegate:self];
     [_formRequest setSuccessSelector:@selector(querySuccess:withDataSet:)];
@@ -400,7 +401,9 @@
             [data setObject:approve.comment forKey:APPROVE_PROPERTY_COMMENT];
             
             //准备request对象
-            HDFormDataRequest *request = [HDFormDataRequest hdRequestWithURL:approve.submitUrl withData:data pattern:HDrequestPatternNormal];
+             HDFormDataRequest *request  = [[HDHTTPRequestCenter shareHTTPRequestCenter]requestWithURL:approve.submitUrl withData:data  requestType:HDRequestTypeFormData forKey:nil];
+            
+//            HDFormDataRequest *request = [HDFormDataRequest hdRequestWithURL:approve.submitUrl withData:data pattern:HDrequestPatternNormal];
             request.tag = approve.rowID.intValue;
             [request setDelegate:self];
             [request setSuccessSelector:@selector(commitApproveSuccess:withDataSet:)];
@@ -434,7 +437,9 @@
             [data setObject:approve.action forKey:@"action_id"];
             
             //准备request对象
-            HDFormDataRequest *request = [HDFormDataRequest hdRequestWithURL:approve.submitUrl withData:data pattern:HDrequestPatternNormal];
+            HDFormDataRequest *request  = [[HDHTTPRequestCenter shareHTTPRequestCenter]requestWithURL:approve.submitUrl withData:data  requestType:HDRequestTypeFormData forKey:nil];
+            
+//            HDFormDataRequest *request = [HDFormDataRequest hdRequestWithURL:approve.submitUrl withData:data pattern:HDrequestPatternNormal];
             request.tag = approve.rowID.intValue;
             [request setDelegate:self];
             [request setSuccessSelector:@selector(commitApproveSuccess:withDataSet:)];
