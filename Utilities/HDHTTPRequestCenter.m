@@ -10,13 +10,18 @@
 #import "HDRequestConfigMap.h"
 #import "ASIDownloadCache.h"
 #import <objc/runtime.h>
+#import "HDTimeOutCheck.h"
+#import "HDLoginModel.h"
 
 @implementation HDHTTPRequestCenter
 
 static HDHTTPRequestCenter * _requestCenter = nil;
 
 @synthesize requestConfigMap = _requestConfigMap;
+@synthesize lastRequestTime = _lastRequestTime;
+@synthesize LoginTimes = _LoginTimes;
 
+@synthesize isTimeOut = _isTimeOut;
 
 +(id)shareHTTPRequestCenter
 {
@@ -53,6 +58,9 @@ static HDHTTPRequestCenter * _requestCenter = nil;
     self = [super init];
     if (self) {
         _requestConfigMap = [[HDRequestConfigMap alloc]init];
+        _lastRequestTime =[[NSDate dateWithTimeIntervalSinceNow:0] retain];
+        _LoginTimes = 0;
+        _isTimeOut = NO;
     }
     return self;
 }
@@ -69,7 +77,8 @@ static HDHTTPRequestCenter * _requestCenter = nil;
 
 -(void)dealloc
 {
-    TT_RELEASE_SAFELY(_requestConfigMap)
+    TT_RELEASE_SAFELY(_requestConfigMap);
+    TT_RELEASE_SAFELY(_lastRequestTime);
     [super dealloc];
 }
 
@@ -101,30 +110,23 @@ static HDHTTPRequestCenter * _requestCenter = nil;
         requestType:(HDRequestType) requestType
              forKey:(id)requestConfigKey
 {
+    //TODO:暂时不处理超时的问题
+//    [self checkSession];
+//    if ([self shouldShowLogin]) {
+//        //如果判断需要返回登陆界面,向消息中心发送消息,并return
+//        [[NSNotificationCenter defaultCenter] postNotificationName:@"show_login_view" object:nil];
+//        return nil;
+//    }
     
+    //根据请求参数生成请求对象
     switch (requestType) {
         case HDRequestTypeFormData:
         {
             HDRequestConfig * config = [self.requestConfigMap configForKey:requestConfigKey];
-            HDFormDataRequest * theRequest = [HDFormDataRequest hdRequestWithURL:newURL
-                                                                    withData:data
-                                                                         pattern:HDrequestPatternNormal];
-            //TODO:动态获取属性列表
-//            NSLog(@"%@",[[config class] classFallbacksForKeyedArchiver]);
-//            id LenderClass  = [[config class] description];
-//            unsigned int outCount, i;
-//            objc_objectptr_t * properties = class_copyPropertyList(LenderClass, &outCount);
-//            for (i = 0; i < outCount; i++) {
-//                objc_objectptr_t property = properties[i];
-//                NSLog(@"%@",[NSString stringWithFormat:@"%s",property_getName(property)]);
-//             fprintf(stdout, "%s %s\n", property_getName(property),property_getAttributes(property));
-//            }
-            
-//            NSDictionary * dic = [NSDictionary dictionaryWithObjectsAndKeys:
-//                                  config.delegate,@"delegate",
-//                                  config.successSelector,@""
-//                                  nil]
-//            [theRequest setValuesForKeysWithDictionary:@"successSelector"];
+            HDFormDataRequest * theRequest = 
+            [HDFormDataRequest hdRequestWithURL:newURL 
+                                       withData:data
+                                        pattern:HDrequestPatternNormal];
             
             [theRequest setDelegate:config.delegate];
             [theRequest setSuccessSelector:config.successSelector];
@@ -154,11 +156,67 @@ static HDHTTPRequestCenter * _requestCenter = nil;
             [theRequest setTimeOutSeconds:30];
             [[ASIDownloadCache sharedCache] setShouldRespectCacheControlHeaders:NO];
             return theRequest;
-        }    
+        } 
+        case TTRequest:
+        {
+            TTURLRequest * theRequest = [TTURLRequest request];
+            theRequest.cachePolicy = TTURLRequestCachePolicyNoCache;
+            theRequest.httpMethod = @"POST";
+            theRequest.multiPartForm = false;
+            theRequest.response = [[[TTURLDataResponse alloc]init] autorelease];
+            return theRequest;
+        }
         default:
-            break;
+            break; 
+    } 
+}
+
+//判断是否返回登录界面,yes,退回登录界面,返回no继续请求
+-(BOOL)shouldShowLogin
+{
+    return _isTimeOut;
+}
+
+//校验session并尝试自动登录
+-(void)checkSession
+{
+    //在返回请求之前,校验session是否存在
+    NSDate * now = [NSDate dateWithTimeIntervalSinceNow:0];
+    //如果距离上次请求超过1800秒,发起校验
+    if ([now timeIntervalSinceDate:_lastRequestTime]>1800) {
+        //校验是否超时
+        [self checkTimeOut];
+        [self autoLogin];
     }
-    
+    //刷新最后一次更新时间
+    if (nil != _lastRequestTime) {
+        TT_RELEASE_SAFELY(_lastRequestTime);
+    }
+    _lastRequestTime = [now retain];
+}
+
+//检查超时
+-(void)checkTimeOut
+{
+    _isTimeOut = [HDTimeOutCheck isTimeOut];
+}
+
+-(void)autoLogin
+{
+    //如果未超时返回
+    if (_isTimeOut == NO) {
+        return;
+    }
+    //如果不是第一次登录返回
+    if (_LoginTimes >= 2) {
+        return;
+    }
+    _LoginTimes ++;
+    //发起登录请求
+    _isTimeOut = ![HDLoginModel autoLogin];
+    if (_isTimeOut) {
+        [self autoLogin];
+    } 
 }
 
 @end

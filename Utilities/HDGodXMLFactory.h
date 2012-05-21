@@ -22,4 +22,6 @@
 
 //根据key获取action的urlpath
 -(NSString *)actionURLPathWithKey:(NSString*) keyValue;
+
+-(NSArray *) nodesForXPath:(NSString *)path;
 @end
