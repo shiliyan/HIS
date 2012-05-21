@@ -24,12 +24,13 @@ static NSString * kModal = @"modal";
     TTDPRINT(@"start loading");
     //获取classes节点,用于加载类的配置
     HDClassConfigParser * classConfigParser = [[HDClassConfigParser alloc]init];
+    [[HDNavigator navigator].URLMap from:@"*" toViewController:[TTWebController class]];
     [classConfigParser setDelegate:self];
     [classConfigParser startParse];
     [classConfigParser release];
 }
 
-
+#pragma -mark delegate functions of class parser
 -(void)setNibLoadPathWithElement:(CXMLElement *)element
 {   
     HDNavigator * _navigator = [HDNavigator navigator];
@@ -116,22 +117,5 @@ static NSString * kModal = @"modal";
     }
 }
 
-#pragma -mark delegate functions of class parser
-//-(void)loadInitNode:(id)node classObj:(Class)cls
-//{
-//    //根据navigatorModel加载
-//    NSString * strMode = [node valueForKeyPath:@"kNavigationMode"];
-//    //共享模式
-//    TTDPRINT(@"%@",strMode);
-//    if ([strMode isEqualToString:@"TTNavigationModeShare"]) 
-//    {
-//        [_map from:[node valueForKeyPath:@"kURL"] toSharedViewController:cls];
-//    }
-//    //新建模式
-//    else if ([strMode isEqualToString:@"TTNavigationModeCreate"]) {
-//        [_map from:[node valueForKeyPath:@"kURL"] toViewController:cls];
-//    }
-//    
-//}
 
 @end
