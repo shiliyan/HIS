@@ -15,11 +15,6 @@ static NSString * kNibConfigPath = @"/service/nibs/nib";
 @implementation HDClassConfigParser
 @synthesize delegate = _delegate;
 
--(void)dealloc
-{
-    [super dealloc];
-}
-
 -(void)startParse
 {
     [self parseNib];
@@ -29,12 +24,10 @@ static NSString * kNibConfigPath = @"/service/nibs/nib";
 
 -(id)readConfigWithKey:(NSString *) key
 {
-    NSError * error = nil;
-    id config = [[[HDGodXMLFactory shareBeanFactory] document] nodesForXPath:key error:&error];
+    id config = [[HDGodXMLFactory shareBeanFactory] nodesForXPath:key];
     if (nil != config) {
         return config;
     }
-    TTDASSERT([error description]);
     return nil;
 }
 
