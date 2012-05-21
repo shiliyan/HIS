@@ -18,11 +18,17 @@
 typedef enum {
     HDRequestTypeFormData = 0,
     ASIRequestTypeWebPage = 1,
+    TTRequest = 2,
 } HDRequestType;
 
-@interface HDHTTPRequestCenter : NSObject
+@interface HDHTTPRequestCenter : TTURLRequestModel
 
 @property (nonatomic,readonly) HDRequestConfigMap * requestConfigMap;
+//最后一次请求时间
+@property (nonatomic,readonly) NSDate * lastRequestTime;
+@property (nonatomic,readonly) NSUInteger LoginTimes;
+@property (nonatomic,readonly) BOOL isTimeOut;
+//@property (nonatomic,readonly) BOOL isOnline;
 
 +(id)shareHTTPRequestCenter;
 
