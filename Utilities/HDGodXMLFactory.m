@@ -77,6 +77,20 @@ static NSString * kActionURLPathRootNodePath = @"/service/runtime/action-path-ma
     return self;
 }
 
+-(NSArray *)nodesForXPath:(NSString *)path
+{
+    NSError * error = nil;
+    if (nil != _document) {
+        id nodes = [_document nodesForXPath:path error:&error];
+        if (nil != nodes) {
+            return nodes;
+        }
+        TTDASSERT([error description]);
+    }
+    return nil;
+}
+
+
 -(id)getBeanWithDic:(NSDictionary *)data path:(NSString*)xpath{
     NSError *error = nil;
     CXMLNode *xPathNode;
