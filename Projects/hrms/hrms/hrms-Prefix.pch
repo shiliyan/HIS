@@ -19,6 +19,8 @@
 
 #import "HDFormDataRequest.h"
 #import "HDNavigator.h"
+#import "HDURLCenter.h"
+#import "HDHTTPRequestCenter.h"
 
 #import "HDGodXMLFactory.h"
 
