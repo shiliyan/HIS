@@ -64,7 +64,7 @@
     if (error) {
         *error = [NSError errorWithDomain:kHDFilterErrorDomain
                                      code:kHDFilterErrorCode
-                                 userInfo:[NSDictionary dictionaryWithObject:@"filter error" forKey:@"error"]];
+                                 userInfo:[NSDictionary dictionaryWithObject:[data valueForKeyPath:@"error.message"] forKey:@"error"]];
     } 
     return nil; 
 }
