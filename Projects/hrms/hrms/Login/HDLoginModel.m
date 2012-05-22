@@ -56,6 +56,7 @@ static NSString * kLoginURLPath = @"LOGIN_PATH";
     }   
     [[NSUserDefaults standardUserDefaults] setValue:_username forKey:@"username"];
     [[NSUserDefaults standardUserDefaults] setValue:_password forKey:@"password"];
+    [[NSUserDefaults standardUserDefaults]synchronize];
 }
 
 -(void)load:(TTURLRequestCachePolicy)cachePolicy more:(BOOL)more
@@ -82,9 +83,11 @@ static NSString * kLoginURLPath = @"LOGIN_PATH";
     //这里从配置生成
     HDDataFilter * jsonParser = [[HDJSONToDataFilter alloc]initWithNextFilter:nil];
     HDDataFilter * parameterParser = [[HDDataAuroraRequestFilter alloc]initWithNextFilter:jsonParser];
-    
-    
     id result =  [parameterParser doFilter:postdata error:&error];
+
+    TT_RELEASE_SAFELY(jsonParser);
+    TT_RELEASE_SAFELY(parameterParser);
+    
     [request.parameters setObject:result forKey:@"_request_data"];
     request.response = [[TTURLDataResponse alloc]init];
     if (_isAutoLogin) {
