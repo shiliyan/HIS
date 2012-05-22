@@ -10,9 +10,6 @@
 #import "HDClassLoader.h"
 
 @implementation HDNavigator
-//@synthesize configLoader = _configLoader;
-//@synthesize objectDictionary = _objectDictionary;
-//@synthesize sysConfig = _sysConfig;
 
 +(HDNavigator *)navigator
 {
@@ -78,14 +75,7 @@
     TTURLNavigatorPattern* pattern = nil;
     //创建对象
     id object = [_URLMap objectForURL:urlPath query:action.query pattern:(TTURLNavigatorPattern**)pattern];
-    //添加对象到map中管理
-    //    [_objectDictionary setValue:object forKey:action.urlPath];
     return object;
 }
 
--(void)removeObjectWithURL:(NSString *)urlPath
-{
-    //    [_objectDictionary removeObjectForKey:urlPath];
-    [self.URLMap removeObjectForURL:urlPath];
-}
 @end
