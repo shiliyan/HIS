@@ -84,7 +84,7 @@ static NSString * kApproveDetailWebPagePath = @"APPROVE_DETIAL_WEB_PAGE_PATH";
 //配置请求
 -(void) configRequest
 {
-    NSDictionary * approveObject = [NSArray arrayWithObject:[NSDictionary dictionaryWithObjectsAndKeys:_approveEntity.recordID,@"record_id", _approveEntity.action,@"action_id", _approveEntity.comment,@"comment", nil]];
+    NSDictionary * approveObject = [NSDictionary dictionaryWithObjectsAndKeys:_approveEntity.recordID,APPROVE_PROPERTY_RECORD_ID, _approveEntity.action,APPROVE_PROPERTY_APPROVE_ACTION, _approveEntity.comment,APPROVE_PROPERTY_COMMENT,nil];
     
     HDRequestConfigMap * map = [[HDHTTPRequestCenter shareHTTPRequestCenter] requestConfigMap];
     HDRequestConfig * execActionRequestConfig  = [map configForKey:@"detial_ready_post"];
