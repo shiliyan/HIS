@@ -77,6 +77,8 @@ static NSString * kLoginURLPath = @"LOGIN_PATH";
                    @"ZHS",@"user_language",
                    @"N",@"is_ipad", 
                    @"PHONE",@"device_type",
+                   @"1",@"company_id",
+                   @"41",@"role_id",
                    nil];
     
     NSError* error = nil;
