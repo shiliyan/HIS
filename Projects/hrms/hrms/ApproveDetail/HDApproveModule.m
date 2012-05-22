@@ -12,6 +12,8 @@
 #import "HDURLCenter.h"
 #import "ApproveDatabaseHelper.h"
 
+static NSString * kApproveDetailWebPagePath = @"APPROVE_DETIAL_WEB_PAGE_PATH";
+
 @implementation HDApproveModule
 
 @synthesize approveEntity = _approveEntity;
@@ -23,8 +25,14 @@
 
 -(id) initWithApprove:(Approve *) approve
 {
-     NSString * webPageURL = [NSString stringWithFormat:@"%@?%@=%@&%@=%@",[HDURLCenter requestURLWithKey:@"APPROVE_DETIAL_WEB_PAGE_PATH"],APPROVE_PROPERTY_SCREEN_NAME,approve.docPageUrl,APPROVE_PROPERTY_INSTANCE_ID,approve.instanceId];
+     
 
+    NSDictionary *query = [NSDictionary dictionaryWithObjectsAndKeys:
+     approve.docPageUrl,@"doc_page_url",
+     [approve.instanceId stringValue],@"instance_id",nil];
+    
+    NSString * webPageURL = [HDURLCenter requestURLWithKey:kApproveDetailWebPagePath query:query];
+    
     self = [super initWithWebPageURL:webPageURL];
     if (self) {
         self.approveEntity = approve;
