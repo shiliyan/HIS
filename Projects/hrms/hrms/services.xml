@@ -27,7 +27,7 @@
         <url name="ROLE_SELECT_PATH" value="role_select_for_ios.svc"/>
         <url name="TOOLBAR_ACTION_QUERY_PATH" value="autocrud/ios.ios_wfl.wfl_workflow_approve_action_query/query"/>
         <url name="EXEC_ACTION_UPDATE_PATH" value="modules/wfl/public/work_flow_approve.svc"/>
-        <url name="APPROVE_DETIAL_WEB_PAGE_PATH" value="modules/mobile/doc_view_for_mobile.screen"/>
+        <url name="APPROVE_DETIAL_WEB_PAGE_PATH" value="modules/mobile/doc_view_for_mobile.screen?doc_page_url=[doc_page_url]&amp;instance_id=[instance_id]"/>
         <url name="APPROVE_SCREEN_BASE_PATH" value="modules/ios/ios_approve/"/>
         <url name="APPROVE_TABLE_QUERY_URL" value="autocrud/ios.ios_wfl.wfl_workflow_instance_for_todo_for_ios/query?_fetchall=true&amp;_autocount=false"/>
         <url name="APPROVE_TABLE_BATCH_COMMIT" value="autocrud/ios.ios_wfl.wfl_workflow_approve_batch_commit/execute"/>

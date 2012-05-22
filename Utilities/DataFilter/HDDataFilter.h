@@ -26,9 +26,9 @@
 @end
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////
-static NSString* kHDFilterErrorDomain = @"hand.filter";
-static NSInteger kHDFilterErrorCode = 101;
-static NSString* kHDFilterErrorDataKey = @"filterdata";
+static NSString *kHDFilterErrorDomain = @"hand.filter";
+static const NSInteger kHDFilterErrorCode = 101;
+static NSString *kHDFilterErrorDataKey = @"filterdata";
 
 @interface HDDataFilter : NSObject <HDDataFilter>
 

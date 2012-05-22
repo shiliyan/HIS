@@ -28,7 +28,7 @@ NSString * kMainPathName =@"HD_MAIN_VC_PATH";
     [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(backToLoginView) name:@"show_login_view" object:nil];
     
     //Views Managment by Three20
-    [TTStyleSheet setGlobalStyleSheet:[[[MyStyleSheet alloc]init]autorelease]];
+    [TTStyleSheet setGlobalStyleSheet:[[[TTDefaultStyleSheet alloc]init]autorelease]];
       
     if(![[HDNavigator navigator] restoreViewControllers])
     {      
@@ -56,7 +56,7 @@ NSString * kMainPathName =@"HD_MAIN_VC_PATH";
 
 -(void)backToLoginView
 {
-    TTAlert(@"登录超时");
+//    TTAlert(@"登录超时");
     HDNavigator* navigator = [HDNavigator navigator];
     [navigator removeAllViewControllers];
     [self showLoginView];
