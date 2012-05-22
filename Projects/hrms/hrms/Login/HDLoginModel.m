@@ -21,16 +21,25 @@ static NSString * kLoginURLPath = @"LOGIN_PATH";
 @synthesize password = _password;
 @synthesize result = _result;
 
--(id)initShouldAutoLogin:(BOOL) isAutoLogin
-                   query:(NSDictionary *) query;
+@synthesize isAutoLogin = _isAutoLogin;
+@synthesize isLoginSuccess = _isLoginSuccess;
+
++(BOOL)autoLogin
 {
-    if (self = [self init]) {
-        [self.delegates addObject:[query objectForKey:@"delegate"]];
-        self.username = [[NSUserDefaults standardUserDefaults] valueForKey:@"username"];
-        self.password = [[NSUserDefaults standardUserDefaults] valueForKey:@"password"];
-        if (!!isAutoLogin) {
-            [self load:TTURLRequestCachePolicyNetwork more:NO];
-        }
+    HDLoginModel * loginModel = [[HDLoginModel alloc]init];
+    loginModel.username = [[NSUserDefaults standardUserDefaults] valueForKey:@"username"];
+    loginModel.password = [[NSUserDefaults standardUserDefaults] valueForKey:@"password"];
+    loginModel.isAutoLogin = YES;
+        [loginModel load:TTURLRequestCachePolicyNetwork more:NO];
+    //返回登录结果
+    return loginModel.isLoginSuccess;
+}
+
+-(id)init
+{
+    if (self = [super init]) {
+        _isAutoLogin = NO;
+        _isLoginSuccess = NO;
     }
     return self;
 }
@@ -78,7 +87,12 @@ static NSString * kLoginURLPath = @"LOGIN_PATH";
     id result =  [parameterParser doFilter:postdata error:&error];
     [request.parameters setObject:result forKey:@"_request_data"];
     request.response = [[TTURLDataResponse alloc]init];
-    [request send];
+    if (_isAutoLogin) {
+        [request sendSynchronously];
+    }else {
+        [request send];
+    }
+    
 }
 
 -(void)request:(TTURLRequest *)request didFailLoadWithError:(NSError *)error
@@ -101,7 +115,10 @@ static NSString * kLoginURLPath = @"LOGIN_PATH";
     if (!_result) {
         [self didFailLoadWithError:error];
     }else {
-        [super requestDidFinishLoad:request];          
+        _isLoginSuccess = YES;
+        if (!_isAutoLogin) {
+            [super requestDidFinishLoad:request];
+        }              
     }
 }
 

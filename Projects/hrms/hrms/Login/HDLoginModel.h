@@ -14,8 +14,9 @@
 @property (nonatomic,retain) NSString * password;
 
 @property (nonatomic,retain) id result;
+@property (nonatomic,assign) BOOL isAutoLogin;
+@property (nonatomic,readonly) BOOL isLoginSuccess;
 
--(id)initShouldAutoLogin:(BOOL) isAutoLogin
-                   query:(NSDictionary *) query;
++(BOOL)autoLogin;
 
 @end
