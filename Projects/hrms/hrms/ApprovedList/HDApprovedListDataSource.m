@@ -128,7 +128,7 @@ static NSString * kAppreovedListQueryPath = @"APPROVED_LIST_QUERY_PATH";
                                   timestamp:nil
                                         URL:screenUrl]];
     }
-    [self.items addObject:[TTTableMoreButton itemWithText:@"more..."]];
+    [self.items addObject:[TTTableMoreButton itemWithText:@"更多..."]];
 }
 
 -(id<TTModel>)model
