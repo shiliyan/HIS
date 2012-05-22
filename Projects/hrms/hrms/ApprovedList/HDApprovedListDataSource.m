@@ -12,7 +12,7 @@
 #import "HDDataJSONFilter.h"
 
 static NSString * kAppreovedListQueryPath = @"APPROVED_LIST_QUERY_PATH";
-static NSString * kApprovedDetailWebPagePath = @"APPROVE_DETIAL_WEB_PAGE_PATH";
+static NSString * kApprovedDetailWebPagePath = @"APPROVED_DETIAL_WEB_PAGE_PATH";
 
 @implementation HDApprovedListModel
 @synthesize approvedList = _approvedList;
@@ -64,7 +64,7 @@ static NSString * kApprovedDetailWebPagePath = @"APPROVE_DETIAL_WEB_PAGE_PATH";
     if (!dataSet) {
         [self didFailLoadWithError:error];
     }else {
-        NSArray * tempApproveList = [[[HDGodXMLFactory shareBeanFactory] beansWithArray:dataSet path:@"/service/field-mappings/field-mapping[@url_name='APPROVE_TABLE_QUERY_URL']"]retain] ;
+        NSArray * tempApproveList = [[[HDGodXMLFactory shareBeanFactory] beansWithArray:dataSet path:@"/service/field-mappings/field-mapping[@url_name='APPROVED_LIST_QUERY_URL']"]retain] ;
         
         if ([self isLoadingMore]) {
             NSMutableArray * moreArray = [_approvedList mutableCopy];
@@ -116,6 +116,7 @@ static NSString * kApprovedDetailWebPagePath = @"APPROVE_DETIAL_WEB_PAGE_PATH";
         NSString * textContent = [NSString stringWithFormat:@"%@ %@",
                                   (nil == approvedRecord.statusName)?@"":approvedRecord.statusName,
                                   (nil ==approvedRecord.instanceDesc)?@"":approvedRecord.instanceDesc];
+        
         NSDictionary * query = [NSDictionary dictionaryWithObjectsAndKeys:approvedRecord.docPageUrl,APPROVE_PROPERTY_SCREEN_NAME, [approvedRecord.instanceId stringValue],APPROVE_PROPERTY_INSTANCE_ID,nil];
         
         NSString * screenUrl = [HDURLCenter requestURLWithKey:kApprovedDetailWebPagePath query:query];
