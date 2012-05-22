@@ -12,8 +12,6 @@
 
 static HDURLCenter * _URLCenter = nil;
 
-//@synthesize baseURL = _baseURL;
-
 +(id) sharedURLCenter
 {
     @synchronized(self){
@@ -34,7 +32,7 @@ static HDURLCenter * _URLCenter = nil;
     return nil;
 }
 
--(NSString *) getURLWithKey:(id)key
+-(NSString *) urlWithKey:(id)key query:(NSDictionary *)query
 { 
     NSError *error = nil;
     NSString *url = nil;
@@ -47,12 +45,23 @@ static HDURLCenter * _URLCenter = nil;
         url = [[((CXMLElement *)node) attributeForName:@"value"]stringValue];
     }
     
+    //处理query参数替换
+    NSEnumerator * e = [query keyEnumerator];
+    for (NSString * key; (key = [e nextObject]);) {
+        NSString * replaceString = [NSString stringWithFormat:@"[%@]",key];
+        url = [url stringByReplacingOccurrencesOfString:replaceString withString:[query objectForKey:key]];
+    }
+    
     return   [NSString stringWithFormat:@"%@%@",[[NSUserDefaults standardUserDefaults]stringForKey:@"base_url_preference"],url];
 }
 
 +(NSString *) requestURLWithKey:(id)key
 {
-    return [[HDURLCenter sharedURLCenter] getURLWithKey:key];
+    return [[HDURLCenter sharedURLCenter] urlWithKey:key query:nil];
 }
 
++(NSString *) requestURLWithKey:(id)key query:(NSDictionary *)query
+{
+    return [[HDURLCenter sharedURLCenter] urlWithKey:key query:query];
+}
 @end

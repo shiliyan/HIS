@@ -31,7 +31,7 @@
         <url name="APPROVE_SCREEN_BASE_PATH" value="modules/ios/ios_approve/"/>
         <url name="APPROVE_TABLE_QUERY_URL" value="autocrud/ios.ios_wfl.wfl_workflow_instance_for_todo_for_ios/query?_fetchall=true&amp;_autocount=false"/>
         <url name="APPROVE_TABLE_BATCH_COMMIT" value="autocrud/ios.ios_wfl.wfl_workflow_approve_batch_commit/execute"/>
-        <url name="APPROVED_LIST_QUERY_PATH" value="autocrud/ios.ios_wfl.wfl_workflow_instance_for_ios/query"/>
+        <url name="APPROVED_LIST_QUERY_PATH" value="autocrud/ios.ios_wfl.wfl_workflow_instance_for_ios/query?pagesize=1&amp;pagenum=[pageNum]&amp;_fetchall=false&amp;_autocount=false"/>
         <url name="SYS_TIME_OUT_CHECK_PATH" value="autocrud/sys.sys_is_time_out/query"/>
     </urls>
     <classes>

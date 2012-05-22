@@ -9,7 +9,7 @@
 
 @interface HDApprovedListModel : TTURLRequestModel
 
-@property(nonatomic,readonly ) NSArray * approvedList;
+@property(nonatomic,readonly) NSArray * approvedList;
 @property(nonatomic) NSUInteger pageNum;
 
 - (void)search:(NSString*)text;

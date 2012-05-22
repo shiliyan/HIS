@@ -11,6 +11,8 @@
 #import "HDDataAuroraFilter.h"
 #import "HDDataJSONFilter.h"
 
+static NSString * kAppreovedListQueryPath = @"APPROVED_LIST_QUERY_PATH";
+
 @implementation HDApprovedListModel
 @synthesize approvedList = _approvedList;
 @synthesize pageNum = _pageNum;
@@ -35,15 +37,15 @@
 
 -(void)load:(TTURLRequestCachePolicy)cachePolicy more:(BOOL)more
 {
-    NSString * queryUrl = [HDURLCenter requestURLWithKey:@"APPROVED_LIST_QUERY_PATH"];
-    queryUrl = [NSString stringWithFormat:@"%@?pagesize=10&pagenum=%i&_fetchall=false&_autocount=false",queryUrl,_pageNum];
-
-    TTURLRequest *request = [TTURLRequest requestWithURL:queryUrl delegate:self];
+    if (more) {
+        _pageNum ++;
+        _isLoadingMore = more;
+    }
+    NSString * queryUrl = [HDURLCenter requestURLWithKey:kAppreovedListQueryPath query:[NSDictionary dictionaryWithObjectsAndKeys:[NSString stringWithFormat:@"%i",_pageNum],@"pageNum", nil]];
     
-    request.cachePolicy = TTURLRequestCachePolicyNoCache;
-    request.httpMethod = @"POST";
-    request.multiPartForm = false;
-    request.response = [[[TTURLDataResponse alloc]init] autorelease];
+    TTURLRequest * request = [[HDHTTPRequestCenter shareHTTPRequestCenter]requestWithKey:nil requestType:TTRequest];
+    request.urlPath = queryUrl;
+    [request.delegates addObject:self];
     [request send];
 }
 
@@ -63,16 +65,17 @@
     }else {
         NSArray * tempApproveList = [[[HDGodXMLFactory shareBeanFactory] beansWithArray:dataSet path:@"/service/field-mappings/field-mapping[@url_name='APPROVE_TABLE_QUERY_URL']"]retain] ;
         
-//        NSMutableArray * tempApproveList = [NSMutableArray arrayWithCapacity:dataSet.count];
-//        for (id record in dataSet) {
-//            [tempApproveList addObject:[[[Approve alloc]initWithDictionary:record] autorelease]];
-//        }
-//        if (nil!= _approvedList && _approvedList.count > 0) {
-//            [tempApproveList insertObjects:_approvedList atIndexes:0];
-//        }
-        _approvedList = tempApproveList;
-        
-        [self didFinishLoad];
+        if ([self isLoadingMore]) {
+            NSMutableArray * moreArray = [_approvedList mutableCopy];
+            [moreArray addObjectsFromArray:tempApproveList];
+            [tempApproveList release];
+            TT_RELEASE_SAFELY(_approvedList);
+            _approvedList = moreArray;
+            _isLoadingMore = NO;
+        }else {
+            TT_RELEASE_SAFELY(_approvedList);
+            _approvedList = tempApproveList;
+        }
         
         [super requestDidFinishLoad:request];          
     }
@@ -119,13 +122,13 @@
          approvedRecord.instanceId];
         
         [self.items addObject:
-         [TTTableMessageItem itemWithTitle:approvedRecord.orderType  
-                                   caption:approvedRecord.workflowName                                
-                                      text:textContent 
-                                 timestamp:nil
-                                  imageURL:nil 
-                                       URL:screenUrl]];
+         [TTTableMessageItem  itemWithTitle:approvedRecord.orderType  
+                                    caption:approvedRecord.workflowName                                
+                                       text:textContent 
+                                  timestamp:nil
+                                        URL:screenUrl]];
     }
+    [self.items addObject:[TTTableMoreButton itemWithText:@"more..."]];
 }
 
 -(id<TTModel>)model

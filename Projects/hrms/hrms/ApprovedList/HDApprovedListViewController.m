@@ -41,4 +41,8 @@
 //    self.tableView.tableHeaderView = _searchController.searchBar;
 //}
 
+-(id<UITableViewDelegate>)createDelegate
+{
+  return [[[TTTableViewDragRefreshDelegate alloc] initWithController:self] autorelease];
+}
 @end
