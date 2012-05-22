@@ -12,6 +12,7 @@
 #import "HDDataJSONFilter.h"
 
 static NSString * kAppreovedListQueryPath = @"APPROVED_LIST_QUERY_PATH";
+static NSString * kApprovedDetailWebPagePath = @"APPROVE_DETIAL_WEB_PAGE_PATH";
 
 @implementation HDApprovedListModel
 @synthesize approvedList = _approvedList;
@@ -115,11 +116,9 @@ static NSString * kAppreovedListQueryPath = @"APPROVED_LIST_QUERY_PATH";
         NSString * textContent = [NSString stringWithFormat:@"%@ %@",
                                   (nil == approvedRecord.statusName)?@"":approvedRecord.statusName,
                                   (nil ==approvedRecord.instanceDesc)?@"":approvedRecord.instanceDesc];
-        NSString * screenUrl =  
-        [NSString stringWithFormat:@"%@?doc_page_url=%@&instance_id=%@",
-         [HDURLCenter requestURLWithKey:@"APPROVE_DETIAL_WEB_PAGE_PATH"],
-         approvedRecord.docPageUrl,
-         approvedRecord.instanceId];
+        NSDictionary * query = [NSDictionary dictionaryWithObjectsAndKeys:approvedRecord.docPageUrl,APPROVE_PROPERTY_SCREEN_NAME, [approvedRecord.instanceId stringValue],APPROVE_PROPERTY_INSTANCE_ID,nil];
+        
+        NSString * screenUrl = [HDURLCenter requestURLWithKey:kApprovedDetailWebPagePath query:query];
         
         [self.items addObject:
          [TTTableMessageItem  itemWithTitle:approvedRecord.orderType  
