@@ -25,11 +25,13 @@ static NSString * kApproveDetailWebPagePath = @"APPROVE_DETIAL_WEB_PAGE_PATH";
 
 -(id) initWithApprove:(Approve *) approve
 {
-     
-
+    
+    
     NSDictionary *query = [NSDictionary dictionaryWithObjectsAndKeys:
-     approve.docPageUrl,@"doc_page_url",
-     [approve.instanceId stringValue],@"instance_id",nil];
+                           approve.docPageUrl,APPROVE_PROPERTY_SCREEN_NAME,
+                           [NSString stringWithFormat:@"%@",approve.instanceId],APPROVE_PROPERTY_INSTANCE_ID,
+                           [NSString stringWithFormat:@"%@",approve.recordID],APPROVE_PROPERTY_RECORD_ID,
+                           nil];
     
     NSString * webPageURL = [HDURLCenter requestURLWithKey:kApproveDetailWebPagePath query:query];
     
