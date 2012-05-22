@@ -11,7 +11,7 @@
 
 @interface HDURLCenter : NSObject
 
-//@property (nonatomic,retain) NSString * baseURL;
++(NSString *) requestURLWithKey:(id)key query:(NSDictionary *)query;
 
 +(NSString *) requestURLWithKey:(id) key; 
 
