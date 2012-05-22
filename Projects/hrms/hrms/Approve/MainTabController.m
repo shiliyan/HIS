@@ -8,6 +8,7 @@
 
 #import "MainTabController.h"
 
+static NSString *kHD_ACCOUNT_SETTING_VC_PATH = @"HD_ACCOUNT_SETTING_VC_PATH";
 @interface MainTabController ()
 
 @end
@@ -27,7 +28,7 @@
 {
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
-    [self setTabURLs:[NSArray arrayWithObjects:@"tt://approve",@"tt://approvedList", nil]];
+    [self setTabURLs:[NSArray arrayWithObjects:@"tt://approve",@"tt://approvedList",[[HDGodXMLFactory shareBeanFactory]actionURLPathWithKey:kHD_ACCOUNT_SETTING_VC_PATH], nil]];
 }
 
 - (void)viewDidUnload
@@ -42,4 +43,20 @@
     return (interfaceOrientation == UIInterfaceOrientationPortrait);
 }
 
+
+//- (void)exitApplication {    
+//    [UIView beginAnimations:@"exitApplication" context:nil];    
+//    [UIView setAnimationDuration:0.5];    
+//    [UIView setAnimationDelegate:self];    
+//    
+//    [UIView setAnimationTransition:UIViewAnimationCurveEaseOut forView:self.view.window cache:NO];    
+//    [UIView setAnimationDidStopSelector:@selector(animationFinished:finished:context:)];    
+//    self.view.window.bounds = CGRectMake(0, 0, 0, 0);    
+//    [UIView commitAnimations];    
+//}  
+//- (void)animationFinished:(NSString *)animationID finished:(NSNumber *)finished context:(void *)context {    
+//    if ([animationID compare:@"exitApplication"] == 0) {    
+//        exit(0);    
+//    }  
+//} 
 @end

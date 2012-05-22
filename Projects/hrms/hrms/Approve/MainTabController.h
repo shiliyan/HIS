@@ -10,4 +10,5 @@
 
 @interface MainTabController : UITabBarController
 
+//-(void)exitApplication;
 @end

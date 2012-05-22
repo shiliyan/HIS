@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
+static NSString *DB_NAME = @"Approve.db";
 @interface HDAccountSettingsController : UIViewController
 
 -(IBAction)exitApplication:(id)sender;

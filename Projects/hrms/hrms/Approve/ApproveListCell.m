@@ -187,6 +187,10 @@
     [super setSelected:selected animated:animated];
     alertMessageLabel.backgroundColor = [UIColor clearColor];
 }
+-(void)setHighlighted:(BOOL)highlighted animated:(BOOL)animated{
+    [super setHighlighted:highlighted animated:animated];
+    alertMessageLabel.backgroundColor = [UIColor clearColor];
+}
 
 -(void)dealloc{
     [_cellData release];

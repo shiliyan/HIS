@@ -10,6 +10,7 @@
 #import "HDHTTPRequestCenter.h"
 #import "HDURLCenter.h"
 
+
 @interface HDAccountSettingsController ()
 
 @end
@@ -31,16 +32,20 @@
 -(void)quitSuccess:(ASIFormDataRequest *) request dataSet:(NSArray *)dataSet{
     CALayer *animationLayer = self.view.window.layer;
     
-    //嵌套的方法（达到预期）
-    [UIView animateWithDuration:0.2 animations:^{
+    //动画处理
+    [UIView animateWithDuration:0.3 animations:^{
         
-        animationLayer.affineTransform =CGAffineTransformMakeScale(1, 0.005);} completion:^(BOOL isFinished){
+        animationLayer.affineTransform =CGAffineTransformMakeScale(1, 0.005);
+        animationLayer.backgroundColor = [[UIColor whiteColor]CGColor];
+        } 
+                     completion:^(BOOL isFinished){
             if (isFinished) {
                 [UIView animateWithDuration:0.2 animations:^{
                     animationLayer.affineTransform = CGAffineTransformScale(animationLayer.affineTransform, 0.001, 1);
                 } completion:^(BOOL isAllFinished){
                     if (isAllFinished) {
-                       exit(0); 
+                        [self clearDatas];
+                        exit(0); 
                     }
                 }];
             }
@@ -50,6 +55,37 @@
 
 -(void)quitFailure:(ASIFormDataRequest *) request error:(NSDictionary *) errorObject{
     TTAlertNoTitle(@"退出系统失败，请在稍后有网络连接的条件下重试。");
+}
+
+-(void)clearDatas{
+    //删除保存账户名密码
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    [defaults removeObjectForKey:@"username"];
+    [defaults removeObjectForKey:@"password"];
+    [defaults synchronize];
+    
+    
+    //删除本地数据库
+    BOOL success;
+    NSError *error;
+    NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);  
+    NSString *documentDirectory = [paths objectAtIndex:0];  
+    //dbPath： 数据库路径，在Document中。  
+    NSString *dbPath = [documentDirectory stringByAppendingPathComponent:DB_NAME];
+    
+    NSFileManager *fileManager = [NSFileManager defaultManager];
+    // delete the old db.
+    if ([fileManager fileExistsAtPath:dbPath]){
+        success = [fileManager removeItemAtPath:dbPath error:&error];
+        if (!success) {
+            NSAssert1(0, @"Failed to delete old database file with message '%@'.", [error localizedDescription]);
+        }
+    }
+    
+    [UIApplication sharedApplication].applicationIconBadgeNumber = 0;
+    
+    
+    
 }
 
 -(CAAnimation *)animationVerticalScale{

@@ -26,7 +26,7 @@
 #import <UIKit/UIKit.h>
 #import "EGORefreshTableHeaderView.h"
 
-@interface PullToRefreshViewController : TTViewController  {
+@interface PullToRefreshViewController : UIViewController  {
     
     UITableView *_tableView;    
     EGORefreshTableHeaderView *refreshHeaderView;

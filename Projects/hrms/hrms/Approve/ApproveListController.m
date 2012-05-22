@@ -74,9 +74,9 @@
         cellHeight = 126;
     }
     
-    if ((data.instanceDesc == nil) || (data.instanceDesc.length == 0)) {
-//        cellHeight  = cellHeight - 32;
-    }
+//    if ((data.instanceDesc == nil) || (data.instanceDesc.length == 0)) {
+//        cellHeight  = cellHeight - 15;
+//    }
     
     return cellHeight;
 }
