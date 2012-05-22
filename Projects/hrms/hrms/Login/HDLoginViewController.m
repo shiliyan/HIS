@@ -56,7 +56,7 @@ static NSString * kRoleSelectPathName = @"HD_ROLE_SELECT_VC_PATH";
 
 - (void)model:(id<TTModel>)model didFailLoadWithError:(NSError*)error
 {
-    TTAlertNoTitle([[error userInfo] valueForKeyPath:@"errorMessage"]);
+    TTAlertNoTitle([[error userInfo] valueForKeyPath:@"error"]);
     TTDPRINT(@"%@",[[error userInfo] valueForKeyPath:@"error"]);
 }
 
