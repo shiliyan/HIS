@@ -11,6 +11,7 @@
 //styleSheet
 #import "MyStyleSheet.h"
 
+#import "HDClassLoader.h"
 @implementation AppDelegate
 
 NSString * kLoginPathName =@"HD_LOGIN_VC_PATH";
@@ -25,7 +26,7 @@ NSString * kMainPathName =@"HD_MAIN_VC_PATH";
     [self setupByPreferences];
     
     //注册显示登陆
-    [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(backToLoginView) name:@"show_login_view" object:nil];
+//    [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(backToLoginView) name:@"show_login_view" object:nil];
     
     //Views Managment by Three20
     [TTStyleSheet setGlobalStyleSheet:[[[TTDefaultStyleSheet alloc]init]autorelease]];
@@ -46,11 +47,42 @@ NSString * kMainPathName =@"HD_MAIN_VC_PATH";
 
     if (!kMainViewControllerPathPath || !kLoginViewControllerPath) {
         //如果没有配置,弹默认视图
-        [navigator openURLAction:[TTURLAction actionWithURLPath:@"default"]];
+        [self showErrorView];
     }else {
     [navigator openURLAction:[TTURLAction actionWithURLPath:kMainViewControllerPathPath]];
        
     [navigator openURLAction:[TTURLAction actionWithURLPath:kLoginViewControllerPath]];
+    }
+}
+
+-(void)reloadConfig
+{
+    HDClassLoader * classLoader = [[HDClassLoader alloc]init];
+    [classLoader startLoadClass];
+    TT_RELEASE_SAFELY(classLoader);
+    [self showLoginView];
+}
+
+-(void)showErrorView
+{
+    TTErrorView* errorView = [[[TTErrorView alloc] initWithTitle:@"无法获取运行配置"
+                                                        subtitle:@"请检查网络设置和系统设置中的服务地址是否正确"
+                                                           image:[UIImage imageNamed:@"network_server.png"]] 
+                              autorelease];
+    
+        [errorView addReloadButton];
+        [errorView.reloadButton addTarget:self
+                                   action:@selector(reloadConfig)
+                         forControlEvents:UIControlEventTouchUpInside];
+    
+    errorView.backgroundColor = TTSTYLEVAR(backgroundColor);
+    errorView.frame = TTScreenBounds();
+    
+    errorView.tag = 7;
+    UIWindow * window = [HDNavigator navigator].window;
+    UIView * oldErrorView = [window viewWithTag:7];
+    if (!oldErrorView) {
+        [window addSubview:errorView];
     }
 }
 
