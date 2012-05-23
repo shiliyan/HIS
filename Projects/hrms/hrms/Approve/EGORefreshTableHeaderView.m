@@ -147,7 +147,7 @@ static NSDateFormatter *refreshFormatter;
 	switch (aState) {
 		case EGOOPullRefreshPulling:
 			
-			statusLabel.text = @"松开刷新...";
+			statusLabel.text = @"松开更新...";
 			[CATransaction begin];
 			[CATransaction setAnimationDuration:.18];
 			arrowImage.transform = CATransform3DMakeRotation((M_PI / 180.0) * 180.0f, 0.0f, 0.0f, 1.0f);
@@ -163,7 +163,7 @@ static NSDateFormatter *refreshFormatter;
 				[CATransaction commit];
 			}
 			
-			statusLabel.text = @"下拉刷新...";
+			statusLabel.text = @"下拉更新...";
 			[activityView stopAnimating];
 			[CATransaction begin];
 			[CATransaction setValue:(id)kCFBooleanTrue forKey:kCATransactionDisableActions]; 
