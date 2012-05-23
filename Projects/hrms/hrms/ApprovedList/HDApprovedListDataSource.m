@@ -131,4 +131,8 @@ static NSString * kApprovedDetailWebPagePath = @"APPROVED_DETIAL_WEB_PAGE_PATH";
     return _approvedListModel;
 }
 
+-(UIImage *)imageForError:(NSError *)error
+{
+    return [UIImage imageNamed:@"network_server.png"];
+}
 @end
