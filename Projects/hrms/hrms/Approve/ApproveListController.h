@@ -44,6 +44,8 @@ static const NSString *DETAIL_REQUEST_KEY = @"detial_ready_post";
     
     NSTimer *_timer;
     BOOL _inSearchStatus;
+    
+    int _errorRequestCount;
 }
 
 @property (retain, nonatomic) ApproveListDetailController *detailController;
