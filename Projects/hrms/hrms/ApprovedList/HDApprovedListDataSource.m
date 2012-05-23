@@ -82,11 +82,6 @@ static NSString * kApprovedDetailWebPagePath = @"APPROVED_DETIAL_WEB_PAGE_PATH";
     }
 }
 
--(void)request:(TTURLRequest *)request didFailLoadWithError:(NSError *)error
-{
-    [self didFailLoadWithError:error];
-}
-
 @end
 
 ////////////////////////////////////////////////////////////////////////////////////////////////
