@@ -7,9 +7,5 @@
 //
 
 @interface HDApprovedListViewController : TTTableViewController
-//<ApprovedListDelegate>
-{
-//    ApprovedListModel * _approvedList;
-}
 
 @end
