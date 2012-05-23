@@ -20,6 +20,9 @@ static NSString * kRoleSelectPathName = @"HD_ROLE_SELECT_VC_PATH";
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
         [self setAutoresizesForKeyboard:YES];
+        UIView * loginBar = [self.view viewWithTag:9];
+        loginBar.layer.cornerRadius = 16;
+        loginBar.layer.masksToBounds = YES;
     }
     return self;
 }
@@ -56,8 +59,15 @@ static NSString * kRoleSelectPathName = @"HD_ROLE_SELECT_VC_PATH";
 
 - (void)model:(id<TTModel>)model didFailLoadWithError:(NSError*)error
 {
-    TTAlertNoTitle([[error userInfo] valueForKeyPath:@"error"]);
-    TTDPRINT(@"%@",[[error userInfo] valueForKeyPath:@"error"]);
+    NSString * errorDescription = nil;
+    if (!errorDescription) {
+        errorDescription = [[error userInfo] valueForKeyPath:@"error"];
+    }
+    if (!errorDescription) {
+        errorDescription = [[error userInfo] valueForKeyPath:@"NSLocalizedDescription"];
+    }
+    TTAlertNoTitle(errorDescription);
+    TTDPRINT(@"%@",errorDescription);
 }
 
 #pragma animations for keyborad
