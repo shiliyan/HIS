@@ -61,10 +61,10 @@
 
 -(id)errorWithData:(id) data error:(NSError **)error
 {
-    if (error) {
+    if (error && !*error) {
         *error = [NSError errorWithDomain:kHDFilterErrorDomain
                                      code:kHDFilterErrorCode
-                                 userInfo:[NSDictionary dictionaryWithObject:[data valueForKeyPath:@"error.message"] forKey:@"error"]];
+                                 userInfo:[NSDictionary dictionaryWithObject:@"data filter error" forKey:@"error"]];
     } 
     return nil; 
 }
