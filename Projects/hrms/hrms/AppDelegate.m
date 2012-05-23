@@ -66,7 +66,8 @@ NSString * kMainPathName =@"HD_MAIN_VC_PATH";
 - (void)setupByPreferences
 {
     NSString *baseURL = [[NSUserDefaults standardUserDefaults] stringForKey:@"base_url_preference"];
-	if (nil == baseURL)
+    NSString *defaultApprove = [[NSUserDefaults standardUserDefaults] stringForKey:@"default_approve_preference"];
+	if (!baseURL||!defaultApprove)
 	{
         //从root文件读取配置
         NSString *settingsBundlePath = [[[NSBundle mainBundle] bundlePath] stringByAppendingPathComponent:@"Settings.bundle"];
