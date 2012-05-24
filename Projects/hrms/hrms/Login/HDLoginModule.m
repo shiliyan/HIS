@@ -86,6 +86,7 @@
         [dbHelper.db close];
     }   
     [[NSUserDefaults standardUserDefaults] setValue:_username forKey:@"username"];
+    [[NSUserDefaults standardUserDefaults] setValue:_password forKey:@"password"];
 }
 //取消登陆
 -(void)cancelLogin

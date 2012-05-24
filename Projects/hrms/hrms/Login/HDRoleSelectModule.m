@@ -28,25 +28,6 @@
     return self;
 }
 
--(id)init
-{
-    self = [super init];
-    if (self) {
-        //配置登录请求
-        HDRequestConfig * loginRequestConfig = [[HDRequestConfig alloc]init];
-        [loginRequestConfig setDelegate:self];
-        [loginRequestConfig setSuccessSelector:@selector(roleSelectSVCSuccess:dataSet:)];
-        [loginRequestConfig setServerErrorSelector:@selector(roleSelectSVCError:error:)];
-        [loginRequestConfig setErrorSelector:@selector(roleSelectSVCError:error:)];
-        [loginRequestConfig setFailedSelector:@selector(roleSelectSVCError:error:)];
-        HDRequestConfigMap * map = [[HDHTTPRequestCenter shareHTTPRequestCenter] requestConfigMap];
-        [map addConfig:loginRequestConfig forKey:@"roleSelectSVC"];
-        
-        [loginRequestConfig release];
-    }
-    return self;
-}
-
 -(void)dealloc
 {
     [[[HDHTTPRequestCenter shareHTTPRequestCenter] requestConfigMap]removeConfigForKey:@"roleSelectSVC"];
@@ -70,11 +51,17 @@
 -(void)selectRoleAtIndex:(NSUInteger) index
 {   
     HDHTTPRequestCenter * requestCenter = [HDHTTPRequestCenter shareHTTPRequestCenter];
-    self.roleSelectRequest = [requestCenter requestWithURL:[HDURLCenter requestURLWithKey:@"ROLE_SELECT_PATH"] 
-                                                  withData:[_roleList objectAtIndex:index] 
-                                               requestType:HDRequestTypeFormData 
-                                                    forKey:@"roleSelectSVC"];
+    self.roleSelectRequest = 
+    [requestCenter requestWithURL:[HDURLCenter requestURLWithKey:@"ROLE_SELECT_PATH"]                          
+                         withData:[_roleList objectAtIndex:index] 
+                      requestType:HDRequestTypeFormData                          
+                           forKey:nil];
     
+    [_roleSelectRequest setDelegate:self];
+    [_roleSelectRequest setSuccessSelector:@selector(roleSelectSVCSuccess:dataSet:)];
+    [_roleSelectRequest setServerErrorSelector:@selector(roleSelectSVCError:error:)];
+    [_roleSelectRequest setErrorSelector:@selector(roleSelectSVCError:error:)];
+    [_roleSelectRequest setFailedSelector:@selector(roleSelectSVCError:error:)];
     [_roleSelectRequest startAsynchronous];
 }
 
