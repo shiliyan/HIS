@@ -9,8 +9,8 @@
 #import "HDClassConfigParser.h"
 #import "HDGodXMLFactory.h"
 
-static NSString * kClassConfigPath = @"/service/classes/class";
-static NSString * kNibConfigPath = @"/service/nibs/nib";
+static NSString * kClassConfigPath = @"/backend-config/classes/class";
+static NSString * kNibConfigPath = @"/backend-config/nibs/nib";
 
 @implementation HDClassConfigParser
 @synthesize delegate = _delegate;

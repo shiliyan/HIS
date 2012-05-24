@@ -64,7 +64,7 @@ static NSString * kApprovedDetailWebPagePath = @"APPROVED_DETIAL_WEB_PAGE_PATH";
     if (!dataSet) {
         [self didFailLoadWithError:error];
     }else {
-        NSArray * tempApproveList = [[[HDGodXMLFactory shareBeanFactory] beansWithArray:dataSet path:@"/service/field-mappings/field-mapping[@url_name='APPROVED_LIST_QUERY_URL']"]retain] ;
+        NSArray * tempApproveList = [[[HDGodXMLFactory shareBeanFactory] beansWithArray:dataSet path:@"/backend-config/field-mappings/field-mapping[@url_name='APPROVED_LIST_QUERY_URL']"]retain] ;
         
         if ([self isLoadingMore]) {
             NSMutableArray * moreArray = [_approvedList mutableCopy];

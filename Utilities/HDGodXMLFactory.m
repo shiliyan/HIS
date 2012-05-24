@@ -10,7 +10,7 @@
 
 static HDGodXMLFactory * _xmlFactory = nil;
 
-static NSString * kActionURLPathRootNodePath = @"/service/runtime/action-path-mapping/map";
+static NSString * kActionURLPathRootNodePath = @"/backend-config/runtime/action-path-mapping/map";
 
 @implementation HDGodXMLFactory
 
@@ -76,7 +76,12 @@ static NSString * kActionURLPathRootNodePath = @"/service/runtime/action-path-ma
     if (!_document) {
         return nil;
     }else {
-        return self;
+        CXMLElement *rootElement = [_document rootElement];
+        if ([[rootElement name] isEqualToString:@"backend-config"]) {
+            return self;
+        }else {
+            return nil;
+        }
     }
     
 }

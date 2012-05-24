@@ -228,7 +228,7 @@
     NSMutableArray *responseArray =[[NSMutableArray alloc]init];
     NSMutableArray *tempArray = [NSMutableArray array];
     for (NSMutableDictionary *record in dataset) {
-        Approve *responseEntity = [factory getBeanWithDic:record path:@"/service/field-mappings/field-mapping[@url_name='APPROVE_TABLE_QUERY_URL']"];
+        Approve *responseEntity = [factory getBeanWithDic:record path:@"/backend-config/field-mappings/field-mapping[@url_name='APPROVE_TABLE_QUERY_URL']"];
         
         [responseEntity setLocalStatus:@"NORMAL"];
         [responseArray addObject:responseEntity];
