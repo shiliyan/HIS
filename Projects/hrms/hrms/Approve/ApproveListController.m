@@ -125,7 +125,6 @@
 }
 
 -(void)_showCellAnimation{
-    NSLog(@"animation");
     if ((self.animationCells == nil) || (self.animationCells.count == 0)) {
         return;
     }
@@ -252,7 +251,6 @@
     //新增数据插表
     [_dbHelper.db open];
     for (Approve *approve in tempArray) {
-//        NSLog(@"%@",tempArray);
         NSString *sql = [NSString stringWithFormat:@"insert into %@ (%@,%@,%@,%@,%@,%@,%@,%@,%@,%@,%@,%@,%@,%@) values ('%@','%@','%@',%@,'%@','%@','%@','%@','%@','%@','%@','%@','%@','%@')",TABLE_NAME_APPROVE_LIST,APPROVE_PROPERTY_WORKFLOW_ID,APPROVE_PROPERTY_RECORD_ID,APPROVE_PROPERTY_ORDER_TYPE,APPROVE_PROPERTY_INSTANCE_DESC,APPROVE_PROPERTY_NODE_NAME,APPROVE_PROPERTY_EMPLOYEE_NAME,APPROVE_PROPERTY_CREATION_DATE,APPROVE_PROPERTY_DATE_LIMIT,APPROVE_PROPERTY_IS_LATE,APPROVE_PROPERTY_LOCAL_STATUS,APPROVE_PROPERTY_SCREEN_NAME,APPROVE_PROPERTY_NODE_ID,APPROVE_PROPERTY_INSTANCE_ID,APPROVE_PROPERTY_INSTANCE_PARAM,approve.workflowID,approve.recordID,approve.orderType,(approve.instanceDesc == nil ? NULL : [NSString stringWithFormat:@"'%@'",approve.instanceDesc]),approve.nodeName,approve.employeeName,approve.creationDate,approve.dateLimit,approve.isLate,approve.localStatus,approve.docPageUrl,approve.nodeId,approve.instanceId,approve.instanceParam];
         [_dbHelper.db executeUpdate:sql];
         
@@ -263,7 +261,6 @@
     
     
     NSMutableArray *newIndexPaths = [NSMutableArray array];
-//    NSLog(@"new temp: %@",tempArray);
     [self.tableView beginUpdates];
     //插入待审批数据源（因为本地缺少的数据只可能是新数据，所以不用比较，直接从列表前段插入）
     [_tableAdapter.approveArray insertObjects:tempArray atIndexes:[NSIndexSet indexSetWithIndexesInRange:NSMakeRange(0, [tempArray count])]];
@@ -460,7 +457,6 @@
 
 #pragma mark - 提交审批，成功
 -(void)commitApproveSuccess:(ASIHTTPRequest *)request withDataSet:(NSArray *)dataset{
-    NSLog(@"%@, tag:%i",NSStringFromSelector(_cmd),request.tag);
     
     //修改数据
     [_dbHelper.db open];
@@ -487,7 +483,6 @@
 }
 
 -(void)commitApproveError:(ASIHTTPRequest *)request withDictionary:(NSDictionary *)errorDic{
-    NSLog(@"%@, tag:%i",NSStringFromSelector(_cmd),request.tag);
     
     //修改数据
     [_dbHelper.db open];
@@ -495,7 +490,7 @@
     [_dbHelper.db executeUpdate:sql];
     [_dbHelper.db close];
     
-    // TODO: 编写动画
+    // 动画刷新行，更新错误状态
     NSMutableArray *reloadIndexArray = [NSMutableArray array];
     for (Approve *entity in self.tableAdapter.approveArray) {
         if (entity.rowID.intValue == request.tag) {
@@ -508,24 +503,27 @@
     [self.tableView reloadRowsAtIndexPaths:reloadIndexArray withRowAnimation:UITableViewRowAnimationFade];
 }
 
-#pragma mark - 提交审批时网络故障
+//提交审批时网络故障
 -(void)commitApproveNetWorkError:(ASIHTTPRequest *)request{   
-    NSLog(@"%@",NSStringFromSelector(_cmd));
-    
+    _errorRequestCount ++;
 }
 
 -(void)commitApproveServerError:(ASIHTTPRequest *)request withDictionary:(NSDictionary *)errorDic{
-    [self.tableView reloadSectionIndexTitles];
-
+    _errorRequestCount ++;
 }
 
 -(void)commitRequestQueueFinished:(ASINetworkQueue *)queue{
-    NSLog(@"queue finished");
+    if (_errorRequestCount != 0) {
+        TTAlertNoTitle(@"提交数据时发生网络连接错误，或者服务器暂时响应不正确，所有您做过的动作均已保存，请稍后通过下拉列表刷新的方式重新尝试向服务器提交数据");
+        _errorRequestCount = 0;
+    }
+    
     [self updateApplicationBadgeNumber];
     [self refreshTable];
+    
 }
 
-//弹出审批意见
+#pragma mark - 弹出审批意见
 -(void)showOpinionView:(int)actionType{
     if(_opinionView == nil){
         _opinionView = [[ApproveOpinionView alloc]initWithNibName:@"ApproveOpinionView" bundle:nil];
@@ -660,6 +658,7 @@
 -(void)viewDidLoad{
     [super viewDidLoad];
     _inSearchStatus = NO;
+    _errorRequestCount = 0;
     self.title = @"待办事项";
     _animationCells = [[NSMutableArray alloc]init];
     
@@ -870,7 +869,6 @@
     NSString *sql = [NSString stringWithFormat:@"select *,rowid from %@ where %@ like '%%%@%%' or %@ like '%%%@%%' or %@ like '%%%@%%' or %@ like '%%%@%%' or %@ like '%%%@%%' order by %@ desc",TABLE_NAME_APPROVE_LIST,APPROVE_PROPERTY_ORDER_TYPE,keyword,APPROVE_PROPERTY_INSTANCE_DESC,keyword,APPROVE_PROPERTY_NODE_NAME,keyword,APPROVE_PROPERTY_EMPLOYEE_NAME,keyword,APPROVE_PROPERTY_CREATION_DATE,keyword,APPROVE_PROPERTY_CREATION_DATE];
     
     [_dbHelper.db open];
-    NSLog(@"%@",sql);
     FMResultSet *resultSet = [_dbHelper.db executeQuery:sql];
     NSMutableArray *resultObjs = [NSMutableArray array];
     while (resultSet.next) {
