@@ -36,7 +36,7 @@ static HDURLCenter * _URLCenter = nil;
 { 
     NSError *error = nil;
     NSString *url = nil;
-    NSString *xpath = [NSString stringWithFormat:@"/service/urls/url[@name='%@']",key];
+    NSString *xpath = [NSString stringWithFormat:@"/backend-config/urls/url[@name='%@']",key];
     HDGodXMLFactory *factory = [HDGodXMLFactory shareBeanFactory];
     
     CXMLNode *node = [factory.document nodeForXPath:xpath error:&error];
