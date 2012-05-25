@@ -32,6 +32,13 @@
     self.dataSource = [[[HDApprovedListDataSource alloc]init] autorelease];
 }
 
+-(void)model:(id<TTModel>)model didFailLoadWithError:(NSError *)error
+{
+    [super model:model didFailLoadWithError:error];
+    UIAlertView * alert = [[UIAlertView alloc]initWithTitle:@"网络异常" message:@"网络无连接或服务器无响应。\n请稍后再试" delegate:self cancelButtonTitle:@"好" otherButtonTitles:nil];
+    [alert show];
+    TT_RELEASE_SAFELY(alert);
+}
 //-(void)loadView
 //{
 //    [super loadView];
