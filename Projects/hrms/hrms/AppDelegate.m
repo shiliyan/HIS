@@ -19,6 +19,9 @@ NSString * kMainPathName =@"HD_MAIN_VC_PATH";
 
 -(void) applicationDidFinishLaunching:(UIApplication *)application
 {
+    // load  image
+    [HDResourceCenter load];
+    
     //register notification
     [[UIApplication sharedApplication] registerForRemoteNotificationTypes:(UIRemoteNotificationTypeAlert|UIRemoteNotificationTypeBadge|UIRemoteNotificationTypeSound)];
     
@@ -34,8 +37,7 @@ NSString * kMainPathName =@"HD_MAIN_VC_PATH";
     if(![[HDNavigator navigator] restoreViewControllers])
     {      
         [self showLoginView];
-    }
-    
+    }    
 }
 
 -(void)showLoginView

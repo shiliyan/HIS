@@ -20,9 +20,13 @@ static NSString * kRoleSelectPathName = @"HD_ROLE_SELECT_VC_PATH";
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
         [self setAutoresizesForKeyboard:YES];
-        UIView * loginBar = [self.view viewWithTag:9];
-        loginBar.layer.cornerRadius = 16;
-        loginBar.layer.masksToBounds = YES;
+        
+        NSData * docData = [NSData dataWithContentsOfFile:[HDResourceCenter filePathWithFileName:@"login.png"]];
+        if (nil != docData) {
+            UIImage * image = [UIImage imageWithData:docData];
+            UIImageView * imageView = (UIImageView *)[self.view viewWithTag:9];
+            imageView.image = image;
+        }  
     }
     return self;
 }
@@ -43,12 +47,13 @@ static NSString * kRoleSelectPathName = @"HD_ROLE_SELECT_VC_PATH";
     [_password resignFirstResponder];
     [_loginModel setUsername:_username.text];
     [_loginModel setPassword:_password.text];
-    [_loginModel load:TTURLRequestCachePolicyNetwork more:NO];
+    [_loginModel load:TTURLRequestCachePolicyNoCache more:NO];
 }
 
 //模型delegate方法
-- (void)modelDidFinishLoad:(id<TTModel>)model
+- (void)modelDidFinishLoad:(HDLoginModel *)model
 {
+    
     NSString * roleSelectPath =  [[HDGodXMLFactory shareBeanFactory] actionURLPathWithKey:kRoleSelectPathName];
     if (!roleSelectPath) {
         [[self parentViewController] dismissModalViewControllerAnimated:YES];
@@ -75,7 +80,7 @@ static NSString * kRoleSelectPathName = @"HD_ROLE_SELECT_VC_PATH";
 {
     [UIView beginAnimations:@"keyboardAnimation" context:NULL];
     for (UIView * subView in [self.view subviews]) {
-        CGAffineTransform moveTransform = CGAffineTransformMakeTranslation(0, -120);
+        CGAffineTransform moveTransform = CGAffineTransformMakeTranslation(0, -140);
         [subView.layer setAffineTransform:moveTransform];
     }
     [UIView commitAnimations];
