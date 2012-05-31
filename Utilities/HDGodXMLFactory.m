@@ -11,6 +11,7 @@
 static HDGodXMLFactory * _xmlFactory = nil;
 
 static NSString * kActionURLPathRootNodePath = @"/backend-config/runtime/action-path-mapping/map";
+static NSString *kResourceRootPath = @"/backend-config/resources/resource";
 
 @implementation HDGodXMLFactory
 
@@ -66,7 +67,7 @@ static NSString * kActionURLPathRootNodePath = @"/backend-config/runtime/action-
     self = [super init];
     NSError *error = nil;
     if (self) {
-        NSString *url = [NSString stringWithFormat:@"%@services.xml",[[NSUserDefaults standardUserDefaults]stringForKey:@"base_url_preference"]];
+        NSString *url = [NSString stringWithFormat:@"%@ios-backend-config.xml",[[NSUserDefaults standardUserDefaults]stringForKey:@"base_url_preference"]];
 //        NSData * data = [NSData dataWithContentsOfFile:@"/Users/Leo/Projects/xcode/HIS/Projects/hrms/hrms/services.xml"];
         _document = [[CXMLDocument alloc]initWithContentsOfURL:[NSURL URLWithString:url] encoding:NSUTF8StringEncoding options:0 error:&error];
 //        _document = [[CXMLDocument alloc]initWithData:data encoding:NSUTF8StringEncoding options:0 error:&error];
@@ -146,6 +147,16 @@ static NSString * kActionURLPathRootNodePath = @"/backend-config/runtime/action-
         return [[xPathElement attributeForName:@"url"]stringValue];
     }
     TTDPRINT(@"节点路径错误");
+    return nil;
+}
+
+-(NSString *)stringFroXPath:(NSString *)xpath attributeName:(NSString *) attName{
+    NSError *error = nil;
+    id xPathNode = [_document nodeForXPath:xpath error:&error];
+    if ([xPathNode isKindOfClass:[CXMLElement class]]) {
+        CXMLElement * xPathElement = xPathNode;
+        return [[xPathElement attributeForName:attName]stringValue];
+    }
     return nil;
 }
 
