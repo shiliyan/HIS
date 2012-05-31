@@ -14,7 +14,9 @@ static NSString * kLoginBackGroundImagePath = @"LOGIN_BACKGROUND_IMAGE_PATH";
 
 +(void)load
 {
-    [[[HDResourceCenter alloc]init]autorelease];
+    HDResourceCenter * center = [[HDResourceCenter alloc]init];
+    [center load:TTURLRequestCachePolicyNetwork more:NO];
+    TT_RELEASE_SAFELY(center);
 }
 
 +(NSString *)filePathWithFileName:(NSString *)fileName

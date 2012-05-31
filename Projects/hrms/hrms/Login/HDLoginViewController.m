@@ -26,7 +26,11 @@ static NSString * kRoleSelectPathName = @"HD_ROLE_SELECT_VC_PATH";
             UIImage * image = [UIImage imageWithData:docData];
             UIImageView * imageView = (UIImageView *)[self.view viewWithTag:9];
             imageView.image = image;
-        }  
+        }
+        NSString * path = [NSString  stringWithFormat:@"%@",kResourceRootPath,@"[name='LOGIN_TITLE']"];
+        
+        NSString * title = [[HDGodXMLFactory shareBeanFactory]stringFroXPath:path attributeName:@"value"];
+        [(UILabel*)[self.view viewWithTag:2] setText:title];
     }
     return self;
 }
@@ -70,6 +74,9 @@ static NSString * kRoleSelectPathName = @"HD_ROLE_SELECT_VC_PATH";
     }
     if (!errorDescription) {
         errorDescription = [[error userInfo] valueForKeyPath:@"NSLocalizedDescription"];
+    }
+    if (!errorDescription) {
+        errorDescription = [error localizedDescription];
     }
     TTAlertNoTitle(errorDescription);
     TTDPRINT(@"%@",errorDescription);

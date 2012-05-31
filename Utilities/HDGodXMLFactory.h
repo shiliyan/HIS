@@ -9,6 +9,10 @@
 #import <Foundation/Foundation.h>
 #import "TouchXML.h"
 
+static NSString * kActionURLPathRootNodePath = @"/backend-config/runtime/action-path-mapping/map";
+static NSString *kResourceRootPath = @"/backend-config/resources/resource";
+
+
 @interface HDGodXMLFactory : NSObject{
     CXMLDocument *_document;
 }
