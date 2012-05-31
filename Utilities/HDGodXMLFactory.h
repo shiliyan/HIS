@@ -24,4 +24,6 @@
 -(NSString *)actionURLPathWithKey:(NSString*) keyValue;
 
 -(NSArray *) nodesForXPath:(NSString *)path;
+
+-(NSString *)stringFroXPath:(NSString *)xpath attributeName:(NSString *) attName;
 @end
