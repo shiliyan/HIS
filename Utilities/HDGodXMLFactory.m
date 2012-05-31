@@ -10,9 +10,6 @@
 
 static HDGodXMLFactory * _xmlFactory = nil;
 
-static NSString * kActionURLPathRootNodePath = @"/backend-config/runtime/action-path-mapping/map";
-static NSString *kResourceRootPath = @"/backend-config/resources/resource";
-
 @implementation HDGodXMLFactory
 
 @synthesize document=_document;
