@@ -52,7 +52,9 @@ static HDURLCenter * _URLCenter = nil;
         url = [url stringByReplacingOccurrencesOfString:replaceString withString:[query objectForKey:key]];
     }
     
-    return   [NSString stringWithFormat:@"%@%@",[[NSUserDefaults standardUserDefaults]stringForKey:@"base_url_preference"],url];
+    NSString * nospaceURL = [[[NSUserDefaults standardUserDefaults]stringForKey:@"base_url_preference"] stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
+    
+    return [NSString stringWithFormat:@"%@%@",nospaceURL,url];
 }
 
 +(NSString *) requestURLWithKey:(id)key

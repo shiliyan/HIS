@@ -13,8 +13,6 @@
 #import <Foundation/Foundation.h>
 
 #import <Three20/Three20.h>
-#import "extThree20JSON/extThree20JSON.h"
-#import "extThree20JSON/SBJSON.h"
 #import "Three20UI/Three20UI+Additions.h" 
 
 #import "HDFormDataRequest.h"
@@ -23,7 +21,7 @@
 #import "HDHTTPRequestCenter.h"
 
 #import "HDGodXMLFactory.h"
-
+//#import "HDResourceCenter.h"
 //导入FMDB
 #import "FMDatabase.h"
 

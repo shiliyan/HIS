@@ -8,11 +8,4 @@
          location = "group:Projects/hrms/hrms.xcodeproj">
       </FileRef>
    </Group>
-   <Group
-      location = "container:"
-      name = "Demo">
-      <FileRef
-         location = "group:Demos/PadLoginDemo/PadLoginDemo.xcodeproj">
-      </FileRef>
-   </Group>
 </Workspace>

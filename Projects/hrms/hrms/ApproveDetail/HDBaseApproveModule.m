@@ -140,7 +140,7 @@
     } else {
         webPageContent =  [theRequest responseStatusMessage];
     }
-    
+    TTDPRINT(@"web page content\n%@",webPageContent);
     [self callWebPageDidLoad:webPageContent baseURL:[theRequest url]];
 }
 

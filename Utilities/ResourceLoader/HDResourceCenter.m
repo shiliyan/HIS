@@ -21,13 +21,21 @@ static NSString * kLoginBackGroundImagePath = @"LOGIN_BACKGROUND_IMAGE_PATH";
 
 +(NSString *)filePathWithFileName:(NSString *)fileName
 {
-    NSArray * paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+    NSArray * paths = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) autorelease];
     NSString * documentsDicrectory = [paths objectAtIndex:0];
     return [documentsDicrectory stringByAppendingPathComponent:fileName];
 }
 
 -(void)load:(TTURLRequestCachePolicy)cachePolicy more:(BOOL)more
 {
+    NSString * imagePath = [HDResourceCenter filePathWithFileName:@"login.png"];
+    NSFileManager * fileManager = [NSFileManager defaultManager];
+    
+    if ([fileManager isReadableFileAtPath:imagePath]) {
+        NSError * error = nil;
+        [fileManager removeItemAtPath:imagePath error:&error];
+    }
+    
     NSString * queryUrl = [HDURLCenter requestURLWithKey:kLoginBackGroundImagePath];
     TTURLRequest * request = [TTURLRequest requestWithURL:queryUrl delegate:self];
     request.response = [[[TTURLDataResponse alloc]init]autorelease];

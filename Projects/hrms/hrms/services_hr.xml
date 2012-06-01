@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<service>
+<backend-config>
     <field-mappings>
         <field-mapping url_name="APPROVE_TABLE_QUERY_URL" class_name="Approve">
             <mapping server="workflow_id" client="workflowID"/>
@@ -43,8 +43,8 @@
         <url name="ROLE_SELECT_PATH" value="role_select_for_ios.svc"/>
         <url name="TOOLBAR_ACTION_QUERY_PATH" value="autocrud/ios.ios_approve.ios_workflow_approve_action_query/query"/>
         <url name="EXEC_ACTION_UPDATE_PATH" value="autocrud/ios.ios_approve.ios_workflow_approve_action_submit/batch_update"/>
-        <url name="APPROVE_DETIAL_WEB_PAGE_PATH" value="modules/ios/ios_approve/[doc_page_url]?record_id=[record_id]"/>
-        <url name="APPROVED_DETIAL_WEB_PAGE_PATH" value="modules/ios/ios_approve/[doc_page_url]?record_id=[record_id]"/>
+        <url name="APPROVE_DETIAL_WEB_PAGE_PATH" value="[doc_page_url]?record_id=[record_id]"/>
+        <url name="APPROVED_DETIAL_WEB_PAGE_PATH" value="[doc_page_url]?record_id=[record_id]"/>
         <url name="APPROVE_SCREEN_BASE_PATH" value="modules/ios/ios_approve/"/>
         <url name="APPROVE_TABLE_QUERY_URL" value="autocrud/ios.ios_approve.ios_workflow_approve_query/query?_fetchall=true&amp;_autocount=false"/>
         <url name="APPROVE_TABLE_BATCH_COMMIT" value="autocrud/ios.ios_approve.ios_workflow_approve_batch_commit/execute"/>
@@ -72,4 +72,4 @@
             <map name="HD_ACCOUNT_SETTING_VC_PATH" url="init://shareNib/HDAccountSettingsController/HDAccountSettingsController"/>
         </action-path-mapping>    
     </runtime>
-</service>
+</backend-config>

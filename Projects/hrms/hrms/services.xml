@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<service>
+<backend-config>
     <field-mappings>
         <field-mapping url_name="APPROVE_TABLE_QUERY_URL" class_name="Approve">
             <mapping server="workflow_id" client="workflowID"/>
@@ -36,9 +36,9 @@
             <mapping server="workflow_name" client="workflowName"/> 
         </field-mapping>
     </field-mappings>
-    
     <urls>
         <url name="LOGIN_PATH" value="login_iphone.svc"/>
+        <url name="LOGIN_BACKGROUND_IMAGE_PATH" value=""/>
         <url name="ROLE_LIST_QYERY_PATH" value="autocrud/ios.ios_login.sys_user_role_group_for_ios/query"/>
         <url name="ROLE_SELECT_PATH" value="role_select_for_ios.svc"/>
         <url name="TOOLBAR_ACTION_QUERY_PATH" value="autocrud/ios.ios_wfl.wfl_workflow_approve_action_query/query"/>
@@ -71,4 +71,8 @@
             <map name="HD_ACCOUNT_SETTING_VC_PATH" url="init://shareNib/HDAccountSettingsController/HDAccountSettingsController"/>
         </action-path-mapping>    
     </runtime>
-</service>
+    
+    <resources>
+        <resource name="LOGIN_TITLE" value ="汉得移动商务">
+    </resources>
+</backend-config>

@@ -16,7 +16,7 @@
 			<key>AutocorrectionType</key>
 			<string>No</string>
 			<key>DefaultValue</key>
-			<string>http://172.20.0.20:8080/hr_new/</string>
+			<string>http://[address]:[port]/[webRoot]/</string>
 			<key>IsSecure</key>
 			<false/>
 			<key>Key</key>
