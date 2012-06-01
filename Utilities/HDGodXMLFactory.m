@@ -64,7 +64,8 @@ static HDGodXMLFactory * _xmlFactory = nil;
     self = [super init];
     NSError *error = nil;
     if (self) {
-        NSString *url = [NSString stringWithFormat:@"%@ios-backend-config.xml",[[NSUserDefaults standardUserDefaults]stringForKey:@"base_url_preference"]];
+        NSString *url = [NSString stringWithFormat:@"%@ios-backend-config.xml",[[[NSUserDefaults standardUserDefaults]stringForKey:@"base_url_preference"]stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]]];
+        
 //        NSData * data = [NSData dataWithContentsOfFile:@"/Users/Leo/Projects/xcode/HIS/Projects/hrms/hrms/services.xml"];
         _document = [[CXMLDocument alloc]initWithContentsOfURL:[NSURL URLWithString:url] encoding:NSUTF8StringEncoding options:0 error:&error];
 //        _document = [[CXMLDocument alloc]initWithData:data encoding:NSUTF8StringEncoding options:0 error:&error];
