@@ -20,7 +20,7 @@ NSString * kMainPathName =@"HD_MAIN_VC_PATH";
 -(void) applicationDidFinishLaunching:(UIApplication *)application
 {
     // load  image
-    [HDResourceCenter load];
+//    [HDResourceCenter load];
     
     //register notification
     [[UIApplication sharedApplication] registerForRemoteNotificationTypes:(UIRemoteNotificationTypeAlert|UIRemoteNotificationTypeBadge|UIRemoteNotificationTypeSound)];
