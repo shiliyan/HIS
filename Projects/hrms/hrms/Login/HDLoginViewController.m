@@ -21,13 +21,13 @@ static NSString * kRoleSelectPathName = @"HD_ROLE_SELECT_VC_PATH";
     if (self) {
         [self setAutoresizesForKeyboard:YES];
         
-        NSData * docData = [NSData dataWithContentsOfFile:[HDResourceCenter filePathWithFileName:@"login.png"]];
-        if (nil != docData) {
-            UIImage * image = [UIImage imageWithData:docData];
-            UIImageView * imageView = (UIImageView *)[self.view viewWithTag:9];
-            imageView.image = image;
-        }
-        NSString * path = [NSString  stringWithFormat:@"%@",kResourceRootPath,@"[name='LOGIN_TITLE']"];
+//        NSData * docData = [NSData dataWithContentsOfFile:[HDResourceCenter filePathWithFileName:@"login.png"]];
+//        if (nil != docData) {
+//            UIImage * image = [UIImage imageWithData:docData];
+//            UIImageView * imageView = (UIImageView *)[self.view viewWithTag:9];
+//            imageView.image = image;
+//        }
+        NSString * path = [NSString  stringWithFormat:@"%@",kResourceRootPath,@"[@name='LOGIN_TITLE']"];
         
         NSString * title = [[HDGodXMLFactory shareBeanFactory]stringFroXPath:path attributeName:@"value"];
         [(UILabel*)[self.view viewWithTag:2] setText:title];
