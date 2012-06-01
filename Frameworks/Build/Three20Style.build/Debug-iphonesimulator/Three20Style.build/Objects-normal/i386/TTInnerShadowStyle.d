@@ -1,9 +1,0 @@
-dependencies: \
-  /Users/Leo/Projects/xcode/HIS/Frameworks/Three20/Three20Style/Sources/TTInnerShadowStyle.m \
-  /Users/Leo/Projects/xcode/HIS/Frameworks/Three20/Three20Style/Headers/TTInnerShadowStyle.h \
-  /Users/Leo/Projects/xcode/HIS/Frameworks/Three20/Three20Style/Headers/TTShadowStyle.h \
-  /Users/Leo/Projects/xcode/HIS/Frameworks/Three20/Three20Style/Headers/TTStyle.h \
-  /Users/Leo/Projects/xcode/HIS/Frameworks/Three20/Three20Style/Headers/TTStyleContext.h \
-  /Users/Leo/Projects/xcode/HIS/Frameworks/Three20/Three20Style/Headers/TTShape.h \
-  /Users/Leo/Projects/xcode/HIS/Frameworks/Three20/Three20Style/../../Build/Products/Debug-iphonesimulator/../three20/Three20Core/NSStringAdditions.h \
-  /Users/Leo/Projects/xcode/HIS/Frameworks/Three20/Three20Style/../../Build/Products/Debug-iphonesimulator/../three20/Three20Core/TTCorePreprocessorMacros.h
